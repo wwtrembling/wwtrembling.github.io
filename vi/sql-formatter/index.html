@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL 포매터 - Tool Shelf</title>
+    <meta name="description" content="SQL 쿼리를 자동으로 정렬하고 포맷팅하세요. Beautify와 Minify 기능을 제공합니다.">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="SQL 포매터 - Tool Shelf">
+    <meta property="og:description" content="SQL 쿼리를 자동으로 정렬하고 포맷팅하세요.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://wwtrembling.github.io/ko/sql-formatter/">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://wwtrembling.github.io/ko/sql-formatter/">
+
+    <!-- Language Alternatives -->
+    <link rel="alternate" hreflang="ko" href="https://wwtrembling.github.io/ko/sql-formatter/">
+    <link rel="alternate" hreflang="en" href="https://wwtrembling.github.io/en/sql-formatter/">
+    <link rel="alternate" hreflang="ja" href="https://wwtrembling.github.io/ja/sql-formatter/">
+    <link rel="alternate" hreflang="hi" href="https://wwtrembling.github.io/hi/sql-formatter/">
+    <link rel="alternate" hreflang="id" href="https://wwtrembling.github.io/id/sql-formatter/">
+    <link rel="alternate" hreflang="vi" href="https://wwtrembling.github.io/vi/sql-formatter/">
+    <link rel="alternate" hreflang="th" href="https://wwtrembling.github.io/th/sql-formatter/">
+    <link rel="alternate" hreflang="de" href="https://wwtrembling.github.io/de/sql-formatter/">
+    <link rel="alternate" hreflang="pt" href="https://wwtrembling.github.io/pt/sql-formatter/">
+    <link rel="alternate" hreflang="x-default" href="https://wwtrembling.github.io/en/sql-formatter/">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "SQL 포매터",
+    "description": "SQL 쿼리를 자동으로 정렬하고 포맷팅하세요.",
+    "url": "https://wwtrembling.github.io/ko/sql-formatter/",
+    "inLanguage": "ko",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+    <style>
+        .editor-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-lg);
+        }
+
+        .editor-box {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .editor-box h3 {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .editor-box textarea {
+            flex: 1;
+            min-height: 400px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.5;
+            padding: var(--spacing-md);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            resize: vertical;
+        }
+
+        .button-group {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .btn {
+            flex: 1;
+            padding: var(--spacing-md) var(--spacing-lg);
+            border: none;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-primary);
+        }
+
+        .options {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .option-group {
+            display: flex;
+            gap: var(--spacing-lg);
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .editor-container {
+                grid-template-columns: 1fr;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+        }
+    </style>
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631"
+        crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/ko/" class="site-logo">
+                    🛠️ Tool Shelf
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container-narrow">
+            <h1>🗄️ SQL 포매터</h1>
+            <p>SQL 쿼리를 자동으로 정렬하고 포맷팅하세요. Beautify와 Minify 기능을 제공합니다.</p>
+
+            <!-- Options -->
+            <div class="options">
+                <div class="option-group">
+                    <label class="form-label">SQL 언어:</label>
+                    <select id="languageSelect" class="form-select">
+                        <option value="sql">Standard SQL</option>
+                        <option value="mysql">MySQL</option>
+                        <option value="postgresql">PostgreSQL</option>
+                        <option value="mariadb">MariaDB</option>
+                        <option value="plsql">PL/SQL (Oracle)</option>
+                        <option value="tsql">T-SQL (SQL Server)</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Buttons -->
+            <div class="button-group">
+                <button class="btn btn-primary" id="formatBtn">✨ Beautify</button>
+                <button class="btn btn-secondary" id="minifyBtn">📦 Minify</button>
+                <button class="btn btn-secondary" id="copyBtn">📋 복사</button>
+                <button class="btn btn-secondary" id="clearBtn">🗑️ 초기화</button>
+            </div>
+
+            <!-- Editors -->
+            <div class="editor-container">
+                <div class="editor-box">
+                    <h3>입력 (SQL)</h3>
+                    <textarea id="inputSQL" placeholder="SELECT * FROM users WHERE id=1"></textarea>
+                </div>
+                <div class="editor-box">
+                    <h3>출력 (포맷된 SQL)</h3>
+                    <textarea id="outputSQL" readonly></textarea>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Tool Shelf. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/assets/js/common.js"></script>
+    <!-- SQL Formatter Library -->
+    <script src="https://cdn.jsdelivr.net/npm/sql-formatter@15.0.2/dist/sql-formatter.min.js"></script>
+    <script>
+        const inputSQL = document.getElementById('inputSQL');
+        const outputSQL = document.getElementById('outputSQL');
+        const languageSelect = document.getElementById('languageSelect');
+        const formatBtn = document.getElementById('formatBtn');
+        const minifyBtn = document.getElementById('minifyBtn');
+        const copyBtn = document.getElementById('copyBtn');
+        const clearBtn = document.getElementById('clearBtn');
+
+        // Format SQL (Beautify)
+        formatBtn.addEventListener('click', () => {
+            const sql = inputSQL.value.trim();
+            if (!sql) {
+                alert('SQL 쿼리를 입력해주세요.');
+                return;
+            }
+
+            try {
+                const formatted = sqlFormatter.format(sql, {
+                    language: languageSelect.value,
+                    tabWidth: 2,
+                    keywordCase: 'upper',
+                    linesBetweenQueries: 2
+                });
+                outputSQL.value = formatted;
+            } catch (error) {
+                outputSQL.value = 'Error: ' + error.message;
+            }
+        });
+
+        // Minify SQL
+        minifyBtn.addEventListener('click', () => {
+            const sql = inputSQL.value.trim();
+            if (!sql) {
+                alert('SQL 쿼리를 입력해주세요.');
+                return;
+            }
+
+            try {
+                // Remove extra whitespace and newlines
+                const minified = sql
+                    .replace(/\s+/g, ' ')
+                    .replace(/\s*([(),;])\s*/g, '$1')
+                    .trim();
+                outputSQL.value = minified;
+            } catch (error) {
+                outputSQL.value = 'Error: ' + error.message;
+            }
+        });
+
+        // Copy to clipboard
+        copyBtn.addEventListener('click', () => {
+            if (!outputSQL.value) {
+                alert('복사할 내용이 없습니다.');
+                return;
+            }
+            Utils.copyToClipboard(outputSQL.value);
+        });
+
+        // Clear
+        clearBtn.addEventListener('click', () => {
+            inputSQL.value = '';
+            outputSQL.value = '';
+        });
+
+        // Sample SQL
+        const sampleSQL = `SELECT u.id, u.name, o.order_id, o.total FROM users u INNER JOIN orders o ON u.id = o.user_id WHERE u.status = 'active' AND o.created_at > '2024-01-01' ORDER BY o.created_at DESC LIMIT 10`;
+
+        inputSQL.value = sampleSQL;
+    </script>
+</body>
+
+</html>
