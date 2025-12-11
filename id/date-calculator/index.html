@@ -4,101 +4,73 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kalkulator Tanggal - Tool Shelf</title>
-  <meta name="description" content="Hitung D-Day, perbedaan tanggal, tambah atau kurangi hari.">
-  
-  <!-- Open Graph -->
-  <meta property="og:title" content="Kalkulator Tanggal - Tool Shelf">
-  <meta property="og:description" content="Hitung D-Day, perbedaan tanggal, tambah atau kurangi hari.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://wwtrembling.github.io/id/date-calculator/">
-  
-  <!-- Canonical -->
+  <meta name="description" content="Hitung D-Day dan perbedaan tanggal.">
   <link rel="canonical" href="https://wwtrembling.github.io/id/date-calculator/">
-  
-  <!-- Language Alternatives -->
-  <link rel="alternate" hreflang="ko" href="https://wwtrembling.github.io/ko/date-calculator/">
-  <link rel="alternate" hreflang="en" href="https://wwtrembling.github.io/en/date-calculator/">
-  <link rel="alternate" hreflang="ja" href="https://wwtrembling.github.io/ja/date-calculator/">
-  <link rel="alternate" hreflang="hi" href="https://wwtrembling.github.io/hi/date-calculator/">
-  <link rel="alternate" hreflang="id" href="https://wwtrembling.github.io/id/date-calculator/">
-  <link rel="alternate" hreflang="vi" href="https://wwtrembling.github.io/vi/date-calculator/">
-  <link rel="alternate" hreflang="th" href="https://wwtrembling.github.io/th/date-calculator/">
-  <link rel="alternate" hreflang="de" href="https://wwtrembling.github.io/de/date-calculator/">
-  <link rel="alternate" hreflang="pt" href="https://wwtrembling.github.io/pt/date-calculator/">
-  <link rel="alternate" hreflang="x-default" href="https://wwtrembling.github.io/en/date-calculator/">
-  
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
-  <!-- Styles -->
   <link rel="stylesheet" href="/assets/css/main.css">
-  
-  <!-- JSON-LD -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "Kalkulator Tanggal",
-    "description": "Hitung D-Day, perbedaan tanggal, tambah atau kurangi hari.",
-    "url": "https://wwtrembling.github.io/id/date-calculator/",
-    "inLanguage": "id",
-    "isPartOf": {
-      "@type": "WebSite",
-      "name": "Tool Shelf",
-      "url": "https://wwtrembling.github.io/"
-    }
-  }
-  </script>
-  <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631"
-     crossorigin="anonymous"></script>
-
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631" crossorigin="anonymous"></script>
 </head>
 <body>
   <header class="site-header">
-    <div class="container">
-      <div class="header-content">
-        <a href="/id/" class="site-logo">
-          🛠️ Tool Shelf
-        </a>
-        <div id="languageSwitcher" class="language-switcher"></div>
-      </div>
-    </div>
+    <div class="container"><div class="header-content">
+      <a href="/id/" class="site-logo">🛠️ Tool Shelf</a>
+      <div id="languageSwitcher" class="language-switcher"></div>
+    </div></div>
   </header>
-
   <main class="main-content">
     <div class="container-narrow">
       <h1>📅 Kalkulator Tanggal</h1>
-      <p>Hitung D-Day, perbedaan tanggal, tambah atau kurangi hari.</p>
-      
-      <!-- AdSense Placeholder -->
-      <div class="adsense-placeholder">
-        <!-- AdSense Ad Unit -->
-      </div>
-      
-      <!-- Utility-specific content will go here -->
+      <p>Hitung D-Day dan perbedaan tanggal.</p>
       <div class="card">
-        <p>This is a placeholder for the Kalkulator Tanggal utility.</p>
-        <p>The actual implementation will include the full functionality for this tool.</p>
+        <h3>Kalkulator D-Day</h3>
+        <div class="form-group">
+          <label class="form-label">Tanggal Target</label>
+          <input type="date" id="targetDate" class="form-input">
+        </div>
+        <button class="btn btn-primary" onclick="calculateDday()">Hitung</button>
+        <div id="ddayResult" class="result-box" style="display:none; margin-top:1rem;">
+          <div class="result-value" id="ddayValue"></div>
+        </div>
       </div>
-      
-      <!-- AdSense Placeholder -->
-      <div class="adsense-placeholder">
-        <!-- AdSense Ad Unit -->
+      <div class="card">
+        <h3>Perbedaan Tanggal</h3>
+        <div class="form-group">
+          <label class="form-label">Tanggal Mulai</label>
+          <input type="date" id="startDate" class="form-input">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Tanggal Akhir</label>
+          <input type="date" id="endDate" class="form-input">
+        </div>
+        <button class="btn btn-primary" onclick="calculateDiff()">Hitung</button>
+        <div id="diffResult" class="result-box" style="display:none; margin-top:1rem;">
+          <div class="result-value" id="diffValue"></div>
+        </div>
       </div>
     </div>
   </main>
-
   <footer class="site-footer">
-    <div class="container">
-      <div class="footer-content">
-        <p>&copy; 2025 Tool Shelf. All rights reserved.</p>
-      </div>
-    </div>
+    <div class="container"><div class="footer-content">
+      <p>&copy; 2025 Tool Shelf. All rights reserved.</p>
+    </div></div>
   </footer>
-
   <script src="/assets/js/common.js"></script>
+  <script>
+    function calculateDday() {
+      const target = new Date(document.getElementById('targetDate').value);
+      const today = new Date();
+      today.setHours(0,0,0,0);
+      const diff = Math.ceil((target - today) / (1000 * 60 * 60 * 24));
+      document.getElementById('ddayValue').textContent = 'D' + (diff > 0 ? '-' : '+') + Math.abs(diff);
+      document.getElementById('ddayResult').style.display = 'block';
+    }
+    function calculateDiff() {
+      const start = new Date(document.getElementById('startDate').value);
+      const end = new Date(document.getElementById('endDate').value);
+      const diff = Math.abs(Math.ceil((end - start) / (1000 * 60 * 60 * 24)));
+      document.getElementById('diffValue').textContent = diff + ' hari';
+      document.getElementById('diffResult').style.display = 'block';
+    }
+  </script>
 </body>
 </html>

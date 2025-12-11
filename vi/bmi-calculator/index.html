@@ -3,102 +3,63 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Máy Tính BMI & TDEE - Tool Shelf</title>
-  <meta name="description" content="Tính chỉ số khối cơ thể và nhu cầu calo hàng ngày.">
-  
-  <!-- Open Graph -->
-  <meta property="og:title" content="Máy Tính BMI & TDEE - Tool Shelf">
-  <meta property="og:description" content="Tính chỉ số khối cơ thể và nhu cầu calo hàng ngày.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://wwtrembling.github.io/vi/bmi-calculator/">
-  
-  <!-- Canonical -->
+  <title>Máy Tính BMI - Tool Shelf</title>
+  <meta name="description" content="Tính BMI của bạn.">
   <link rel="canonical" href="https://wwtrembling.github.io/vi/bmi-calculator/">
-  
-  <!-- Language Alternatives -->
-  <link rel="alternate" hreflang="ko" href="https://wwtrembling.github.io/ko/bmi-calculator/">
-  <link rel="alternate" hreflang="en" href="https://wwtrembling.github.io/en/bmi-calculator/">
-  <link rel="alternate" hreflang="ja" href="https://wwtrembling.github.io/ja/bmi-calculator/">
-  <link rel="alternate" hreflang="hi" href="https://wwtrembling.github.io/hi/bmi-calculator/">
-  <link rel="alternate" hreflang="id" href="https://wwtrembling.github.io/id/bmi-calculator/">
-  <link rel="alternate" hreflang="vi" href="https://wwtrembling.github.io/vi/bmi-calculator/">
-  <link rel="alternate" hreflang="th" href="https://wwtrembling.github.io/th/bmi-calculator/">
-  <link rel="alternate" hreflang="de" href="https://wwtrembling.github.io/de/bmi-calculator/">
-  <link rel="alternate" hreflang="pt" href="https://wwtrembling.github.io/pt/bmi-calculator/">
-  <link rel="alternate" hreflang="x-default" href="https://wwtrembling.github.io/en/bmi-calculator/">
-  
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
-  <!-- Styles -->
   <link rel="stylesheet" href="/assets/css/main.css">
-  
-  <!-- JSON-LD -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "Máy Tính BMI & TDEE",
-    "description": "Tính chỉ số khối cơ thể và nhu cầu calo hàng ngày.",
-    "url": "https://wwtrembling.github.io/vi/bmi-calculator/",
-    "inLanguage": "vi",
-    "isPartOf": {
-      "@type": "WebSite",
-      "name": "Tool Shelf",
-      "url": "https://wwtrembling.github.io/"
-    }
-  }
-  </script>
-  <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631"
-     crossorigin="anonymous"></script>
-
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631" crossorigin="anonymous"></script>
 </head>
 <body>
   <header class="site-header">
-    <div class="container">
-      <div class="header-content">
-        <a href="/vi/" class="site-logo">
-          🛠️ Tool Shelf
-        </a>
-        <div id="languageSwitcher" class="language-switcher"></div>
-      </div>
-    </div>
+    <div class="container"><div class="header-content">
+      <a href="/vi/" class="site-logo">🛠️ Tool Shelf</a>
+      <div id="languageSwitcher" class="language-switcher"></div>
+    </div></div>
   </header>
-
   <main class="main-content">
     <div class="container-narrow">
-      <h1>⚖️ Máy Tính BMI & TDEE</h1>
-      <p>Tính chỉ số khối cơ thể và nhu cầu calo hàng ngày.</p>
-      
-      <!-- AdSense Placeholder -->
-      <div class="adsense-placeholder">
-        <!-- AdSense Ad Unit -->
-      </div>
-      
-      <!-- Utility-specific content will go here -->
+      <h1>⚖️ Máy Tính BMI</h1>
+      <p>Tính BMI của bạn.</p>
       <div class="card">
-        <p>This is a placeholder for the Máy Tính BMI & TDEE utility.</p>
-        <p>The actual implementation will include the full functionality for this tool.</p>
+        <div class="form-group">
+          <label class="form-label">Chiều cao (cm)</label>
+          <input type="number" id="height" class="form-input" placeholder="170" value="170">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Cân nặng (kg)</label>
+          <input type="number" id="weight" class="form-input" placeholder="70" value="70">
+        </div>
+        <button class="btn btn-primary" onclick="calculate()">Tính</button>
       </div>
-      
-      <!-- AdSense Placeholder -->
-      <div class="adsense-placeholder">
-        <!-- AdSense Ad Unit -->
+      <div id="result" class="result-box" style="display:none;">
+        <div class="result-value" id="bmiValue"></div>
+        <div id="bmiCategory"></div>
       </div>
     </div>
   </main>
-
   <footer class="site-footer">
-    <div class="container">
-      <div class="footer-content">
-        <p>&copy; 2025 Tool Shelf. All rights reserved.</p>
-      </div>
-    </div>
+    <div class="container"><div class="footer-content">
+      <p>&copy; 2025 Tool Shelf. All rights reserved.</p>
+    </div></div>
   </footer>
-
   <script src="/assets/js/common.js"></script>
+  <script>
+    function calculate() {
+      const h = parseFloat(document.getElementById('height').value) / 100;
+      const w = parseFloat(document.getElementById('weight').value);
+      if (h > 0 && w > 0) {
+        const bmi = (w / (h * h)).toFixed(1);
+        document.getElementById('bmiValue').textContent = 'BMI: ' + bmi;
+        let category = '';
+        if (bmi < 18.5) category = 'Thiếu cân';
+        else if (bmi < 25) category = 'Bình thường';
+        else if (bmi < 30) category = 'Thừa cân';
+        else category = 'Béo phì';
+        document.getElementById('bmiCategory').textContent = category;
+        document.getElementById('result').style.display = 'block';
+      }
+    }
+  </script>
 </body>
 </html>

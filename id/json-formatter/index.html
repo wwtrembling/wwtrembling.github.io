@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Formatter JSON - Tool Shelf</title>
-  <meta name="description" content="Format dan validasi data JSON.">
+  <meta name="description" content="Format dan validasi data JSON. Menyediakan fitur format, minifikasi, dan validasi.">
   
   <!-- Open Graph -->
   <meta property="og:title" content="Formatter JSON - Tool Shelf">
-  <meta property="og:description" content="Format dan validasi data JSON.">
+  <meta property="og:description" content="Format dan validasi data JSON. Menyediakan fitur format, minifikasi, dan validasi.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://wwtrembling.github.io/id/json-formatter/">
   
@@ -39,18 +39,77 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "WebPage",
+    "@type": "WebApplication",
     "name": "Formatter JSON",
-    "description": "Format dan validasi data JSON.",
+    "description": "Format dan validasi data JSON. Menyediakan fitur format, minifikasi, dan validasi.",
     "url": "https://wwtrembling.github.io/id/json-formatter/",
     "inLanguage": "id",
-    "isPartOf": {
-      "@type": "WebSite",
-      "name": "Tool Shelf",
-      "url": "https://wwtrembling.github.io/"
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
     }
   }
   </script>
+  
+  <style>
+    .editor-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--spacing-lg);
+      margin-top: var(--spacing-lg);
+    }
+    
+    .editor-panel {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-md);
+    }
+    
+    .json-textarea {
+      font-family: var(--font-mono);
+      min-height: 400px;
+      resize: vertical;
+    }
+    
+    .validation-status {
+      padding: var(--spacing-md);
+      border-radius: var(--radius-md);
+      font-weight: 500;
+      text-align: center;
+    }
+    
+    .validation-status.valid {
+      background: #d1fae5;
+      color: #065f46;
+      border: 1px solid #10b981;
+    }
+    
+    .validation-status.invalid {
+      background: #fee2e2;
+      color: #991b1b;
+      border: 1px solid #ef4444;
+    }
+    
+    .error-message {
+      background: var(--bg-tertiary);
+      padding: var(--spacing-md);
+      border-radius: var(--radius-md);
+      font-family: var(--font-mono);
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    
+    @media (max-width: 768px) {
+      .editor-container {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631"
      crossorigin="anonymous"></script>
@@ -70,23 +129,45 @@
 
   <main class="main-content">
     <div class="container-narrow">
-      <h1>{ } Formatter JSON</h1>
-      <p>Format dan validasi data JSON.</p>
+      <h1>{{ }} Formatter JSON</h1>
+      <p>Format dan validasi data JSON. Menyediakan fitur format, minifikasi, dan validasi.</p>
       
       <!-- AdSense Placeholder -->
       <div class="adsense-placeholder">
         <!-- AdSense Ad Unit -->
+        <p>Ruang Iklan</p>
       </div>
       
-      <!-- Utility-specific content will go here -->
-      <div class="card">
-        <p>This is a placeholder for the Formatter JSON utility.</p>
-        <p>The actual implementation will include the full functionality for this tool.</p>
+      <!-- Action Buttons -->
+      <div class="btn-group">
+        <button class="btn btn-primary" onclick="formatJSON()">Format</button>
+        <button class="btn btn-secondary" onclick="minifyJSON()">Minify</button>
+        <button class="btn btn-secondary" onclick="validateJSON()">Validasi</button>
+        <button class="btn btn-secondary" onclick="copyOutput()">Salin</button>
+        <button class="btn btn-secondary" onclick="clearAll()">Hapus</button>
       </div>
+      
+      <!-- Editors -->
+      <div class="editor-container">
+        <div class="editor-panel">
+          <label class="form-label">Input JSON</label>
+          <textarea id="jsonInput" class="form-textarea json-textarea" placeholder="Masukkan data JSON..."></textarea>
+        </div>
+        
+        <div class="editor-panel">
+          <label class="form-label">Output</label>
+          <textarea id="jsonOutput" class="form-textarea json-textarea" readonly></textarea>
+        </div>
+      </div>
+      
+      <!-- Validation Status -->
+      <div id="validationStatus" style="display: none;"></div>
+      <div id="errorMessage" style="display: none;"></div>
       
       <!-- AdSense Placeholder -->
       <div class="adsense-placeholder">
         <!-- AdSense Ad Unit -->
+        <p>Ruang Iklan</p>
       </div>
     </div>
   </main>
@@ -100,5 +181,86 @@
   </footer>
 
   <script src="/assets/js/common.js"></script>
+  <script>
+    const input = document.getElementById('jsonInput');
+    const output = document.getElementById('jsonOutput');
+    const validationStatus = document.getElementById('validationStatus');
+    const errorMessage = document.getElementById('errorMessage');
+    
+    function formatJSON() {
+      try {
+        const json = JSON.parse(input.value);
+        output.value = JSON.stringify(json, null, 2);
+        showValidation(true);
+      } catch (e) {
+        showValidation(false, e.message);
+      }
+    }
+    
+    function minifyJSON() {
+      try {
+        const json = JSON.parse(input.value);
+        output.value = JSON.stringify(json);
+        showValidation(true);
+      } catch (e) {
+        showValidation(false, e.message);
+      }
+    }
+    
+    function validateJSON() {
+      try {
+        JSON.parse(input.value);
+        showValidation(true);
+        output.value = '';
+      } catch (e) {
+        showValidation(false, e.message);
+        output.value = '';
+      }
+    }
+    
+    function copyOutput() {
+      if (output.value) {
+        Utils.copyToClipboard(output.value);
+      } else {
+        Utils.showToast('✗ JSON Tidak Valid');
+      }
+    }
+    
+    function clearAll() {
+      input.value = '';
+      output.value = '';
+      validationStatus.style.display = 'none';
+      errorMessage.style.display = 'none';
+    }
+    
+    function showValidation(isValid, error = '') {
+      validationStatus.style.display = 'block';
+      validationStatus.className = 'validation-status ' + (isValid ? 'valid' : 'invalid');
+      validationStatus.textContent = isValid ? '✓ JSON Valid' : '✗ JSON Tidak Valid';
+      
+      if (error) {
+        errorMessage.style.display = 'block';
+        errorMessage.className = 'error-message';
+        errorMessage.textContent = 'Error: ' + error;
+      } else {
+        errorMessage.style.display = 'none';
+      }
+    }
+    
+    // Auto-validate on input
+    input.addEventListener('input', Utils.debounce(() => {
+      if (input.value.trim()) {
+        try {
+          JSON.parse(input.value);
+          showValidation(true);
+        } catch (e) {
+          // Don't show error while typing
+        }
+      } else {
+        validationStatus.style.display = 'none';
+        errorMessage.style.display = 'none';
+      }
+    }, 500));
+  </script>
 </body>
 </html>

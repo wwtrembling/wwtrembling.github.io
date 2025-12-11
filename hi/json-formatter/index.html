@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>JSON फॉर्मेटर - Tool Shelf</title>
-  <meta name="description" content="JSON डेटा को फॉर्मेट और मान्य करें।">
+  <meta name="description" content="JSON डेटा को फॉर्मेट और मान्य करें। फॉर्मेटिंग, संक्षिप्तीकरण और सत्यापन सुविधाएं प्रदान करता है।">
   
   <!-- Open Graph -->
   <meta property="og:title" content="JSON फॉर्मेटर - Tool Shelf">
-  <meta property="og:description" content="JSON डेटा को फॉर्मेट और मान्य करें।">
+  <meta property="og:description" content="JSON डेटा को फॉर्मेट और मान्य करें। फॉर्मेटिंग, संक्षिप्तीकरण और सत्यापन सुविधाएं प्रदान करता है।">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://wwtrembling.github.io/hi/json-formatter/">
   
@@ -39,18 +39,77 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "WebPage",
+    "@type": "WebApplication",
     "name": "JSON फॉर्मेटर",
-    "description": "JSON डेटा को फॉर्मेट और मान्य करें।",
+    "description": "JSON डेटा को फॉर्मेट और मान्य करें। फॉर्मेटिंग, संक्षिप्तीकरण और सत्यापन सुविधाएं प्रदान करता है।",
     "url": "https://wwtrembling.github.io/hi/json-formatter/",
     "inLanguage": "hi",
-    "isPartOf": {
-      "@type": "WebSite",
-      "name": "Tool Shelf",
-      "url": "https://wwtrembling.github.io/"
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
     }
   }
   </script>
+  
+  <style>
+    .editor-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--spacing-lg);
+      margin-top: var(--spacing-lg);
+    }
+    
+    .editor-panel {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-md);
+    }
+    
+    .json-textarea {
+      font-family: var(--font-mono);
+      min-height: 400px;
+      resize: vertical;
+    }
+    
+    .validation-status {
+      padding: var(--spacing-md);
+      border-radius: var(--radius-md);
+      font-weight: 500;
+      text-align: center;
+    }
+    
+    .validation-status.valid {
+      background: #d1fae5;
+      color: #065f46;
+      border: 1px solid #10b981;
+    }
+    
+    .validation-status.invalid {
+      background: #fee2e2;
+      color: #991b1b;
+      border: 1px solid #ef4444;
+    }
+    
+    .error-message {
+      background: var(--bg-tertiary);
+      padding: var(--spacing-md);
+      border-radius: var(--radius-md);
+      font-family: var(--font-mono);
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    
+    @media (max-width: 768px) {
+      .editor-container {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631"
      crossorigin="anonymous"></script>
@@ -70,23 +129,45 @@
 
   <main class="main-content">
     <div class="container-narrow">
-      <h1>{ } JSON फॉर्मेटर</h1>
-      <p>JSON डेटा को फॉर्मेट और मान्य करें।</p>
+      <h1>{{ }} JSON फॉर्मेटर</h1>
+      <p>JSON डेटा को फॉर्मेट और मान्य करें। फॉर्मेटिंग, संक्षिप्तीकरण और सत्यापन सुविधाएं प्रदान करता है।</p>
       
       <!-- AdSense Placeholder -->
       <div class="adsense-placeholder">
         <!-- AdSense Ad Unit -->
+        <p>विज्ञापन स्थान</p>
       </div>
       
-      <!-- Utility-specific content will go here -->
-      <div class="card">
-        <p>This is a placeholder for the JSON फॉर्मेटर utility.</p>
-        <p>The actual implementation will include the full functionality for this tool.</p>
+      <!-- Action Buttons -->
+      <div class="btn-group">
+        <button class="btn btn-primary" onclick="formatJSON()">फॉर्मेट</button>
+        <button class="btn btn-secondary" onclick="minifyJSON()">संक्षिप्त</button>
+        <button class="btn btn-secondary" onclick="validateJSON()">सत्यापित</button>
+        <button class="btn btn-secondary" onclick="copyOutput()">कॉपी</button>
+        <button class="btn btn-secondary" onclick="clearAll()">साफ़</button>
       </div>
+      
+      <!-- Editors -->
+      <div class="editor-container">
+        <div class="editor-panel">
+          <label class="form-label">JSON इनपुट</label>
+          <textarea id="jsonInput" class="form-textarea json-textarea" placeholder="JSON डेटा दर्ज करें..."></textarea>
+        </div>
+        
+        <div class="editor-panel">
+          <label class="form-label">आउटपुट</label>
+          <textarea id="jsonOutput" class="form-textarea json-textarea" readonly></textarea>
+        </div>
+      </div>
+      
+      <!-- Validation Status -->
+      <div id="validationStatus" style="display: none;"></div>
+      <div id="errorMessage" style="display: none;"></div>
       
       <!-- AdSense Placeholder -->
       <div class="adsense-placeholder">
         <!-- AdSense Ad Unit -->
+        <p>विज्ञापन स्थान</p>
       </div>
     </div>
   </main>
@@ -100,5 +181,86 @@
   </footer>
 
   <script src="/assets/js/common.js"></script>
+  <script>
+    const input = document.getElementById('jsonInput');
+    const output = document.getElementById('jsonOutput');
+    const validationStatus = document.getElementById('validationStatus');
+    const errorMessage = document.getElementById('errorMessage');
+    
+    function formatJSON() {
+      try {
+        const json = JSON.parse(input.value);
+        output.value = JSON.stringify(json, null, 2);
+        showValidation(true);
+      } catch (e) {
+        showValidation(false, e.message);
+      }
+    }
+    
+    function minifyJSON() {
+      try {
+        const json = JSON.parse(input.value);
+        output.value = JSON.stringify(json);
+        showValidation(true);
+      } catch (e) {
+        showValidation(false, e.message);
+      }
+    }
+    
+    function validateJSON() {
+      try {
+        JSON.parse(input.value);
+        showValidation(true);
+        output.value = '';
+      } catch (e) {
+        showValidation(false, e.message);
+        output.value = '';
+      }
+    }
+    
+    function copyOutput() {
+      if (output.value) {
+        Utils.copyToClipboard(output.value);
+      } else {
+        Utils.showToast('✗ अमान्य JSON');
+      }
+    }
+    
+    function clearAll() {
+      input.value = '';
+      output.value = '';
+      validationStatus.style.display = 'none';
+      errorMessage.style.display = 'none';
+    }
+    
+    function showValidation(isValid, error = '') {
+      validationStatus.style.display = 'block';
+      validationStatus.className = 'validation-status ' + (isValid ? 'valid' : 'invalid');
+      validationStatus.textContent = isValid ? '✓ मान्य JSON' : '✗ अमान्य JSON';
+      
+      if (error) {
+        errorMessage.style.display = 'block';
+        errorMessage.className = 'error-message';
+        errorMessage.textContent = 'त्रुटि: ' + error;
+      } else {
+        errorMessage.style.display = 'none';
+      }
+    }
+    
+    // Auto-validate on input
+    input.addEventListener('input', Utils.debounce(() => {
+      if (input.value.trim()) {
+        try {
+          JSON.parse(input.value);
+          showValidation(true);
+        } catch (e) {
+          // Don't show error while typing
+        }
+      } else {
+        validationStatus.style.display = 'none';
+        errorMessage.style.display = 'none';
+      }
+    }, 500));
+  </script>
 </body>
 </html>

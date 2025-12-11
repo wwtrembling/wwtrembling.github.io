@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>JSON 포매터 - Tool Shelf</title>
-  <meta name="description" content="JSON 데이터를 포맷팅하고 유효성을 검사하세요.">
+  <meta name="description" content="JSON 데이터를 포맷팅하고 유효성을 검사하세요. 압축, 포맷, 검증 기능을 제공합니다.">
   
   <!-- Open Graph -->
   <meta property="og:title" content="JSON 포매터 - Tool Shelf">
-  <meta property="og:description" content="JSON 데이터를 포맷팅하고 유효성을 검사하세요.">
+  <meta property="og:description" content="JSON 데이터를 포맷팅하고 유효성을 검사하세요. 압축, 포맷, 검증 기능을 제공합니다.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://wwtrembling.github.io/ko/json-formatter/">
   
@@ -39,18 +39,77 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "WebPage",
+    "@type": "WebApplication",
     "name": "JSON 포매터",
-    "description": "JSON 데이터를 포맷팅하고 유효성을 검사하세요.",
+    "description": "JSON 데이터를 포맷팅하고 유효성을 검사하세요. 압축, 포맷, 검증 기능을 제공합니다.",
     "url": "https://wwtrembling.github.io/ko/json-formatter/",
     "inLanguage": "ko",
-    "isPartOf": {
-      "@type": "WebSite",
-      "name": "Tool Shelf",
-      "url": "https://wwtrembling.github.io/"
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
     }
   }
   </script>
+  
+  <style>
+    .editor-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--spacing-lg);
+      margin-top: var(--spacing-lg);
+    }
+    
+    .editor-panel {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-md);
+    }
+    
+    .json-textarea {
+      font-family: var(--font-mono);
+      min-height: 400px;
+      resize: vertical;
+    }
+    
+    .validation-status {
+      padding: var(--spacing-md);
+      border-radius: var(--radius-md);
+      font-weight: 500;
+      text-align: center;
+    }
+    
+    .validation-status.valid {
+      background: #d1fae5;
+      color: #065f46;
+      border: 1px solid #10b981;
+    }
+    
+    .validation-status.invalid {
+      background: #fee2e2;
+      color: #991b1b;
+      border: 1px solid #ef4444;
+    }
+    
+    .error-message {
+      background: var(--bg-tertiary);
+      padding: var(--spacing-md);
+      border-radius: var(--radius-md);
+      font-family: var(--font-mono);
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    
+    @media (max-width: 768px) {
+      .editor-container {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631"
      crossorigin="anonymous"></script>
@@ -70,23 +129,45 @@
 
   <main class="main-content">
     <div class="container-narrow">
-      <h1>{ } JSON 포매터</h1>
-      <p>JSON 데이터를 포맷팅하고 유효성을 검사하세요.</p>
+      <h1>{{ }} JSON 포매터</h1>
+      <p>JSON 데이터를 포맷팅하고 유효성을 검사하세요. 압축, 포맷, 검증 기능을 제공합니다.</p>
       
       <!-- AdSense Placeholder -->
       <div class="adsense-placeholder">
         <!-- AdSense Ad Unit -->
+        <p>광고 영역</p>
       </div>
       
-      <!-- Utility-specific content will go here -->
-      <div class="card">
-        <p>This is a placeholder for the JSON 포매터 utility.</p>
-        <p>The actual implementation will include the full functionality for this tool.</p>
+      <!-- Action Buttons -->
+      <div class="btn-group">
+        <button class="btn btn-primary" onclick="formatJSON()">포맷</button>
+        <button class="btn btn-secondary" onclick="minifyJSON()">압축</button>
+        <button class="btn btn-secondary" onclick="validateJSON()">검증</button>
+        <button class="btn btn-secondary" onclick="copyOutput()">복사</button>
+        <button class="btn btn-secondary" onclick="clearAll()">지우기</button>
       </div>
+      
+      <!-- Editors -->
+      <div class="editor-container">
+        <div class="editor-panel">
+          <label class="form-label">JSON 입력</label>
+          <textarea id="jsonInput" class="form-textarea json-textarea" placeholder="JSON 데이터를 입력하세요..."></textarea>
+        </div>
+        
+        <div class="editor-panel">
+          <label class="form-label">결과</label>
+          <textarea id="jsonOutput" class="form-textarea json-textarea" readonly></textarea>
+        </div>
+      </div>
+      
+      <!-- Validation Status -->
+      <div id="validationStatus" style="display: none;"></div>
+      <div id="errorMessage" style="display: none;"></div>
       
       <!-- AdSense Placeholder -->
       <div class="adsense-placeholder">
         <!-- AdSense Ad Unit -->
+        <p>광고 영역</p>
       </div>
     </div>
   </main>
@@ -100,5 +181,86 @@
   </footer>
 
   <script src="/assets/js/common.js"></script>
+  <script>
+    const input = document.getElementById('jsonInput');
+    const output = document.getElementById('jsonOutput');
+    const validationStatus = document.getElementById('validationStatus');
+    const errorMessage = document.getElementById('errorMessage');
+    
+    function formatJSON() {
+      try {
+        const json = JSON.parse(input.value);
+        output.value = JSON.stringify(json, null, 2);
+        showValidation(true);
+      } catch (e) {
+        showValidation(false, e.message);
+      }
+    }
+    
+    function minifyJSON() {
+      try {
+        const json = JSON.parse(input.value);
+        output.value = JSON.stringify(json);
+        showValidation(true);
+      } catch (e) {
+        showValidation(false, e.message);
+      }
+    }
+    
+    function validateJSON() {
+      try {
+        JSON.parse(input.value);
+        showValidation(true);
+        output.value = '';
+      } catch (e) {
+        showValidation(false, e.message);
+        output.value = '';
+      }
+    }
+    
+    function copyOutput() {
+      if (output.value) {
+        Utils.copyToClipboard(output.value);
+      } else {
+        Utils.showToast('✗ 유효하지 않은 JSON입니다');
+      }
+    }
+    
+    function clearAll() {
+      input.value = '';
+      output.value = '';
+      validationStatus.style.display = 'none';
+      errorMessage.style.display = 'none';
+    }
+    
+    function showValidation(isValid, error = '') {
+      validationStatus.style.display = 'block';
+      validationStatus.className = 'validation-status ' + (isValid ? 'valid' : 'invalid');
+      validationStatus.textContent = isValid ? '✓ 유효한 JSON입니다' : '✗ 유효하지 않은 JSON입니다';
+      
+      if (error) {
+        errorMessage.style.display = 'block';
+        errorMessage.className = 'error-message';
+        errorMessage.textContent = '오류: ' + error;
+      } else {
+        errorMessage.style.display = 'none';
+      }
+    }
+    
+    // Auto-validate on input
+    input.addEventListener('input', Utils.debounce(() => {
+      if (input.value.trim()) {
+        try {
+          JSON.parse(input.value);
+          showValidation(true);
+        } catch (e) {
+          // Don't show error while typing
+        }
+      } else {
+        validationStatus.style.display = 'none';
+        errorMessage.style.display = 'none';
+      }
+    }, 500));
+  </script>
 </body>
 </html>

@@ -4,18 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>टेक्स्ट उपयोगिताएँ - Tool Shelf</title>
-  <meta name="description" content="शब्दों की गिनती करें, डुप्लिकेट हटाएं, केस बदलें और अधिक।">
+  <meta name="description" content="शब्द गणना, वर्ण गणना, डुप्लिकेट हटाएं, केस रूपांतरण और अधिक टेक्स्ट प्रोसेसिंग सुविधाएं।">
   
-  <!-- Open Graph -->
-  <meta property="og:title" content="टेक्स्ट उपयोगिताएँ - Tool Shelf">
-  <meta property="og:description" content="शब्दों की गिनती करें, डुप्लिकेट हटाएं, केस बदलें और अधिक।">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://wwtrembling.github.io/hi/text-utils/">
-  
-  <!-- Canonical -->
   <link rel="canonical" href="https://wwtrembling.github.io/hi/text-utils/">
-  
-  <!-- Language Alternatives -->
   <link rel="alternate" hreflang="ko" href="https://wwtrembling.github.io/ko/text-utils/">
   <link rel="alternate" hreflang="en" href="https://wwtrembling.github.io/en/text-utils/">
   <link rel="alternate" hreflang="ja" href="https://wwtrembling.github.io/ja/text-utils/">
@@ -27,42 +18,16 @@
   <link rel="alternate" hreflang="pt" href="https://wwtrembling.github.io/pt/text-utils/">
   <link rel="alternate" hreflang="x-default" href="https://wwtrembling.github.io/en/text-utils/">
   
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
-  <!-- Styles -->
   <link rel="stylesheet" href="/assets/css/main.css">
   
-  <!-- JSON-LD -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "टेक्स्ट उपयोगिताएँ",
-    "description": "शब्दों की गिनती करें, डुप्लिकेट हटाएं, केस बदलें और अधिक।",
-    "url": "https://wwtrembling.github.io/hi/text-utils/",
-    "inLanguage": "hi",
-    "isPartOf": {
-      "@type": "WebSite",
-      "name": "Tool Shelf",
-      "url": "https://wwtrembling.github.io/"
-    }
-  }
-  </script>
-  <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631"
-     crossorigin="anonymous"></script>
-
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631" crossorigin="anonymous"></script>
 </head>
 <body>
   <header class="site-header">
     <div class="container">
       <div class="header-content">
-        <a href="/hi/" class="site-logo">
-          🛠️ Tool Shelf
-        </a>
+        <a href="/hi/" class="site-logo">🛠️ Tool Shelf</a>
         <div id="languageSwitcher" class="language-switcher"></div>
       </div>
     </div>
@@ -71,22 +36,42 @@
   <main class="main-content">
     <div class="container-narrow">
       <h1>📝 टेक्स्ट उपयोगिताएँ</h1>
-      <p>शब्दों की गिनती करें, डुप्लिकेट हटाएं, केस बदलें और अधिक।</p>
+      <p>शब्द गणना, वर्ण गणना, डुप्लिकेट हटाएं, केस रूपांतरण और अधिक टेक्स्ट प्रोसेसिंग सुविधाएं।</p>
       
-      <!-- AdSense Placeholder -->
-      <div class="adsense-placeholder">
-        <!-- AdSense Ad Unit -->
-      </div>
-      
-      <!-- Utility-specific content will go here -->
       <div class="card">
-        <p>This is a placeholder for the टेक्स्ट उपयोगिताएँ utility.</p>
-        <p>The actual implementation will include the full functionality for this tool.</p>
+        <label class="form-label">टेक्स्ट इनपुट</label>
+        <textarea id="textInput" class="form-textarea" style="min-height: 300px;" placeholder="टेक्स्ट दर्ज करें..."></textarea>
       </div>
       
-      <!-- AdSense Placeholder -->
-      <div class="adsense-placeholder">
-        <!-- AdSense Ad Unit -->
+      <div class="card">
+        <h3>सांख्यिकी</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem;">
+          <div class="result-box">
+            <div class="result-value" id="charCount">0</div>
+            <div>वर्ण</div>
+          </div>
+          <div class="result-box">
+            <div class="result-value" id="wordCount">0</div>
+            <div>शब्द</div>
+          </div>
+          <div class="result-box">
+            <div class="result-value" id="lineCount">0</div>
+            <div>पंक्तियाँ</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="card">
+        <h3>क्रियाएं</h3>
+        <div class="btn-group">
+          <button class="btn btn-secondary" onclick="toUpperCase()">बड़े अक्षर</button>
+          <button class="btn btn-secondary" onclick="toLowerCase()">छोटे अक्षर</button>
+          <button class="btn btn-secondary" onclick="removeDuplicates()">डुप्लिकेट पंक्तियाँ हटाएं</button>
+          <button class="btn btn-secondary" onclick="sortLines()">पंक्तियाँ सॉर्ट करें</button>
+          <button class="btn btn-secondary" onclick="reverseText()">टेक्स्ट उल्टा करें</button>
+          <button class="btn btn-primary" onclick="copyText()">कॉपी</button>
+          <button class="btn btn-secondary" onclick="clearText()">साफ़</button>
+        </div>
       </div>
     </div>
   </main>
@@ -100,5 +85,59 @@
   </footer>
 
   <script src="/assets/js/common.js"></script>
+  <script>
+    const textInput = document.getElementById('textInput');
+    const charCount = document.getElementById('charCount');
+    const wordCount = document.getElementById('wordCount');
+    const lineCount = document.getElementById('lineCount');
+    
+    function updateStats() {
+      const text = textInput.value;
+      charCount.textContent = text.length;
+      wordCount.textContent = text.trim() ? text.trim().split(/\s+/).length : 0;
+      lineCount.textContent = text ? text.split('\n').length : 0;
+    }
+    
+    function toUpperCase() {
+      textInput.value = textInput.value.toUpperCase();
+      updateStats();
+    }
+    
+    function toLowerCase() {
+      textInput.value = textInput.value.toLowerCase();
+      updateStats();
+    }
+    
+    function removeDuplicates() {
+      const lines = textInput.value.split('\n');
+      const unique = [...new Set(lines)];
+      textInput.value = unique.join('\n');
+      updateStats();
+    }
+    
+    function sortLines() {
+      const lines = textInput.value.split('\n');
+      lines.sort();
+      textInput.value = lines.join('\n');
+      updateStats();
+    }
+    
+    function reverseText() {
+      textInput.value = textInput.value.split('').reverse().join('');
+      updateStats();
+    }
+    
+    function copyText() {
+      Utils.copyToClipboard(textInput.value);
+    }
+    
+    function clearText() {
+      textInput.value = '';
+      updateStats();
+    }
+    
+    textInput.addEventListener('input', updateStats);
+    updateStats();
+  </script>
 </body>
 </html>

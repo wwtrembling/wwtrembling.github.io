@@ -3,102 +3,102 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Timer / Pomodoro - Tool Shelf</title>
-  <meta name="description" content="Online timer with Pomodoro technique support.">
-  
-  <!-- Open Graph -->
-  <meta property="og:title" content="Timer / Pomodoro - Tool Shelf">
-  <meta property="og:description" content="Online timer with Pomodoro technique support.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://wwtrembling.github.io/en/timer/">
-  
-  <!-- Canonical -->
+  <title>Timer - Tool Shelf</title>
+  <meta name="description" content="Online timer with Pomodoro technique">
   <link rel="canonical" href="https://wwtrembling.github.io/en/timer/">
-  
-  <!-- Language Alternatives -->
-  <link rel="alternate" hreflang="ko" href="https://wwtrembling.github.io/ko/timer/">
-  <link rel="alternate" hreflang="en" href="https://wwtrembling.github.io/en/timer/">
-  <link rel="alternate" hreflang="ja" href="https://wwtrembling.github.io/ja/timer/">
-  <link rel="alternate" hreflang="hi" href="https://wwtrembling.github.io/hi/timer/">
-  <link rel="alternate" hreflang="id" href="https://wwtrembling.github.io/id/timer/">
-  <link rel="alternate" hreflang="vi" href="https://wwtrembling.github.io/vi/timer/">
-  <link rel="alternate" hreflang="th" href="https://wwtrembling.github.io/th/timer/">
-  <link rel="alternate" hreflang="de" href="https://wwtrembling.github.io/de/timer/">
-  <link rel="alternate" hreflang="pt" href="https://wwtrembling.github.io/pt/timer/">
-  <link rel="alternate" hreflang="x-default" href="https://wwtrembling.github.io/en/timer/">
-  
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
-  <!-- Styles -->
   <link rel="stylesheet" href="/assets/css/main.css">
-  
-  <!-- JSON-LD -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "Timer / Pomodoro",
-    "description": "Online timer with Pomodoro technique support.",
-    "url": "https://wwtrembling.github.io/en/timer/",
-    "inLanguage": "en",
-    "isPartOf": {
-      "@type": "WebSite",
-      "name": "Tool Shelf",
-      "url": "https://wwtrembling.github.io/"
-    }
-  }
-  </script>
-  <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631"
-     crossorigin="anonymous"></script>
-
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631" crossorigin="anonymous"></script>
+  <style>
+    .timer-display {font-size:4rem;font-weight:700;text-align:center;color:var(--primary-color);margin:2rem 0;}
+    .preset-btn {margin:0.5rem;}
+  </style>
 </head>
 <body>
   <header class="site-header">
-    <div class="container">
-      <div class="header-content">
-        <a href="/en/" class="site-logo">
-          🛠️ Tool Shelf
-        </a>
-        <div id="languageSwitcher" class="language-switcher"></div>
-      </div>
-    </div>
+    <div class="container"><div class="header-content">
+      <a href="/en/" class="site-logo">🛠️ Tool Shelf</a>
+      <div id="languageSwitcher" class="language-switcher"></div>
+    </div></div>
   </header>
-
   <main class="main-content">
     <div class="container-narrow">
-      <h1>⏱️ Timer / Pomodoro</h1>
-      <p>Online timer with Pomodoro technique support.</p>
-      
-      <!-- AdSense Placeholder -->
-      <div class="adsense-placeholder">
-        <!-- AdSense Ad Unit -->
-      </div>
-      
-      <!-- Utility-specific content will go here -->
-      <div class="card">
-        <p>This is a placeholder for the Timer / Pomodoro utility.</p>
-        <p>The actual implementation will include the full functionality for this tool.</p>
-      </div>
-      
-      <!-- AdSense Placeholder -->
-      <div class="adsense-placeholder">
-        <!-- AdSense Ad Unit -->
+      <h1>⏱️ Timer</h1>
+      <p>Online timer with Pomodoro technique</p>
+      <div class="card text-center">
+        <div class="timer-display" id="display">00:00</div>
+        <div class="form-group">
+          <label class="form-label">Minutes</label>
+          <input type="number" id="minutes" class="form-input" value="25" min="0">
+        </div>
+        <div class="btn-group">
+          <button class="btn btn-primary" onclick="start()">Start</button>
+          <button class="btn btn-secondary" onclick="pause()">Pause</button>
+          <button class="btn btn-secondary" onclick="reset()">Reset</button>
+        </div>
+        <div style="margin-top:1rem;">
+          <button class="btn btn-secondary preset-btn" onclick="setPreset(25)">Pomodoro (25m)</button>
+          <button class="btn btn-secondary preset-btn" onclick="setPreset(5)">Break (5m)</button>
+          <button class="btn btn-secondary preset-btn" onclick="setPreset(15)">Break (15m)</button>
+        </div>
       </div>
     </div>
   </main>
-
   <footer class="site-footer">
-    <div class="container">
-      <div class="footer-content">
-        <p>&copy; 2025 Tool Shelf. All rights reserved.</p>
-      </div>
-    </div>
+    <div class="container"><div class="footer-content">
+      <p>&copy; 2025 Tool Shelf. All rights reserved.</p>
+    </div></div>
   </footer>
-
   <script src="/assets/js/common.js"></script>
+  <script>
+    let totalSeconds = 0;
+    let remainingSeconds = 0;
+    let interval = null;
+    
+    function updateDisplay() {
+      const mins = Math.floor(remainingSeconds / 60);
+      const secs = remainingSeconds % 60;
+      document.getElementById('display').textContent = 
+        String(mins).padStart(2,'0') + ':' + String(secs).padStart(2,'0');
+    }
+    
+    function start() {
+      if (!interval) {
+        if (remainingSeconds === 0) {
+          totalSeconds = parseInt(document.getElementById('minutes').value) * 60;
+          remainingSeconds = totalSeconds;
+        }
+        interval = setInterval(() => {
+          if (remainingSeconds > 0) {
+            remainingSeconds--;
+            updateDisplay();
+          } else {
+            pause();
+            alert('Time is up!');
+          }
+        }, 1000);
+      }
+    }
+    
+    function pause() {
+      if (interval) {
+        clearInterval(interval);
+        interval = null;
+      }
+    }
+    
+    function reset() {
+      pause();
+      remainingSeconds = 0;
+      updateDisplay();
+    }
+    
+    function setPreset(mins) {
+      document.getElementById('minutes').value = mins;
+      reset();
+    }
+    
+    updateDisplay();
+  </script>
 </body>
 </html>
