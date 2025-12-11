@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>정규식 테스터 - Tool Shelf</title>
+    <meta name="description" content="정규식 패턴을 테스트하고 매칭 결과를 실시간으로 확인하세요.">
+    <link rel="canonical" href="https://wwtrembling.github.io/ko/regex-tester/">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <style>
+        .regex-input {
+            background: #f0f0f0;
+            padding: var(--spacing-md);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .test-input {
+            min-height: 200px;
+        }
+
+        .matches {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+        }
+
+        .match-item {
+            padding: var(--spacing-sm);
+            background: #e8f5e9;
+            border-radius: var(--radius-sm);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .highlight {
+            background: yellow;
+            font-weight: bold;
+        }
+    </style>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content"><a href="/ko/" class="site-logo">🛠️ Tool Shelf</a></div>
+        </div>
+    </header>
+    <main class="main-content">
+        <div class="container-narrow">
+            <h1>🔍 정규식 테스터</h1>
+            <p>정규식 패턴을 테스트하고 매칭 결과를 실시간으로 확인하세요.</p>
+            <div class="regex-input">
+                <label class="form-label">정규식 패턴</label>
+                <input type="text" id="pattern" class="form-input" placeholder="/[a-z]+/gi" value="[a-z]+">
+                <div style="margin-top: var(--spacing-sm);">
+                    <label><input type="checkbox" id="flagG" checked> g (전역)</label>
+                    <label><input type="checkbox" id="flagI" checked> i (대소문자 무시)</label>
+                    <label><input type="checkbox" id="flagM"> m (여러 줄)</label>
+                </div>
+            </div>
+            <div>
+                <label class="form-label">테스트 문자열</label>
+                <textarea id="testString" class="form-input test-input"
+                    placeholder="테스트할 문자열을 입력하세요">Hello World 123 Test</textarea>
+            </div>
+            <div class="matches" id="results"></div>
+        </div>
+    </main>
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Tool Shelf</p>
+            </div>
+        </div>
+    </footer>
+    <script src="/assets/js/common.js"></script>
+    <script>
+        const pattern = document.getElementById('pattern');
+        const testString = document.getElementById('testString');
+        const results = document.getElementById('results');
+        const flagG = document.getElementById('flagG');
+        const flagI = document.getElementById('flagI');
+        const flagM = document.getElementById('flagM');
+
+        function test() {
+            try {
+                const flags = (flagG.checked ? 'g' : '') + (flagI.checked ? 'i' : '') + (flagM.checked ? 'm' : '');
+                const regex = new RegExp(pattern.value, flags);
+                const text = testString.value;
+                const matches = [...text.matchAll(regex)];
+
+                if (matches.length === 0) {
+                    results.innerHTML = '<p>매칭 결과 없음</p>';
+                    return;
+                }
+
+                let html = `<h3>매칭 결과 (${matches.length}개)</h3>`;
+                matches.forEach((match, i) => {
+                    html += `<div class="match-item">Match ${i + 1}: "${match[0]}" (위치: ${match.index})</div>`;
+                });
+
+                let highlighted = text;
+                matches.reverse().forEach(match => {
+                    highlighted = highlighted.slice(0, match.index) +
+                        '<span class="highlight">' + match[0] + '</span>' +
+                        highlighted.slice(match.index + match[0].length);
+                });
+                html += `<h3>하이라이트</h3><div style="line-height: 1.8;">${highlighted}</div>`;
+                results.innerHTML = html;
+            } catch (e) {
+                results.innerHTML = `<p style="color: red;">오류: ${e.message}</p>`;
+            }
+        }
+
+        pattern.addEventListener('input', test);
+        testString.addEventListener('input', test);
+        flagG.addEventListener('change', test);
+        flagI.addEventListener('change', test);
+        flagM.addEventListener('change', test);
+        test();
+    </script>
+</body>
+
+</html>
