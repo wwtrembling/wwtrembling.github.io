@@ -30,10 +30,11 @@ GitHub Pages 기반의 클라이언트 전용 유틸리티 모음 사이트
 - **기능**: 길이, 무게, 온도, 부피, 속도 등 다양한 단위 변환
 - **구현**: Pure JavaScript
 
-### ⚠️ 2. 이미지 변환기 (Image Converter)
+### ✅ 2. 이미지 변환기 (Image Converter)
 - **경로**: `/{lang}/image-converter/`
-- **상태**: Placeholder (구현 예정)
-- **계획**: Canvas API로 리사이즈 및 WebP 변환
+- **기능**: 이미지 리사이즈 및 WebP, JPEG, PNG 변환
+- **구현**: Canvas API
+- **특징**: 드래그 앤 드롭, 실시간 미리보기, 품질 조절
 
 ### ✅ 3. 매일 성경말씀 복사 (Daily Bible Verse Copier)
 - **경로**: `/{lang}/daily-verse/`
