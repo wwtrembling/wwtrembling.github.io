@@ -23,55 +23,49 @@ GitHub Pages 기반의 클라이언트 전용 유틸리티 모음 사이트
 | 독일 | 독일어 | de |
 | 브라질 | 포르투갈어 | pt |
 
-## 구현된 유틸리티 (10개)
+## 구현된 유틸리티 (9개)
 
 ### ✅ 1. 단위 변환기 (Unit Converter)
 - **경로**: `/{lang}/unit-converter/`
 - **기능**: 길이, 무게, 온도, 부피, 속도 등 다양한 단위 변환
 - **구현**: Pure JavaScript
 
-### ✅ 2. PDF 도구 (PDF Tools)
-- **경로**: `/{lang}/pdf-tools/`
-- **기능**: PDF 압축 및 병합
-- **구현**: pdf-lib 라이브러리
-- **특징**: 완전한 클라이언트 사이드 처리
-
-### ✅ 3. 이미지 변환기 (Image Converter)
+### ⚠️ 2. 이미지 변환기 (Image Converter)
 - **경로**: `/{lang}/image-converter/`
-- **기능**: 이미지 리사이즈 및 WebP 변환
-- **구현**: Canvas API
+- **상태**: Placeholder (구현 예정)
+- **계획**: Canvas API로 리사이즈 및 WebP 변환
 
-### ✅ 4. 매일 성경말씀 복사 (Daily Bible Verse Copier)
+### ✅ 3. 매일 성경말씀 복사 (Daily Bible Verse Copier)
 - **경로**: `/{lang}/daily-verse/`
 - **기능**: 365일 성경 읽기 계획 복사
 - **특징**: 캘린더 기반 인터페이스, 원클릭 복사
 
-### ✅ 5. BMI & TDEE 계산기
+### ✅ 4. BMI & TDEE 계산기
 - **경로**: `/{lang}/bmi-calculator/`
 - **기능**: BMI, 기초대사량, 활동 레벨별 칼로리 계산
 - **구현**: JavaScript 계산식
 
-### ✅ 6. 날짜 계산기 (Date Calculator)
+### ✅ 5. 날짜 계산기 (Date Calculator)
 - **경로**: `/{lang}/date-calculator/`
 - **기능**: D-Day 계산, 날짜 차이 계산
 - **구현**: JavaScript Date 객체
 
-### ✅ 7. 텍스트 유틸 (Text Utils)
+### ✅ 6. 텍스트 유틸 (Text Utils)
 - **경로**: `/{lang}/text-utils/`
 - **기능**: 단어 수 세기, 중복 제거, 정렬
 - **특징**: 블로그 작성자용 도구
 
-### ✅ 8. JSON 포매터 (JSON Formatter)
+### ✅ 7. JSON 포매터 (JSON Formatter)
 - **경로**: `/{lang}/json-formatter/`
 - **기능**: JSON beautify, minify, tree view
 - **특징**: 개발자용 고품질 트래픽 유틸
 
-### ✅ 9. 색상 변환기 (Color Converter)
+### ✅ 8. 색상 변환기 (Color Converter)
 - **경로**: `/{lang}/color-converter/`
 - **기능**: HEX ↔ RGB ↔ HSL 변환
 - **특징**: UI 디자이너/프론트엔드 개발자용
 
-### ✅ 10. 타이머/포모도로 (Timer/Pomodoro)
+### ✅ 9. 타이머/포모도로 (Timer/Pomodoro)
 - **경로**: `/{lang}/timer/`
 - **기능**: 카운트다운, 스톱워치, 포모도로 타이머
 - **구현**: Web Worker (백그라운드 정확도)
@@ -93,7 +87,6 @@ GitHub Pages 기반의 클라이언트 전용 유틸리티 모음 사이트
 └─ {lang}/                 # 언어별 디렉토리 (ko, en, ja, hi, id, vi, th, de, pt)
     ├─ index.html          # 언어별 메인 페이지
     ├─ unit-converter/
-    ├─ pdf-tools/
     ├─ image-converter/
     ├─ daily-verse/
     ├─ bmi-calculator/
