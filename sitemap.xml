@@ -4,339 +4,339 @@
   
   <!-- Root -->
   <url>
-    <loc>https://yourdomain.com/</loc>
+    <loc>https://wwtrembling.github.io/</loc>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   
   <!-- Korean Pages -->
   <url>
-    <loc>https://yourdomain.com/ko/</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://yourdomain.com/ko/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://yourdomain.com/en/"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://yourdomain.com/ja/"/>
-    <xhtml:link rel="alternate" hreflang="hi" href="https://yourdomain.com/hi/"/>
-    <xhtml:link rel="alternate" hreflang="id" href="https://yourdomain.com/id/"/>
-    <xhtml:link rel="alternate" hreflang="vi" href="https://yourdomain.com/vi/"/>
-    <xhtml:link rel="alternate" hreflang="th" href="https://yourdomain.com/th/"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://yourdomain.com/de/"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://yourdomain.com/pt/"/>
+    <loc>https://wwtrembling.github.io/ko/</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://wwtrembling.github.io/ko/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wwtrembling.github.io/en/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://wwtrembling.github.io/ja/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://wwtrembling.github.io/hi/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://wwtrembling.github.io/id/"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://wwtrembling.github.io/vi/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://wwtrembling.github.io/th/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://wwtrembling.github.io/de/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://wwtrembling.github.io/pt/"/>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://yourdomain.com/ko/unit-converter/</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://yourdomain.com/ko/unit-converter/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://yourdomain.com/en/unit-converter/"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://yourdomain.com/ja/unit-converter/"/>
-    <xhtml:link rel="alternate" hreflang="hi" href="https://yourdomain.com/hi/unit-converter/"/>
-    <xhtml:link rel="alternate" hreflang="id" href="https://yourdomain.com/id/unit-converter/"/>
-    <xhtml:link rel="alternate" hreflang="vi" href="https://yourdomain.com/vi/unit-converter/"/>
-    <xhtml:link rel="alternate" hreflang="th" href="https://yourdomain.com/th/unit-converter/"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://yourdomain.com/de/unit-converter/"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://yourdomain.com/pt/unit-converter/"/>
+    <loc>https://wwtrembling.github.io/ko/unit-converter/</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://wwtrembling.github.io/ko/unit-converter/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wwtrembling.github.io/en/unit-converter/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://wwtrembling.github.io/ja/unit-converter/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://wwtrembling.github.io/hi/unit-converter/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://wwtrembling.github.io/id/unit-converter/"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://wwtrembling.github.io/vi/unit-converter/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://wwtrembling.github.io/th/unit-converter/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://wwtrembling.github.io/de/unit-converter/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://wwtrembling.github.io/pt/unit-converter/"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://yourdomain.com/ko/pdf-tools/</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://yourdomain.com/ko/pdf-tools/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://yourdomain.com/en/pdf-tools/"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://yourdomain.com/ja/pdf-tools/"/>
-    <xhtml:link rel="alternate" hreflang="hi" href="https://yourdomain.com/hi/pdf-tools/"/>
-    <xhtml:link rel="alternate" hreflang="id" href="https://yourdomain.com/id/pdf-tools/"/>
-    <xhtml:link rel="alternate" hreflang="vi" href="https://yourdomain.com/vi/pdf-tools/"/>
-    <xhtml:link rel="alternate" hreflang="th" href="https://yourdomain.com/th/pdf-tools/"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://yourdomain.com/de/pdf-tools/"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://yourdomain.com/pt/pdf-tools/"/>
+    <loc>https://wwtrembling.github.io/ko/pdf-tools/</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://wwtrembling.github.io/ko/pdf-tools/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wwtrembling.github.io/en/pdf-tools/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://wwtrembling.github.io/ja/pdf-tools/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://wwtrembling.github.io/hi/pdf-tools/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://wwtrembling.github.io/id/pdf-tools/"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://wwtrembling.github.io/vi/pdf-tools/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://wwtrembling.github.io/th/pdf-tools/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://wwtrembling.github.io/de/pdf-tools/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://wwtrembling.github.io/pt/pdf-tools/"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://yourdomain.com/ko/image-converter/</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://yourdomain.com/ko/image-converter/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://yourdomain.com/en/image-converter/"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://yourdomain.com/ja/image-converter/"/>
-    <xhtml:link rel="alternate" hreflang="hi" href="https://yourdomain.com/hi/image-converter/"/>
-    <xhtml:link rel="alternate" hreflang="id" href="https://yourdomain.com/id/image-converter/"/>
-    <xhtml:link rel="alternate" hreflang="vi" href="https://yourdomain.com/vi/image-converter/"/>
-    <xhtml:link rel="alternate" hreflang="th" href="https://yourdomain.com/th/image-converter/"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://yourdomain.com/de/image-converter/"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://yourdomain.com/pt/image-converter/"/>
+    <loc>https://wwtrembling.github.io/ko/image-converter/</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://wwtrembling.github.io/ko/image-converter/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wwtrembling.github.io/en/image-converter/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://wwtrembling.github.io/ja/image-converter/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://wwtrembling.github.io/hi/image-converter/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://wwtrembling.github.io/id/image-converter/"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://wwtrembling.github.io/vi/image-converter/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://wwtrembling.github.io/th/image-converter/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://wwtrembling.github.io/de/image-converter/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://wwtrembling.github.io/pt/image-converter/"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://yourdomain.com/ko/bible-verse/</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://yourdomain.com/ko/bible-verse/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://yourdomain.com/en/bible-verse/"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://yourdomain.com/ja/bible-verse/"/>
-    <xhtml:link rel="alternate" hreflang="hi" href="https://yourdomain.com/hi/bible-verse/"/>
-    <xhtml:link rel="alternate" hreflang="id" href="https://yourdomain.com/id/bible-verse/"/>
-    <xhtml:link rel="alternate" hreflang="vi" href="https://yourdomain.com/vi/bible-verse/"/>
-    <xhtml:link rel="alternate" hreflang="th" href="https://yourdomain.com/th/bible-verse/"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://yourdomain.com/de/bible-verse/"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://yourdomain.com/pt/bible-verse/"/>
+    <loc>https://wwtrembling.github.io/ko/bible-verse/</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://wwtrembling.github.io/ko/bible-verse/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wwtrembling.github.io/en/bible-verse/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://wwtrembling.github.io/ja/bible-verse/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://wwtrembling.github.io/hi/bible-verse/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://wwtrembling.github.io/id/bible-verse/"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://wwtrembling.github.io/vi/bible-verse/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://wwtrembling.github.io/th/bible-verse/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://wwtrembling.github.io/de/bible-verse/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://wwtrembling.github.io/pt/bible-verse/"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://yourdomain.com/ko/bmi-calculator/</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://yourdomain.com/ko/bmi-calculator/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://yourdomain.com/en/bmi-calculator/"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://yourdomain.com/ja/bmi-calculator/"/>
-    <xhtml:link rel="alternate" hreflang="hi" href="https://yourdomain.com/hi/bmi-calculator/"/>
-    <xhtml:link rel="alternate" hreflang="id" href="https://yourdomain.com/id/bmi-calculator/"/>
-    <xhtml:link rel="alternate" hreflang="vi" href="https://yourdomain.com/vi/bmi-calculator/"/>
-    <xhtml:link rel="alternate" hreflang="th" href="https://yourdomain.com/th/bmi-calculator/"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://yourdomain.com/de/bmi-calculator/"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://yourdomain.com/pt/bmi-calculator/"/>
+    <loc>https://wwtrembling.github.io/ko/bmi-calculator/</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://wwtrembling.github.io/ko/bmi-calculator/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wwtrembling.github.io/en/bmi-calculator/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://wwtrembling.github.io/ja/bmi-calculator/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://wwtrembling.github.io/hi/bmi-calculator/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://wwtrembling.github.io/id/bmi-calculator/"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://wwtrembling.github.io/vi/bmi-calculator/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://wwtrembling.github.io/th/bmi-calculator/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://wwtrembling.github.io/de/bmi-calculator/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://wwtrembling.github.io/pt/bmi-calculator/"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://yourdomain.com/ko/date-calculator/</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://yourdomain.com/ko/date-calculator/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://yourdomain.com/en/date-calculator/"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://yourdomain.com/ja/date-calculator/"/>
-    <xhtml:link rel="alternate" hreflang="hi" href="https://yourdomain.com/hi/date-calculator/"/>
-    <xhtml:link rel="alternate" hreflang="id" href="https://yourdomain.com/id/date-calculator/"/>
-    <xhtml:link rel="alternate" hreflang="vi" href="https://yourdomain.com/vi/date-calculator/"/>
-    <xhtml:link rel="alternate" hreflang="th" href="https://yourdomain.com/th/date-calculator/"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://yourdomain.com/de/date-calculator/"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://yourdomain.com/pt/date-calculator/"/>
+    <loc>https://wwtrembling.github.io/ko/date-calculator/</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://wwtrembling.github.io/ko/date-calculator/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wwtrembling.github.io/en/date-calculator/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://wwtrembling.github.io/ja/date-calculator/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://wwtrembling.github.io/hi/date-calculator/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://wwtrembling.github.io/id/date-calculator/"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://wwtrembling.github.io/vi/date-calculator/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://wwtrembling.github.io/th/date-calculator/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://wwtrembling.github.io/de/date-calculator/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://wwtrembling.github.io/pt/date-calculator/"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://yourdomain.com/ko/text-utils/</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://yourdomain.com/ko/text-utils/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://yourdomain.com/en/text-utils/"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://yourdomain.com/ja/text-utils/"/>
-    <xhtml:link rel="alternate" hreflang="hi" href="https://yourdomain.com/hi/text-utils/"/>
-    <xhtml:link rel="alternate" hreflang="id" href="https://yourdomain.com/id/text-utils/"/>
-    <xhtml:link rel="alternate" hreflang="vi" href="https://yourdomain.com/vi/text-utils/"/>
-    <xhtml:link rel="alternate" hreflang="th" href="https://yourdomain.com/th/text-utils/"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://yourdomain.com/de/text-utils/"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://yourdomain.com/pt/text-utils/"/>
+    <loc>https://wwtrembling.github.io/ko/text-utils/</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://wwtrembling.github.io/ko/text-utils/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wwtrembling.github.io/en/text-utils/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://wwtrembling.github.io/ja/text-utils/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://wwtrembling.github.io/hi/text-utils/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://wwtrembling.github.io/id/text-utils/"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://wwtrembling.github.io/vi/text-utils/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://wwtrembling.github.io/th/text-utils/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://wwtrembling.github.io/de/text-utils/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://wwtrembling.github.io/pt/text-utils/"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://yourdomain.com/ko/json-formatter/</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://yourdomain.com/ko/json-formatter/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://yourdomain.com/en/json-formatter/"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://yourdomain.com/ja/json-formatter/"/>
-    <xhtml:link rel="alternate" hreflang="hi" href="https://yourdomain.com/hi/json-formatter/"/>
-    <xhtml:link rel="alternate" hreflang="id" href="https://yourdomain.com/id/json-formatter/"/>
-    <xhtml:link rel="alternate" hreflang="vi" href="https://yourdomain.com/vi/json-formatter/"/>
-    <xhtml:link rel="alternate" hreflang="th" href="https://yourdomain.com/th/json-formatter/"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://yourdomain.com/de/json-formatter/"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://yourdomain.com/pt/json-formatter/"/>
+    <loc>https://wwtrembling.github.io/ko/json-formatter/</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://wwtrembling.github.io/ko/json-formatter/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wwtrembling.github.io/en/json-formatter/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://wwtrembling.github.io/ja/json-formatter/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://wwtrembling.github.io/hi/json-formatter/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://wwtrembling.github.io/id/json-formatter/"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://wwtrembling.github.io/vi/json-formatter/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://wwtrembling.github.io/th/json-formatter/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://wwtrembling.github.io/de/json-formatter/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://wwtrembling.github.io/pt/json-formatter/"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://yourdomain.com/ko/color-converter/</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://yourdomain.com/ko/color-converter/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://yourdomain.com/en/color-converter/"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://yourdomain.com/ja/color-converter/"/>
-    <xhtml:link rel="alternate" hreflang="hi" href="https://yourdomain.com/hi/color-converter/"/>
-    <xhtml:link rel="alternate" hreflang="id" href="https://yourdomain.com/id/color-converter/"/>
-    <xhtml:link rel="alternate" hreflang="vi" href="https://yourdomain.com/vi/color-converter/"/>
-    <xhtml:link rel="alternate" hreflang="th" href="https://yourdomain.com/th/color-converter/"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://yourdomain.com/de/color-converter/"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://yourdomain.com/pt/color-converter/"/>
+    <loc>https://wwtrembling.github.io/ko/color-converter/</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://wwtrembling.github.io/ko/color-converter/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wwtrembling.github.io/en/color-converter/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://wwtrembling.github.io/ja/color-converter/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://wwtrembling.github.io/hi/color-converter/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://wwtrembling.github.io/id/color-converter/"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://wwtrembling.github.io/vi/color-converter/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://wwtrembling.github.io/th/color-converter/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://wwtrembling.github.io/de/color-converter/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://wwtrembling.github.io/pt/color-converter/"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://yourdomain.com/ko/timer/</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://yourdomain.com/ko/timer/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://yourdomain.com/en/timer/"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://yourdomain.com/ja/timer/"/>
-    <xhtml:link rel="alternate" hreflang="hi" href="https://yourdomain.com/hi/timer/"/>
-    <xhtml:link rel="alternate" hreflang="id" href="https://yourdomain.com/id/timer/"/>
-    <xhtml:link rel="alternate" hreflang="vi" href="https://yourdomain.com/vi/timer/"/>
-    <xhtml:link rel="alternate" hreflang="th" href="https://yourdomain.com/th/timer/"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://yourdomain.com/de/timer/"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://yourdomain.com/pt/timer/"/>
+    <loc>https://wwtrembling.github.io/ko/timer/</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://wwtrembling.github.io/ko/timer/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wwtrembling.github.io/en/timer/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://wwtrembling.github.io/ja/timer/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://wwtrembling.github.io/hi/timer/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://wwtrembling.github.io/id/timer/"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://wwtrembling.github.io/vi/timer/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://wwtrembling.github.io/th/timer/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://wwtrembling.github.io/de/timer/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://wwtrembling.github.io/pt/timer/"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <!-- English Pages -->
   <url>
-    <loc>https://yourdomain.com/en/</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://yourdomain.com/ko/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://yourdomain.com/en/"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://yourdomain.com/ja/"/>
-    <xhtml:link rel="alternate" hreflang="hi" href="https://yourdomain.com/hi/"/>
-    <xhtml:link rel="alternate" hreflang="id" href="https://yourdomain.com/id/"/>
-    <xhtml:link rel="alternate" hreflang="vi" href="https://yourdomain.com/vi/"/>
-    <xhtml:link rel="alternate" hreflang="th" href="https://yourdomain.com/th/"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://yourdomain.com/de/"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://yourdomain.com/pt/"/>
+    <loc>https://wwtrembling.github.io/en/</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://wwtrembling.github.io/ko/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wwtrembling.github.io/en/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://wwtrembling.github.io/ja/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://wwtrembling.github.io/hi/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://wwtrembling.github.io/id/"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://wwtrembling.github.io/vi/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://wwtrembling.github.io/th/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://wwtrembling.github.io/de/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://wwtrembling.github.io/pt/"/>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://yourdomain.com/en/unit-converter/</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://yourdomain.com/ko/unit-converter/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://yourdomain.com/en/unit-converter/"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://yourdomain.com/ja/unit-converter/"/>
-    <xhtml:link rel="alternate" hreflang="hi" href="https://yourdomain.com/hi/unit-converter/"/>
-    <xhtml:link rel="alternate" hreflang="id" href="https://yourdomain.com/id/unit-converter/"/>
-    <xhtml:link rel="alternate" hreflang="vi" href="https://yourdomain.com/vi/unit-converter/"/>
-    <xhtml:link rel="alternate" hreflang="th" href="https://yourdomain.com/th/unit-converter/"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://yourdomain.com/de/unit-converter/"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://yourdomain.com/pt/unit-converter/"/>
+    <loc>https://wwtrembling.github.io/en/unit-converter/</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://wwtrembling.github.io/ko/unit-converter/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wwtrembling.github.io/en/unit-converter/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://wwtrembling.github.io/ja/unit-converter/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://wwtrembling.github.io/hi/unit-converter/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://wwtrembling.github.io/id/unit-converter/"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://wwtrembling.github.io/vi/unit-converter/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://wwtrembling.github.io/th/unit-converter/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://wwtrembling.github.io/de/unit-converter/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://wwtrembling.github.io/pt/unit-converter/"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://yourdomain.com/en/pdf-tools/</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://yourdomain.com/ko/pdf-tools/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://yourdomain.com/en/pdf-tools/"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://yourdomain.com/ja/pdf-tools/"/>
-    <xhtml:link rel="alternate" hreflang="hi" href="https://yourdomain.com/hi/pdf-tools/"/>
-    <xhtml:link rel="alternate" hreflang="id" href="https://yourdomain.com/id/pdf-tools/"/>
-    <xhtml:link rel="alternate" hreflang="vi" href="https://yourdomain.com/vi/pdf-tools/"/>
-    <xhtml:link rel="alternate" hreflang="th" href="https://yourdomain.com/th/pdf-tools/"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://yourdomain.com/de/pdf-tools/"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://yourdomain.com/pt/pdf-tools/"/>
+    <loc>https://wwtrembling.github.io/en/pdf-tools/</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://wwtrembling.github.io/ko/pdf-tools/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wwtrembling.github.io/en/pdf-tools/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://wwtrembling.github.io/ja/pdf-tools/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://wwtrembling.github.io/hi/pdf-tools/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://wwtrembling.github.io/id/pdf-tools/"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://wwtrembling.github.io/vi/pdf-tools/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://wwtrembling.github.io/th/pdf-tools/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://wwtrembling.github.io/de/pdf-tools/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://wwtrembling.github.io/pt/pdf-tools/"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://yourdomain.com/en/image-converter/</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://yourdomain.com/ko/image-converter/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://yourdomain.com/en/image-converter/"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://yourdomain.com/ja/image-converter/"/>
-    <xhtml:link rel="alternate" hreflang="hi" href="https://yourdomain.com/hi/image-converter/"/>
-    <xhtml:link rel="alternate" hreflang="id" href="https://yourdomain.com/id/image-converter/"/>
-    <xhtml:link rel="alternate" hreflang="vi" href="https://yourdomain.com/vi/image-converter/"/>
-    <xhtml:link rel="alternate" hreflang="th" href="https://yourdomain.com/th/image-converter/"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://yourdomain.com/de/image-converter/"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://yourdomain.com/pt/image-converter/"/>
+    <loc>https://wwtrembling.github.io/en/image-converter/</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://wwtrembling.github.io/ko/image-converter/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wwtrembling.github.io/en/image-converter/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://wwtrembling.github.io/ja/image-converter/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://wwtrembling.github.io/hi/image-converter/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://wwtrembling.github.io/id/image-converter/"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://wwtrembling.github.io/vi/image-converter/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://wwtrembling.github.io/th/image-converter/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://wwtrembling.github.io/de/image-converter/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://wwtrembling.github.io/pt/image-converter/"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://yourdomain.com/en/bible-verse/</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://yourdomain.com/ko/bible-verse/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://yourdomain.com/en/bible-verse/"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://yourdomain.com/ja/bible-verse/"/>
-    <xhtml:link rel="alternate" hreflang="hi" href="https://yourdomain.com/hi/bible-verse/"/>
-    <xhtml:link rel="alternate" hreflang="id" href="https://yourdomain.com/id/bible-verse/"/>
-    <xhtml:link rel="alternate" hreflang="vi" href="https://yourdomain.com/vi/bible-verse/"/>
-    <xhtml:link rel="alternate" hreflang="th" href="https://yourdomain.com/th/bible-verse/"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://yourdomain.com/de/bible-verse/"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://yourdomain.com/pt/bible-verse/"/>
+    <loc>https://wwtrembling.github.io/en/bible-verse/</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://wwtrembling.github.io/ko/bible-verse/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wwtrembling.github.io/en/bible-verse/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://wwtrembling.github.io/ja/bible-verse/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://wwtrembling.github.io/hi/bible-verse/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://wwtrembling.github.io/id/bible-verse/"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://wwtrembling.github.io/vi/bible-verse/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://wwtrembling.github.io/th/bible-verse/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://wwtrembling.github.io/de/bible-verse/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://wwtrembling.github.io/pt/bible-verse/"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://yourdomain.com/en/bmi-calculator/</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://yourdomain.com/ko/bmi-calculator/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://yourdomain.com/en/bmi-calculator/"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://yourdomain.com/ja/bmi-calculator/"/>
-    <xhtml:link rel="alternate" hreflang="hi" href="https://yourdomain.com/hi/bmi-calculator/"/>
-    <xhtml:link rel="alternate" hreflang="id" href="https://yourdomain.com/id/bmi-calculator/"/>
-    <xhtml:link rel="alternate" hreflang="vi" href="https://yourdomain.com/vi/bmi-calculator/"/>
-    <xhtml:link rel="alternate" hreflang="th" href="https://yourdomain.com/th/bmi-calculator/"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://yourdomain.com/de/bmi-calculator/"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://yourdomain.com/pt/bmi-calculator/"/>
+    <loc>https://wwtrembling.github.io/en/bmi-calculator/</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://wwtrembling.github.io/ko/bmi-calculator/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wwtrembling.github.io/en/bmi-calculator/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://wwtrembling.github.io/ja/bmi-calculator/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://wwtrembling.github.io/hi/bmi-calculator/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://wwtrembling.github.io/id/bmi-calculator/"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://wwtrembling.github.io/vi/bmi-calculator/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://wwtrembling.github.io/th/bmi-calculator/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://wwtrembling.github.io/de/bmi-calculator/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://wwtrembling.github.io/pt/bmi-calculator/"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://yourdomain.com/en/date-calculator/</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://yourdomain.com/ko/date-calculator/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://yourdomain.com/en/date-calculator/"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://yourdomain.com/ja/date-calculator/"/>
-    <xhtml:link rel="alternate" hreflang="hi" href="https://yourdomain.com/hi/date-calculator/"/>
-    <xhtml:link rel="alternate" hreflang="id" href="https://yourdomain.com/id/date-calculator/"/>
-    <xhtml:link rel="alternate" hreflang="vi" href="https://yourdomain.com/vi/date-calculator/"/>
-    <xhtml:link rel="alternate" hreflang="th" href="https://yourdomain.com/th/date-calculator/"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://yourdomain.com/de/date-calculator/"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://yourdomain.com/pt/date-calculator/"/>
+    <loc>https://wwtrembling.github.io/en/date-calculator/</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://wwtrembling.github.io/ko/date-calculator/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wwtrembling.github.io/en/date-calculator/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://wwtrembling.github.io/ja/date-calculator/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://wwtrembling.github.io/hi/date-calculator/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://wwtrembling.github.io/id/date-calculator/"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://wwtrembling.github.io/vi/date-calculator/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://wwtrembling.github.io/th/date-calculator/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://wwtrembling.github.io/de/date-calculator/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://wwtrembling.github.io/pt/date-calculator/"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://yourdomain.com/en/text-utils/</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://yourdomain.com/ko/text-utils/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://yourdomain.com/en/text-utils/"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://yourdomain.com/ja/text-utils/"/>
-    <xhtml:link rel="alternate" hreflang="hi" href="https://yourdomain.com/hi/text-utils/"/>
-    <xhtml:link rel="alternate" hreflang="id" href="https://yourdomain.com/id/text-utils/"/>
-    <xhtml:link rel="alternate" hreflang="vi" href="https://yourdomain.com/vi/text-utils/"/>
-    <xhtml:link rel="alternate" hreflang="th" href="https://yourdomain.com/th/text-utils/"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://yourdomain.com/de/text-utils/"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://yourdomain.com/pt/text-utils/"/>
+    <loc>https://wwtrembling.github.io/en/text-utils/</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://wwtrembling.github.io/ko/text-utils/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wwtrembling.github.io/en/text-utils/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://wwtrembling.github.io/ja/text-utils/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://wwtrembling.github.io/hi/text-utils/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://wwtrembling.github.io/id/text-utils/"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://wwtrembling.github.io/vi/text-utils/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://wwtrembling.github.io/th/text-utils/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://wwtrembling.github.io/de/text-utils/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://wwtrembling.github.io/pt/text-utils/"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://yourdomain.com/en/json-formatter/</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://yourdomain.com/ko/json-formatter/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://yourdomain.com/en/json-formatter/"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://yourdomain.com/ja/json-formatter/"/>
-    <xhtml:link rel="alternate" hreflang="hi" href="https://yourdomain.com/hi/json-formatter/"/>
-    <xhtml:link rel="alternate" hreflang="id" href="https://yourdomain.com/id/json-formatter/"/>
-    <xhtml:link rel="alternate" hreflang="vi" href="https://yourdomain.com/vi/json-formatter/"/>
-    <xhtml:link rel="alternate" hreflang="th" href="https://yourdomain.com/th/json-formatter/"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://yourdomain.com/de/json-formatter/"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://yourdomain.com/pt/json-formatter/"/>
+    <loc>https://wwtrembling.github.io/en/json-formatter/</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://wwtrembling.github.io/ko/json-formatter/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wwtrembling.github.io/en/json-formatter/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://wwtrembling.github.io/ja/json-formatter/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://wwtrembling.github.io/hi/json-formatter/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://wwtrembling.github.io/id/json-formatter/"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://wwtrembling.github.io/vi/json-formatter/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://wwtrembling.github.io/th/json-formatter/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://wwtrembling.github.io/de/json-formatter/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://wwtrembling.github.io/pt/json-formatter/"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://yourdomain.com/en/color-converter/</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://yourdomain.com/ko/color-converter/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://yourdomain.com/en/color-converter/"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://yourdomain.com/ja/color-converter/"/>
-    <xhtml:link rel="alternate" hreflang="hi" href="https://yourdomain.com/hi/color-converter/"/>
-    <xhtml:link rel="alternate" hreflang="id" href="https://yourdomain.com/id/color-converter/"/>
-    <xhtml:link rel="alternate" hreflang="vi" href="https://yourdomain.com/vi/color-converter/"/>
-    <xhtml:link rel="alternate" hreflang="th" href="https://yourdomain.com/th/color-converter/"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://yourdomain.com/de/color-converter/"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://yourdomain.com/pt/color-converter/"/>
+    <loc>https://wwtrembling.github.io/en/color-converter/</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://wwtrembling.github.io/ko/color-converter/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wwtrembling.github.io/en/color-converter/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://wwtrembling.github.io/ja/color-converter/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://wwtrembling.github.io/hi/color-converter/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://wwtrembling.github.io/id/color-converter/"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://wwtrembling.github.io/vi/color-converter/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://wwtrembling.github.io/th/color-converter/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://wwtrembling.github.io/de/color-converter/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://wwtrembling.github.io/pt/color-converter/"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://yourdomain.com/en/timer/</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://yourdomain.com/ko/timer/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://yourdomain.com/en/timer/"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://yourdomain.com/ja/timer/"/>
-    <xhtml:link rel="alternate" hreflang="hi" href="https://yourdomain.com/hi/timer/"/>
-    <xhtml:link rel="alternate" hreflang="id" href="https://yourdomain.com/id/timer/"/>
-    <xhtml:link rel="alternate" hreflang="vi" href="https://yourdomain.com/vi/timer/"/>
-    <xhtml:link rel="alternate" hreflang="th" href="https://yourdomain.com/th/timer/"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://yourdomain.com/de/timer/"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://yourdomain.com/pt/timer/"/>
+    <loc>https://wwtrembling.github.io/en/timer/</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://wwtrembling.github.io/ko/timer/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wwtrembling.github.io/en/timer/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://wwtrembling.github.io/ja/timer/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://wwtrembling.github.io/hi/timer/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://wwtrembling.github.io/id/timer/"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://wwtrembling.github.io/vi/timer/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://wwtrembling.github.io/th/timer/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://wwtrembling.github.io/de/timer/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://wwtrembling.github.io/pt/timer/"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

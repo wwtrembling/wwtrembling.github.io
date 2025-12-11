@@ -1,61 +1,161 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>색상 변환기 - Tool Shelf</title>
-  <meta name="description" content="HEX, RGB, HSL 색상 형식 간 변환을 수행하세요.">
-  
+  <meta name="description"
+    content="Convert between HEX, RGB, and HSL color formats. Real-time color preview and conversion. Copy color codes with one click.">
+
   <!-- Open Graph -->
   <meta property="og:title" content="색상 변환기 - Tool Shelf">
-  <meta property="og:description" content="HEX, RGB, HSL 색상 형식 간 변환을 수행하세요.">
+  <meta property="og:description" content="HEX, RGB, HSL 색상 형식 간 변환을 수행하세요. 실시간 색상 미리보기와 간편한 복사 기능.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://yourdomain.com/ko/color-converter/">
-  
+  <meta property="og:url" content="https://wwtrembling.github.io/ko/color-converter/">
+
   <!-- Canonical -->
-  <link rel="canonical" href="https://yourdomain.com/ko/color-converter/">
-  
+  <link rel="canonical" href="https://wwtrembling.github.io/ko/color-converter/">
+
   <!-- Language Alternatives -->
-  <link rel="alternate" hreflang="ko" href="https://yourdomain.com/ko/color-converter/">
-  <link rel="alternate" hreflang="en" href="https://yourdomain.com/en/color-converter/">
-  <link rel="alternate" hreflang="ja" href="https://yourdomain.com/ja/color-converter/">
-  <link rel="alternate" hreflang="hi" href="https://yourdomain.com/hi/color-converter/">
-  <link rel="alternate" hreflang="id" href="https://yourdomain.com/id/color-converter/">
-  <link rel="alternate" hreflang="vi" href="https://yourdomain.com/vi/color-converter/">
-  <link rel="alternate" hreflang="th" href="https://yourdomain.com/th/color-converter/">
-  <link rel="alternate" hreflang="de" href="https://yourdomain.com/de/color-converter/">
-  <link rel="alternate" hreflang="pt" href="https://yourdomain.com/pt/color-converter/">
-  <link rel="alternate" hreflang="x-default" href="https://yourdomain.com/en/color-converter/">
-  
+  <link rel="alternate" hreflang="ko" href="https://wwtrembling.github.io/ko/color-converter/">
+  <link rel="alternate" hreflang="ko" href="https://wwtrembling.github.io/ko/color-converter/">
+  <link rel="alternate" hreflang="ja" href="https://wwtrembling.github.io/ja/color-converter/">
+  <link rel="alternate" hreflang="hi" href="https://wwtrembling.github.io/hi/color-converter/">
+  <link rel="alternate" hreflang="id" href="https://wwtrembling.github.io/id/color-converter/">
+  <link rel="alternate" hreflang="vi" href="https://wwtrembling.github.io/vi/color-converter/">
+  <link rel="alternate" hreflang="th" href="https://wwtrembling.github.io/th/color-converter/">
+  <link rel="alternate" hreflang="de" href="https://wwtrembling.github.io/de/color-converter/">
+  <link rel="alternate" hreflang="pt" href="https://wwtrembling.github.io/pt/color-converter/">
+  <link rel="alternate" hreflang="x-default" href="https://wwtrembling.github.io/ko/color-converter/">
+
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
+
   <!-- Styles -->
   <link rel="stylesheet" href="/assets/css/main.css">
-  
+
   <!-- JSON-LD -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "WebPage",
+    "@type": "WebApplication",
     "name": "색상 변환기",
-    "description": "HEX, RGB, HSL 색상 형식 간 변환을 수행하세요.",
-    "url": "https://yourdomain.com/ko/color-converter/",
+    "description": "HEX, RGB, HSL 색상 형식 간 변환을 수행하세요. 실시간 색상 미리보기와 간편한 복사 기능.",
+    "url": "https://wwtrembling.github.io/ko/color-converter/",
     "inLanguage": "ko",
-    "isPartOf": {
-      "@type": "WebSite",
-      "name": "Tool Shelf",
-      "url": "https://yourdomain.com/"
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
     }
   }
   </script>
+
+  <style>
+    .color-preview {
+      width: 100%;
+      height: 200px;
+      border-radius: var(--radius-lg);
+      border: 2px solid var(--border-color);
+      margin: var(--spacing-lg) 0;
+      transition: all var(--transition-base);
+      box-shadow: var(--shadow-md);
+    }
+
+    .color-input-group {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: var(--spacing-sm);
+      align-items: end;
+    }
+
+    .copy-btn {
+      padding: var(--spacing-md);
+      background: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      font-weight: 500;
+    }
+
+    .copy-btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+
+    .color-palette {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+      gap: var(--spacing-sm);
+      margin-top: var(--spacing-lg);
+    }
+
+    .color-swatch {
+      aspect-ratio: 1;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      border: 2px solid var(--border-color);
+    }
+
+    .color-swatch:hover {
+      transform: scale(1.1);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .slider-group {
+      margin-bottom: var(--spacing-md);
+    }
+
+    .slider-label {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: var(--spacing-sm);
+      font-weight: 500;
+    }
+
+    .slider {
+      width: 100%;
+      height: 8px;
+      border-radius: 4px;
+      outline: none;
+      -webkit-appearance: none;
+    }
+
+    .slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--primary-color);
+      cursor: pointer;
+      box-shadow: var(--shadow-md);
+    }
+
+    .slider::-moz-range-thumb {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--primary-color);
+      cursor: pointer;
+      box-shadow: var(--shadow-md);
+      border: none;
+    }
+  </style>
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631"
      crossorigin="anonymous"></script>
 
 </head>
+
 <body>
   <header class="site-header">
     <div class="container">
@@ -71,22 +171,94 @@
   <main class="main-content">
     <div class="container-narrow">
       <h1>🎨 색상 변환기</h1>
-      <p>HEX, RGB, HSL 색상 형식 간 변환을 수행하세요.</p>
-      
+      <p>HEX, RGB, HSL 색상 형식 간 변환을 수행하세요. 실시간 색상 미리보기와 간편한 복사 기능.</p>
+
       <!-- AdSense Placeholder -->
       <div class="adsense-placeholder">
         <!-- AdSense Ad Unit -->
+        <p>광고 영역</p>
       </div>
-      
-      <!-- Utility-specific content will go here -->
+
+      <!-- Color Preview -->
+      <div class="color-preview" id="colorPreview"></div>
+
+      <!-- Color Inputs -->
       <div class="card">
-        <p>This is a placeholder for the 색상 변환기 utility.</p>
-        <p>The actual implementation will include the full functionality for this tool.</p>
+        <h3>색상 형식</h3>
+
+        <div class="form-group">
+          <div class="color-input-group">
+            <div>
+              <label class="form-label">HEX</label>
+              <input type="text" id="hexInput" class="form-input" placeholder="#000000" value="#6366f1">
+            </div>
+            <button class="copy-btn" onclick="copyColor('hex')">복사</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="color-input-group">
+            <div>
+              <label class="form-label">RGB</label>
+              <input type="text" id="rgbInput" class="form-input" placeholder="rgb(0, 0, 0)" readonly>
+            </div>
+            <button class="copy-btn" onclick="copyColor('rgb')">복사</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="color-input-group">
+            <div>
+              <label class="form-label">HSL</label>
+              <input type="text" id="hslInput" class="form-input" placeholder="hsl(0, 0%, 0%)" readonly>
+            </div>
+            <button class="copy-btn" onclick="copyColor('hsl')">복사</button>
+          </div>
+        </div>
       </div>
-      
+
+      <!-- RGB Sliders -->
+      <div class="card">
+        <h3>RGB 슬라이더</h3>
+
+        <div class="slider-group">
+          <div class="slider-label">
+            <span>빨강</span>
+            <span id="rValue">99</span>
+          </div>
+          <input type="range" min="0" max="255" value="99" class="slider" id="rSlider"
+            style="background: linear-gradient(to right, #000, #f00);">
+        </div>
+
+        <div class="slider-group">
+          <div class="slider-label">
+            <span>초록</span>
+            <span id="gValue">102</span>
+          </div>
+          <input type="range" min="0" max="255" value="102" class="slider" id="gSlider"
+            style="background: linear-gradient(to right, #000, #0f0);">
+        </div>
+
+        <div class="slider-group">
+          <div class="slider-label">
+            <span>파랑</span>
+            <span id="bValue">241</span>
+          </div>
+          <input type="range" min="0" max="255" value="241" class="slider" id="bSlider"
+            style="background: linear-gradient(to right, #000, #00f);">
+        </div>
+      </div>
+
+      <!-- Color Palette -->
+      <div class="card">
+        <h3>인기 색상</h3>
+        <div class="color-palette" id="colorPalette"></div>
+      </div>
+
       <!-- AdSense Placeholder -->
       <div class="adsense-placeholder">
         <!-- AdSense Ad Unit -->
+        <p>광고 영역</p>
       </div>
     </div>
   </main>
@@ -100,5 +272,155 @@
   </footer>
 
   <script src="/assets/js/common.js"></script>
+  <script>
+    // Popular colors palette
+    const popularColors = [
+      '#FF6B6B', '#4ECDC4', '#45B7D1', '#FFA07A', '#98D8C8',
+      '#F7DC6F', '#BB8FCE', '#85C1E2', '#F8B739', '#52B788',
+      '#E63946', '#F1FAEE', '#A8DADC', '#457B9D', '#1D3557',
+      '#264653', '#2A9D8F', '#E9C46A', '#F4A261', '#E76F51'
+    ];
+
+    // DOM elements
+    const colorPreview = document.getElementById('colorPreview');
+    const hexInput = document.getElementById('hexInput');
+    const rgbInput = document.getElementById('rgbInput');
+    const hslInput = document.getElementById('hslInput');
+    const rSlider = document.getElementById('rSlider');
+    const gSlider = document.getElementById('gSlider');
+    const bSlider = document.getElementById('bSlider');
+    const rValue = document.getElementById('rValue');
+    const gValue = document.getElementById('gValue');
+    const bValue = document.getElementById('bValue');
+    const colorPalette = document.getElementById('colorPalette');
+
+    // Convert HEX to RGB
+    function hexToRgb(hex) {
+      const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+      return result ? {
+        r: parseInt(result[1], 16),
+        g: parseInt(result[2], 16),
+        b: parseInt(result[3], 16)
+      } : null;
+    }
+
+    // Convert RGB to HEX
+    function rgbToHex(r, g, b) {
+      return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+    }
+
+    // Convert RGB to HSL
+    function rgbToHsl(r, g, b) {
+      r /= 255;
+      g /= 255;
+      b /= 255;
+
+      const max = Math.max(r, g, b);
+      const min = Math.min(r, g, b);
+      let h, s, l = (max + min) / 2;
+
+      if (max === min) {
+        h = s = 0;
+      } else {
+        const d = max - min;
+        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+
+        switch (max) {
+          case r: h = ((g - b) / d + (g < b ? 6 : 0)) / 6; break;
+          case g: h = ((b - r) / d + 2) / 6; break;
+          case b: h = ((r - g) / d + 4) / 6; break;
+        }
+      }
+
+      return {
+        h: Math.round(h * 360),
+        s: Math.round(s * 100),
+        l: Math.round(l * 100)
+      };
+    }
+
+    // Update all color formats
+    function updateColors() {
+      const r = parseInt(rSlider.value);
+      const g = parseInt(gSlider.value);
+      const b = parseInt(bSlider.value);
+
+      // Update value displays
+      rValue.textContent = r;
+      gValue.textContent = g;
+      bValue.textContent = b;
+
+      // Update HEX
+      const hex = rgbToHex(r, g, b);
+      hexInput.value = hex;
+
+      // Update RGB
+      rgbInput.value = `rgb(${r}, ${g}, ${b})`;
+
+      // Update HSL
+      const hsl = rgbToHsl(r, g, b);
+      hslInput.value = `hsl(${hsl.h}, ${hsl.s}%, ${hsl.l}%)`;
+
+      // Update preview
+      colorPreview.style.backgroundColor = hex;
+    }
+
+    // Set color from HEX input
+    function setColorFromHex() {
+      const hex = hexInput.value;
+      const rgb = hexToRgb(hex);
+
+      if (rgb) {
+        rSlider.value = rgb.r;
+        gSlider.value = rgb.g;
+        bSlider.value = rgb.b;
+        updateColors();
+      }
+    }
+
+    // Copy color to clipboard
+    function copyColor(format) {
+      let text;
+      switch (format) {
+        case 'hex':
+          text = hexInput.value;
+          break;
+        case 'rgb':
+          text = rgbInput.value;
+          break;
+        case 'hsl':
+          text = hslInput.value;
+          break;
+      }
+
+      Utils.copyToClipboard(text);
+    }
+
+    // Initialize color palette
+    function initPalette() {
+      popularColors.forEach(color => {
+        const swatch = document.createElement('div');
+        swatch.className = 'color-swatch';
+        swatch.style.backgroundColor = color;
+        swatch.title = color;
+        swatch.onclick = () => {
+          hexInput.value = color;
+          setColorFromHex();
+        };
+        colorPalette.appendChild(swatch);
+      });
+    }
+
+    // Event listeners
+    rSlider.addEventListener('input', updateColors);
+    gSlider.addEventListener('input', updateColors);
+    bSlider.addEventListener('input', updateColors);
+    hexInput.addEventListener('input', setColorFromHex);
+
+    // Initialize
+    updateColors();
+    initPalette();
+  </script>
 </body>
+
 </html>
