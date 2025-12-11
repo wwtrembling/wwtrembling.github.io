@@ -23,7 +23,7 @@ GitHub Pages 기반의 클라이언트 전용 유틸리티 모음 사이트
 | 독일 | 독일어 | de |
 | 브라질 | 포르투갈어 | pt |
 
-## 구현된 유틸리티 (9개)
+## 구현된 유틸리티 (13개)
 
 ### ✅ 1. 단위 변환기 (Unit Converter)
 - **경로**: `/{lang}/unit-converter/`
@@ -67,6 +67,27 @@ GitHub Pages 기반의 클라이언트 전용 유틸리티 모음 사이트
 - **특징**: UI 디자이너/프론트엔드 개발자용
 
 ### ✅ 9. 타이머/포모도로 (Timer/Pomodoro)
+- **경로**: `/{lang}/timer/`
+- **기능**: 카운트다운, 스톱워치, 포모도로 타이머
+- **구현**: Web Worker (백그라운드 정확도)
+
+### ✅ 10. SQL 포매터 (SQL Formatter)
+- **경로**: `/{lang}/sql-formatter/`
+- **기능**: SQL 쿼리 beautify & minify
+- **구현**: sql-formatter 라이브러리
+- **특징**: 6가지 SQL 방언 지원 (MySQL, PostgreSQL, etc.)
+
+### ✅ 11. 정규식 테스터 (Regex Tester)
+- **경로**: `/{lang}/regex-tester/`
+- **기능**: 정규식 패턴 테스트 및 매칭 결과 표시
+- **특징**: 실시간 매칭, 하이라이트 표시
+
+### ✅ 12. Base64 인코더/디코더
+- **경로**: `/{lang}/base64-converter/`
+- **기능**: 텍스트 ↔ Base64 변환
+- **구현**: btoa/atob 브라우저 API
+
+### ✅ 13. QR 코드 생성기 (QR Code Generator)
 - **경로**: `/{lang}/timer/`
 - **기능**: 카운트다운, 스톱워치, 포모도로 타이머
 - **구현**: Web Worker (백그라운드 정확도)
