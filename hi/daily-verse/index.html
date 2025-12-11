@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="hi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="अपनी 365-दिन की बाइबिल पठन योजना को आसानी से कॉपी करने के लिए एक उपकरण। केवल एक क्लिक से दैनिक बाइबिल अंश कॉपी और साझा करें।">
+    <meta name="keywords" content="बाइबिल पठन योजना, दैनिक बाइबिल, 365 बाइबिल, बाइबिल कॉपियर, धर्मग्रंथ पठन, दैनिक भक्ति, बाइबिल अध्ययन">
+    <meta name="author" content="wwtrembling">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://wwtrembling.github.io/hi/daily_verse/">
+
+    <!-- Language Alternates -->
+    <link rel="alternate" href="https://wwtrembling.github.io/ko/daily_verse/" hreflang="hi" />
+    <link rel="alternate" href="https://wwtrembling.github.io/en/daily_verse/" hreflang="en" />
+    <link rel="alternate" href="https://wwtrembling.github.io/hi/daily_verse/" hreflang="x-default" />
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="बाइबिल पठन योजना कॉपियर - 365 दिन बाइबिल पठन">
+    <meta property="og:description" content="केवल एक क्लिक से दैनिक बाइबिल अंश कॉपी और साझा करें। अपनी 365-दिन की बाइबिल पठन योजना को आसानी से फॉलो करें।">
+    <meta property="og:url" content="https://wwtrembling.github.io/hi/daily_verse/">
+    <meta property="og:site_name" content="성경일기 복사기">
+    <meta property="og:locale" content="hi_HI">
+    <meta property="og:locale:alternate" content="en_US">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="성경일기 복사기 - 365일 성경 읽기 계획">
+    <meta name="twitter:description" content="매일 읽을 성경 구절을 클릭 한 번으로 복사하고 공유하세요.">
+
+    <!-- Additional Meta Tags -->
+    <meta name="theme-color" content="#667eea">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="성경일기">
+
+    <title>बाइबिल पठन योजना कॉपियर - 365 दिन बाइबिल पठन</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .today-button {
+            background: rgba(255, 255, 255, 0.3);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            white-space: nowrap;
+        }
+
+        .today-button:hover {
+            background: rgba(255, 255, 255, 0.4);
+            border-color: rgba(255, 255, 255, 0.8);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .today-button:active {
+            transform: translateY(0);
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            font-weight: 600;
+        }
+
+        .status-box {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 15px 25px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            min-width: 250px;
+            text-align: center;
+        }
+
+        .status-box .label {
+            font-size: 0.85rem;
+            opacity: 0.9;
+            margin-bottom: 5px;
+        }
+
+        .status-box .value {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .content {
+            padding: 30px;
+            max-height: calc(100vh - 200px);
+            overflow-y: auto;
+        }
+
+        .month-section {
+            margin-bottom: 40px;
+        }
+
+        .month-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #667eea;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        .days-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 12px;
+        }
+
+        .empty-cell {
+            visibility: hidden;
+        }
+
+        .weekday-header {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 12px;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: #667eea;
+            text-align: center;
+        }
+
+        .weekday-header>div {
+            padding: 8px;
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 8px;
+        }
+
+        .day-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 10px;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .day-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+        }
+
+        .day-button:active {
+            transform: translateY(-1px);
+        }
+
+        .copied-notification {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #4caf50;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .copied-notification.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 반응형 디자인 */
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .header-left {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .header h1 {
+                font-size: 1.5rem;
+            }
+
+            .today-button {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .weekday-header {
+                gap: 8px;
+                font-size: 0.85rem;
+            }
+
+            .weekday-header>div {
+                padding: 6px;
+            }
+
+            .days-grid {
+                grid-template-columns: repeat(7, 1fr);
+                gap: 8px;
+            }
+
+            .day-section {
+                padding: 8px;
+                gap: 6px;
+            }
+
+            .day-button {
+                padding: 12px 8px;
+                font-size: 0.9rem;
+            }
+
+            .intro-button {
+                font-size: 0.75rem;
+                padding: 10px 8px;
+            }
+
+            .verse-button {
+                padding: 12px 8px;
+                font-size: 0.9rem;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .status-box {
+                min-width: 100%;
+            }
+
+            .copied-notification {
+                bottom: 20px;
+                right: 20px;
+                left: 20px;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+
+            .header {
+                padding: 20px;
+            }
+
+            .weekday-header {
+                gap: 6px;
+                font-size: 0.7rem;
+            }
+
+            .weekday-header>div {
+                padding: 4px;
+            }
+
+            .days-grid {
+                grid-template-columns: repeat(7, 1fr);
+                gap: 6px;
+            }
+
+            .day-section {
+                padding: 6px;
+                gap: 4px;
+            }
+
+            .day-button {
+                padding: 10px 5px;
+                font-size: 0.85rem;
+            }
+
+            .intro-button {
+                font-size: 0.7rem;
+                padding: 8px 5px;
+            }
+
+            .verse-button {
+                padding: 10px 5px;
+                font-size: 0.85rem;
+            }
+
+            .month-title {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* 스크롤바 스타일 */
+        .content::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        .content::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        .content::-webkit-scrollbar-thumb {
+            background: #667eea;
+            border-radius: 5px;
+        }
+
+        .content::-webkit-scrollbar-thumb:hover {
+            background: #764ba2;
+        }
+
+        /* 날짜 섹션 스타일 */
+        .day-section {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 12px;
+            border: 2px solid rgba(102, 126, 234, 0.15);
+            transition: all 0.3s ease;
+            min-width: 0;
+            /* flex 아이템이 줄어들 수 있도록 */
+        }
+
+        .day-section:hover {
+            background: rgba(255, 255, 255, 0.7);
+            border-color: rgba(102, 126, 234, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+        }
+
+        /* 오늘 날짜 하이라이트 */
+        .day-section.today-highlight {
+            background: rgba(102, 126, 234, 0.2);
+            border: 3px solid #667eea;
+            box-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                box-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
+            }
+
+            50% {
+                box-shadow: 0 0 30px rgba(102, 126, 234, 0.8);
+            }
+        }
+
+        /* 소개 버튼 스타일 */
+        .intro-button {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            border: none;
+            padding: 12px 10px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(240, 147, 251, 0.3);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 100%;
+            min-width: 0;
+        }
+
+        .intro-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(240, 147, 251, 0.5);
+        }
+
+        .intro-button:active {
+            transform: translateY(-1px);
+        }
+
+        /* 말씀 버튼 스타일 */
+        .verse-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 10px;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 100%;
+            min-width: 0;
+        }
+
+        .verse-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+        }
+
+        .verse-button:active {
+            transform: translateY(-1px);
+        }
+
+        @media (max-width: 768px) {
+            .intro-button {
+                font-size: 0.75rem;
+                padding: 10px 8px;
+            }
+
+            .verse-button {
+                padding: 12px 8px;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .intro-button {
+                font-size: 0.7rem;
+                padding: 8px 5px;
+            }
+
+            .verse-button {
+                padding: 10px 5px;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631"
+     crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-left">
+                <h1>📖 बाइबिल पठन योजना कॉपियर</h1>
+                <button class="today-button" id="todayButton" onclick="scrollToToday()">
+                    📅 आज की तारीख पर जाएं
+                </button>
+            </div>
+            <div class="status-box">
+                <div class="label">कॉपी किया गया अंश</div>
+                <div class="value" id="statusText">-</div>
+            </div>
+        </div>
+        <div class="content" id="content">
+            <!-- 월별 섹션이 JavaScript로 동적 생성됩니다 -->
+        </div>
+    </div>
+
+    <div class="copied-notification" id="notification">
+        क्लिपबोर्ड पर कॉपी किया गया!
+    </div>
+
+    <script>
+        // 성경일기표 데이터 (365일)
+        const bibleReadings = ["उत्प 1-3", "उत्प 4-6", "उत्प 7-9", "उत्प 10-13", "उत्प 14-17", "उत्प 18-20", "उत्प 21-23", "उत्प 24-26", "उत्प 27-30", "उत्प 31-33", "उत्प 34-36", "उत्प 37-40", "उत्प 41-45", "उत्प 46-48", "उत्प 49-50", "निर्ग 1-4", "निर्ग 5-7", "निर्ग 8-11", "निर्ग 12-14", "निर्ग 15-17", "निर्ग 18-20", "निर्ग 21-23", "निर्ग 24-26", "निर्ग 27-29", "निर्ग 30-32", "निर्ग 33-35", "निर्ग 36-38", "निर्ग 39-40", "लैव्य 1-4", "लैव्य 5-7", "लैव्य 8-10", "लैव्य 11-14", "लैव्य 15-17", "लैव्य 18-20", "लैव्य 21-24", "लैव्य 25-27", "गिनती 1-4", "गिनती 5-7", "गिनती 8-10", "गिनती 11-14", "गिनती 15-17", "गिनती 18-20", "गिनती 21-23", "गिनती 24-27", "गिनती 28-30", "गिनती 31-33", "गिनती 34-36", "व्यव 1-4", "व्यव 5-7", "व्यव 8-10", "व्यव 11-14", "व्यव 15-17", "व्यव 18-20", "व्यव 21-23", "व्यव 24-27", "व्यव 28-30", "व्यव 31-34", "यहो 1-4", "यहो 5-7", "यहो 8-10", "यहो 11-13", "यहो 14-17", "यहो 18-21", "यहो 22-24", "न्या 1-3", "न्या 4-8", "न्या 9-10", "न्या 11-12", "न्या 13-16", "न्या 17-18", "न्या 19-21", "रूत 1-4", "1शमू 1-3", "1शमू 4-7", "1शमू 8-10", "1शमू 11-13", "1शमू 14-16", "1शमू 17-20", "1शमू 21-23", "1शमू 24-26", "1शमू 27-29", "1शमू 30-31", "2शमू 1-3", "2शमू 4-6", "2शमू 7-9", "2शमू 10-12", "2शमू 13-15", "2शमू 16-19", "2शमू 20-22", "2शमू 23-24", "1राजा 1-3", "1राजा 4-7", "1राजा 8-10", "1राजा 11-14", "1राजा 15-17", "1राजा 18-20", "1राजा 21-22", "2राजा 1-4", "2राजा 5-7", "2राजा 8-10", "2राजा 11-13", "2राजा 14-17", "2राजा 18-20", "2राजा 21-25", "1इति 1-4", "1इति 5-8", "1इति 9-12", "1इति 13-16", "1इति 17-19", "1इति 20-22", "1इति 23-25", "1इति 26-29", "2इति 1-3", "2इति 4-7", "2इति 8-9", "2इति 10-12", "2इति 13-15", "2इति 16-18", "2इति 19-21", "2इति 22-24", "2इति 25-28", "2इति 29-32", "2इति 33-36", "एज्रा 1-4", "एज्रा 5-7", "एज्रा 8-10", "नहे 1-2", "नहे 3-5", "नहे 6-9", "नहे 10-13", "एस्तेर 1-3", "एस्तेर 4-7", "एस्तेर 8-10", "अय्यूब 1-3", "अय्यूब 4-7", "अय्यूब 8-10", "अय्यूब 11-14", "अय्यूब 15-17", "अय्यूब 18-20", "अय्यूब 21-24", "अय्यूब 25-28", "अय्यूब 29-31", "अय्यूब 32-34", "अय्यूब 35-37", "अय्यूब 38-42", "भज 1-3", "भज 4-6", "भज 7-9", "भज 10-12", "भज 13-15", "भज 16-18", "भज 19-21", "भज 22-24", "भज 25-27", "भज 28-30", "भज 31-33", "भज 34-36", "भज 37-39", "भज 40-42", "भज 43-46", "भज 47-50", "भज 51-54", "भज 55-57", "भज 58-61", "भज 62-64", "भज 65-67", "भज 68-70", "भज 71-73", "भज 74-76", "भज 77-79", "भज 80-82", "भज 83-85", "भज 86-88", "भज 89-91", "भज 92-94", "भज 95-97", "भज 98-100", "भज 101-103", "भज 104-106", "भज 107-110", "भज 111-114", "भज 115-118", "भज 119", "भज 120-123", "भज 124-127", "भज 128-131", "भज 132-135", "भज 136-138", "भज 139-141", "भज 142-144", "भज 145-147", "भज 148-150", "नीति 1-3", "नीति 4-6", "नीति 7-9", "नीति 10-12", "नीति 13-15", "नीति 16-18", "नीति 19-21", "नीति 22-24", "नीति 25-27", "नीति 28-31", "सभो 1-3", "सभो 4-6", "सभो 7-9", "सभो 10-12", "श्रेष्ठ 1-4", "श्रेष्ठ 5-8", "यशा 1-3", "यशा 4-6", "यशा 7-9", "यशा 10-12", "यशा 13-16", "यशा 17-20", "यशा 21-23", "यशा 24-26", "यशा 27-29", "यशा 30-32", "यशा 33-35", "यशा 36-39", "यशा 40-43", "यशा 44-46", "यशा 47-49", "यशा 50-52", "यशा 53-55", "यशा 56-58", "यशा 59-62", "यशा 63-66", "यिर्म 1-3", "यिर्म 4-6", "यिर्म 7-9", "यिर्म 10-12", "यिर्म 13-15", "यिर्म 16-17", "यिर्म 18-20", "यिर्म 21-23", "यिर्म 24-26", "यिर्म 27-29", "यिर्म 30-31", "यिर्म 32-34", "यिर्म 35-37", "यिर्म 38-41", "यिर्म 42-44", "यिर्म 45-48", "यिर्म 49-52", "विला 1-5", "यहे 1-3", "यहे 4-6", "यहे 7-9", "यहे 10-12", "यहे 13-15", "यहे 16-18", "यहे 19-21", "यहे 22-24", "यहे 25-28", "यहे 29-32", "यहे 33-36", "यहे 37-39", "यहे 40-43", "यहे 44-48", "दानि 1-3", "दानि 4-6", "दानि 7-9", "दानि 10-12", "होशे 1-3", "होशे 4-7", "होशे 8-10", "होशे 11-14", "योएल 1-3", "आमोस 1-3", "आमोस 4-6", "आमोस 7-9", "ओबद्याह 1", "योना 1-4", "मीका 1-4", "मीका 5-7", "नहूम 1-3", "हबक्कूक 1-3", "सपन्याह 1-3", "हाग्गै 1-2", "जकर्याह 1-4", "जकर्याह 5-8", "जकर्याह 9-11", "जकर्याह 12-14", "मलाकी 1-4", "मत्ती 1-4", "मत्ती 5-7", "मत्ती 8-10", "मत्ती 11-13", "मत्ती 14-16", "मत्ती 17-20", "मत्ती 21-23", "मत्ती 24-26", "मत्ती 27-28", "मरकुस 1-4", "मरकुस 5-8", "मरकुस 9-12", "मरकुस 13-16", "लूका 1-4", "लूका 5-8", "लूका 9-12", "लूका 13-16", "लूका 17-20", "लूका 21-24", "यूहन्ना 1-3", "यूहन्ना 4-6", "यूहन्ना 7-9", "यूहन्ना 10-13", "यूहन्ना 14-16", "यूहन्ना 17-21", "प्रेरित 1-4", "प्रेरित 5-7", "प्रेरित 8-9", "प्रेरित 10-12", "प्रेरित 13-16", "प्रेरित 17-20", "प्रेरित 21-23", "प्रेरित 24-26", "प्रेरित 27-28", "रोमि 1-3", "रोमि 4-5", "रोमि 6-8", "रोमि 9-11", "रोमि 12-13", "रोमि 14-16", "1कुरिं 1-3", "1कुरिं 4-6", "1कुरिं 7-9", "1कुरिं 10-12", "1कुरिं 13-16", "2कुरिं 1-3", "2कुरिं 4-6", "2कुरिं 7-9", "2कुरिं 10-13", "गला 1-3", "गला 4-6", "इफि 1-3", "इफि 4-6", "फिलि 1-4", "कुलु 1-4", "1थिस्स 1-5", "2थिस्स 1-3", "1तीमु 1-3", "1तीमु 4-6", "2तीमु 1-4", "तीतुस 1-3, फिले 1", "इब्रा 1-2", "इब्रा 3-4", "इब्रा 5-7", "इब्रा 8-10", "इब्रा 11", "इब्रा 12-13", "याकूब 1-5", "1पतरस 1-5", "2पतरस 1-3", "1यूहन्ना 1-5", "2यूहन्ना, 3यूहन्ना, यहूदा", "प्रका 1-3", "प्रका 4-5", "प्रका 6-9", "प्रका 10-13", "प्रका 14-16", "प्रका 17-18", "प्रका 19-20", "प्रका 21-22"];
+
+        // 각 월의 일수 (윤년 고려)
+        const daysInMonth = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+        const monthNames = ["जनवरी", "फरवरी", "मार्च", "अप्रैल", "मई", "जून", "जुलाई", "अगस्त", "सितंबर", "अक्टूबर", "नवंबर", "दिसंबर"];
+
+        // 전역 변수: 성경 소개 데이터
+        let bookIntroductions = {};
+        let bookStartDates = {};
+
+        // 책 약어 → 전체 이름 매핑 (성경 66권 전체)
+        // 주의: 소개 파일의 실제 이름에 맞춰 매핑 (서, 기 등 접미사 포함)
+        const bookAbbrevMap = {
+            // 구약 39권
+            '창': '창세기',
+            '출': '출애굽기',
+            '레': '레위기',
+            '민': '민수기',
+            '신': '신명기',
+            '수': '여호수아서',     // 소개: 6.여호수아서(Joshua)
+            '삿': '사사기',
+            '룻': '룻기',
+            '삼상': '사무엘서',      // 소개: 9.사무엘서(Samuel) - 상/하 통합
+            '삼하': '사무엘서',
+            '왕상': '열왕기서',      // 소개: 10.열왕기서(Books of Kings) - 상/하 통합
+            '왕하': '열왕기서',
+            '대상': '역대기',        // 소개: 11.역대기(Books of Chronicles) - 상/하 통합
+            '대하': '역대기',
+            '스': '에스라서',        // 소개: 12.에스라서(Ezra)
+            '느': '느헤미야서',      // 소개: 13.느헤미야서(Nehemiah)
+            '에': '에스더서',        // 소개: 14.에스더서(Esther)
+            '욥': '욥기',
+            '시': '시편',
+            '잠': '잠언',
+            '전': '전도서',
+            '아': '아가',
+            '사': '이사야서',        // 소개: 20.이사야서(Isaiah)
+            '렘': '예레미야서',      // 소개: 21.예레미야서(Book of Jeremiah)
+            '애': '예레미야애가',
+            '겔': '에스겔서',        // 소개: 23.에스겔서(Ezekiel)
+            '단': '다니엘서',        // 소개: 24.다니엘서(Daniel)
+            '호': '호세아서',        // 소개: 25.호세아서(Hosea)
+            '욜': '요엘서',          // 소개: 26.요엘서(Joel)
+            '암': '아모스서',        // 소개: 27.아모스서(Amos)
+            '옵': '오바댜서',        // 소개: 28.오바댜서(Obadiah)
+            '욘': '요나서',          // 소개: 29.요나서(Jonah)
+            '미': '미가서',          // 소개: 30.미가서(Micah)
+            '나': '나훔서',          // 소개: 31.나훔서(Nahum)
+            '합': '하박국서',        // 소개: 32.하박국서(Habakkuk)
+            '습': '스바냐서',        // 소개: 33.스바냐서(Zephaniah)
+            '학': '학개서',          // 소개: 34.학개서(Haggai)
+            '슥': '스가랴서',        // 소개: 35.스가랴서(Zechariah)
+            '말': '말라기',
+            // 신약 27권
+            '마': '마태복음',
+            '막': '마가복음',
+            '눅': '누가복음',
+            '요': '요한복음',
+            '행': '사도행전',
+            '롬': '로마서',
+            '고전': '고린도전서',
+            '고후': '고린도후서',
+            '갈': '갈라디아서',
+            '엡': '에베소서',
+            '빌': '빌립보서',
+            '골': '골로새서',
+            '살전': '데살로니가전서',
+            '살후': '데살로니가후서',
+            '딤전': '디모데전서',
+            '딤후': '디모데후서',
+            '딛': '디도서',
+            '몬': '빌레몬서',
+            '히': '히브리서',
+            '약': '야고보서',
+            '벧전': '베드로전서',
+            '벧후': '베드로후서',
+            '요일': '요한1서',       // 소개: 59.요한1서(1 John)
+            '요이': '요한2서',       // 소개: 60.요한2서(2 John)
+            '요삼': '요한3서',       // 소개: 61.요한3서(3 John)
+            '유': '유다서',
+            '계': '요한계시록'
+        };
+
+        // 책 약어 추출 함수
+        function extractBookAbbrev(reading) {
+            const match = reading.match(/^([가-힣]+)/);
+            return match ? match[1] : null;
+        }
+
+        // 요일 계산 함수
+        function getDayOfWeek(dayIndex) {
+            const now = new Date();
+            const year = now.getFullYear();
+
+            // dayIndex로부터 월과 일 계산
+            let month = 0;
+            let day = dayIndex + 1; // 1일부터 시작
+
+            for (let m = 0; m < 12; m++) {
+                if (day <= daysInMonth[m]) {
+                    month = m;
+                    break;
+                }
+                day -= daysInMonth[m];
+            }
+
+            // 해당 날짜 객체 생성
+            const targetDate = new Date(year, month, day);
+            const dayOfWeek = targetDate.getDay();
+            const weekDays = ["रवि", "सोम", "मंगल", "बुध", "गुरु", "शुक्र", "शनि"];
+            return weekDays[dayOfWeek];
+        }
+
+        // 책 시작 날짜 감지 함수
+        function detectBookStartDates() {
+            let prevBook = null;
+            for (let i = 0; i < bibleReadings.length; i++) {
+                const reading = bibleReadings[i];
+
+                // 쉼표로 구분된 여러 책 처리 (예: "딛 1-3, 몬 1" 또는 "요이, 요삼, 유")
+                const books = reading.split(',').map(s => s.trim());
+
+                for (const bookReading of books) {
+                    const abbrev = extractBookAbbrev(bookReading);
+                    if (abbrev && abbrev !== prevBook) {
+                        const fullName = bookAbbrevMap[abbrev];
+                        if (fullName) {
+                            // 배열로 저장하여 하루에 여러 책 시작 지원
+                            if (!bookStartDates[i]) {
+                                bookStartDates[i] = [];
+                            }
+                            bookStartDates[i].push(fullName);
+                        }
+                        prevBook = abbrev;
+                    }
+                }
+            }
+        }
+
+        // 3900자 단위로 단락 기준 분할 (개행문자 보존)
+        // 헤더 공간을 고려하여 본문은 3600자로 제한
+        function splitContentByCharLimit(content, maxChars = 3600) {
+            const chunks = [];
+            let currentChunk = '';
+
+            // 먼저 단락 단위로 분할 시도
+            const paragraphs = content.split(/\n\n+/);
+
+            for (const paragraph of paragraphs) {
+                const testChunk = currentChunk
+                    ? currentChunk + '\n\n' + paragraph
+                    : paragraph;
+
+                if (testChunk.length > maxChars && currentChunk) {
+                    // 현재 chunk 저장
+                    chunks.push(currentChunk.trim());
+                    currentChunk = paragraph;
+                } else {
+                    currentChunk = testChunk;
+                }
+            }
+
+            // 남은 내용 추가
+            if (currentChunk.trim()) {
+                chunks.push(currentChunk.trim());
+            }
+
+            // 각 chunk가 여전히 maxChars를 초과하는지 확인하고 강제 분할
+            const finalChunks = [];
+            for (let chunk of chunks) {
+                if (chunk.length <= maxChars) {
+                    finalChunks.push(chunk);
+                } else {
+                    // 문장 단위로 분할 시도 (한국어 마침표 포함)
+                    const sentences = chunk.split(/([.!?]\s+|[.!?](?=\n)|[.!?]$)/);
+                    let sentenceChunk = '';
+
+                    for (let i = 0; i < sentences.length; i++) {
+                        const sentence = sentences[i];
+                        if (!sentence) continue;
+
+                        const testSentence = sentenceChunk + sentence;
+
+                        if (testSentence.length > maxChars && sentenceChunk) {
+                            finalChunks.push(sentenceChunk.trim());
+                            sentenceChunk = sentence;
+                        } else {
+                            sentenceChunk = testSentence;
+                        }
+                    }
+
+                    if (sentenceChunk.trim()) {
+                        // 여전히 너무 길면 강제로 3600자씩 자르기
+                        if (sentenceChunk.length > maxChars) {
+                            for (let i = 0; i < sentenceChunk.length; i += maxChars) {
+                                finalChunks.push(sentenceChunk.substring(i, i + maxChars).trim());
+                            }
+                        } else {
+                            finalChunks.push(sentenceChunk.trim());
+                        }
+                    }
+                }
+            }
+
+            console.log(`분할 결과: ${finalChunks.length}개 chunk`);
+            finalChunks.forEach((chunk, idx) => {
+                console.log(`  Chunk ${idx + 1}: ${chunk.length}자`);
+            });
+
+            return finalChunks.length > 0 ? finalChunks : [content];
+        }
+
+        // 성경 소개 파일 파싱
+        async function parseBookIntroductions() {
+            try {
+                // 구약 파싱
+                const oldTestamentResponse = await fetch('./source/1 구약.md');
+                const oldTestamentText = await oldTestamentResponse.text();
+
+                // 신약 파싱
+                const newTestamentResponse = await fetch('./source/2 신약.md');
+                const newTestamentText = await newTestamentResponse.text();
+
+                // 두 파일을 합쳐서 파싱
+                const combinedText = oldTestamentText + '\n\n' + newTestamentText;
+
+                // 정규식으로 각 책의 섹션 추출
+                const bookSections = combinedText.split(/(?=^# \d+\.)/gm);
+
+                for (const section of bookSections) {
+                    if (!section.trim()) continue;
+
+                    // 제목 추출: # 1.창세기(Genesis) 형식
+                    const titleMatch = section.match(/^# (\d+\.[^\n]+)/m);
+                    if (!titleMatch) continue;
+
+                    const title = titleMatch[1].trim();
+
+                    // 책 이름 추출 (괄호 앞의 한글 이름)
+                    const bookNameMatch = title.match(/\d+\.\s*([가-힣]+)/);
+                    if (!bookNameMatch) continue;
+
+                    const bookName = bookNameMatch[1];
+
+                    // 내용 추출 (제목 다음부터 끝까지)
+                    const content = section.replace(/^# \d+\.[^\n]+\n/, '').trim();
+
+                    // 3900자 단위로 분할 (헤더 포함 시 여유 고려)
+                    const chunks = splitContentByCharLimit(content);
+
+                    bookIntroductions[bookName] = {
+                        title: title,
+                        chunks: chunks
+                    };
+                }
+
+                console.log('성경 소개 파싱 완료:', Object.keys(bookIntroductions).length + '권');
+            } catch (error) {
+                console.error('성경 소개 파일 로드 실패:', error);
+            }
+        }
+
+        // 클립보드에 말씀 복사하는 함수
+        async function copyVerse(dayIndex) {
+            const reading = bibleReadings[dayIndex];
+            const message = `샬롬!\n오늘 함께 읽을 말씀은\n${reading}장 입니다.`;
+
+            try {
+                await navigator.clipboard.writeText(message);
+                document.getElementById('statusText').textContent = reading;
+                showNotification();
+            } catch (err) {
+                console.error('클립보드 복사 실패:', err);
+                fallbackCopyToClipboard(message, reading);
+            }
+        }
+
+        // 클립보드에 소개 복사하는 함수
+        async function copyIntro(bookName, chunkIndex) {
+            const introData = bookIntroductions[bookName];
+            if (!introData) {
+                showNotification('성경 소개를 찾을 수 없습니다.');
+                return;
+            }
+
+            // 제목 생성: 분할 시 "X/Y" 추가
+            const totalChunks = introData.chunks.length;
+            let header = `# ${introData.title}`;
+            if (totalChunks > 1) {
+                header += ` ${chunkIndex + 1}/${totalChunks}`;
+            }
+
+            const content = `${header}\n\n${introData.chunks[chunkIndex]}`;
+
+            // 최종 문자 수 체크
+            const contentLength = content.length;
+            console.log(`복사할 내용 길이: ${contentLength}자`);
+
+            if (contentLength > 3900) {
+                showNotification(`⚠️ 경고: ${contentLength}자 (3900자 초과)`);
+                console.warn(`경고: 복사 내용이 3900자를 초과합니다. (${contentLength}자)`);
+            }
+
+            try {
+                await navigator.clipboard.writeText(content);
+                const statusText = totalChunks > 1
+                    ? `${bookName} 소개 (${chunkIndex + 1}/${totalChunks}) - ${contentLength}자`
+                    : `${bookName} 소개 - ${contentLength}자`;
+                document.getElementById('statusText').textContent = statusText;
+                showNotification();
+            } catch (err) {
+                console.error('클립보드 복사 실패:', err);
+                fallbackCopyToClipboard(content, bookName + ' 소개');
+            }
+        }
+
+        // Fallback 클립보드 복사 방법
+        function fallbackCopyToClipboard(text, statusText) {
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            textArea.style.position = 'fixed';
+            textArea.style.left = '-999999px';
+            document.body.appendChild(textArea);
+            textArea.select();
+
+            try {
+                document.execCommand('copy');
+                document.getElementById('statusText').textContent = statusText;
+                showNotification();
+            } catch (err) {
+                console.error('Fallback 복사 실패:', err);
+                alert('클립보드 복사에 실패했습니다.');
+            }
+
+            document.body.removeChild(textArea);
+        }
+
+        // 알림 표시
+        function showNotification(message = 'क्लिपबोर्ड पर कॉपी किया गया!') {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.classList.add('show');
+
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 2000);
+        }
+
+        // 페이지 초기화
+        async function initializePage() {
+            // 책 시작 날짜 감지
+            detectBookStartDates();
+
+            // 성경 소개 파싱
+            await parseBookIntroductions();
+
+            const content = document.getElementById('content');
+            let dayIndex = 0;
+
+            for (let month = 0; month < 12; month++) {
+                // 월 섹션 생성
+                const monthSection = document.createElement('div');
+                monthSection.className = 'month-section';
+
+                // 월 제목
+                const monthTitle = document.createElement('h2');
+                monthTitle.className = 'month-title';
+                monthTitle.textContent = monthNames[month];
+                monthSection.appendChild(monthTitle);
+
+                // 요일 헤더 추가
+                const weekdayHeader = document.createElement('div');
+                weekdayHeader.className = 'weekday-header';
+                const weekdayNames = ['일', '월', '화', '수', '목', '금', '토'];
+                weekdayNames.forEach(day => {
+                    const dayCell = document.createElement('div');
+                    dayCell.textContent = day;
+                    weekdayHeader.appendChild(dayCell);
+                });
+                monthSection.appendChild(weekdayHeader);
+
+                // 날짜 그리드
+                const daysGrid = document.createElement('div');
+                daysGrid.className = 'days-grid';
+
+                // 해당 월의 1일이 무슨 요일인지 확인하여 빈 칸 추가
+                const firstDayOfMonth = getDayOfWeek(dayIndex);
+                const weekDays = ["रवि", "सोम", "मंगल", "बुध", "गुरु", "शुक्र", "शनि"];
+                let firstDayIndex = weekDays.indexOf(firstDayOfMonth);
+
+                // 일요일(0)부터 시작하도록 설정
+                // 일요일(0)이면 0칸, 월요일(1)이면 1칸, 화요일(2)이면 2칸...
+                const emptyDays = firstDayIndex;
+
+                // 빈 칸 추가
+                for (let i = 0; i < emptyDays; i++) {
+                    const emptyCell = document.createElement('div');
+                    emptyCell.className = 'day-section empty-cell';
+                    daysGrid.appendChild(emptyCell);
+                }
+
+                // 해당 월의 날짜 버튼 생성
+                for (let day = 1; day <= daysInMonth[month]; day++) {
+                    // day-section 컨테이너 생성
+                    const daySection = document.createElement('div');
+                    daySection.className = 'day-section';
+                    daySection.setAttribute('data-day-index', dayIndex);
+
+                    // 새로운 책이 시작되는지 확인 (배열로 변경됨)
+                    const bookNames = bookStartDates[dayIndex];
+                    if (bookNames && Array.isArray(bookNames)) {
+                        // 여러 책이 시작될 수 있음
+                        for (const bookName of bookNames) {
+                            if (bookIntroductions[bookName]) {
+                                const introData = bookIntroductions[bookName];
+                                const totalChunks = introData.chunks.length;
+
+                                // 각 chunk별로 소개 버튼 생성
+                                for (let chunkIdx = 0; chunkIdx < totalChunks; chunkIdx++) {
+                                    const introButton = document.createElement('button');
+                                    introButton.className = 'intro-button';
+
+                                    if (totalChunks > 1) {
+                                        introButton.textContent = `${bookName} 소개 (${chunkIdx + 1}/${totalChunks})`;
+                                    } else {
+                                        introButton.textContent = `${bookName} 소개`;
+                                    }
+
+                                    // 클로저로 변수 캡처
+                                    const currentBookName = bookName;
+                                    const currentChunkIdx = chunkIdx;
+                                    introButton.onclick = () => copyIntro(currentBookName, currentChunkIdx);
+
+                                    daySection.appendChild(introButton);
+                                }
+                            }
+                        }
+                    }
+
+                    // 말씀 버튼 생성
+                    const verseButton = document.createElement('button');
+                    verseButton.className = 'verse-button';
+                    verseButton.textContent = `${day}일`;
+
+                    // 클로저로 dayIndex 캡처
+                    const currentIndex = dayIndex;
+                    verseButton.onclick = () => copyVerse(currentIndex);
+
+                    daySection.appendChild(verseButton);
+                    daysGrid.appendChild(daySection);
+                    dayIndex++;
+
+                    // 365일 초과 방지
+                    if (dayIndex >= 365) break;
+                }
+
+                monthSection.appendChild(daysGrid);
+                content.appendChild(monthSection);
+
+                // 365일 초과 방지
+                if (dayIndex >= 365) break;
+            }
+        }
+
+        // 오늘 날짜 계산 함수 (1월 1일부터 며칠째인지)
+        function getTodayDayIndex() {
+            const now = new Date();
+            const month = now.getMonth(); // 0-11
+            const date = now.getDate(); // 1-31
+
+            // 해당 월까지의 누적 일수 계산
+            let dayIndex = 0;
+            for (let m = 0; m < month; m++) {
+                dayIndex += daysInMonth[m];
+            }
+
+            // 현재 월의 일수 추가 (1일 = 0번 인덱스이므로 -1)
+            dayIndex += date - 1;
+
+            // 최대 364 (365일째는 index 364)
+            return Math.min(dayIndex, 364);
+        }
+
+        // 오늘 날짜로 스크롤하는 함수
+        function scrollToToday() {
+            const todayIndex = getTodayDayIndex();
+            const todayElement = document.querySelector(`[data-day-index="${todayIndex}"]`);
+
+            if (todayElement) {
+                // 월/일 계산
+                const now = new Date();
+                const month = now.getMonth() + 1; // 0부터 시작하므로 +1
+                const date = now.getDate();
+
+                // 기존 하이라이트 제거
+                document.querySelectorAll('.day-section.today-highlight').forEach(el => {
+                    el.classList.remove('today-highlight');
+                });
+
+                // 오늘 날짜 하이라이트 추가
+                todayElement.classList.add('today-highlight');
+
+                // 부드럽게 스크롤
+                todayElement.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center'
+                });
+
+                // 시각적 강조 효과 (애니메이션)
+                todayElement.style.transition = 'all 0.5s ease';
+                todayElement.style.transform = 'scale(1.05)';
+
+                setTimeout(() => {
+                    todayElement.style.transform = 'scale(1)';
+                }, 1000);
+
+                // 토스트 메시지 표시
+                showNotification(`${month}월 ${date}일로 이동합니다.`);
+            } else {
+                showNotification('오늘 날짜를 찾을 수 없습니다.');
+            }
+        }
+
+        // 페이지 로드 시 초기화
+        window.addEventListener('DOMContentLoaded', initializePage);
+    </script>
+</body>
+
+</html>
