@@ -73,14 +73,7 @@
   <url>
     <loc>https://wwtrembling.github.io/ko/daily-verse/</loc>
     <xhtml:link rel="alternate" hreflang="ko" href="https://wwtrembling.github.io/ko/daily-verse/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://wwtrembling.github.io/en/daily-verse/"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://wwtrembling.github.io/ja/daily-verse/"/>
-    <xhtml:link rel="alternate" hreflang="hi" href="https://wwtrembling.github.io/hi/daily-verse/"/>
-    <xhtml:link rel="alternate" hreflang="id" href="https://wwtrembling.github.io/id/daily-verse/"/>
-    <xhtml:link rel="alternate" hreflang="vi" href="https://wwtrembling.github.io/vi/daily-verse/"/>
-    <xhtml:link rel="alternate" hreflang="th" href="https://wwtrembling.github.io/th/daily-verse/"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://wwtrembling.github.io/de/daily-verse/"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://wwtrembling.github.io/pt/daily-verse/"/>
+
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -236,20 +229,7 @@
     <priority>0.8</priority>
   </url>
   
-  <url>
-    <loc>https://wwtrembling.github.io/en/daily-verse/</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://wwtrembling.github.io/ko/daily-verse/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://wwtrembling.github.io/en/daily-verse/"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://wwtrembling.github.io/ja/daily-verse/"/>
-    <xhtml:link rel="alternate" hreflang="hi" href="https://wwtrembling.github.io/hi/daily-verse/"/>
-    <xhtml:link rel="alternate" hreflang="id" href="https://wwtrembling.github.io/id/daily-verse/"/>
-    <xhtml:link rel="alternate" hreflang="vi" href="https://wwtrembling.github.io/vi/daily-verse/"/>
-    <xhtml:link rel="alternate" hreflang="th" href="https://wwtrembling.github.io/th/daily-verse/"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://wwtrembling.github.io/de/daily-verse/"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://wwtrembling.github.io/pt/daily-verse/"/>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
+
   
   <url>
     <loc>https://wwtrembling.github.io/en/bmi-calculator/</loc>

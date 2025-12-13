@@ -37,7 +37,7 @@ GitHub Pages 기반의 클라이언트 전용 유틸리티 모음 사이트
 - **특징**: 드래그 앤 드롭, 실시간 미리보기, 품질 조절
 
 ### ✅ 3. 매일 성경말씀 복사 (Daily Bible Verse Copier)
-- **경로**: `/{lang}/daily-verse/`
+- **경로**: `/ko/daily-verse/` (한국어 전용)
 - **기능**: 365일 성경 읽기 계획 복사
 - **특징**: 캘린더 기반 인터페이스, 원클릭 복사
 
@@ -110,7 +110,7 @@ GitHub Pages 기반의 클라이언트 전용 유틸리티 모음 사이트
     ├─ index.html          # 언어별 메인 페이지
     ├─ unit-converter/
     ├─ image-converter/
-    ├─ daily-verse/
+    ├─ daily-verse/        # (ko only)
     ├─ bmi-calculator/
     ├─ date-calculator/
     ├─ text-utils/
