@@ -537,3 +537,41 @@ a:hover {
 .fade-in {
   animation: fadeIn var(--transition-base) ease-out;
 }
+/* Related Tools Section */
+.related-tools-section {
+    margin-top: var(--spacing-xl);
+    padding-top: var(--spacing-lg);
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+}
+
+.related-tools-section h3 {
+    margin-bottom: var(--spacing-md);
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+}
+
+.related-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--spacing-sm);
+}
+
+.related-btn {
+    display: inline-block;
+    padding: 8px 16px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-full);
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+}
+
+.related-btn:hover {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
