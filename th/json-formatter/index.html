@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-adsense-account" content="ca-pub-6334819180242631">
   <title>ตัวจัดรูปแบบ JSON - Tool Shelf</title>
-  <meta name="description" content="จัดรูปแบบและตรวจสอบข้อมูล JSON ให้บริการการจัดรูปแบบ การย่อขนาด และการตรวจสอบ">
+  <meta name="description" content="จัดรูปแบบและตรวจสอบข้อมูล JSON คุณสมบัติต่างๆ ได้แก่ การย่อขนาด การจัดรูปแบบ และการตรวจสอบ">
   
   <!-- Open Graph -->
   <meta property="og:title" content="ตัวจัดรูปแบบ JSON - Tool Shelf">
-  <meta property="og:description" content="จัดรูปแบบและตรวจสอบข้อมูล JSON ให้บริการการจัดรูปแบบ การย่อขนาด และการตรวจสอบ">
+  <meta property="og:description" content="จัดรูปแบบและตรวจสอบข้อมูล JSON คุณสมบัติต่างๆ ได้แก่ การย่อขนาด การจัดรูปแบบ และการตรวจสอบ">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://wwtrembling.github.io/th/json-formatter/">
   
@@ -16,7 +17,7 @@
   <link rel="canonical" href="https://wwtrembling.github.io/th/json-formatter/">
   
   <!-- Language Alternatives -->
-  <link rel="alternate" hreflang="ko" href="https://wwtrembling.github.io/ko/json-formatter/">
+  <link rel="alternate" hreflang="ko" href="https://wwtrembling.github.io/th/json-formatter/">
   <link rel="alternate" hreflang="en" href="https://wwtrembling.github.io/en/json-formatter/">
   <link rel="alternate" hreflang="ja" href="https://wwtrembling.github.io/ja/json-formatter/">
   <link rel="alternate" hreflang="hi" href="https://wwtrembling.github.io/hi/json-formatter/">
@@ -40,10 +41,10 @@
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "ตัวจัดรูปแบบ JSON",
-    "description": "จัดรูปแบบและตรวจสอบข้อมูล JSON ให้บริการการจัดรูปแบบ การย่อขนาด และการตรวจสอบ",
+    "name": "JSON 포매터",
+    "description": "จัดรูปแบบและตรวจสอบข้อมูล JSON คุณสมบัติต่างๆ ได้แก่ การย่อขนาด การจัดรูปแบบ และการตรวจสอบ",
     "url": "https://wwtrembling.github.io/th/json-formatter/",
-    "inLanguage": "th",
+    "inLanguage": "ko",
     "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "Any",
     "offers": {
@@ -128,28 +129,28 @@
 
   <main class="main-content">
     <div class="container-narrow">
-      <h1>{{ }} ตัวจัดรูปแบบ JSON</h1>
-      <p>จัดรูปแบบและตรวจสอบข้อมูล JSON ให้บริการการจัดรูปแบบ การย่อขนาด และการตรวจสอบ</p>
+      <h1>ตัวจัดรูปแบบ JSON</h1>
+      <p>จัดรูปแบบและตรวจสอบข้อมูล JSON คุณสมบัติต่างๆ ได้แก่ การย่อขนาด การจัดรูปแบบ และการตรวจสอบ</p>
       
       <!-- AdSense Placeholder -->
       <div class="adsense-placeholder">
         <!-- AdSense Ad Unit -->
-        <p>พื้นที่โฆษณา</p>
+        <p>โฆษณา</p>
       </div>
       
       <!-- Action Buttons -->
       <div class="btn-group">
-        <button class="btn btn-primary" onclick="formatJSON()">จัดรูปแบบ</button>
-        <button class="btn btn-secondary" onclick="minifyJSON()">ย่อขนาด</button>
-        <button class="btn btn-secondary" onclick="validateJSON()">ตรวจสอบ</button>
-        <button class="btn btn-secondary" onclick="copyOutput()">คัดลอก</button>
-        <button class="btn btn-secondary" onclick="clearAll()">ล้าง</button>
+        <button class="btn btn-primary" onclick="formatJSON()">Format</button>
+        <button class="btn btn-secondary" onclick="minifyJSON()">Minify</button>
+        <button class="btn btn-secondary" onclick="validateJSON()">Validate</button>
+        <button class="btn btn-secondary" onclick="copyOutput()">Copy</button>
+        <button class="btn btn-secondary" onclick="clearAll()">Clear</button>
       </div>
       
       <!-- Editors -->
       <div class="editor-container">
         <div class="editor-panel">
-          <label class="form-label">ป้อน JSON</label>
+          <label class="form-label">Input JSON</label>
           <textarea id="jsonInput" class="form-textarea json-textarea" placeholder="ป้อนข้อมูล JSON..."></textarea>
         </div>
         
@@ -166,7 +167,7 @@
       <!-- AdSense Placeholder -->
       <div class="adsense-placeholder">
         <!-- AdSense Ad Unit -->
-        <p>พื้นที่โฆษณา</p>
+        <p>โฆษณา</p>
       </div>
     </div>
   </main>
@@ -235,7 +236,7 @@
     function showValidation(isValid, error = '') {
       validationStatus.style.display = 'block';
       validationStatus.className = 'validation-status ' + (isValid ? 'valid' : 'invalid');
-      validationStatus.textContent = isValid ? '✓ JSON ถูกต้อง' : '✗ JSON ไม่ถูกต้อง';
+      validationStatus.textContent = isValid ? '✓ JSON ที่ถูกต้อง' : '✗ JSON ไม่ถูกต้อง';
       
       if (error) {
         errorMessage.style.display = 'block';

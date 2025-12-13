@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Base64 인코더/디코더 - Tool Shelf</title>
-    <meta name="description" content="텍스트를 Base64로 인코딩하거나 디코딩하세요.">
-    <link rel="canonical" href="https://wwtrembling.github.io/ko/base64-converter/">
+  <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+    <title>Base64 Encoder/Decoder - Tool Shelf</title>
+    <meta name="description" content="Encode or decode text to Base64.">
+    <link rel="canonical" href="https://wwtrembling.github.io/en/base64-converter/">
     <link rel="stylesheet" href="/assets/css/main.css">
     <style>
         .converter-box {
@@ -49,24 +50,24 @@
 <body>
     <header class="site-header">
         <div class="container">
-            <div class="header-content"><a href="/ko/" class="site-logo">🛠️ Tool Shelf</a></div>
+            <div class="header-content"><a href="/en/" class="site-logo">🛠️ Tool Shelf</a></div>
         </div>
     </header>
     <main class="main-content">
         <div class="container-narrow">
-            <h1>🔐 Base64 인코더/디코더</h1>
-            <p>텍스트를 Base64로 인코딩하거나 디코딩하세요.</p>
+            <h1>🔐 Base64 Encoder/Decoder</h1>
+            <p>Encode or decode text to Base64.</p>
             <div class="converter-box">
-                <label class="form-label">입력 텍스트</label>
+                <label class="form-label">Input Text</label>
                 <textarea id="input" class="form-input" style="min-height: 150px;"
-                    placeholder="인코딩할 텍스트를 입력하세요">Hello World!</textarea>
+                    placeholder="Enter text to encode">Hello World!</textarea>
                 <div class="btn-group">
                     <button class="btn btn-primary" id="encodeBtn">⬇️ Encode</button>
                     <button class="btn btn-primary" id="decodeBtn">⬆️ Decode</button>
-                    <button class="btn btn-secondary" id="copyBtn">📋 복사</button>
-                    <button class="btn btn-secondary" id="clearBtn">🗑️ 초기화</button>
+                    <button class="btn btn-secondary" id="copyBtn">📋 Copy</button>
+                    <button class="btn btn-secondary" id="clearBtn">🗑️ Clear</button>
                 </div>
-                <label class="form-label">출력 결과</label>
+                <label class="form-label">Output Result</label>
                 <textarea id="output" class="form-input" style="min-height: 150px;" readonly></textarea>
             </div>
         </div>
@@ -87,7 +88,7 @@
             try {
                 output.value = btoa(unescape(encodeURIComponent(input.value)));
             } catch (e) {
-                alert('인코딩 오류: ' + e.message);
+                alert('Encoding Error: ' + e.message);
             }
         });
 
@@ -95,13 +96,13 @@
             try {
                 output.value = decodeURIComponent(escape(atob(input.value)));
             } catch (e) {
-                alert('디코딩 오류: ' + e.message);
+                alert('Decoding Error: ' + e.message);
             }
         });
 
         document.getElementById('copyBtn').addEventListener('click', () => {
             if (output.value) Utils.copyToClipboard(output.value);
-            else alert('복사할 내용이 없습니다.');
+            else alert('Nothing to copy.');
         });
 
         document.getElementById('clearBtn').addEventListener('click', () => {

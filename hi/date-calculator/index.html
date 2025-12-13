@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>तिथि कैलकुलेटर - Tool Shelf</title>
-  <meta name="description" content="D-Day और तिथि अंतर की गणना करें।">
+  <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+  <title>तारीख कैलकुलेटर - Tool Shelf</title>
+  <meta name="description" content="Calculate D-Day and date differences.">
   <link rel="canonical" href="https://wwtrembling.github.io/hi/date-calculator/">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/main.css">
@@ -13,35 +14,35 @@
 <body>
   <header class="site-header">
     <div class="container"><div class="header-content">
-      <a href="/hi/" class="site-logo">🛠️ Tool Shelf</a>
+      <a href="/hi/" class="site-logo">Tool Shelf</a>
     </div></div>
   </header>
   <main class="main-content">
     <div class="container-narrow">
-      <h1>📅 तिथि कैलकुलेटर</h1>
-      <p>D-Day और तिथि अंतर की गणना करें।</p>
+      <h1>📅 तारीख कैलकुलेटर</h1>
+      <p>D-Day और तारीख के अंतर की गणना करें।</p>
       <div class="card">
-        <h3>D-Day गणना</h3>
+        <h3>D-Day Calculation</h3>
         <div class="form-group">
-          <label class="form-label">लक्ष्य तिथि</label>
+          <label class="form-label">Target Date</label>
           <input type="date" id="targetDate" class="form-input">
         </div>
-        <button class="btn btn-primary" onclick="calculateDday()">गणना</button>
+        <button class="btn btn-primary" onclick="calculateDday()">गणना करें</button>
         <div id="ddayResult" class="result-box" style="display:none; margin-top:1rem;">
           <div class="result-value" id="ddayValue"></div>
         </div>
       </div>
       <div class="card">
-        <h3>तिथि अंतर</h3>
+        <h3>Date Difference</h3>
         <div class="form-group">
-          <label class="form-label">प्रारंभ तिथि</label>
+          <label class="form-label">Start Date</label>
           <input type="date" id="startDate" class="form-input">
         </div>
         <div class="form-group">
-          <label class="form-label">समाप्ति तिथि</label>
+          <label class="form-label">End Date</label>
           <input type="date" id="endDate" class="form-input">
         </div>
-        <button class="btn btn-primary" onclick="calculateDiff()">गणना</button>
+        <button class="btn btn-primary" onclick="calculateDiff()">गणना करें</button>
         <div id="diffResult" class="result-box" style="display:none; margin-top:1rem;">
           <div class="result-value" id="diffValue"></div>
         </div>
@@ -50,7 +51,7 @@
   </main>
   <footer class="site-footer">
     <div class="container"><div class="footer-content">
-      <p>&copy; 2025 Tool Shelf. All rights reserved.</p>
+      <p></p>
     </div></div>
   </footer>
   <script src="/assets/js/common.js"></script>
@@ -67,7 +68,7 @@
       const start = new Date(document.getElementById('startDate').value);
       const end = new Date(document.getElementById('endDate').value);
       const diff = Math.abs(Math.ceil((end - start) / (1000 * 60 * 60 * 24)));
-      document.getElementById('diffValue').textContent = diff + ' दिन';
+      document.getElementById('diffValue').textContent = diff + ' Sun';
       document.getElementById('diffResult').style.display = 'block';
     }
   </script>

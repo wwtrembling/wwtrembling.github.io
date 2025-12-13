@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Máy Tính Ngày - Tool Shelf</title>
-  <meta name="description" content="Tính D-Day và chênh lệch ngày.">
+  <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+  <title>Máy tính ngày - Tool Shelf</title>
+  <meta name="description" content="Calculate D-Day and date differences.">
   <link rel="canonical" href="https://wwtrembling.github.io/vi/date-calculator/">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/main.css">
@@ -18,30 +19,30 @@
   </header>
   <main class="main-content">
     <div class="container-narrow">
-      <h1>📅 Máy Tính Ngày</h1>
-      <p>Tính D-Day và chênh lệch ngày.</p>
+      <h1>📅 Máy tính ngày</h1>
+      <p>Tính toán D-Day và chênh lệch ngày.</p>
       <div class="card">
-        <h3>Tính D-Day</h3>
+        <h3>D-Day Calculation</h3>
         <div class="form-group">
-          <label class="form-label">Ngày Mục Tiêu</label>
+          <label class="form-label">Target Date</label>
           <input type="date" id="targetDate" class="form-input">
         </div>
-        <button class="btn btn-primary" onclick="calculateDday()">Tính</button>
+        <button class="btn btn-primary" onclick="calculateDday()">Tính toán</button>
         <div id="ddayResult" class="result-box" style="display:none; margin-top:1rem;">
           <div class="result-value" id="ddayValue"></div>
         </div>
       </div>
       <div class="card">
-        <h3>Chênh Lệch Ngày</h3>
+        <h3>Date Difference</h3>
         <div class="form-group">
-          <label class="form-label">Ngày Bắt Đầu</label>
+          <label class="form-label">Start Date</label>
           <input type="date" id="startDate" class="form-input">
         </div>
         <div class="form-group">
-          <label class="form-label">Ngày Kết Thúc</label>
+          <label class="form-label">End Date</label>
           <input type="date" id="endDate" class="form-input">
         </div>
-        <button class="btn btn-primary" onclick="calculateDiff()">Tính</button>
+        <button class="btn btn-primary" onclick="calculateDiff()">Tính toán</button>
         <div id="diffResult" class="result-box" style="display:none; margin-top:1rem;">
           <div class="result-value" id="diffValue"></div>
         </div>
@@ -67,7 +68,7 @@
       const start = new Date(document.getElementById('startDate').value);
       const end = new Date(document.getElementById('endDate').value);
       const diff = Math.abs(Math.ceil((end - start) / (1000 * 60 * 60 * 24)));
-      document.getElementById('diffValue').textContent = diff + ' ngày';
+      document.getElementById('diffValue').textContent = diff + ' Sun';
       document.getElementById('diffResult').style.display = 'block';
     }
   </script>

@@ -4,12 +4,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Konverter Satuan - Tool Shelf</title>
-  <meta name="description" content="Konversi panjang, berat, suhu, volume dan lainnya. Mendukung semua unit utama termasuk meter, kaki, kilogram, pon, Celsius, Fahrenheit.">
+  <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+  <title>Konverter Unit - Tool Shelf</title>
+  <meta name="description" content="Convert Length, Weight, Temperature, Volume, and more.">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Konverter Satuan - Tool Shelf">
-  <meta property="og:description" content="Konversi panjang, berat, suhu, volume dan lainnya. Mendukung semua unit utama termasuk meter, kaki, kilogram, pon, Celsius, Fahrenheit.">
+  <meta property="og:title" content="단위 변환기 - 🛠️ Tool Shelf">
+  <meta property="og:description" content="Convert Length, Weight, Temperature, Volume, and more.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://wwtrembling.github.io/id/unit-converter/">
 
@@ -17,7 +18,7 @@
   <link rel="canonical" href="https://wwtrembling.github.io/id/unit-converter/">
 
   <!-- Language Alternatives -->
-  <link rel="alternate" hreflang="id" href="https://wwtrembling.github.io/id/unit-converter/">
+  <link rel="alternate" hreflang="ko" href="https://wwtrembling.github.io/id/unit-converter/">
   <link rel="alternate" hreflang="en" href="https://wwtrembling.github.io/en/unit-converter/">
   <link rel="alternate" hreflang="ja" href="https://wwtrembling.github.io/ja/unit-converter/">
   <link rel="alternate" hreflang="hi" href="https://wwtrembling.github.io/hi/unit-converter/">
@@ -41,10 +42,10 @@
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "Konverter Satuan",
-    "description": "Konversi panjang, berat, suhu, volume dan lainnya. Mendukung semua unit utama termasuk meter, kaki, kilogram, pon, Celsius, Fahrenheit.",
+    "name": "단위 변환기",
+    "description": "Panjang, Berat, Suhu, Volume 등 다양한 단위를 간편하게 변환하세요.",
     "url": "https://wwtrembling.github.io/id/unit-converter/",
-    "inLanguage": "id",
+    "inLanguage": "ko",
     "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "Any",
     "offers": {
@@ -131,24 +132,24 @@
 
   <main class="main-content">
     <div class="container-narrow">
-      <h1>📏 Konverter Satuan</h1>
-      <p>Konversi panjang, berat, suhu, volume dan lainnya. Mendukung semua unit utama termasuk meter, kaki, kilogram, pon, Celsius, Fahrenheit.</p>
+      <h1>📏 Konverter Unit</h1>
+      <p>Convert Length, Weight, Temperature, Volume, and more.</p>
 
       <!-- AdSense Placeholder -->
       <div class="adsense-placeholder">
         <!-- AdSense Ad Unit -->
-        <p>Ruang Iklan</p>
+        <p>Iklan</p>
       </div>
 
       <!-- Category Selection -->
       <div class="converter-section">
-        <label class="form-label">Kategori Konversi</label>
+        <label class="form-label">Category</label>
         <select id="category" class="form-select">
           <option value="length">Panjang</option>
           <option value="weight">Berat</option>
           <option value="temperature">Suhu</option>
           <option value="volume">Volume</option>
-          <option value="area">Luas</option>
+          <option value="area">Area</option>
           <option value="speed">Kecepatan</option>
         </select>
       </div>
@@ -157,16 +158,16 @@
       <div class="converter-section">
         <div class="converter-grid">
           <div>
-            <label class="form-label">Dari</label>
+            <label class="form-label">Nilai untuk Dikonversi</label>
             <input type="number" id="fromValue" class="form-input" placeholder="Masukkan angka" value="1">
             <select id="fromUnit" class="form-select mt-1"></select>
             <div class="result-display" id="fromDisplay">1</div>
           </div>
 
-          <button class="swap-btn" id="swapBtn" title="Tukar satuan">⇄</button>
+          <button class="swap-btn" id="swapBtn" title="Tukar Unit">⇄</button>
 
           <div>
-            <label class="form-label">Ke</label>
+            <label class="form-label">Nilai Dikonversi</label>
             <input type="number" id="toValue" class="form-input" placeholder="Hasil" readonly>
             <select id="toUnit" class="form-select mt-1"></select>
             <div class="result-display" id="toDisplay">-</div>
@@ -176,14 +177,14 @@
 
       <!-- Quick Reference -->
       <div class="card">
-        <h3>Referensi Cepat</h3>
+        <h3>Konversi Umum</h3>
         <div id="quickReference"></div>
       </div>
 
       <!-- AdSense Placeholder -->
       <div class="adsense-placeholder">
         <!-- AdSense Ad Unit -->
-        <p>Ruang Iklan</p>
+        <p>Iklan</p>
       </div>
     </div>
   </main>
@@ -200,32 +201,32 @@
   <script>
     // Unit conversion data
     const conversionData = {
-            length: {
+      length: {
         name: 'Panjang',
         units: {
           meter: { name: 'Meter (m)', toBase: 1 },
           kilometer: { name: 'Kilometer (km)', toBase: 1000 },
-          centimeter: { name: 'Sentimeter (cm)', toBase: 0.01 },
-          millimeter: { name: 'Milimeter (mm)', toBase: 0.001 },
-          mile: { name: 'Mil (mi)', toBase: 1609.344 },
+          centimeter: { name: 'Centimeter (cm)', toBase: 0.01 },
+          millimeter: { name: 'Millimeter (mm)', toBase: 0.001 },
+          mile: { name: 'Mile (mi)', toBase: 1609.344 },
           yard: { name: 'Yard (yd)', toBase: 0.9144 },
-          foot: { name: 'Kaki (ft)', toBase: 0.3048 },
-          inch: { name: 'Inci (in)', toBase: 0.0254 }
+          foot: { name: 'Feet (ft)', toBase: 0.3048 },
+          inch: { name: 'Inch (in)', toBase: 0.0254 }
         }
       },
       weight: {
-        name: '무게',
+        name: 'Berat',
         units: {
           kilogram: { name: 'Kilogram (kg)', toBase: 1 },
           gram: { name: 'Gram (g)', toBase: 0.001 },
-          milligram: { name: 'Miligram (mg)', toBase: 0.000001 },
+          milligram: { name: 'Milligram (mg)', toBase: 0.000001 },
           ton: { name: 'Ton (t)', toBase: 1000 },
-          pound: { name: 'Pon (lb)', toBase: 0.453592 },
-          ounce: { name: 'Ons (oz)', toBase: 0.0283495 }
+          pound: { name: 'Pound (lb)', toBase: 0.453592 },
+          ounce: { name: 'Ounce (oz)', toBase: 0.0283495 }
         }
       },
       temperature: {
-        name: '온도',
+        name: 'Suhu',
         units: {
           celsius: { name: 'Celsius (°C)', toBase: null },
           fahrenheit: { name: 'Fahrenheit (°F)', toBase: null },
@@ -233,34 +234,34 @@
         }
       },
       volume: {
-        name: '부피',
+        name: 'Volume',
         units: {
           liter: { name: 'Liter (L)', toBase: 1 },
-          milliliter: { name: 'Mililiter (mL)', toBase: 0.001 },
-          cubicMeter: { name: 'Meter Kubik (m³)', toBase: 1000 },
-          gallon: { name: 'Galon (gal)', toBase: 3.78541 },
+          milliliter: { name: 'Milliliter (mL)', toBase: 0.001 },
+          cubicMeter: { name: 'Cubic Meter (m³)', toBase: 1000 },
+          gallon: { name: 'Gallon (gal)', toBase: 3.78541 },
           quart: { name: 'Quart (qt)', toBase: 0.946353 },
           pint: { name: 'Pint (pt)', toBase: 0.473176 },
-          cup: { name: 'Cangkir (cup)', toBase: 0.236588 }
+          cup: { name: 'Cup', toBase: 0.236588 }
         }
       },
       area: {
-        name: '면적',
+        name: 'Area',
         units: {
-          squareMeter: { name: 'Meter Persegi (m²)', toBase: 1 },
-          squareKilometer: { name: 'Kilometer Persegi (km²)', toBase: 1000000 },
-          squareCentimeter: { name: 'Sentimeter Persegi (cm²)', toBase: 0.0001 },
-          hectare: { name: 'Hektar (ha)', toBase: 10000 },
+          squareMeter: { name: 'Square Meter (m²)', toBase: 1 },
+          squareKilometer: { name: 'Square Kilometer (km²)', toBase: 1000000 },
+          squareCentimeter: { name: 'Square Centimeter (cm²)', toBase: 0.0001 },
+          hectare: { name: 'Hectare (ha)', toBase: 10000 },
           acre: { name: 'Acre (ac)', toBase: 4046.86 },
-          squareFoot: { name: 'Kaki Persegi (ft²)', toBase: 0.092903 }
+          squareFoot: { name: 'Square Foot (ft²)', toBase: 0.092903 }
         }
       },
       speed: {
-        name: '속도',
+        name: 'Kecepatan',
         units: {
-          meterPerSecond: { name: 'Meter/Detik (m/s)', toBase: 1 },
-          kilometerPerHour: { name: 'Kilometer/Jam (km/h)', toBase: 0.277778 },
-          milePerHour: { name: 'Mil/Jam (mph)', toBase: 0.44704 },
+          meterPerSecond: { name: 'Meter/Second (m/s)', toBase: 1 },
+          kilometerPerHour: { name: 'Kilometer/Hour (km/h)', toBase: 0.277778 },
+          milePerHour: { name: '마Sun/시 (mph)', toBase: 0.44704 },
           knot: { name: 'Knot (knot)', toBase: 0.514444 }
         }
       }

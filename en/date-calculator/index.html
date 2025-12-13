@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-adsense-account" content="ca-pub-6334819180242631">
   <title>Date Calculator - Tool Shelf</title>
   <meta name="description" content="Calculate D-Day and date differences.">
   <link rel="canonical" href="https://wwtrembling.github.io/en/date-calculator/">
@@ -21,7 +22,7 @@
       <h1>📅 Date Calculator</h1>
       <p>Calculate D-Day and date differences.</p>
       <div class="card">
-        <h3>D-Day Calculator</h3>
+        <h3>D-Day Calculation</h3>
         <div class="form-group">
           <label class="form-label">Target Date</label>
           <input type="date" id="targetDate" class="form-input">
@@ -67,7 +68,7 @@
       const start = new Date(document.getElementById('startDate').value);
       const end = new Date(document.getElementById('endDate').value);
       const diff = Math.abs(Math.ceil((end - start) / (1000 * 60 * 60 * 24)));
-      document.getElementById('diffValue').textContent = diff + ' days';
+      document.getElementById('diffValue').textContent = diff + ' Sun';
       document.getElementById('diffResult').style.display = 'block';
     }
   </script>

@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="th">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QR 코드 생성기 - Tool Shelf</title>
-    <meta name="description" content="텍스트나 URL을 QR 코드로 변환하세요.">
-    <link rel="canonical" href="https://wwtrembling.github.io/ko/qr-generator/">
+  <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+    <title>เครื่องสร้างรหัส QR - Tool Shelf</title>
+    <meta name="description" content="Convert text or URL to QR code.">
+    <link rel="canonical" href="https://wwtrembling.github.io/th/qr-generator/">
     <link rel="stylesheet" href="/assets/css/main.css">
     <style>
         .qr-container {
@@ -43,19 +44,19 @@
 <body>
     <header class="site-header">
         <div class="container">
-            <div class="header-content"><a href="/ko/" class="site-logo">🛠️ Tool Shelf</a></div>
+            <div class="header-content"><a href="/th/" class="site-logo">🛠️ Tool Shelf</a></div>
         </div>
     </header>
     <main class="main-content">
         <div class="container-narrow">
-            <h1>📱 QR 코드 생성기</h1>
-            <p>텍스트나 URL을 QR 코드로 변환하세요.</p>
+            <h1>📱 สร้างรหัส QR</h1>
+            <p>Convert text or URL to QR code.</p>
             <div>
-                <label class="form-label">텍스트 또는 URL</label>
+                <label class="form-label">Text or URL</label>
                 <input type="text" id="text" class="form-input" placeholder="https://example.com"
                     value="https://wwtrembling.github.io">
                 <div style="margin-top: var(--spacing-md);">
-                    <label class="form-label">크기</label>
+                    <label class="form-label">Size</label>
                     <input type="range" id="size" min="128" max="512" value="256" class="form-input"
                         style="width: 100%;">
                     <span id="sizeValue">256px</span>
@@ -64,9 +65,9 @@
             <div class="qr-container">
                 <div id="qrcode"></div>
                 <div style="margin-top: var(--spacing-lg);">
-                    <button class="btn" id="generateBtn">생성</button>
+                    <button class="btn" id="generateBtn">Generate</button>
                     <button class="btn" id="downloadBtn"
-                        style="background: var(--bg-secondary); color: var(--text-primary); border: 1px solid var(--border-color);">다운로드</button>
+                        style="background: var(--bg-secondary); color: var(--text-primary); border: 1px solid var(--border-color);">Download</button>
                 </div>
             </div>
         </div>
@@ -93,7 +94,7 @@
 
         function generate() {
             if (!text.value) {
-                alert('텍스트를 입력하세요.');
+                alert('ป้อนข้อความ');
                 return;
             }
             qrcodeDiv.innerHTML = '';

@@ -3,11 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tiện Ích Văn Bản - Tool Shelf</title>
-  <meta name="description" content="Đếm từ, đếm ký tự, xóa trùng lặp, chuyển đổi chữ hoa/thường và nhiều tính năng xử lý văn bản khác.">
+  <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+  <title>Tiện ích văn bản - Tool Shelf</title>
+  <meta name="description" content="Đếm từ, ký tự, xóa trùng lặp, chuyển đổi chữ hoa/thường và hơn thế nữa.">
   
   <link rel="canonical" href="https://wwtrembling.github.io/vi/text-utils/">
-  <link rel="alternate" hreflang="ko" href="https://wwtrembling.github.io/ko/text-utils/">
+  <link rel="alternate" hreflang="ko" href="https://wwtrembling.github.io/vi/text-utils/">
   <link rel="alternate" hreflang="en" href="https://wwtrembling.github.io/en/text-utils/">
   <link rel="alternate" hreflang="ja" href="https://wwtrembling.github.io/ja/text-utils/">
   <link rel="alternate" hreflang="hi" href="https://wwtrembling.github.io/hi/text-utils/">
@@ -34,42 +35,42 @@
 
   <main class="main-content">
     <div class="container-narrow">
-      <h1>📝 Tiện Ích Văn Bản</h1>
-      <p>Đếm từ, đếm ký tự, xóa trùng lặp, chuyển đổi chữ hoa/thường và nhiều tính năng xử lý văn bản khác.</p>
+      <h1>📝 Tiện ích văn bản</h1>
+      <p>Đếm từ, ký tự, xóa trùng lặp, chuyển đổi chữ hoa/thường và hơn thế nữa.</p>
       
       <div class="card">
-        <label class="form-label">Nhập Văn Bản</label>
+        <label class="form-label">Input Text</label>
         <textarea id="textInput" class="form-textarea" style="min-height: 300px;" placeholder="Nhập văn bản..."></textarea>
       </div>
       
       <div class="card">
-        <h3>Thống Kê</h3>
+        <h3>Thống kê</h3>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem;">
           <div class="result-box">
             <div class="result-value" id="charCount">0</div>
-            <div>Ký tự</div>
+            <div>Characters</div>
           </div>
           <div class="result-box">
             <div class="result-value" id="wordCount">0</div>
-            <div>Từ</div>
+            <div>Words</div>
           </div>
           <div class="result-box">
             <div class="result-value" id="lineCount">0</div>
-            <div>Dòng</div>
+            <div>Lines</div>
           </div>
         </div>
       </div>
       
       <div class="card">
-        <h3>Hành Động</h3>
+        <h3>Hành động</h3>
         <div class="btn-group">
-          <button class="btn btn-secondary" onclick="toUpperCase()">Chữ Hoa</button>
-          <button class="btn btn-secondary" onclick="toLowerCase()">Chữ Thường</button>
-          <button class="btn btn-secondary" onclick="removeDuplicates()">Xóa Dòng Trùng Lặp</button>
-          <button class="btn btn-secondary" onclick="sortLines()">Sắp Xếp Dòng</button>
-          <button class="btn btn-secondary" onclick="reverseText()">Đảo Ngược Văn Bản</button>
-          <button class="btn btn-primary" onclick="copyText()">Sao chép</button>
-          <button class="btn btn-secondary" onclick="clearText()">Xóa</button>
+          <button class="btn btn-secondary" onclick="toUpperCase()">UPPERCASE</button>
+          <button class="btn btn-secondary" onclick="toLowerCase()">lowercase</button>
+          <button class="btn btn-secondary" onclick="removeDuplicates()">Remove Duplicate Lines</button>
+          <button class="btn btn-secondary" onclick="sortLines()">Sort Lines</button>
+          <button class="btn btn-secondary" onclick="reverseText()">Reverse Text</button>
+          <button class="btn btn-primary" onclick="copyText()">Copy</button>
+          <button class="btn btn-secondary" onclick="clearText()">Clear</button>
         </div>
       </div>
     </div>

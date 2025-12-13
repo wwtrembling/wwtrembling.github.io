@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ตัวจับเวลา - Tool Shelf</title>
-  <meta name="description" content="ตัวจับเวลาออนไลน์พร้อมเทคนิค Pomodoro">
+  <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+  <title>นาฬิกาจับเวลา - Tool Shelf</title>
+  <meta name="description" content="Online Timer and Pomodoro technique.">
   <link rel="canonical" href="https://wwtrembling.github.io/th/timer/">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/main.css">
@@ -22,23 +23,23 @@
   </header>
   <main class="main-content">
     <div class="container-narrow">
-      <h1>⏱️ ตัวจับเวลา</h1>
-      <p>ตัวจับเวลาออนไลน์พร้อมเทคนิค Pomodoro</p>
+      <h1>⏱️ นาฬิกาจับเวลา</h1>
+      <p>Online Timer and Pomodoro technique.</p>
       <div class="card text-center">
         <div class="timer-display" id="display">00:00</div>
         <div class="form-group">
-          <label class="form-label">นาที</label>
+          <label class="form-label">Minutes</label>
           <input type="number" id="minutes" class="form-input" value="25" min="0">
         </div>
         <div class="btn-group">
-          <button class="btn btn-primary" onclick="start()">เริ่ม</button>
-          <button class="btn btn-secondary" onclick="pause()">หยุดชั่วคราว</button>
-          <button class="btn btn-secondary" onclick="reset()">รีเซ็ต</button>
+          <button class="btn btn-primary" onclick="start()">Start</button>
+          <button class="btn btn-secondary" onclick="pause()">Pause</button>
+          <button class="btn btn-secondary" onclick="reset()">Reset</button>
         </div>
         <div style="margin-top:1rem;">
           <button class="btn btn-secondary preset-btn" onclick="setPreset(25)">Pomodoro (25m)</button>
-          <button class="btn btn-secondary preset-btn" onclick="setPreset(5)">พัก (5m)</button>
-          <button class="btn btn-secondary preset-btn" onclick="setPreset(15)">พัก (15m)</button>
+          <button class="btn btn-secondary preset-btn" onclick="setPreset(5)">Break (5m)</button>
+          <button class="btn btn-secondary preset-btn" onclick="setPreset(15)">Break (15m)</button>
         </div>
       </div>
     </div>

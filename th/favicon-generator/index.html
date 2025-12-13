@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+    <title>สร้าง Favicon - Tool Shelf</title>
+    <meta name="description" content="Create favicons from images (16x16 to 64x64).">
+    <link rel="canonical" href="https://wwtrembling.github.io/th/favicon-generator/">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <style>
+        .upload-area {
+            border: 2px dashed var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            text-align: center;
+            cursor: pointer;
+            background: var(--bg-secondary);
+            min-height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .preview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: var(--spacing-md);
+            margin: var(--spacing-lg) 0;
+        }
+
+        .preview-item {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            text-align: center;
+        }
+
+        .preview-item canvas {
+            display: block;
+            margin: var(--spacing-sm) auto;
+            border: 1px solid var(--border-color);
+        }
+
+        .btn {
+            padding: var(--spacing-md) var(--spacing-lg);
+            border: none;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            cursor: pointer;
+            background: var(--primary-color);
+            color: white;
+            margin-top: var(--spacing-sm);
+            width: 100%;
+        }
+    </style>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content"><a href="/th/" class="site-logo">🛠️ Tool Shelf</a></div>
+        </div>
+    </header>
+    <main class="main-content">
+        <div class="container-narrow">
+            <h1>🎯 สร้าง Favicon</h1>
+            <p>Create favicons from images (16x16 to 64x64).</p>
+            <div class="upload-area" id="uploadArea">
+                <input type="file" id="fileInput" accept="image/*" style="display: none;">
+                <div>
+                    <p style="font-size: 2rem; margin: 0;">📁</p>
+                    <p>Click or drag to upload image</p>
+                </div>
+            </div>
+            <div class="preview-grid" id="previewGrid" style="display: none;"></div>
+        </div>
+    </main>
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Tool Shelf</p>
+            </div>
+        </div>
+    </footer>
+    <script src="/assets/js/common.js"></script>
+    <script>
+        const uploadArea = document.getElementById('uploadArea');
+        const fileInput = document.getElementById('fileInput');
+        const previewGrid = document.getElementById('previewGrid');
+        const sizes = [16, 32, 48, 64];
+
+        uploadArea.addEventListener('click', () => fileInput.click());
+        fileInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) generateFavicons(e.target.files[0]);
+        });
+
+        function generateFavicons(file) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                const img = new Image();
+                img.onload = () => {
+                    previewGrid.innerHTML = '';
+                    previewGrid.style.display = 'grid';
+
+                    sizes.forEach(size => {
+                        const canvas = document.createElement('canvas');
+                        canvas.width = canvas.height = size;
+                        const ctx = canvas.getContext('2d');
+                        ctx.drawImage(img, 0, 0, size, size);
+
+                        const item = document.createElement('div');
+                        item.className = 'preview-item';
+                        item.innerHTML = `
+              <h3>${size}x${size}px</h3>
+              <div>${canvas.outerHTML}</div>
+              <button class="btn" onclick="downloadFavicon(this, ${size})">ดาวน์โหลด</button>
+            `;
+                        previewGrid.appendChild(item);
+                    });
+                };
+                img.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        window.downloadFavicon = function (btn, size) {
+            const canvas = btn.previousElementSibling.querySelector('canvas');
+            const url = canvas.toDataURL('image/png');
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `favicon-${size}x${size}.png`;
+            a.click();
+        };
+    </script>
+</body>
+
+</html>

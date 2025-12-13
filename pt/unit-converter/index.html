@@ -4,12 +4,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-adsense-account" content="ca-pub-6334819180242631">
   <title>Conversor de Unidades - Tool Shelf</title>
-  <meta name="description" content="Converta comprimento, peso, temperatura, volume e mais. Suporta todas as unidades principais incluindo metros, pés, quilogramas, libras, Celsius, Fahrenheit.">
+  <meta name="description" content="Convert Length, Weight, Temperature, Volume, and more.">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Conversor de Unidades - Tool Shelf">
-  <meta property="og:description" content="Converta comprimento, peso, temperatura, volume e mais. Suporta todas as unidades principais incluindo metros, pés, quilogramas, libras, Celsius, Fahrenheit.">
+  <meta property="og:title" content="단위 변환기 - 🛠️ Tool Shelf">
+  <meta property="og:description" content="Convert Length, Weight, Temperature, Volume, and more.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://wwtrembling.github.io/pt/unit-converter/">
 
@@ -17,7 +18,7 @@
   <link rel="canonical" href="https://wwtrembling.github.io/pt/unit-converter/">
 
   <!-- Language Alternatives -->
-  <link rel="alternate" hreflang="pt" href="https://wwtrembling.github.io/pt/unit-converter/">
+  <link rel="alternate" hreflang="ko" href="https://wwtrembling.github.io/pt/unit-converter/">
   <link rel="alternate" hreflang="en" href="https://wwtrembling.github.io/en/unit-converter/">
   <link rel="alternate" hreflang="ja" href="https://wwtrembling.github.io/ja/unit-converter/">
   <link rel="alternate" hreflang="hi" href="https://wwtrembling.github.io/hi/unit-converter/">
@@ -41,10 +42,10 @@
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "Conversor de Unidades",
-    "description": "Converta comprimento, peso, temperatura, volume e mais. Suporta todas as unidades principais incluindo metros, pés, quilogramas, libras, Celsius, Fahrenheit.",
+    "name": "단위 변환기",
+    "description": "Comprimento, Peso, Temperatura, Volume 등 다양한 단위를 간편하게 변환하세요.",
     "url": "https://wwtrembling.github.io/pt/unit-converter/",
-    "inLanguage": "pt",
+    "inLanguage": "ko",
     "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "Any",
     "offers": {
@@ -132,17 +133,17 @@
   <main class="main-content">
     <div class="container-narrow">
       <h1>📏 Conversor de Unidades</h1>
-      <p>Converta comprimento, peso, temperatura, volume e mais. Suporta todas as unidades principais incluindo metros, pés, quilogramas, libras, Celsius, Fahrenheit.</p>
+      <p>Convert Length, Weight, Temperature, Volume, and more.</p>
 
       <!-- AdSense Placeholder -->
       <div class="adsense-placeholder">
         <!-- AdSense Ad Unit -->
-        <p>Espaço Publicitário</p>
+        <p>Publicidade</p>
       </div>
 
       <!-- Category Selection -->
       <div class="converter-section">
-        <label class="form-label">Categoria de Conversão</label>
+        <label class="form-label">Category</label>
         <select id="category" class="form-select">
           <option value="length">Comprimento</option>
           <option value="weight">Peso</option>
@@ -157,16 +158,16 @@
       <div class="converter-section">
         <div class="converter-grid">
           <div>
-            <label class="form-label">De</label>
-            <input type="number" id="fromValue" class="form-input" placeholder="Digite o número" value="1">
+            <label class="form-label">Valor para Converter</label>
+            <input type="number" id="fromValue" class="form-input" placeholder="Insira o número" value="1">
             <select id="fromUnit" class="form-select mt-1"></select>
             <div class="result-display" id="fromDisplay">1</div>
           </div>
 
-          <button class="swap-btn" id="swapBtn" title="Trocar unidades">⇄</button>
+          <button class="swap-btn" id="swapBtn" title="Trocar Unidades">⇄</button>
 
           <div>
-            <label class="form-label">Para</label>
+            <label class="form-label">Valor Convertido</label>
             <input type="number" id="toValue" class="form-input" placeholder="Resultado" readonly>
             <select id="toUnit" class="form-select mt-1"></select>
             <div class="result-display" id="toDisplay">-</div>
@@ -176,14 +177,14 @@
 
       <!-- Quick Reference -->
       <div class="card">
-        <h3>Referência Rápida</h3>
+        <h3>Conversões Comuns</h3>
         <div id="quickReference"></div>
       </div>
 
       <!-- AdSense Placeholder -->
       <div class="adsense-placeholder">
         <!-- AdSense Ad Unit -->
-        <p>Espaço Publicitário</p>
+        <p>Publicidade</p>
       </div>
     </div>
   </main>
@@ -200,7 +201,7 @@
   <script>
     // Unit conversion data
     const conversionData = {
-            length: {
+      length: {
         name: 'Comprimento',
         units: {
           meter: { name: 'Metro (m)', toBase: 1 },
@@ -209,12 +210,12 @@
           millimeter: { name: 'Milímetro (mm)', toBase: 0.001 },
           mile: { name: 'Milha (mi)', toBase: 1609.344 },
           yard: { name: 'Jarda (yd)', toBase: 0.9144 },
-          foot: { name: 'Pé (ft)', toBase: 0.3048 },
+          foot: { name: 'Pés (ft)', toBase: 0.3048 },
           inch: { name: 'Polegada (in)', toBase: 0.0254 }
         }
       },
       weight: {
-        name: '무게',
+        name: 'Peso',
         units: {
           kilogram: { name: 'Quilograma (kg)', toBase: 1 },
           gram: { name: 'Grama (g)', toBase: 0.001 },
@@ -225,7 +226,7 @@
         }
       },
       temperature: {
-        name: '온도',
+        name: 'Temperatura',
         units: {
           celsius: { name: 'Celsius (°C)', toBase: null },
           fahrenheit: { name: 'Fahrenheit (°F)', toBase: null },
@@ -233,19 +234,19 @@
         }
       },
       volume: {
-        name: '부피',
+        name: 'Volume',
         units: {
           liter: { name: 'Litro (L)', toBase: 1 },
           milliliter: { name: 'Mililitro (mL)', toBase: 0.001 },
           cubicMeter: { name: 'Metro Cúbico (m³)', toBase: 1000 },
           gallon: { name: 'Galão (gal)', toBase: 3.78541 },
           quart: { name: 'Quarto (qt)', toBase: 0.946353 },
-          pint: { name: 'Pint (pt)', toBase: 0.473176 },
-          cup: { name: 'Xícara (cup)', toBase: 0.236588 }
+          pint: { name: 'Pinto (pt)', toBase: 0.473176 },
+          cup: { name: 'Xícara', toBase: 0.236588 }
         }
       },
       area: {
-        name: '면적',
+        name: 'Área',
         units: {
           squareMeter: { name: 'Metro Quadrado (m²)', toBase: 1 },
           squareKilometer: { name: 'Quilômetro Quadrado (km²)', toBase: 1000000 },
@@ -256,11 +257,11 @@
         }
       },
       speed: {
-        name: '속도',
+        name: 'Velocidade',
         units: {
           meterPerSecond: { name: 'Metro/Segundo (m/s)', toBase: 1 },
           kilometerPerHour: { name: 'Quilômetro/Hora (km/h)', toBase: 0.277778 },
-          milePerHour: { name: 'Milha/Hora (mph)', toBase: 0.44704 },
+          milePerHour: { name: '마Sun/시 (mph)', toBase: 0.44704 },
           knot: { name: 'Nó (knot)', toBase: 0.514444 }
         }
       }

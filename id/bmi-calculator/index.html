@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-adsense-account" content="ca-pub-6334819180242631">
   <title>Kalkulator BMI - Tool Shelf</title>
-  <meta name="description" content="Hitung BMI Anda.">
+  <meta name="description" content="Calculate your Body Mass Index (BMI).">
   <link rel="canonical" href="https://wwtrembling.github.io/id/bmi-calculator/">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/main.css">
@@ -19,14 +20,14 @@
   <main class="main-content">
     <div class="container-narrow">
       <h1>⚖️ Kalkulator BMI</h1>
-      <p>Hitung BMI Anda.</p>
+      <p>Calculate your Body Mass Index (BMI).</p>
       <div class="card">
         <div class="form-group">
-          <label class="form-label">Tinggi (cm)</label>
+          <label class="form-label">Height (cm)</label>
           <input type="number" id="height" class="form-input" placeholder="170" value="170">
         </div>
         <div class="form-group">
-          <label class="form-label">Berat (kg)</label>
+          <label class="form-label">Weight (kg)</label>
           <input type="number" id="weight" class="form-input" placeholder="70" value="70">
         </div>
         <button class="btn btn-primary" onclick="calculate()">Hitung</button>
@@ -53,7 +54,7 @@
         let category = '';
         if (bmi < 18.5) category = 'Kurus';
         else if (bmi < 25) category = 'Normal';
-        else if (bmi < 30) category = 'Kelebihan Berat';
+        else if (bmi < 30) category = 'Kelebihan berat badan';
         else category = 'Obesitas';
         document.getElementById('bmiCategory').textContent = category;
         document.getElementById('result').style.display = 'block';

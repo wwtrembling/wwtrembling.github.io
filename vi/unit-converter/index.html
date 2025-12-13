@@ -4,12 +4,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chuyển Đổi Đơn Vị - Tool Shelf</title>
-  <meta name="description" content="Chuyển đổi độ dài, trọng lượng, nhiệt độ, thể tích và hơn thế nữa. Hỗ trợ tất cả các đơn vị chính bao gồm mét, feet, kilogram, pound, Celsius, Fahrenheit.">
+  <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+  <title>Chuyển đổi đơn vị - Tool Shelf</title>
+  <meta name="description" content="Convert Length, Weight, Temperature, Volume, and more.">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Chuyển Đổi Đơn Vị - Tool Shelf">
-  <meta property="og:description" content="Chuyển đổi độ dài, trọng lượng, nhiệt độ, thể tích và hơn thế nữa. Hỗ trợ tất cả các đơn vị chính bao gồm mét, feet, kilogram, pound, Celsius, Fahrenheit.">
+  <meta property="og:title" content="단위 변환기 - 🛠️ Tool Shelf">
+  <meta property="og:description" content="Convert Length, Weight, Temperature, Volume, and more.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://wwtrembling.github.io/vi/unit-converter/">
 
@@ -17,7 +18,7 @@
   <link rel="canonical" href="https://wwtrembling.github.io/vi/unit-converter/">
 
   <!-- Language Alternatives -->
-  <link rel="alternate" hreflang="vi" href="https://wwtrembling.github.io/vi/unit-converter/">
+  <link rel="alternate" hreflang="ko" href="https://wwtrembling.github.io/vi/unit-converter/">
   <link rel="alternate" hreflang="en" href="https://wwtrembling.github.io/en/unit-converter/">
   <link rel="alternate" hreflang="ja" href="https://wwtrembling.github.io/ja/unit-converter/">
   <link rel="alternate" hreflang="hi" href="https://wwtrembling.github.io/hi/unit-converter/">
@@ -41,10 +42,10 @@
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "Chuyển Đổi Đơn Vị",
-    "description": "Chuyển đổi độ dài, trọng lượng, nhiệt độ, thể tích và hơn thế nữa. Hỗ trợ tất cả các đơn vị chính bao gồm mét, feet, kilogram, pound, Celsius, Fahrenheit.",
+    "name": "단위 변환기",
+    "description": "Chiều dài, Cân nặng, Nhiệt độ, Thể tích 등 다양한 단위를 간편하게 변환하세요.",
     "url": "https://wwtrembling.github.io/vi/unit-converter/",
-    "inLanguage": "vi",
+    "inLanguage": "ko",
     "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "Any",
     "offers": {
@@ -131,21 +132,21 @@
 
   <main class="main-content">
     <div class="container-narrow">
-      <h1>📏 Chuyển Đổi Đơn Vị</h1>
-      <p>Chuyển đổi độ dài, trọng lượng, nhiệt độ, thể tích và hơn thế nữa. Hỗ trợ tất cả các đơn vị chính bao gồm mét, feet, kilogram, pound, Celsius, Fahrenheit.</p>
+      <h1>📏 Chuyển đổi đơn vị</h1>
+      <p>Convert Length, Weight, Temperature, Volume, and more.</p>
 
       <!-- AdSense Placeholder -->
       <div class="adsense-placeholder">
         <!-- AdSense Ad Unit -->
-        <p>Không Gian Quảng Cáo</p>
+        <p>Quảng cáo</p>
       </div>
 
       <!-- Category Selection -->
       <div class="converter-section">
-        <label class="form-label">Danh Mục Chuyển Đổi</label>
+        <label class="form-label">Category</label>
         <select id="category" class="form-select">
-          <option value="length">Độ dài</option>
-          <option value="weight">Trọng lượng</option>
+          <option value="length">Chiều dài</option>
+          <option value="weight">Cân nặng</option>
           <option value="temperature">Nhiệt độ</option>
           <option value="volume">Thể tích</option>
           <option value="area">Diện tích</option>
@@ -157,7 +158,7 @@
       <div class="converter-section">
         <div class="converter-grid">
           <div>
-            <label class="form-label">Từ</label>
+            <label class="form-label">Giá trị cần chuyển đổi</label>
             <input type="number" id="fromValue" class="form-input" placeholder="Nhập số" value="1">
             <select id="fromUnit" class="form-select mt-1"></select>
             <div class="result-display" id="fromDisplay">1</div>
@@ -166,7 +167,7 @@
           <button class="swap-btn" id="swapBtn" title="Hoán đổi đơn vị">⇄</button>
 
           <div>
-            <label class="form-label">Đến</label>
+            <label class="form-label">Giá trị đã chuyển đổi</label>
             <input type="number" id="toValue" class="form-input" placeholder="Kết quả" readonly>
             <select id="toUnit" class="form-select mt-1"></select>
             <div class="result-display" id="toDisplay">-</div>
@@ -176,14 +177,14 @@
 
       <!-- Quick Reference -->
       <div class="card">
-        <h3>Tham Khảo Nhanh</h3>
+        <h3>Chuyển đổi phổ biến</h3>
         <div id="quickReference"></div>
       </div>
 
       <!-- AdSense Placeholder -->
       <div class="adsense-placeholder">
         <!-- AdSense Ad Unit -->
-        <p>Không Gian Quảng Cáo</p>
+        <p>Quảng cáo</p>
       </div>
     </div>
   </main>
@@ -200,32 +201,32 @@
   <script>
     // Unit conversion data
     const conversionData = {
-            length: {
-        name: 'Độ dài',
+      length: {
+        name: 'Chiều dài',
         units: {
-          meter: { name: 'Mét (m)', toBase: 1 },
-          kilometer: { name: 'Kilômét (km)', toBase: 1000 },
-          centimeter: { name: 'Xentimét (cm)', toBase: 0.01 },
-          millimeter: { name: 'Milimét (mm)', toBase: 0.001 },
-          mile: { name: 'Dặm (mi)', toBase: 1609.344 },
+          meter: { name: 'Meter (m)', toBase: 1 },
+          kilometer: { name: 'Kilometer (km)', toBase: 1000 },
+          centimeter: { name: 'Centimeter (cm)', toBase: 0.01 },
+          millimeter: { name: 'Millimeter (mm)', toBase: 0.001 },
+          mile: { name: 'Mile (mi)', toBase: 1609.344 },
           yard: { name: 'Yard (yd)', toBase: 0.9144 },
           foot: { name: 'Feet (ft)', toBase: 0.3048 },
           inch: { name: 'Inch (in)', toBase: 0.0254 }
         }
       },
       weight: {
-        name: '무게',
+        name: 'Cân nặng',
         units: {
-          kilogram: { name: 'Kilôgam (kg)', toBase: 1 },
-          gram: { name: 'Gam (g)', toBase: 0.001 },
-          milligram: { name: 'Miligam (mg)', toBase: 0.000001 },
-          ton: { name: 'Tấn (t)', toBase: 1000 },
+          kilogram: { name: 'Kilogram (kg)', toBase: 1 },
+          gram: { name: 'Gram (g)', toBase: 0.001 },
+          milligram: { name: 'Milligram (mg)', toBase: 0.000001 },
+          ton: { name: 'Ton (t)', toBase: 1000 },
           pound: { name: 'Pound (lb)', toBase: 0.453592 },
           ounce: { name: 'Ounce (oz)', toBase: 0.0283495 }
         }
       },
       temperature: {
-        name: '온도',
+        name: 'Nhiệt độ',
         units: {
           celsius: { name: 'Celsius (°C)', toBase: null },
           fahrenheit: { name: 'Fahrenheit (°F)', toBase: null },
@@ -233,35 +234,35 @@
         }
       },
       volume: {
-        name: '부피',
+        name: 'Thể tích',
         units: {
-          liter: { name: 'Lít (L)', toBase: 1 },
-          milliliter: { name: 'Mililít (mL)', toBase: 0.001 },
-          cubicMeter: { name: 'Mét Khối (m³)', toBase: 1000 },
+          liter: { name: 'Liter (L)', toBase: 1 },
+          milliliter: { name: 'Milliliter (mL)', toBase: 0.001 },
+          cubicMeter: { name: 'Cubic Meter (m³)', toBase: 1000 },
           gallon: { name: 'Gallon (gal)', toBase: 3.78541 },
           quart: { name: 'Quart (qt)', toBase: 0.946353 },
           pint: { name: 'Pint (pt)', toBase: 0.473176 },
-          cup: { name: 'Cốc (cup)', toBase: 0.236588 }
+          cup: { name: 'Cup', toBase: 0.236588 }
         }
       },
       area: {
-        name: '면적',
+        name: 'Diện tích',
         units: {
-          squareMeter: { name: 'Mét Vuông (m²)', toBase: 1 },
-          squareKilometer: { name: 'Kilômét Vuông (km²)', toBase: 1000000 },
-          squareCentimeter: { name: 'Xentimét Vuông (cm²)', toBase: 0.0001 },
-          hectare: { name: 'Hecta (ha)', toBase: 10000 },
+          squareMeter: { name: 'Square Meter (m²)', toBase: 1 },
+          squareKilometer: { name: 'Square Kilometer (km²)', toBase: 1000000 },
+          squareCentimeter: { name: 'Square Centimeter (cm²)', toBase: 0.0001 },
+          hectare: { name: 'Hectare (ha)', toBase: 10000 },
           acre: { name: 'Acre (ac)', toBase: 4046.86 },
-          squareFoot: { name: 'Feet Vuông (ft²)', toBase: 0.092903 }
+          squareFoot: { name: 'Square Foot (ft²)', toBase: 0.092903 }
         }
       },
       speed: {
-        name: '속도',
+        name: 'Tốc độ',
         units: {
-          meterPerSecond: { name: 'Mét/Giây (m/s)', toBase: 1 },
-          kilometerPerHour: { name: 'Kilômét/Giờ (km/h)', toBase: 0.277778 },
-          milePerHour: { name: 'Dặm/Giờ (mph)', toBase: 0.44704 },
-          knot: { name: 'Hải Lý (knot)', toBase: 0.514444 }
+          meterPerSecond: { name: 'Meter/Second (m/s)', toBase: 1 },
+          kilometerPerHour: { name: 'Kilometer/Hour (km/h)', toBase: 0.277778 },
+          milePerHour: { name: '마Sun/시 (mph)', toBase: 0.44704 },
+          knot: { name: 'Knot (knot)', toBase: 0.514444 }
         }
       }
     };

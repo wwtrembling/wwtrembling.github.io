@@ -3,11 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Text-Utilities - Tool Shelf</title>
-  <meta name="description" content="Wörter zählen, Zeichen zählen, Duplikate entfernen, Groß-/Kleinschreibung ändern und mehr Textverarbeitungsfunktionen.">
+  <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+  <title>Text-Dienstprogramme - Tool Shelf</title>
+  <meta name="description" content="Zählen Sie Wörter, Zeichen, entfernen Sie Duplikate, konvertieren Sie Groß-/Kleinschreibung und mehr.">
   
   <link rel="canonical" href="https://wwtrembling.github.io/de/text-utils/">
-  <link rel="alternate" hreflang="ko" href="https://wwtrembling.github.io/ko/text-utils/">
+  <link rel="alternate" hreflang="ko" href="https://wwtrembling.github.io/de/text-utils/">
   <link rel="alternate" hreflang="en" href="https://wwtrembling.github.io/en/text-utils/">
   <link rel="alternate" hreflang="ja" href="https://wwtrembling.github.io/ja/text-utils/">
   <link rel="alternate" hreflang="hi" href="https://wwtrembling.github.io/hi/text-utils/">
@@ -34,42 +35,42 @@
 
   <main class="main-content">
     <div class="container-narrow">
-      <h1>📝 Text-Utilities</h1>
-      <p>Wörter zählen, Zeichen zählen, Duplikate entfernen, Groß-/Kleinschreibung ändern und mehr Textverarbeitungsfunktionen.</p>
+      <h1>📝 Text-Tools</h1>
+      <p>Zählen Sie Wörter, Zeichen, entfernen Sie Duplikate, konvertieren Sie Groß-/Kleinschreibung und mehr.</p>
       
       <div class="card">
-        <label class="form-label">Texteingabe</label>
-        <textarea id="textInput" class="form-textarea" style="min-height: 300px;" placeholder="Text eingeben..."></textarea>
+        <label class="form-label">Input Text</label>
+        <textarea id="textInput" class="form-textarea" style="min-height: 300px;" placeholder="Geben Sie Text ein..."></textarea>
       </div>
       
       <div class="card">
-        <h3>Statistiken</h3>
+        <h3>Statistik</h3>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem;">
           <div class="result-box">
             <div class="result-value" id="charCount">0</div>
-            <div>Zeichen</div>
+            <div>Characters</div>
           </div>
           <div class="result-box">
             <div class="result-value" id="wordCount">0</div>
-            <div>Wörter</div>
+            <div>Words</div>
           </div>
           <div class="result-box">
             <div class="result-value" id="lineCount">0</div>
-            <div>Zeilen</div>
+            <div>Lines</div>
           </div>
         </div>
       </div>
       
       <div class="card">
-        <h3>Aktionen</h3>
+        <h3>Aktion</h3>
         <div class="btn-group">
-          <button class="btn btn-secondary" onclick="toUpperCase()">Großbuchstaben</button>
-          <button class="btn btn-secondary" onclick="toLowerCase()">Kleinbuchstaben</button>
-          <button class="btn btn-secondary" onclick="removeDuplicates()">Doppelte Zeilen entfernen</button>
-          <button class="btn btn-secondary" onclick="sortLines()">Zeilen sortieren</button>
-          <button class="btn btn-secondary" onclick="reverseText()">Text umkehren</button>
-          <button class="btn btn-primary" onclick="copyText()">Kopieren</button>
-          <button class="btn btn-secondary" onclick="clearText()">Löschen</button>
+          <button class="btn btn-secondary" onclick="toUpperCase()">UPPERCASE</button>
+          <button class="btn btn-secondary" onclick="toLowerCase()">lowercase</button>
+          <button class="btn btn-secondary" onclick="removeDuplicates()">Remove Duplicate Lines</button>
+          <button class="btn btn-secondary" onclick="sortLines()">Sort Lines</button>
+          <button class="btn btn-secondary" onclick="reverseText()">Reverse Text</button>
+          <button class="btn btn-primary" onclick="copyText()">Copy</button>
+          <button class="btn btn-secondary" onclick="clearText()">Clear</button>
         </div>
       </div>
     </div>

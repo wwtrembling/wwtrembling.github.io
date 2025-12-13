@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ja">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>정규식 테스터 - Tool Shelf</title>
-    <meta name="description" content="정규식 패턴을 테스트하고 매칭 결과를 실시간으로 확인하세요.">
-    <link rel="canonical" href="https://wwtrembling.github.io/ko/regex-tester/">
+  <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+    <title>正規表現テスター - Tool Shelf</title>
+    <meta name="description" content="正規表現をリアルタイムでテストします。">
+    <link rel="canonical" href="https://wwtrembling.github.io/ja/regex-tester/">
     <link rel="stylesheet" href="/assets/css/main.css">
     <style>
         .regex-input {
@@ -47,26 +48,26 @@
 <body>
     <header class="site-header">
         <div class="container">
-            <div class="header-content"><a href="/ko/" class="site-logo">🛠️ Tool Shelf</a></div>
+            <div class="header-content"><a href="/ja/" class="site-logo">🛠️ Tool Shelf</a></div>
         </div>
     </header>
     <main class="main-content">
         <div class="container-narrow">
-            <h1>🔍 정규식 테스터</h1>
-            <p>정규식 패턴을 테스트하고 매칭 결과를 실시간으로 확인하세요.</p>
+            <h1>🔍 正規表現テスター</h1>
+            <p>正規表現をリアルタイムでテストします。</p>
             <div class="regex-input">
-                <label class="form-label">정규식 패턴</label>
+                <label class="form-label">パターン</label>
                 <input type="text" id="pattern" class="form-input" placeholder="/[a-z]+/gi" value="[a-z]+">
                 <div style="margin-top: var(--spacing-sm);">
-                    <label><input type="checkbox" id="flagG" checked> g (전역)</label>
-                    <label><input type="checkbox" id="flagI" checked> i (대소문자 무시)</label>
-                    <label><input type="checkbox" id="flagM"> m (여러 줄)</label>
+                    <label><input type="checkbox" id="flagG" checked> g (グローバル)</label>
+                    <label><input type="checkbox" id="flagI" checked> i (大文字小文字無視)</label>
+                    <label><input type="checkbox" id="flagM"> m (複数行)</label>
                 </div>
             </div>
             <div>
-                <label class="form-label">테스트 문자열</label>
+                <label class="form-label">テスト文字列</label>
                 <textarea id="testString" class="form-input test-input"
-                    placeholder="테스트할 문자열을 입력하세요">Hello World 123 Test</textarea>
+                    placeholder="テスト文字列を入力">Hello World 123 Test</textarea>
             </div>
             <div class="matches" id="results"></div>
         </div>
@@ -95,13 +96,13 @@
                 const matches = [...text.matchAll(regex)];
 
                 if (matches.length === 0) {
-                    results.innerHTML = '<p>매칭 결과 없음</p>';
+                    results.innerHTML = '<p>一致が見つかりません</p>';
                     return;
                 }
 
-                let html = `<h3>매칭 결과 (${matches.length}개)</h3>`;
+                let html = `<h3>一致結果 (${matches.length}個)</h3>`;
                 matches.forEach((match, i) => {
-                    html += `<div class="match-item">Match ${i + 1}: "${match[0]}" (위치: ${match.index})</div>`;
+                    html += `<div class="match-item">一致 ${i + 1}: "${match[0]}" (位置: ${match.index})</div>`;
                 });
 
                 let highlighted = text;
@@ -110,10 +111,10 @@
                         '<span class="highlight">' + match[0] + '</span>' +
                         highlighted.slice(match.index + match[0].length);
                 });
-                html += `<h3>하이라이트</h3><div style="line-height: 1.8;">${highlighted}</div>`;
+                html += `<h3>ハイライト</h3><div style="line-height: 1.8;">${highlighted}</div>`;
                 results.innerHTML = html;
             } catch (e) {
-                results.innerHTML = `<p style="color: red;">오류: ${e.message}</p>`;
+                results.innerHTML = `<p style="color: red;">エラー: ${e.message}</p>`;
             }
         }
 

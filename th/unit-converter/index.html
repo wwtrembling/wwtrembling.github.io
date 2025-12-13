@@ -4,12 +4,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-adsense-account" content="ca-pub-6334819180242631">
   <title>ตัวแปลงหน่วย - Tool Shelf</title>
-  <meta name="description" content="แปลงความยาว น้ำหนัก อุณหภูมิ ปริมาตร และอื่นๆ รองรับหน่วยหลักทั้งหมด รวมถึงเมตร ฟุต กิโลกรัม ปอนด์ เซลเซียส ฟาเรนไฮต์">
+  <meta name="description" content="Convert Length, Weight, Temperature, Volume, and more.">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="ตัวแปลงหน่วย - Tool Shelf">
-  <meta property="og:description" content="แปลงความยาว น้ำหนัก อุณหภูมิ ปริมาตร และอื่นๆ รองรับหน่วยหลักทั้งหมด รวมถึงเมตร ฟุต กิโลกรัม ปอนด์ เซลเซียส ฟาเรนไฮต์">
+  <meta property="og:title" content="단위 변환기 - 🛠️ Tool Shelf">
+  <meta property="og:description" content="Convert Length, Weight, Temperature, Volume, and more.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://wwtrembling.github.io/th/unit-converter/">
 
@@ -17,7 +18,7 @@
   <link rel="canonical" href="https://wwtrembling.github.io/th/unit-converter/">
 
   <!-- Language Alternatives -->
-  <link rel="alternate" hreflang="th" href="https://wwtrembling.github.io/th/unit-converter/">
+  <link rel="alternate" hreflang="ko" href="https://wwtrembling.github.io/th/unit-converter/">
   <link rel="alternate" hreflang="en" href="https://wwtrembling.github.io/en/unit-converter/">
   <link rel="alternate" hreflang="ja" href="https://wwtrembling.github.io/ja/unit-converter/">
   <link rel="alternate" hreflang="hi" href="https://wwtrembling.github.io/hi/unit-converter/">
@@ -41,10 +42,10 @@
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "ตัวแปลงหน่วย",
-    "description": "แปลงความยาว น้ำหนัก อุณหภูมิ ปริมาตร และอื่นๆ รองรับหน่วยหลักทั้งหมด รวมถึงเมตร ฟุต กิโลกรัม ปอนด์ เซลเซียส ฟาเรนไฮต์",
+    "name": "단위 변환기",
+    "description": "ความยาว, น้ำหนัก, อุณหภูมิ, ปริมาตร 등 다양한 단위를 간편하게 변환하세요.",
     "url": "https://wwtrembling.github.io/th/unit-converter/",
-    "inLanguage": "th",
+    "inLanguage": "ko",
     "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "Any",
     "offers": {
@@ -132,17 +133,17 @@
   <main class="main-content">
     <div class="container-narrow">
       <h1>📏 ตัวแปลงหน่วย</h1>
-      <p>แปลงความยาว น้ำหนัก อุณหภูมิ ปริมาตร และอื่นๆ รองรับหน่วยหลักทั้งหมด รวมถึงเมตร ฟุต กิโลกรัม ปอนด์ เซลเซียส ฟาเรนไฮต์</p>
+      <p>Convert Length, Weight, Temperature, Volume, and more.</p>
 
       <!-- AdSense Placeholder -->
       <div class="adsense-placeholder">
         <!-- AdSense Ad Unit -->
-        <p>พื้นที่โฆษณา</p>
+        <p>โฆษณา</p>
       </div>
 
       <!-- Category Selection -->
       <div class="converter-section">
-        <label class="form-label">หมวดหมู่การแปลง</label>
+        <label class="form-label">Category</label>
         <select id="category" class="form-select">
           <option value="length">ความยาว</option>
           <option value="weight">น้ำหนัก</option>
@@ -157,7 +158,7 @@
       <div class="converter-section">
         <div class="converter-grid">
           <div>
-            <label class="form-label">จาก</label>
+            <label class="form-label">ค่าที่จะแปลง</label>
             <input type="number" id="fromValue" class="form-input" placeholder="ป้อนตัวเลข" value="1">
             <select id="fromUnit" class="form-select mt-1"></select>
             <div class="result-display" id="fromDisplay">1</div>
@@ -166,7 +167,7 @@
           <button class="swap-btn" id="swapBtn" title="สลับหน่วย">⇄</button>
 
           <div>
-            <label class="form-label">ไปยัง</label>
+            <label class="form-label">ค่าที่แปลง</label>
             <input type="number" id="toValue" class="form-input" placeholder="ผลลัพธ์" readonly>
             <select id="toUnit" class="form-select mt-1"></select>
             <div class="result-display" id="toDisplay">-</div>
@@ -176,14 +177,14 @@
 
       <!-- Quick Reference -->
       <div class="card">
-        <h3>ข้อมูลอ้างอิงด่วน</h3>
+        <h3>การแปลงทั่วไป</h3>
         <div id="quickReference"></div>
       </div>
 
       <!-- AdSense Placeholder -->
       <div class="adsense-placeholder">
         <!-- AdSense Ad Unit -->
-        <p>พื้นที่โฆษณา</p>
+        <p>โฆษณา</p>
       </div>
     </div>
   </main>
@@ -200,68 +201,68 @@
   <script>
     // Unit conversion data
     const conversionData = {
-            length: {
+      length: {
         name: 'ความยาว',
         units: {
-          meter: { name: 'เมตร (m)', toBase: 1 },
-          kilometer: { name: 'กิโลเมตร (km)', toBase: 1000 },
-          centimeter: { name: 'เซนติเมตร (cm)', toBase: 0.01 },
-          millimeter: { name: 'มิลลิเมตร (mm)', toBase: 0.001 },
-          mile: { name: 'ไมล์ (mi)', toBase: 1609.344 },
-          yard: { name: 'หลา (yd)', toBase: 0.9144 },
-          foot: { name: 'ฟุต (ft)', toBase: 0.3048 },
-          inch: { name: 'นิ้ว (in)', toBase: 0.0254 }
+          meter: { name: 'Meter (m)', toBase: 1 },
+          kilometer: { name: 'Kilometer (km)', toBase: 1000 },
+          centimeter: { name: 'Centimeter (cm)', toBase: 0.01 },
+          millimeter: { name: 'Millimeter (mm)', toBase: 0.001 },
+          mile: { name: 'Mile (mi)', toBase: 1609.344 },
+          yard: { name: 'Yard (yd)', toBase: 0.9144 },
+          foot: { name: 'Feet (ft)', toBase: 0.3048 },
+          inch: { name: 'Inch (in)', toBase: 0.0254 }
         }
       },
       weight: {
-        name: '무게',
+        name: 'น้ำหนัก',
         units: {
-          kilogram: { name: 'กิโลกรัม (kg)', toBase: 1 },
-          gram: { name: 'กรัม (g)', toBase: 0.001 },
-          milligram: { name: 'มิลลิกรัม (mg)', toBase: 0.000001 },
-          ton: { name: 'ตัน (t)', toBase: 1000 },
-          pound: { name: 'ปอนด์ (lb)', toBase: 0.453592 },
-          ounce: { name: 'ออนซ์ (oz)', toBase: 0.0283495 }
+          kilogram: { name: 'Kilogram (kg)', toBase: 1 },
+          gram: { name: 'Gram (g)', toBase: 0.001 },
+          milligram: { name: 'Milligram (mg)', toBase: 0.000001 },
+          ton: { name: 'Ton (t)', toBase: 1000 },
+          pound: { name: 'Pound (lb)', toBase: 0.453592 },
+          ounce: { name: 'Ounce (oz)', toBase: 0.0283495 }
         }
       },
       temperature: {
-        name: '온도',
+        name: 'อุณหภูมิ',
         units: {
-          celsius: { name: 'เซลเซียส (°C)', toBase: null },
-          fahrenheit: { name: 'ฟาเรนไฮต์ (°F)', toBase: null },
-          kelvin: { name: 'เคลวิน (K)', toBase: null }
+          celsius: { name: 'Celsius (°C)', toBase: null },
+          fahrenheit: { name: 'Fahrenheit (°F)', toBase: null },
+          kelvin: { name: 'Kelvin (K)', toBase: null }
         }
       },
       volume: {
-        name: '부피',
+        name: 'ปริมาตร',
         units: {
-          liter: { name: 'ลิตร (L)', toBase: 1 },
-          milliliter: { name: 'มิลลิลิตร (mL)', toBase: 0.001 },
-          cubicMeter: { name: 'ลูกบาศก์เมตร (m³)', toBase: 1000 },
-          gallon: { name: 'แกลลอน (gal)', toBase: 3.78541 },
-          quart: { name: 'ควอร์ต (qt)', toBase: 0.946353 },
-          pint: { name: 'ไพน์ (pt)', toBase: 0.473176 },
-          cup: { name: 'ถ้วย (cup)', toBase: 0.236588 }
+          liter: { name: 'Liter (L)', toBase: 1 },
+          milliliter: { name: 'Milliliter (mL)', toBase: 0.001 },
+          cubicMeter: { name: 'Cubic Meter (m³)', toBase: 1000 },
+          gallon: { name: 'Gallon (gal)', toBase: 3.78541 },
+          quart: { name: 'Quart (qt)', toBase: 0.946353 },
+          pint: { name: 'Pint (pt)', toBase: 0.473176 },
+          cup: { name: 'Cup', toBase: 0.236588 }
         }
       },
       area: {
-        name: '면적',
+        name: 'พื้นที่',
         units: {
-          squareMeter: { name: 'ตารางเมตร (m²)', toBase: 1 },
-          squareKilometer: { name: 'ตารางกิโลเมตร (km²)', toBase: 1000000 },
-          squareCentimeter: { name: 'ตารางเซนติเมตร (cm²)', toBase: 0.0001 },
-          hectare: { name: 'เฮกตาร์ (ha)', toBase: 10000 },
-          acre: { name: 'เอเคอร์ (ac)', toBase: 4046.86 },
-          squareFoot: { name: 'ตารางฟุต (ft²)', toBase: 0.092903 }
+          squareMeter: { name: 'Square Meter (m²)', toBase: 1 },
+          squareKilometer: { name: 'Square Kilometer (km²)', toBase: 1000000 },
+          squareCentimeter: { name: 'Square Centimeter (cm²)', toBase: 0.0001 },
+          hectare: { name: 'Hectare (ha)', toBase: 10000 },
+          acre: { name: 'Acre (ac)', toBase: 4046.86 },
+          squareFoot: { name: 'Square Foot (ft²)', toBase: 0.092903 }
         }
       },
       speed: {
-        name: '속도',
+        name: 'ความเร็ว',
         units: {
-          meterPerSecond: { name: 'เมตร/วินาที (m/s)', toBase: 1 },
-          kilometerPerHour: { name: 'กิโลเมตร/ชั่วโมง (km/h)', toBase: 0.277778 },
-          milePerHour: { name: 'ไมล์/ชั่วโมง (mph)', toBase: 0.44704 },
-          knot: { name: 'นอต (knot)', toBase: 0.514444 }
+          meterPerSecond: { name: 'Meter/Second (m/s)', toBase: 1 },
+          kilometerPerHour: { name: 'Kilometer/Hour (km/h)', toBase: 0.277778 },
+          milePerHour: { name: '마Sun/시 (mph)', toBase: 0.44704 },
+          knot: { name: 'Knot (knot)', toBase: 0.514444 }
         }
       }
     };

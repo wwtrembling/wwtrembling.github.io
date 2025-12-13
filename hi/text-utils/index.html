@@ -3,11 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>टेक्स्ट उपयोगिताएँ - Tool Shelf</title>
-  <meta name="description" content="शब्द गणना, वर्ण गणना, डुप्लिकेट हटाएं, केस रूपांतरण और अधिक टेक्स्ट प्रोसेसिंग सुविधाएं।">
+  <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+  <title>पाठ उपयोगिताएँ - Tool Shelf</title>
+  <meta name="description" content="शब्दों और अक्षरों की गिनती करें, डुप्लिकेट हटाएँ, केस बदलें, और बहुत कुछ।">
   
   <link rel="canonical" href="https://wwtrembling.github.io/hi/text-utils/">
-  <link rel="alternate" hreflang="ko" href="https://wwtrembling.github.io/ko/text-utils/">
+  <link rel="alternate" hreflang="ko" href="https://wwtrembling.github.io/hi/text-utils/">
   <link rel="alternate" hreflang="en" href="https://wwtrembling.github.io/en/text-utils/">
   <link rel="alternate" hreflang="ja" href="https://wwtrembling.github.io/ja/text-utils/">
   <link rel="alternate" hreflang="hi" href="https://wwtrembling.github.io/hi/text-utils/">
@@ -34,42 +35,42 @@
 
   <main class="main-content">
     <div class="container-narrow">
-      <h1>📝 टेक्स्ट उपयोगिताएँ</h1>
-      <p>शब्द गणना, वर्ण गणना, डुप्लिकेट हटाएं, केस रूपांतरण और अधिक टेक्स्ट प्रोसेसिंग सुविधाएं।</p>
+      <h1>📝 पाठ उपयोगिताएँ</h1>
+      <p>शब्दों और अक्षरों की गिनती करें, डुप्लिकेट हटाएँ, केस बदलें, और बहुत कुछ।</p>
       
       <div class="card">
-        <label class="form-label">टेक्स्ट इनपुट</label>
-        <textarea id="textInput" class="form-textarea" style="min-height: 300px;" placeholder="टेक्स्ट दर्ज करें..."></textarea>
+        <label class="form-label">पाठ इनपुट</label>
+        <textarea id="textInput" class="form-textarea" style="min-height: 300px;" placeholder="पाठ दर्ज करें..."></textarea>
       </div>
       
       <div class="card">
-        <h3>सांख्यिकी</h3>
+        <h3>आंकड़े</h3>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem;">
           <div class="result-box">
             <div class="result-value" id="charCount">0</div>
-            <div>वर्ण</div>
+            <div>Characters</div>
           </div>
           <div class="result-box">
             <div class="result-value" id="wordCount">0</div>
-            <div>शब्द</div>
+            <div>Words</div>
           </div>
           <div class="result-box">
             <div class="result-value" id="lineCount">0</div>
-            <div>पंक्तियाँ</div>
+            <div>Lines</div>
           </div>
         </div>
       </div>
       
       <div class="card">
-        <h3>क्रियाएं</h3>
+        <h3>कार्रवाई</h3>
         <div class="btn-group">
           <button class="btn btn-secondary" onclick="toUpperCase()">बड़े अक्षर</button>
           <button class="btn btn-secondary" onclick="toLowerCase()">छोटे अक्षर</button>
-          <button class="btn btn-secondary" onclick="removeDuplicates()">डुप्लिकेट पंक्तियाँ हटाएं</button>
-          <button class="btn btn-secondary" onclick="sortLines()">पंक्तियाँ सॉर्ट करें</button>
-          <button class="btn btn-secondary" onclick="reverseText()">टेक्स्ट उल्टा करें</button>
+          <button class="btn btn-secondary" onclick="removeDuplicates()">डुप्लिकेट हटाएँ</button>
+          <button class="btn btn-secondary" onclick="sortLines()">क्रमबद्ध करें</button>
+          <button class="btn btn-secondary" onclick="reverseText()">उल्टा करें</button>
           <button class="btn btn-primary" onclick="copyText()">कॉपी</button>
-          <button class="btn btn-secondary" onclick="clearText()">साफ़</button>
+          <button class="btn btn-secondary" onclick="clearText()">साफ़ करें</button>
         </div>
       </div>
     </div>

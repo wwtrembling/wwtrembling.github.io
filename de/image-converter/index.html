@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="de">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>이미지 변환기 - Tool Shelf</title>
-  <meta name="description" content="이미지 크기를 조정하고 WebP, JPEG, PNG 형식으로 변환하세요. 브라우저에서 바로 처리됩니다.">
+  <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+  <title>Bildkonverter - Tool Shelf</title>
+  <meta name="description" content="Ändern Sie die Bildgröße und konvertieren Sie in WebP, JPEG, PNG-Formate. 브라우저에서 바로 처리됩니다.">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="이미지 변환기 - Tool Shelf">
+  <meta property="og:title" content="Bildkonverter - Tool Shelf">
   <meta property="og:description" content="이미지 크기를 조정하고 다양한 형식으로 변환하세요.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://wwtrembling.github.io/ko/image-converter/">
+  <meta property="og:url" content="https://wwtrembling.github.io/de/image-converter/">
 
   <!-- Canonical -->
-  <link rel="canonical" href="https://wwtrembling.github.io/ko/image-converter/">
+  <link rel="canonical" href="https://wwtrembling.github.io/de/image-converter/">
 
   <!-- Language Alternatives -->
-  <link rel="alternate" hreflang="ko" href="https://wwtrembling.github.io/ko/image-converter/">
+  <link rel="alternate" hreflang="ko" href="https://wwtrembling.github.io/de/image-converter/">
   <link rel="alternate" hreflang="en" href="https://wwtrembling.github.io/en/image-converter/">
   <link rel="alternate" hreflang="ja" href="https://wwtrembling.github.io/ja/image-converter/">
   <link rel="alternate" hreflang="hi" href="https://wwtrembling.github.io/hi/image-converter/">
@@ -41,9 +42,9 @@
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "이미지 변환기",
-    "description": "이미지 크기를 조정하고 WebP, JPEG, PNG 형식으로 변환하세요.",
-    "url": "https://wwtrembling.github.io/ko/image-converter/",
+    "name": "Bildkonverter",
+    "description": "Ändern Sie die Bildgröße und konvertieren Sie in WebP, JPEG, PNG-Formate.",
+    "url": "https://wwtrembling.github.io/de/image-converter/",
     "inLanguage": "ko",
     "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "Any",
@@ -198,7 +199,7 @@
   <header class="site-header">
     <div class="container">
       <div class="header-content">
-        <a href="/ko/" class="site-logo">
+        <a href="/de/" class="site-logo">
           🛠️ Tool Shelf
         </a>
       </div>
@@ -207,23 +208,23 @@
 
   <main class="main-content">
     <div class="container-narrow">
-      <h1>🖼️ 이미지 변환기</h1>
-      <p>이미지 크기를 조정하고 WebP, JPEG, PNG 형식으로 변환하세요.</p>
+      <h1>🖼️ Bildkonverter</h1>
+      <p>Ändern Sie die Bildgröße und konvertieren Sie in WebP, JPEG, PNG-Formate.</p>
 
       <!-- Upload Area -->
       <div class="upload-area" id="uploadArea">
         <input type="file" id="fileInput" accept="image/*" style="display: none;">
         <div>
           <p style="font-size: 3rem; margin: 0;">📁</p>
-          <p style="font-size: 1.25rem; font-weight: 600; margin: var(--spacing-md) 0;">이미지를 클릭하거나 드래그하여 업로드</p>
-          <p class="info-text">JPG, PNG, GIF, WebP 등 모든 이미지 형식 지원</p>
+          <p style="font-size: 1.25rem; font-weight: 600; margin: var(--spacing-md) 0;">Klicken oder ziehen, um Bild hochzuladen</p>
+          <p class="info-text">Unterstützt alle Bildformate einschließlich JPG, PNG, GIF, WebP.</p>
         </div>
       </div>
 
       <!-- Controls -->
       <div class="controls" id="controls" style="display: none;">
         <div class="control-group">
-          <label class="form-label">너비 (px)</label>
+          <label class="form-label">Breite (px)</label>
           <div class="slider-container">
             <input type="range" id="widthSlider" min="100" max="4000" value="1920" class="form-input" style="flex: 1;">
             <span class="slider-value" id="widthValue">1920px</span>
@@ -231,7 +232,7 @@
         </div>
 
         <div class="control-group">
-          <label class="form-label">높이 (px)</label>
+          <label class="form-label">Höhe (px)</label>
           <div class="slider-container">
             <input type="range" id="heightSlider" min="100" max="4000" value="1080" class="form-input" style="flex: 1;">
             <span class="slider-value" id="heightValue">1080px</span>
@@ -239,7 +240,7 @@
         </div>
 
         <div class="control-group">
-          <label class="form-label">출력 형식</label>
+          <label class="form-label">Ausgabeformat</label>
           <select id="formatSelect" class="form-select">
             <option value="image/webp">WebP</option>
             <option value="image/jpeg">JPEG</option>
@@ -248,7 +249,7 @@
         </div>
 
         <div class="control-group">
-          <label class="form-label">품질 (%)</label>
+          <label class="form-label">Qualität (%)</label>
           <div class="slider-container">
             <input type="range" id="qualitySlider" min="1" max="100" value="90" class="form-input" style="flex: 1;">
             <span class="slider-value" id="qualityValue">90%</span>
@@ -256,24 +257,24 @@
         </div>
 
         <div class="button-group">
-          <button class="btn btn-primary" id="convertBtn">변환하기</button>
-          <button class="btn btn-secondary" id="resetBtn">초기화</button>
+          <button class="btn btn-primary" id="convertBtn">Konvertieren</button>
+          <button class="btn btn-secondary" id="resetBtn">Zurücksetzen</button>
         </div>
       </div>
 
       <!-- Preview -->
       <div class="preview-container" id="previewContainer" style="display: none;">
         <div class="preview-box">
-          <h3>원본 이미지</h3>
+          <h3>Originalbild</h3>
           <img id="originalPreview" alt="Original">
           <p class="info-text" id="originalInfo"></p>
         </div>
         <div class="preview-box">
-          <h3>변환된 이미지</h3>
+          <h3>Konvertiertes Bild</h3>
           <img id="convertedPreview" alt="Converted">
           <p class="info-text" id="convertedInfo"></p>
           <button class="btn btn-primary" id="downloadBtn"
-            style="margin-top: var(--spacing-md); width: 100%;">다운로드</button>
+            style="margin-top: var(--spacing-md); width: 100%;">Herunterladen</button>
         </div>
       </div>
     </div>
@@ -339,7 +340,7 @@
     // Handle file
     function handleFile(file) {
       if (!file.type.startsWith('image/')) {
-        alert('이미지 파일만 업로드할 수 있습니다.');
+        alert('Nur Bilddateien können hochgeladen werden.');
         return;
       }
 

@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ja">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SQL 포매터 - Tool Shelf</title>
-    <meta name="description" content="SQL 쿼리를 자동으로 정렬하고 포맷팅하세요. Beautify와 Minify 기능을 제공합니다.">
+  <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+    <title>SQLフォーマッター - Tool Shelf</title>
+    <meta name="description" content="SQLクエリを整形・圧縮します。">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="SQL 포매터 - Tool Shelf">
-    <meta property="og:description" content="SQL 쿼리를 자동으로 정렬하고 포맷팅하세요.">
+    <meta property="og:title" content="SQL 포매터 - 🛠️ Tool Shelf">
+    <meta property="og:description" content="SQLクエリを整形・圧縮します。">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://wwtrembling.github.io/ko/sql-formatter/">
+    <meta property="og:url" content="https://wwtrembling.github.io/ja/sql-formatter/">
 
     <!-- Canonical -->
-    <link rel="canonical" href="https://wwtrembling.github.io/ko/sql-formatter/">
+    <link rel="canonical" href="https://wwtrembling.github.io/ja/sql-formatter/">
 
     <!-- Language Alternatives -->
-    <link rel="alternate" hreflang="ko" href="https://wwtrembling.github.io/ko/sql-formatter/">
+    <link rel="alternate" hreflang="ko" href="https://wwtrembling.github.io/ja/sql-formatter/">
     <link rel="alternate" hreflang="en" href="https://wwtrembling.github.io/en/sql-formatter/">
     <link rel="alternate" hreflang="ja" href="https://wwtrembling.github.io/ja/sql-formatter/">
     <link rel="alternate" hreflang="hi" href="https://wwtrembling.github.io/hi/sql-formatter/">
@@ -43,7 +44,7 @@
     "@type": "WebApplication",
     "name": "SQL 포매터",
     "description": "SQL 쿼리를 자동으로 정렬하고 포맷팅하세요.",
-    "url": "https://wwtrembling.github.io/ko/sql-formatter/",
+    "url": "https://wwtrembling.github.io/ja/sql-formatter/",
     "inLanguage": "ko",
     "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "Any",
@@ -156,7 +157,7 @@
     <header class="site-header">
         <div class="container">
             <div class="header-content">
-                <a href="/ko/" class="site-logo">
+                <a href="/ja/" class="site-logo">
                     🛠️ Tool Shelf
                 </a>
             </div>
@@ -165,13 +166,13 @@
 
     <main class="main-content">
         <div class="container-narrow">
-            <h1>🗄️ SQL 포매터</h1>
-            <p>SQL 쿼리를 자동으로 정렬하고 포맷팅하세요. Beautify와 Minify 기능을 제공합니다.</p>
+            <h1>🗄️ SQLフォーマッター</h1>
+            <p>SQLクエリを整形・圧縮します。</p>
 
             <!-- Options -->
             <div class="options">
                 <div class="option-group">
-                    <label class="form-label">SQL 언어:</label>
+                    <label class="form-label">SQL言語:</label>
                     <select id="languageSelect" class="form-select">
                         <option value="sql">Standard SQL</option>
                         <option value="mysql">MySQL</option>
@@ -185,20 +186,20 @@
 
             <!-- Buttons -->
             <div class="button-group">
-                <button class="btn btn-primary" id="formatBtn">✨ Beautify</button>
-                <button class="btn btn-secondary" id="minifyBtn">📦 Minify</button>
-                <button class="btn btn-secondary" id="copyBtn">📋 복사</button>
-                <button class="btn btn-secondary" id="clearBtn">🗑️ 초기화</button>
+                <button class="btn btn-primary" id="formatBtn">✨ 整形</button>
+                <button class="btn btn-secondary" id="minifyBtn">📦 圧縮</button>
+                <button class="btn btn-secondary" id="copyBtn">コピー</button>
+                <button class="btn btn-secondary" id="clearBtn">クリア</button>
             </div>
 
             <!-- Editors -->
             <div class="editor-container">
                 <div class="editor-box">
-                    <h3>입력 (SQL)</h3>
+                    <h3>入力 (SQL)</h3>
                     <textarea id="inputSQL" placeholder="SELECT * FROM users WHERE id=1"></textarea>
                 </div>
                 <div class="editor-box">
-                    <h3>출력 (포맷된 SQL)</h3>
+                    <h3>出力 (整形済)</h3>
                     <textarea id="outputSQL" readonly></textarea>
                 </div>
             </div>
@@ -229,7 +230,7 @@
         formatBtn.addEventListener('click', () => {
             const sql = inputSQL.value.trim();
             if (!sql) {
-                alert('SQL 쿼리를 입력해주세요.');
+                alert('SQLクエリを入力してください。');
                 return;
             }
 
@@ -250,7 +251,7 @@
         minifyBtn.addEventListener('click', () => {
             const sql = inputSQL.value.trim();
             if (!sql) {
-                alert('SQL 쿼리를 입력해주세요.');
+                alert('SQLクエリを入力してください。');
                 return;
             }
 
@@ -269,7 +270,7 @@
         // Copy to clipboard
         copyBtn.addEventListener('click', () => {
             if (!outputSQL.value) {
-                alert('복사할 내용이 없습니다.');
+                alert('コピー할 내용이 없습니다.');
                 return;
             }
             Utils.copyToClipboard(outputSQL.value);

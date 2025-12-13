@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+    <title>โปรแกรมแก้ไขภาพ - Tool Shelf</title>
+    <meta name="description" content="Adjust Brightness, Contrast, and Saturation.">
+    <link rel="canonical" href="https://wwtrembling.github.io/th/image-editor/">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <style>
+        .upload-area {
+            border: 2px dashed var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            text-align: center;
+            cursor: pointer;
+            background: var(--bg-secondary);
+            min-height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .preview {
+            max-width: 100%;
+            margin: var(--spacing-lg) 0;
+            text-align: center;
+        }
+
+        .preview canvas {
+            max-width: 100%;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+        }
+
+        .controls {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+            margin: var(--spacing-lg) 0;
+        }
+
+        .slider-group {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .slider-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .btn {
+            padding: var(--spacing-md) var(--spacing-lg);
+            border: none;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            cursor: pointer;
+            background: var(--primary-color);
+            color: white;
+            margin: var(--spacing-sm);
+        }
+    </style>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content"><a href="/th/" class="site-logo">🛠️ Tool Shelf</a></div>
+        </div>
+    </header>
+    <main class="main-content">
+        <div class="container-narrow">
+            <h1>🎨 โปรแกรมแก้ไขภาพ</h1>
+            <p>Adjust Brightness, Contrast, and Saturation.</p>
+            <div class="upload-area" id="uploadArea">
+                <input type="file" id="fileInput" accept="image/*" style="display: none;">
+                <div>
+                    <p style="font-size: 2rem; margin: 0;">📁</p>
+                    <p>Click or drag to upload image</p>
+                </div>
+            </div>
+            <div class="controls" id="controls" style="display: none;">
+                <div class="slider-group">
+                    <div class="slider-label"><span>Brightness</span><span id="brightnessValue">0</span></div>
+                    <input type="range" id="brightness" min="-100" max="100" value="0" class="form-input"
+                        style="width: 100%;">
+                </div>
+                <div class="slider-group">
+                    <div class="slider-label"><span>Contrast</span><span id="contrastValue">0</span></div>
+                    <input type="range" id="contrast" min="-100" max="100" value="0" class="form-input"
+                        style="width: 100%;">
+                </div>
+                <div class="slider-group">
+                    <div class="slider-label"><span>Saturation</span><span id="saturationValue">0</span></div>
+                    <input type="range" id="saturation" min="-100" max="100" value="0" class="form-input"
+                        style="width: 100%;">
+                </div>
+                <button class="btn" id="resetBtn">Reset</button>
+                <button class="btn" id="downloadBtn">ดาวน์โหลด</button>
+            </div>
+            <div class="preview" id="preview" style="display: none;">
+                <canvas id="canvas"></canvas>
+            </div>
+        </div>
+    </main>
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Tool Shelf</p>
+            </div>
+        </div>
+    </footer>
+    <script src="/assets/js/common.js"></script>
+    <script>
+        const uploadArea = document.getElementById('uploadArea');
+        const fileInput = document.getElementById('fileInput');
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        const controls = document.getElementById('controls');
+        const preview = document.getElementById('preview');
+        const brightness = document.getElementById('brightness');
+        const contrast = document.getElementById('contrast');
+        const saturation = document.getElementById('saturation');
+        let originalImage = null;
+        let originalImageData = null;
+
+        uploadArea.addEventListener('click', () => fileInput.click());
+        fileInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) loadImage(e.target.files[0]);
+        });
+
+        function loadImage(file) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                const img = new Image();
+                img.onload = () => {
+                    originalImage = img;
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+                    ctx.drawImage(img, 0, 0);
+                    originalImageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                    controls.style.display = 'block';
+                    preview.style.display = 'block';
+                };
+                img.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function applyFilters() {
+            if (!originalImageData) return;
+            const imageData = ctx.createImageData(originalImageData);
+            const data = imageData.data;
+            const b = parseInt(brightness.value);
+            const c = parseInt(contrast.value) / 100;
+            const s = parseInt(saturation.value) / 100;
+
+            for (let i = 0; i < data.length; i += 4) {
+                let r = originalImageData.data[i];
+                let g = originalImageData.data[i + 1];
+                let bl = originalImageData.data[i + 2];
+
+                // Brightness
+                r += b; g += b; bl += b;
+
+                // Contrast
+                const factor = (259 * (c * 100 + 255)) / (255 * (259 - c * 100));
+                r = factor * (r - 128) + 128;
+                g = factor * (g - 128) + 128;
+                bl = factor * (bl - 128) + 128;
+
+                // Saturation
+                const gray = 0.2989 * r + 0.5870 * g + 0.1140 * bl;
+                r = gray + s * (r - gray);
+                g = gray + s * (g - gray);
+                bl = gray + s * (bl - gray);
+
+                data[i] = Math.max(0, Math.min(255, r));
+                data[i + 1] = Math.max(0, Math.min(255, g));
+                data[i + 2] = Math.max(0, Math.min(255, bl));
+            }
+            ctx.putImageData(imageData, 0, 0);
+        }
+
+        brightness.addEventListener('input', () => { brightnessValue.textContent = brightness.value; applyFilters(); });
+        contrast.addEventListener('input', () => { contrastValue.textContent = contrast.value; applyFilters(); });
+        saturation.addEventListener('input', () => { saturationValue.textContent = saturation.value; applyFilters(); });
+
+        document.getElementById('resetBtn').addEventListener('click', () => {
+            brightness.value = contrast.value = saturation.value = 0;
+            brightnessValue.textContent = contrastValue.textContent = saturationValue.textContent = '0';
+            if (originalImageData) ctx.putImageData(originalImageData, 0, 0);
+        });
+
+        document.getElementById('downloadBtn').addEventListener('click', () => {
+            const url = canvas.toDataURL('image/png');
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'edited-image.png';
+            a.click();
+        });
+    </script>
+</body>
+
+</html>

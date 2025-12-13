@@ -4,12 +4,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chuyển Đổi Màu - Tool Shelf</title>
+  <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+  <title>Chuyển đổi màu sắc - Tool Shelf</title>
   <meta name="description"
     content="Convert between HEX, RGB, and HSL color formats. Real-time color preview and conversion. Copy color codes with one click.">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Chuyển Đổi Màu - Tool Shelf">
+  <meta property="og:title" content="Chuyển đổi màu sắc - Tool Shelf">
   <meta property="og:description" content="Chuyển đổi giữa các định dạng màu HEX, RGB và HSL. Xem trước thời gian thực và sao chép dễ dàng.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://wwtrembling.github.io/vi/color-converter/">
@@ -18,8 +19,8 @@
   <link rel="canonical" href="https://wwtrembling.github.io/vi/color-converter/">
 
   <!-- Language Alternatives -->
-  <link rel="alternate" hreflang="ko" href="https://wwtrembling.github.io/ko/color-converter/">
-  <link rel="alternate" hreflang="vi" href="https://wwtrembling.github.io/vi/color-converter/">
+  <link rel="alternate" hreflang="ko" href="https://wwtrembling.github.io/vi/color-converter/">
+  <link rel="alternate" hreflang="ko" href="https://wwtrembling.github.io/vi/color-converter/">
   <link rel="alternate" hreflang="ja" href="https://wwtrembling.github.io/ja/color-converter/">
   <link rel="alternate" hreflang="hi" href="https://wwtrembling.github.io/hi/color-converter/">
   <link rel="alternate" hreflang="id" href="https://wwtrembling.github.io/id/color-converter/">
@@ -42,10 +43,10 @@
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "Chuyển Đổi Màu",
+    "name": "색상 변환기",
     "description": "Chuyển đổi giữa các định dạng màu HEX, RGB và HSL. Xem trước thời gian thực và sao chép dễ dàng.",
     "url": "https://wwtrembling.github.io/vi/color-converter/",
-    "inLanguage": "vi",
+    "inLanguage": "ko",
     "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "Any",
     "offers": {
@@ -169,13 +170,13 @@
 
   <main class="main-content">
     <div class="container-narrow">
-      <h1>🎨 Chuyển Đổi Màu</h1>
+      <h1>🎨 Chuyển đổi màu</h1>
       <p>Chuyển đổi giữa các định dạng màu HEX, RGB và HSL. Xem trước thời gian thực và sao chép dễ dàng.</p>
 
       <!-- AdSense Placeholder -->
       <div class="adsense-placeholder">
         <!-- AdSense Ad Unit -->
-        <p>Không Gian Quảng Cáo</p>
+        <p>Quảng cáo</p>
       </div>
 
       <!-- Color Preview -->
@@ -183,7 +184,7 @@
 
       <!-- Color Inputs -->
       <div class="card">
-        <h3>Định Dạng Màu</h3>
+        <h3>Định dạng màu</h3>
 
         <div class="form-group">
           <div class="color-input-group">
@@ -191,7 +192,7 @@
               <label class="form-label">HEX</label>
               <input type="text" id="hexInput" class="form-input" placeholder="#000000" value="#6366f1">
             </div>
-            <button class="copy-btn" onclick="copyColor('hex')">Sao chép</button>
+            <button class="copy-btn" onclick="copyColor('hex')">Copy</button>
           </div>
         </div>
 
@@ -201,7 +202,7 @@
               <label class="form-label">RGB</label>
               <input type="text" id="rgbInput" class="form-input" placeholder="rgb(0, 0, 0)" readonly>
             </div>
-            <button class="copy-btn" onclick="copyColor('rgb')">Sao chép</button>
+            <button class="copy-btn" onclick="copyColor('rgb')">Copy</button>
           </div>
         </div>
 
@@ -211,14 +212,14 @@
               <label class="form-label">HSL</label>
               <input type="text" id="hslInput" class="form-input" placeholder="hsl(0, 0%, 0%)" readonly>
             </div>
-            <button class="copy-btn" onclick="copyColor('hsl')">Sao chép</button>
+            <button class="copy-btn" onclick="copyColor('hsl')">Copy</button>
           </div>
         </div>
       </div>
 
       <!-- RGB Sliders -->
       <div class="card">
-        <h3>Thanh Trượt RGB</h3>
+        <h3>Thanh trượt RGB</h3>
 
         <div class="slider-group">
           <div class="slider-label">
@@ -250,14 +251,14 @@
 
       <!-- Color Palette -->
       <div class="card">
-        <h3>Màu Phổ Biến</h3>
+        <h3>Màu phổ biến</h3>
         <div class="color-palette" id="colorPalette"></div>
       </div>
 
       <!-- AdSense Placeholder -->
       <div class="adsense-placeholder">
         <!-- AdSense Ad Unit -->
-        <p>Không Gian Quảng Cáo</p>
+        <p>Quảng cáo</p>
       </div>
     </div>
   </main>

@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-adsense-account" content="ca-pub-6334819180242631">
   <title>เครื่องคำนวณวันที่ - Tool Shelf</title>
-  <meta name="description" content="คำนวณ D-Day และความแตกต่างของวันที่">
+  <meta name="description" content="Calculate D-Day and date differences.">
   <link rel="canonical" href="https://wwtrembling.github.io/th/date-calculator/">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/main.css">
@@ -21,9 +22,9 @@
       <h1>📅 เครื่องคำนวณวันที่</h1>
       <p>คำนวณ D-Day และความแตกต่างของวันที่</p>
       <div class="card">
-        <h3>คำนวณ D-Day</h3>
+        <h3>D-Day Calculation</h3>
         <div class="form-group">
-          <label class="form-label">วันที่เป้าหมาย</label>
+          <label class="form-label">Target Date</label>
           <input type="date" id="targetDate" class="form-input">
         </div>
         <button class="btn btn-primary" onclick="calculateDday()">คำนวณ</button>
@@ -32,13 +33,13 @@
         </div>
       </div>
       <div class="card">
-        <h3>ความแตกต่างของวันที่</h3>
+        <h3>Date Difference</h3>
         <div class="form-group">
-          <label class="form-label">วันเริ่มต้น</label>
+          <label class="form-label">Start Date</label>
           <input type="date" id="startDate" class="form-input">
         </div>
         <div class="form-group">
-          <label class="form-label">วันสิ้นสุด</label>
+          <label class="form-label">End Date</label>
           <input type="date" id="endDate" class="form-input">
         </div>
         <button class="btn btn-primary" onclick="calculateDiff()">คำนวณ</button>
@@ -67,7 +68,7 @@
       const start = new Date(document.getElementById('startDate').value);
       const end = new Date(document.getElementById('endDate').value);
       const diff = Math.abs(Math.ceil((end - start) / (1000 * 60 * 60 * 24)));
-      document.getElementById('diffValue').textContent = diff + ' วัน';
+      document.getElementById('diffValue').textContent = diff + ' Sun';
       document.getElementById('diffResult').style.display = 'block';
     }
   </script>

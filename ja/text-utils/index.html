@@ -3,11 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-adsense-account" content="ca-pub-6334819180242631">
   <title>テキストユーティリティ - Tool Shelf</title>
-  <meta name="description" content="単語数、文字数、重複削除、大文字小文字変換などのテキスト処理機能を提供します。">
+  <meta name="description" content="単語数、文字数のカウント、重複の削除、大文字小文字の変換などの機能を提供します。">
   
   <link rel="canonical" href="https://wwtrembling.github.io/ja/text-utils/">
-  <link rel="alternate" hreflang="ko" href="https://wwtrembling.github.io/ko/text-utils/">
+  <link rel="alternate" hreflang="ko" href="https://wwtrembling.github.io/ja/text-utils/">
   <link rel="alternate" hreflang="en" href="https://wwtrembling.github.io/en/text-utils/">
   <link rel="alternate" hreflang="ja" href="https://wwtrembling.github.io/ja/text-utils/">
   <link rel="alternate" hreflang="hi" href="https://wwtrembling.github.io/hi/text-utils/">
@@ -34,11 +35,11 @@
 
   <main class="main-content">
     <div class="container-narrow">
-      <h1>📝 テキストユーティリティ</h1>
-      <p>単語数、文字数、重複削除、大文字小文字変換などのテキスト処理機能を提供します。</p>
+      <h1>📝 テキストツール</h1>
+      <p>単語数、文字数のカウント、重複の削除、大文字小文字の変換などの機能を提供します。</p>
       
       <div class="card">
-        <label class="form-label">テキスト入力</label>
+        <label class="form-label">入力テキスト</label>
         <textarea id="textInput" class="form-textarea" style="min-height: 300px;" placeholder="テキストを入力してください..."></textarea>
       </div>
       
@@ -61,12 +62,12 @@
       </div>
       
       <div class="card">
-        <h3>アクション</h3>
+        <h3>操作</h3>
         <div class="btn-group">
           <button class="btn btn-secondary" onclick="toUpperCase()">大文字</button>
           <button class="btn btn-secondary" onclick="toLowerCase()">小文字</button>
           <button class="btn btn-secondary" onclick="removeDuplicates()">重複行削除</button>
-          <button class="btn btn-secondary" onclick="sortLines()">行ソート</button>
+          <button class="btn btn-secondary" onclick="sortLines()">行の並べ替え</button>
           <button class="btn btn-secondary" onclick="reverseText()">テキスト反転</button>
           <button class="btn btn-primary" onclick="copyText()">コピー</button>
           <button class="btn btn-secondary" onclick="clearText()">クリア</button>

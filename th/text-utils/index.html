@@ -3,11 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>เครื่องมือข้อความ - Tool Shelf</title>
-  <meta name="description" content="นับคำ นับตัวอักษร ลบรายการซ้ำ แปลงตัวพิมพ์ และคุณสมบัติการประมวลผลข้อความอื่นๆ">
+  <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+  <title>ยูทิลิตี้ข้อความ - Tool Shelf</title>
+  <meta name="description" content="นับคำ ตัวอักษร ลบรายการที่ซ้ำกัน แปลงตัวพิมพ์ และอื่นๆ">
   
   <link rel="canonical" href="https://wwtrembling.github.io/th/text-utils/">
-  <link rel="alternate" hreflang="ko" href="https://wwtrembling.github.io/ko/text-utils/">
+  <link rel="alternate" hreflang="ko" href="https://wwtrembling.github.io/th/text-utils/">
   <link rel="alternate" hreflang="en" href="https://wwtrembling.github.io/en/text-utils/">
   <link rel="alternate" hreflang="ja" href="https://wwtrembling.github.io/ja/text-utils/">
   <link rel="alternate" hreflang="hi" href="https://wwtrembling.github.io/hi/text-utils/">
@@ -35,10 +36,10 @@
   <main class="main-content">
     <div class="container-narrow">
       <h1>📝 เครื่องมือข้อความ</h1>
-      <p>นับคำ นับตัวอักษร ลบรายการซ้ำ แปลงตัวพิมพ์ และคุณสมบัติการประมวลผลข้อความอื่นๆ</p>
+      <p>นับคำ ตัวอักษร ลบรายการที่ซ้ำกัน แปลงตัวพิมพ์ และอื่นๆ</p>
       
       <div class="card">
-        <label class="form-label">ป้อนข้อความ</label>
+        <label class="form-label">Input Text</label>
         <textarea id="textInput" class="form-textarea" style="min-height: 300px;" placeholder="ป้อนข้อความ..."></textarea>
       </div>
       
@@ -47,29 +48,29 @@
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem;">
           <div class="result-box">
             <div class="result-value" id="charCount">0</div>
-            <div>ตัวอักษร</div>
+            <div>Characters</div>
           </div>
           <div class="result-box">
             <div class="result-value" id="wordCount">0</div>
-            <div>คำ</div>
+            <div>Words</div>
           </div>
           <div class="result-box">
             <div class="result-value" id="lineCount">0</div>
-            <div>บรรทัด</div>
+            <div>Lines</div>
           </div>
         </div>
       </div>
       
       <div class="card">
-        <h3>การดำเนินการ</h3>
+        <h3>การกระทำ</h3>
         <div class="btn-group">
-          <button class="btn btn-secondary" onclick="toUpperCase()">ตัวพิมพ์ใหญ่</button>
-          <button class="btn btn-secondary" onclick="toLowerCase()">ตัวพิมพ์เล็ก</button>
-          <button class="btn btn-secondary" onclick="removeDuplicates()">ลบบรรทัดซ้ำ</button>
-          <button class="btn btn-secondary" onclick="sortLines()">เรียงบรรทัด</button>
-          <button class="btn btn-secondary" onclick="reverseText()">กลับข้อความ</button>
-          <button class="btn btn-primary" onclick="copyText()">คัดลอก</button>
-          <button class="btn btn-secondary" onclick="clearText()">ล้าง</button>
+          <button class="btn btn-secondary" onclick="toUpperCase()">UPPERCASE</button>
+          <button class="btn btn-secondary" onclick="toLowerCase()">lowercase</button>
+          <button class="btn btn-secondary" onclick="removeDuplicates()">Remove Duplicate Lines</button>
+          <button class="btn btn-secondary" onclick="sortLines()">Sort Lines</button>
+          <button class="btn btn-secondary" onclick="reverseText()">Reverse Text</button>
+          <button class="btn btn-primary" onclick="copyText()">Copy</button>
+          <button class="btn btn-secondary" onclick="clearText()">Clear</button>
         </div>
       </div>
     </div>

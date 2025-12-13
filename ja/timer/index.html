@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>タイマー - Tool Shelf</title>
-  <meta name="description" content="ポモドーロテクニック付きオンラインタイマー">
+  <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+  <title>タイマー / ポモドーロ - Tool Shelf</title>
+  <meta name="description" content="オンラインタイマーとポモドーロテクニック。">
   <link rel="canonical" href="https://wwtrembling.github.io/ja/timer/">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/main.css">
@@ -23,7 +24,7 @@
   <main class="main-content">
     <div class="container-narrow">
       <h1>⏱️ タイマー</h1>
-      <p>ポモドーロテクニック付きオンラインタイマー</p>
+      <p>オンラインタイマーとポモドーロテクニック。</p>
       <div class="card text-center">
         <div class="timer-display" id="display">00:00</div>
         <div class="form-group">
@@ -36,9 +37,9 @@
           <button class="btn btn-secondary" onclick="reset()">リセット</button>
         </div>
         <div style="margin-top:1rem;">
-          <button class="btn btn-secondary preset-btn" onclick="setPreset(25)">Pomodoro (25m)</button>
-          <button class="btn btn-secondary preset-btn" onclick="setPreset(5)">休憩 (5m)</button>
-          <button class="btn btn-secondary preset-btn" onclick="setPreset(15)">休憩 (15m)</button>
+          <button class="btn btn-secondary preset-btn" onclick="setPreset(25)">ポモドーロ (25分)</button>
+          <button class="btn btn-secondary preset-btn" onclick="setPreset(5)">休憩 (5分)</button>
+          <button class="btn btn-secondary preset-btn" onclick="setPreset(15)">休憩 (15分)</button>
         </div>
       </div>
     </div>
@@ -73,7 +74,7 @@
             updateDisplay();
           } else {
             pause();
-            alert('時間切れ!');
+            alert('時間終了！');
           }
         }, 1000);
       }

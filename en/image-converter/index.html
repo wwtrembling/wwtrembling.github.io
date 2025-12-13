@@ -4,13 +4,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-adsense-account" content="ca-pub-6334819180242631">
   <title>Image Converter - Tool Shelf</title>
-  <meta name="description"
-    content="Resize images and convert to WebP, JPEG, PNG formats. Process directly in your browser.">
+  <meta name="description" content="Resize images and convert to WebP, JPEG, PNG formats. 브라우저에서 바로 처리됩니다.">
 
   <!-- Open Graph -->
   <meta property="og:title" content="Image Converter - Tool Shelf">
-  <meta property="og:description" content="Resize images and convert to various formats.">
+  <meta property="og:description" content="이미지 크기를 조정하고 다양한 형식으로 변환하세요.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://wwtrembling.github.io/en/image-converter/">
 
@@ -18,7 +18,7 @@
   <link rel="canonical" href="https://wwtrembling.github.io/en/image-converter/">
 
   <!-- Language Alternatives -->
-  <link rel="alternate" hreflang="ko" href="https://wwtrembling.github.io/ko/image-converter/">
+  <link rel="alternate" hreflang="ko" href="https://wwtrembling.github.io/en/image-converter/">
   <link rel="alternate" hreflang="en" href="https://wwtrembling.github.io/en/image-converter/">
   <link rel="alternate" hreflang="ja" href="https://wwtrembling.github.io/ja/image-converter/">
   <link rel="alternate" hreflang="hi" href="https://wwtrembling.github.io/hi/image-converter/">
@@ -45,7 +45,7 @@
     "name": "Image Converter",
     "description": "Resize images and convert to WebP, JPEG, PNG formats.",
     "url": "https://wwtrembling.github.io/en/image-converter/",
-    "inLanguage": "en",
+    "inLanguage": "ko",
     "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "Any",
     "offers": {
@@ -216,9 +216,8 @@
         <input type="file" id="fileInput" accept="image/*" style="display: none;">
         <div>
           <p style="font-size: 3rem; margin: 0;">📁</p>
-          <p style="font-size: 1.25rem; font-weight: 600; margin: var(--spacing-md) 0;">Click or drag image to upload
-          </p>
-          <p class="info-text">Supports all image formats: JPG, PNG, GIF, WebP, etc.</p>
+          <p style="font-size: 1.25rem; font-weight: 600; margin: var(--spacing-md) 0;">Click or drag to upload image</p>
+          <p class="info-text">Supports all image formats including JPG, PNG, GIF, WebP.</p>
         </div>
       </div>
 
@@ -341,7 +340,7 @@
     // Handle file
     function handleFile(file) {
       if (!file.type.startsWith('image/')) {
-        alert('Please upload an image file only.');
+        alert('Only image files can be uploaded.');
         return;
       }
 
