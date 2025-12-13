@@ -31,22 +31,22 @@ image_converter_template = '''<!DOCTYPE html>
   <meta property="og:title" content="{og_title}">
   <meta property="og:description" content="{og_description}">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://wwtrembling.github.io/{lang}/image-converter/">
+  <meta property="og:url" content="https://utilifyapp.net/{lang}/image-converter/">
 
   <!-- Canonical -->
-  <link rel="canonical" href="https://wwtrembling.github.io/{lang}/image-converter/">
+  <link rel="canonical" href="https://utilifyapp.net/{lang}/image-converter/">
 
   <!-- Language Alternatives -->
-  <link rel="alternate" hreflang="ko" href="https://wwtrembling.github.io/ko/image-converter/">
-  <link rel="alternate" hreflang="en" href="https://wwtrembling.github.io/en/image-converter/">
-  <link rel="alternate" hreflang="ja" href="https://wwtrembling.github.io/ja/image-converter/">
-  <link rel="alternate" hreflang="hi" href="https://wwtrembling.github.io/hi/image-converter/">
-  <link rel="alternate" hreflang="id" href="https://wwtrembling.github.io/id/image-converter/">
-  <link rel="alternate" hreflang="vi" href="https://wwtrembling.github.io/vi/image-converter/">
-  <link rel="alternate" hreflang="th" href="https://wwtrembling.github.io/th/image-converter/">
-  <link rel="alternate" hreflang="de" href="https://wwtrembling.github.io/de/image-converter/">
-  <link rel="alternate" hreflang="pt" href="https://wwtrembling.github.io/pt/image-converter/">
-  <link rel="alternate" hreflang="x-default" href="https://wwtrembling.github.io/en/image-converter/">
+  <link rel="alternate" hreflang="ko" href="https://utilifyapp.net/ko/image-converter/">
+  <link rel="alternate" hreflang="en" href="https://utilifyapp.net/en/image-converter/">
+  <link rel="alternate" hreflang="ja" href="https://utilifyapp.net/ja/image-converter/">
+  <link rel="alternate" hreflang="hi" href="https://utilifyapp.net/hi/image-converter/">
+  <link rel="alternate" hreflang="id" href="https://utilifyapp.net/id/image-converter/">
+  <link rel="alternate" hreflang="vi" href="https://utilifyapp.net/vi/image-converter/">
+  <link rel="alternate" hreflang="th" href="https://utilifyapp.net/th/image-converter/">
+  <link rel="alternate" hreflang="de" href="https://utilifyapp.net/de/image-converter/">
+  <link rel="alternate" hreflang="pt" href="https://utilifyapp.net/pt/image-converter/">
+  <link rel="alternate" hreflang="x-default" href="https://utilifyapp.net/en/image-converter/">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -63,7 +63,7 @@ image_converter_template = '''<!DOCTYPE html>
     "@type": "WebApplication",
     "name": "{app_name}",
     "description": "{description}",
-    "url": "https://wwtrembling.github.io/{lang}/image-converter/",
+    "url": "https://utilifyapp.net/{lang}/image-converter/",
     "inLanguage": "{lang}",
     "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "Any",

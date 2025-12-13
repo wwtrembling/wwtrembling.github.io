@@ -16,7 +16,7 @@ def create_bmi_calculator(lang, translations):
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{t["title"]} - Tool Shelf</title>
   <meta name="description" content="{t["desc"]}">
-  <link rel="canonical" href="https://wwtrembling.github.io/{lang}/bmi-calculator/">
+  <link rel="canonical" href="https://utilifyapp.net/{lang}/bmi-calculator/">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/main.css">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631" crossorigin="anonymous"></script>
@@ -84,7 +84,7 @@ def create_date_calculator(lang, translations):
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{t["title"]} - Tool Shelf</title>
   <meta name="description" content="{t["desc"]}">
-  <link rel="canonical" href="https://wwtrembling.github.io/{lang}/date-calculator/">
+  <link rel="canonical" href="https://utilifyapp.net/{lang}/date-calculator/">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/main.css">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631" crossorigin="anonymous"></script>
@@ -163,7 +163,7 @@ def create_timer(lang, translations):
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{t["title"]} - Tool Shelf</title>
   <meta name="description" content="{t["desc"]}">
-  <link rel="canonical" href="https://wwtrembling.github.io/{lang}/timer/">
+  <link rel="canonical" href="https://utilifyapp.net/{lang}/timer/">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/main.css">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631" crossorigin="anonymous"></script>

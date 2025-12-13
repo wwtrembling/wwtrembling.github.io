@@ -231,17 +231,17 @@ def create_daily_verse_page(lang_code, config):
     # Replace canonical and hreflang
     content = re.sub(
         r'<link rel="canonical" href="[^"]*"',
-        f'<link rel="canonical" href="https://wwtrembling.github.io/{lang_code}/daily_verse/"',
+        f'<link rel="canonical" href="https://utilifyapp.net/{lang_code}/daily_verse/"',
         content
     )
     content = re.sub(
         r'<link rel="alternate" href="https://wwtrembling\.github\.io/ko/daily_verse/" hreflang="ko"',
-        f'<link rel="alternate" href="https://wwtrembling.github.io/{lang_code}/daily_verse/" hreflang="{lang_code}"',
+        f'<link rel="alternate" href="https://utilifyapp.net/{lang_code}/daily_verse/" hreflang="{lang_code}"',
         content
     )
     content = re.sub(
         r'<link rel="alternate" href="[^"]*" hreflang="x-default"',
-        f'<link rel="alternate" href="https://wwtrembling.github.io/{lang_code}/daily_verse/" hreflang="x-default"',
+        f'<link rel="alternate" href="https://utilifyapp.net/{lang_code}/daily_verse/" hreflang="x-default"',
         content
     )
     
@@ -258,7 +258,7 @@ def create_daily_verse_page(lang_code, config):
     )
     content = re.sub(
         r'<meta property="og:url" content="[^"]*"',
-        f'<meta property="og:url" content="https://wwtrembling.github.io/{lang_code}/daily_verse/"',
+        f'<meta property="og:url" content="https://utilifyapp.net/{lang_code}/daily_verse/"',
         content
     )
     content = re.sub(

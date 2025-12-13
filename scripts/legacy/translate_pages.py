@@ -210,14 +210,14 @@ def translate_html_file(source_path, target_path, lang_code):
     # URL 변경
     content = re.sub(
         r'https://wwtrembling\.github\.io/ko/image-converter/',
-        f'https://wwtrembling.github.io/{lang_code}/image-converter/',
+        f'https://utilifyapp.net/{lang_code}/image-converter/',
         content
     )
     
     # Canonical URL 변경
     content = re.sub(
         r'<link rel="canonical" href="https://wwtrembling\.github\.io/ko/image-converter/">',
-        f'<link rel="canonical" href="https://wwtrembling.github.io/{lang_code}/image-converter/">',
+        f'<link rel="canonical" href="https://utilifyapp.net/{lang_code}/image-converter/">',
         content
     )
     

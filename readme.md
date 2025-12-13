@@ -5,7 +5,7 @@ GitHub Pages 기반의 클라이언트 전용 유틸리티 모음 사이트
 ## 프로젝트 개요
 
 - **프로젝트명**: Tool Shelf
-- **배포**: GitHub Pages (https://wwtrembling.github.io)
+- **배포**: GitHub Pages (https://utilifyapp.net)
 - **기술 스택**: HTML + CSS + JavaScript (백엔드 없음)
 - **특징**: 완전한 클라이언트 사이드 처리, 개인정보 보호
 
@@ -148,8 +148,8 @@ GitHub Pages 기반의 클라이언트 전용 유틸리티 모음 사이트
 ## 배포
 
 GitHub Pages를 통해 자동 배포:
-- Repository: `wwtrembling/wwtrembling.github.io`
-- URL: `https://wwtrembling.github.io`
+- Repository: `wwtrembling/utilifyapp.net`
+- URL: `https://utilifyapp.net`
 
 ## 라이선스
 

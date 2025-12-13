@@ -194,7 +194,7 @@ def translate_file(source_path, target_path, lang_code):
         # 3. canonical URL 변경
         content = re.sub(
             r'href="https://wwtrembling\.github\.io/ko/',
-            f'href="https://wwtrembling.github.io/{lang_code}/',
+            f'href="https://utilifyapp.net/{lang_code}/',
             content
         )
         

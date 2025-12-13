@@ -6,9 +6,9 @@ import os
 from pathlib import Path
 import re
 
-BASE_DIR = Path(__file__).parent
-OLD_DOMAIN = 'yourdomain.com'
-NEW_DOMAIN = 'wwtrembling.github.io'
+BASE_DIR = Path(__file__).parent.parent
+OLD_DOMAIN = 'wwtrembling.github.io'
+NEW_DOMAIN = 'utilifyapp.net'
 
 def update_domain_in_file(file_path):
     """Update domain in a single file"""
@@ -38,31 +38,22 @@ def main():
     updated_count = 0
     total_count = 0
     
-    # Update all HTML files
-    for html_file in BASE_DIR.rglob('*.html'):
-        if '.git' in str(html_file):
-            continue
-        
-        total_count += 1
-        if update_domain_in_file(html_file):
-            print(f"✅ Updated: {html_file.relative_to(BASE_DIR)}")
-            updated_count += 1
+    # Update all files recursively
+    extensions = ['*.html', '*.xml', '*.txt', '*.md', '*.py', '*.json']
     
-    # Update sitemap.xml
-    sitemap = BASE_DIR / 'sitemap.xml'
-    if sitemap.exists():
-        total_count += 1
-        if update_domain_in_file(sitemap):
-            print(f"✅ Updated: sitemap.xml")
-            updated_count += 1
-    
-    # Update robots.txt
-    robots = BASE_DIR / 'robots.txt'
-    if robots.exists():
-        total_count += 1
-        if update_domain_in_file(robots):
-            print(f"✅ Updated: robots.txt")
-            updated_count += 1
+    for ext in extensions:
+        for file_path in BASE_DIR.rglob(ext):
+            if '.git' in str(file_path):
+                continue
+            
+            # Skip the script itself to avoid issues while running
+            if file_path == Path(__file__):
+                continue
+            
+            total_count += 1
+            if update_domain_in_file(file_path):
+                print(f"✅ Updated: {file_path.relative_to(BASE_DIR)}")
+                updated_count += 1
     
     print(f"\n{'='*60}")
     print(f"✨ Domain Update Complete!")
