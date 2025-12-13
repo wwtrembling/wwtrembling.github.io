@@ -88,9 +88,9 @@ GitHub Pages 기반의 클라이언트 전용 유틸리티 모음 사이트
 - **구현**: btoa/atob 브라우저 API
 
 ### ✅ 13. QR 코드 생성기 (QR Code Generator)
-- **경로**: `/{lang}/timer/`
-- **기능**: 카운트다운, 스톱워치, 포모도로 타이머
-- **구현**: Web Worker (백그라운드 정확도)
+- **경로**: `/{lang}/qr-generator/`
+- **기능**: QR 코드 생성
+- **구현**: QRCode.js 라이브러리
 
 ## 프로젝트 구조
 

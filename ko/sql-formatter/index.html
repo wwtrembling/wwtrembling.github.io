@@ -4,13 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="google-adsense-account" content="ca-pub-6334819180242631">
-    <title>SQL 포매터 - Tool Shelf</title>
-    <meta name="description" content="SQL 쿼리를 자동으로 정렬하고 포맷팅하세요. Beautify와 Minify 기능을 제공합니다.">
+    <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+    <title>SQL 포매터 & 정렬기 (Beautifier, Minifier) - Tool Shelf</title>
+    <meta name="description"
+        content="SQL 쿼리를 자동으로 정렬(Beautify)하고 압축(Minify)하세요. 개발자를 위한 광고 없는 SQL 도구. MySQL, PostgreSQL 지원.">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="SQL 포매터 - Tool Shelf">
-    <meta property="og:description" content="SQL 쿼리를 자동으로 정렬하고 포맷팅하세요.">
+    <meta property="og:title" content="SQL 포매터 & 정렬기 - Tool Shelf">
+    <meta property="og:description" content="SQL 쿼리를 자동으로 정렬하고 포맷팅하세요. 개발자를 위한 광고 없는 도구.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://utilifyapp.net/ko/sql-formatter/">
 
@@ -146,10 +147,31 @@
                 flex-direction: column;
             }
         }
+
+        .bmc-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: #FFDD00;
+            color: #000000;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: transform 0.2s;
+            border: 1px solid #e6c700;
+        }
+
+        .bmc-btn:hover {
+            transform: translateY(-2px);
+            background-color: #ffe135;
+        }
     </style>
     <!-- Google AdSense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631"
-     crossorigin="anonymous"></script>
+    <!-- Google AdSense Removed for Developer Experience -->
+    <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631"
+     crossorigin="anonymous"></script> -->
 
 </head>
 
@@ -167,7 +189,13 @@
     <main class="main-content">
         <div class="container-narrow">
             <h1>🗄️ SQL 포매터</h1>
-            <p>SQL 쿼리를 자동으로 정렬하고 포맷팅하세요. Beautify와 Minify 기능을 제공합니다.</p>
+            <p>SQL 쿼리를 자동으로 정렬하고 포맷팅하세요. 개발자를 위해 광고를 제거했습니다.</p>
+
+            <div style="margin: 20px 0;">
+                <a href="https://buymeacoffee.com/utilify" target="_blank" class="bmc-btn">
+                    ☕ 개발자에게 커피 한 잔 사주기
+                </a>
+            </div>
 
             <!-- Options -->
             <div class="options">

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+  <title>反応速度テスト - Tool Shelf</title>
+  <meta name="description" content="あなたの反応速度をテストします。画面が緑色になったらできるだけ早くクリックしてください！">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="反応速度テスト - Tool Shelf">
+  <meta property="og:description" content="あなたの反応速度をテストします。画面が緑色になったらできるだけ早くクリックしてください！">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://utilifyapp.net/ja/reaction-test/">
+  
+  <!-- Canonical -->
+  <link rel="canonical" href="https://utilifyapp.net/ja/reaction-test/">
+  
+  <!-- Language Alternatives -->
+  <link rel="alternate" hreflang="ko" href="https://utilifyapp.net/ko/reaction-test/">
+  <link rel="alternate" hreflang="en" href="https://utilifyapp.net/en/reaction-test/">
+  <link rel="alternate" hreflang="ja" href="https://utilifyapp.net/ja/reaction-test/">
+  <link rel="alternate" hreflang="hi" href="https://utilifyapp.net/hi/reaction-test/">
+  <link rel="alternate" hreflang="id" href="https://utilifyapp.net/id/reaction-test/">
+  <link rel="alternate" hreflang="vi" href="https://utilifyapp.net/vi/reaction-test/">
+  <link rel="alternate" hreflang="th" href="https://utilifyapp.net/th/reaction-test/">
+  <link rel="alternate" hreflang="de" href="https://utilifyapp.net/de/reaction-test/">
+  <link rel="alternate" hreflang="pt" href="https://utilifyapp.net/pt/reaction-test/">
+  <link rel="alternate" hreflang="x-default" href="https://utilifyapp.net/en/reaction-test/">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="/assets/css/main.css">
+  
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "反応速度テスト",
+    "description": "あなたの反応速度をテストします。画面が緑色になったらできるだけ早くクリックしてください！",
+    "url": "https://utilifyapp.net/ja/reaction-test/",
+    "inLanguage": "ja",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+  
+  <style>
+    .game-area {
+      height: 400px;
+      border-radius: var(--radius-lg);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      font-size: 2rem;
+      font-weight: 700;
+      cursor: pointer;
+      user-select: none;
+      transition: background-color 0.2s;
+      margin: var(--spacing-lg) 0;
+      padding: var(--spacing-xl);
+    }
+    
+    .state-start {
+      background-color: #3b82f6; /* Blue */
+    }
+    
+    .state-wait {
+      background-color: #ef4444; /* Red */
+    }
+    
+    .state-click {
+      background-color: #22c55e; /* Green */
+    }
+    
+    .state-result {
+      background-color: #3b82f6; /* Blue */
+    }
+    
+    .result-text {
+      font-size: 4rem;
+      margin-bottom: var(--spacing-md);
+    }
+    
+    .rank-text {
+      font-size: 1.5rem;
+      opacity: 0.9;
+    }
+
+    .sub-text {
+        font-size: 1rem; 
+        font-weight: 400; 
+        margin-top: 1rem; 
+        opacity: 0.8;
+    }
+    
+  </style>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631"
+     crossorigin="anonymous"></script>
+
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <div class="header-content">
+        <a href="/ja/" class="site-logo">
+          🛠️ Tool Shelf
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="container-narrow">
+      <h1>⚡ 反応速度テスト</h1>
+      <p>あなたの反応速度をテストします。画面が緑色になったらできるだけ早くクリックしてください！</p>
+      
+      <!-- AdSense Placeholder -->
+      <div class="adsense-placeholder">
+        <!-- AdSense Ad Unit -->
+        <p>広告スペース</p>
+      </div>
+      
+      <div id="gameArea" class="game-area state-start">
+        <div id="message">クリックしてスタート</div>
+      </div>
+      
+      <div class="card">
+        <h3>Ranking</h3>
+        <p>• < 200 ms: 神レベルの反射神経！ 🏆</p>
+        <p>• 200 - 300 ms: 素晴らしい速さ！ 🚀</p>
+        <p>• 300 - 450 ms: 平均的です。 👌</p>
+        <p>• > 450 ms: 集中して！ 🐢</p>
+      </div>
+      
+      <!-- AdSense Placeholder -->
+      <div class="adsense-placeholder">
+        <!-- AdSense Ad Unit -->
+        <p>広告スペース</p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <p>&copy; 2025 Tool Shelf. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/assets/js/common.js"></script>
+  <script>
+    const gameArea = document.getElementById('gameArea');
+    const message = document.getElementById('message');
+    
+    let startTime;
+    let endTime;
+    let timeoutId;
+    let state = 'start'; // start, wait, click, result
+    
+    gameArea.addEventListener('mousedown', handleClick);
+    gameArea.addEventListener('touchstart', (e) => {
+        e.preventDefault(); // prevent double firing
+        handleClick();
+    });
+    
+    function handleClick() {
+      if (state === 'start' || state === 'result') {
+        startGame();
+      } else if (state === 'wait') {
+        tooSoon();
+      } else if (state === 'click') {
+        endGame();
+      }
+    }
+    
+    function startGame() {
+      state = 'wait';
+      gameArea.className = 'game-area state-wait';
+      message.textContent = '緑色になるまで待って...';
+      
+      const randomTime = Math.floor(Math.random() * 3000) + 2000; // 2-5 seconds
+      timeoutId = setTimeout(() => {
+        state = 'click';
+        gameArea.className = 'game-area state-click';
+        message.textContent = 'クリック！';
+        startTime = performance.now();
+      }, randomTime);
+    }
+    
+    function tooSoon() {
+      clearTimeout(timeoutId);
+      state = 'start'; // Click to restart
+      gameArea.className = 'game-area state-wait'; // Keep red
+      message.innerHTML = '早すぎます！クリックしてリトライ。';
+    }
+    
+    function endGame() {
+      endTime = performance.now();
+      const time = Math.round(endTime - startTime);
+      state = 'result';
+      
+      let rankMsg = '';
+      if (time < 200) rankMsg = '神レベルの反射神経！ 🏆';
+      else if (time < 300) rankMsg = '素晴らしい速さ！ 🚀';
+      else if (time < 450) rankMsg = '平均的です。 👌';
+      else rankMsg = '集中して！ 🐢';
+      
+      gameArea.className = 'game-area state-result';
+      message.innerHTML = `
+        <div class="result-text">${time} ms</div>
+        <div class="rank-text">${rankMsg}</div>
+        <div class="sub-text">もう一度</div>
+      `;
+    }
+  </script>
+</body>
+</html>

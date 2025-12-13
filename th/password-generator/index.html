@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+  <title>เครื่องมือสร้างรหัสผ่านที่รัดกุม - Tool Shelf</title>
+  <meta name="description" content="สร้างรหัสผ่านที่รัดกุมและปลอดภัย รหัสผ่านจะถูกสร้างขึ้นในเครื่องและไม่ส่งไปยังเซิร์ฟเวอร์">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="เครื่องมือสร้างรหัสผ่านที่รัดกุม - Tool Shelf">
+  <meta property="og:description" content="สร้างรหัสผ่านที่รัดกุมและปลอดภัย รหัสผ่านจะถูกสร้างขึ้นในเครื่องและไม่ส่งไปยังเซิร์ฟเวอร์">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://utilifyapp.net/th/password-generator/">
+  
+  <!-- Canonical -->
+  <link rel="canonical" href="https://utilifyapp.net/th/password-generator/">
+  
+  <!-- Language Alternatives -->
+  <link rel="alternate" hreflang="ko" href="https://utilifyapp.net/ko/password-generator/">
+  <link rel="alternate" hreflang="en" href="https://utilifyapp.net/en/password-generator/">
+  <link rel="alternate" hreflang="ja" href="https://utilifyapp.net/ja/password-generator/">
+  <link rel="alternate" hreflang="hi" href="https://utilifyapp.net/hi/password-generator/">
+  <link rel="alternate" hreflang="id" href="https://utilifyapp.net/id/password-generator/">
+  <link rel="alternate" hreflang="vi" href="https://utilifyapp.net/vi/password-generator/">
+  <link rel="alternate" hreflang="th" href="https://utilifyapp.net/th/password-generator/">
+  <link rel="alternate" hreflang="de" href="https://utilifyapp.net/de/password-generator/">
+  <link rel="alternate" hreflang="pt" href="https://utilifyapp.net/pt/password-generator/">
+  <link rel="alternate" hreflang="x-default" href="https://utilifyapp.net/en/password-generator/">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="/assets/css/main.css">
+  
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "เครื่องมือสร้างรหัสผ่านที่รัดกุม",
+    "description": "สร้างรหัสผ่านที่รัดกุมและปลอดภัย รหัสผ่านจะถูกสร้างขึ้นในเครื่องและไม่ส่งไปยังเซิร์ฟเวอร์",
+    "url": "https://utilifyapp.net/th/password-generator/",
+    "inLanguage": "th",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+  
+  <style>
+    .generator-container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-xl);
+      margin-top: var(--spacing-lg);
+    }
+    
+    .password-display {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: var(--spacing-lg);
+      margin-bottom: var(--spacing-lg);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--spacing-md);
+    }
+    
+    .password-value {
+      font-family: var(--font-mono);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      word-break: break-all;
+    }
+    
+    .copy-icon-btn {
+      background: none;
+      border: none;
+      color: var(--text-secondary);
+      cursor: pointer;
+      padding: var(--spacing-sm);
+      transition: color var(--transition-fast);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    
+    .copy-icon-btn:hover {
+      color: var(--primary-color);
+    }
+    
+    .controls-grid {
+      display: grid;
+      gap: var(--spacing-lg);
+    }
+    
+    .range-container {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-md);
+    }
+    
+    .range-slider {
+      flex: 1;
+      height: 6px;
+      background: var(--border-color);
+      border-radius: 3px;
+      appearance: none;
+      outline: none;
+    }
+    
+    .range-slider::-webkit-slider-thumb {
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      background: var(--primary-color);
+      border-radius: 50%;
+      cursor: pointer;
+    }
+    
+    .options-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--spacing-md);
+    }
+    
+    .checkbox-label {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+      cursor: pointer;
+      user-select: none;
+    }
+    
+    .security-badge {
+      margin-top: var(--spacing-lg);
+      padding: var(--spacing-md);
+      background: #ecfdf5;
+      color: #065f46;
+      border-radius: var(--radius-md);
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+    }
+    
+    .generator-btn {
+      width: 100%;
+      padding: var(--spacing-lg);
+      font-size: 1.2rem;
+      margin-top: var(--spacing-lg);
+    }
+  </style>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631"
+     crossorigin="anonymous"></script>
+
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <div class="header-content">
+        <a href="/th/" class="site-logo">
+          🛠️ Tool Shelf
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="container-narrow">
+      <h1>🔐 เครื่องมือสร้างรหัสผ่านที่รัดกุม</h1>
+      <p>สร้างรหัสผ่านที่รัดกุมและปลอดภัย รหัสผ่านจะถูกสร้างขึ้นในเครื่องและไม่ส่งไปยังเซิร์ฟเวอร์</p>
+      
+      <!-- AdSense Placeholder -->
+      <div class="adsense-placeholder">
+        <!-- AdSense Ad Unit -->
+        <p>พื้นที่โฆษณา</p>
+      </div>
+      
+      <div class="generator-container">
+        <!-- Display -->
+        <label class="form-label">รหัสผ่านที่สร้าง</label>
+        <div class="password-display">
+          <div id="passwordOutput" class="password-value">Click Generate</div>
+          <button class="copy-icon-btn" onclick="copyPassword()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            คัดลอก
+          </button>
+        </div>
+        
+        <!-- Controls -->
+        <div class="controls-grid">
+          <!-- Length -->
+          <div>
+            <div class="flex justify-between mb-2">
+              <label class="form-label">ความยาวรหัสผ่าน: <span id="lengthValue">16</span></label>
+            </div>
+            <div class="range-container">
+              <input type="range" id="lengthSlider" min="4" max="64" value="16" class="range-slider" oninput="updateLength(this.value)">
+            </div>
+          </div>
+          
+          <!-- Options -->
+          <div>
+            <label class="form-label mb-2">ตัวเลือก</label>
+            <div class="options-grid">
+              <label class="checkbox-label">
+                <input type="checkbox" id="useUppercase" checked> ตัวพิมพ์ใหญ่ (A-Z)
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" id="useLowercase" checked> ตัวพิมพ์เล็ก (a-z)
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" id="useNumbers" checked> ตัวเลข (0-9)
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" id="useSymbols" checked> สัญลักษณ์ (@#$%)
+              </label>
+            </div>
+          </div>
+          
+          <button class="btn btn-primary generator-btn" onclick="generatePassword()">สร้างรหัสผ่าน</button>
+        </div>
+        
+        <div class="security-badge">
+          🔒 รหัสผ่านทั้งหมดสร้างขึ้นในเบราว์เซอร์ของคุณและไม่ส่งออกไปภายนอก
+        </div>
+      </div>
+      
+      <!-- AdSense Placeholder -->
+      <div class="adsense-placeholder">
+        <!-- AdSense Ad Unit -->
+        <p>พื้นที่โฆษณา</p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <p>&copy; 2025 Tool Shelf. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/assets/js/common.js"></script>
+  <script>
+    const passwordOutput = document.getElementById('passwordOutput');
+    const lengthSlider = document.getElementById('lengthSlider');
+    const lengthValue = document.getElementById('lengthValue');
+    
+    // Character sets
+    const chars = {
+      upper: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+      lower: 'abcdefghijklmnopqrstuvwxyz',
+      numbers: '0123456789',
+      symbols: '!@#$%^&*()_+-=[]{}|;:,.<>?'
+    };
+    
+    function updateLength(val) {
+      lengthValue.textContent = val;
+      generatePassword();
+    }
+    
+    function generatePassword() {
+      const length = parseInt(lengthSlider.value);
+      const useUpper = document.getElementById('useUppercase').checked;
+      const useLower = document.getElementById('useLowercase').checked;
+      const useNumbers = document.getElementById('useNumbers').checked;
+      const useSymbols = document.getElementById('useSymbols').checked;
+      
+      let charPool = '';
+      if (useUpper) charPool += chars.upper;
+      if (useLower) charPool += chars.lower;
+      if (useNumbers) charPool += chars.numbers;
+      if (useSymbols) charPool += chars.symbols;
+      
+      if (charPool === '') {
+        passwordOutput.textContent = 'Select Option';
+        return;
+      }
+      
+      let password = '';
+      const poolLength = charPool.length;
+      
+      // Use crypto for better randomness
+      const randomValues = new Uint32Array(length);
+      window.crypto.getRandomValues(randomValues);
+      
+      for (let i = 0; i < length; i++) {
+        password += charPool[randomValues[i] % poolLength];
+      }
+      
+      passwordOutput.textContent = password;
+    }
+    
+    function copyPassword() {
+      const text = passwordOutput.textContent;
+      if (text && text !== 'Select Option') {
+        Utils.copyToClipboard(text);
+      }
+    }
+    
+    // Generate on load
+    generatePassword();
+    
+    // Add event listeners for checkboxes
+    document.querySelectorAll('input[type="checkbox"]').forEach(box => {
+      box.addEventListener('change', generatePassword);
+    });
+  </script>
+</body>
+</html>

@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="google-adsense-account" content="ca-pub-6334819180242631">
-  <title>JSON 포매터 - Tool Shelf</title>
-  <meta name="description" content="JSON 데이터를 포맷팅하고 유효성을 검사하세요. 압축, 포맷, 검증 기능을 제공합니다.">
-  
+  <title>JSON 포매터 & 검증기 (Pretty Print, Minify) - Tool Shelf</title>
+  <meta name="description" content="JSON 데이터를 포맷팅(Pretty Print)하고 유효성을 검사(Validator)하세요. 개발자를 위한 광고 없는 깔끔한 도구.">
+
   <!-- Open Graph -->
-  <meta property="og:title" content="JSON 포매터 - Tool Shelf">
-  <meta property="og:description" content="JSON 데이터를 포맷팅하고 유효성을 검사하세요. 압축, 포맷, 검증 기능을 제공합니다.">
+  <meta property="og:title" content="JSON 포매터 & 검증기 - Tool Shelf">
+  <meta property="og:description" content="JSON 데이터를 포맷팅하고 유효성을 검사하세요. 개발자를 위한 광고 없는 도구.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://utilifyapp.net/ko/json-formatter/">
-  
+
   <!-- Canonical -->
   <link rel="canonical" href="https://utilifyapp.net/ko/json-formatter/">
-  
+
   <!-- Language Alternatives -->
   <link rel="alternate" hreflang="ko" href="https://utilifyapp.net/ko/json-formatter/">
   <link rel="alternate" hreflang="en" href="https://utilifyapp.net/en/json-formatter/">
@@ -27,15 +28,15 @@
   <link rel="alternate" hreflang="de" href="https://utilifyapp.net/de/json-formatter/">
   <link rel="alternate" hreflang="pt" href="https://utilifyapp.net/pt/json-formatter/">
   <link rel="alternate" hreflang="x-default" href="https://utilifyapp.net/en/json-formatter/">
-  
+
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
+
   <!-- Styles -->
   <link rel="stylesheet" href="/assets/css/main.css">
-  
+
   <!-- JSON-LD -->
   <script type="application/ld+json">
   {
@@ -54,7 +55,7 @@
     }
   }
   </script>
-  
+
   <style>
     .editor-container {
       display: grid;
@@ -62,38 +63,38 @@
       gap: var(--spacing-lg);
       margin-top: var(--spacing-lg);
     }
-    
+
     .editor-panel {
       display: flex;
       flex-direction: column;
       gap: var(--spacing-md);
     }
-    
+
     .json-textarea {
       font-family: var(--font-mono);
       min-height: 400px;
       resize: vertical;
     }
-    
+
     .validation-status {
       padding: var(--spacing-md);
       border-radius: var(--radius-md);
       font-weight: 500;
       text-align: center;
     }
-    
+
     .validation-status.valid {
       background: #d1fae5;
       color: #065f46;
       border: 1px solid #10b981;
     }
-    
+
     .validation-status.invalid {
       background: #fee2e2;
       color: #991b1b;
       border: 1px solid #ef4444;
     }
-    
+
     .error-message {
       background: var(--bg-tertiary);
       padding: var(--spacing-md);
@@ -104,18 +105,40 @@
       white-space: pre-wrap;
       word-break: break-word;
     }
-    
+
     @media (max-width: 768px) {
       .editor-container {
         grid-template-columns: 1fr;
       }
     }
+
+    .bmc-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background-color: #FFDD00;
+      color: #000000;
+      padding: 8px 16px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: transform 0.2s;
+      border: 1px solid #e6c700;
+    }
+
+    .bmc-btn:hover {
+      transform: translateY(-2px);
+      background-color: #ffe135;
+    }
   </style>
   <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631"
-     crossorigin="anonymous"></script>
+  <!-- Google AdSense Removed for Developer Experience -->
+  <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631"
+     crossorigin="anonymous"></script> -->
 
 </head>
+
 <body>
   <header class="site-header">
     <div class="container">
@@ -130,10 +153,16 @@
   <main class="main-content">
     <div class="container-narrow">
       <h1>{{ }} JSON 포매터</h1>
-      <p>JSON 데이터를 포맷팅하고 유효성을 검사하세요. 압축, 포맷, 검증 기능을 제공합니다.</p>
-      
-      
-      
+      <p>JSON 데이터를 포맷팅하고 유효성을 검사하세요. 개발자를 위해 광고를 제거했습니다.</p>
+
+      <div style="margin: 20px 0;">
+        <a href="https://buymeacoffee.com/utilify" target="_blank" class="bmc-btn">
+          ☕ 개발자에게 커피 한 잔 사주기
+        </a>
+      </div>
+
+
+
       <!-- Action Buttons -->
       <div class="btn-group">
         <button class="btn btn-primary" onclick="formatJSON()">포맷</button>
@@ -142,25 +171,25 @@
         <button class="btn btn-secondary" onclick="copyOutput()">복사</button>
         <button class="btn btn-secondary" onclick="clearAll()">지우기</button>
       </div>
-      
+
       <!-- Editors -->
       <div class="editor-container">
         <div class="editor-panel">
           <label class="form-label">JSON 입력</label>
           <textarea id="jsonInput" class="form-textarea json-textarea" placeholder="JSON 데이터를 입력하세요..."></textarea>
         </div>
-        
+
         <div class="editor-panel">
           <label class="form-label">결과</label>
           <textarea id="jsonOutput" class="form-textarea json-textarea" readonly></textarea>
         </div>
       </div>
-      
+
       <!-- Validation Status -->
       <div id="validationStatus" style="display: none;"></div>
       <div id="errorMessage" style="display: none;"></div>
-      
-      
+
+
     </div>
   </main>
 
@@ -178,7 +207,7 @@
     const output = document.getElementById('jsonOutput');
     const validationStatus = document.getElementById('validationStatus');
     const errorMessage = document.getElementById('errorMessage');
-    
+
     function formatJSON() {
       try {
         const json = JSON.parse(input.value);
@@ -188,7 +217,7 @@
         showValidation(false, e.message);
       }
     }
-    
+
     function minifyJSON() {
       try {
         const json = JSON.parse(input.value);
@@ -198,7 +227,7 @@
         showValidation(false, e.message);
       }
     }
-    
+
     function validateJSON() {
       try {
         JSON.parse(input.value);
@@ -209,7 +238,7 @@
         output.value = '';
       }
     }
-    
+
     function copyOutput() {
       if (output.value) {
         Utils.copyToClipboard(output.value);
@@ -217,19 +246,19 @@
         Utils.showToast('✗ 유효하지 않은 JSON입니다');
       }
     }
-    
+
     function clearAll() {
       input.value = '';
       output.value = '';
       validationStatus.style.display = 'none';
       errorMessage.style.display = 'none';
     }
-    
+
     function showValidation(isValid, error = '') {
       validationStatus.style.display = 'block';
       validationStatus.className = 'validation-status ' + (isValid ? 'valid' : 'invalid');
       validationStatus.textContent = isValid ? '✓ 유효한 JSON입니다' : '✗ 유효하지 않은 JSON입니다';
-      
+
       if (error) {
         errorMessage.style.display = 'block';
         errorMessage.className = 'error-message';
@@ -238,7 +267,7 @@
         errorMessage.style.display = 'none';
       }
     }
-    
+
     // Auto-validate on input
     input.addEventListener('input', Utils.debounce(() => {
       if (input.value.trim()) {
@@ -255,4 +284,5 @@
     }, 500));
   </script>
 </body>
+
 </html>
