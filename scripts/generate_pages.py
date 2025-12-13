@@ -57,7 +57,7 @@ UTILITIES = {
         'de': {'title': 'Bildkonverter', 'desc': 'Bilder in der Größe ändern und in WebP-Format konvertieren.'},
         'pt': {'title': 'Conversor de Imagens', 'desc': 'Redimensione imagens e converta para formato WebP.'}
     },
-    'bible-verse': {
+    'daily-verse': {
         'icon': '📖',
         'ko': {'title': '오늘의 말씀', 'desc': '매일 새로운 성경 구절을 받아보세요.'},
         'en': {'title': 'Bible Verse Generator', 'desc': 'Get a new Bible verse every day.'},
