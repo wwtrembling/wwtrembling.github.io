@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+    <meta name="google-adsense-account" content="ca-pub-6334819180242631">
     <title>Pembuat Favicon - Tool Shelf</title>
-    <meta name="description" content="Create favicons from images (16x16 to 64x64).">
+    <meta name="description" content="Buat favicon dari gambar (16x16 hingga 64x64).">
     <link rel="canonical" href="https://wwtrembling.github.io/id/favicon-generator/">
     <link rel="stylesheet" href="/assets/css/main.css">
     <style>
@@ -69,12 +69,12 @@
     <main class="main-content">
         <div class="container-narrow">
             <h1>🎯 Pembuat Favicon</h1>
-            <p>Create favicons from images (16x16 to 64x64).</p>
+            <p>Buat favicon dari gambar (16x16 hingga 64x64).</p>
             <div class="upload-area" id="uploadArea">
                 <input type="file" id="fileInput" accept="image/*" style="display: none;">
                 <div>
                     <p style="font-size: 2rem; margin: 0;">📁</p>
-                    <p>Click or drag to upload image</p>
+                    <p>Klik atau seret untuk mengunggah gambar</p>
                 </div>
             </div>
             <div class="preview-grid" id="previewGrid" style="display: none;"></div>
@@ -115,11 +115,21 @@
 
                         const item = document.createElement('div');
                         item.className = 'preview-item';
-                        item.innerHTML = `
-              <h3>${size}x${size}px</h3>
-              <div>${canvas.outerHTML}</div>
-              <button class="btn" onclick="downloadFavicon(this, ${size})">Unduh</button>
-            `;
+
+                        const h3 = document.createElement('h3');
+                        h3.textContent = `${size}x${size}px`;
+                        item.appendChild(h3);
+
+                        const div = document.createElement('div');
+                        div.appendChild(canvas);
+                        item.appendChild(div);
+
+                        const btn = document.createElement('button');
+                        btn.className = 'btn';
+                        btn.textContent = 'Unduh';
+                        btn.onclick = function () { downloadFavicon(this, size) };
+                        item.appendChild(btn);
+
                         previewGrid.appendChild(item);
                     });
                 };
