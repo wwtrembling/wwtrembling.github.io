@@ -14,7 +14,7 @@ def create_bmi_calculator(lang, translations):
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{t["title"]} - Tool Shelf</title>
+  <title>{t["title"]} - Utilify</title>
   <meta name="description" content="{t["desc"]}">
   <link rel="canonical" href="https://utilifyapp.net/{lang}/bmi-calculator/">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -24,7 +24,7 @@ def create_bmi_calculator(lang, translations):
 <body>
   <header class="site-header">
     <div class="container"><div class="header-content">
-      <a href="/{lang}/" class="site-logo">🛠️ Tool Shelf</a>
+      <a href="/{lang}/" class="site-logo">🛠️ Utilify</a>
       <div id="languageSwitcher" class="language-switcher"></div>
     </div></div>
   </header>
@@ -51,7 +51,7 @@ def create_bmi_calculator(lang, translations):
   </main>
   <footer class="site-footer">
     <div class="container"><div class="footer-content">
-      <p>&copy; 2025 Tool Shelf. All rights reserved.</p>
+      <p>&copy; 2025 Utilify. All rights reserved.</p>
     </div></div>
   </footer>
   <script src="/assets/js/common.js"></script>
@@ -82,7 +82,7 @@ def create_date_calculator(lang, translations):
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{t["title"]} - Tool Shelf</title>
+  <title>{t["title"]} - Utilify</title>
   <meta name="description" content="{t["desc"]}">
   <link rel="canonical" href="https://utilifyapp.net/{lang}/date-calculator/">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -92,7 +92,7 @@ def create_date_calculator(lang, translations):
 <body>
   <header class="site-header">
     <div class="container"><div class="header-content">
-      <a href="/{lang}/" class="site-logo">🛠️ Tool Shelf</a>
+      <a href="/{lang}/" class="site-logo">🛠️ Utilify</a>
       <div id="languageSwitcher" class="language-switcher"></div>
     </div></div>
   </header>
@@ -130,7 +130,7 @@ def create_date_calculator(lang, translations):
   </main>
   <footer class="site-footer">
     <div class="container"><div class="footer-content">
-      <p>&copy; 2025 Tool Shelf. All rights reserved.</p>
+      <p>&copy; 2025 Utilify. All rights reserved.</p>
     </div></div>
   </footer>
   <script src="/assets/js/common.js"></script>
@@ -161,7 +161,7 @@ def create_timer(lang, translations):
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{t["title"]} - Tool Shelf</title>
+  <title>{t["title"]} - Utilify</title>
   <meta name="description" content="{t["desc"]}">
   <link rel="canonical" href="https://utilifyapp.net/{lang}/timer/">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -175,7 +175,7 @@ def create_timer(lang, translations):
 <body>
   <header class="site-header">
     <div class="container"><div class="header-content">
-      <a href="/{lang}/" class="site-logo">🛠️ Tool Shelf</a>
+      <a href="/{lang}/" class="site-logo">🛠️ Utilify</a>
       <div id="languageSwitcher" class="language-switcher"></div>
     </div></div>
   </header>
@@ -204,7 +204,7 @@ def create_timer(lang, translations):
   </main>
   <footer class="site-footer">
     <div class="container"><div class="footer-content">
-      <p>&copy; 2025 Tool Shelf. All rights reserved.</p>
+      <p>&copy; 2025 Utilify. All rights reserved.</p>
     </div></div>
   </footer>
   <script src="/assets/js/common.js"></script>

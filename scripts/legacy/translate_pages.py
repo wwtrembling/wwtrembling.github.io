@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Tool Shelf 다국어 번역 자동화 스크립트
+Utilify 다국어 번역 자동화 스크립트
 한국어 원본을 기반으로 9개 언어로 자동 번역
 """
 
@@ -13,7 +13,7 @@ from pathlib import Path
 TRANSLATIONS = {
     'en': {
         'lang': 'en',
-        'title_suffix': ' - Tool Shelf',
+        'title_suffix': ' - Utilify',
         'image_converter_title': 'Image Converter',
         'image_converter_desc': 'Resize images and convert to WebP, JPEG, PNG formats.',
         'image_converter_desc_full': 'Resize images and convert to WebP, JPEG, PNG formats. Process directly in your browser.',
@@ -32,7 +32,7 @@ TRANSLATIONS = {
     },
     'ja': {
         'lang': 'ja',
-        'title_suffix': ' - Tool Shelf',
+        'title_suffix': ' - Utilify',
         'image_converter_title': '画像変換',
         'image_converter_desc': '画像のサイズ変更とWebP、JPEG、PNG形式への変換。',
         'image_converter_desc_full': '画像のサイズ変更とWebP、JPEG、PNG形式への変換。ブラウザで直接処理されます。',
@@ -51,7 +51,7 @@ TRANSLATIONS = {
     },
     'hi': {
         'lang': 'hi',
-        'title_suffix': ' - Tool Shelf',
+        'title_suffix': ' - Utilify',
         'image_converter_title': 'छवि परिवर्तक',
         'image_converter_desc': 'छवि का आकार बदलें और WebP, JPEG, PNG प्रारूपों में परिवर्तित करें।',
         'image_converter_desc_full': 'छवि का आकार बदलें और WebP, JPEG, PNG प्रारूपों में परिवर्तित करें। ब्राउज़र में सीधे प्रोसेस करें।',
@@ -70,7 +70,7 @@ TRANSLATIONS = {
     },
     'id': {
         'lang': 'id',
-        'title_suffix': ' - Tool Shelf',
+        'title_suffix': ' - Utilify',
         'image_converter_title': 'Konverter Gambar',
         'image_converter_desc': 'Ubah ukuran gambar dan konversi ke format WebP, JPEG, PNG.',
         'image_converter_desc_full': 'Ubah ukuran gambar dan konversi ke format WebP, JPEG, PNG. Proses langsung di browser Anda.',
@@ -89,7 +89,7 @@ TRANSLATIONS = {
     },
     'vi': {
         'lang': 'vi',
-        'title_suffix': ' - Tool Shelf',
+        'title_suffix': ' - Utilify',
         'image_converter_title': 'Chuyển Đổi Hình Ảnh',
         'image_converter_desc': 'Thay đổi kích thước và chuyển đổi sang định dạng WebP, JPEG, PNG.',
         'image_converter_desc_full': 'Thay đổi kích thước và chuyển đổi sang định dạng WebP, JPEG, PNG. Xử lý trực tiếp trên trình duyệt.',
@@ -108,7 +108,7 @@ TRANSLATIONS = {
     },
     'th': {
         'lang': 'th',
-        'title_suffix': ' - Tool Shelf',
+        'title_suffix': ' - Utilify',
         'image_converter_title': 'ตัวแปลงรูปภาพ',
         'image_converter_desc': 'ปรับขนาดและแปลงเป็นรูปแบบ WebP, JPEG, PNG',
         'image_converter_desc_full': 'ปรับขนาดและแปลงเป็นรูปแบบ WebP, JPEG, PNG ประมวลผลโดยตรงในเบราว์เซอร์',
@@ -127,7 +127,7 @@ TRANSLATIONS = {
     },
     'de': {
         'lang': 'de',
-        'title_suffix': ' - Tool Shelf',
+        'title_suffix': ' - Utilify',
         'image_converter_title': 'Bildkonverter',
         'image_converter_desc': 'Bildgröße ändern und in WebP, JPEG, PNG konvertieren.',
         'image_converter_desc_full': 'Bildgröße ändern und in WebP, JPEG, PNG konvertieren. Direkt im Browser verarbeiten.',
@@ -146,7 +146,7 @@ TRANSLATIONS = {
     },
     'pt': {
         'lang': 'pt',
-        'title_suffix': ' - Tool Shelf',
+        'title_suffix': ' - Utilify',
         'image_converter_title': 'Conversor de Imagem',
         'image_converter_desc': 'Redimensione e converta para formatos WebP, JPEG, PNG.',
         'image_converter_desc_full': 'Redimensione e converta para formatos WebP, JPEG, PNG. Processe diretamente no navegador.',
@@ -183,8 +183,8 @@ def translate_html_file(source_path, target_path, lang_code):
     
     # title 태그 번역
     content = re.sub(
-        r'<title>이미지 변환기 - Tool Shelf</title>',
-        f'<title>{trans["image_converter_title"]} - Tool Shelf</title>',
+        r'<title>이미지 변환기 - Utilify</title>',
+        f'<title>{trans["image_converter_title"]} - Utilify</title>',
         content
     )
     
@@ -197,8 +197,8 @@ def translate_html_file(source_path, target_path, lang_code):
     
     # Open Graph 번역
     content = re.sub(
-        r'<meta property="og:title" content="이미지 변환기 - Tool Shelf">',
-        f'<meta property="og:title" content="{trans["image_converter_title"]} - Tool Shelf">',
+        r'<meta property="og:title" content="이미지 변환기 - Utilify">',
+        f'<meta property="og:title" content="{trans["image_converter_title"]} - Utilify">',
         content
     )
     content = re.sub(
@@ -345,7 +345,7 @@ def main():
         print(f"❌ 원본 파일을 찾을 수 없습니다: {source_file}")
         return
     
-    print("🚀 Tool Shelf 다국어 번역 시작...\n")
+    print("🚀 Utilify 다국어 번역 시작...\n")
     
     # 각 언어별로 번역
     success_count = 0

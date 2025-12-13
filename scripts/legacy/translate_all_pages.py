@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Tool Shelf 전체 유틸리티 다국어 번역 스크립트
+Utilify 전체 유틸리티 다국어 번역 스크립트
 16개 유틸리티 × 8개 언어 = 128개 페이지 자동 번역
 """
 
@@ -217,7 +217,7 @@ def main():
         print(f"❌ 한국어 디렉토리를 찾을 수 없습니다: {ko_dir}")
         return
     
-    print("🚀 Tool Shelf 전체 유틸리티 다국어 번역 시작...\n")
+    print("🚀 Utilify 전체 유틸리티 다국어 번역 시작...\n")
     print("📋 번역 대상:")
     print("   - 16개 유틸리티")
     print("   - 8개 언어 (en, ja, hi, id, vi, th, de, pt)")

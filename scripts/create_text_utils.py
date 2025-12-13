@@ -180,7 +180,7 @@ def generate_text_utils(lang):
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{t["title"]} - Tool Shelf</title>
+  <title>{t["title"]} - Utilify</title>
   <meta name="description" content="{t["desc"]}">
   
   <link rel="canonical" href="https://utilifyapp.net/{lang}/text-utils/">
@@ -204,7 +204,7 @@ def generate_text_utils(lang):
   <header class="site-header">
     <div class="container">
       <div class="header-content">
-        <a href="/{lang}/" class="site-logo">🛠️ Tool Shelf</a>
+        <a href="/{lang}/" class="site-logo">🛠️ Utilify</a>
         <div id="languageSwitcher" class="language-switcher"></div>
       </div>
     </div>
@@ -256,7 +256,7 @@ def generate_text_utils(lang):
   <footer class="site-footer">
     <div class="container">
       <div class="footer-content">
-        <p>&copy; 2025 Tool Shelf. All rights reserved.</p>
+        <p>&copy; 2025 Utilify. All rights reserved.</p>
       </div>
     </div>
   </footer>

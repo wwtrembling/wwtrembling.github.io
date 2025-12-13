@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Tool Shelf 주요 언어 완전 번역 스크립트 (병렬 처리)
+Utilify 주요 언어 완전 번역 스크립트 (병렬 처리)
 영어, 일본어를 우선 번역하고 병렬로 처리하여 속도 향상
 """
 
@@ -190,8 +190,8 @@ def translate_utility(source_path, target_path, lang_code, utility_name):
         
         # 유틸리티별 번역
         if utility_name == 'base64-converter':
-            content = re.sub(r'<title>Base64 인코더/디코더 - Tool Shelf</title>',
-                           f'<title>{trans["base64_title"]} - Tool Shelf</title>', content)
+            content = re.sub(r'<title>Base64 인코더/디코더 - Utilify</title>',
+                           f'<title>{trans["base64_title"]} - Utilify</title>', content)
             content = re.sub(r'content="텍스트를 Base64로 인코딩하거나 디코딩하세요\."',
                            f'content="{trans["base64_desc"]}"', content)
             content = re.sub(r'<h1>🔐 Base64 인코더/디코더</h1>',
@@ -213,8 +213,8 @@ def translate_utility(source_path, target_path, lang_code, utility_name):
             content = re.sub(r"'복사할 내용이 없습니다\.'", f"'{trans['no_content_to_copy']}'", content)
             
         elif utility_name == 'qr-generator':
-            content = re.sub(r'<title>QR 코드 생성기 - Tool Shelf</title>',
-                           f'<title>{trans["qr_title"]} - Tool Shelf</title>', content)
+            content = re.sub(r'<title>QR 코드 생성기 - Utilify</title>',
+                           f'<title>{trans["qr_title"]} - Utilify</title>', content)
             content = re.sub(r'content="텍스트나 URL을 QR 코드로 변환하세요\."',
                            f'content="{trans["qr_desc"]}"', content)
             content = re.sub(r'<h1>📱 QR 코드 생성기</h1>',
@@ -231,8 +231,8 @@ def translate_utility(source_path, target_path, lang_code, utility_name):
             content = re.sub(r"'먼저 QR 코드를 생성하세요\.'", f"'{trans['generate_first']}'", content)
             
         elif utility_name == 'json-formatter':
-            content = re.sub(r'<title>JSON 포매터 - Tool Shelf</title>',
-                           f'<title>{trans["json_title"]} - Tool Shelf</title>', content)
+            content = re.sub(r'<title>JSON 포매터 - Utilify</title>',
+                           f'<title>{trans["json_title"]} - Utilify</title>', content)
             content = re.sub(r'content="JSON 데이터를 포맷팅하고 유효성을 검사하세요\. 압축, 포맷, 검증 기능을 제공합니다\."',
                            f'content="{trans["json_desc"]}"', content)
             content = re.sub(r'<h1>{{ }} JSON 포매터</h1>',
@@ -255,8 +255,8 @@ def translate_utility(source_path, target_path, lang_code, utility_name):
             content = re.sub(r"'오류: '", f"'{trans['error']}'", content)
             
         elif utility_name == 'text-utils':
-            content = re.sub(r'<title>텍스트 유틸리티 - Tool Shelf</title>',
-                           f'<title>{trans["text_utils_title"]} - Tool Shelf</title>', content)
+            content = re.sub(r'<title>텍스트 유틸리티 - Utilify</title>',
+                           f'<title>{trans["text_utils_title"]} - Utilify</title>', content)
             content = re.sub(r'content="단어 수 세기, 문자 수 세기, 중복 제거, 대소문자 변환 등 다양한 텍스트 처리 기능을 제공합니다\."',
                            f'content="{trans["text_utils_desc"]}"', content)
             content = re.sub(r'<h1>📝 텍스트 유틸리티</h1>',
@@ -281,8 +281,8 @@ def translate_utility(source_path, target_path, lang_code, utility_name):
             content = re.sub(r'>지우기<', f'>{trans["clear"]}<', content)
             
         elif utility_name == 'color-converter':
-            content = re.sub(r'<title>색상 변환기 - Tool Shelf</title>',
-                           f'<title>{trans["color_title"]} - Tool Shelf</title>', content)
+            content = re.sub(r'<title>색상 변환기 - Utilify</title>',
+                           f'<title>{trans["color_title"]} - Utilify</title>', content)
             content = re.sub(r'content="HEX, RGB, HSL 색상 형식 간 변환을 수행하세요\. 실시간 색상 미리보기와 간편한 복사 기능\."',
                            f'content="{trans["color_desc"]}"', content)
             content = re.sub(r'<h1>🎨 색상 변환기</h1>',
@@ -311,7 +311,7 @@ def main():
     base_dir = Path(__file__).parent
     ko_dir = base_dir / 'ko'
     
-    print("🚀 Tool Shelf 주요 언어 완전 번역 시작 (병렬 처리)...\n")
+    print("🚀 Utilify 주요 언어 완전 번역 시작 (병렬 처리)...\n")
     
     # 번역할 유틸리티 목록
     utilities = [

@@ -1,5 +1,5 @@
 """
-Tool Shelf - Multi-language Page Generator
+Utilify - Multi-language Page Generator
 Generates all utility pages across 9 languages with SEO optimization
 """
 
@@ -164,11 +164,11 @@ def generate_utility_page(lang, util_slug, util_data):
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{title} - Tool Shelf</title>
+  <title>{title} - Utilify</title>
   <meta name="description" content="{desc}">
   
   <!-- Open Graph -->
-  <meta property="og:title" content="{title} - Tool Shelf">
+  <meta property="og:title" content="{title} - Utilify">
   <meta property="og:description" content="{desc}">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://yourdomain.com/{lang}/{util_slug}/">
@@ -198,7 +198,7 @@ def generate_utility_page(lang, util_slug, util_data):
     "inLanguage": "{lang}",
     "isPartOf": {{
       "@type": "WebSite",
-      "name": "Tool Shelf",
+      "name": "Utilify",
       "url": "https://yourdomain.com/"
     }}
   }}
@@ -209,7 +209,7 @@ def generate_utility_page(lang, util_slug, util_data):
     <div class="container">
       <div class="header-content">
         <a href="/{lang}/" class="site-logo">
-          🛠️ Tool Shelf
+          🛠️ Utilify
         </a>
         <div id="languageSwitcher" class="language-switcher"></div>
       </div>
@@ -242,7 +242,7 @@ def generate_utility_page(lang, util_slug, util_data):
   <footer class="site-footer">
     <div class="container">
       <div class="footer-content">
-        <p>&copy; 2025 Tool Shelf. All rights reserved.</p>
+        <p>&copy; 2025 Utilify. All rights reserved.</p>
       </div>
     </div>
   </footer>
@@ -339,11 +339,11 @@ def generate_index_page(lang):
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{t['title']} - Tool Shelf</title>
+  <title>{t['title']} - Utilify</title>
   <meta name="description" content="{t['desc']}">
   
   <!-- Open Graph -->
-  <meta property="og:title" content="{t['title']} - Tool Shelf">
+  <meta property="og:title" content="{t['title']} - Utilify">
   <meta property="og:description" content="{t['desc']}">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://yourdomain.com/{lang}/">
@@ -373,7 +373,7 @@ def generate_index_page(lang):
     "inLanguage": "{lang}",
     "isPartOf": {{
       "@type": "WebSite",
-      "name": "Tool Shelf",
+      "name": "Utilify",
       "url": "https://yourdomain.com/"
     }}
   }}
@@ -384,7 +384,7 @@ def generate_index_page(lang):
     <div class="container">
       <div class="header-content">
         <a href="/{lang}/" class="site-logo">
-          🛠️ Tool Shelf
+          🛠️ Utilify
         </a>
         <div id="languageSwitcher" class="language-switcher"></div>
       </div>
@@ -409,7 +409,7 @@ def generate_index_page(lang):
   <footer class="site-footer">
     <div class="container">
       <div class="footer-content">
-        <p>&copy; 2025 Tool Shelf. All rights reserved.</p>
+        <p>&copy; 2025 Utilify. All rights reserved.</p>
       </div>
     </div>
   </footer>
@@ -424,7 +424,7 @@ def main():
     """Main function to generate all pages"""
     base_dir = Path(__file__).parent
     
-    print("Generating Tool Shelf pages...")
+    print("Generating Utilify pages...")
     print(f"Base directory: {base_dir}")
     
     # Generate index pages for each language

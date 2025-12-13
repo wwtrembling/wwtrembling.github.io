@@ -1,10 +1,10 @@
-# Tool Shelf
+# Utilify
 
 GitHub Pages 기반의 클라이언트 전용 유틸리티 모음 사이트
 
 ## 프로젝트 개요
 
-- **프로젝트명**: Tool Shelf
+- **프로젝트명**: Utilify
 - **배포**: GitHub Pages (https://utilifyapp.net)
 - **기술 스택**: HTML + CSS + JavaScript (백엔드 없음)
 - **특징**: 완전한 클라이언트 사이드 처리, 개인정보 보호

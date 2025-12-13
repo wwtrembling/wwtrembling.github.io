@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Tool Shelf Ultimate Translation Script
+Utilify Ultimate Translation Script
 Translates all 16 utilities to 8 languages using hardcoded mappings.
 """
 
@@ -17,10 +17,10 @@ TRANSLATIONS = {
     'en': {
         # Common
         'lang': 'en',
-        'home_title': 'Free Online Utilities - Tool Shelf',
+        'home_title': 'Free Online Utilities - Utilify',
         'home_desc': 'Free online tools including Unit Converter, Image Tools, Calculators, and more.',
-        'site_title': '🛠️ Tool Shelf',
-        'footer_text': '&copy; 2025 Tool Shelf. All rights reserved.',
+        'site_title': '🛠️ Utilify',
+        'footer_text': '&copy; 2025 Utilify. All rights reserved.',
         'result': 'Result',
         'calculate': 'Calculate',
         'copy': 'Copy',
@@ -137,10 +137,10 @@ TRANSLATIONS = {
     },
     'ja': {
         'lang': 'ja',
-        'home_title': '無料オンラインツール - Tool Shelf',
+        'home_title': '無料オンラインツール - Utilify',
         'home_desc': '単位変換、画像ツール、計算機など、便利な無料オンラインツールを提供します。',
-        'site_title': '🛠️ Tool Shelf',
-        'footer_text': '&copy; 2025 Tool Shelf. All rights reserved.',
+        'site_title': '🛠️ Utilify',
+        'footer_text': '&copy; 2025 Utilify. All rights reserved.',
         'result': '結果',
         'calculate': '計算',
         'copy': 'コピー',
@@ -248,7 +248,7 @@ TRANSLATIONS = {
     'hi': {
         'lang': 'hi',
         # Hindi translations (transliterated or conceptual where uncertain)
-        'home_title': 'मुफ्त ऑनलाइन उपकरण - Tool Shelf',
+        'home_title': 'मुफ्त ऑनलाइन उपकरण - Utilify',
         'home_desc': 'मुफ्त ऑनलाइन टूल: यूनिट कन्वर्टर, कैलकुलेटर, और अधिक।',
         'result': 'परिणाम',
         'calculate': 'गणना करें',
@@ -284,7 +284,7 @@ TRANSLATIONS = {
     },
     'de': {
         'lang': 'de',
-        'home_title': 'Kostenlose Online-Tools - Tool Shelf',
+        'home_title': 'Kostenlose Online-Tools - Utilify',
         'home_desc': 'Kostenlose Tools: Einheitenumrechner, Rechner und mehr.',
         'result': 'Ergebnis',
         'calculate': 'Berechnen',
@@ -433,10 +433,10 @@ def translate_utility(source_path, target_path, lang_code, utility_name):
         content = re.sub(r'<html lang="ko">', f'<html lang="{lang_code}">', content)
         content = content.replace('/ko/', f'/{lang_code}/')
         
-        # Tool Shelf Footer/Header/Title Suffix
-        content = content.replace(' - Tool Shelf', f" - {trans.get('site_title', 'Tool Shelf')}")
-        content = re.sub(r'🛠️ Tool Shelf', trans.get('site_title', 'Tool Shelf'), content)
-        content = re.sub(r'&copy; 2025 Tool Shelf. All rights reserved.', trans.get('footer_text', ''), content)
+        # Utilify Footer/Header/Title Suffix
+        content = content.replace(' - Utilify', f" - {trans.get('site_title', 'Utilify')}")
+        content = re.sub(r'🛠️ Utilify', trans.get('site_title', 'Utilify'), content)
+        content = re.sub(r'&copy; 2025 Utilify. All rights reserved.', trans.get('footer_text', ''), content)
         
         # ----------------------------------------------------------------------
         # UTILITY SPECIFIC REPLACEMENTS
@@ -444,7 +444,7 @@ def translate_utility(source_path, target_path, lang_code, utility_name):
         
         # --- UNIT CONVERTER ---
         if utility_name == 'unit-converter':
-            content = re.sub(r'<title>.*?</title>', f'<title>{trans.get("unit_title", en_trans["unit_title"])} - Tool Shelf</title>', content)
+            content = re.sub(r'<title>.*?</title>', f'<title>{trans.get("unit_title", en_trans["unit_title"])} - Utilify</title>', content)
             content = re.sub(r'content="길이, 무게.*?"', f'content="{trans.get("unit_desc", en_trans["unit_desc"])}"', content)
             content = re.sub(r'<h1>.*?단위 변환기</h1>', f'<h1>📏 {trans.get("unit_title", en_trans["unit_title"])}</h1>', content)
             content = re.sub(r'<p>길이, 무게.*?</p>', f'<p>{trans.get("unit_desc", en_trans["unit_desc"])}</p>', content)
@@ -452,7 +452,7 @@ def translate_utility(source_path, target_path, lang_code, utility_name):
             
         # --- DAILY VERSE ---
         elif utility_name == 'daily-verse':
-            content = re.sub(r'<title>.*?</title>', f'<title>{trans.get("verse_title", en_trans["verse_title"])} - Tool Shelf</title>', content)
+            content = re.sub(r'<title>.*?</title>', f'<title>{trans.get("verse_title", en_trans["verse_title"])} - Utilify</title>', content)
             content = re.sub(r'content="365일.*?"', f'content="{trans.get("verse_desc", en_trans["verse_desc"])}"', content)
             content = re.sub(r'<h1>.*?성경일기 복사기</h1>', f'<h1>{trans.get("verse_h1", en_trans["verse_h1"])}</h1>', content)
             content = re.sub(r'오늘 날짜로 이동', trans.get("verse_today_btn", en_trans["verse_today_btn"]), content)
@@ -461,7 +461,7 @@ def translate_utility(source_path, target_path, lang_code, utility_name):
 
         # --- BMI CALCULATOR ---
         elif utility_name == 'bmi-calculator':
-            content = re.sub(r'<title>.*?</title>', f'<title>{trans.get("bmi_title", en_trans["bmi_title"])} - Tool Shelf</title>', content)
+            content = re.sub(r'<title>.*?</title>', f'<title>{trans.get("bmi_title", en_trans["bmi_title"])} - Utilify</title>', content)
             content = re.sub(r'content="BMI를 계산하세요\."', f'content="{trans.get("bmi_desc", en_trans["bmi_desc"])}"', content)
             content = re.sub(r'<h1>.*?BMI 계산기</h1>', f'<h1>{trans.get("bmi_h1", en_trans["bmi_h1"])}</h1>', content)
             content = re.sub(r'<p>BMI를 계산하세요\.</p>', f'<p>{trans.get("bmi_desc", en_trans["bmi_desc"])}</p>', content)
@@ -471,7 +471,7 @@ def translate_utility(source_path, target_path, lang_code, utility_name):
             
         # --- DATE CALCULATOR ---
         elif utility_name == 'date-calculator':
-            content = re.sub(r'<title>.*?</title>', f'<title>{trans.get("date_title", en_trans["date_title"])} - Tool Shelf</title>', content)
+            content = re.sub(r'<title>.*?</title>', f'<title>{trans.get("date_title", en_trans["date_title"])} - Utilify</title>', content)
             content = re.sub(r'content="D-Day와.*?"', f'content="{trans.get("date_desc", en_trans["date_desc"])}"', content)
             content = re.sub(r'<h1>.*?날짜 계산기</h1>', f'<h1>{trans.get("date_h1", en_trans["date_h1"])}</h1>', content)
             content = re.sub(r'<h3>D-Day 계산</h3>', f'<h3>{trans.get("date_dday_calc", en_trans["date_dday_calc"])}</h3>', content)
@@ -483,7 +483,7 @@ def translate_utility(source_path, target_path, lang_code, utility_name):
             
         # --- TIMER ---
         elif utility_name == 'timer':
-            content = re.sub(r'<title>.*?</title>', f'<title>{trans.get("timer_title", en_trans["timer_title"])} - Tool Shelf</title>', content)
+            content = re.sub(r'<title>.*?</title>', f'<title>{trans.get("timer_title", en_trans["timer_title"])} - Utilify</title>', content)
             content = re.sub(r'content="온라인 타이머와.*?"', f'content="{trans.get("timer_desc", en_trans["timer_desc"])}"', content)
             content = re.sub(r'<h1>.*?타이머</h1>', f'<h1>{trans.get("timer_h1", en_trans["timer_h1"])}</h1>', content)
             content = re.sub(r'<p>온라인 타이머와.*?</p>', f'<p>{trans.get("timer_desc", en_trans["timer_desc"])}</p>', content)
@@ -497,7 +497,7 @@ def translate_utility(source_path, target_path, lang_code, utility_name):
 
         # --- FAVICON GENERATOR ---
         elif utility_name == 'favicon-generator':
-            content = re.sub(r'<title>.*?</title>', f'<title>{trans.get("fav_title", en_trans["fav_title"])} - Tool Shelf</title>', content)
+            content = re.sub(r'<title>.*?</title>', f'<title>{trans.get("fav_title", en_trans["fav_title"])} - Utilify</title>', content)
             content = re.sub(r'content="이미지를 업로드하여.*?"', f'content="{trans.get("fav_desc", en_trans["fav_desc"])}"', content)
             content = re.sub(r'<h1>.*?Favicon 생성기</h1>', f'<h1>{trans.get("fav_h1", en_trans["fav_h1"])}</h1>', content)
             content = re.sub(r'<p>이미지를 업로드하여.*?</p>', f'<p>{trans.get("fav_desc", en_trans["fav_desc"])}</p>', content)
@@ -506,7 +506,7 @@ def translate_utility(source_path, target_path, lang_code, utility_name):
             
         # --- IMAGE EDITOR ---
         elif utility_name == 'image-editor':
-            content = re.sub(r'<title>.*?</title>', f'<title>{trans.get("img_edit_title", en_trans["img_edit_title"])} - Tool Shelf</title>', content)
+            content = re.sub(r'<title>.*?</title>', f'<title>{trans.get("img_edit_title", en_trans["img_edit_title"])} - Utilify</title>', content)
             content = re.sub(r'content="이미지 밝기.*?"', f'content="{trans.get("img_edit_desc", en_trans["img_edit_desc"])}"', content)
             content = re.sub(r'<h1>.*?이미지 편집기</h1>', f'<h1>{trans.get("img_edit_h1", en_trans["img_edit_h1"])}</h1>', content)
             content = re.sub(r'<p>이미지 밝기.*?</p>', f'<p>{trans.get("img_edit_desc", en_trans["img_edit_desc"])}</p>', content)
@@ -519,7 +519,7 @@ def translate_utility(source_path, target_path, lang_code, utility_name):
 
         # --- REGEX TESTER ---
         elif utility_name == 'regex-tester':
-            content = re.sub(r'<title>.*?</title>', f'<title>{trans.get("regex_title", en_trans["regex_title"])} - Tool Shelf</title>', content)
+            content = re.sub(r'<title>.*?</title>', f'<title>{trans.get("regex_title", en_trans["regex_title"])} - Utilify</title>', content)
             content = re.sub(r'content="정규식 패턴을.*?"', f'content="{trans.get("regex_desc", en_trans["regex_desc"])}"', content)
             content = re.sub(r'<h1>.*?정규식 테스터</h1>', f'<h1>{trans.get("regex_h1", en_trans["regex_h1"])}</h1>', content)
             content = re.sub(r'<p>정규식 패턴을.*?</p>', f'<p>{trans.get("regex_desc", en_trans["regex_desc"])}</p>', content)
@@ -528,7 +528,7 @@ def translate_utility(source_path, target_path, lang_code, utility_name):
             
         # --- SQL FORMATTER ---
         elif utility_name == 'sql-formatter':
-            content = re.sub(r'<title>.*?</title>', f'<title>{trans.get("sql_title", en_trans["sql_title"])} - Tool Shelf</title>', content)
+            content = re.sub(r'<title>.*?</title>', f'<title>{trans.get("sql_title", en_trans["sql_title"])} - Utilify</title>', content)
             content = re.sub(r'content="SQL 쿼리를.*?"', f'content="{trans.get("sql_desc", en_trans["sql_desc"])}"', content)
             content = re.sub(r'<h1>.*?SQL 포매터</h1>', f'<h1>{trans.get("sql_h1", en_trans["sql_h1"])}</h1>', content)
             content = re.sub(r'<p>SQL 쿼리를.*?</p>', f'<p>{trans.get("sql_desc", en_trans["sql_desc"])}</p>', content)

@@ -135,11 +135,11 @@ def generate_thumbnail_downloader(lang):
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="google-adsense-account" content="ca-pub-6334819180242631">
-  <title>{t["title"]} - Tool Shelf</title>
+  <title>{t["title"]} - Utilify</title>
   <meta name="description" content="{t["desc"]}">
   
   <!-- Open Graph -->
-  <meta property="og:title" content="{t["title"]} - Tool Shelf">
+  <meta property="og:title" content="{t["title"]} - Utilify">
   <meta property="og:description" content="{t["desc"]}">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://utilifyapp.net/{lang}/thumbnail-downloader/">
@@ -249,7 +249,7 @@ def generate_thumbnail_downloader(lang):
     <div class="container">
       <div class="header-content">
         <a href="/{lang}/" class="site-logo">
-          🛠️ Tool Shelf
+          🛠️ Utilify
         </a>
       </div>
     </div>
@@ -288,7 +288,7 @@ def generate_thumbnail_downloader(lang):
   <footer class="site-footer">
     <div class="container">
       <div class="footer-content">
-        <p>&copy; 2025 Tool Shelf. All rights reserved.</p>
+        <p>&copy; 2025 Utilify. All rights reserved.</p>
       </div>
     </div>
   </footer>

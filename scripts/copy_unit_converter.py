@@ -212,7 +212,7 @@ def generate_unit_converter(lang, template):
     # Replace title and description
     content = re.sub(
         r'<title>.*?</title>',
-        f'<title>{t["title"]} - Tool Shelf</title>',
+        f'<title>{t["title"]} - Utilify</title>',
         content
     )
     content = re.sub(
@@ -224,7 +224,7 @@ def generate_unit_converter(lang, template):
     # Replace Open Graph
     content = re.sub(
         r'<meta property="og:title" content=".*?">',
-        f'<meta property="og:title" content="{t["title"]} - Tool Shelf">',
+        f'<meta property="og:title" content="{t["title"]} - Utilify">',
         content
     )
     content = re.sub(

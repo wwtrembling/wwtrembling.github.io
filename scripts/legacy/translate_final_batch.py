@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Tool Shelf Final Translation Script
+Utilify Final Translation Script
 Translates index.html and remaining 'Batch 1' utilities for all languages.
 """
 
@@ -241,13 +241,13 @@ def translate_file(source_path, target_path, lang_code, file_type):
         
         # Site Title
         if lang_code == 'ja':
-             content = re.sub(r'🛠️ Tool Shelf', '🛠️ Tool Shelf', content) # Same
+             content = re.sub(r'🛠️ Utilify', '🛠️ Utilify', content) # Same
         
         # ----------------------------------------------------------------------
         # MAIN INDEX REPLACEMENTS
         # ----------------------------------------------------------------------
         if file_type == 'index':
-            content = re.sub(r'<title>.*?</title>', f'<title>{trans["main_h1"]} - Tool Shelf</title>', content)
+            content = re.sub(r'<title>.*?</title>', f'<title>{trans["main_h1"]} - Utilify</title>', content)
             content = re.sub(r'<h1>무료 온라인 도구</h1>', f'<h1>{trans["main_h1"]}</h1>', content)
             content = re.sub(r'<p style="font-size: 1.125rem;">.*?</p>', f'<p style="font-size: 1.125rem;">{trans["main_sub"]}</p>', content)
             content = re.sub(r'<h2 class="text-center mb-3">사용 가능한 도구</h2>', f'<h2 class="text-center mb-3">{trans["main_avail"]}</h2>', content)

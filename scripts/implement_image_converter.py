@@ -213,7 +213,7 @@ image_converter_template = '''<!DOCTYPE html>
     <div class="container">
       <div class="header-content">
         <a href="/{lang}/" class="site-logo">
-          🛠️ Tool Shelf
+          🛠️ Utilify
         </a>
       </div>
     </div>
@@ -295,7 +295,7 @@ image_converter_template = '''<!DOCTYPE html>
   <footer class="site-footer">
     <div class="container">
       <div class="footer-content">
-        <p>&copy; 2025 Tool Shelf. All rights reserved.</p>
+        <p>&copy; 2025 Utilify. All rights reserved.</p>
       </div>
     </div>
   </footer>
@@ -443,9 +443,9 @@ image_converter_template = '''<!DOCTYPE html>
 # Language configurations
 languages = {{
     'ko': {{
-        'title': '이미지 변환기 - Tool Shelf',
+        'title': '이미지 변환기 - Utilify',
         'description': '이미지 크기를 조정하고 WebP, JPEG, PNG 형식으로 변환하세요. 브라우저에서 바로 처리됩니다.',
-        'og_title': '이미지 변환기 - Tool Shelf',
+        'og_title': '이미지 변환기 - Utilify',
         'og_description': '이미지 크기를 조정하고 다양한 형식으로 변환하세요.',
         'app_name': '이미지 변환기',
         'h1': '이미지 변환기',
@@ -464,9 +464,9 @@ languages = {{
         'error_not_image': '이미지 파일만 업로드할 수 있습니다.'
     }},
     'en': {{
-        'title': 'Image Converter - Tool Shelf',
+        'title': 'Image Converter - Utilify',
         'description': 'Resize images and convert to WebP, JPEG, PNG formats. Process directly in your browser.',
-        'og_title': 'Image Converter - Tool Shelf',
+        'og_title': 'Image Converter - Utilify',
         'og_description': 'Resize images and convert to various formats.',
         'app_name': 'Image Converter',
         'h1': 'Image Converter',

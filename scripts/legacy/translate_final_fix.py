@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Tool Shelf Final Fix Translation Script
+Utilify Final Fix Translation Script
 Corrects specific translation misses due to Regex mismatches.
 """
 

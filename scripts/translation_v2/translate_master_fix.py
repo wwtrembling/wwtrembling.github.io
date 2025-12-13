@@ -13,17 +13,17 @@ from concurrent.futures import ThreadPoolExecutor
 
 MASTER_MAP = {
     # --- Titles and Meta ---
-    'JSON 포매터 - Tool Shelf': {
-        'en': 'JSON Formatter - Tool Shelf', 'ja': 'JSONフォーマッター - Tool Shelf',
-        'hi': 'JSON फॉर्मेटर - Tool Shelf', 'id': 'Pemformat JSON - Tool Shelf',
-        'vi': 'Định dạng JSON - Tool Shelf', 'th': 'ตัวจัดรูปแบบ JSON - Tool Shelf',
-        'de': 'JSON-Formatierer - Tool Shelf', 'pt': 'Formatador JSON - Tool Shelf'
+    'JSON 포매터 - Utilify': {
+        'en': 'JSON Formatter - Utilify', 'ja': 'JSONフォーマッター - Utilify',
+        'hi': 'JSON फॉर्मेटर - Utilify', 'id': 'Pemformat JSON - Utilify',
+        'vi': 'Định dạng JSON - Utilify', 'th': 'ตัวจัดรูปแบบ JSON - Utilify',
+        'de': 'JSON-Formatierer - Utilify', 'pt': 'Formatador JSON - Utilify'
     },
-    '무료 온라인 유틸리티 모음 - Tool Shelf': {
-        'en': 'Free Online Tools - Tool Shelf', 'ja': '無料オンラインツール - Tool Shelf',
-        'hi': 'मुफ्त ऑनलाइन उपकरण - Tool Shelf', 'de': 'Kostenlose Online-Tools - Tool Shelf',
-        'pt': 'Ferramentas Online Grátis - Tool Shelf', 'id': 'Alat Online Gratis - Tool Shelf',
-        'vi': 'Công cụ trực tuyến miễn phí - Tool Shelf', 'th': 'เครื่องมือออนไลน์ฟรี - Tool Shelf'
+    '무료 온라인 유틸리티 모음 - Utilify': {
+        'en': 'Free Online Tools - Utilify', 'ja': '無料オンラインツール - Utilify',
+        'hi': 'मुफ्त ऑनलाइन उपकरण - Utilify', 'de': 'Kostenlose Online-Tools - Utilify',
+        'pt': 'Ferramentas Online Grátis - Utilify', 'id': 'Alat Online Gratis - Utilify',
+        'vi': 'Công cụ trực tuyến miễn phí - Utilify', 'th': 'เครื่องมือออนไลน์ฟรี - Utilify'
     },
     '무료 온라인 유틸리티 모음': {
         'en': 'Free Online Tools', 'ja': '無料オンラインツール',
@@ -41,44 +41,44 @@ MASTER_MAP = {
         'vi': 'Cung cấp các công cụ trực tuyến miễn phí khác nhau như chuyển đổi đơn vị, công cụ PDF, chuyển đổi hình ảnh, máy tính, v.v.',
         'th': 'ให้บริการเครื่องมือออนไลน์ฟรีต่างๆ เช่น การแปลงหน่วย เครื่องมือ PDF การแปลงรูปภาพ เครื่องคิดเลข ฯลฯ'
     },
-    '이름표 - Tool Shelf': { # Guessing based on pattern, but let's stick to list
-        'en': 'Label - Tool Shelf', 'ja': 'ラベル - Tool Shelf'
+    '이름표 - Utilify': { # Guessing based on pattern, but let's stick to list
+        'en': 'Label - Utilify', 'ja': 'ラベル - Utilify'
     },
-    'Lorem Ipsum 생성기 - Tool Shelf': {
-        'en': 'Lorem Ipsum Generator - Tool Shelf', 'ja': 'Lorem Ipsum生成器 - Tool Shelf',
-        'hi': 'Lorem Ipsum जनरेटर - Tool Shelf', 'de': 'Lorem Ipsum Generator - Tool Shelf',
-        'pt': 'Gerador de Lorem Ipsum - Tool Shelf', 'id': 'Generator Lorem Ipsum - Tool Shelf',
-        'vi': 'Trình tạo Lorem Ipsum - Tool Shelf', 'th': 'Lorem Ipsum เบ้าหลอม - Tool Shelf'
+    'Lorem Ipsum 생성기 - Utilify': {
+        'en': 'Lorem Ipsum Generator - Utilify', 'ja': 'Lorem Ipsum生成器 - Utilify',
+        'hi': 'Lorem Ipsum जनरेटर - Utilify', 'de': 'Lorem Ipsum Generator - Utilify',
+        'pt': 'Gerador de Lorem Ipsum - Utilify', 'id': 'Generator Lorem Ipsum - Utilify',
+        'vi': 'Trình tạo Lorem Ipsum - Utilify', 'th': 'Lorem Ipsum เบ้าหลอม - Utilify'
     },
-    'QR 코드 생성기 - Tool Shelf': {
-        'en': 'QR Code Generator - Tool Shelf', 'ja': 'QRコード生成器 - Tool Shelf',
-        'hi': 'QR कोड जनरेटर - Tool Shelf', 'de': 'QR-Code-Generator - Tool Shelf',
-        'pt': 'Gerador de QR Code - Tool Shelf', 'id': 'Generator Kode QR - Tool Shelf',
-        'vi': 'Trình tạo mã QR - Tool Shelf', 'th': 'เครื่องสร้างรหัส QR - Tool Shelf'
+    'QR 코드 생성기 - Utilify': {
+        'en': 'QR Code Generator - Utilify', 'ja': 'QRコード生成器 - Utilify',
+        'hi': 'QR कोड जनरेटर - Utilify', 'de': 'QR-Code-Generator - Utilify',
+        'pt': 'Gerador de QR Code - Utilify', 'id': 'Generator Kode QR - Utilify',
+        'vi': 'Trình tạo mã QR - Utilify', 'th': 'เครื่องสร้างรหัส QR - Utilify'
     },
-    'Base64 인코더/디코더 - Tool Shelf': {
-        'en': 'Base64 Encoder/Decoder - Tool Shelf', 'ja': 'Base64エンコーダー/デコーダー - Tool Shelf',
-        'hi': 'Base64 एनकोडर/डिकोडर - Tool Shelf', 'de': 'Base64 Encoder/Decoder - Tool Shelf',
-        'pt': 'Codificador/Decodificador Base64 - Tool Shelf', 'id': 'Encoder/Decoder Base64 - Tool Shelf',
-        'vi': 'Bộ mã hóa/giải mã Base64 - Tool Shelf', 'th': 'Base64 ตัวเข้ารหัส/ตัวถอดรหัส - Tool Shelf'
+    'Base64 인코더/디코더 - Utilify': {
+        'en': 'Base64 Encoder/Decoder - Utilify', 'ja': 'Base64エンコーダー/デコーダー - Utilify',
+        'hi': 'Base64 एनकोडर/डिकोडर - Utilify', 'de': 'Base64 Encoder/Decoder - Utilify',
+        'pt': 'Codificador/Decodificador Base64 - Utilify', 'id': 'Encoder/Decoder Base64 - Utilify',
+        'vi': 'Bộ mã hóa/giải mã Base64 - Utilify', 'th': 'Base64 ตัวเข้ารหัส/ตัวถอดรหัส - Utilify'
     },
-    '색상 변환기 - Tool Shelf': {
-        'en': 'Color Converter - Tool Shelf', 'ja': '色変換ツール - Tool Shelf',
-        'hi': 'रंग परिवर्तक - Tool Shelf', 'de': 'Farbkonverter - Tool Shelf',
-        'pt': 'Conversor de Cores - Tool Shelf', 'id': 'Konverter Warna - Tool Shelf',
-        'vi': 'Chuyển đổi màu sắc - Tool Shelf', 'th': 'ตัวแปลงสี - Tool Shelf'
+    '색상 변환기 - Utilify': {
+        'en': 'Color Converter - Utilify', 'ja': '色変換ツール - Utilify',
+        'hi': 'रंग परिवर्तक - Utilify', 'de': 'Farbkonverter - Utilify',
+        'pt': 'Conversor de Cores - Utilify', 'id': 'Konverter Warna - Utilify',
+        'vi': 'Chuyển đổi màu sắc - Utilify', 'th': 'ตัวแปลงสี - Utilify'
     },
-    '이미지 변환기 - Tool Shelf': {
-        'en': 'Image Converter - Tool Shelf', 'ja': '画像変換ツール - Tool Shelf',
-        'hi': 'छवि परिवर्तक - Tool Shelf', 'de': 'Bildkonverter - Tool Shelf',
-        'pt': 'Conversor de Imagem - Tool Shelf', 'id': 'Konverter Gambar - Tool Shelf',
-        'vi': 'Chuyển đổi hình ảnh - Tool Shelf', 'th': 'ตัวแปลงรูปภาพ - Tool Shelf'
+    '이미지 변환기 - Utilify': {
+        'en': 'Image Converter - Utilify', 'ja': '画像変換ツール - Utilify',
+        'hi': 'छवि परिवर्तक - Utilify', 'de': 'Bildkonverter - Utilify',
+        'pt': 'Conversor de Imagem - Utilify', 'id': 'Konverter Gambar - Utilify',
+        'vi': 'Chuyển đổi hình ảnh - Utilify', 'th': 'ตัวแปลงรูปภาพ - Utilify'
     },
-    '텍스트 유틸리티 - Tool Shelf': {
-        'en': 'Text Utilities - Tool Shelf', 'ja': 'テキストユーティリティ - Tool Shelf',
-        'hi': 'पाठ उपयोगिताएँ - Tool Shelf', 'de': 'Text-Dienstprogramme - Tool Shelf',
-        'pt': 'Utilitários de Texto - Tool Shelf', 'id': 'Utilitas Teks - Tool Shelf',
-        'vi': 'Tiện ích văn bản - Tool Shelf', 'th': 'ยูทิลิตี้ข้อความ - Tool Shelf'
+    '텍스트 유틸리티 - Utilify': {
+        'en': 'Text Utilities - Utilify', 'ja': 'テキストユーティリティ - Utilify',
+        'hi': 'पाठ उपयोगिताएँ - Utilify', 'de': 'Text-Dienstprogramme - Utilify',
+        'pt': 'Utilitários de Texto - Utilify', 'id': 'Utilitas Teks - Utilify',
+        'vi': 'Tiện ích văn bản - Utilify', 'th': 'ยูทิลิตี้ข้อความ - Utilify'
     },
     'Format and validate JSON data. 압축, 포맷, 검증 기능을 제공합니다.': {
         'en': 'Format and validate JSON data. Features include minification, formatting, and validation.',
