@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="ko">
 
 <head>
     <meta charset="UTF-8">
@@ -7,38 +7,38 @@
   <meta name="google-adsense-account" content="ca-pub-6334819180242631">
 
     <!-- SEO Meta Tags -->
-    <meta name="description" content="दैनिक बाइबल वचन कॉपी करें।">
-    <meta name="keywords" content="성경Sun기, 성경읽기, बाइबल पढ़ने की योजना, 365Sun 성경, 성경 कॉपी, 매Sun 성경, 성경 묵상, Bible reading plan">
+    <meta name="description" content="365 Days बाइबल पढ़ने की योजना을 쉽게 कॉपी할 수 있는 도구입니다. Copy and share daily Bible verses with one click.">
+    <meta name="keywords" content="Bible Diary, Bible Reading, बाइबल पढ़ने की योजना, 365 Days 성경, 성경 कॉपी, Daily 성경, 성경 묵상, Bible reading plan">
     <meta name="author" content="wwtrembling">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://wwtrembling.github.io/hi/daily_verse/">
+    <link rel="canonical" href="https://wwtrembling.github.io/ko/daily_verse/">
 
     <!-- Language Alternates -->
-    <link rel="alternate" href="https://wwtrembling.github.io/hi/daily_verse/" hreflang="ko" />
+    <link rel="alternate" href="https://wwtrembling.github.io/ko/daily_verse/" hreflang="ko" />
     <link rel="alternate" href="https://wwtrembling.github.io/en/daily_verse/" hreflang="en" />
-    <link rel="alternate" href="https://wwtrembling.github.io/hi/daily_verse/" hreflang="x-default" />
+    <link rel="alternate" href="https://wwtrembling.github.io/ko/daily_verse/" hreflang="x-default" />
 
     <!-- Open Graph Meta Tags -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="성경Sun기 कॉपी기 - 365Sun बाइबल पढ़ने की योजना">
-    <meta property="og:description" content="매Sun 읽을 성경 구절을 클릭 한 번으로 कॉपी하고 공유하세요. 365Sun बाइबल पढ़ने की योजना을 쉽게 따라갈 Wed 있습니다.">
-    <meta property="og:url" content="https://wwtrembling.github.io/hi/daily_verse/">
-    <meta property="og:site_name" content="성경Sun기 कॉपी기">
+    <meta property="og:title" content="Bible Diary कॉपी기 - 365 Days बाइबल पढ़ने की योजना">
+    <meta property="og:description" content="Copy and share daily Bible verses with one click. 365 Days बाइबल पढ़ने की योजना을 쉽게 따라갈 수 있습니다.">
+    <meta property="og:url" content="https://wwtrembling.github.io/ko/daily_verse/">
+    <meta property="og:site_name" content="Bible Diary कॉपी기">
     <meta property="og:locale" content="ko_KR">
     <meta property="og:locale:alternate" content="en_US">
 
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="성경Sun기 कॉपी기 - 365Sun बाइबल पढ़ने की योजना">
-    <meta name="twitter:description" content="매Sun 읽을 성경 구절을 클릭 한 번으로 कॉपी하고 공유하세요.">
+    <meta name="twitter:title" content="Bible Diary कॉपी기 - 365 Days बाइबल पढ़ने की योजना">
+    <meta name="twitter:description" content="Copy and share daily Bible verses with one click.">
 
     <!-- Additional Meta Tags -->
     <meta name="theme-color" content="#667eea">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="성경Sun기">
+    <meta name="apple-mobile-web-app-title" content="Bible Diary">
 
-    <title>बाइबल वचन कॉपीयर - Tool Shelf</title>
+    <title>Bible Diary कॉपी기 - 365 Days बाइबल पढ़ने की योजना</title>
     <style>
         * {
             margin: 0;
@@ -337,7 +337,7 @@
             }
         }
 
-        /* 스크롤바 스타Sun */
+        /* 스크롤바 스타일 */
         .content::-webkit-scrollbar {
             width: 10px;
         }
@@ -355,7 +355,7 @@
             background: #764ba2;
         }
 
-        /* 날짜 섹션 스타Sun */
+        /* 날짜 섹션 스타일 */
         .day-section {
             display: flex;
             flex-direction: column;
@@ -366,7 +366,7 @@
             border: 2px solid rgba(102, 126, 234, 0.15);
             transition: all 0.3s ease;
             min-width: 0;
-            /* flex 아이템이 줄어들 Wed 있도록 */
+            /* flex 아이템이 줄어들 수 있도록 */
         }
 
         .day-section:hover {
@@ -396,7 +396,7 @@
             }
         }
 
-        /* 소개 버튼 스타Sun */
+        /* 소개 버튼 스타일 */
         .intro-button {
             background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
             color: white;
@@ -424,7 +424,7 @@
             transform: translateY(-1px);
         }
 
-        /* 말씀 버튼 스타Sun */
+        /* 말씀 버튼 스타일 */
         .verse-button {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
@@ -486,27 +486,27 @@
     <div class="container">
         <div class="header">
             <div class="header-left">
-                <h1>📖 बाइबल वचन कॉपीयर</h1>
+                <h1>📖 Bible Diary कॉपी기</h1>
                 <button class="today-button" id="todayButton" onclick="scrollToToday()">
-                    📅 📅 Go to Today
+                    📅 오늘 날짜로 이동
                 </button>
             </div>
             <div class="status-box">
-                <div class="label">Copied Verse</div>
+                <div class="label">कॉपी된 구절</div>
                 <div class="value" id="statusText">-</div>
             </div>
         </div>
         <div class="content" id="content">
-            <!-- Mon별 섹션이 JavaScript로 동적 생성됩니다 -->
+            <!-- 월별 섹션이 JavaScript로 동적 생성됩니다 -->
         </div>
     </div>
 
     <div class="copied-notification" id="notification">
-        क्लिपबोर्ड पर कॉपी किया गया!
+        클립보드에 कॉपी되었습니다!
     </div>
 
     <script>
-        // 성경Sun기표 데이터 (365Sun)
+        // Bible Diary표 데이터 (365 Days)
         const bibleReadings = [
             "창 1-3", "창 4-6", "창 7-9", "창 10-13", "창 14-17", "창 18-20", "창 21-23", "창 24-26",
             "창 27-30", "창 31-33", "창 34-36", "창 37-40", "창 41-45", "창 46-48", "창 49-50", "출 1-4",
@@ -515,7 +515,7 @@
             "레 15-17", "레 18-20", "레 21-24", "레 25-27", "민 1-4", "민 5-7", "민 8-10", "민 11-14",
             "민 15-17", "민 18-20", "민 21-23", "민 24-27", "민 28-30", "민 31-33", "민 34-36", "신 1-4",
             "신 5-7", "신 8-10", "신 11-14", "신 15-17", "신 18-20", "신 21-23", "신 24-27", "신 28-30",
-            "신 31-34", "Wed 1-4", "Wed 5-7", "Wed 8-10", "Wed 11-13", "Wed 14-17", "Wed 18-21", "Wed 22-24",
+            "신 31-34", "수 1-4", "수 5-7", "수 8-10", "수 11-13", "수 14-17", "수 18-21", "수 22-24",
             "삿 1-3", "삿 4-8", "삿 9-10", "삿 11-12", "삿 13-16", "삿 17-18", "삿 19-21", "룻 1-4",
             "삼상 1-3", "삼상 4-7", "삼상 8-10", "삼상 11-13", "삼상 14-16", "삼상 17-20", "삼상 21-23", "삼상 24-26",
             "삼상 27-29", "삼상 30-31", "삼하 1-3", "삼하 4-6", "삼하 7-9", "삼하 10-12", "삼하 13-15", "삼하 16-19",
@@ -552,28 +552,28 @@
             "고전 10-12", "고전 13-16", "고후 1-3", "고후 4-6", "고후 7-9", "고후 10-13", "갈 1-3", "갈 4-6",
             "엡 1-3", "엡 4-6", "빌 1-4", "골 1-4", "살전 1-5", "살후 1-3", "딤전 1-3", "딤전 4-6",
             "딤후 1-4", "딛 1-3, 몬 1", "히 1-2", "히 3-4", "히 5-7", "히 8-10", "히 11", "히 12-13",
-            "약 1-5", "벧전 1-5", "벧후 1-3", "요Sun 1-5", "요이, 요삼, 유", "계 1-3", "계 4-5", "계 6-9",
+            "약 1-5", "벧전 1-5", "벧후 1-3", "요일 1-5", "요이, 요삼, 유", "계 1-3", "계 4-5", "계 6-9",
             "계 10-13", "계 14-16", "계 17-18", "계 19-20", "계 21-22"
         ];
 
-        // 각 Mon의 SunWed (윤년 고려)
+        // 각 월의 일수 (윤년 고려)
         const daysInMonth = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-        const monthNames = ["1Mon", "2Mon", "3Mon", "4Mon", "5Mon", "6Mon", "7Mon", "8Mon", "9Mon", "10Mon", "11Mon", "12Mon"];
+        const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
-        // 전역 변Wed: 성경 소개 데이터
+        // 전역 변수: 성경 소개 데이터
         let bookIntroductions = {};
         let bookStartDates = {};
 
         // 책 약어 → 전체 이름 매핑 (성경 66권 전체)
-        // 주의: 소개 파Sun의 실제 이름에 맞춰 매핑 (서, 기 등 접미사 포함)
+        // 주의: 소개 파일의 실제 이름에 맞춰 매핑 (서, 기 등 접미사 포함)
         const bookAbbrevMap = {
             // 구약 39권
             '창': '창세기',
             '출': '출애굽기',
             '레': '레위기',
-            '민': '민Wed기',
+            '민': '민수기',
             '신': '신명기',
-            'Wed': '여호Wed아서',     // 소개: 6.여호Wed아서(Joshua)
+            '수': '여호수아서',     // 소개: 6.여호수아서(Joshua)
             '삿': '사사기',
             '룻': '룻기',
             '삼상': '사무엘서',      // 소개: 9.사무엘서(Samuel) - 상/하 통합
@@ -630,27 +630,27 @@
             '약': '야고보서',
             '벧전': '베드로전서',
             '벧후': '베드로후서',
-            '요Sun': '요한1서',       // 소개: 59.요한1서(1 John)
+            '요일': '요한1서',       // 소개: 59.요한1서(1 John)
             '요이': '요한2서',       // 소개: 60.요한2서(2 John)
             '요삼': '요한3서',       // 소개: 61.요한3서(3 John)
             '유': '유다서',
             '계': '요한계시록'
         };
 
-        // 책 약어 추출 함Wed
+        // 책 약어 추출 함수
         function extractBookAbbrev(reading) {
             const match = reading.match(/^([가-힣]+)/);
             return match ? match[1] : null;
         }
 
-        // 요Sun 계산 함Wed
+        // 요일 계산 함수
         function getDayOfWeek(dayIndex) {
             const now = new Date();
             const year = now.getFullYear();
 
-            // dayIndex로부터 Mon과 Sun 계산
+            // dayIndex로부터 월과 일 계산
             let month = 0;
-            let day = dayIndex + 1; // 1Sun부터 시작
+            let day = dayIndex + 1; // 1일부터 시작
 
             for (let m = 0; m < 12; m++) {
                 if (day <= daysInMonth[m]) {
@@ -663,11 +663,11 @@
             // 해당 날짜 객체 생성
             const targetDate = new Date(year, month, day);
             const dayOfWeek = targetDate.getDay();
-            const weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+            const weekDays = ['रवि', 'सोम', 'मंगल', 'बुध', 'गुरु', 'शुक्र', 'शनि'];
             return weekDays[dayOfWeek];
         }
 
-        // 책 시작 날짜 감지 함Wed
+        // 책 시작 날짜 감지 함수
         function detectBookStartDates() {
             let prevBook = null;
             for (let i = 0; i < bibleReadings.length; i++) {
@@ -766,7 +766,7 @@
             return finalChunks.length > 0 ? finalChunks : [content];
         }
 
-        // 성경 소개 파Sun 파싱
+        // 성경 소개 파일 파싱
         async function parseBookIntroductions() {
             try {
                 // 구약 파싱
@@ -777,7 +777,7 @@
                 const newTestamentResponse = await fetch('./source/2 신약.md');
                 const newTestamentText = await newTestamentResponse.text();
 
-                // 두 파Sun을 합쳐서 파싱
+                // 두 파일을 합쳐서 파싱
                 const combinedText = oldTestamentText + '\n\n' + newTestamentText;
 
                 // 정규식으로 각 책의 섹션 추출
@@ -786,7 +786,7 @@
                 for (const section of bookSections) {
                     if (!section.trim()) continue;
 
-                    // 제Thu 추출: # 1.창세기(Genesis) 형식
+                    // 제목 추출: # 1.창세기(Genesis) 형식
                     const titleMatch = section.match(/^# (\d+\.[^\n]+)/m);
                     if (!titleMatch) continue;
 
@@ -798,7 +798,7 @@
 
                     const bookName = bookNameMatch[1];
 
-                    // 내용 추출 (제Thu 다음부터 끝까지)
+                    // 내용 추출 (제목 다음부터 끝까지)
                     const content = section.replace(/^# \d+\.[^\n]+\n/, '').trim();
 
                     // 3900자 단위로 분할 (헤더 포함 시 여유 고려)
@@ -812,11 +812,11 @@
 
                 console.log('성경 소개 파싱 완료:', Object.keys(bookIntroductions).length + '권');
             } catch (error) {
-                console.error('성경 소개 파Sun 로드 실패:', error);
+                console.error('성경 소개 파일 로드 실패:', error);
             }
         }
 
-        // 클립보드에 말씀 कॉपी하는 함Wed
+        // 클립보드에 말씀 कॉपी하는 함수
         async function copyVerse(dayIndex) {
             const reading = bibleReadings[dayIndex];
             const message = `샬롬!\n오늘 함께 읽을 말씀은\n${reading}장 입니다.`;
@@ -826,12 +826,12 @@
                 document.getElementById('statusText').textContent = reading;
                 showNotification();
             } catch (err) {
-                console.error('क्लिपबोर्ड कॉपी विफल:', err);
+                console.error('클립보드 कॉपी 실패:', err);
                 fallbackCopyToClipboard(message, reading);
             }
         }
 
-        // 클립보드에 소개 कॉपी하는 함Wed
+        // 클립보드에 소개 कॉपी하는 함수
         async function copyIntro(bookName, chunkIndex) {
             const introData = bookIntroductions[bookName];
             if (!introData) {
@@ -839,7 +839,7 @@
                 return;
             }
 
-            // 제Thu 생성: 분할 시 "X/Y" 추가
+            // 제목 생성: 분할 시 "X/Y" 추가
             const totalChunks = introData.chunks.length;
             let header = `# ${introData.title}`;
             if (totalChunks > 1) {
@@ -848,7 +848,7 @@
 
             const content = `${header}\n\n${introData.chunks[chunkIndex]}`;
 
-            // 최종 문자 Wed 체크
+            // 최종 문자 수 체크
             const contentLength = content.length;
             console.log(`कॉपी할 내용 लंबाई: ${contentLength}자`);
 
@@ -865,7 +865,7 @@
                 document.getElementById('statusText').textContent = statusText;
                 showNotification();
             } catch (err) {
-                console.error('क्लिपबोर्ड कॉपी विफल:', err);
+                console.error('클립보드 कॉपी 실패:', err);
                 fallbackCopyToClipboard(content, bookName + ' 소개');
             }
         }
@@ -885,14 +885,14 @@
                 showNotification();
             } catch (err) {
                 console.error('Fallback कॉपी 실패:', err);
-                alert('क्लिपबोर्ड पर कॉपी करने में विफल।');
+                alert('클립보드 कॉपी에 실패했습니다.');
             }
 
             document.body.removeChild(textArea);
         }
 
         // 알림 표시
-        function showNotification(message = 'क्लिपबोर्ड पर कॉपी किया गया!') {
+        function showNotification(message = '클립보드에 कॉपी되었습니다!') {
             const notification = document.getElementById('notification');
             notification.textContent = message;
             notification.classList.add('show');
@@ -914,20 +914,20 @@
             let dayIndex = 0;
 
             for (let month = 0; month < 12; month++) {
-                // Mon 섹션 생성
+                // 월 섹션 생성
                 const monthSection = document.createElement('div');
                 monthSection.className = 'month-section';
 
-                // Mon 제Thu
+                // 월 제목
                 const monthTitle = document.createElement('h2');
                 monthTitle.className = 'month-title';
                 monthTitle.textContent = monthNames[month];
                 monthSection.appendChild(monthTitle);
 
-                // 요Sun 헤더 추가
+                // 요일 헤더 추가
                 const weekdayHeader = document.createElement('div');
                 weekdayHeader.className = 'weekday-header';
-                const weekdayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+                const weekdayNames = ['일', '월', '화', '수', '목', '금', '토'];
                 weekdayNames.forEach(day => {
                     const dayCell = document.createElement('div');
                     dayCell.textContent = day;
@@ -939,9 +939,9 @@
                 const daysGrid = document.createElement('div');
                 daysGrid.className = 'days-grid';
 
-                // 해당 Mon의 1Sun이 무슨 요Sun인지 확인하여 빈 칸 추가
+                // 해당 월의 1일이 무슨 요일인지 확인하여 빈 칸 추가
                 const firstDayOfMonth = getDayOfWeek(dayIndex);
-                const weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+                const weekDays = ['रवि', 'सोम', 'मंगल', 'बुध', 'गुरु', 'शुक्र', 'शनि'];
                 let firstDayIndex = weekDays.indexOf(firstDayOfMonth);
 
                 // Sunday(0)부터 시작하도록 설정
@@ -955,7 +955,7 @@
                     daysGrid.appendChild(emptyCell);
                 }
 
-                // 해당 Mon의 날짜 버튼 생성
+                // 해당 월의 날짜 버튼 생성
                 for (let day = 1; day <= daysInMonth[month]; day++) {
                     // day-section 컨테이너 생성
                     const daySection = document.createElement('div');
@@ -965,7 +965,7 @@
                     // 새로운 책이 시작되는지 확인 (배열로 변경됨)
                     const bookNames = bookStartDates[dayIndex];
                     if (bookNames && Array.isArray(bookNames)) {
-                        // 여러 책이 시작될 Wed 있음
+                        // 여러 책이 시작될 수 있음
                         for (const bookName of bookNames) {
                             if (bookIntroductions[bookName]) {
                                 const introData = bookIntroductions[bookName];
@@ -982,7 +982,7 @@
                                         introButton.textContent = `${bookName} 소개`;
                                     }
 
-                                    // 클로저로 변Wed 캡처
+                                    // 클로저로 변수 캡처
                                     const currentBookName = bookName;
                                     const currentChunkIdx = chunkIdx;
                                     introButton.onclick = () => copyIntro(currentBookName, currentChunkIdx);
@@ -996,7 +996,7 @@
                     // 말씀 버튼 생성
                     const verseButton = document.createElement('button');
                     verseButton.className = 'verse-button';
-                    verseButton.textContent = `${day}Sun`;
+                    verseButton.textContent = `${day}일`;
 
                     // 클로저로 dayIndex 캡처
                     const currentIndex = dayIndex;
@@ -1006,44 +1006,44 @@
                     daysGrid.appendChild(daySection);
                     dayIndex++;
 
-                    // 365Sun 초과 방지
+                    // 365 Days 초과 방지
                     if (dayIndex >= 365) break;
                 }
 
                 monthSection.appendChild(daysGrid);
                 content.appendChild(monthSection);
 
-                // 365Sun 초과 방지
+                // 365 Days 초과 방지
                 if (dayIndex >= 365) break;
             }
         }
 
-        // 오늘 날짜 계산 함Wed (1Mon 1Sun부터 며칠째인지)
+        // 오늘 날짜 계산 함수 (January 1일부터 며칠째인지)
         function getTodayDayIndex() {
             const now = new Date();
             const month = now.getMonth(); // 0-11
             const date = now.getDate(); // 1-31
 
-            // 해당 Mon까지의 누적 SunWed 계산
+            // 해당 월까지의 누적 일수 계산
             let dayIndex = 0;
             for (let m = 0; m < month; m++) {
                 dayIndex += daysInMonth[m];
             }
 
-            // 현재 Mon의 SunWed 추가 (1Sun = 0번 인덱스이므로 -1)
+            // 현재 월의 일수 추가 (1일 = 0번 인덱스이므로 -1)
             dayIndex += date - 1;
 
-            // 최대 364 (365Sun째는 index 364)
+            // 최대 364 (365 Days째는 index 364)
             return Math.min(dayIndex, 364);
         }
 
-        // 오늘 날짜로 스크롤하는 함Wed
+        // 오늘 날짜로 스크롤하는 함수
         function scrollToToday() {
             const todayIndex = getTodayDayIndex();
             const todayElement = document.querySelector(`[data-day-index="${todayIndex}"]`);
 
             if (todayElement) {
-                // Mon/Sun 계산
+                // 월/일 계산
                 const now = new Date();
                 const month = now.getMonth() + 1; // 0부터 시작하므로 +1
                 const date = now.getDate();
@@ -1070,8 +1070,8 @@
                     todayElement.style.transform = 'scale(1)';
                 }, 1000);
 
-                // Sat스트 메시지 표시
-                showNotification(`${month}Mon ${date}Sun로 이동합니다.`);
+                // 토스트 메시지 표시
+                showNotification(`${month}월 ${date}일로 이동합니다.`);
             } else {
                 showNotification('आज की तारीख नहीं मिली।');
             }

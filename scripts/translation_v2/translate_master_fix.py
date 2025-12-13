@@ -335,13 +335,45 @@ MASTER_MAP = {
     '목요일': { 'en': 'Thursday', 'ja': '木曜日' },
     '금요일': { 'en': 'Friday', 'ja': '金曜日' },
     '토요일': { 'en': 'Saturday', 'ja': '土曜日' },
-    '월': { 'en': 'Mon', 'ja': '月' },
-    '화': { 'en': 'Tue', 'ja': '火' },
-    '수': { 'en': 'Wed', 'ja': '水' },
-    '목': { 'en': 'Thu', 'ja': '木' },
-    '금': { 'en': 'Fri', 'ja': '金' },
-    '토': { 'en': 'Sat', 'ja': '土' },
-    '일': { 'en': 'Sun', 'ja': '日' }, # Careful, this is 1 char string
+    # --- Days (Removed single chars to prevent broken words) ---
+    # '일요일': ... strings are safe, but '일' is dangerous.
+    
+    # --- Context-Aware Arrays ---
+    "const weekDays = ['일', '월', '화', '수', '목', '금', '토'];": {
+        'en': "const weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];",
+        'ja': "const weekDays = ['日', '月', '火', '水', '木', '金', '土'];",
+        'hi': "const weekDays = ['रवि', 'सोम', 'मंगल', 'बुध', 'गुरु', 'शुक्र', 'शनि'];",
+        'de': "const weekDays = ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'];",
+        'pt': "const weekDays = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];", 
+        'id': "const weekDays = ['Mgg', 'Sen', 'Sel', 'Rab', 'Kam', 'Jum', 'Sab'];",
+        'vi': "const weekDays = ['CN', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7'];",
+        'th': "const weekDays = ['อา', 'จ', 'อ', 'พ', 'พฤ', 'ศ', 'ส'];"
+    },
+    'const monthNames = ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"];': {
+        'en': 'const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];',
+        'ja': 'const monthNames = ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"];'
+    },
+    '1월': {'en': 'January', 'ja': '1月', 'de': 'Januar', 'pt': 'Janeiro'},
+    '2월': {'en': 'February', 'ja': '2月', 'de': 'Februar', 'pt': 'Fevereiro'},
+    '3월': {'en': 'March', 'ja': '3月', 'de': 'März', 'pt': 'Março'},
+    '4월': {'en': 'April', 'ja': '4月', 'de': 'April', 'pt': 'Abril'},
+    '5월': {'en': 'May', 'ja': '5月', 'de': 'Mai', 'pt': 'Maio'},
+    '6월': {'en': 'June', 'ja': '6月', 'de': 'Juni', 'pt': 'Junho'},
+    '7월': {'en': 'July', 'ja': '7月', 'de': 'Juli', 'pt': 'Julho'},
+    '8월': {'en': 'August', 'ja': '8月', 'de': 'August', 'pt': 'Agosto'},
+    '9월': {'en': 'September', 'ja': '9月', 'de': 'September', 'pt': 'Setembro'},
+    '10월': {'en': 'October', 'ja': '10月', 'de': 'Oktober', 'pt': 'Outubro'},
+    '11월': {'en': 'November', 'ja': '11月', 'de': 'November', 'pt': 'Novembro'},
+    '12월': {'en': 'December', 'ja': '12月', 'de': 'Dezember', 'pt': 'Dezembro'},
+
+    # --- Bible UI Terms ---
+    '성경일기': {'en': 'Bible Diary', 'ja': '聖書日記', 'de': 'Bibeltagebuch', 'pt': 'Diário Bíblico'},
+    '성경읽기': {'en': 'Bible Reading', 'ja': '聖書通読', 'de': 'Bibellesen', 'pt': 'Leitura da Bíblia'},
+    '매일': {'en': 'Daily', 'ja': '毎日', 'de': 'Täglich', 'pt': 'Diário'},
+    '365일': {'en': '365 Days', 'ja': '365日', 'de': '365 Tage', 'pt': '365 Dias'},
+    '할 수 있습니다': {'en': 'can', 'ja': 'できます', 'de': 'können', 'pt': 'pode'},
+
+
 
     # --- Color Converter ---
     'RGB 슬라이더': { 'en': 'RGB Sliders', 'ja': 'RGBスライダー', 'hi': 'RGB स्लाइडर', 'de': 'RGB-Regler', 'pt': 'Controles deslizantes RGB', 'id': 'Slider RGB', 'vi': 'Thanh trượt RGB', 'th': 'ตัวเลื่อน RGB' },
