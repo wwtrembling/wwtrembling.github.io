@@ -1,0 +1,34 @@
+{
+  "title": "DailyVerse",
+  "todayButton": "Go to Today",
+  "copiedStatus": "Copied",
+  "notification": "Copied to clipboard!",
+  "copyMessage": "Shalom!\nToday's reading is\n{reading}.",
+  "months": [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec"
+  ],
+  "weekdays": [
+    "Sun",
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat"
+  ],
+  "intro": "Introduction",
+  "day": "",
+  "goToDate": "Going to {month} {date}.",
+  "warning": "Warning: {chars} chars (exceeds 3900)"
+}
