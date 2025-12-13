@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+    <meta name="google-adsense-account" content="ca-pub-6334819180242631">
     <title>Favicon 생성기 - Tool Shelf</title>
     <meta name="description" content="이미지를 업로드하여 다양한 크기의 favicon을 생성하세요.">
     <link rel="canonical" href="https://wwtrembling.github.io/ko/favicon-generator/">
@@ -115,11 +115,21 @@
 
                         const item = document.createElement('div');
                         item.className = 'preview-item';
-                        item.innerHTML = `
-              <h3>${size}x${size}px</h3>
-              <div>${canvas.outerHTML}</div>
-              <button class="btn" onclick="downloadFavicon(this, ${size})">다운로드</button>
-            `;
+
+                        const h3 = document.createElement('h3');
+                        h3.textContent = `${size}x${size}px`;
+                        item.appendChild(h3);
+
+                        const div = document.createElement('div');
+                        div.appendChild(canvas);
+                        item.appendChild(div);
+
+                        const btn = document.createElement('button');
+                        btn.className = 'btn';
+                        btn.textContent = '다운로드';
+                        btn.onclick = function () { downloadFavicon(this, size) };
+                        item.appendChild(btn);
+
                         previewGrid.appendChild(item);
                     });
                 };
