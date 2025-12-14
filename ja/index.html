@@ -57,6 +57,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631"
      crossorigin="anonymous"></script>
 
+    <link rel="manifest" href="/manifest.json">
 </head>
 
 <body>
@@ -74,6 +75,11 @@
     <div class="container">
       <div class="text-center mb-4">
         <h1>無料オンラインツール</h1>
+            <div class="security-badge" style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
+                <span title="Processed securely in client-side">🔒 安全なクライアントサイド処理</span>
+                <button id="pwaInstallBtn" class="btn btn-primary" style="display: none; padding: 4px 12px; font-size: 12px;">📲 アプリをインストール</button>
+            </div>
+
         <p style="font-size: 1.125rem;">インストール不要でブラウザから直接使用できます</p>
       </div>
 
@@ -182,6 +188,22 @@
           <div class="card-icon">⚡</div>
           <h3 class="card-title">反応速度テスト</h3>
           <p class="card-description">あなたの反応速度をテストします。</p>
+        </a>
+
+        <a href="/ja/jpa-converter/" class="card">
+          <div class="card-icon">🏛️</div>
+          <h3 class="card-title">DBからJPAへの変換</h3>
+          <p class="card-description">SQLスキーマをJPAエンティティおよびDTOクラスに自動変換します。</p>
+        </a>
+        <a href="/ja/json-to-ts/" class="card">
+          <div class="card-icon">📜</div>
+          <h3 class="card-title">JSONからTS/DTOへ</h3>
+          <p class="card-description">JSONをTypeScriptインターフェースおよびNestJS DTOに変換します。</p>
+        </a>
+        <a href="/ja/excel-to-sql/" class="card">
+          <div class="card-icon">📊</div>
+          <h3 class="card-title">ExcelからSQLへ</h3>
+          <p class="card-description">ExcelデータをSQL INSERTクエリに変換するツール。</p>
         </a>
       </div>
     </div>

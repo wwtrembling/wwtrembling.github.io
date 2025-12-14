@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+    <title>Excel to SQL Insert Converter - Utilify</title>
+    <meta name="description" content="Paste Excel or spreadsheet data to instantly convert to SQL INSERT statements. Automatically detects data types.">
+    <link rel="canonical" href="https://utilifyapp.net/ko/excel-to-sql/">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631"
+        crossorigin="anonymous"></script>
+    <style>
+        .converter-box {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        .input-group {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .form-input {
+            width: 100%;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+            padding: var(--spacing-md);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            resize: vertical;
+        }
+
+        .inline-inputs {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .inline-inputs .input-wrapper {
+            flex: 1;
+        }
+
+        .controls {
+            display: flex;
+            gap: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .option-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--bg-secondary);
+            padding: 8px 12px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+        }
+
+        .option-group label {
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 40px;
+            height: 20px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 2px;
+            bottom: 2px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked+.slider {
+            background-color: var(--primary-color);
+        }
+
+        input:checked+.slider:before {
+            transform: translateX(20px);
+        }
+
+        .btn-group {
+            display: flex;
+            gap: var(--spacing-md);
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            filter: brightness(1.1);
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-hover);
+        }
+    </style>
+    <link rel="manifest" href="/manifest.json">
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content"><a href="/ko/" class="site-logo">🛠️ Utilify</a></div>
+        </div>
+    </header>
+    <main class="main-content">
+        <div class="container">
+            <h1>📊 Excel to SQL Insert 변환기</h1>
+            <div class="security-badge" style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
+                <span title="Processed securely in client-side">🔒 Secure & Client-side</span>
+                <button id="pwaInstallBtn" class="btn btn-primary" style="display: none; padding: 4px 12px; font-size: 12px;">📲 Install App</button>
+            </div>
+
+            <p>엑셀 데이터를 Sao chép해서 붙여넣으면 SQL INSERT 구문으로 변환해줍니다. 기획자/마케터의 요청을 빠르게 처리하세요.</p>
+
+            <div class="converter-box">
+                <div class="inline-inputs">
+                    <div class="input-wrapper">
+                        <label class="form-label">Table Name</label>
+                        <input type="text" id="tableName" class="form-input" style="width: 100%" value="users">
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label class="form-label">Excel 데이터 (헤더 포함 가능)</label>
+                    <textarea id="inputConfig" class="form-input" style="min-height: 200px;"
+                        placeholder="id	name	email&#10;1	James	james@test.com&#10;2	Linda	linda@test.com">id	name	age	created_at
+1	James	25	2023-01-01
+2	Linda	30	2023-02-15
+3	Robert	22	2023-03-10</textarea>
+                </div>
+
+                <div class="controls">
+                    <div class="option-group">
+                        <label>Use first row as headers</label>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="firstRowHeader" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="option-group">
+                        <label>Smart Type Detection</label>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="smartType" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+
+                    <button class="btn btn-primary" id="convertBtn">⚡ Chuyển đổi</button>
+                    <button class="btn btn-secondary" id="clearBtn">🗑️ Xóa</button>
+                </div>
+
+                <div class="input-group">
+                    <label class="form-label">SQL Query</label>
+                    <textarea id="output" class="form-input" style="min-height: 300px;" readonly></textarea>
+                </div>
+                <div class="btn-group" style="justify-content: flex-end;">
+                    <button class="btn btn-primary" id="copyBtn">📋 Copy Code</button>
+                </div>
+            </div>
+
+            <div class="related-tools-section">
+                <h3>함께 보면 좋은 도구</h3>
+                <div class="related-buttons">
+                    <a href="/ko/sql-formatter/" class="related-btn">SQL 포매터</a>
+                    <a href="/ko/jpa-converter/" class="related-btn">DB to JPA</a>
+                    <a href="/ko/json-formatter/" class="related-btn">JSON 포매터</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Utilify</p>
+            </div>
+        </div>
+    </footer>
+    <script src="/assets/js/common.js"></script>
+    <script>
+        const inputConfig = document.getElementById('inputConfig');
+        const output = document.getElementById('output');
+        const convertBtn = document.getElementById('convertBtn');
+        const clearBtn = document.getElementById('clearBtn');
+        const copyBtn = document.getElementById('copyBtn');
+        const tableNameInput = document.getElementById('tableName');
+
+        const firstRowHeader = document.getElementById('firstRowHeader');
+        const smartType = document.getElementById('smartType');
+
+        function isNumber(val) {
+            return !isNaN(val) && !isNaN(parseFloat(val));
+        }
+
+        function formatValue(val) {
+            val = val.trim();
+            if (!smartType.checked) return `'${val}'`;
+            if (val === 'NULL' || val === 'null') return 'NULL';
+            if (isNumber(val)) return val;
+            return `'${val}'`;
+        }
+
+        convertBtn.addEventListener('click', () => {
+            try {
+                const raw = inputConfig.value.trim();
+                const lines = raw.split('\n');
+                if (lines.length === 0) return;
+
+                const tableName = tableNameInput.value || 'my_table';
+                let headers = [];
+                let dataLines = lines;
+
+                if (firstRowHeader.checked) {
+                    // Extract headers from first line (tab or comma separated)
+                    headers = lines[0].split(/\t|,/).map(h => h.trim());
+                    dataLines = lines.slice(1);
+                }
+
+                let sql = '';
+                if (headers.length > 0) {
+                    sql += `INSERT INTO ${tableName} (${headers.join(', ')}) VALUES\n`;
+                } else {
+                    sql += `INSERT INTO ${tableName} VALUES\n`;
+                }
+
+                const values = dataLines.map((line, index) => {
+                    if (!line.trim()) return null;
+                    // Split by tab or comma
+                    const cols = line.split(/\t|,/).map(c => formatValue(c));
+                    return `  (${cols.join(', ')})`;
+                }).filter(v => v !== null);
+
+                sql += values.join(',\n') + ';';
+                output.value = sql;
+
+            } catch (e) {
+                console.error(e);
+                output.value = "Error parsing Data: " + e.message;
+            }
+        });
+
+        clearBtn.addEventListener('click', () => {
+            inputConfig.value = '';
+            output.value = '';
+            inputConfig.focus();
+        });
+
+        copyBtn.addEventListener('click', () => {
+            if (output.value) Utils.copyToClipboard(output.value);
+            else alert('Sao chép할 내용이 없습니다.');
+        });
+
+        // Initial run
+        convertBtn.click();
+
+    </script>
+</body>
+
+</html>

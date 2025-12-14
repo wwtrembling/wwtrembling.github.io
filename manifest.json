@@ -1,0 +1,21 @@
+{
+  "name": "Utilify - Free Online Developer Tools",
+  "short_name": "Utilify",
+  "description": "A collection of free, client-side online utilities for developers and everyday users.",
+  "start_url": "/ko/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#3b82f6",
+  "icons": [
+    {
+      "src": "https://utilifyapp.net/assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://utilifyapp.net/assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

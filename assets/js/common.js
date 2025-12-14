@@ -26,7 +26,7 @@ const LanguageSwitcher = {
   switchLanguage(targetLang) {
     const currentPath = window.location.pathname;
     const currentLang = this.getCurrentLang();
-    
+
     // Replace current language with target language in path
     const newPath = currentPath.replace(`/${currentLang}/`, `/${targetLang}/`);
     window.location.href = newPath;
@@ -210,6 +210,8 @@ style.textContent = `
     }
   }
   
+  }
+  
   @keyframes slideOut {
     from {
       transform: translateX(0);
@@ -222,3 +224,52 @@ style.textContent = `
   }
 `;
 document.head.appendChild(style);
+
+/**
+ * PWA Service Worker Registration
+ */
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then(registration => {
+        console.log('SW registered: ', registration);
+      })
+      .catch(registrationError => {
+        console.log('SW registration failed: ', registrationError);
+      });
+  });
+}
+
+/**
+ * PWA Install Prompt
+ */
+let deferredPrompt;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  // Prevent Chrome 67 and earlier from automatically showing the prompt
+  e.preventDefault();
+  // Stash the event so it can be triggered later.
+  deferredPrompt = e;
+
+  // Show the install button if it exists
+  const installBtn = document.getElementById('pwaInstallBtn');
+  if (installBtn) {
+    installBtn.style.display = 'inline-flex';
+
+    installBtn.addEventListener('click', (e) => {
+      // Hide the app provided install promotion
+      installBtn.style.display = 'none';
+      // Show the install prompt
+      deferredPrompt.prompt();
+      // Wait for the user to respond to the prompt
+      deferredPrompt.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === 'accepted') {
+          console.log('User accepted the A2HS prompt');
+        } else {
+          console.log('User dismissed the A2HS prompt');
+        }
+        deferredPrompt = null;
+      });
+    });
+  }
+});

@@ -55,8 +55,9 @@
   </script>
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631"
-     crossorigin="anonymous"></script>
+    crossorigin="anonymous"></script>
 
+    <link rel="manifest" href="/manifest.json">
 </head>
 
 <body>
@@ -74,6 +75,11 @@
     <div class="container">
       <div class="text-center mb-4">
         <h1>무료 온라인 도구</h1>
+            <div class="security-badge" style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
+                <span title="Processed securely in client-side">🔒 Secure & Client-side</span>
+                <button id="pwaInstallBtn" class="btn btn-primary" style="display: none; padding: 4px 12px; font-size: 12px;">📲 Install App</button>
+            </div>
+
         <p style="font-size: 1.125rem;">설치 없이 브라우저에서 바로 사용하세요</p>
       </div>
 
@@ -187,6 +193,21 @@
           <div class="card-icon">⚡</div>
           <h3 class="card-title">반응 속도 테스트</h3>
           <p class="card-description">당신의 반응 속도는 얼마입니까? 테스트해보세요!</p>
+        </a>
+        <a href="/ko/jpa-converter/" class="card">
+          <div class="card-icon">🏛️</div>
+          <h3 class="card-title">DB to JPA 변환기</h3>
+          <p class="card-description">SQL 스키마를 JPA Entity, DTO 클래스로 자동 변환합니다.</p>
+        </a>
+        <a href="/ko/json-to-ts/" class="card">
+          <div class="card-icon">📜</div>
+          <h3 class="card-title">JSON to TS/DTO</h3>
+          <p class="card-description">JSON을 TypeScript Interface 및 NestJS DTO로 변환합니다.</p>
+        </a>
+        <a href="/ko/excel-to-sql/" class="card">
+          <div class="card-icon">📊</div>
+          <h3 class="card-title">Excel to SQL</h3>
+          <p class="card-description">엑셀 데이터를 SQL INSERT 쿼리로 변환하는 도구.</p>
         </a>
       </div>
     </div>

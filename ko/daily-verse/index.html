@@ -37,6 +37,7 @@
 
     <title>성경일기 복사기</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="manifest" href="/manifest.json">
 </head>
 
 <body>
@@ -44,6 +45,11 @@
         <div class="header">
             <div class="header-left">
                 <h1>성경일기 복사기</h1>
+            <div class="security-badge" style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
+                <span title="Processed securely in client-side">🔒 Secure & Client-side</span>
+                <button id="pwaInstallBtn" class="btn btn-primary" style="display: none; padding: 4px 12px; font-size: 12px;">📲 Install App</button>
+            </div>
+
                 <button class="today-button">오늘 날짜로 이동</button>
             </div>
             <div class="header-right">

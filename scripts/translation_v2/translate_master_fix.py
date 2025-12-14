@@ -410,6 +410,79 @@ MASTER_MAP = {
     'g (전역)': { 'en': 'g (Global)', 'ja': 'g (グローバル)', 'hi': 'g (वैश्विक)', 'de': 'g (Global)', 'pt': 'g (Global)', 'id': 'g (Global)', 'vi': 'g (Toàn cầu)', 'th': 'g (ทั่วโลก)' },
     'i (대소문자 무시)': { 'en': 'i (Case insensitive)', 'ja': 'i (大文字小文字無視)', 'hi': 'i (केस असंवेदनशील)', 'de': 'i (Groß-/Kleinschreibung ignorieren)', 'pt': 'i (Insensível a maiúsculas)', 'id': 'i (Tidak peka huruf besar/kecil)', 'vi': 'i (Không phân biệt hoa thường)', 'th': 'i (ไม่แยกตัวพิมพ์ใหญ่-เล็ก)' },
     'm (여러 줄)': { 'en': 'm (Multiline)', 'ja': 'm (複数行)', 'hi': 'm (बहु-पंक्ति)', 'de': 'm (Mehrzeilig)', 'pt': 'm (Multilinear)', 'id': 'm (Multi-baris)', 'vi': 'm (Nhiều dòng)', 'th': 'm (หลายบรรทัด)' },
+
+    # --- New Utilities (JPA, JSON-TS, Excel-SQL) ---
+    'DB 스키마 to JPA Entity 변환기 - Utilify': { 
+        'en': 'DB Schema to JPA Entity Converter - Utilify', 
+        'ja': 'DBスキーマからJPAエンティティへの変換 - Utilify',
+        'hi': 'DB स्केमा से JPA एंटिटी कनवर्टर - Utilify',
+        'de': 'DB-Schema zu JPA-Entity-Konverter - Utilify',
+        'pt': 'Conversor de Esquema de BD para Entidade JPA - Utilify'
+    },
+    'SQL Create Table 문을 JPA Entity, DTO, Lombok Java 클래스로 자동 변환해주는 개발자 도구입니다.': {
+        'en': 'Developer tool to automatically convert SQL Create Table statements to JPA Entity, DTO, and Lombok Java classes.',
+        'ja': 'SQL Create Table文をJPAエンティティ、DTO、Lombok Javaクラスに自動変換する開発者ツールです。'
+    },
+    'DB Schema (SQL)': {'en': 'DB Schema (SQL)', 'ja': 'DBスキーマ (SQL)'},
+    'Lombok 사용': {'en': 'Use Lombok', 'ja': 'Lombokを使用'},
+    'DTO 모드': {'en': 'DTO Mode', 'ja': 'DTOモード'},
+    'Snake -> Camel': {'en': 'Snake -> Camel', 'ja': 'Snake -> Camel'},
+    
+    'JSON to TypeScript/DTO 변환기 - Utilify': {
+        'en': 'JSON to TypeScript/DTO Converter - Utilify',
+        'ja': 'JSONからTypeScript/DTOへの変換 - Utilify'
+    },
+    'JSON을 TypeScript Interface 또는 NestJS DTO 클래스로 즉시 변환하세요. Swagger 및 Validator 데코레이터를 지원합니다.': {
+        'en': 'Instantly convert JSON to TypeScript Interfaces or NestJS DTO classes. Supports Swagger and Validator decorators.',
+        'ja': 'JSONをTypeScriptインターフェースまたはNestJS DTOクラスに即座に変換します。SwaggerおよびValidatorデコレータをサポートしています。'
+    },
+    'NestJS DTO 모드': {'en': 'NestJS DTO Mode', 'ja': 'NestJS DTOモード'},
+    'JSDoc 추가': {'en': 'Add JSDoc', 'ja': 'JSDocを追加'},
+    
+    'Excel to SQL Insert 변환기 - Utilify': {
+        'en': 'Excel to SQL Insert Converter - Utilify',
+        'ja': 'ExcelからSQL Insertへの変換 - Utilify'
+    },
+    'Excel이나 스프레드시트의 데이터를 붙여넣어 SQL INSERT문으로 즉시 변환하세요. 자동으로 데이터 타입을 감지합니다.': {
+        'en': 'Paste Excel or spreadsheet data to instantly convert to SQL INSERT statements. Automatically detects data types.',
+        'ja': 'Excelやスプレッドシートのデータを貼り付けて、即座にSQL INSERT文に変換します。データ型を自動的に検出します。'
+    },
+    '테이블명': {'en': 'Table Name', 'ja': 'テーブル名'},
+    '첫 줄을 컬럼명으로 사용': {'en': 'Use first row as headers', 'ja': '最初の行をヘッダーとして使用'},
+    '스마트 타입 감지': {'en': 'Smart Type Detection', 'ja': 'スマート型検出'},
+    '코드 복사': {'en': 'Copy Code', 'ja': 'コードをコピー'},
+    
+    # --- Index Card Links ---
+    'DB to JPA 변환기': {'en': 'DB to JPA Converter', 'ja': 'DBからJPAへの変換'},
+    'SQL 스키마를 JPA Entity, DTO 클래스로 자동 변환합니다.': {'en': 'Automatically convert SQL schemas to JPA Entity and DTO classes.', 'ja': 'SQLスキーマをJPAエンティティおよびDTOクラスに自動変換します。'},
+    
+    'JSON to TS/DTO': {'en': 'JSON to TS/DTO', 'ja': 'JSONからTS/DTOへ'},
+    'JSON을 TypeScript Interface 및 NestJS DTO로 변환합니다.': {'en': 'Convert JSON to TypeScript Interfaces and NestJS DTOs.', 'ja': 'JSONをTypeScriptインターフェースおよびNestJS DTOに変換します。'},
+    
+    'Excel to SQL': {'en': 'Excel to SQL', 'ja': 'ExcelからSQLへ'},
+    '엑셀 데이터를 SQL INSERT 쿼리로 변환하는 도구.': {'en': 'Tool to convert Excel data to SQL INSERT queries.', 'ja': 'ExcelデータをSQL INSERTクエリに変換するツール。'},
+    
+    # --- PWA & Security ---
+    '🔒 Secure & Client-side': {
+        'en': '🔒 Secure & Client-side', 
+        'ja': '🔒 安全なクライアントサイド処理', 
+        'ko': '🔒 서버 전송 없는 안전한 보안',
+        'hi': '🔒 सुरक्षित और क्लाइंट-साइड',
+        'de': '🔒 Sicher & Clientseitig',
+        'pt': '🔒 Seguro e Cliente-side'
+    },
+    'Install App': {
+        'en': 'Install App', 'ja': 'アプリをインストール', 'ko': '앱 설치',
+        'hi': 'ऐप इंस्टॉल करें', 'de': 'App installieren', 'pt': 'Instalar App'
+    },
+    ' (Processed securely in client-side)': {
+        'en': ' (Processed securely in client-side)',
+        'ja': ' (クライアントサイドで安全に処理されます)',
+        'ko': ' (모든 데이터는 브라우저에서 안전하게 처리됩니다)',
+        'hi': ' (क्लाइंट-साइड में सुरक्षित रूप से संसाधित)',
+        'de': ' (Sicher clientseitig verarbeitet)',
+        'pt': ' (Processado com segurança no lado do cliente)'
+    },
 }
 
 def translate_file(file_path, lang_code):

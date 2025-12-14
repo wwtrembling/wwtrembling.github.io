@@ -113,31 +113,14 @@
       }
     }
 
-    .bmc-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background-color: #FFDD00;
-      color: #000000;
-      padding: 8px 16px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.9rem;
-      transition: transform 0.2s;
-      border: 1px solid #e6c700;
-    }
-
-    .bmc-btn:hover {
-      transform: translateY(-2px);
-      background-color: #ffe135;
-    }
+    
   </style>
   <!-- Google AdSense -->
   <!-- Google AdSense Removed for Developer Experience -->
   <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631"
      crossorigin="anonymous"></script> -->
 
+    <link rel="manifest" href="/manifest.json">
 </head>
 
 <body>
@@ -154,13 +137,14 @@
   <main class="main-content">
     <div class="container-narrow">
       <h1>JSON Formatter</h1>
+            <div class="security-badge" style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
+                <span title="Processed securely in client-side">🔒 Secure & Client-side</span>
+                <button id="pwaInstallBtn" class="btn btn-primary" style="display: none; padding: 4px 12px; font-size: 12px;">📲 Install App</button>
+            </div>
+
       <p>Format, validate, and minify JSON data. Ad-free for developers.</p>
 
-      <div style="margin: 20px 0;">
-        <a href="https://buymeacoffee.com/utilify" target="_blank" class="bmc-btn">
-          ☕ Buy me a coffee
-        </a>
-      </div>
+      
 
 
 

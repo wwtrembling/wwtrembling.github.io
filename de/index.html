@@ -59,6 +59,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631"
      crossorigin="anonymous"></script>
 
+    <link rel="manifest" href="/manifest.json">
 </head>
 
 <body>
@@ -76,6 +77,11 @@
     <div class="container">
       <div class="text-center mb-4">
         <h1>Kostenlose Online-Tools</h1>
+            <div class="security-badge" style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
+                <span title="Processed securely in client-side">🔒 Sicher & Clientseitig</span>
+                <button id="pwaInstallBtn" class="btn btn-primary" style="display: none; padding: 4px 12px; font-size: 12px;">📲 App installieren</button>
+            </div>
+
         <p style="font-size: 1.125rem;">Ohne Installation direkt im Browser nutzen</p>
       </div>
 
@@ -185,6 +191,22 @@
           <div class="card-icon">⚡</div>
           <h3 class="card-title">Reaktionszeittest</h3>
           <p class="card-description">Testen Sie Ihre Reaktionszeit.</p>
+        </a>
+
+        <a href="/de/jpa-converter/" class="card">
+          <div class="card-icon">🏛️</div>
+          <h3 class="card-title">DB to JPA Converter</h3>
+          <p class="card-description">Automatically convert SQL schemas to JPA Entity and DTO classes.</p>
+        </a>
+        <a href="/de/json-to-ts/" class="card">
+          <div class="card-icon">📜</div>
+          <h3 class="card-title">JSON to TS/DTO</h3>
+          <p class="card-description">Convert JSON to TypeScript Interfaces and NestJS DTOs.</p>
+        </a>
+        <a href="/de/excel-to-sql/" class="card">
+          <div class="card-icon">📊</div>
+          <h3 class="card-title">Excel to SQL</h3>
+          <p class="card-description">Tool to convert Excel data to SQL INSERT queries.</p>
         </a>
       </div>
     </div>

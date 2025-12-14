@@ -15,6 +15,7 @@
     .timer-display {font-size:4rem;font-weight:700;text-align:center;color:var(--primary-color);margin:2rem 0;}
     .preset-btn {margin:0.5rem;}
   </style>
+    <link rel="manifest" href="/manifest.json">
 </head>
 <body>
   <header class="site-header">
@@ -25,6 +26,11 @@
   <main class="main-content">
     <div class="container-narrow">
       <h1>⏱️ นาฬิกาจับเวลา</h1>
+            <div class="security-badge" style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
+                <span title="Processed securely in client-side">🔒 Secure & Client-side</span>
+                <button id="pwaInstallBtn" class="btn btn-primary" style="display: none; padding: 4px 12px; font-size: 12px;">📲 Install App</button>
+            </div>
+
       <p>Online Timer and Pomodoro technique.</p>
       <div class="card text-center">
         <div class="timer-display" id="display">00:00</div>

@@ -1,0 +1,6 @@
+RULES.md
+.gemini/
+.idea/
+.vscode/
+*.DS_Store
+node_modules/
