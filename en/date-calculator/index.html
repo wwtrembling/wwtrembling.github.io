@@ -1,91 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="google-adsense-account" content="ca-pub-6334819180242631">
-  <title>Date Calculator - Utilify</title>
-  <meta name="description" content="Calculate D-Day and date differences.">
-  <link rel="canonical" href="https://utilifyapp.net/en/date-calculator/">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/main.css">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631"
-     crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+    <title>Date Calculator - Utilify</title>
+    <meta name="description" content="Calculate D-Day and date differences.">
+    <link rel="canonical" href="https://utilifyapp.net/en/date-calculator/">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Date Calculator - Utilify">
+    <meta property="og:description" content="Calculate D-Day and date differences.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://utilifyapp.net/en/date-calculator/">
+
+    <!-- Language Alternatives -->
+    <link rel="alternate" hreflang="ko" href="https://utilifyapp.net/ko/date-calculator/">
+    <link rel="alternate" hreflang="en" href="https://utilifyapp.net/en/date-calculator/">
+    <link rel="alternate" hreflang="ja" href="https://utilifyapp.net/ja/date-calculator/">
+    <link rel="alternate" hreflang="hi" href="https://utilifyapp.net/hi/date-calculator/">
+    <link rel="alternate" hreflang="id" href="https://utilifyapp.net/id/date-calculator/">
+    <link rel="alternate" hreflang="vi" href="https://utilifyapp.net/vi/date-calculator/">
+    <link rel="alternate" hreflang="th" href="https://utilifyapp.net/th/date-calculator/">
+    <link rel="alternate" hreflang="de" href="https://utilifyapp.net/de/date-calculator/">
+    <link rel="alternate" hreflang="pt" href="https://utilifyapp.net/pt/date-calculator/">
+    <link rel="alternate" hreflang="x-default" href="https://utilifyapp.net/en/date-calculator/">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631"
+        crossorigin="anonymous"></script>
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Date Calculator",
+      "description": "Calculate D-Day and date differences.",
+      "url": "https://utilifyapp.net/en/date-calculator/",
+      "inLanguage": "en",
+      "applicationCategory": "UtilitiesApplication"
+    }
+    </script>
     <link rel="manifest" href="/manifest.json">
 </head>
+
 <body>
-  <header class="site-header">
-    <div class="container"><div class="header-content">
-      <a href="/en/" class="site-logo">🛠️ Utilify</a>
-    </div></div>
-  </header>
-  <main class="main-content">
-    <div class="container-narrow">
-      <h1>📅 Date Calculator</h1>
-            <div class="security-badge" style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/en/" class="site-logo">🛠️ Utilify</a>
+            </div>
+        </div>
+    </header>
+    <main class="main-content">
+        <div class="container-narrow">
+            <h1>📅 Date Calculator</h1>
+            <div class="security-badge"
+                style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
                 <span title="Processed securely in client-side">🔒 Secure & Client-side</span>
-                <button id="pwaInstallBtn" class="btn btn-primary" style="display: none; padding: 4px 12px; font-size: 12px;">📲 Install App</button>
+                <button id="pwaInstallBtn" class="btn btn-primary"
+                    style="display: none; padding: 4px 12px; font-size: 12px;">📲 Install App</button>
             </div>
 
-      <p>Calculate D-Day and date differences.</p>
-      <div class="card">
-        <h3>D-Day Calculation</h3>
-        <div class="form-group">
-          <label class="form-label">Target Date</label>
-          <input type="date" id="targetDate" class="form-input">
-        </div>
-        <button class="btn btn-primary" onclick="calculateDday()">Calculate</button>
-        <div id="ddayResult" class="result-box" style="display:none; margin-top:1rem;">
-          <div class="result-value" id="ddayValue"></div>
-        </div>
-      </div>
-      <div class="card">
-        <h3>Date Difference</h3>
-        <div class="form-group">
-          <label class="form-label">Start Date</label>
-          <input type="date" id="startDate" class="form-input">
-        </div>
-        <div class="form-group">
-          <label class="form-label">End Date</label>
-          <input type="date" id="endDate" class="form-input">
-        </div>
-        <button class="btn btn-primary" onclick="calculateDiff()">Calculate</button>
-        <div id="diffResult" class="result-box" style="display:none; margin-top:1rem;">
-          <div class="result-value" id="diffValue"></div>
-        </div>
-      </div>
+            <p>Calculate D-Day and date differences.</p>
+            <div class="card">
+                <h3>D-Day Calculation</h3>
+                <div class="form-group">
+                    <label class="form-label">Target Date</label>
+                    <input type="date" id="targetDate" class="form-input">
+                </div>
+                <button class="btn btn-primary" onclick="calculateDday()">Calculate</button>
+                <div id="ddayResult" class="result-box" style="display:none; margin-top:1rem;">
+                    <div class="result-value" id="ddayValue"></div>
+                </div>
+            </div>
+            <div class="card">
+                <h3>Date Difference</h3>
+                <div class="form-group">
+                    <label class="form-label">Start Date</label>
+                    <input type="date" id="startDate" class="form-input">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">End Date</label>
+                    <input type="date" id="endDate" class="form-input">
+                </div>
+                <button class="btn btn-primary" onclick="calculateDiff()">Calculate</button>
+                <div id="diffResult" class="result-box" style="display:none; margin-top:1rem;">
+                    <div class="result-value" id="diffValue"></div>
+                </div>
+            </div>
 
-      <div class="related-tools-section">
-        <h3>Related Tools</h3>
-        <div class="related-buttons">
-          <a href="/en/unit-converter/" class="related-btn">Unit Converter</a><a href="/en/bmi-calculator/" class="related-btn">BMI Calculator</a><a href="/en/timer/" class="related-btn">Timer</a><a href="/en/reaction-test/" class="related-btn">Reaction Test</a>
-        </div>
-      </div>
+            <div class="related-tools-section">
+                <h3>Related Tools</h3>
+                <div class="related-buttons">
+                    <a href="/en/unit-converter/" class="related-btn">Unit Converter</a><a
+                        href="/en/bmi-calculator/" class="related-btn">Calculadora de IMC</a><a
+                        href="/en/timer/" class="related-btn">Cronômetro</a><a
+                        href="/en/reaction-test/" class="related-btn">Teste de Reação</a>
+                </div>
+            </div>
 
-    </div>
-  </main>
-  <footer class="site-footer">
-    <div class="container"><div class="footer-content">
-      <p>&copy; 2025 Utilify. All rights reserved.</p>
-    </div></div>
-  </footer>
-  <script src="/assets/js/common.js"></script>
-  <script>
-    function calculateDday() {
-      const target = new Date(document.getElementById('targetDate').value);
-      const today = new Date();
-      today.setHours(0,0,0,0);
-      const diff = Math.ceil((target - today) / (1000 * 60 * 60 * 24));
-      document.getElementById('ddayValue').textContent = 'D' + (diff > 0 ? '-' : '+') + Math.abs(diff);
-      document.getElementById('ddayResult').style.display = 'block';
-    }
-    function calculateDiff() {
-      const start = new Date(document.getElementById('startDate').value);
-      const end = new Date(document.getElementById('endDate').value);
-      const diff = Math.abs(Math.ceil((end - start) / (1000 * 60 * 60 * 24)));
-      document.getElementById('diffValue').textContent = diff + ' Sun';
-      document.getElementById('diffResult').style.display = 'block';
-    }
-  </script>
+        </div>
+    </main>
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Utilify. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="/assets/js/common.js"></script>
+    <script>
+        function calculateDday() {
+            const target = new Date(document.getElementById('targetDate').value);
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            const diff = Math.ceil((target - today) / (1000 * 60 * 60 * 24));
+            document.getElementById('ddayValue').textContent = 'D' + (diff > 0 ? '-' : '+') + Math.abs(diff);
+            document.getElementById('ddayResult').style.display = 'block';
+        }
+        function calculateDiff() {
+            const start = new Date(document.getElementById('startDate').value);
+            const end = new Date(document.getElementById('endDate').value);
+            const diff = Math.abs(Math.ceil((end - start) / (1000 * 60 * 60 * 24)));
+            document.getElementById('diffValue').textContent = diff + ' Days';
+            document.getElementById('diffResult').style.display = 'block';
+        }
+    </script>
 </body>
+
 </html>

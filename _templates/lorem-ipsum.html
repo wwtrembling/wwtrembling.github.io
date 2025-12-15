@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="{{ lang_code }}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+    <title>{{ meta_title }}</title>
+    <meta name="description" content="{{ meta_desc }}">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="{{ og_title }}">
+    <meta property="og:description" content="{{ og_desc }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://utilifyapp.net/{{ lang_code }}/lorem-ipsum/">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://utilifyapp.net/{{ lang_code }}/lorem-ipsum/">
+
+    <!-- Language Alternatives -->
+    <link rel="alternate" hreflang="ko" href="https://utilifyapp.net/ko/lorem-ipsum/">
+    <link rel="alternate" hreflang="en" href="https://utilifyapp.net/en/lorem-ipsum/">
+    <link rel="alternate" hreflang="ja" href="https://utilifyapp.net/ja/lorem-ipsum/">
+    <link rel="alternate" hreflang="hi" href="https://utilifyapp.net/hi/lorem-ipsum/">
+    <link rel="alternate" hreflang="id" href="https://utilifyapp.net/id/lorem-ipsum/">
+    <link rel="alternate" hreflang="vi" href="https://utilifyapp.net/vi/lorem-ipsum/">
+    <link rel="alternate" hreflang="th" href="https://utilifyapp.net/th/lorem-ipsum/">
+    <link rel="alternate" hreflang="de" href="https://utilifyapp.net/de/lorem-ipsum/">
+    <link rel="alternate" hreflang="pt" href="https://utilifyapp.net/pt/lorem-ipsum/">
+    <link rel="alternate" hreflang="x-default" href="https://utilifyapp.net/en/lorem-ipsum/">
+
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "{{ json_name }}",
+      "description": "{{ json_desc }}",
+      "url": "https://utilifyapp.net/{{ lang_code }}/lorem-ipsum/",
+      "inLanguage": "{{ lang_code }}",
+      "applicationCategory": "UtilitiesApplication"
+    }
+    </script>
+
+    <style>
+        .options {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .option-group {
+            display: flex;
+            gap: var(--spacing-lg);
+            align-items: center;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .btn {
+            padding: var(--spacing-md) var(--spacing-lg);
+            border: none;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+        }
+    </style>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631"
+        crossorigin="anonymous"></script>
+    <link rel="manifest" href="/manifest.json">
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content"><a href="/{{ lang_code }}/" class="site-logo">{{ brand }}</a></div>
+        </div>
+    </header>
+    <main class="main-content">
+        <div class="container-narrow">
+            <h1>📋 {{ title }}</h1>
+            <div class="security-badge"
+                style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
+                <span title="Processed securely in client-side">{{ secure_badge }}</span>
+                <button id="pwaInstallBtn" class="btn btn-primary"
+                    style="display: none; padding: 4px 12px; font-size: 12px;">{{ install_app }}</button>
+            </div>
+
+            <p>{{ page_desc }}</p>
+            <div class="options">
+                <div class="option-group">
+                    <label class="form-label">{{ label_type }}</label>
+                    <select id="type" class="form-select">
+                        <option value="paragraphs">{{ opt_para }}</option>
+                        <option value="words">{{ opt_word }}</option>
+                        <option value="sentences">{{ opt_sent }}</option>
+                    </select>
+                </div>
+                <div class="option-group">
+                    <label class="form-label">{{ label_count }}</label>
+                    <input type="number" id="count" class="form-input" value="3" min="1" max="100"
+                        style="width: 100px;">
+                </div>
+                <div style="display: flex; gap: var(--spacing-md);">
+                    <button class="btn btn-primary" id="generateBtn">{{ btn_generate }}</button>
+                    <button class="btn btn-secondary" id="copyBtn">{{ btn_copy }}</button>
+                </div>
+            </div>
+            <div>
+                <textarea id="output" class="form-input" style="min-height: 300px;" readonly></textarea>
+            </div>
+
+            <div class="related-tools-section">
+                <h3>{{ related_header }}</h3>
+                <div class="related-buttons">
+                    <a href="/{{ lang_code }}/text-utils/" class="related-btn">{{ related_text }}</a><a
+                        href="/{{ lang_code }}/diff-checker/" class="related-btn">{{ related_diff }}</a><a
+                        href="/{{ lang_code }}/regex-tester/" class="related-btn">{{ related_regex }}</a><a
+                        href="/{{ lang_code }}/markdown-previewer/" class="related-btn">{{ related_md }}</a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>{{ footer }}</p>
+            </div>
+        </div>
+    </footer>
+    <script src="/assets/js/common.js"></script>
+    <script>
+        const lorem = {
+            words: ['lorem', 'ipsum', 'dolor', 'sit', 'amet', 'consectetur', 'adipiscing', 'elit', 'sed', 'do', 'eiusmod', 'tempor', 'incididunt', 'ut', 'labore', 'et', 'dolore', 'magna', 'aliqua', 'enim', 'ad', 'minim', 'veniam', 'quis', 'nostrud', 'exercitation', 'ullamco', 'laboris', 'nisi', 'aliquip', 'ex', 'ea', 'commodo', 'consequat', 'duis', 'aute', 'irure', 'in', 'reprehenderit', 'voluptate', 'velit', 'esse', 'cillum', 'fugiat', 'nulla', 'pariatur', 'excepteur', 'sint', 'occaecat', 'cupidatat', 'non', 'proident', 'sunt', 'culpa', 'qui', 'officia', 'deserunt', 'mollit', 'anim', 'id', 'est', 'laborum']
+        };
+
+        function randomWord() {
+            return lorem.words[Math.floor(Math.random() * lorem.words.length)];
+        }
+
+        function generateSentence() {
+            const length = Math.floor(Math.random() * 10) + 5;
+            const words = Array.from({ length }, () => randomWord());
+            words[0] = words[0].charAt(0).toUpperCase() + words[0].slice(1);
+            return words.join(' ') + '.';
+        }
+
+        function generateParagraph() {
+            const length = Math.floor(Math.random() * 5) + 3;
+            return Array.from({ length }, () => generateSentence()).join(' ');
+        }
+
+        document.getElementById('generateBtn').addEventListener('click', () => {
+            const type = document.getElementById('type').value;
+            const count = parseInt(document.getElementById('count').value);
+            let result = '';
+
+            if (type === 'words') {
+                result = Array.from({ length: count }, () => randomWord()).join(' ');
+            } else if (type === 'sentences') {
+                result = Array.from({ length: count }, () => generateSentence()).join(' ');
+            } else {
+                result = Array.from({ length: count }, () => generateParagraph()).join('\n\n');
+            }
+
+            document.getElementById('output').value = result;
+        });
+
+        document.getElementById('copyBtn').addEventListener('click', () => {
+            const output = document.getElementById('output').value;
+            if (output) Utils.copyToClipboard(output);
+            else alert('{{ alert_empty }}');
+        });
+
+        // Generate on load
+        document.getElementById('generateBtn').click();
+    </script>
+</body>
+
+</html>

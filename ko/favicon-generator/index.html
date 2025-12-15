@@ -7,8 +7,43 @@
     <meta name="google-adsense-account" content="ca-pub-6334819180242631">
     <title>Favicon 생성기 - Utilify</title>
     <meta name="description" content="이미지를 업로드하여 다양한 크기의 favicon을 생성하세요.">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Favicon 생성기 - Utilify">
+    <meta property="og:description" content="이미지를 업로드하여 다양한 크기의 favicon을 생성하세요.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://utilifyapp.net/ko/favicon-generator/">
+
+    <!-- Canonical -->
     <link rel="canonical" href="https://utilifyapp.net/ko/favicon-generator/">
+
+    <!-- Language Alternatives -->
+    <link rel="alternate" hreflang="ko" href="https://utilifyapp.net/ko/favicon-generator/">
+    <link rel="alternate" hreflang="en" href="https://utilifyapp.net/en/favicon-generator/">
+    <link rel="alternate" hreflang="ja" href="https://utilifyapp.net/ja/favicon-generator/">
+    <link rel="alternate" hreflang="hi" href="https://utilifyapp.net/hi/favicon-generator/">
+    <link rel="alternate" hreflang="id" href="https://utilifyapp.net/id/favicon-generator/">
+    <link rel="alternate" hreflang="vi" href="https://utilifyapp.net/vi/favicon-generator/">
+    <link rel="alternate" hreflang="th" href="https://utilifyapp.net/th/favicon-generator/">
+    <link rel="alternate" hreflang="de" href="https://utilifyapp.net/de/favicon-generator/">
+    <link rel="alternate" hreflang="pt" href="https://utilifyapp.net/pt/favicon-generator/">
+    <link rel="alternate" hreflang="x-default" href="https://utilifyapp.net/en/favicon-generator/">
+
     <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Favicon 생성기",
+      "description": "이미지를 업로드하여 다양한 크기의 favicon을 생성하세요.",
+      "url": "https://utilifyapp.net/ko/favicon-generator/",
+      "inLanguage": "ko",
+      "applicationCategory": "UtilitiesApplication"
+    }
+    </script>
+
     <style>
         .upload-area {
             border: 2px dashed var(--border-color);
@@ -57,7 +92,7 @@
         }
     </style>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631"
-     crossorigin="anonymous"></script>
+        crossorigin="anonymous"></script>
     <link rel="manifest" href="/manifest.json">
 </head>
 
@@ -70,11 +105,12 @@
     <main class="main-content">
         <div class="container-narrow">
             <h1>🎯 Favicon 생성기</h1>
-            <div class="security-badge" style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
+            <div class="security-badge"
+                style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
                 <span title="Processed securely in client-side">🔒 Secure & Client-side</span>
-                <button id="pwaInstallBtn" class="btn btn-primary" style="display: none; padding: 4px 12px; font-size: 12px;">📲 Install App</button>
+                <button id="pwaInstallBtn" class="btn btn-primary"
+                    style="display: none; padding: 4px 12px; font-size: 12px;">📲 Install App</button>
             </div>
-
             <p>이미지를 업로드하여 16x16, 32x32, 48x48, 64x64px favicon을 생성하세요.</p>
             <div class="upload-area" id="uploadArea">
                 <input type="file" id="fileInput" accept="image/*" style="display: none;">
@@ -84,20 +120,23 @@
                 </div>
             </div>
             <div class="preview-grid" id="previewGrid" style="display: none;"></div>
-        
-      <div class="related-tools-section">
-        <h3>함께 보면 좋은 도구</h3>
-        <div class="related-buttons">
-          <a href="/ko/image-converter/" class="related-btn">이미지 변환기</a><a href="/ko/image-editor/" class="related-btn">이미지 편집기</a><a href="/ko/thumbnail-downloader/" class="related-btn">썸네일 다운로더</a><a href="/ko/color-converter/" class="related-btn">색상 변환기</a>
-        </div>
-      </div>
 
-</div>
+            <div class="related-tools-section">
+                <h3>함께 보면 좋은 도구</h3>
+                <div class="related-buttons">
+                    <a href="/ko/image-converter/" class="related-btn">이미지 변환기</a><a
+                        href="/ko/thumbnail-downloader/" class="related-btn">썸네일 다운로더</a><a
+                        href="/ko/color-converter/" class="related-btn">색상 변환기</a><a
+                        href="/ko/image-watermark/" class="related-btn">워터마크 생성기</a>
+                </div>
+            </div>
+
+        </div>
     </main>
     <footer class="site-footer">
         <div class="container">
             <div class="footer-content">
-                <p>&copy; 2025 Utilify</p>
+                <p>&copy; 2025 Utilify. All rights reserved.</p>
             </div>
         </div>
     </footer>

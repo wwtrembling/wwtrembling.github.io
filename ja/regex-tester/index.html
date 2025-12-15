@@ -4,11 +4,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+    <meta name="google-adsense-account" content="ca-pub-6334819180242631">
     <title>正規表現テスター - Utilify</title>
-    <meta name="description" content="正規表現をリアルタイムでテストします。">
+    <meta name="description" content="リアルタイムで正規表現パターンをテストします。">
     <link rel="canonical" href="https://utilifyapp.net/ja/regex-tester/">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="正規表現テスター - Utilify">
+    <meta property="og:description" content="リアルタイムで正規表現パターンをテストします。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://utilifyapp.net/ja/regex-tester/">
+
+    <!-- Language Alternatives -->
+    <link rel="alternate" hreflang="ko" href="https://utilifyapp.net/ko/regex-tester/">
+    <link rel="alternate" hreflang="en" href="https://utilifyapp.net/en/regex-tester/">
+    <link rel="alternate" hreflang="ja" href="https://utilifyapp.net/ja/regex-tester/">
+    <link rel="alternate" hreflang="hi" href="https://utilifyapp.net/hi/regex-tester/">
+    <link rel="alternate" hreflang="id" href="https://utilifyapp.net/id/regex-tester/">
+    <link rel="alternate" hreflang="vi" href="https://utilifyapp.net/vi/regex-tester/">
+    <link rel="alternate" hreflang="th" href="https://utilifyapp.net/th/regex-tester/">
+    <link rel="alternate" hreflang="de" href="https://utilifyapp.net/de/regex-tester/">
+    <link rel="alternate" hreflang="pt" href="https://utilifyapp.net/pt/regex-tester/">
+    <link rel="alternate" hreflang="x-default" href="https://utilifyapp.net/en/regex-tester/">
+
     <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "正規表現テスター",
+      "description": "リアルタイムで正規表現パターンをテストします。",
+      "url": "https://utilifyapp.net/ja/regex-tester/",
+      "inLanguage": "ja",
+      "applicationCategory": "UtilitiesApplication"
+    }
+    </script>
+
     <style>
         .regex-input {
             background: #f0f0f0;
@@ -42,7 +75,7 @@
         }
     </style>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631"
-     crossorigin="anonymous"></script>
+        crossorigin="anonymous"></script>
     <link rel="manifest" href="/manifest.json">
 </head>
 
@@ -55,12 +88,14 @@
     <main class="main-content">
         <div class="container-narrow">
             <h1>🔍 正規表現テスター</h1>
-            <div class="security-badge" style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
-                <span title="Processed securely in client-side">🔒 安全なクライアントサイド処理</span>
-                <button id="pwaInstallBtn" class="btn btn-primary" style="display: none; padding: 4px 12px; font-size: 12px;">📲 アプリをインストール</button>
+            <div class="security-badge"
+                style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
+                <span title="Processed securely in client-side">🔒 Secure & Client-side</span>
+                <button id="pwaInstallBtn" class="btn btn-primary"
+                    style="display: none; padding: 4px 12px; font-size: 12px;">📲 Install App</button>
             </div>
 
-            <p>正規表現をリアルタイムでテストします。</p>
+            <p>リアルタイムで正規表現パターンをテストします。</p>
             <div class="regex-input">
                 <label class="form-label">パターン</label>
                 <input type="text" id="pattern" class="form-input" placeholder="/[a-z]+/gi" value="[a-z]+">
@@ -76,20 +111,23 @@
                     placeholder="テスト文字列を入力">Hello World 123 Test</textarea>
             </div>
             <div class="matches" id="results"></div>
-        
-      <div class="related-tools-section">
-        <h3>関連ツール</h3>
-        <div class="related-buttons">
-          <a href="/ja/text-utils/" class="related-btn">Text Utils</a><a href="/ja/diff-checker/" class="related-btn">Diff Checker</a><a href="/ja/markdown-previewer/" class="related-btn">Markdown Preview</a><a href="/ja/lorem-ipsum/" class="related-btn">Lorem Ipsum</a>
-        </div>
-      </div>
 
-</div>
+            <div class="related-tools-section">
+                <h3>関連ツール</h3>
+                <div class="related-buttons">
+                    <a href="/ja/text-utils/" class="related-btn">テキストユーティリティ</a><a
+                        href="/ja/diff-checker/" class="related-btn">テキスト比較</a><a
+                        href="/ja/markdown-previewer/" class="related-btn">マークダウンプレビュー</a><a
+                        href="/ja/lorem-ipsum/" class="related-btn">Lorem Ipsum生成</a>
+                </div>
+            </div>
+
+        </div>
     </main>
     <footer class="site-footer">
         <div class="container">
             <div class="footer-content">
-                <p>&copy; 2025 Utilify</p>
+                <p>&copy; 2025 Utilify. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -110,13 +148,13 @@
                 const matches = [...text.matchAll(regex)];
 
                 if (matches.length === 0) {
-                    results.innerHTML = '<p>一致が見つかりません</p>';
+                    results.innerHTML = '<p>一致は見つかりませんでした</p>';
                     return;
                 }
 
-                let html = `<h3>一致結果 (${matches.length}個)</h3>`;
+                let html = `<h3>一致 (${matches.length})</h3>`;
                 matches.forEach((match, i) => {
-                    html += `<div class="match-item">一致 ${i + 1}: "${match[0]}" (位置: ${match.index})</div>`;
+                    html += `<div class="match-item">Match ${i + 1}: "${match[0]}" (Index: ${match.index})</div>`;
                 });
 
                 let highlighted = text;

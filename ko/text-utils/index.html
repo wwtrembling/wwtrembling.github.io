@@ -1,158 +1,188 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="google-adsense-account" content="ca-pub-6334819180242631">
-  <title>텍스트 유틸리티 - Utilify</title>
-  <meta name="description" content="단어 수 세기, 문자 수 세기, 중복 제거, 대소문자 변환 등 다양한 텍스트 처리 기능을 제공합니다.">
-  
-  <link rel="canonical" href="https://utilifyapp.net/ko/text-utils/">
-  <link rel="alternate" hreflang="ko" href="https://utilifyapp.net/ko/text-utils/">
-  <link rel="alternate" hreflang="en" href="https://utilifyapp.net/en/text-utils/">
-  <link rel="alternate" hreflang="ja" href="https://utilifyapp.net/ja/text-utils/">
-  <link rel="alternate" hreflang="hi" href="https://utilifyapp.net/hi/text-utils/">
-  <link rel="alternate" hreflang="id" href="https://utilifyapp.net/id/text-utils/">
-  <link rel="alternate" hreflang="vi" href="https://utilifyapp.net/vi/text-utils/">
-  <link rel="alternate" hreflang="th" href="https://utilifyapp.net/th/text-utils/">
-  <link rel="alternate" hreflang="de" href="https://utilifyapp.net/de/text-utils/">
-  <link rel="alternate" hreflang="pt" href="https://utilifyapp.net/pt/text-utils/">
-  <link rel="alternate" hreflang="x-default" href="https://utilifyapp.net/en/text-utils/">
-  
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/main.css">
-  
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631"
-     crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+    <title>텍스트 유틸리티 - Utilify</title>
+    <meta name="description" content="단어 수 세기, 문자 수 세기, 중복 제거, 대소문자 변환 등 다양한 텍스트 처리 기능을 제공합니다.">
+
+    <link rel="canonical" href="https://utilifyapp.net/ko/text-utils/">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="텍스트 유틸리티 - Utilify">
+    <meta property="og:description" content="단어 수 세기, 문자 수 세기, 중복 제거, 대소문자 변환 등 다양한 텍스트 처리 기능을 제공합니다.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://utilifyapp.net/ko/text-utils/">
+
+    <!-- Language Alternatives -->
+    <link rel="alternate" hreflang="ko" href="https://utilifyapp.net/ko/text-utils/">
+    <link rel="alternate" hreflang="en" href="https://utilifyapp.net/en/text-utils/">
+    <link rel="alternate" hreflang="ja" href="https://utilifyapp.net/ja/text-utils/">
+    <link rel="alternate" hreflang="hi" href="https://utilifyapp.net/hi/text-utils/">
+    <link rel="alternate" hreflang="id" href="https://utilifyapp.net/id/text-utils/">
+    <link rel="alternate" hreflang="vi" href="https://utilifyapp.net/vi/text-utils/">
+    <link rel="alternate" hreflang="th" href="https://utilifyapp.net/th/text-utils/">
+    <link rel="alternate" hreflang="de" href="https://utilifyapp.net/de/text-utils/">
+    <link rel="alternate" hreflang="pt" href="https://utilifyapp.net/pt/text-utils/">
+    <link rel="alternate" hreflang="x-default" href="https://utilifyapp.net/en/text-utils/">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631"
+        crossorigin="anonymous"></script>
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "텍스트 유틸리티",
+      "description": "단어 수 세기, 문자 수 세기, 중복 제거, 대소문자 변환 등 다양한 텍스트 처리 기능을 제공합니다.",
+      "url": "https://utilifyapp.net/ko/text-utils/",
+      "inLanguage": "ko",
+      "applicationCategory": "UtilitiesApplication"
+    }
+    </script>
     <link rel="manifest" href="/manifest.json">
 </head>
-<body>
-  <header class="site-header">
-    <div class="container">
-      <div class="header-content">
-        <a href="/ko/" class="site-logo">🛠️ Utilify</a>
-      </div>
-    </div>
-  </header>
 
-  <main class="main-content">
-    <div class="container-narrow">
-      <h1>📝 텍스트 유틸리티</h1>
-            <div class="security-badge" style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/ko/" class="site-logo">🛠️ Utilify</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container-narrow">
+            <h1>📝 텍스트 유틸리티</h1>
+            <div class="security-badge"
+                style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
                 <span title="Processed securely in client-side">🔒 Secure & Client-side</span>
-                <button id="pwaInstallBtn" class="btn btn-primary" style="display: none; padding: 4px 12px; font-size: 12px;">📲 Install App</button>
+                <button id="pwaInstallBtn" class="btn btn-primary"
+                    style="display: none; padding: 4px 12px; font-size: 12px;">📲 Install App</button>
             </div>
 
-      <p>단어 수 세기, 문자 수 세기, 중복 제거, 대소문자 변환 등 다양한 텍스트 처리 기능을 제공합니다.</p>
-      
-      <div class="card">
-        <label class="form-label">텍스트 입력</label>
-        <textarea id="textInput" class="form-textarea" style="min-height: 300px;" placeholder="텍스트를 입력하세요..."></textarea>
-      </div>
-      
-      <div class="card">
-        <h3>통계</h3>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem;">
-          <div class="result-box">
-            <div class="result-value" id="charCount">0</div>
-            <div>문자 수</div>
-          </div>
-          <div class="result-box">
-            <div class="result-value" id="wordCount">0</div>
-            <div>단어 수</div>
-          </div>
-          <div class="result-box">
-            <div class="result-value" id="lineCount">0</div>
-            <div>줄 수</div>
-          </div>
+            <p>단어 수 세기, 문자 수 세기, 중복 제거, 대소문자 변환 등 다양한 텍스트 처리 기능을 제공합니다.</p>
+
+            <div class="card">
+                <label class="form-label">텍스트 입력</label>
+                <textarea id="textInput" class="form-textarea" style="min-height: 300px;"
+                    placeholder="텍스트를 입력하세요..."></textarea>
+            </div>
+
+            <div class="card">
+                <h3>통계</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem;">
+                    <div class="result-box">
+                        <div class="result-value" id="charCount">0</div>
+                        <div>문자 수</div>
+                    </div>
+                    <div class="result-box">
+                        <div class="result-value" id="wordCount">0</div>
+                        <div>단어 수</div>
+                    </div>
+                    <div class="result-box">
+                        <div class="result-value" id="lineCount">0</div>
+                        <div>줄 수</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>작업</h3>
+                <div class="btn-group">
+                    <button class="btn btn-secondary" onclick="toUpperCase()">대문자로</button>
+                    <button class="btn btn-secondary" onclick="toLowerCase()">소문자로</button>
+                    <button class="btn btn-secondary" onclick="removeDuplicates()">중복 줄 제거</button>
+                    <button class="btn btn-secondary" onclick="sortLines()">줄 정렬</button>
+                    <button class="btn btn-secondary" onclick="reverseText()">텍스트 뒤집기</button>
+                    <button class="btn btn-primary" onclick="copyText()">복사</button>
+                    <button class="btn btn-secondary" onclick="clearText()">지우기</button>
+                </div>
+            </div>
+
+            <div class="related-tools-section">
+                <h3>함께 보면 좋은 도구</h3>
+                <div class="related-buttons">
+                    <a href="/ko/diff-checker/" class="related-btn">텍스트 비교기</a><a
+                        href="/ko/regex-tester/" class="related-btn">정규식 테스터</a><a
+                        href="/ko/markdown-previewer/" class="related-btn">마크다운 미리보기</a><a
+                        href="/ko/lorem-ipsum/" class="related-btn">입숨 생성기</a>
+                </div>
+            </div>
+
         </div>
-      </div>
-      
-      <div class="card">
-        <h3>작업</h3>
-        <div class="btn-group">
-          <button class="btn btn-secondary" onclick="toUpperCase()">대문자로</button>
-          <button class="btn btn-secondary" onclick="toLowerCase()">소문자로</button>
-          <button class="btn btn-secondary" onclick="removeDuplicates()">중복 줄 제거</button>
-          <button class="btn btn-secondary" onclick="sortLines()">줄 정렬</button>
-          <button class="btn btn-secondary" onclick="reverseText()">텍스트 뒤집기</button>
-          <button class="btn btn-primary" onclick="copyText()">복사</button>
-          <button class="btn btn-secondary" onclick="clearText()">지우기</button>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Utilify. All rights reserved.</p>
+            </div>
         </div>
-      </div>
+    </footer>
 
-      <div class="related-tools-section">
-        <h3>함께 보면 좋은 도구</h3>
-        <div class="related-buttons">
-          <a href="/ko/diff-checker/" class="related-btn">텍스트 비교기</a><a href="/ko/regex-tester/" class="related-btn">정규식 테스터</a><a href="/ko/markdown-previewer/" class="related-btn">마크다운 미리보기</a><a href="/ko/lorem-ipsum/" class="related-btn">입숨 생성기</a>
-        </div>
-      </div>
+    <script src="/assets/js/common.js"></script>
+    <script>
+        const textInput = document.getElementById('textInput');
+        const charCount = document.getElementById('charCount');
+        const wordCount = document.getElementById('wordCount');
+        const lineCount = document.getElementById('lineCount');
 
-    </div>
-  </main>
+        function updateStats() {
+            const text = textInput.value;
+            charCount.textContent = text.length;
+            wordCount.textContent = text.trim() ? text.trim().split(/\s+/).length : 0;
+            lineCount.textContent = text ? text.split('\n').length : 0;
+        }
 
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-content">
-        <p>&copy; 2025 Utilify. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
+        function toUpperCase() {
+            textInput.value = textInput.value.toUpperCase();
+            updateStats();
+        }
 
-  <script src="/assets/js/common.js"></script>
-  <script>
-    const textInput = document.getElementById('textInput');
-    const charCount = document.getElementById('charCount');
-    const wordCount = document.getElementById('wordCount');
-    const lineCount = document.getElementById('lineCount');
-    
-    function updateStats() {
-      const text = textInput.value;
-      charCount.textContent = text.length;
-      wordCount.textContent = text.trim() ? text.trim().split(/\s+/).length : 0;
-      lineCount.textContent = text ? text.split('\n').length : 0;
-    }
-    
-    function toUpperCase() {
-      textInput.value = textInput.value.toUpperCase();
-      updateStats();
-    }
-    
-    function toLowerCase() {
-      textInput.value = textInput.value.toLowerCase();
-      updateStats();
-    }
-    
-    function removeDuplicates() {
-      const lines = textInput.value.split('\n');
-      const unique = [...new Set(lines)];
-      textInput.value = unique.join('\n');
-      updateStats();
-    }
-    
-    function sortLines() {
-      const lines = textInput.value.split('\n');
-      lines.sort();
-      textInput.value = lines.join('\n');
-      updateStats();
-    }
-    
-    function reverseText() {
-      textInput.value = textInput.value.split('').reverse().join('');
-      updateStats();
-    }
-    
-    function copyText() {
-      Utils.copyToClipboard(textInput.value);
-    }
-    
-    function clearText() {
-      textInput.value = '';
-      updateStats();
-    }
-    
-    textInput.addEventListener('input', updateStats);
-    updateStats();
-  </script>
+        function toLowerCase() {
+            textInput.value = textInput.value.toLowerCase();
+            updateStats();
+        }
+
+        function removeDuplicates() {
+            const lines = textInput.value.split('\n');
+            const unique = [...new Set(lines)];
+            textInput.value = unique.join('\n');
+            updateStats();
+        }
+
+        function sortLines() {
+            const lines = textInput.value.split('\n');
+            lines.sort();
+            textInput.value = lines.join('\n');
+            updateStats();
+        }
+
+        function reverseText() {
+            textInput.value = textInput.value.split('').reverse().join('');
+            updateStats();
+        }
+
+        function copyText() {
+            Utils.copyToClipboard(textInput.value);
+        }
+
+        function clearText() {
+            textInput.value = '';
+            updateStats();
+        }
+
+        textInput.addEventListener('input', updateStats);
+        updateStats();
+    </script>
 </body>
+
 </html>

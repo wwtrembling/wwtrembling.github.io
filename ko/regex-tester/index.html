@@ -4,11 +4,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+    <meta name="google-adsense-account" content="ca-pub-6334819180242631">
     <title>정규식 테스터 - Utilify</title>
     <meta name="description" content="정규식 패턴을 테스트하고 매칭 결과를 실시간으로 확인하세요.">
     <link rel="canonical" href="https://utilifyapp.net/ko/regex-tester/">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="정규식 테스터 - Utilify">
+    <meta property="og:description" content="정규식 패턴을 테스트하고 매칭 결과를 실시간으로 확인하세요.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://utilifyapp.net/ko/regex-tester/">
+
+    <!-- Language Alternatives -->
+    <link rel="alternate" hreflang="ko" href="https://utilifyapp.net/ko/regex-tester/">
+    <link rel="alternate" hreflang="en" href="https://utilifyapp.net/en/regex-tester/">
+    <link rel="alternate" hreflang="ja" href="https://utilifyapp.net/ja/regex-tester/">
+    <link rel="alternate" hreflang="hi" href="https://utilifyapp.net/hi/regex-tester/">
+    <link rel="alternate" hreflang="id" href="https://utilifyapp.net/id/regex-tester/">
+    <link rel="alternate" hreflang="vi" href="https://utilifyapp.net/vi/regex-tester/">
+    <link rel="alternate" hreflang="th" href="https://utilifyapp.net/th/regex-tester/">
+    <link rel="alternate" hreflang="de" href="https://utilifyapp.net/de/regex-tester/">
+    <link rel="alternate" hreflang="pt" href="https://utilifyapp.net/pt/regex-tester/">
+    <link rel="alternate" hreflang="x-default" href="https://utilifyapp.net/en/regex-tester/">
+
     <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "정규식 테스터",
+      "description": "정규식 패턴을 테스트하고 매칭 결과를 실시간으로 확인하세요.",
+      "url": "https://utilifyapp.net/ko/regex-tester/",
+      "inLanguage": "ko",
+      "applicationCategory": "UtilitiesApplication"
+    }
+    </script>
+
     <style>
         .regex-input {
             background: #f0f0f0;
@@ -42,7 +75,7 @@
         }
     </style>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631"
-     crossorigin="anonymous"></script>
+        crossorigin="anonymous"></script>
     <link rel="manifest" href="/manifest.json">
 </head>
 
@@ -55,9 +88,11 @@
     <main class="main-content">
         <div class="container-narrow">
             <h1>🔍 정규식 테스터</h1>
-            <div class="security-badge" style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
+            <div class="security-badge"
+                style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
                 <span title="Processed securely in client-side">🔒 Secure & Client-side</span>
-                <button id="pwaInstallBtn" class="btn btn-primary" style="display: none; padding: 4px 12px; font-size: 12px;">📲 Install App</button>
+                <button id="pwaInstallBtn" class="btn btn-primary"
+                    style="display: none; padding: 4px 12px; font-size: 12px;">📲 Install App</button>
             </div>
 
             <p>정규식 패턴을 테스트하고 매칭 결과를 실시간으로 확인하세요.</p>
@@ -76,20 +111,23 @@
                     placeholder="테스트할 문자열을 입력하세요">Hello World 123 Test</textarea>
             </div>
             <div class="matches" id="results"></div>
-        
-      <div class="related-tools-section">
-        <h3>함께 보면 좋은 도구</h3>
-        <div class="related-buttons">
-          <a href="/ko/text-utils/" class="related-btn">텍스트 유틸리티</a><a href="/ko/diff-checker/" class="related-btn">텍스트 비교기</a><a href="/ko/markdown-previewer/" class="related-btn">마크다운 미리보기</a><a href="/ko/lorem-ipsum/" class="related-btn">입숨 생성기</a>
-        </div>
-      </div>
 
-</div>
+            <div class="related-tools-section">
+                <h3>함께 보면 좋은 도구</h3>
+                <div class="related-buttons">
+                    <a href="/ko/text-utils/" class="related-btn">텍스트 유틸리티</a><a
+                        href="/ko/diff-checker/" class="related-btn">텍스트 비교기</a><a
+                        href="/ko/markdown-previewer/" class="related-btn">마크다운 미리보기</a><a
+                        href="/ko/lorem-ipsum/" class="related-btn">입숨 생성기</a>
+                </div>
+            </div>
+
+        </div>
     </main>
     <footer class="site-footer">
         <div class="container">
             <div class="footer-content">
-                <p>&copy; 2025 Utilify</p>
+                <p>&copy; 2025 Utilify. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -114,9 +152,9 @@
                     return;
                 }
 
-                let html = `<h3>매칭 결과 (${matches.length}개)</h3>`;
+                let html = `<h3>매칭 결과 (${matches.length})</h3>`;
                 matches.forEach((match, i) => {
-                    html += `<div class="match-item">Match ${i + 1}: "${match[0]}" (위치: ${match.index})</div>`;
+                    html += `<div class="match-item">Match ${i + 1}: "${match[0]}" (Index: ${match.index})</div>`;
                 });
 
                 let highlighted = text;

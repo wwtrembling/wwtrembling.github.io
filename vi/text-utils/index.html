@@ -1,158 +1,188 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="google-adsense-account" content="ca-pub-6334819180242631">
-  <title>Tiện ích văn bản - Utilify</title>
-  <meta name="description" content="Đếm từ, ký tự, xóa trùng lặp, chuyển đổi chữ hoa/thường và hơn thế nữa.">
-  
-  <link rel="canonical" href="https://utilifyapp.net/vi/text-utils/">
-  <link rel="alternate" hreflang="ko" href="https://utilifyapp.net/vi/text-utils/">
-  <link rel="alternate" hreflang="en" href="https://utilifyapp.net/en/text-utils/">
-  <link rel="alternate" hreflang="ja" href="https://utilifyapp.net/ja/text-utils/">
-  <link rel="alternate" hreflang="hi" href="https://utilifyapp.net/hi/text-utils/">
-  <link rel="alternate" hreflang="id" href="https://utilifyapp.net/id/text-utils/">
-  <link rel="alternate" hreflang="vi" href="https://utilifyapp.net/vi/text-utils/">
-  <link rel="alternate" hreflang="th" href="https://utilifyapp.net/th/text-utils/">
-  <link rel="alternate" hreflang="de" href="https://utilifyapp.net/de/text-utils/">
-  <link rel="alternate" hreflang="pt" href="https://utilifyapp.net/pt/text-utils/">
-  <link rel="alternate" hreflang="x-default" href="https://utilifyapp.net/en/text-utils/">
-  
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/main.css">
-  
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631"
-     crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+    <title>Tiện ích văn bản - Utilify</title>
+    <meta name="description" content="Đếm từ, ký tự, xóa trùng lặp, chuyển đổi chữ hoa/thường và hơn thế nữa.">
+
+    <link rel="canonical" href="https://utilifyapp.net/vi/text-utils/">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Tiện ích văn bản - Utilify">
+    <meta property="og:description" content="Đếm từ, ký tự, xóa trùng lặp, chuyển đổi chữ hoa/thường và hơn thế nữa.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://utilifyapp.net/vi/text-utils/">
+
+    <!-- Language Alternatives -->
+    <link rel="alternate" hreflang="ko" href="https://utilifyapp.net/ko/text-utils/">
+    <link rel="alternate" hreflang="en" href="https://utilifyapp.net/en/text-utils/">
+    <link rel="alternate" hreflang="ja" href="https://utilifyapp.net/ja/text-utils/">
+    <link rel="alternate" hreflang="hi" href="https://utilifyapp.net/hi/text-utils/">
+    <link rel="alternate" hreflang="id" href="https://utilifyapp.net/id/text-utils/">
+    <link rel="alternate" hreflang="vi" href="https://utilifyapp.net/vi/text-utils/">
+    <link rel="alternate" hreflang="th" href="https://utilifyapp.net/th/text-utils/">
+    <link rel="alternate" hreflang="de" href="https://utilifyapp.net/de/text-utils/">
+    <link rel="alternate" hreflang="pt" href="https://utilifyapp.net/pt/text-utils/">
+    <link rel="alternate" hreflang="x-default" href="https://utilifyapp.net/en/text-utils/">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631"
+        crossorigin="anonymous"></script>
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Tiện ích văn bản",
+      "description": "Đếm từ, ký tự, xóa trùng lặp, chuyển đổi chữ hoa/thường và hơn thế nữa.",
+      "url": "https://utilifyapp.net/vi/text-utils/",
+      "inLanguage": "vi",
+      "applicationCategory": "UtilitiesApplication"
+    }
+    </script>
     <link rel="manifest" href="/manifest.json">
 </head>
-<body>
-  <header class="site-header">
-    <div class="container">
-      <div class="header-content">
-        <a href="/vi/" class="site-logo">🛠️ Utilify</a>
-      </div>
-    </div>
-  </header>
 
-  <main class="main-content">
-    <div class="container-narrow">
-      <h1>📝 Tiện ích văn bản</h1>
-            <div class="security-badge" style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
-                <span title="Processed securely in client-side">🔒 Secure & Client-side</span>
-                <button id="pwaInstallBtn" class="btn btn-primary" style="display: none; padding: 4px 12px; font-size: 12px;">📲 Install App</button>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/vi/" class="site-logo">🛠️ Utilify</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container-narrow">
+            <h1>📝 Tiện ích văn bản</h1>
+            <div class="security-badge"
+                style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
+                <span title="Processed securely in client-side">🔒 An toàn & Phía máy khách</span>
+                <button id="pwaInstallBtn" class="btn btn-primary"
+                    style="display: none; padding: 4px 12px; font-size: 12px;">📲 Cài đặt ứng dụng</button>
             </div>
 
-      <p>Đếm từ, ký tự, xóa trùng lặp, chuyển đổi chữ hoa/thường và hơn thế nữa.</p>
-      
-      <div class="card">
-        <label class="form-label">Input Text</label>
-        <textarea id="textInput" class="form-textarea" style="min-height: 300px;" placeholder="Nhập văn bản..."></textarea>
-      </div>
-      
-      <div class="card">
-        <h3>Thống kê</h3>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem;">
-          <div class="result-box">
-            <div class="result-value" id="charCount">0</div>
-            <div>Characters</div>
-          </div>
-          <div class="result-box">
-            <div class="result-value" id="wordCount">0</div>
-            <div>Words</div>
-          </div>
-          <div class="result-box">
-            <div class="result-value" id="lineCount">0</div>
-            <div>Lines</div>
-          </div>
+            <p>Đếm từ, ký tự, xóa trùng lặp, chuyển đổi chữ hoa/thường và hơn thế nữa.</p>
+
+            <div class="card">
+                <label class="form-label">Văn bản đầu vào</label>
+                <textarea id="textInput" class="form-textarea" style="min-height: 300px;"
+                    placeholder="Nhập văn bản..."></textarea>
+            </div>
+
+            <div class="card">
+                <h3>Thống kê</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem;">
+                    <div class="result-box">
+                        <div class="result-value" id="charCount">0</div>
+                        <div>Ký tự</div>
+                    </div>
+                    <div class="result-box">
+                        <div class="result-value" id="wordCount">0</div>
+                        <div>Từ</div>
+                    </div>
+                    <div class="result-box">
+                        <div class="result-value" id="lineCount">0</div>
+                        <div>Dòng</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Hành động</h3>
+                <div class="btn-group">
+                    <button class="btn btn-secondary" onclick="toUpperCase()">CHỮ HOA</button>
+                    <button class="btn btn-secondary" onclick="toLowerCase()">chữ thường</button>
+                    <button class="btn btn-secondary" onclick="removeDuplicates()">Xóa trùng lặp</button>
+                    <button class="btn btn-secondary" onclick="sortLines()">Sắp xếp</button>
+                    <button class="btn btn-secondary" onclick="reverseText()">Đảo ngược</button>
+                    <button class="btn btn-primary" onclick="copyText()">Sao chép</button>
+                    <button class="btn btn-secondary" onclick="clearText()">Xóa</button>
+                </div>
+            </div>
+
+            <div class="related-tools-section">
+                <h3>Công cụ liên quan</h3>
+                <div class="related-buttons">
+                    <a href="/vi/diff-checker/" class="related-btn">Kiểm tra sự khác biệt</a><a
+                        href="/vi/regex-tester/" class="related-btn">Kiểm tra Regex</a><a
+                        href="/vi/markdown-previewer/" class="related-btn">Xem trước Markdown</a><a
+                        href="/vi/lorem-ipsum/" class="related-btn">Tạo Lorem Ipsum</a>
+                </div>
+            </div>
+
         </div>
-      </div>
-      
-      <div class="card">
-        <h3>Hành động</h3>
-        <div class="btn-group">
-          <button class="btn btn-secondary" onclick="toUpperCase()">UPPERCASE</button>
-          <button class="btn btn-secondary" onclick="toLowerCase()">lowercase</button>
-          <button class="btn btn-secondary" onclick="removeDuplicates()">Remove Duplicate Lines</button>
-          <button class="btn btn-secondary" onclick="sortLines()">Sort Lines</button>
-          <button class="btn btn-secondary" onclick="reverseText()">Reverse Text</button>
-          <button class="btn btn-primary" onclick="copyText()">Copy</button>
-          <button class="btn btn-secondary" onclick="clearText()">Clear</button>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Utilify. All rights reserved.</p>
+            </div>
         </div>
-      </div>
+    </footer>
 
-      <div class="related-tools-section">
-        <h3>Công cụ liên quan</h3>
-        <div class="related-buttons">
-          <a href="/vi/diff-checker/" class="related-btn">Diff Checker</a><a href="/vi/regex-tester/" class="related-btn">Regex Tester</a><a href="/vi/markdown-previewer/" class="related-btn">Markdown Preview</a><a href="/vi/lorem-ipsum/" class="related-btn">Lorem Ipsum</a>
-        </div>
-      </div>
+    <script src="/assets/js/common.js"></script>
+    <script>
+        const textInput = document.getElementById('textInput');
+        const charCount = document.getElementById('charCount');
+        const wordCount = document.getElementById('wordCount');
+        const lineCount = document.getElementById('lineCount');
 
-    </div>
-  </main>
+        function updateStats() {
+            const text = textInput.value;
+            charCount.textContent = text.length;
+            wordCount.textContent = text.trim() ? text.trim().split(/\s+/).length : 0;
+            lineCount.textContent = text ? text.split('\n').length : 0;
+        }
 
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-content">
-        <p>&copy; 2025 Utilify. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
+        function toUpperCase() {
+            textInput.value = textInput.value.toUpperCase();
+            updateStats();
+        }
 
-  <script src="/assets/js/common.js"></script>
-  <script>
-    const textInput = document.getElementById('textInput');
-    const charCount = document.getElementById('charCount');
-    const wordCount = document.getElementById('wordCount');
-    const lineCount = document.getElementById('lineCount');
-    
-    function updateStats() {
-      const text = textInput.value;
-      charCount.textContent = text.length;
-      wordCount.textContent = text.trim() ? text.trim().split(/\s+/).length : 0;
-      lineCount.textContent = text ? text.split('\n').length : 0;
-    }
-    
-    function toUpperCase() {
-      textInput.value = textInput.value.toUpperCase();
-      updateStats();
-    }
-    
-    function toLowerCase() {
-      textInput.value = textInput.value.toLowerCase();
-      updateStats();
-    }
-    
-    function removeDuplicates() {
-      const lines = textInput.value.split('\n');
-      const unique = [...new Set(lines)];
-      textInput.value = unique.join('\n');
-      updateStats();
-    }
-    
-    function sortLines() {
-      const lines = textInput.value.split('\n');
-      lines.sort();
-      textInput.value = lines.join('\n');
-      updateStats();
-    }
-    
-    function reverseText() {
-      textInput.value = textInput.value.split('').reverse().join('');
-      updateStats();
-    }
-    
-    function copyText() {
-      Utils.copyToClipboard(textInput.value);
-    }
-    
-    function clearText() {
-      textInput.value = '';
-      updateStats();
-    }
-    
-    textInput.addEventListener('input', updateStats);
-    updateStats();
-  </script>
+        function toLowerCase() {
+            textInput.value = textInput.value.toLowerCase();
+            updateStats();
+        }
+
+        function removeDuplicates() {
+            const lines = textInput.value.split('\n');
+            const unique = [...new Set(lines)];
+            textInput.value = unique.join('\n');
+            updateStats();
+        }
+
+        function sortLines() {
+            const lines = textInput.value.split('\n');
+            lines.sort();
+            textInput.value = lines.join('\n');
+            updateStats();
+        }
+
+        function reverseText() {
+            textInput.value = textInput.value.split('').reverse().join('');
+            updateStats();
+        }
+
+        function copyText() {
+            Utils.copyToClipboard(textInput.value);
+        }
+
+        function clearText() {
+            textInput.value = '';
+            updateStats();
+        }
+
+        textInput.addEventListener('input', updateStats);
+        updateStats();
+    </script>
 </body>
+
 </html>

@@ -2,403 +2,410 @@
 <html lang="hi">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="google-adsense-account" content="ca-pub-6334819180242631">
-  <title>यूनिट कन्वर्टर - Utilify</title>
-  <meta name="description" content="लंबाई, वजन, तापमान आदि को बदलें।">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+    <title>Unit Converter (cm to inch, kg to lbs) - Utilify</title>
+    <meta name="description" content="Convert Length (cm to inch), Weight (kg to lbs), Temperature (Celsius to Fahrenheit), Volume, and more. Easy height and weight conversion.">
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="단위 변환기 - Utilify">
-  <meta property="og:description" content="लंबाई, वजन, तापमान आदि को बदलें।">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://utilifyapp.net/hi/unit-converter/">
+    <!-- Open Graph -->
+    <meta property="og:title" content="Unit Converter (cm to inch, kg to lbs) - 🛠️ Utilify">
+    <meta property="og:description" content="Convert Length (cm to inch), Weight (kg to lbs), Temperature (Celsius to Fahrenheit), Volume, and more.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://utilifyapp.net/hi/unit-converter/">
 
-  <!-- Canonical -->
-  <link rel="canonical" href="https://utilifyapp.net/hi/unit-converter/">
+    <!-- Canonical -->
+    <link rel="canonical" href="https://utilifyapp.net/hi/unit-converter/">
 
-  <!-- Language Alternatives -->
-  <link rel="alternate" hreflang="ko" href="https://utilifyapp.net/hi/unit-converter/">
-  <link rel="alternate" hreflang="en" href="https://utilifyapp.net/en/unit-converter/">
-  <link rel="alternate" hreflang="ja" href="https://utilifyapp.net/ja/unit-converter/">
-  <link rel="alternate" hreflang="hi" href="https://utilifyapp.net/hi/unit-converter/">
-  <link rel="alternate" hreflang="id" href="https://utilifyapp.net/id/unit-converter/">
-  <link rel="alternate" hreflang="vi" href="https://utilifyapp.net/vi/unit-converter/">
-  <link rel="alternate" hreflang="th" href="https://utilifyapp.net/th/unit-converter/">
-  <link rel="alternate" hreflang="de" href="https://utilifyapp.net/de/unit-converter/">
-  <link rel="alternate" hreflang="pt" href="https://utilifyapp.net/pt/unit-converter/">
-  <link rel="alternate" hreflang="x-default" href="https://utilifyapp.net/en/unit-converter/">
+    <!-- Language Alternatives -->
+    <link rel="alternate" hreflang="ko" href="https://utilifyapp.net/ko/unit-converter/">
+    <link rel="alternate" hreflang="en" href="https://utilifyapp.net/en/unit-converter/">
+    <link rel="alternate" hreflang="ja" href="https://utilifyapp.net/ja/unit-converter/">
+    <link rel="alternate" hreflang="hi" href="https://utilifyapp.net/hi/unit-converter/">
+    <link rel="alternate" hreflang="id" href="https://utilifyapp.net/id/unit-converter/">
+    <link rel="alternate" hreflang="vi" href="https://utilifyapp.net/vi/unit-converter/">
+    <link rel="alternate" hreflang="th" href="https://utilifyapp.net/th/unit-converter/">
+    <link rel="alternate" hreflang="de" href="https://utilifyapp.net/de/unit-converter/">
+    <link rel="alternate" hreflang="pt" href="https://utilifyapp.net/pt/unit-converter/">
+    <link rel="alternate" hreflang="x-default" href="https://utilifyapp.net/en/unit-converter/">
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Styles -->
-  <link rel="stylesheet" href="/assets/css/main.css">
+    <!-- Styles -->
+    <link rel="stylesheet" href="/assets/css/main.css">
 
-  <!-- JSON-LD -->
-  <script type="application/ld+json">
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "단위 변환기",
-    "description": "लंबाई, वजन, तापमान, आयतन 등 다양한 단위를 간편하게 변환하세요.",
+    "name": "Unit Converter",
+    "description": "Convert Length, Weight, Temperature, Volume, and more.",
     "url": "https://utilifyapp.net/hi/unit-converter/",
-    "inLanguage": "ko",
+    "inLanguage": "hi",
     "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "Any",
     "offers": {
       "@type": "Offer",
       "price": "0",
-      "priceCurrency": "KRW"
+      "priceCurrency": "USD"
     }
   }
   </script>
 
-  <style>
-    .converter-section {
-      background: var(--bg-primary);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-lg);
-      padding: var(--spacing-xl);
-      margin-bottom: var(--spacing-lg);
-    }
+    <style>
+        .converter-section {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            margin-bottom: var(--spacing-lg);
+        }
 
-    .converter-grid {
-      display: grid;
-      grid-template-columns: 1fr auto 1fr;
-      gap: var(--spacing-lg);
-      align-items: end;
-      margin-top: var(--spacing-lg);
-    }
+        .converter-grid {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: var(--spacing-lg);
+            align-items: end;
+            margin-top: var(--spacing-lg);
+        }
 
-    .swap-btn {
-      padding: var(--spacing-md);
-      background: var(--bg-secondary);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-md);
-      cursor: pointer;
-      transition: all var(--transition-fast);
-      font-size: 1.5rem;
-      margin-bottom: var(--spacing-md);
-    }
+        .swap-btn {
+            padding: var(--spacing-md);
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            font-size: 1.5rem;
+            margin-bottom: var(--spacing-md);
+        }
 
-    .swap-btn:hover {
-      background: var(--primary-color);
-      color: white;
-      border-color: var(--primary-color);
-      transform: rotate(180deg);
-    }
+        .swap-btn:hover {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+            transform: rotate(180deg);
+        }
 
-    .result-display {
-      font-size: 1.5rem;
-      font-weight: 600;
-      color: var(--primary-color);
-      margin-top: var(--spacing-sm);
-      min-height: 2rem;
-    }
+        .result-display {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-top: var(--spacing-sm);
+            min-height: 2rem;
+        }
 
-    @media (max-width: 768px) {
-      .converter-grid {
-        grid-template-columns: 1fr;
-      }
+        @media (max-width: 768px) {
+            .converter-grid {
+                grid-template-columns: 1fr;
+            }
 
-      .swap-btn {
-        transform: rotate(90deg);
-      }
+            .swap-btn {
+                transform: rotate(90deg);
+                justify-self: center;
+                width: 3rem;
+            }
 
-      .swap-btn:hover {
-        transform: rotate(270deg);
-      }
-    }
-  </style>
-  <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631"
-     crossorigin="anonymous"></script>
+            .swap-btn:hover {
+                transform: rotate(270deg);
+            }
+        }
+    </style>
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631"
+        crossorigin="anonymous"></script>
 
     <link rel="manifest" href="/manifest.json">
 </head>
 
 <body>
-  <header class="site-header">
-    <div class="container">
-      <div class="header-content">
-        <a href="/hi/" class="site-logo">
-          Utilify
-        </a>
-      </div>
-    </div>
-  </header>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/hi/" class="site-logo">
+                    Utilify
+                </a>
+            </div>
+        </div>
+    </header>
 
-  <main class="main-content">
-    <div class="container-narrow">
-      <h1>📏 यूनिट कन्वर्टर</h1>
-            <div class="security-badge" style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
+    <main class="main-content">
+        <div class="container-narrow">
+            <h1>📏 Unit Converter</h1>
+            <div class="security-badge"
+                style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
                 <span title="Processed securely in client-side">🔒 सुरक्षित और क्लाइंट-साइड</span>
-                <button id="pwaInstallBtn" class="btn btn-primary" style="display: none; padding: 4px 12px; font-size: 12px;">📲 ऐप इंस्टॉल करें</button>
+                <button id="pwaInstallBtn" class="btn btn-primary"
+                    style="display: none; padding: 4px 12px; font-size: 12px;">📲 ऐप इंस्टॉल करें</button>
             </div>
 
-      <p>लंबाई, वजन, तापमान आदि को बदलें।</p>
+            <p>Convert Length, Weight, Temperature, Volume, and more.</p>
 
-      
 
-      <!-- Category Selection -->
-      <div class="converter-section">
-        <label class="form-label">Category</label>
-        <select id="category" class="form-select">
-          <option value="length">लंबाई</option>
-          <option value="weight">वजन</option>
-          <option value="temperature">तापमान</option>
-          <option value="volume">आयतन</option>
-          <option value="area">क्षेत्रफल</option>
-          <option value="speed">गति</option>
-        </select>
-      </div>
 
-      <!-- Converter -->
-      <div class="converter-section">
-        <div class="converter-grid">
-          <div>
-            <label class="form-label">परिवर्तित करने के लिए मान</label>
-            <input type="number" id="fromValue" class="form-input" placeholder="संख्या दर्ज करें" value="1">
-            <select id="fromUnit" class="form-select mt-1"></select>
-            <div class="result-display" id="fromDisplay">1</div>
-          </div>
+            <!-- Category Selection -->
+            <div class="converter-section">
+                <label class="form-label">Category</label>
+                <select id="category" class="form-select">
+                    <option value="length">Length</option>
+                    <option value="weight">Weight</option>
+                    <option value="temperature">Temperature</option>
+                    <option value="volume">Volume</option>
+                    <option value="area">Area</option>
+                    <option value="speed">Speed</option>
+                </select>
+            </div>
 
-          <button class="swap-btn" id="swapBtn" title="इकाइयों की अदला-बदली">⇄</button>
+            <!-- Converter -->
+            <div class="converter-section">
+                <div class="converter-grid">
+                    <div>
+                        <label class="form-label">Value to Convert</label>
+                        <input type="number" id="fromValue" class="form-input" placeholder="Enter number" value="1">
+                        <select id="fromUnit" class="form-select mt-1"></select>
+                        <div class="result-display" id="fromDisplay">1</div>
+                    </div>
 
-          <div>
-            <label class="form-label">परिवर्तित मान</label>
-            <input type="number" id="toValue" class="form-input" placeholder="परिणाम" readonly>
-            <select id="toUnit" class="form-select mt-1"></select>
-            <div class="result-display" id="toDisplay">-</div>
-          </div>
+                    <button class="swap-btn" id="swapBtn" title="Swap Units">⇄</button>
+
+                    <div>
+                        <label class="form-label">Converted Value</label>
+                        <input type="number" id="toValue" class="form-input" placeholder="Result" readonly>
+                        <select id="toUnit" class="form-select mt-1"></select>
+                        <div class="result-display" id="toDisplay">-</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Reference -->
+            <div class="card">
+                <h3>Common Conversions</h3>
+                <div id="quickReference"></div>
+            </div>
+
+
+
+            <div class="related-tools-section">
+                <h3>Related Tools</h3>
+                <div class="related-buttons">
+                    <a href="/hi/bmi-calculator/" class="related-btn">BMI Calculator</a><a
+                        href="/hi/date-calculator/" class="related-btn">Date Calculator</a><a
+                        href="/hi/timer/" class="related-btn">Timer</a><a
+                        href="/hi/reaction-test/" class="related-btn">Reaction Test</a>
+                </div>
+            </div>
+
         </div>
-      </div>
+    </main>
 
-      <!-- Quick Reference -->
-      <div class="card">
-        <h3>सामान्य रूपांतरण</h3>
-        <div id="quickReference"></div>
-      </div>
-
-      
-
-      <div class="related-tools-section">
-        <h3>संबंधित उपकरण</h3>
-        <div class="related-buttons">
-          <a href="/hi/bmi-calculator/" class="related-btn">BMI Calculator</a><a href="/hi/date-calculator/" class="related-btn">Date Calculator</a><a href="/hi/timer/" class="related-btn">Timer</a><a href="/hi/reaction-test/" class="related-btn">Reaction Test</a>
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <p></p>
+            </div>
         </div>
-      </div>
+    </footer>
 
-    </div>
-  </main>
+    <script src="/assets/js/common.js"></script>
+    <script>
+        // Unit conversion data
+        const conversionData = {
+            length: {
+                name: 'Length',
+                units: {
+                    meter: { name: 'Meter (m)', toBase: 1 },
+                    kilometer: { name: 'Kilometer (km)', toBase: 1000 },
+                    centimeter: { name: 'Centimeter (cm)', toBase: 0.01 },
+                    millimeter: { name: 'Millimeter (mm)', toBase: 0.001 },
+                    mile: { name: 'Mile (mi)', toBase: 1609.344 },
+                    yard: { name: 'Yard (yd)', toBase: 0.9144 },
+                    foot: { name: 'Feet (ft)', toBase: 0.3048 },
+                    inch: { name: 'Inch (in)', toBase: 0.0254 }
+                }
+            },
+            weight: {
+                name: 'Weight',
+                units: {
+                    kilogram: { name: 'Kilogram (kg)', toBase: 1 },
+                    gram: { name: 'Gram (g)', toBase: 0.001 },
+                    milligram: { name: 'Milligram (mg)', toBase: 0.000001 },
+                    ton: { name: 'Ton (t)', toBase: 1000 },
+                    pound: { name: 'Pound (lb)', toBase: 0.453592 },
+                    ounce: { name: 'Ounce (oz)', toBase: 0.0283495 }
+                }
+            },
+            temperature: {
+                name: 'Temperature',
+                units: {
+                    celsius: { name: 'Celsius (°C)', toBase: null },
+                    fahrenheit: { name: 'Fahrenheit (°F)', toBase: null },
+                    kelvin: { name: 'Kelvin (K)', toBase: null }
+                }
+            },
+            volume: {
+                name: 'Volume',
+                units: {
+                    liter: { name: 'Liter (L)', toBase: 1 },
+                    milliliter: { name: 'Milliliter (mL)', toBase: 0.001 },
+                    cubicMeter: { name: 'Cubic Meter (m³)', toBase: 1000 },
+                    gallon: { name: 'Gallon (gal)', toBase: 3.78541 },
+                    quart: { name: 'Quart (qt)', toBase: 0.946353 },
+                    pint: { name: 'Pint (pt)', toBase: 0.473176 },
+                    cup: { name: 'Cup', toBase: 0.236588 }
+                }
+            },
+            area: {
+                name: 'Area',
+                units: {
+                    squareMeter: { name: 'Square Meter (m²)', toBase: 1 },
+                    squareKilometer: { name: 'Square Kilometer (km²)', toBase: 1000000 },
+                    squareCentimeter: { name: 'Square Centimeter (cm²)', toBase: 0.0001 },
+                    hectare: { name: 'Hectare (ha)', toBase: 10000 },
+                    acre: { name: 'Acre (ac)', toBase: 4046.86 },
+                    squareFoot: { name: 'Square Foot (ft²)', toBase: 0.092903 }
+                }
+            },
+            speed: {
+                name: 'Speed',
+                units: {
+                    meterPerSecond: { name: 'Meter/Second (m/s)', toBase: 1 },
+                    kilometerPerHour: { name: 'Kilometer/Hour (km/h)', toBase: 0.277778 },
+                    milePerHour: { name: 'Mile/Hour (mph)', toBase: 0.44704 },
+                    knot: { name: 'Knot (knot)', toBase: 0.514444 }
+                }
+            }
+        };
 
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-content">
-        <p></p>
-      </div>
-    </div>
-  </footer>
+        // State
+        let currentCategory = 'length';
+        let fromUnit = 'meter';
+        let toUnit = 'kilometer';
 
-  <script src="/assets/js/common.js"></script>
-  <script>
-    // Unit conversion data
-    const conversionData = {
-      length: {
-        name: 'लंबाई',
-        units: {
-          meter: { name: 'Meter (m)', toBase: 1 },
-          kilometer: { name: 'Kilometer (km)', toBase: 1000 },
-          centimeter: { name: 'Centimeter (cm)', toBase: 0.01 },
-          millimeter: { name: 'Millimeter (mm)', toBase: 0.001 },
-          mile: { name: 'Mile (mi)', toBase: 1609.344 },
-          yard: { name: 'Yard (yd)', toBase: 0.9144 },
-          foot: { name: 'Feet (ft)', toBase: 0.3048 },
-          inch: { name: 'Inch (in)', toBase: 0.0254 }
+        // DOM elements
+        const categorySelect = document.getElementById('category');
+        const fromValueInput = document.getElementById('fromValue');
+        const toValueInput = document.getElementById('toValue');
+        const fromUnitSelect = document.getElementById('fromUnit');
+        const toUnitSelect = document.getElementById('toUnit');
+        const swapBtn = document.getElementById('swapBtn');
+        const fromDisplay = document.getElementById('fromDisplay');
+        const toDisplay = document.getElementById('toDisplay');
+        const quickReference = document.getElementById('quickReference');
+
+        // Initialize
+        function init() {
+            populateUnits();
+            convert();
+            updateQuickReference();
         }
-      },
-      weight: {
-        name: 'वजन',
-        units: {
-          kilogram: { name: 'Kilogram (kg)', toBase: 1 },
-          gram: { name: 'Gram (g)', toBase: 0.001 },
-          milligram: { name: 'Milligram (mg)', toBase: 0.000001 },
-          ton: { name: 'Ton (t)', toBase: 1000 },
-          pound: { name: 'Pound (lb)', toBase: 0.453592 },
-          ounce: { name: 'Ounce (oz)', toBase: 0.0283495 }
+
+        // Populate unit dropdowns
+        function populateUnits() {
+            const units = conversionData[currentCategory].units;
+            const unitKeys = Object.keys(units);
+
+            fromUnitSelect.innerHTML = '';
+            toUnitSelect.innerHTML = '';
+
+            unitKeys.forEach(key => {
+                const option1 = document.createElement('option');
+                option1.value = key;
+                option1.textContent = units[key].name;
+                fromUnitSelect.appendChild(option1);
+
+                const option2 = document.createElement('option');
+                option2.value = key;
+                option2.textContent = units[key].name;
+                toUnitSelect.appendChild(option2);
+            });
+
+            fromUnitSelect.value = fromUnit = unitKeys[0];
+            toUnitSelect.value = toUnit = unitKeys[1] || unitKeys[0];
         }
-      },
-      temperature: {
-        name: 'तापमान',
-        units: {
-          celsius: { name: 'Celsius (°C)', toBase: null },
-          fahrenheit: { name: 'Fahrenheit (°F)', toBase: null },
-          kelvin: { name: 'Kelvin (K)', toBase: null }
+
+        // Convert temperature
+        function convertTemperature(value, from, to) {
+            // Convert to Celsius first
+            let celsius;
+            if (from === 'celsius') celsius = value;
+            else if (from === 'fahrenheit') celsius = (value - 32) * 5 / 9;
+            else if (from === 'kelvin') celsius = value - 273.15;
+
+            // Convert from Celsius to target
+            if (to === 'celsius') return celsius;
+            else if (to === 'fahrenheit') return celsius * 9 / 5 + 32;
+            else if (to === 'kelvin') return celsius + 273.15;
         }
-      },
-      volume: {
-        name: 'आयतन',
-        units: {
-          liter: { name: 'Liter (L)', toBase: 1 },
-          milliliter: { name: 'Milliliter (mL)', toBase: 0.001 },
-          cubicMeter: { name: 'Cubic Meter (m³)', toBase: 1000 },
-          gallon: { name: 'Gallon (gal)', toBase: 3.78541 },
-          quart: { name: 'Quart (qt)', toBase: 0.946353 },
-          pint: { name: 'Pint (pt)', toBase: 0.473176 },
-          cup: { name: 'Cup', toBase: 0.236588 }
+
+        // Convert units
+        function convert() {
+            const value = parseFloat(fromValueInput.value) || 0;
+            let result;
+
+            if (currentCategory === 'temperature') {
+                result = convertTemperature(value, fromUnit, toUnit);
+            } else {
+                const units = conversionData[currentCategory].units;
+                const baseValue = value * units[fromUnit].toBase;
+                result = baseValue / units[toUnit].toBase;
+            }
+
+            toValueInput.value = result.toFixed(6);
+            fromDisplay.textContent = `${value.toLocaleString()} ${conversionData[currentCategory].units[fromUnit].name}`;
+            toDisplay.textContent = `${result.toLocaleString(undefined, { maximumFractionDigits: 6 })} ${conversionData[currentCategory].units[toUnit].name}`;
         }
-      },
-      area: {
-        name: 'क्षेत्रफल',
-        units: {
-          squareMeter: { name: 'Square Meter (m²)', toBase: 1 },
-          squareKilometer: { name: 'Square Kilometer (km²)', toBase: 1000000 },
-          squareCentimeter: { name: 'Square Centimeter (cm²)', toBase: 0.0001 },
-          hectare: { name: 'Hectare (ha)', toBase: 10000 },
-          acre: { name: 'Acre (ac)', toBase: 4046.86 },
-          squareFoot: { name: 'Square Foot (ft²)', toBase: 0.092903 }
+
+        // Swap units
+        function swap() {
+            [fromUnit, toUnit] = [toUnit, fromUnit];
+            fromUnitSelect.value = fromUnit;
+            toUnitSelect.value = toUnit;
+            fromValueInput.value = toValueInput.value;
+            convert();
         }
-      },
-      speed: {
-        name: 'गति',
-        units: {
-          meterPerSecond: { name: 'Meter/Second (m/s)', toBase: 1 },
-          kilometerPerHour: { name: 'Kilometer/Hour (km/h)', toBase: 0.277778 },
-          milePerHour: { name: '마Sun/시 (mph)', toBase: 0.44704 },
-          knot: { name: 'Knot (knot)', toBase: 0.514444 }
+
+        // Update quick reference
+        function updateQuickReference() {
+            const examples = {
+                length: ['1 km = 1000 m', '1 mile = 1.609 km', '1 inch = 2.54 cm'],
+                weight: ['1 kg = 1000 g', '1 lb = 0.454 kg', '1 ton = 1000 kg'],
+                temperature: ['0°C = 32°F', '100°C = 212°F', '0 K = -273.15°C'],
+                volume: ['1 L = 1000 mL', '1 gal = 3.785 L', '1 m³ = 1000 L'],
+                area: ['1 km² = 1,000,000 m²', '1 ha = 10,000 m²', '1 ac = 4,047 m²'],
+                speed: ['1 m/s = 3.6 km/h', '1 mph = 1.609 km/h', '1 knot = 1.852 km/h']
+            };
+
+            quickReference.innerHTML = examples[currentCategory]
+                .map(ex => `<p style="margin: 0.5rem 0;">• ${ex}</p>`)
+                .join('');
         }
-      }
-    };
 
-    // State
-    let currentCategory = 'length';
-    let fromUnit = 'meter';
-    let toUnit = 'kilometer';
+        // Event listeners
+        categorySelect.addEventListener('change', (e) => {
+            currentCategory = e.target.value;
+            populateUnits();
+            convert();
+            updateQuickReference();
+        });
 
-    // DOM elements
-    const categorySelect = document.getElementById('category');
-    const fromValueInput = document.getElementById('fromValue');
-    const toValueInput = document.getElementById('toValue');
-    const fromUnitSelect = document.getElementById('fromUnit');
-    const toUnitSelect = document.getElementById('toUnit');
-    const swapBtn = document.getElementById('swapBtn');
-    const fromDisplay = document.getElementById('fromDisplay');
-    const toDisplay = document.getElementById('toDisplay');
-    const quickReference = document.getElementById('quickReference');
+        fromValueInput.addEventListener('input', convert);
+        fromUnitSelect.addEventListener('change', (e) => {
+            fromUnit = e.target.value;
+            convert();
+        });
+        toUnitSelect.addEventListener('change', (e) => {
+            toUnit = e.target.value;
+            convert();
+        });
+        swapBtn.addEventListener('click', swap);
 
-    // Initialize
-    function init() {
-      populateUnits();
-      convert();
-      updateQuickReference();
-    }
-
-    // Populate unit dropdowns
-    function populateUnits() {
-      const units = conversionData[currentCategory].units;
-      const unitKeys = Object.keys(units);
-
-      fromUnitSelect.innerHTML = '';
-      toUnitSelect.innerHTML = '';
-
-      unitKeys.forEach(key => {
-        const option1 = document.createElement('option');
-        option1.value = key;
-        option1.textContent = units[key].name;
-        fromUnitSelect.appendChild(option1);
-
-        const option2 = document.createElement('option');
-        option2.value = key;
-        option2.textContent = units[key].name;
-        toUnitSelect.appendChild(option2);
-      });
-
-      fromUnitSelect.value = fromUnit = unitKeys[0];
-      toUnitSelect.value = toUnit = unitKeys[1] || unitKeys[0];
-    }
-
-    // Convert temperature
-    function convertTemperature(value, from, to) {
-      // Convert to Celsius first
-      let celsius;
-      if (from === 'celsius') celsius = value;
-      else if (from === 'fahrenheit') celsius = (value - 32) * 5 / 9;
-      else if (from === 'kelvin') celsius = value - 273.15;
-
-      // Convert from Celsius to target
-      if (to === 'celsius') return celsius;
-      else if (to === 'fahrenheit') return celsius * 9 / 5 + 32;
-      else if (to === 'kelvin') return celsius + 273.15;
-    }
-
-    // Convert units
-    function convert() {
-      const value = parseFloat(fromValueInput.value) || 0;
-      let result;
-
-      if (currentCategory === 'temperature') {
-        result = convertTemperature(value, fromUnit, toUnit);
-      } else {
-        const units = conversionData[currentCategory].units;
-        const baseValue = value * units[fromUnit].toBase;
-        result = baseValue / units[toUnit].toBase;
-      }
-
-      toValueInput.value = result.toFixed(6);
-      fromDisplay.textContent = `${value.toLocaleString()} ${conversionData[currentCategory].units[fromUnit].name}`;
-      toDisplay.textContent = `${result.toLocaleString(undefined, { maximumFractionDigits: 6 })} ${conversionData[currentCategory].units[toUnit].name}`;
-    }
-
-    // Swap units
-    function swap() {
-      [fromUnit, toUnit] = [toUnit, fromUnit];
-      fromUnitSelect.value = fromUnit;
-      toUnitSelect.value = toUnit;
-      fromValueInput.value = toValueInput.value;
-      convert();
-    }
-
-    // Update quick reference
-    function updateQuickReference() {
-      const examples = {
-        length: ['1 km = 1000 m', '1 mile = 1.609 km', '1 inch = 2.54 cm'],
-        weight: ['1 kg = 1000 g', '1 lb = 0.454 kg', '1 ton = 1000 kg'],
-        temperature: ['0°C = 32°F', '100°C = 212°F', '0 K = -273.15°C'],
-        volume: ['1 L = 1000 mL', '1 gal = 3.785 L', '1 m³ = 1000 L'],
-        area: ['1 km² = 1,000,000 m²', '1 ha = 10,000 m²', '1 ac = 4,047 m²'],
-        speed: ['1 m/s = 3.6 km/h', '1 mph = 1.609 km/h', '1 knot = 1.852 km/h']
-      };
-
-      quickReference.innerHTML = examples[currentCategory]
-        .map(ex => `<p style="margin: 0.5rem 0;">• ${ex}</p>`)
-        .join('');
-    }
-
-    // Event listeners
-    categorySelect.addEventListener('change', (e) => {
-      currentCategory = e.target.value;
-      populateUnits();
-      convert();
-      updateQuickReference();
-    });
-
-    fromValueInput.addEventListener('input', convert);
-    fromUnitSelect.addEventListener('change', (e) => {
-      fromUnit = e.target.value;
-      convert();
-    });
-    toUnitSelect.addEventListener('change', (e) => {
-      toUnit = e.target.value;
-      convert();
-    });
-    swapBtn.addEventListener('click', swap);
-
-    // Initialize on load
-    init();
-  </script>
+        // Initialize on load
+        init();
+    </script>
 </body>
 
 </html>

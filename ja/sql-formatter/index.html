@@ -4,13 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+    <meta name="google-adsense-account" content="ca-pub-6334819180242631">
     <title>SQLフォーマッター - Utilify</title>
-    <meta name="description" content="SQLクエリを整形・圧縮します。">
+    <meta name="description" content="SQLクエリを自動的に整形・圧縮。">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="SQL 포매터 - 🛠️ Utilify">
-    <meta property="og:description" content="SQLクエリを整形・圧縮します。">
+    <meta property="og:title" content="SQLフォーマッター - Utilify">
+    <meta property="og:description" content="SQLクエリを自動的に整形・圧縮。">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://utilifyapp.net/ja/sql-formatter/">
 
@@ -18,7 +18,7 @@
     <link rel="canonical" href="https://utilifyapp.net/ja/sql-formatter/">
 
     <!-- Language Alternatives -->
-    <link rel="alternate" hreflang="ko" href="https://utilifyapp.net/ja/sql-formatter/">
+    <link rel="alternate" hreflang="ko" href="https://utilifyapp.net/ko/sql-formatter/">
     <link rel="alternate" hreflang="en" href="https://utilifyapp.net/en/sql-formatter/">
     <link rel="alternate" hreflang="ja" href="https://utilifyapp.net/ja/sql-formatter/">
     <link rel="alternate" hreflang="hi" href="https://utilifyapp.net/hi/sql-formatter/">
@@ -42,10 +42,10 @@
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "SQL 포매터",
-    "description": "SQL 쿼리를 자동으로 정렬하고 포맷팅하세요.",
+    "name": "SQLフォーマッター",
+    "description": "SQLクエリを自動的に整形・圧縮。",
     "url": "https://utilifyapp.net/ja/sql-formatter/",
-    "inLanguage": "ko",
+    "inLanguage": "ja",
     "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "Any",
     "offers": {
@@ -149,7 +149,7 @@
     </style>
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631"
-     crossorigin="anonymous"></script>
+        crossorigin="anonymous"></script>
 
     <link rel="manifest" href="/manifest.json">
 </head>
@@ -168,17 +168,19 @@
     <main class="main-content">
         <div class="container-narrow">
             <h1>🗄️ SQLフォーマッター</h1>
-            <div class="security-badge" style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
-                <span title="Processed securely in client-side">🔒 安全なクライアントサイド処理</span>
-                <button id="pwaInstallBtn" class="btn btn-primary" style="display: none; padding: 4px 12px; font-size: 12px;">📲 アプリをインストール</button>
+            <div class="security-badge"
+                style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
+                <span title="Processed securely in client-side">🔒 Secure & Client-side</span>
+                <button id="pwaInstallBtn" class="btn btn-primary"
+                    style="display: none; padding: 4px 12px; font-size: 12px;">📲 Install App</button>
             </div>
 
-            <p>SQLクエリを整形・圧縮します。</p>
+            <p>SQLクエリを自動的に整形・圧縮。</p>
 
             <!-- Options -->
             <div class="options">
                 <div class="option-group">
-                    <label class="form-label">SQL言語:</label>
+                    <label class="form-label">SQLダイアレクト:</label>
                     <select id="languageSelect" class="form-select">
                         <option value="sql">Standard SQL</option>
                         <option value="mysql">MySQL</option>
@@ -205,19 +207,21 @@
                     <textarea id="inputSQL" placeholder="SELECT * FROM users WHERE id=1"></textarea>
                 </div>
                 <div class="editor-box">
-                    <h3>出力 (整形済)</h3>
+                    <h3>出力 (整形済み)</h3>
                     <textarea id="outputSQL" readonly></textarea>
                 </div>
             </div>
-        
-      <div class="related-tools-section">
-        <h3>関連ツール</h3>
-        <div class="related-buttons">
-          <a href="/ja/json-formatter/" class="related-btn">JSON Formatter</a><a href="/ja/base64-converter/" class="related-btn">Base64 Converter</a><a href="/ja/password-generator/" class="related-btn">Password Generator</a>
-        </div>
-      </div>
 
-</div>
+            <div class="related-tools-section">
+                <h3>関連ツール</h3>
+                <div class="related-buttons">
+                    <a href="/ja/json-formatter/" class="related-btn">JSONフォーマッター</a><a
+                        href="/ja/base64-converter/" class="related-btn">Base64変換</a><a
+                        href="/ja/password-generator/" class="related-btn">パスワード生成</a>
+                </div>
+            </div>
+
+        </div>
     </main>
 
     <footer class="site-footer">
@@ -284,7 +288,7 @@
         // Copy to clipboard
         copyBtn.addEventListener('click', () => {
             if (!outputSQL.value) {
-                alert('コピー할 내용이 없습니다.');
+                alert('コピーする内容がありません。');
                 return;
             }
             Utils.copyToClipboard(outputSQL.value);

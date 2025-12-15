@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="google-adsense-account" content="ca-pub-6334819180242631">
-    <title>Encoder/Decoder Base64 - Utilify</title>
+    <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+    <title>Base64 Encoder/Decoder - Utilify</title>
     <meta name="description" content="Encode or decode text to Base64.">
     <link rel="canonical" href="https://utilifyapp.net/id/base64-converter/">
     <link rel="stylesheet" href="/assets/css/main.css">
@@ -44,7 +44,7 @@
         }
     </style>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631"
-     crossorigin="anonymous"></script>
+        crossorigin="anonymous"></script>
     <link rel="manifest" href="/manifest.json">
 </head>
 
@@ -56,40 +56,44 @@
     </header>
     <main class="main-content">
         <div class="container-narrow">
-            <h1>🔐 Konverter Base64</h1>
-            <div class="security-badge" style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
+            <h1>🔐 Base64 Encoder/Decoder</h1>
+            <div class="security-badge"
+                style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
                 <span title="Processed securely in client-side">🔒 Secure & Client-side</span>
-                <button id="pwaInstallBtn" class="btn btn-primary" style="display: none; padding: 4px 12px; font-size: 12px;">📲 Install App</button>
+                <button id="pwaInstallBtn" class="btn btn-primary"
+                    style="display: none; padding: 4px 12px; font-size: 12px;">📲 Install App</button>
             </div>
 
             <p>Encode or decode text to Base64.</p>
             <div class="converter-box">
                 <label class="form-label">Input Text</label>
                 <textarea id="input" class="form-input" style="min-height: 150px;"
-                    placeholder="Masukkan teks untuk dikodekan">Hello World!</textarea>
+                    placeholder="Enter text to encode">Hello World!</textarea>
                 <div class="btn-group">
                     <button class="btn btn-primary" id="encodeBtn">⬇️ Encode</button>
                     <button class="btn btn-primary" id="decodeBtn">⬆️ Decode</button>
-                    <button class="btn btn-secondary" id="copyBtn">📋 Salin</button>
-                    <button class="btn btn-secondary" id="clearBtn">🗑️ Hapus</button>
+                    <button class="btn btn-secondary" id="copyBtn">📋 Copy</button>
+                    <button class="btn btn-secondary" id="clearBtn">🗑️ Clear</button>
                 </div>
                 <label class="form-label">Output Result</label>
                 <textarea id="output" class="form-input" style="min-height: 150px;" readonly></textarea>
             </div>
-        
-      <div class="related-tools-section">
-        <h3>Alat Terkait</h3>
-        <div class="related-buttons">
-          <a href="/id/json-formatter/" class="related-btn">JSON Formatter</a><a href="/id/sql-formatter/" class="related-btn">SQL Formatter</a><a href="/id/password-generator/" class="related-btn">Password Generator</a>
-        </div>
-      </div>
 
-</div>
+            <div class="related-tools-section">
+                <h3>Related Tools</h3>
+                <div class="related-buttons">
+                    <a href="/id/json-formatter/" class="related-btn">JSON Formatter</a><a
+                        href="/id/sql-formatter/" class="related-btn">SQL Formatter</a><a
+                        href="/id/password-generator/" class="related-btn">Password Generator</a>
+                </div>
+            </div>
+
+        </div>
     </main>
     <footer class="site-footer">
         <div class="container">
             <div class="footer-content">
-                <p>&copy; 2025 Utilify</p>
+                <p>&copy; 2025 Utilify. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -102,7 +106,7 @@
             try {
                 output.value = btoa(unescape(encodeURIComponent(input.value)));
             } catch (e) {
-                alert('Kesalahan Enkode: ' + e.message);
+                alert('Encoding Error: ' + e.message);
             }
         });
 
@@ -110,13 +114,13 @@
             try {
                 output.value = decodeURIComponent(escape(atob(input.value)));
             } catch (e) {
-                alert('Kesalahan Dekode: ' + e.message);
+                alert('Decoding Error: ' + e.message);
             }
         });
 
         document.getElementById('copyBtn').addEventListener('click', () => {
             if (output.value) Utils.copyToClipboard(output.value);
-            else alert('Salin할 내용이 없습니다.');
+            else alert('Nothing to copy.');
         });
 
         document.getElementById('clearBtn').addEventListener('click', () => {

@@ -6,8 +6,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>이미지 워터마크 & 불법 복제 방지기 - Utilify</title>
     <meta name="description" content="이미지에 워터마크를 일괄 적용하고 WebP로 최적화하여 불법 복제를 방지하세요. 쇼핑몰 이미지 대량 처리에 최적화되었습니다.">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="이미지 워터마크 & 불법 복제 방지기 - Utilify">
+    <meta property="og:description" content="이미지에 워터마크를 일괄 적용하고 WebP로 최적화하여 불법 복제를 방지하세요. 쇼핑몰 이미지 대량 처리에 최적화되었습니다.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://utilifyapp.net/ko/image-watermark/">
+
+    <!-- Canonical -->
     <link rel="canonical" href="https://utilifyapp.net/ko/image-watermark/">
+
+    <!-- Language Alternatives -->
+    <link rel="alternate" hreflang="ko" href="https://utilifyapp.net/ko/image-watermark/">
+    <link rel="alternate" hreflang="en" href="https://utilifyapp.net/en/image-watermark/">
+    <link rel="alternate" hreflang="ja" href="https://utilifyapp.net/ja/image-watermark/">
+    <link rel="alternate" hreflang="hi" href="https://utilifyapp.net/hi/image-watermark/">
+    <link rel="alternate" hreflang="id" href="https://utilifyapp.net/id/image-watermark/">
+    <link rel="alternate" hreflang="vi" href="https://utilifyapp.net/vi/image-watermark/">
+    <link rel="alternate" hreflang="th" href="https://utilifyapp.net/th/image-watermark/">
+    <link rel="alternate" hreflang="de" href="https://utilifyapp.net/de/image-watermark/">
+    <link rel="alternate" hreflang="pt" href="https://utilifyapp.net/pt/image-watermark/">
+    <link rel="alternate" hreflang="x-default" href="https://utilifyapp.net/en/image-watermark/">
+
     <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "이미지 불법 복제 방지기 (워터마크)",
+      "description": "이미지에 워터마크를 일괄 적용하고 WebP로 최적화하여 불법 복제를 방지하세요. 쇼핑몰 이미지 대량 처리에 최적화되었습니다.",
+      "url": "https://utilifyapp.net/ko/image-watermark/",
+      "inLanguage": "ko",
+      "applicationCategory": "UtilitiesApplication"
+    }
+    </script>
 
     <!-- Libraries -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
@@ -61,7 +95,6 @@
             max-width: 100%;
             border: 1px solid var(--border-color);
             background: #eee;
-            /* Checkboard pattern ideally */
             max-height: 400px;
         }
 
@@ -82,6 +115,7 @@
             border-bottom: 1px solid var(--border-color);
         }
     </style>
+    <link rel="manifest" href="/manifest.json">
 </head>
 
 <body>
@@ -93,6 +127,13 @@
     <main class="main-content">
         <div class="container">
             <h1>🛡️ 이미지 불법 복제 방지기 (워터마크)</h1>
+            <div class="security-badge"
+                style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
+                <span title="Processed securely in client-side">🔒 Secure & Client-side</span>
+                <button id="pwaInstallBtn" class="btn btn-primary"
+                    style="display: none; padding: 4px 12px; font-size: 12px;">📲 Install App</button>
+            </div>
+
             <p>상품 이미지 수백 장을 한 번에! 워터마크를 박고 WebP로 압축하여 트래픽까지 아끼세요.</p>
 
             <div class="tool-box">
@@ -104,7 +145,7 @@
                     <p style="color: var(--text-secondary);">JPG, PNG, WebP 지원</p>
                 </div>
                 <div id="fileListContainer" style="display: none;">
-                    <h4>선택된 파일: <span id="fileCount">0</span>장</h4>
+                    <h4>선택된 파일: <span id="fileCount">0</span></h4>
                     <div class="file-list" id="fileList"></div>
                 </div>
 
@@ -113,7 +154,8 @@
                     <div>
                         <h3>미리보기</h3>
                         <canvas id="previewCanvas" class="preview-canvas"></canvas>
-                        <p style="font-size: 12px; color: var(--text-secondary);">* 첫 번째 이미지를 기준으로 미리보여줍니다.</p>
+                        <p style="font-size: 12px; color: var(--text-secondary);">* 첫 번째 이미지를 기준으로 미리보여줍니다.
+                        </p>
                     </div>
 
                     <!-- Right: Settings -->
@@ -158,11 +200,11 @@
 
                         <button id="processBtn" class="btn btn-primary"
                             style="width: 100%; padding: 15px; margin-top: 20px;">
-                            🚀 일괄 변환 및 다운로드 (ZIP)
+                            일괄 변환 및 다운로드 (ZIP)
                         </button>
                         <button id="resetBtn" class="btn btn-secondary"
                             style="width: 100%; padding: 10px; margin-top: 10px;">
-                            🔄 설정 초기화
+                            설정 초기화
                         </button>
                         <div id="progressArea" style="display: none; margin-top: 10px;">
                             <progress id="progressBar" value="0" max="100" style="width: 100%;"></progress>
@@ -171,12 +213,23 @@
                     </div>
                 </div>
             </div>
+
+            <div class="related-tools-section">
+                <h3>함께 보면 좋은 도구</h3>
+                <div class="related-buttons">
+                    <a href="/ko/image-converter/" class="related-btn">이미지 변환기</a><a
+                        href="/ko/thumbnail-downloader/" class="related-btn">썸네일 다운로더</a><a
+                        href="/ko/color-converter/" class="related-btn">색상 변환기</a><a
+                        href="/ko/favicon-generator/" class="related-btn">파비콘 생성기</a>
+                </div>
+            </div>
+
         </div>
     </main>
     <footer class="site-footer">
         <div class="container">
             <div class="footer-content">
-                <p>&copy; 2025 Utilify</p>
+                <p>&copy; 2025 Utilify. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -336,7 +389,7 @@
                         ctx.fillText(text, x, y);
                     }
                 }
-                ctx.rotate(45 * Math.PI / 180); // Reset rotation (simplified, might be buggy for complex redrawing but ok for preview)
+                ctx.rotate(45 * Math.PI / 180);
             }
         }
 
@@ -375,7 +428,7 @@
                     processedCount++;
                     const percent = Math.round((processedCount / filesToProcess.length) * 100);
                     progressBar.value = percent;
-                    progressText.textContent = `${processedCount} / ${filesToProcess.length} 처리 중...`;
+                    progressText.textContent = `처리 중... ${processedCount} / ${filesToProcess.length}...`;
                 } catch (e) {
                     console.error("Error processing file", file.name, e);
                 }
@@ -396,7 +449,7 @@
                     const img = new Image();
                     img.onload = () => {
                         const canvas = document.createElement('canvas');
-                        canvas.width = img.width; // Use original resolution
+                        canvas.width = img.width;
                         canvas.height = img.height;
                         const ctx = canvas.getContext('2d');
 

@@ -2,43 +2,43 @@
 <html lang="ko">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="google-adsense-account" content="ca-pub-6334819180242631">
-  <title>JSON 포매터 & 검증기 (Pretty Print, Minify) - Utilify</title>
-  <meta name="description" content="JSON 데이터를 포맷팅(Pretty Print)하고 유효성을 검사(Validator)하세요. 개발자를 위한 광고 없는 깔끔한 도구.">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+    <title>JSON 포매터 & 검증기 (Pretty Print, Minify) - Utilify</title>
+    <meta name="description" content="JSON 데이터를 포맷팅(Pretty Print)하고 유효성을 검사(Validator)하세요. 개발자를 위한 광고 없는 깔끔한 도구.">
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="JSON 포매터 & 검증기 - Utilify">
-  <meta property="og:description" content="JSON 데이터를 포맷팅하고 유효성을 검사하세요. 개발자를 위한 광고 없는 도구.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://utilifyapp.net/ko/json-formatter/">
+    <!-- Open Graph -->
+    <meta property="og:title" content="JSON 포매터 & 검증기 - Utilify">
+    <meta property="og:description" content="JSON 데이터를 포맷팅하고 유효성을 검사하세요. 개발자를 위한 광고 없는 도구.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://utilifyapp.net/ko/json-formatter/">
 
-  <!-- Canonical -->
-  <link rel="canonical" href="https://utilifyapp.net/ko/json-formatter/">
+    <!-- Canonical -->
+    <link rel="canonical" href="https://utilifyapp.net/ko/json-formatter/">
 
-  <!-- Language Alternatives -->
-  <link rel="alternate" hreflang="ko" href="https://utilifyapp.net/ko/json-formatter/">
-  <link rel="alternate" hreflang="en" href="https://utilifyapp.net/en/json-formatter/">
-  <link rel="alternate" hreflang="ja" href="https://utilifyapp.net/ja/json-formatter/">
-  <link rel="alternate" hreflang="hi" href="https://utilifyapp.net/hi/json-formatter/">
-  <link rel="alternate" hreflang="id" href="https://utilifyapp.net/id/json-formatter/">
-  <link rel="alternate" hreflang="vi" href="https://utilifyapp.net/vi/json-formatter/">
-  <link rel="alternate" hreflang="th" href="https://utilifyapp.net/th/json-formatter/">
-  <link rel="alternate" hreflang="de" href="https://utilifyapp.net/de/json-formatter/">
-  <link rel="alternate" hreflang="pt" href="https://utilifyapp.net/pt/json-formatter/">
-  <link rel="alternate" hreflang="x-default" href="https://utilifyapp.net/en/json-formatter/">
+    <!-- Language Alternatives -->
+    <link rel="alternate" hreflang="ko" href="https://utilifyapp.net/ko/json-formatter/">
+    <link rel="alternate" hreflang="en" href="https://utilifyapp.net/en/json-formatter/">
+    <link rel="alternate" hreflang="ja" href="https://utilifyapp.net/ja/json-formatter/">
+    <link rel="alternate" hreflang="hi" href="https://utilifyapp.net/hi/json-formatter/">
+    <link rel="alternate" hreflang="id" href="https://utilifyapp.net/id/json-formatter/">
+    <link rel="alternate" hreflang="vi" href="https://utilifyapp.net/vi/json-formatter/">
+    <link rel="alternate" hreflang="th" href="https://utilifyapp.net/th/json-formatter/">
+    <link rel="alternate" hreflang="de" href="https://utilifyapp.net/de/json-formatter/">
+    <link rel="alternate" hreflang="pt" href="https://utilifyapp.net/pt/json-formatter/">
+    <link rel="alternate" hreflang="x-default" href="https://utilifyapp.net/en/json-formatter/">
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Styles -->
-  <link rel="stylesheet" href="/assets/css/main.css">
+    <!-- Styles -->
+    <link rel="stylesheet" href="/assets/css/main.css">
 
-  <!-- JSON-LD -->
-  <script type="application/ld+json">
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
@@ -56,225 +56,224 @@
   }
   </script>
 
-  <style>
-    .editor-container {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--spacing-lg);
-      margin-top: var(--spacing-lg);
-    }
+    <style>
+        .editor-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-lg);
+        }
 
-    .editor-panel {
-      display: flex;
-      flex-direction: column;
-      gap: var(--spacing-md);
-    }
+        .editor-panel {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+        }
 
-    .json-textarea {
-      font-family: var(--font-mono);
-      min-height: 400px;
-      resize: vertical;
-    }
+        .json-textarea {
+            font-family: var(--font-mono);
+            min-height: 400px;
+            resize: vertical;
+        }
 
-    .validation-status {
-      padding: var(--spacing-md);
-      border-radius: var(--radius-md);
-      font-weight: 500;
-      text-align: center;
-    }
+        .validation-status {
+            padding: var(--spacing-md);
+            border-radius: var(--radius-md);
+            font-weight: 500;
+            text-align: center;
+        }
 
-    .validation-status.valid {
-      background: #d1fae5;
-      color: #065f46;
-      border: 1px solid #10b981;
-    }
+        .validation-status.valid {
+            background: #d1fae5;
+            color: #065f46;
+            border: 1px solid #10b981;
+        }
 
-    .validation-status.invalid {
-      background: #fee2e2;
-      color: #991b1b;
-      border: 1px solid #ef4444;
-    }
+        .validation-status.invalid {
+            background: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #ef4444;
+        }
 
-    .error-message {
-      background: var(--bg-tertiary);
-      padding: var(--spacing-md);
-      border-radius: var(--radius-md);
-      font-family: var(--font-mono);
-      font-size: 0.875rem;
-      color: var(--text-secondary);
-      white-space: pre-wrap;
-      word-break: break-word;
-    }
+        .error-message {
+            background: var(--bg-tertiary);
+            padding: var(--spacing-md);
+            border-radius: var(--radius-md);
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
 
-    @media (max-width: 768px) {
-      .editor-container {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    
-  </style>
-  <!-- Google AdSense -->
-  <!-- Google AdSense Removed for Developer Experience -->
-  <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631"
+        @media (max-width: 768px) {
+            .editor-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <!-- Google AdSense -->
+    <!-- Google AdSense Removed for Developer Experience -->
+    <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631"
      crossorigin="anonymous"></script> -->
 
     <link rel="manifest" href="/manifest.json">
 </head>
 
 <body>
-  <header class="site-header">
-    <div class="container">
-      <div class="header-content">
-        <a href="/ko/" class="site-logo">
-          🛠️ Utilify
-        </a>
-      </div>
-    </div>
-  </header>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/ko/" class="site-logo">
+                    🛠️ Utilify
+                </a>
+            </div>
+        </div>
+    </header>
 
-  <main class="main-content">
-    <div class="container-narrow">
-      <h1>{{ }} JSON 포매터</h1>
-            <div class="security-badge" style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
+    <main class="main-content">
+        <div class="container-narrow">
+            <h1>JSON 포매터</h1>
+            <div class="security-badge"
+                style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
                 <span title="Processed securely in client-side">🔒 Secure & Client-side</span>
-                <button id="pwaInstallBtn" class="btn btn-primary" style="display: none; padding: 4px 12px; font-size: 12px;">📲 Install App</button>
+                <button id="pwaInstallBtn" class="btn btn-primary"
+                    style="display: none; padding: 4px 12px; font-size: 12px;">📲 Install App</button>
             </div>
 
-      <p>JSON 데이터를 포맷팅하고 유효성을 검사하세요. 개발자를 위해 광고를 제거했습니다.</p>
-
-      
+            <p>JSON 데이터를 포맷팅하고 유효성을 검사하세요. 개발자를 위해 광고를 제거했습니다.</p>
 
 
 
-      <!-- Action Buttons -->
-      <div class="btn-group">
-        <button class="btn btn-primary" onclick="formatJSON()">포맷</button>
-        <button class="btn btn-secondary" onclick="minifyJSON()">압축</button>
-        <button class="btn btn-secondary" onclick="validateJSON()">검증</button>
-        <button class="btn btn-secondary" onclick="copyOutput()">복사</button>
-        <button class="btn btn-secondary" onclick="clearAll()">지우기</button>
-      </div>
+            <!-- Action Buttons -->
+            <div class="btn-group">
+                <button class="btn btn-primary" onclick="formatJSON()">포맷</button>
+                <button class="btn btn-secondary" onclick="minifyJSON()">압축</button>
+                <button class="btn btn-secondary" onclick="validateJSON()">검증</button>
+                <button class="btn btn-secondary" onclick="copyOutput()">복사</button>
+                <button class="btn btn-secondary" onclick="clearAll()">지우기</button>
+            </div>
 
-      <!-- Editors -->
-      <div class="editor-container">
-        <div class="editor-panel">
-          <label class="form-label">JSON 입력</label>
-          <textarea id="jsonInput" class="form-textarea json-textarea" placeholder="JSON 데이터를 입력하세요..."></textarea>
+            <!-- Editors -->
+            <div class="editor-container">
+                <div class="editor-panel">
+                    <label class="form-label">JSON 입력</label>
+                    <textarea id="jsonInput" class="form-textarea json-textarea"
+                        placeholder="JSON 데이터를 입력하세요..."></textarea>
+                </div>
+
+                <div class="editor-panel">
+                    <label class="form-label">결과</label>
+                    <textarea id="jsonOutput" class="form-textarea json-textarea" readonly></textarea>
+                </div>
+            </div>
+
+            <!-- Validation Status -->
+            <div id="validationStatus" style="display: none;"></div>
+            <div id="errorMessage" style="display: none;"></div>
+
+            <div class="related-tools-section">
+                <h3>함께 보면 좋은 도구</h3>
+                <div class="related-buttons">
+                    <a href="/ko/sql-formatter/" class="related-btn">SQL 포매터</a><a
+                        href="/ko/base64-converter/" class="related-btn">Base64 변환기</a><a
+                        href="/ko/password-generator/" class="related-btn">비밀번호 생성기</a>
+                </div>
+            </div>
+
         </div>
+    </main>
 
-        <div class="editor-panel">
-          <label class="form-label">결과</label>
-          <textarea id="jsonOutput" class="form-textarea json-textarea" readonly></textarea>
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Utilify. All rights reserved.</p>
+            </div>
         </div>
-      </div>
+    </footer>
 
-      <!-- Validation Status -->
-      <div id="validationStatus" style="display: none;"></div>
-      <div id="errorMessage" style="display: none;"></div>
+    <script src="/assets/js/common.js"></script>
+    <script>
+        const input = document.getElementById('jsonInput');
+        const output = document.getElementById('jsonOutput');
+        const validationStatus = document.getElementById('validationStatus');
+        const errorMessage = document.getElementById('errorMessage');
 
-
-
-      <div class="related-tools-section">
-        <h3>함께 보면 좋은 도구</h3>
-        <div class="related-buttons">
-          <a href="/ko/sql-formatter/" class="related-btn">SQL 포매터</a><a href="/ko/base64-converter/" class="related-btn">Base64 변환기</a><a href="/ko/password-generator/" class="related-btn">비밀번호 생성기</a>
-        </div>
-      </div>
-
-    </div>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-content">
-        <p>&copy; 2025 Utilify. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
-
-  <script src="/assets/js/common.js"></script>
-  <script>
-    const input = document.getElementById('jsonInput');
-    const output = document.getElementById('jsonOutput');
-    const validationStatus = document.getElementById('validationStatus');
-    const errorMessage = document.getElementById('errorMessage');
-
-    function formatJSON() {
-      try {
-        const json = JSON.parse(input.value);
-        output.value = JSON.stringify(json, null, 2);
-        showValidation(true);
-      } catch (e) {
-        showValidation(false, e.message);
-      }
-    }
-
-    function minifyJSON() {
-      try {
-        const json = JSON.parse(input.value);
-        output.value = JSON.stringify(json);
-        showValidation(true);
-      } catch (e) {
-        showValidation(false, e.message);
-      }
-    }
-
-    function validateJSON() {
-      try {
-        JSON.parse(input.value);
-        showValidation(true);
-        output.value = '';
-      } catch (e) {
-        showValidation(false, e.message);
-        output.value = '';
-      }
-    }
-
-    function copyOutput() {
-      if (output.value) {
-        Utils.copyToClipboard(output.value);
-      } else {
-        Utils.showToast('✗ 유효하지 않은 JSON입니다');
-      }
-    }
-
-    function clearAll() {
-      input.value = '';
-      output.value = '';
-      validationStatus.style.display = 'none';
-      errorMessage.style.display = 'none';
-    }
-
-    function showValidation(isValid, error = '') {
-      validationStatus.style.display = 'block';
-      validationStatus.className = 'validation-status ' + (isValid ? 'valid' : 'invalid');
-      validationStatus.textContent = isValid ? '✓ 유효한 JSON입니다' : '✗ 유효하지 않은 JSON입니다';
-
-      if (error) {
-        errorMessage.style.display = 'block';
-        errorMessage.className = 'error-message';
-        errorMessage.textContent = '오류: ' + error;
-      } else {
-        errorMessage.style.display = 'none';
-      }
-    }
-
-    // Auto-validate on input
-    input.addEventListener('input', Utils.debounce(() => {
-      if (input.value.trim()) {
-        try {
-          JSON.parse(input.value);
-          showValidation(true);
-        } catch (e) {
-          // Don't show error while typing
+        function formatJSON() {
+            try {
+                const json = JSON.parse(input.value);
+                output.value = JSON.stringify(json, null, 2);
+                showValidation(true);
+            } catch (e) {
+                showValidation(false, e.message);
+            }
         }
-      } else {
-        validationStatus.style.display = 'none';
-        errorMessage.style.display = 'none';
-      }
-    }, 500));
-  </script>
+
+        function minifyJSON() {
+            try {
+                const json = JSON.parse(input.value);
+                output.value = JSON.stringify(json);
+                showValidation(true);
+            } catch (e) {
+                showValidation(false, e.message);
+            }
+        }
+
+        function validateJSON() {
+            try {
+                JSON.parse(input.value);
+                showValidation(true);
+                output.value = '';
+            } catch (e) {
+                showValidation(false, e.message);
+                output.value = '';
+            }
+        }
+
+        function copyOutput() {
+            if (output.value) {
+                Utils.copyToClipboard(output.value);
+            } else {
+                Utils.showToast('✗ 유효하지 않은 JSON입니다');
+            }
+        }
+
+        function clearAll() {
+            input.value = '';
+            output.value = '';
+            validationStatus.style.display = 'none';
+            errorMessage.style.display = 'none';
+        }
+
+        function showValidation(isValid, error = '') {
+            validationStatus.style.display = 'block';
+            validationStatus.className = 'validation-status ' + (isValid ? 'valid' : 'invalid');
+            validationStatus.textContent = isValid ? '✓ 유효한 JSON입니다' : '✗ 유효하지 않은 JSON입니다';
+
+            if (error) {
+                errorMessage.style.display = 'block';
+                errorMessage.className = 'error-message';
+                errorMessage.textContent = '오류: ' + error;
+            } else {
+                errorMessage.style.display = 'none';
+            }
+        }
+
+        // Auto-validate on input
+        input.addEventListener('input', Utils.debounce(() => {
+            if (input.value.trim()) {
+                try {
+                    JSON.parse(input.value);
+                    showValidation(true);
+                } catch (e) {
+                    // Don't show error while typing
+                }
+            } else {
+                validationStatus.style.display = 'none';
+                errorMessage.style.display = 'none';
+            }
+        }, 500));
+    </script>
 </body>
 
 </html>

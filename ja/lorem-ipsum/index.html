@@ -4,11 +4,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="google-adsense-account" content="ca-pub-6334819180242631">
-    <title>Lorem Ipsum生成器 - Utilify</title>
-    <meta name="description" content="Lorem Ipsumダミーテキストを生成します。">
+    <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+    <title>Lorem Ipsum Generator - Utilify</title>
+    <meta name="description" content="Generate Lorem Ipsum dummy text.">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Lorem Ipsum Generator - Utilify">
+    <meta property="og:description" content="Generate Lorem Ipsum dummy text.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://utilifyapp.net/ja/lorem-ipsum/">
+
+    <!-- Canonical -->
     <link rel="canonical" href="https://utilifyapp.net/ja/lorem-ipsum/">
+
+    <!-- Language Alternatives -->
+    <link rel="alternate" hreflang="ko" href="https://utilifyapp.net/ko/lorem-ipsum/">
+    <link rel="alternate" hreflang="en" href="https://utilifyapp.net/en/lorem-ipsum/">
+    <link rel="alternate" hreflang="ja" href="https://utilifyapp.net/ja/lorem-ipsum/">
+    <link rel="alternate" hreflang="hi" href="https://utilifyapp.net/hi/lorem-ipsum/">
+    <link rel="alternate" hreflang="id" href="https://utilifyapp.net/id/lorem-ipsum/">
+    <link rel="alternate" hreflang="vi" href="https://utilifyapp.net/vi/lorem-ipsum/">
+    <link rel="alternate" hreflang="th" href="https://utilifyapp.net/th/lorem-ipsum/">
+    <link rel="alternate" hreflang="de" href="https://utilifyapp.net/de/lorem-ipsum/">
+    <link rel="alternate" hreflang="pt" href="https://utilifyapp.net/pt/lorem-ipsum/">
+    <link rel="alternate" hreflang="x-default" href="https://utilifyapp.net/en/lorem-ipsum/">
+
     <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Lorem Ipsum Generator",
+      "description": "Generate Lorem Ipsum dummy text.",
+      "url": "https://utilifyapp.net/ja/lorem-ipsum/",
+      "inLanguage": "ja",
+      "applicationCategory": "UtilitiesApplication"
+    }
+    </script>
+
     <style>
         .options {
             background: var(--bg-primary);
@@ -44,7 +79,7 @@
         }
     </style>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631"
-     crossorigin="anonymous"></script>
+        crossorigin="anonymous"></script>
     <link rel="manifest" href="/manifest.json">
 </head>
 
@@ -56,49 +91,54 @@
     </header>
     <main class="main-content">
         <div class="container-narrow">
-            <h1>📋 ダミーテキスト生成</h1>
-            <div class="security-badge" style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
-                <span title="Processed securely in client-side">🔒 安全なクライアントサイド処理</span>
-                <button id="pwaInstallBtn" class="btn btn-primary" style="display: none; padding: 4px 12px; font-size: 12px;">📲 アプリをインストール</button>
+            <h1>📋 Lorem Ipsum Generator</h1>
+            <div class="security-badge"
+                style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
+                <span title="Processed securely in client-side">🔒 Secure & Client-side</span>
+                <button id="pwaInstallBtn" class="btn btn-primary"
+                    style="display: none; padding: 4px 12px; font-size: 12px;">📲 Install App</button>
             </div>
 
-            <p>Lorem Ipsumダミーテキストを生成します。</p>
+            <p>Generate Lorem Ipsum dummy text.</p>
             <div class="options">
                 <div class="option-group">
-                    <label class="form-label">タイプ:</label>
+                    <label class="form-label">Type:</label>
                     <select id="type" class="form-select">
-                        <option value="paragraphs">段落</option>
-                        <option value="words">単語</option>
-                        <option value="sentences">文章</option>
+                        <option value="paragraphs">Paragraphs</option>
+                        <option value="words">Words</option>
+                        <option value="sentences">Sentences</option>
                     </select>
                 </div>
                 <div class="option-group">
-                    <label class="form-label">数:</label>
+                    <label class="form-label">Count:</label>
                     <input type="number" id="count" class="form-input" value="3" min="1" max="100"
                         style="width: 100px;">
                 </div>
                 <div style="display: flex; gap: var(--spacing-md);">
-                    <button class="btn btn-primary" id="generateBtn">生成</button>
-                    <button class="btn btn-secondary" id="copyBtn">コピー</button>
+                    <button class="btn btn-primary" id="generateBtn">Generate</button>
+                    <button class="btn btn-secondary" id="copyBtn">Copy</button>
                 </div>
             </div>
             <div>
                 <textarea id="output" class="form-input" style="min-height: 300px;" readonly></textarea>
             </div>
-        
-      <div class="related-tools-section">
-        <h3>関連ツール</h3>
-        <div class="related-buttons">
-          <a href="/ja/text-utils/" class="related-btn">Text Utils</a><a href="/ja/diff-checker/" class="related-btn">Diff Checker</a><a href="/ja/regex-tester/" class="related-btn">Regex Tester</a><a href="/ja/markdown-previewer/" class="related-btn">Markdown Preview</a>
-        </div>
-      </div>
 
-</div>
+            <div class="related-tools-section">
+                <h3>Related Tools</h3>
+                <div class="related-buttons">
+                    <a href="/ja/text-utils/" class="related-btn">Text Utils</a><a
+                        href="/ja/diff-checker/" class="related-btn">Diff Checker</a><a
+                        href="/ja/regex-tester/" class="related-btn">Regex Tester</a><a
+                        href="/ja/markdown-previewer/" class="related-btn">Markdown Preview</a>
+                </div>
+            </div>
+
+        </div>
     </main>
     <footer class="site-footer">
         <div class="container">
             <div class="footer-content">
-                <p>&copy; 2025 Utilify</p>
+                <p>&copy; 2025 Utilify. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -143,7 +183,7 @@
         document.getElementById('copyBtn').addEventListener('click', () => {
             const output = document.getElementById('output').value;
             if (output) Utils.copyToClipboard(output);
-            else alert('먼저 텍스트를 생성하세요.');
+            else alert('Generate text first.');
         });
 
         // Generate on load
