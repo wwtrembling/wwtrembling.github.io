@@ -34,6 +34,170 @@ COMMON = {
     "zh-tw": {"brand": "🛠️ Utilify", "footer": "&copy; 2025 Utilify. 版權所有。", "secure_badge": "🔒 安全 & 用戶端處理", "install_app": "📲 安裝應用"},
 }
 
+
+JSON_TO_EXCEL = {
+    "en": {"title": "JSON to Excel Converter", "page_desc": "Convert JSON data to Excel and download. (Secure)"},
+    "ko": {"title": "JSON to Excel 변환기", "page_desc": "JSON 데이터를 엑셀로 변환하고 다운로드하세요. (보안)"},
+    "zh-cn": {"title": "JSON 转 Excel", "page_desc": "将 JSON 数据转换为 Excel 并下载。（安全）"},
+    "zh-tw": {"title": "JSON 轉 Excel", "page_desc": "將 JSON 數據轉換為 Excel 並下載。（安全）"},
+    "ja": {"title": "JSON Excel 変換", "page_desc": "JSONデータをExcelに変換してダウンロードします。（安全）"}
+}
+
+JSON_LD_GENERATOR = {
+    "en": {"title": "SEO JSON-LD Generator", "page_desc": "Create structured data (schema) for Google/Naver exposure."},
+    "ko": {"title": "SEO JSON-LD 생성기", "page_desc": "구글/네이버 노출을 위한 구조화된 데이터(스키마)를 만드세요."},
+    "zh-cn": {"title": "SEO JSON-LD 生成器", "page_desc": "生成用于 Google/Naver 曝光的结构化数据（Schema）。"},
+    "zh-tw": {"title": "SEO JSON-LD 生成器", "page_desc": "生成用於 Google/Naver 曝光的結構化數據（Schema）。"},
+    "ja": {"title": "SEO JSON-LD ジェネレーター", "page_desc": "Google/Naver公開用の構造化データ（スキーマ）を作成します。"}
+}
+
+PDF_TOOLS = {
+    "en": {"title": "PDF Merge/Split", "page_desc": "Merge and split PDFs securely in your browser without server upload."},
+    "ko": {"title": "PDF 병합/분리", "page_desc": "서버 전송 없이 브라우저에서 안전하게 PDF를 합치고 나누세요."},
+    "zh-cn": {"title": "PDF 合并/拆分", "page_desc": "在浏览器中安全地合并和拆分 PDF，无需上传到服务器。"},
+    "zh-tw": {"title": "PDF 合併/拆分", "page_desc": "在瀏覽器中安全地合併和拆分 PDF，無需上傳到伺服器。"},
+    "ja": {"title": "PDF 結合/分割", "page_desc": "サーバーにアップロードせず、ブラウザで安全にPDFを結合・分割します。"}
+}
+
+TEXT_TO_DIAGRAM = {
+    "en": {"title": "Text to Diagram", "page_desc": "Create flowcharts and sequence diagrams from text."},
+    "ko": {"title": "텍스트로 다이어그램 그리기", "page_desc": "텍스트만 입력하면 순서도, 시퀀스 다이어그램이 완성됩니다."},
+    "zh-cn": {"title": "文本转图表", "page_desc": "从文本创建流程图和时序图。"},
+    "zh-tw": {"title": "文本轉圖表", "page_desc": "從文本創建流程圖和時序圖。"},
+    "ja": {"title": "テキスト図解作成", "page_desc": "テキストからフローチャートやシーケンス図を作成します。"}
+}
+
+DAILY_VERSE = {
+    "en": {"title": "Daily Bible Verse", "page_desc": "Get a new Bible verse every day."},
+    "ko": {"title": "오늘의 말씀", "page_desc": "매일 새로운 성경 구절을 받아보세요."},
+    "zh-cn": {"title": "每日经文", "page_desc": "每天获取一句新的圣经经文。"},
+    "zh-tw": {"title": "每日經文", "page_desc": "每天獲取一句新的聖經經文。"},
+    "ja": {"title": "今日の聖書", "page_desc": "毎日新しい聖書の一節を受け取ります。"}
+}
+
+IMAGE_EDITOR = {
+    "en": {"title": "Image Editor", "page_desc": "Crop, rotate, and apply filters to images."},
+    "ko": {"title": "이미지 편집기", "page_desc": "이미지를 자르고, 회전하고, 필터를 적용하세요."},
+    "zh-cn": {"title": "图片编辑器", "page_desc": "裁剪、旋转图片并应用滤镜。"},
+    "zh-tw": {"title": "圖片編輯器", "page_desc": "裁剪、旋轉圖片並應用濾鏡。"},
+    "ja": {"title": "画像エディタ", "page_desc": "画像のトリミング、回転、フィルター適用ができます。"}
+}
+
+JPA_CONVERTER = {
+    "en": {"title": "DB to JPA Converter", "page_desc": "Convert SQL schema to JPA Entity and DTO classes."},
+    "ko": {"title": "DB to JPA 변환기", "page_desc": "SQL 스키마를 JPA Entity, DTO 클래스로 자동 변환합니다."},
+    "zh-cn": {"title": "DB 转 JPA 转换器", "page_desc": "将 SQL 模式转换为 JPA 实体和 DTO 类。"},
+    "zh-tw": {"title": "DB 轉 JPA 轉換器", "page_desc": "將 SQL 模式轉換為 JPA 實體和 DTO 類。"},
+    "ja": {"title": "DB JPA 変換", "page_desc": "SQLスキーマをJPAエンティティとDTOクラスに変換します。"}
+}
+
+JSON_TO_TS = {
+    "en": {"title": "JSON to TS/DTO", "page_desc": "Convert JSON to TypeScript Interface and NestJS DTO."},
+    "ko": {"title": "JSON to TS/DTO", "page_desc": "JSON을 TypeScript Interface 및 NestJS DTO로 변환합니다."},
+    "zh-cn": {"title": "JSON 转 TS/DTO", "page_desc": "将 JSON 转换为 TypeScript 接口和 NestJS DTO。"},
+    "zh-tw": {"title": "JSON 轉 TS/DTO", "page_desc": "將 JSON 轉換為 TypeScript 介面和 NestJS DTO。"},
+    "ja": {"title": "JSON TS/DTO 変換", "page_desc": "JSONをTypeScriptインターフェースとNestJS DTOに変換します。"}
+}
+
+EXCEL_TO_SQL = {
+    "en": {"title": "Excel to SQL", "page_desc": "Convert Excel data to SQL INSERT queries."},
+    "ko": {"title": "Excel to SQL", "page_desc": "엑셀 데이터를 SQL INSERT 쿼리로 변환하는 도구."},
+    "zh-cn": {"title": "Excel 转 SQL", "page_desc": "将 Excel 数据转换为 SQL INSERT 查询。"},
+    "zh-tw": {"title": "Excel 轉 SQL", "page_desc": "將 Excel 數據轉換為 SQL INSERT 查詢。"},
+    "ja": {"title": "Excel SQL 変換", "page_desc": "ExcelデータをSQL INSERTクエリに変換します。"}
+}
+
+INDEX_PAGE = {
+    "en": {
+        "title": "Utilify - Free Online Utilities",
+        "meta_desc": "Collection of free online utilities including unit converter, PDF tools, image converter, calculators, and more. No installation required.",
+        "hero_title": "🛠️ Utilify",
+        "hero_desc": "Free online utilities for everyday tasks. No installation required. Works in your browser.",
+        "h2_tools": "Available Tools",
+        "h2_lang": "Choose Your Language"
+    },
+    "ko": {
+        "title": "무료 온라인 유틸리티 모음 - Utilify",
+        "meta_desc": "단위 변환, PDF 도구, 이미지 변환, 계산기 등 다양한 무료 온라인 도구를 제공합니다.",
+        "hero_title": "🛠️ Utilify",
+        "hero_desc": "설치 없이 브라우저에서 바로 사용하세요",
+        "h2_tools": "사용 가능한 도구",
+        "h2_lang": "언어 선택"
+    },
+    "vi": {
+        "title": "Bộ tiện ích trực tuyến miễn phí - Utilify",
+        "meta_desc": "Bộ sưu tập các tiện ích trực tuyến miễn phí bao gồm chuyển đổi đơn vị, công cụ PDF, chuyển đổi hình ảnh, máy tính và nhiều hơn nữa.",
+        "hero_title": "🛠️ Utilify",
+        "hero_desc": "Các tiện ích trực tuyến miễn phí cho công việc hàng ngày. Không cần cài đặt.",
+        "h2_tools": "Công cụ có sẵn",
+        "h2_lang": "Chọn ngôn ngữ"
+    },
+    "th": {
+        "title": "รวมเครื่องมือออนไลน์ฟรี - Utilify",
+        "meta_desc": "รวมเครื่องมือออนไลน์ฟรี รวมถึงแปลงหน่วย เครื่องมือ PDF แปลงรูปภาพ เครื่องคิดเลข และอื่นๆ",
+        "hero_title": "🛠️ Utilify",
+        "hero_desc": "เครื่องมือออนไลน์ฟรีสำหรับงานประจำวัน ไม่ต้องติดตั้ง",
+        "h2_tools": "เครื่องมือที่มีอยู่",
+        "h2_lang": "เลือกภาษา"
+    },
+    "de": {
+        "title": "Kostenlose Online-Dienstprogramme - Utilify",
+        "meta_desc": "Sammlung kostenloser Online-Dienstprogramme wie Einheitenumrechner, PDF-Tools, Bildkonverter, Rechner und mehr.",
+        "hero_title": "🛠️ Utilify",
+        "hero_desc": "Kostenlose Online-Dienstprogramme für tägliche Aufgaben. Keine Installation erforderlich.",
+        "h2_tools": "Verfügbare Tools",
+        "h2_lang": "Sprache wählen"
+    },
+    "pt": {
+        "title": "Utilitários Online Gratuitos - Utilify",
+        "meta_desc": "Coleção de utilitários online gratuitos, incluindo conversor de unidades, ferramentas PDF, conversor de imagens, calculadoras e muito mais.",
+        "hero_title": "🛠️ Utilify",
+        "hero_desc": "Utilitários online gratuitos para tarefas diárias. Nenhuma instalação necessária.",
+        "h2_tools": "Ferramentas Disponíveis",
+        "h2_lang": "Escolha seu idioma"
+    },
+    "id": {
+        "title": "Utilitas Online Gratis - Utilify",
+        "meta_desc": "Kumpulan utilitas online gratis termasuk konverter unit, alat PDF, konverter gambar, kalkulator, dan banyak lagi.",
+        "hero_title": "🛠️ Utilify",
+        "hero_desc": "Utilitas online gratis untuk tugas sehari-hari. Tidak perlu instalasi.",
+        "h2_tools": "Alat yang Tersedia",
+        "h2_lang": "Pilih Bahasa"
+    },
+    "hi": {
+        "title": "मुफ्त ऑनलाइन उपयोगिताएँ - Utilify",
+        "meta_desc": "यूनिट कन्वर्टर, पीडीएफ टूल्स, इमेज कन्वर्टर, कैलकुलेटर, और अधिक सहित मुफ्त ऑनलाइन उपयोगिताओं का संग्रह।",
+        "hero_title": "🛠️ Utilify",
+        "hero_desc": "रोज़मर्रा के कार्यों के लिए मुफ्त ऑनलाइन उपयोगिताएँ। कोई स्थापना की आवश्यकता नहीं है।",
+        "h2_tools": "उपलब्ध उपकरण",
+        "h2_lang": "अपनी भाषा चुनें"
+    },
+    "ja": {
+        "title": "無料オンラインユーティリティ - Utilify",
+        "meta_desc": "単位変換、PDFツール、画像変換、計算機など、無料のオンラインユーティリティコレクション。",
+        "hero_title": "🛠️ Utilify",
+        "hero_desc": "日常業務のための無料オンラインユーティリティ。インストール不要。",
+        "h2_tools": "利用可能なツール",
+        "h2_lang": "言語を選択"
+    },
+    "zh-cn": {
+        "title": "免费在线工具箱 - Utilify",
+        "meta_desc": "免费在线工具集合，包括单位转换、PDF 工具、图片转换、计算器等。无需安装。",
+        "hero_title": "🛠️ Utilify",
+        "hero_desc": "用于日常任务的免费在线工具。无需安装，浏览器直接使用。",
+        "h2_tools": "可用工具",
+        "h2_lang": "选择语言"
+    },
+    "zh-tw": {
+        "title": "免費線上工具箱 - Utilify",
+        "meta_desc": "免費線上工具集合，包括單位轉換、PDF 工具、圖片轉換、計算器等。無需安裝。",
+        "hero_title": "🛠️ Utilify",
+        "hero_desc": "用於日常任務的免費線上工具。無需安裝，瀏覽器直接使用。",
+        "h2_tools": "可用工具",
+        "h2_lang": "選擇語言"
+    }
+}
+
 SQL_FORMATTER = {
     "en": {
         "title": "SQL Formatter",
