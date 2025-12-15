@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-adsense-account" content="ca-pub-6334819180242631">
     <title>Excel to SQL Insert Converter - Utilify</title>
-    <meta name="description" content="Paste Excel or spreadsheet data to instantly convert to SQL INSERT statements. Automatically detects data types.">
+    <meta name="description"
+        content="Paste Excel or spreadsheet data to instantly convert to SQL INSERT statements. Automatically detects data types.">
     <link rel="canonical" href="https://utilifyapp.net/ko/excel-to-sql/">
     <link rel="stylesheet" href="/assets/css/main.css">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631"
@@ -166,9 +167,11 @@
     <main class="main-content">
         <div class="container">
             <h1>📊 Excel to SQL Insert 변환기</h1>
-            <div class="security-badge" style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
+            <div class="security-badge"
+                style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
                 <span title="Processed securely in client-side">🔒 Seguro e Cliente-side</span>
-                <button id="pwaInstallBtn" class="btn btn-primary" style="display: none; padding: 4px 12px; font-size: 12px;">📲 Instalar App</button>
+                <button id="pwaInstallBtn" class="btn btn-primary"
+                    style="display: none; padding: 4px 12px; font-size: 12px;">📲 Instalar App</button>
             </div>
 
             <p>엑셀 데이터를 Copiar해서 붙여넣으면 SQL INSERT 구문으로 변환해줍니다. 기획자/마케터의 요청을 빠르게 처리하세요.</p>
@@ -192,16 +195,23 @@
 
                 <div class="controls">
                     <div class="option-group">
-                        <label>Use first row as headers</label>
+                        <label>Usar primeira linha como cabeçalho</label>
                         <label class="toggle-switch">
                             <input type="checkbox" id="firstRowHeader" checked>
                             <span class="slider"></span>
                         </label>
                     </div>
                     <div class="option-group">
-                        <label>Smart Type Detection</label>
+                        <label>Detecção Inteligente de Tipo</label>
                         <label class="toggle-switch">
                             <input type="checkbox" id="smartType" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="option-group">
+                        <label>Mascarar Dados Sensíveis (Privacidade)</label>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="maskData">
                             <span class="slider"></span>
                         </label>
                     </div>
@@ -211,20 +221,20 @@
                 </div>
 
                 <div class="input-group">
-                    <label class="form-label">SQL Query</label>
+                    <label class="form-label">Consulta SQL</label>
                     <textarea id="output" class="form-input" style="min-height: 300px;" readonly></textarea>
                 </div>
                 <div class="btn-group" style="justify-content: flex-end;">
-                    <button class="btn btn-primary" id="copyBtn">📋 Copy Code</button>
+                    <button class="btn btn-primary" id="copyBtn">📋 Copiar Código</button>
                 </div>
             </div>
 
             <div class="related-tools-section">
-                <h3>함께 보면 좋은 도구</h3>
+                <h3>Ferramentas Relacionadas</h3>
                 <div class="related-buttons">
-                    <a href="/ko/sql-formatter/" class="related-btn">SQL 포매터</a>
-                    <a href="/ko/jpa-converter/" class="related-btn">DB to JPA</a>
-                    <a href="/ko/json-formatter/" class="related-btn">JSON 포매터</a>
+                    <a href="/pt/sql-formatter/" class="related-btn">Formatador SQL</a>
+                    <a href="/pt/jpa-converter/" class="related-btn">DB para JPA</a>
+                    <a href="/pt/json-formatter/" class="related-btn">Formatador JSON</a>
                 </div>
             </div>
         </div>
@@ -247,13 +257,30 @@
 
         const firstRowHeader = document.getElementById('firstRowHeader');
         const smartType = document.getElementById('smartType');
+        const maskData = document.getElementById('maskData');
 
         function isNumber(val) {
             return !isNaN(val) && !isNaN(parseFloat(val));
         }
 
+        function maskSensitiveInfo(text) {
+            // Phone Number Pattern: General
+            text = text.replace(/(\d{3})[- ]?(\d{3,4})[- ]?(\d{4})/g, '$1-****-$3');
+
+            // Email Masking
+            text = text.replace(/([a-zA-Z0-9._-]+)(@[a-zA-Z0-9._-]+\.[a-z]+)/g, (match, p1, p2) => {
+                if (p1.length <= 3) return p1 + p2;
+                return p1.substring(0, 3) + '****' + p2;
+            });
+
+            return text;
+        }
+
         function formatValue(val) {
             val = val.trim();
+            if (maskData.checked) {
+                val = maskSensitiveInfo(val);
+            }
             if (!smartType.checked) return `'${val}'`;
             if (val === 'NULL' || val === 'null') return 'NULL';
             if (isNumber(val)) return val;
@@ -295,7 +322,7 @@
 
             } catch (e) {
                 console.error(e);
-                output.value = "Error parsing Data: " + e.message;
+                output.value = "Erro ao analisar dados: " + e.message;
             }
         });
 

@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-adsense-account" content="ca-pub-6334819180242631">
     <title>Excel to SQL Insert Converter - Utilify</title>
-    <meta name="description" content="Paste Excel or spreadsheet data to instantly convert to SQL INSERT statements. Automatically detects data types.">
+    <meta name="description"
+        content="Paste Excel or spreadsheet data to instantly convert to SQL INSERT statements. Automatically detects data types.">
     <link rel="canonical" href="https://utilifyapp.net/ko/excel-to-sql/">
     <link rel="stylesheet" href="/assets/css/main.css">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631"
@@ -166,9 +167,11 @@
     <main class="main-content">
         <div class="container">
             <h1>📊 Excel to SQL Insert 변환기</h1>
-            <div class="security-badge" style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
+            <div class="security-badge"
+                style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
                 <span title="Processed securely in client-side">🔒 Secure & Client-side</span>
-                <button id="pwaInstallBtn" class="btn btn-primary" style="display: none; padding: 4px 12px; font-size: 12px;">📲 Install App</button>
+                <button id="pwaInstallBtn" class="btn btn-primary"
+                    style="display: none; padding: 4px 12px; font-size: 12px;">📲 Install App</button>
             </div>
 
             <p>엑셀 데이터를 Copy해서 붙여넣으면 SQL INSERT 구문으로 변환해줍니다. 기획자/마케터의 요청을 빠르게 처리하세요.</p>
@@ -202,6 +205,13 @@
                         <label>Smart Type Detection</label>
                         <label class="toggle-switch">
                             <input type="checkbox" id="smartType" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="option-group">
+                        <label>Mask Sensitive Data (Privacy)</label>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="maskData">
                             <span class="slider"></span>
                         </label>
                     </div>
@@ -248,12 +258,31 @@
         const firstRowHeader = document.getElementById('firstRowHeader');
         const smartType = document.getElementById('smartType');
 
+        const maskData = document.getElementById('maskData');
+
         function isNumber(val) {
             return !isNaN(val) && !isNaN(parseFloat(val));
         }
 
+        function maskSensitiveInfo(text) {
+            // RRN (Keeping the logic general for numbers/phones)
+            // Phone Number Pattern: General
+            text = text.replace(/(\d{3})[- ]?(\d{3,4})[- ]?(\d{4})/g, '$1-****-$3');
+
+            // Email Masking
+            text = text.replace(/([a-zA-Z0-9._-]+)(@[a-zA-Z0-9._-]+\.[a-z]+)/g, (match, p1, p2) => {
+                if (p1.length <= 3) return p1 + p2;
+                return p1.substring(0, 3) + '****' + p2;
+            });
+
+            return text;
+        }
+
         function formatValue(val) {
             val = val.trim();
+            if (maskData.checked) {
+                val = maskSensitiveInfo(val);
+            }
             if (!smartType.checked) return `'${val}'`;
             if (val === 'NULL' || val === 'null') return 'NULL';
             if (isNumber(val)) return val;

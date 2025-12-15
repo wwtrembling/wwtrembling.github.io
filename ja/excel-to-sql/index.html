@@ -166,9 +166,11 @@
     <main class="main-content">
         <div class="container">
             <h1>📊 ExcelからSQLへ Insert 변환기</h1>
-            <div class="security-badge" style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
+            <div class="security-badge"
+                style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
                 <span title="Processed securely in client-side">🔒 安全なクライアントサイド処理</span>
-                <button id="pwaInstallBtn" class="btn btn-primary" style="display: none; padding: 4px 12px; font-size: 12px;">📲 アプリをインストール</button>
+                <button id="pwaInstallBtn" class="btn btn-primary"
+                    style="display: none; padding: 4px 12px; font-size: 12px;">📲 アプリをインストール</button>
             </div>
 
             <p>엑셀 데이터를 コピー해서 붙여넣으면 SQL INSERT 구문으로 변환해줍니다. 기획자/마케터의 요청을 빠르게 처리하세요.</p>
@@ -205,6 +207,13 @@
                             <span class="slider"></span>
                         </label>
                     </div>
+                    <div class="option-group">
+                        <label>個人情報マスキング (保護)</label>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="maskData">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
 
                     <button class="btn btn-primary" id="convertBtn">⚡ 変換</button>
                     <button class="btn btn-secondary" id="clearBtn">🗑️ クリア</button>
@@ -215,16 +224,16 @@
                     <textarea id="output" class="form-input" style="min-height: 300px;" readonly></textarea>
                 </div>
                 <div class="btn-group" style="justify-content: flex-end;">
-                    <button class="btn btn-primary" id="copyBtn">📋 コードをコピー</button>
+                    <button class="btn btn-primary" id="copyBtn">📋 コピー</button>
                 </div>
             </div>
 
             <div class="related-tools-section">
-                <h3>함께 보면 좋은 도구</h3>
+                <h3>関連ツール</h3>
                 <div class="related-buttons">
-                    <a href="/ko/sql-formatter/" class="related-btn">SQL 포매터</a>
-                    <a href="/ko/jpa-converter/" class="related-btn">DB to JPA</a>
-                    <a href="/ko/json-formatter/" class="related-btn">JSON 포매터</a>
+                    <a href="/ja/sql-formatter/" class="related-btn">SQL フォーマッタ</a>
+                    <a href="/ja/jpa-converter/" class="related-btn">DB to JPA</a>
+                    <a href="/ja/json-formatter/" class="related-btn">JSON フォーマッタ</a>
                 </div>
             </div>
         </div>
@@ -247,13 +256,30 @@
 
         const firstRowHeader = document.getElementById('firstRowHeader');
         const smartType = document.getElementById('smartType');
+        const maskData = document.getElementById('maskData');
 
         function isNumber(val) {
             return !isNaN(val) && !isNaN(parseFloat(val));
         }
 
+        function maskSensitiveInfo(text) {
+            // Phone Number Pattern: General
+            text = text.replace(/(\d{3})[- ]?(\d{3,4})[- ]?(\d{4})/g, '$1-****-$3');
+
+            // Email Masking
+            text = text.replace(/([a-zA-Z0-9._-]+)(@[a-zA-Z0-9._-]+\.[a-z]+)/g, (match, p1, p2) => {
+                if (p1.length <= 3) return p1 + p2;
+                return p1.substring(0, 3) + '****' + p2;
+            });
+
+            return text;
+        }
+
         function formatValue(val) {
             val = val.trim();
+            if (maskData.checked) {
+                val = maskSensitiveInfo(val);
+            }
             if (!smartType.checked) return `'${val}'`;
             if (val === 'NULL' || val === 'null') return 'NULL';
             if (isNumber(val)) return val;

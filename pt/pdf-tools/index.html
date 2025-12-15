@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juntar / Dividir PDF (Seguro) - Utilify</title>
+    <meta name="description"
+        content="Junte ou divida arquivos PDF no navegador. Sem upload para servidor (WebAssembly). 100% Seguro.">
+    <link rel="canonical" href="https://utilifyapp.net/pt/pdf-tools/">
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- PDF-Lib -->
+    <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+    <script src="https://unpkg.com/downloadjs@1.4.7/download.min.js"></script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631"
+        crossorigin="anonymous"></script>
+    <style>
+        .tool-container {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .tab-menu {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        .tab-btn {
+            background: none;
+            border: none;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            cursor: pointer;
+            padding: 8px 16px;
+            border-radius: var(--radius-md);
+        }
+
+        .tab-btn.active {
+            color: var(--primary-color);
+            background: rgba(var(--primary-rgb), 0.1);
+        }
+
+        .upload-area {
+            border: 2px dashed var(--border-color);
+            padding: 30px;
+            text-align: center;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            margin-bottom: 20px;
+            background: var(--bg-secondary);
+        }
+
+        .file-list {
+            margin-bottom: 20px;
+        }
+
+        .file-item {
+            display: flex;
+            justify-content: space-between;
+            background: var(--bg-secondary);
+            padding: 10px;
+            margin-bottom: 5px;
+            border-radius: var(--radius-sm);
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content"><a href="/pt/" class="site-logo">🛠️ Utilify</a></div>
+        </div>
+    </header>
+    <main class="main-content">
+        <div class="container">
+            <h1>📑 Juntar / Dividir PDF (Seguro)</h1>
+            <div class="security-badge"
+                style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
+                <span>🔒 Arquivos não são enviados para o servidor (WebAssembly)</span>
+            </div>
+
+            <div class="tool-container">
+                <div class="tab-menu">
+                    <button class="tab-btn active" onclick="switchMode('merge')">Juntar PDF</button>
+                    <button class="tab-btn" onclick="switchMode('split')">Dividir PDF</button>
+                </div>
+
+                <!-- Merge Section -->
+                <div id="mergeSection">
+                    <div class="upload-area" id="mergeUpload">
+                        <h3>Arraste arquivos PDF para cá</h3>
+                        <input type="file" id="mergeInput" accept="application/pdf" multiple style="display: none;">
+                    </div>
+                    <div class="file-list" id="mergeFileList"></div>
+                    <button id="mergeBtn" class="btn btn-primary" style="width: 100%;" disabled>🔗 Juntar &
+                        Baixar</button>
+                </div>
+
+                <!-- Split Section -->
+                <div id="splitSection" style="display: none;">
+                    <div class="upload-area" id="splitUpload">
+                        <h3>Selecione um arquivo PDF para dividir</h3>
+                        <input type="file" id="splitInput" accept="application/pdf" style="display: none;">
+                    </div>
+                    <div id="splitFileInfo" style="display: none; margin-bottom: 20px;">
+                        <strong id="splitFileName"></strong> (<span id="splitPageCount">0</span> páginas)
+                        <div style="margin-top: 10px;">
+                            <label class="form-label">Intervalo de Páginas (Ex: 1-3, 5)</label>
+                            <input type="text" id="pageRange" class="form-input" placeholder="1-5" style="width: 100%;">
+                        </div>
+                    </div>
+                    <button id="splitBtn" class="btn btn-primary" style="width: 100%;" disabled>✂️ Extrair &
+                        Baixar</button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Utilify</p>
+            </div>
+        </div>
+    </footer>
+    <script src="/assets/js/common.js"></script>
+    <script>
+        const { PDFDocument } = PDFLib;
+
+        // Mode Switching
+        function switchMode(mode) {
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            event.target.classList.add('active');
+
+            if (mode === 'merge') {
+                document.getElementById('mergeSection').style.display = 'block';
+                document.getElementById('splitSection').style.display = 'none';
+            } else {
+                document.getElementById('mergeSection').style.display = 'none';
+                document.getElementById('splitSection').style.display = 'block';
+            }
+        }
+
+        // --- MERGE ---
+        const mergeUpload = document.getElementById('mergeUpload');
+        const mergeInput = document.getElementById('mergeInput');
+        const mergeFileList = document.getElementById('mergeFileList');
+        const mergeBtn = document.getElementById('mergeBtn');
+        let mergeFiles = [];
+
+        mergeUpload.addEventListener('click', () => mergeInput.click());
+        mergeInput.addEventListener('change', (e) => addMergeFiles(e.target.files));
+
+        function addMergeFiles(files) {
+            for (let f of files) {
+                if (f.type === 'application/pdf') mergeFiles.push(f);
+            }
+            renderMergeList();
+            mergeBtn.disabled = mergeFiles.length < 2;
+        }
+
+        function renderMergeList() {
+            mergeFileList.innerHTML = mergeFiles.map((f, i) => `
+                <div class="file-item">
+                    <span>${i + 1}. ${f.name}</span>
+                    <button onclick="removeMergeFile(${i})" style="color: red; border: none; background: none; cursor: pointer;">❌</button>
+                </div>
+            `).join('');
+        }
+
+        window.removeMergeFile = (index) => {
+            mergeFiles.splice(index, 1);
+            renderMergeList();
+            mergeBtn.disabled = mergeFiles.length < 2;
+        }
+
+        mergeBtn.addEventListener('click', async () => {
+            if (mergeFiles.length < 2) return;
+            const mergedPdf = await PDFDocument.create();
+
+            mergeBtn.textContent = "Processando...";
+            mergeBtn.disabled = true;
+
+            try {
+                for (let file of mergeFiles) {
+                    const arrayBuffer = await file.arrayBuffer();
+                    const pdf = await PDFDocument.load(arrayBuffer);
+                    const copiedPages = await mergedPdf.copyPages(pdf, pdf.getPageIndices());
+                    copiedPages.forEach((page) => mergedPdf.addPage(page));
+                }
+                const pdfBytes = await mergedPdf.save();
+                download(pdfBytes, "merged.pdf", "application/pdf");
+            } catch (e) {
+                alert("Erro: " + e.message);
+            }
+
+            mergeBtn.textContent = "🔗 Juntar & Baixar";
+            mergeBtn.disabled = false;
+        });
+
+        // --- SPLIT ---
+        const splitUpload = document.getElementById('splitUpload');
+        const splitInput = document.getElementById('splitInput');
+        const splitBtn = document.getElementById('splitBtn');
+        let splitFile = null;
+        let splitPdfDoc = null;
+
+        splitUpload.addEventListener('click', () => splitInput.click());
+        splitInput.addEventListener('change', async (e) => {
+            if (e.target.files.length === 0) return;
+            splitFile = e.target.files[0];
+            if (splitFile.type !== 'application/pdf') return;
+
+            const arrayBuffer = await splitFile.arrayBuffer();
+            try {
+                splitPdfDoc = await PDFDocument.load(arrayBuffer);
+                const count = splitPdfDoc.getPageCount();
+
+                document.getElementById('splitFileName').textContent = splitFile.name;
+                document.getElementById('splitPageCount').textContent = count;
+                document.getElementById('splitFileInfo').style.display = 'block';
+                splitBtn.disabled = false;
+            } catch (e) {
+                alert("Falha ao carregar PDF: " + e.message);
+            }
+        });
+
+        splitBtn.addEventListener('click', async () => {
+            if (!splitPdfDoc) return;
+            const rangeStr = document.getElementById('pageRange').value.trim();
+            if (!rangeStr) {
+                alert("Por favor, insira o intervalo de páginas (Ex: 1-3)");
+                return;
+            }
+
+            // Parse Range
+            const indices = new Set();
+            const total = splitPdfDoc.getPageCount();
+
+            rangeStr.split(',').forEach(part => {
+                const [start, end] = part.split('-').map(n => parseInt(n.trim()));
+                if (!isNaN(start)) {
+                    if (!isNaN(end)) {
+                        for (let i = start; i <= end; i++) indices.add(i - 1);
+                    } else {
+                        indices.add(start - 1);
+                    }
+                }
+            });
+
+            const newPdf = await PDFDocument.create();
+            const idxArray = Array.from(indices).filter(i => i >= 0 && i < total);
+
+            if (idxArray.length === 0) {
+                alert("Nenhuma página válida selecionada.");
+                return;
+            }
+
+            const copiedPages = await newPdf.copyPages(splitPdfDoc, idxArray);
+            copiedPages.forEach((page) => newPdf.addPage(page));
+
+            const pdfBytes = await newPdf.save();
+            download(pdfBytes, "split.pdf", "application/pdf");
+        });
+
+    </script>
+</body>
+
+</html>

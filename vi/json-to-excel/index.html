@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chuyển đổi JSON sang Excel (An toàn & Client-side) - Utilify</title>
+    <meta name="description"
+        content="Chuyển đổi dữ liệu JSON sang Excel (XLSX) hoặc CSV và tải xuống an toàn. Không tải lên máy chủ.">
+    <link rel="canonical" href="https://utilifyapp.net/vi/json-to-excel/">
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- SheetJS -->
+    <script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631"
+        crossorigin="anonymous"></script>
+    <style>
+        .converter-box {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .input-group {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .form-input {
+            width: 100%;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+            padding: var(--spacing-md);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            resize: vertical;
+        }
+
+        .controls {
+            display: flex;
+            gap: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            filter: brightness(1.1);
+        }
+
+        .btn-secondary {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-hover);
+        }
+
+        .success-msg {
+            display: none;
+            color: #10B981;
+            font-weight: 500;
+            margin-left: 10px;
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(5px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Table Preview */
+        .preview-wrapper {
+            margin-top: 20px;
+            overflow-x: auto;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+        }
+
+        table.preview-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            text-align: left;
+        }
+
+        table.preview-table th,
+        table.preview-table td {
+            padding: 10px;
+            border-bottom: 1px solid var(--border-color);
+            white-space: nowrap;
+        }
+
+        table.preview-table th {
+            background: var(--bg-secondary);
+            font-weight: 600;
+        }
+
+        table.preview-table tr:hover {
+            background: var(--bg-hover);
+        }
+    </style>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content"><a href="/vi/" class="site-logo">🛠️ Utilify</a></div>
+        </div>
+    </header>
+    <main class="main-content">
+        <div class="container">
+            <h1>📊 Chuyển đổi JSON sang Excel</h1>
+            <div class="security-badge"
+                style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
+                <span title="Processed securely in client-side">🔒 100% Client-side & An toàn</span>
+            </div>
+
+            <p>Dán dữ liệu JSON của bạn để chuyển đổi ngay lập tức sang Excel (XLSX) hoặc CSV. Dữ liệu của bạn không bao
+                giờ rời khỏi trình duyệt.</p>
+
+            <div class="converter-box">
+                <div class="input-group">
+                    <label class="form-label">Dữ liệu JSON</label>
+                    <textarea id="jsonInput" class="form-input" style="min-height: 200px;"
+                        placeholder='[{"id": 1, "name": "Alice", "email": "alice@example.com"}, {"id": 2, "name": "Bob", "email": "bob@example.com"}]'></textarea>
+                </div>
+
+                <div class="controls">
+                    <button class="btn btn-primary" id="previewBtn">👁️ Xem trước & Kiểm tra</button>
+                    <button class="btn btn-secondary" id="clearBtn">🗑️ Xóa</button>
+                    <button class="btn btn-primary" id="downloadXlsxBtn" disabled
+                        style="margin-left: auto; background-color: #217346;">📥 Tải xuống XLSX</button>
+                    <button class="btn btn-secondary" id="downloadCsvBtn" disabled>📄 Tải xuống CSV</button>
+                </div>
+                <span id="msg" class="success-msg">✅ Hoàn tất!</span>
+
+                <div id="previewArea" class="preview-wrapper" style="display: none;">
+                    <table id="previewTable" class="preview-table">
+                        <thead></thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="related-tools-section">
+                <h3>Các công cụ liên quan</h3>
+                <div class="related-buttons">
+                    <a href="/vi/excel-to-sql/" class="related-btn">Excel sang SQL</a>
+                    <a href="/vi/json-formatter/" class="related-btn">Định dạng JSON</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Utilify</p>
+            </div>
+        </div>
+    </footer>
+    <script src="/assets/js/common.js"></script>
+    <script>
+        const jsonInput = document.getElementById('jsonInput');
+        const previewBtn = document.getElementById('previewBtn');
+        const downloadXlsxBtn = document.getElementById('downloadXlsxBtn');
+        const downloadCsvBtn = document.getElementById('downloadCsvBtn');
+        const clearBtn = document.getElementById('clearBtn');
+        const previewArea = document.getElementById('previewArea');
+        const previewTable = document.getElementById('previewTable');
+        const msg = document.getElementById('msg');
+
+        let currentData = null;
+
+        function showMsg(text) {
+            msg.textContent = text;
+            msg.style.display = 'inline-block';
+            setTimeout(() => {
+                msg.style.display = 'none';
+            }, 3000);
+        }
+
+        function parseJSON() {
+            try {
+                const raw = jsonInput.value.trim();
+                if (!raw) return null;
+                const data = JSON.parse(raw);
+                if (!Array.isArray(data)) {
+                    // Try to handle single object by wrapping in array
+                    return [data];
+                }
+                return data;
+            } catch (e) {
+                alert("Định dạng JSON không hợp lệ.\n" + e.message);
+                return null;
+            }
+        }
+
+        previewBtn.addEventListener('click', () => {
+            const data = parseJSON();
+            if (!data || data.length === 0) return;
+
+            currentData = data;
+
+            // Generate Table
+            const headers = Array.from(new Set(data.flatMap(Object.keys)));
+
+            // Thead
+            const thead = previewTable.querySelector('thead');
+            thead.innerHTML = '';
+            const trHead = document.createElement('tr');
+            headers.forEach(h => {
+                const th = document.createElement('th');
+                th.textContent = h;
+                trHead.appendChild(th);
+            });
+            thead.appendChild(trHead);
+
+            // Tbody (Limit to 10 rows for preview)
+            const tbody = previewTable.querySelector('tbody');
+            tbody.innerHTML = '';
+            data.slice(0, 10).forEach(row => {
+                const tr = document.createElement('tr');
+                headers.forEach(h => {
+                    const td = document.createElement('td');
+                    const val = row[h];
+                    td.textContent = (typeof val === 'object' && val !== null) ? JSON.stringify(val) : val;
+                    tr.appendChild(td);
+                });
+                tbody.appendChild(tr);
+            });
+
+            if (data.length > 10) {
+                const tr = document.createElement('tr');
+                const td = document.createElement('td');
+                td.colSpan = headers.length;
+                td.textContent = `... và còn ${data.length - 10} mục khác (Tải xuống để xem)`;
+                td.style.textAlign = 'center';
+                td.style.color = 'var(--text-secondary)';
+                tr.appendChild(td);
+                tbody.appendChild(tr);
+            }
+
+            previewArea.style.display = 'block';
+            downloadXlsxBtn.disabled = false;
+            downloadCsvBtn.disabled = false;
+            showMsg("✅ Đã tạo bản xem trước");
+        });
+
+        downloadXlsxBtn.addEventListener('click', () => {
+            if (!currentData) return;
+            const ws = XLSX.utils.json_to_sheet(currentData);
+            const wb = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(wb, ws, "Data");
+            XLSX.writeFile(wb, "data.xlsx");
+            showMsg("📥 Đang tải xuống XLSX...");
+        });
+
+        downloadCsvBtn.addEventListener('click', () => {
+            if (!currentData) return;
+            const ws = XLSX.utils.json_to_sheet(currentData);
+            // CSV generation using SheetJS
+            const csv = XLSX.utils.sheet_to_csv(ws);
+            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = "data.csv";
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            showMsg("📥 Đang tải xuống CSV...");
+        });
+
+        clearBtn.addEventListener('click', () => {
+            jsonInput.value = '';
+            previewArea.style.display = 'none';
+            currentData = null;
+            downloadXlsxBtn.disabled = true;
+            downloadCsvBtn.disabled = true;
+        });
+
+    </script>
+</body>
+
+</html>

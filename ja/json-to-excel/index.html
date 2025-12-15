@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON to Excel 変換 (安全なクライアント処理) - Utilify</title>
+    <meta name="description" content="JSONデータをExcel (XLSX) または CSVに変換してダウンロードします。サーバーにアップロードせず、ブラウザで安全に処理します。">
+    <link rel="canonical" href="https://utilifyapp.net/ja/json-to-excel/">
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- SheetJS -->
+    <script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631"
+        crossorigin="anonymous"></script>
+    <style>
+        .converter-box {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .input-group {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .form-input {
+            width: 100%;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+            padding: var(--spacing-md);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            resize: vertical;
+        }
+
+        .controls {
+            display: flex;
+            gap: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            filter: brightness(1.1);
+        }
+
+        .btn-secondary {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-hover);
+        }
+
+        .success-msg {
+            display: none;
+            color: #10B981;
+            font-weight: 500;
+            margin-left: 10px;
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(5px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Table Preview */
+        .preview-wrapper {
+            margin-top: 20px;
+            overflow-x: auto;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+        }
+
+        table.preview-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            text-align: left;
+        }
+
+        table.preview-table th,
+        table.preview-table td {
+            padding: 10px;
+            border-bottom: 1px solid var(--border-color);
+            white-space: nowrap;
+        }
+
+        table.preview-table th {
+            background: var(--bg-secondary);
+            font-weight: 600;
+        }
+
+        table.preview-table tr:hover {
+            background: var(--bg-hover);
+        }
+    </style>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content"><a href="/ja/" class="site-logo">🛠️ Utilify</a></div>
+        </div>
+    </header>
+    <main class="main-content">
+        <div class="container">
+            <h1>📊 JSON to Excel 変換器</h1>
+            <div class="security-badge"
+                style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
+                <span title="Processed securely in client-side">🔒 100% クライアントサイド処理 (安全)</span>
+            </div>
+
+            <p>JSONデータを貼り付けて、即座にExcel (XLSX) または CSVに変換します。データは外部に送信されません。</p>
+
+            <div class="converter-box">
+                <div class="input-group">
+                    <label class="form-label">JSON 入力</label>
+                    <textarea id="jsonInput" class="form-input" style="min-height: 200px;"
+                        placeholder='[{"id": 1, "name": "Alice", "email": "alice@example.com"}, {"id": 2, "name": "Bob", "email": "bob@example.com"}]'></textarea>
+                </div>
+
+                <div class="controls">
+                    <button class="btn btn-primary" id="previewBtn">👁️ プレビュー & 検証</button>
+                    <button class="btn btn-secondary" id="clearBtn">🗑️ クリア</button>
+                    <button class="btn btn-primary" id="downloadXlsxBtn" disabled
+                        style="margin-left: auto; background-color: #217346;">📥 XLSX ダウンロード</button>
+                    <button class="btn btn-secondary" id="downloadCsvBtn" disabled>📄 CSV ダウンロード</button>
+                </div>
+                <span id="msg" class="success-msg">✅ 完了!</span>
+
+                <div id="previewArea" class="preview-wrapper" style="display: none;">
+                    <table id="previewTable" class="preview-table">
+                        <thead></thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="related-tools-section">
+                <h3>関連ツール</h3>
+                <div class="related-buttons">
+                    <a href="/ja/excel-to-sql/" class="related-btn">Excel to SQL</a>
+                    <a href="/ja/json-formatter/" class="related-btn">JSON フォーマッタ</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Utilify</p>
+            </div>
+        </div>
+    </footer>
+    <script src="/assets/js/common.js"></script>
+    <script>
+        const jsonInput = document.getElementById('jsonInput');
+        const previewBtn = document.getElementById('previewBtn');
+        const downloadXlsxBtn = document.getElementById('downloadXlsxBtn');
+        const downloadCsvBtn = document.getElementById('downloadCsvBtn');
+        const clearBtn = document.getElementById('clearBtn');
+        const previewArea = document.getElementById('previewArea');
+        const previewTable = document.getElementById('previewTable');
+        const msg = document.getElementById('msg');
+
+        let currentData = null;
+
+        function showMsg(text) {
+            msg.textContent = text;
+            msg.style.display = 'inline-block';
+            setTimeout(() => {
+                msg.style.display = 'none';
+            }, 3000);
+        }
+
+        function parseJSON() {
+            try {
+                const raw = jsonInput.value.trim();
+                if (!raw) return null;
+                const data = JSON.parse(raw);
+                if (!Array.isArray(data)) {
+                    // Try to handle single object by wrapping in array
+                    return [data];
+                }
+                return data;
+            } catch (e) {
+                alert("無効なJSONフォーマットです。\n" + e.message);
+                return null;
+            }
+        }
+
+        previewBtn.addEventListener('click', () => {
+            const data = parseJSON();
+            if (!data || data.length === 0) return;
+
+            currentData = data;
+
+            // Generate Table
+            const headers = Array.from(new Set(data.flatMap(Object.keys)));
+
+            // Thead
+            const thead = previewTable.querySelector('thead');
+            thead.innerHTML = '';
+            const trHead = document.createElement('tr');
+            headers.forEach(h => {
+                const th = document.createElement('th');
+                th.textContent = h;
+                trHead.appendChild(th);
+            });
+            thead.appendChild(trHead);
+
+            // Tbody (Limit to 10 rows for preview)
+            const tbody = previewTable.querySelector('tbody');
+            tbody.innerHTML = '';
+            data.slice(0, 10).forEach(row => {
+                const tr = document.createElement('tr');
+                headers.forEach(h => {
+                    const td = document.createElement('td');
+                    const val = row[h];
+                    td.textContent = (typeof val === 'object' && val !== null) ? JSON.stringify(val) : val;
+                    tr.appendChild(td);
+                });
+                tbody.appendChild(tr);
+            });
+
+            if (data.length > 10) {
+                const tr = document.createElement('tr');
+                const td = document.createElement('td');
+                td.colSpan = headers.length;
+                td.textContent = `... 他 ${data.length - 10} 件 (ダウンロードして確認)`;
+                td.style.textAlign = 'center';
+                td.style.color = 'var(--text-secondary)';
+                tr.appendChild(td);
+                tbody.appendChild(tr);
+            }
+
+            previewArea.style.display = 'block';
+            downloadXlsxBtn.disabled = false;
+            downloadCsvBtn.disabled = false;
+            showMsg("✅ プレビュー生成完了");
+        });
+
+        downloadXlsxBtn.addEventListener('click', () => {
+            if (!currentData) return;
+            const ws = XLSX.utils.json_to_sheet(currentData);
+            const wb = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(wb, ws, "Data");
+            XLSX.writeFile(wb, "data.xlsx");
+            showMsg("📥 XLSXをダウンロード中...");
+        });
+
+        downloadCsvBtn.addEventListener('click', () => {
+            if (!currentData) return;
+            const ws = XLSX.utils.json_to_sheet(currentData);
+            // CSV generation using SheetJS
+            const csv = XLSX.utils.sheet_to_csv(ws);
+            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = "data.csv";
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            showMsg("📥 CSVをダウンロード中...");
+        });
+
+        clearBtn.addEventListener('click', () => {
+            jsonInput.value = '';
+            previewArea.style.display = 'none';
+            currentData = null;
+            downloadXlsxBtn.disabled = true;
+            downloadCsvBtn.disabled = true;
+        });
+
+    </script>
+</body>
+
+</html>

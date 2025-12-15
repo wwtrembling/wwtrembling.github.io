@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="hi">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-adsense-account" content="ca-pub-6334819180242631">
-    <title>Excel to SQL Insert Converter - Utilify</title>
-    <meta name="description" content="Paste Excel or spreadsheet data to instantly convert to SQL INSERT statements. Automatically detects data types.">
-    <link rel="canonical" href="https://utilifyapp.net/ko/excel-to-sql/">
+    <title>Excel से SQL Insert कनवर्टर - Utilify</title>
+    <meta name="description"
+        content="Excel या स्प्रेडशीट डेटा चिपकाएं और तुरंत SQL INSERT बयानों में बदलें। डेटा प्रकारों का स्वचालित रूप से पता लगाता है।">
+    <link rel="canonical" href="https://utilifyapp.net/hi/excel-to-sql/">
     <link rel="stylesheet" href="/assets/css/main.css">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631"
         crossorigin="anonymous"></script>
@@ -160,15 +161,17 @@
 <body>
     <header class="site-header">
         <div class="container">
-            <div class="header-content"><a href="/ko/" class="site-logo">🛠️ Utilify</a></div>
+            <div class="header-content"><a href="/hi/" class="site-logo">🛠️ Utilify</a></div>
         </div>
     </header>
     <main class="main-content">
         <div class="container">
             <h1>📊 Excel to SQL Insert 변환기</h1>
-            <div class="security-badge" style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
+            <div class="security-badge"
+                style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
                 <span title="Processed securely in client-side">🔒 सुरक्षित और क्लाइंट-साइड</span>
-                <button id="pwaInstallBtn" class="btn btn-primary" style="display: none; padding: 4px 12px; font-size: 12px;">📲 ऐप इंस्टॉल करें</button>
+                <button id="pwaInstallBtn" class="btn btn-primary"
+                    style="display: none; padding: 4px 12px; font-size: 12px;">📲 ऐप इंस्टॉल करें</button>
             </div>
 
             <p>엑셀 데이터를 कॉपी해서 붙여넣으면 SQL INSERT 구문으로 변환해줍니다. 기획자/마케터의 요청을 빠르게 처리하세요.</p>
@@ -192,22 +195,29 @@
 
                 <div class="controls">
                     <div class="option-group">
-                        <label>Use first row as headers</label>
+                        <label>पहली पंक्ति को हेडर के रूप में उपयोग करें</label>
                         <label class="toggle-switch">
                             <input type="checkbox" id="firstRowHeader" checked>
                             <span class="slider"></span>
                         </label>
                     </div>
                     <div class="option-group">
-                        <label>Smart Type Detection</label>
+                        <label>स्मार्ट प्रकार पहचान</label>
                         <label class="toggle-switch">
                             <input type="checkbox" id="smartType" checked>
                             <span class="slider"></span>
                         </label>
                     </div>
+                    <div class="option-group">
+                        <label>संवेदनशील डेटा छिपाएं (गोपनीयता)</label>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="maskData">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
 
-                    <button class="btn btn-primary" id="convertBtn">⚡ कनवर्ट</button>
-                    <button class="btn btn-secondary" id="clearBtn">🗑️ साफ़</button>
+                    <button class="btn btn-primary" id="convertBtn">⚡ कनवर्ट करें</button>
+                    <button class="btn btn-secondary" id="clearBtn">🗑️ साफ़ करें</button>
                 </div>
 
                 <div class="input-group">
@@ -215,16 +225,16 @@
                     <textarea id="output" class="form-input" style="min-height: 300px;" readonly></textarea>
                 </div>
                 <div class="btn-group" style="justify-content: flex-end;">
-                    <button class="btn btn-primary" id="copyBtn">📋 Copy Code</button>
+                    <button class="btn btn-primary" id="copyBtn">📋 कोड कॉपी करें</button>
                 </div>
             </div>
 
             <div class="related-tools-section">
-                <h3>함께 보면 좋은 도구</h3>
+                <h3>संबंधित उपकरण</h3>
                 <div class="related-buttons">
-                    <a href="/ko/sql-formatter/" class="related-btn">SQL 포매터</a>
-                    <a href="/ko/jpa-converter/" class="related-btn">DB to JPA</a>
-                    <a href="/ko/json-formatter/" class="related-btn">JSON 포매터</a>
+                    <a href="/hi/sql-formatter/" class="related-btn">SQL फॉर्मेटर</a>
+                    <a href="/hi/jpa-converter/" class="related-btn">DB to JPA</a>
+                    <a href="/hi/json-formatter/" class="related-btn">JSON फॉर्मेटर</a>
                 </div>
             </div>
         </div>
@@ -247,13 +257,30 @@
 
         const firstRowHeader = document.getElementById('firstRowHeader');
         const smartType = document.getElementById('smartType');
+        const maskData = document.getElementById('maskData');
 
         function isNumber(val) {
             return !isNaN(val) && !isNaN(parseFloat(val));
         }
 
+        function maskSensitiveInfo(text) {
+            // Phone Number Pattern: General
+            text = text.replace(/(\d{3})[- ]?(\d{3,4})[- ]?(\d{4})/g, '$1-****-$3');
+
+            // Email Masking
+            text = text.replace(/([a-zA-Z0-9._-]+)(@[a-zA-Z0-9._-]+\.[a-z]+)/g, (match, p1, p2) => {
+                if (p1.length <= 3) return p1 + p2;
+                return p1.substring(0, 3) + '****' + p2;
+            });
+
+            return text;
+        }
+
         function formatValue(val) {
             val = val.trim();
+            if (maskData.checked) {
+                val = maskSensitiveInfo(val);
+            }
             if (!smartType.checked) return `'${val}'`;
             if (val === 'NULL' || val === 'null') return 'NULL';
             if (isNumber(val)) return val;
@@ -295,7 +322,7 @@
 
             } catch (e) {
                 console.error(e);
-                output.value = "Error parsing Data: " + e.message;
+                output.value = "डेटा पार्स करने में त्रुटि: " + e.message;
             }
         });
 

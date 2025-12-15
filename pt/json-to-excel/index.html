@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor JSON para Excel (Seguro & Client-side) - Utilify</title>
+    <meta name="description"
+        content="Converta dados JSON para Excel (XLSX) ou CSV e baixe com segurança. Sem upload para o servidor.">
+    <link rel="canonical" href="https://utilifyapp.net/pt/json-to-excel/">
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- SheetJS -->
+    <script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631"
+        crossorigin="anonymous"></script>
+    <style>
+        .converter-box {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .input-group {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .form-input {
+            width: 100%;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+            padding: var(--spacing-md);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            resize: vertical;
+        }
+
+        .controls {
+            display: flex;
+            gap: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            filter: brightness(1.1);
+        }
+
+        .btn-secondary {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-hover);
+        }
+
+        .success-msg {
+            display: none;
+            color: #10B981;
+            font-weight: 500;
+            margin-left: 10px;
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(5px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Table Preview */
+        .preview-wrapper {
+            margin-top: 20px;
+            overflow-x: auto;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+        }
+
+        table.preview-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            text-align: left;
+        }
+
+        table.preview-table th,
+        table.preview-table td {
+            padding: 10px;
+            border-bottom: 1px solid var(--border-color);
+            white-space: nowrap;
+        }
+
+        table.preview-table th {
+            background: var(--bg-secondary);
+            font-weight: 600;
+        }
+
+        table.preview-table tr:hover {
+            background: var(--bg-hover);
+        }
+    </style>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content"><a href="/pt/" class="site-logo">🛠️ Utilify</a></div>
+        </div>
+    </header>
+    <main class="main-content">
+        <div class="container">
+            <h1>📊 Conversor JSON para Excel</h1>
+            <div class="security-badge"
+                style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
+                <span title="Processed securely in client-side">🔒 100% Client-side & Seguro</span>
+            </div>
+
+            <p>Cole seus dados JSON para converter instantaneamente em Excel (XLSX) ou CSV. Seus dados nunca saem do seu
+                navegador.</p>
+
+            <div class="converter-box">
+                <div class="input-group">
+                    <label class="form-label">Entrada JSON</label>
+                    <textarea id="jsonInput" class="form-input" style="min-height: 200px;"
+                        placeholder='[{"id": 1, "name": "Alice", "email": "alice@example.com"}, {"id": 2, "name": "Bob", "email": "bob@example.com"}]'></textarea>
+                </div>
+
+                <div class="controls">
+                    <button class="btn btn-primary" id="previewBtn">👁️ Pré-visualizar e Verificar</button>
+                    <button class="btn btn-secondary" id="clearBtn">🗑️ Limpar</button>
+                    <button class="btn btn-primary" id="downloadXlsxBtn" disabled
+                        style="margin-left: auto; background-color: #217346;">📥 Baixar XLSX</button>
+                    <button class="btn btn-secondary" id="downloadCsvBtn" disabled>📄 Baixar CSV</button>
+                </div>
+                <span id="msg" class="success-msg">✅ Concluído!</span>
+
+                <div id="previewArea" class="preview-wrapper" style="display: none;">
+                    <table id="previewTable" class="preview-table">
+                        <thead></thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="related-tools-section">
+                <h3>Ferramentas Relacionadas</h3>
+                <div class="related-buttons">
+                    <a href="/pt/excel-to-sql/" class="related-btn">Excel para SQL</a>
+                    <a href="/pt/json-formatter/" class="related-btn">Formatador JSON</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Utilify</p>
+            </div>
+        </div>
+    </footer>
+    <script src="/assets/js/common.js"></script>
+    <script>
+        const jsonInput = document.getElementById('jsonInput');
+        const previewBtn = document.getElementById('previewBtn');
+        const downloadXlsxBtn = document.getElementById('downloadXlsxBtn');
+        const downloadCsvBtn = document.getElementById('downloadCsvBtn');
+        const clearBtn = document.getElementById('clearBtn');
+        const previewArea = document.getElementById('previewArea');
+        const previewTable = document.getElementById('previewTable');
+        const msg = document.getElementById('msg');
+
+        let currentData = null;
+
+        function showMsg(text) {
+            msg.textContent = text;
+            msg.style.display = 'inline-block';
+            setTimeout(() => {
+                msg.style.display = 'none';
+            }, 3000);
+        }
+
+        function parseJSON() {
+            try {
+                const raw = jsonInput.value.trim();
+                if (!raw) return null;
+                const data = JSON.parse(raw);
+                if (!Array.isArray(data)) {
+                    // Try to handle single object by wrapping in array
+                    return [data];
+                }
+                return data;
+            } catch (e) {
+                alert("Formato JSON inválido.\n" + e.message);
+                return null;
+            }
+        }
+
+        previewBtn.addEventListener('click', () => {
+            const data = parseJSON();
+            if (!data || data.length === 0) return;
+
+            currentData = data;
+
+            // Generate Table
+            const headers = Array.from(new Set(data.flatMap(Object.keys)));
+
+            // Thead
+            const thead = previewTable.querySelector('thead');
+            thead.innerHTML = '';
+            const trHead = document.createElement('tr');
+            headers.forEach(h => {
+                const th = document.createElement('th');
+                th.textContent = h;
+                trHead.appendChild(th);
+            });
+            thead.appendChild(trHead);
+
+            // Tbody (Limit to 10 rows for preview)
+            const tbody = previewTable.querySelector('tbody');
+            tbody.innerHTML = '';
+            data.slice(0, 10).forEach(row => {
+                const tr = document.createElement('tr');
+                headers.forEach(h => {
+                    const td = document.createElement('td');
+                    const val = row[h];
+                    td.textContent = (typeof val === 'object' && val !== null) ? JSON.stringify(val) : val;
+                    tr.appendChild(td);
+                });
+                tbody.appendChild(tr);
+            });
+
+            if (data.length > 10) {
+                const tr = document.createElement('tr');
+                const td = document.createElement('td');
+                td.colSpan = headers.length;
+                td.textContent = `... e mais ${data.length - 10} (Baixe para ver)`;
+                td.style.textAlign = 'center';
+                td.style.color = 'var(--text-secondary)';
+                tr.appendChild(td);
+                tbody.appendChild(tr);
+            }
+
+            previewArea.style.display = 'block';
+            downloadXlsxBtn.disabled = false;
+            downloadCsvBtn.disabled = false;
+            showMsg("✅ Pré-visualização gerada");
+        });
+
+        downloadXlsxBtn.addEventListener('click', () => {
+            if (!currentData) return;
+            const ws = XLSX.utils.json_to_sheet(currentData);
+            const wb = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(wb, ws, "Data");
+            XLSX.writeFile(wb, "data.xlsx");
+            showMsg("📥 Baixando XLSX...");
+        });
+
+        downloadCsvBtn.addEventListener('click', () => {
+            if (!currentData) return;
+            const ws = XLSX.utils.json_to_sheet(currentData);
+            // CSV generation using SheetJS
+            const csv = XLSX.utils.sheet_to_csv(ws);
+            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = "data.csv";
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            showMsg("📥 Baixando CSV...");
+        });
+
+        clearBtn.addEventListener('click', () => {
+            jsonInput.value = '';
+            previewArea.style.display = 'none';
+            currentData = null;
+            downloadXlsxBtn.disabled = true;
+            downloadCsvBtn.disabled = true;
+        });
+
+    </script>
+</body>
+
+</html>

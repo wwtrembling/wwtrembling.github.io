@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text to Diagram Converter (Mermaid) - Utilify</title>
+    <meta name="description"
+        content="Generate Flowcharts, Sequence Diagrams, Gantt Charts from text instantly. Base on Mermaid.js.">
+    <link rel="canonical" href="https://utilifyapp.net/en/text-to-diagram/">
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Mermaid -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631"
+        crossorigin="anonymous"></script>
+    <style>
+        .diagram-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            height: 70vh;
+            min-height: 500px;
+        }
+
+        @media (max-width: 768px) {
+            .diagram-container {
+                grid-template-columns: 1fr;
+                height: auto;
+            }
+        }
+
+        .editor-col {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .preview-col {
+            background: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            overflow: auto;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #codeEditor {
+            flex: 1;
+            font-family: 'Fira Code', monospace;
+            padding: 15px;
+            background: #1e1e1e;
+            color: #d4d4d4;
+            border-radius: var(--radius-md);
+            resize: none;
+            line-height: 1.5;
+            min-height: 400px;
+        }
+
+        .toolbar {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
+
+        .error-msg {
+            color: #ef4444;
+            font-size: 13px;
+            padding: 10px;
+            background: #fee2e2;
+            border-radius: 4px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content"><a href="/en/" class="site-logo">🛠️ Utilify</a></div>
+        </div>
+    </header>
+    <main class="main-content" style="max-width: 1400px; margin: 0 auto; padding: 20px;">
+        <div class="container" style="max-width: 100%;">
+            <h1>📊 Text to Diagram</h1>
+            <p>Create clean charts from text without complex design tools.</p>
+
+            <div class="toolbar">
+                <button class="btn btn-secondary" onclick="loadExample('flowchart')">🔄 Flowchart Example</button>
+                <button class="btn btn-secondary" onclick="loadExample('sequence')">⏱️ Sequence Example</button>
+                <button class="btn btn-secondary" onclick="loadExample('gantt')">📅 Gantt Chart</button>
+                <div style="flex:1"></div>
+                <button class="btn btn-primary" id="downloadBtn">📷 Download SVG</button>
+            </div>
+
+            <div class="diagram-container">
+                <div class="editor-col">
+                    <textarea id="codeEditor" spellcheck="false">graph TD
+    A[Start] --> B{Is it working?}
+    B -- Yes --> C[Great!]
+    B -- No --> D[Debug It]
+    D --> B</textarea>
+                    <div id="errorMsg" class="error-msg"></div>
+                </div>
+                <div class="preview-col" id="previewCol">
+                    <div class="mermaid" id="diagramOutput">
+                        graph TD
+                        A[Start] --> B{Is it working?}
+                        B -- Yes --> C[Great!]
+                        B -- No --> D[Debug It]
+                        D --> B
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Utilify</p>
+            </div>
+        </div>
+    </footer>
+    <script src="/assets/js/common.js"></script>
+    <script>
+        // Init Mermaid
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+
+        const codeEditor = document.getElementById('codeEditor');
+        const diagramOutput = document.getElementById('diagramOutput');
+        const previewCol = document.getElementById('previewCol');
+        const errorMsg = document.getElementById('errorMsg');
+        const downloadBtn = document.getElementById('downloadBtn');
+
+        let timeoutId = null;
+
+        codeEditor.addEventListener('input', () => {
+            clearTimeout(timeoutId);
+            timeoutId = setTimeout(renderDiagram, 500);
+        });
+
+        async function renderDiagram() {
+            const code = codeEditor.value;
+            errorMsg.style.display = 'none';
+
+            try {
+                // Clear and Render
+                previewCol.innerHTML = '<div class="mermaid" id="diagramOutput">' + code.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;') + '</div>';
+
+                await mermaid.run({
+                    querySelector: '#diagramOutput'
+                });
+
+            } catch (e) {
+                console.error(e);
+                errorMsg.textContent = "Syntax Error: " + e.message;
+                errorMsg.style.display = 'block';
+            }
+        }
+
+        const examples = {
+            flowchart: `graph TD
+    A[Christmas] -->|Get money| B(Go shopping)
+    B --> C{Let me think}
+    C -->|One| D[Laptop]
+    C -->|Two| E[iPhone]
+    C -->|Three| F[fa:fa-car Car]`,
+            sequence: `sequenceDiagram
+    Alice->>John: Hello John, how are you?
+    John-->>Alice: Great!
+    Alice-)John: See you later!`,
+            gantt: `gantt
+    title A Gantt Diagram
+    dateFormat  YYYY-MM-DD
+    section Section
+    A task           :a1, 2014-01-01, 30d
+    Another task     :after a1  , 20d
+    section Another
+    Task in sec      :2014-01-12  , 12d
+    another task      : 24d`
+        };
+
+        function loadExample(type) {
+            codeEditor.value = examples[type];
+            renderDiagram();
+        }
+
+        downloadBtn.addEventListener('click', () => {
+            // Find SVG
+            const svg = document.querySelector('#diagramOutput svg') || document.querySelector('#diagramOutput');
+            if (svg) {
+                const svgData = new XMLSerializer().serializeToString(svg);
+                const blob = new Blob([svgData], { type: "image/svg+xml;charset=utf-8" });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = "diagram.svg";
+                a.click();
+            } else {
+                alert("Diagram not found.");
+            }
+        });
+
+    </script>
+</body>
+
+</html>

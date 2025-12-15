@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="hi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEO JSON-LD जेनरेटर (स्कीमा मार्कअप) - Utilify</title>
+    <meta name="description"
+        content="Google SEO के लिए संरचित डेटा (JSON-LD) उत्पन्न करें। लेख, उत्पाद, FAQPage और स्थानीय व्यवसाय स्कीमा का समर्थन करता है।">
+    <link rel="canonical" href="https://utilifyapp.net/hi/json-ld-generator/">
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631"
+        crossorigin="anonymous"></script>
+    <style>
+        .split-view {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .split-view {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .form-section {
+            background: var(--bg-primary);
+            padding: 20px;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+        }
+
+        .preview-section {
+            background: var(--bg-secondary);
+            padding: 20px;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+        }
+
+        .code-block {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 15px;
+            border-radius: var(--radius-md);
+            font-family: monospace;
+            white-space: pre-wrap;
+            word-break: break-all;
+            min-height: 200px;
+            font-size: 13px;
+        }
+
+        .google-preview {
+            background: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            font-family: arial, sans-serif;
+        }
+
+        .g-url {
+            color: #202124;
+            font-size: 12px;
+            margin-bottom: 2px;
+        }
+
+        .g-title {
+            color: #1a0dab;
+            font-size: 18px;
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 3px;
+        }
+
+        .g-desc {
+            color: #4d5156;
+            font-size: 13px;
+            line-height: 1.4;
+        }
+
+        /* Tooltip */
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            cursor: help;
+            border-bottom: 1px dotted #ccc;
+        }
+
+        .tooltip .tooltip-text {
+            visibility: hidden;
+            width: 250px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -125px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 12px;
+        }
+
+        .tooltip:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content"><a href="/hi/" class="site-logo">🛠️ Utilify</a></div>
+        </div>
+    </header>
+    <main class="main-content">
+        <div class="container">
+            <h1>🔍 SEO JSON-LD जेनरेटर</h1>
+            <p>खोज इंजन को अपनी वेबसाइट की सामग्री को सही ढंग से संप्रेषित करने के लिए कोड बनाएं।
+                <span class="tooltip">SEO टिप
+                    <span class="tooltip-text">उत्पन्न कोड को अपने HTML पृष्ठ के &lt;head&gt; टैग में जोड़ें।</span>
+                </span>
+            </p>
+
+            <div class="split-view">
+                <!-- Inputs -->
+                <div class="form-section">
+                    <div class="input-group">
+                        <label class="form-label">स्कीमा प्रकार</label>
+                        <select id="schemaType" class="form-input" style="width: 100%;">
+                            <option value="Article">लेख (Article / Blog Post)</option>
+                            <option value="Product">उत्पाद (Product)</option>
+                            <option value="FAQPage">अक्सर पूछे जाने वाले प्रश्न (FAQPage)</option>
+                            <option value="LocalBusiness">स्थानीय व्यवसाय (LocalBusiness)</option>
+                        </select>
+                    </div>
+
+                    <div id="formFields">
+                        <!-- Dynamic Fields injected here -->
+                    </div>
+                </div>
+
+                <!-- Preview -->
+                <div class="preview-section">
+                    <h3>पूर्वावलोकन (Google खोज परिणाम सिमुलेशन)</h3>
+                    <div class="google-preview">
+                        <div class="g-url">www.example.com › लेख</div>
+                        <a href="#" class="g-title" id="previewTitle">आपका शीर्षक यहाँ दिखाई देगा</a>
+                        <div class="g-desc" id="previewDesc">विवरण यहाँ दिखाई देगा। संरचित डेटा समृद्ध परिणामों के साथ
+                            मदद करता है।</div>
+                    </div>
+
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                        <h3>JSON-LD कोड</h3>
+                        <button id="copyBtn" class="btn btn-primary" style="font-size: 12px; padding: 5px 10px;">📋 कॉपी
+                            करें</button>
+                    </div>
+                    <div class="code-block" id="outputCode"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Utilify</p>
+            </div>
+        </div>
+    </footer>
+    <script src="/assets/js/common.js"></script>
+    <script>
+        const schemaType = document.getElementById('schemaType');
+        const formFields = document.getElementById('formFields');
+        const outputCode = document.getElementById('outputCode');
+        const previewTitle = document.getElementById('previewTitle');
+        const previewDesc = document.getElementById('previewDesc');
+        const copyBtn = document.getElementById('copyBtn');
+
+        const fields = {
+            'Article': [
+                { id: 'headline', label: 'शीर्षक (Headline)', placeholder: 'उदा: अंतिम SEO गाइड' },
+                { id: 'image', label: 'छवि URL', placeholder: 'https://example.com/image.jpg' },
+                { id: 'author', label: 'लेखक', placeholder: 'रवि कुमार' },
+                { id: 'description', label: 'विवरण (Description)', placeholder: 'लेख का सारांश...' },
+                { id: 'datePublished', label: 'प्रकाशन की तारीख', type: 'date' }
+            ],
+            'Product': [
+                { id: 'name', label: 'उत्पाद का नाम', placeholder: 'उदा: प्रीमियम चमड़े का बटुआ' },
+                { id: 'image', label: 'उत्पाद छवि URL', placeholder: 'https://example.com/product.jpg' },
+                { id: 'description', label: 'उत्पाद विवरण', placeholder: 'बेहतरीन चमड़े से बना...' },
+                { id: 'price', label: 'मूल्य (केवल संख्या)', type: 'number', placeholder: '5000' },
+                { id: 'priceCurrency', label: 'मुद्रा', placeholder: 'INR', value: 'INR' }
+            ],
+            'FAQPage': [
+                { id: 'q1', label: 'प्रश्न 1', placeholder: 'शिपिंग में कितना समय लगता है?' },
+                { id: 'a1', label: 'उत्तर 1', placeholder: 'आमतौर पर 2-3 दिन।' },
+                { id: 'q2', label: 'प्रश्न 2', placeholder: 'क्या वापसी संभव है?' },
+                { id: 'a2', label: 'उत्तर 2', placeholder: 'हां, 14 दिनों के भीतर।' }
+            ],
+            'LocalBusiness': [
+                { id: 'name', label: 'व्यवसाय का नाम', placeholder: 'मेरी दुकान' },
+                { id: 'image', label: 'छवि URL', placeholder: '' },
+                { id: 'telephone', label: 'फ़ोन नंबर', placeholder: '+91 9876543210' },
+                { id: 'streetAddress', label: 'पता', placeholder: 'एमजी रोड, बैंगलोर...' }
+            ]
+        };
+
+        function renderForm() {
+            const type = schemaType.value;
+            const currentFields = fields[type];
+            formFields.innerHTML = '';
+
+            currentFields.forEach(f => {
+                const group = document.createElement('div');
+                group.classList.add('input-group');
+
+                const label = document.createElement('label');
+                label.className = 'form-label';
+                label.textContent = f.label;
+
+                const input = document.createElement('input');
+                input.className = 'form-input';
+                input.style.width = '100%';
+                input.type = f.type || 'text';
+                input.id = f.id;
+                input.placeholder = f.placeholder || '';
+                if (f.value) input.value = f.value;
+
+                input.addEventListener('input', generateCode);
+
+                group.appendChild(label);
+                group.appendChild(input);
+                formFields.appendChild(group);
+            });
+            generateCode();
+        }
+
+        function generateCode() {
+            const type = schemaType.value;
+            let data = {
+                "@context": "https://schema.org",
+                "@type": type
+            };
+
+            const inputs = formFields.querySelectorAll('input');
+            const vals = {};
+            inputs.forEach(input => vals[input.id] = input.value);
+
+            if (type === 'Article') {
+                data.headline = vals.headline || "Title";
+                data.image = [vals.image || ""];
+                data.author = { "@type": "Person", "name": vals.author || "Author" };
+                data.datePublished = vals.datePublished || new Date().toISOString().split('T')[0];
+                data.description = vals.description || "";
+
+                previewTitle.textContent = data.headline;
+                previewDesc.textContent = data.description || "No description.";
+            } else if (type === 'Product') {
+                data.name = vals.name || "Product Name";
+                data.image = [vals.image || ""];
+                data.description = vals.description || "";
+                data.offers = {
+                    "@type": "Offer",
+                    "priceCurrency": vals.priceCurrency,
+                    "price": vals.price || "0"
+                };
+                previewTitle.textContent = data.name;
+                previewDesc.textContent = `${data.description} | Price: ${vals.price} ${vals.priceCurrency}`;
+            } else if (type === 'FAQPage') {
+                data.mainEntity = [];
+                if (vals.q1) data.mainEntity.push({ "@type": "Question", "name": vals.q1, "acceptedAnswer": { "@type": "Answer", "text": vals.a1 } });
+                if (vals.q2) data.mainEntity.push({ "@type": "Question", "name": vals.q2, "acceptedAnswer": { "@type": "Answer", "text": vals.a2 } });
+
+                previewTitle.textContent = "FAQ Page";
+                previewDesc.textContent = `Q: ${vals.q1 || '...'} A: ${vals.a1 || '...'}`;
+            } else if (type === 'LocalBusiness') {
+                data.name = vals.name;
+                data.image = vals.image;
+                data.telephone = vals.telephone;
+                data.address = {
+                    "@type": "PostalAddress",
+                    "streetAddress": vals.streetAddress
+                };
+                previewTitle.textContent = data.name;
+                previewDesc.textContent = `☎ ${data.telephone} | ${vals.streetAddress}`;
+            }
+
+            const json = JSON.stringify(data, null, 2);
+            outputCode.textContent = `<script type="application/ld+json">\n${json}\n<\/script>`;
+        }
+
+        schemaType.addEventListener('change', renderForm);
+
+        copyBtn.addEventListener('click', () => {
+            Utils.copyToClipboard(outputCode.textContent);
+            alert("कॉपी किया गया! इसे <head> टैग में पेस्ट करें।");
+        });
+
+        // Init
+        renderForm();
+
+    </script>
+</body>
+
+</html>

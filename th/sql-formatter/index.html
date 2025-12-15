@@ -4,13 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+    <meta name="google-adsense-account" content="ca-pub-6334819180242631">
     <title>ตัวจัดรูปแบบ SQL - Utilify</title>
     <meta name="description" content="Format, Beautify and Minify SQL queries.">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="SQL 포매터 - 🛠️ Utilify">
-    <meta property="og:description" content="Format, Beautify and Minify SQL queries.">
+    <meta property="og:title" content="ตัวจัดรูปแบบ SQL - 🛠️ Utilify">
+    <meta property="og:description" content="จัดรูปแบบ ตกแต่ง และย่อขนาดคำสั่ง SQL">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://utilifyapp.net/th/sql-formatter/">
 
@@ -42,10 +42,10 @@
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "SQL 포매터",
-    "description": "SQL 쿼리를 자동으로 정렬하고 포맷팅하세요.",
+    "name": "ตัวจัดรูปแบบ SQL",
+    "description": "จัดรูปแบบ ตกแต่ง และย่อขนาดคำสั่ง SQL",
     "url": "https://utilifyapp.net/th/sql-formatter/",
-    "inLanguage": "ko",
+    "inLanguage": "th",
     "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "Any",
     "offers": {
@@ -149,7 +149,7 @@
     </style>
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631"
-     crossorigin="anonymous"></script>
+        crossorigin="anonymous"></script>
 
     <link rel="manifest" href="/manifest.json">
 </head>
@@ -168,9 +168,11 @@
     <main class="main-content">
         <div class="container-narrow">
             <h1>🗄️ ตัวจัดรูปแบบ SQL</h1>
-            <div class="security-badge" style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
+            <div class="security-badge"
+                style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
                 <span title="Processed securely in client-side">🔒 Secure & Client-side</span>
-                <button id="pwaInstallBtn" class="btn btn-primary" style="display: none; padding: 4px 12px; font-size: 12px;">📲 Install App</button>
+                <button id="pwaInstallBtn" class="btn btn-primary"
+                    style="display: none; padding: 4px 12px; font-size: 12px;">📲 Install App</button>
             </div>
 
             <p>Format, Beautify and Minify SQL queries.</p>
@@ -201,23 +203,25 @@
             <!-- Editors -->
             <div class="editor-container">
                 <div class="editor-box">
-                    <h3>Input (SQL)</h3>
+                    <h3>นำเข้า (SQL)</h3>
                     <textarea id="inputSQL" placeholder="SELECT * FROM users WHERE id=1"></textarea>
                 </div>
                 <div class="editor-box">
-                    <h3>Output (Formatted)</h3>
+                    <h3>ผลลัพธ์ (จัดรูปแบบแล้ว)</h3>
                     <textarea id="outputSQL" readonly></textarea>
                 </div>
             </div>
-        
-      <div class="related-tools-section">
-        <h3>เครื่องมือที่เกี่ยวข้อง</h3>
-        <div class="related-buttons">
-          <a href="/th/json-formatter/" class="related-btn">JSON Formatter</a><a href="/th/base64-converter/" class="related-btn">Base64 Converter</a><a href="/th/password-generator/" class="related-btn">Password Generator</a>
-        </div>
-      </div>
 
-</div>
+            <div class="related-tools-section">
+                <h3>เครื่องมือที่เกี่ยวข้อง</h3>
+                <div class="related-buttons">
+                    <a href="/th/json-formatter/" class="related-btn">JSON Formatter</a><a href="/th/base64-converter/"
+                        class="related-btn">Base64 Converter</a><a href="/th/password-generator/"
+                        class="related-btn">Password Generator</a>
+                </div>
+            </div>
+
+        </div>
     </main>
 
     <footer class="site-footer">
@@ -284,7 +288,7 @@
         // Copy to clipboard
         copyBtn.addEventListener('click', () => {
             if (!outputSQL.value) {
-                alert('คัดลอก할 내용이 없습니다.');
+                alert('ไม่มีเนื้อหาให้คัดลอก');
                 return;
             }
             Utils.copyToClipboard(outputSQL.value);
