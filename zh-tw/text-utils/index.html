@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+    <title>文本工具箱 - Utilify</title>
+    <meta name="description" content="統計單詞，字符，刪除重複項，轉換大小寫等。">
+
+    <link rel="canonical" href="https://utilifyapp.net/zh-tw/text-utils/">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="文本工具箱 - Utilify">
+    <meta property="og:description" content="統計單詞，字符，刪除重複項，轉換大小寫等。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://utilifyapp.net/zh-tw/text-utils/">
+
+    <!-- Language Alternatives -->
+    <link rel="alternate" hreflang="ko" href="https://utilifyapp.net/ko/text-utils/">
+    <link rel="alternate" hreflang="en" href="https://utilifyapp.net/en/text-utils/">
+    <link rel="alternate" hreflang="ja" href="https://utilifyapp.net/ja/text-utils/">
+    <link rel="alternate" hreflang="hi" href="https://utilifyapp.net/hi/text-utils/">
+    <link rel="alternate" hreflang="id" href="https://utilifyapp.net/id/text-utils/">
+    <link rel="alternate" hreflang="vi" href="https://utilifyapp.net/vi/text-utils/">
+    <link rel="alternate" hreflang="th" href="https://utilifyapp.net/th/text-utils/">
+    <link rel="alternate" hreflang="de" href="https://utilifyapp.net/de/text-utils/">
+    <link rel="alternate" hreflang="pt" href="https://utilifyapp.net/pt/text-utils/">
+    <link rel="alternate" hreflang="x-default" href="https://utilifyapp.net/en/text-utils/">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631"
+        crossorigin="anonymous"></script>
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "文本工具箱",
+      "description": "統計單詞，字符，刪除重複項，轉換大小寫等。",
+      "url": "https://utilifyapp.net/zh-tw/text-utils/",
+      "inLanguage": "zh-tw",
+      "applicationCategory": "UtilitiesApplication"
+    }
+    </script>
+    <link rel="manifest" href="/manifest.json">
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/zh-tw/" class="site-logo">🛠️ Utilify</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container-narrow">
+            <h1>📝 文本工具箱</h1>
+            <div class="security-badge"
+                style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
+                <span title="Processed securely in client-side">🔒 安全 & 用戶端處理</span>
+                <button id="pwaInstallBtn" class="btn btn-primary"
+                    style="display: none; padding: 4px 12px; font-size: 12px;">📲 安裝應用</button>
+            </div>
+
+            <p>統計單詞，字符，刪除重複項，轉換大小寫等。</p>
+
+            <div class="card">
+                <label class="form-label">輸入文本</label>
+                <textarea id="textInput" class="form-textarea" style="min-height: 300px;"
+                    placeholder="輸入文本..."></textarea>
+            </div>
+
+            <div class="card">
+                <h3>統計</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem;">
+                    <div class="result-box">
+                        <div class="result-value" id="charCount">0</div>
+                        <div>字符數</div>
+                    </div>
+                    <div class="result-box">
+                        <div class="result-value" id="wordCount">0</div>
+                        <div>單詞數</div>
+                    </div>
+                    <div class="result-box">
+                        <div class="result-value" id="lineCount">0</div>
+                        <div>行數</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>操作</h3>
+                <div class="btn-group">
+                    <button class="btn btn-secondary" onclick="toUpperCase()">大寫</button>
+                    <button class="btn btn-secondary" onclick="toLowerCase()">小寫</button>
+                    <button class="btn btn-secondary" onclick="removeDuplicates()">刪除重複行</button>
+                    <button class="btn btn-secondary" onclick="sortLines()">排序行</button>
+                    <button class="btn btn-secondary" onclick="reverseText()">反轉文本</button>
+                    <button class="btn btn-primary" onclick="copyText()">複製</button>
+                    <button class="btn btn-secondary" onclick="clearText()">清除</button>
+                </div>
+            </div>
+
+            <div class="related-tools-section">
+                <h3>相關工具</h3>
+                <div class="related-buttons">
+                    <a href="/zh-tw/diff-checker/" class="related-btn">文本差異比對</a><a
+                        href="/zh-tw/regex-tester/" class="related-btn">正則表達式測試</a><a
+                        href="/zh-tw/markdown-previewer/" class="related-btn">Markdown 預覽</a><a
+                        href="/zh-tw/lorem-ipsum/" class="related-btn">Lorem Ipsum 生成器</a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Utilify. 版權所有。</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/assets/js/common.js"></script>
+    <script>
+        const textInput = document.getElementById('textInput');
+        const charCount = document.getElementById('charCount');
+        const wordCount = document.getElementById('wordCount');
+        const lineCount = document.getElementById('lineCount');
+
+        function updateStats() {
+            const text = textInput.value;
+            charCount.textContent = text.length;
+            wordCount.textContent = text.trim() ? text.trim().split(/\s+/).length : 0;
+            lineCount.textContent = text ? text.split('\n').length : 0;
+        }
+
+        function toUpperCase() {
+            textInput.value = textInput.value.toUpperCase();
+            updateStats();
+        }
+
+        function toLowerCase() {
+            textInput.value = textInput.value.toLowerCase();
+            updateStats();
+        }
+
+        function removeDuplicates() {
+            const lines = textInput.value.split('\n');
+            const unique = [...new Set(lines)];
+            textInput.value = unique.join('\n');
+            updateStats();
+        }
+
+        function sortLines() {
+            const lines = textInput.value.split('\n');
+            lines.sort();
+            textInput.value = lines.join('\n');
+            updateStats();
+        }
+
+        function reverseText() {
+            textInput.value = textInput.value.split('').reverse().join('');
+            updateStats();
+        }
+
+        function copyText() {
+            Utils.copyToClipboard(textInput.value);
+        }
+
+        function clearText() {
+            textInput.value = '';
+            updateStats();
+        }
+
+        textInput.addEventListener('input', updateStats);
+        updateStats();
+    </script>
+</body>
+
+</html>

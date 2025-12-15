@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+    <title>Base64 编码/解码 - Utilify</title>
+    <meta name="description" content="将文本编码或解码为 Base64。">
+    <link rel="canonical" href="https://utilifyapp.net/zh-cn/base64-converter/">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <style>
+        .converter-box {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .btn-group {
+            display: flex;
+            gap: var(--spacing-md);
+            margin: var(--spacing-lg) 0;
+        }
+
+        .btn {
+            flex: 1;
+            padding: var(--spacing-md);
+            border: none;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+        }
+    </style>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631"
+        crossorigin="anonymous"></script>
+    <link rel="manifest" href="/manifest.json">
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content"><a href="/zh-cn/" class="site-logo">🛠️ Utilify</a></div>
+        </div>
+    </header>
+    <main class="main-content">
+        <div class="container-narrow">
+            <h1>🔐 Base64 编码/解码</h1>
+            <div class="security-badge"
+                style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
+                <span title="Processed securely in client-side">🔒 安全 & 客户端处理</span>
+                <button id="pwaInstallBtn" class="btn btn-primary"
+                    style="display: none; padding: 4px 12px; font-size: 12px;">📲 安装应用</button>
+            </div>
+
+            <p>将文本编码或解码为 Base64。</p>
+            <div class="converter-box">
+                <label class="form-label">输入文本</label>
+                <textarea id="input" class="form-input" style="min-height: 150px;"
+                    placeholder="输入要编码的文本">Hello World!</textarea>
+                <div class="btn-group">
+                    <button class="btn btn-primary" id="encodeBtn">⬇️ 编码</button>
+                    <button class="btn btn-primary" id="decodeBtn">⬆️ 解码</button>
+                    <button class="btn btn-secondary" id="copyBtn">📋 复制</button>
+                    <button class="btn btn-secondary" id="clearBtn">🗑️ 清除</button>
+                </div>
+                <label class="form-label">输出结果</label>
+                <textarea id="output" class="form-input" style="min-height: 150px;" readonly></textarea>
+            </div>
+
+            <div class="related-tools-section">
+                <h3>相关工具</h3>
+                <div class="related-buttons">
+                    <a href="/zh-cn/json-formatter/" class="related-btn">JSON 格式化</a><a
+                        href="/zh-cn/sql-formatter/" class="related-btn">SQL 格式化</a><a
+                        href="/zh-cn/password-generator/" class="related-btn">密码生成器</a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Utilify. 保留所有权利。</p>
+            </div>
+        </div>
+    </footer>
+    <script src="/assets/js/common.js"></script>
+    <script>
+        const input = document.getElementById('input');
+        const output = document.getElementById('output');
+
+        document.getElementById('encodeBtn').addEventListener('click', () => {
+            try {
+                output.value = btoa(unescape(encodeURIComponent(input.value)));
+            } catch (e) {
+                alert('编码错误: ' + e.message);
+            }
+        });
+
+        document.getElementById('decodeBtn').addEventListener('click', () => {
+            try {
+                output.value = decodeURIComponent(escape(atob(input.value)));
+            } catch (e) {
+                alert('解码错误: ' + e.message);
+            }
+        });
+
+        document.getElementById('copyBtn').addEventListener('click', () => {
+            if (output.value) Utils.copyToClipboard(output.value);
+            else alert('没有可复制的内容。');
+        });
+
+        document.getElementById('clearBtn').addEventListener('click', () => {
+            input.value = '';
+            output.value = '';
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+    <title>計時器 / 番茄鐘 - Utilify</title>
+    <meta name="description" content="線上計時器和番茄工作法。">
+    <link rel="canonical" href="https://utilifyapp.net/zh-tw/timer/">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="計時器 / 番茄鐘 - Utilify">
+    <meta property="og:description" content="線上計時器和番茄工作法。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://utilifyapp.net/zh-tw/timer/">
+
+    <!-- Language Alternatives -->
+    <link rel="alternate" hreflang="ko" href="https://utilifyapp.net/ko/timer/">
+    <link rel="alternate" hreflang="en" href="https://utilifyapp.net/en/timer/">
+    <link rel="alternate" hreflang="ja" href="https://utilifyapp.net/ja/timer/">
+    <link rel="alternate" hreflang="hi" href="https://utilifyapp.net/hi/timer/">
+    <link rel="alternate" hreflang="id" href="https://utilifyapp.net/id/timer/">
+    <link rel="alternate" hreflang="vi" href="https://utilifyapp.net/vi/timer/">
+    <link rel="alternate" hreflang="th" href="https://utilifyapp.net/th/timer/">
+    <link rel="alternate" hreflang="de" href="https://utilifyapp.net/de/timer/">
+    <link rel="alternate" hreflang="pt" href="https://utilifyapp.net/pt/timer/">
+    <link rel="alternate" hreflang="x-default" href="https://utilifyapp.net/en/timer/">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631"
+        crossorigin="anonymous"></script>
+    <style>
+        .timer-display {
+            font-size: 4rem;
+            font-weight: 700;
+            text-align: center;
+            color: var(--primary-color);
+            margin: 2rem 0;
+        }
+
+        .preset-btn {
+            margin: 0.5rem;
+        }
+    </style>
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "計時器",
+      "description": "線上計時器和番茄工作法。",
+      "url": "https://utilifyapp.net/zh-tw/timer/",
+      "inLanguage": "zh-tw",
+      "applicationCategory": "UtilitiesApplication"
+    }
+    </script>
+    <link rel="manifest" href="/manifest.json">
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/zh-tw/" class="site-logo">🛠️ Utilify</a>
+            </div>
+        </div>
+    </header>
+    <main class="main-content">
+        <div class="container-narrow">
+            <h1>⏱️ 計時器 / 番茄鐘</h1>
+            <div class="security-badge"
+                style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
+                <span title="Processed securely in client-side">🔒 安全 & 用戶端處理</span>
+                <button id="pwaInstallBtn" class="btn btn-primary"
+                    style="display: none; padding: 4px 12px; font-size: 12px;">📲 安裝應用</button>
+            </div>
+
+            <p>線上計時器和番茄工作法。</p>
+            <div class="card text-center">
+                <div class="timer-display" id="display">00:00</div>
+                <div class="form-group">
+                    <label class="form-label">分鐘</label>
+                    <input type="number" id="minutes" class="form-input" value="25" min="0">
+                </div>
+                <div class="btn-group">
+                    <button class="btn btn-primary" onclick="start()">開始</button>
+                    <button class="btn btn-secondary" onclick="pause()">暫停</button>
+                    <button class="btn btn-secondary" onclick="reset()">重置</button>
+                </div>
+                <div style="margin-top:1rem;">
+                    <button class="btn btn-secondary preset-btn" onclick="setPreset(25)">番茄鐘 (25分)</button>
+                    <button class="btn btn-secondary preset-btn" onclick="setPreset(5)">休息 (5分)</button>
+                    <button class="btn btn-secondary preset-btn" onclick="setPreset(15)">休息 (15分)</button>
+                </div>
+            </div>
+
+            <div class="related-tools-section">
+                <h3>相關工具</h3>
+                <div class="related-buttons">
+                    <a href="/zh-tw/unit-converter/" class="related-btn">單位轉換器</a><a
+                        href="/zh-tw/bmi-calculator/" class="related-btn">BMI 計算器</a><a
+                        href="/zh-tw/date-calculator/" class="related-btn">日期計算器</a><a
+                        href="/zh-tw/reaction-test/" class="related-btn">反應測試</a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Utilify. 版權所有。</p>
+            </div>
+        </div>
+    </footer>
+    <script src="/assets/js/common.js"></script>
+    <script>
+        let totalSeconds = 0;
+        let remainingSeconds = 0;
+        let interval = null;
+
+        function updateDisplay() {
+            const mins = Math.floor(remainingSeconds / 60);
+            const secs = remainingSeconds % 60;
+            document.getElementById('display').textContent =
+                String(mins).padStart(2, '0') + ':' + String(secs).padStart(2, '0');
+        }
+
+        function start() {
+            if (!interval) {
+                if (remainingSeconds === 0) {
+                    totalSeconds = parseInt(document.getElementById('minutes').value) * 60;
+                    remainingSeconds = totalSeconds;
+                }
+                interval = setInterval(() => {
+                    if (remainingSeconds > 0) {
+                        remainingSeconds--;
+                        updateDisplay();
+                    } else {
+                        pause();
+                        alert('時間到！');
+                    }
+                }, 1000);
+            }
+        }
+
+        function pause() {
+            if (interval) {
+                clearInterval(interval);
+                interval = null;
+            }
+        }
+
+        function reset() {
+            pause();
+            remainingSeconds = 0;
+            updateDisplay();
+        }
+
+        function setPreset(mins) {
+            document.getElementById('minutes').value = mins;
+            reset();
+        }
+
+        updateDisplay();
+    </script>
+</body>
+
+</html>

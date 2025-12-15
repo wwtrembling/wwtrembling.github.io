@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+    <title>正则表达式测试 - Utilify</title>
+    <meta name="description" content="实时测试正则表达式。">
+    <link rel="canonical" href="https://utilifyapp.net/zh-cn/regex-tester/">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="正则表达式测试 - Utilify">
+    <meta property="og:description" content="实时测试正则表达式。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://utilifyapp.net/zh-cn/regex-tester/">
+
+    <!-- Language Alternatives -->
+    <link rel="alternate" hreflang="ko" href="https://utilifyapp.net/ko/regex-tester/">
+    <link rel="alternate" hreflang="en" href="https://utilifyapp.net/en/regex-tester/">
+    <link rel="alternate" hreflang="ja" href="https://utilifyapp.net/ja/regex-tester/">
+    <link rel="alternate" hreflang="hi" href="https://utilifyapp.net/hi/regex-tester/">
+    <link rel="alternate" hreflang="id" href="https://utilifyapp.net/id/regex-tester/">
+    <link rel="alternate" hreflang="vi" href="https://utilifyapp.net/vi/regex-tester/">
+    <link rel="alternate" hreflang="th" href="https://utilifyapp.net/th/regex-tester/">
+    <link rel="alternate" hreflang="de" href="https://utilifyapp.net/de/regex-tester/">
+    <link rel="alternate" hreflang="pt" href="https://utilifyapp.net/pt/regex-tester/">
+    <link rel="alternate" hreflang="x-default" href="https://utilifyapp.net/en/regex-tester/">
+
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "正则表达式测试",
+      "description": "实时测试正则表达式。",
+      "url": "https://utilifyapp.net/zh-cn/regex-tester/",
+      "inLanguage": "zh-cn",
+      "applicationCategory": "UtilitiesApplication"
+    }
+    </script>
+
+    <style>
+        .regex-input {
+            background: #f0f0f0;
+            padding: var(--spacing-md);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .test-input {
+            min-height: 200px;
+        }
+
+        .matches {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+        }
+
+        .match-item {
+            padding: var(--spacing-sm);
+            background: #e8f5e9;
+            border-radius: var(--radius-sm);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .highlight {
+            background: yellow;
+            font-weight: bold;
+        }
+    </style>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631"
+        crossorigin="anonymous"></script>
+    <link rel="manifest" href="/manifest.json">
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content"><a href="/zh-cn/" class="site-logo">🛠️ Utilify</a></div>
+        </div>
+    </header>
+    <main class="main-content">
+        <div class="container-narrow">
+            <h1>🔍 正则表达式测试</h1>
+            <div class="security-badge"
+                style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
+                <span title="Processed securely in client-side">🔒 安全 & 客户端处理</span>
+                <button id="pwaInstallBtn" class="btn btn-primary"
+                    style="display: none; padding: 4px 12px; font-size: 12px;">📲 安装应用</button>
+            </div>
+
+            <p>实时测试正则表达式。</p>
+            <div class="regex-input">
+                <label class="form-label">模式</label>
+                <input type="text" id="pattern" class="form-input" placeholder="/[a-z]+/gi" value="[a-z]+">
+                <div style="margin-top: var(--spacing-sm);">
+                    <label><input type="checkbox" id="flagG" checked> g (全局)</label>
+                    <label><input type="checkbox" id="flagI" checked> i (忽略大小写)</label>
+                    <label><input type="checkbox" id="flagM"> m (多行)</label>
+                </div>
+            </div>
+            <div>
+                <label class="form-label">测试字符串</label>
+                <textarea id="testString" class="form-input test-input"
+                    placeholder="输入测试字符串">Hello World 123 Test</textarea>
+            </div>
+            <div class="matches" id="results"></div>
+
+            <div class="related-tools-section">
+                <h3>相关工具</h3>
+                <div class="related-buttons">
+                    <a href="/zh-cn/text-utils/" class="related-btn">文本工具箱</a><a
+                        href="/zh-cn/diff-checker/" class="related-btn">文本差异对比</a><a
+                        href="/zh-cn/markdown-previewer/" class="related-btn">Markdown 预览</a><a
+                        href="/zh-cn/lorem-ipsum/" class="related-btn">Lorem Ipsum 生成器</a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Utilify. 保留所有权利。</p>
+            </div>
+        </div>
+    </footer>
+    <script src="/assets/js/common.js"></script>
+    <script>
+        const pattern = document.getElementById('pattern');
+        const testString = document.getElementById('testString');
+        const results = document.getElementById('results');
+        const flagG = document.getElementById('flagG');
+        const flagI = document.getElementById('flagI');
+        const flagM = document.getElementById('flagM');
+
+        function test() {
+            try {
+                const flags = (flagG.checked ? 'g' : '') + (flagI.checked ? 'i' : '') + (flagM.checked ? 'm' : '');
+                const regex = new RegExp(pattern.value, flags);
+                const text = testString.value;
+                const matches = [...text.matchAll(regex)];
+
+                if (matches.length === 0) {
+                    results.innerHTML = '<p>未找到匹配项</p>';
+                    return;
+                }
+
+                let html = `<h3>匹配项 (${matches.length})</h3>`;
+                matches.forEach((match, i) => {
+                    html += `<div class="match-item">Match ${i + 1}: "${match[0]}" (Index: ${match.index})</div>`;
+                });
+
+                let highlighted = text;
+                matches.reverse().forEach(match => {
+                    highlighted = highlighted.slice(0, match.index) +
+                        '<span class="highlight">' + match[0] + '</span>' +
+                        highlighted.slice(match.index + match[0].length);
+                });
+                html += `<h3>高亮</h3><div style="line-height: 1.8;">${highlighted}</div>`;
+                results.innerHTML = html;
+            } catch (e) {
+                results.innerHTML = `<p style="color: red;">错误: ${e.message}</p>`;
+            }
+        }
+
+        pattern.addEventListener('input', test);
+        testString.addEventListener('input', test);
+        flagG.addEventListener('change', test);
+        flagI.addEventListener('change', test);
+        flagM.addEventListener('change', test);
+        test();
+    </script>
+</body>
+
+</html>
