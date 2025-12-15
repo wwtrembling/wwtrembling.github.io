@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="{{ lang_code }}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+    <title>{{ title }}</title>
+    <meta name="description" content="{{ meta_desc }}">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="{{ title }}">
+    <meta property="og:description" content="{{ meta_desc }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://utilifyapp.net/{{ lang_code }}/">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://utilifyapp.net/{{ lang_code }}/">
+
+    <!-- Language Alternatives -->
+    {{ alternate_links }}
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "{{ title }}",
+    "description": "{{ meta_desc }}",
+    "url": "https://utilifyapp.net/{{ lang_code }}/",
+    "inLanguage": "{{ lang_code }}",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "Utilify",
+      "url": "https://utilifyapp.net/"
+    }
+  }
+  </script>
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631"
+        crossorigin="anonymous"></script>
+
+    <link rel="manifest" href="/manifest.json">
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/{{ lang_code }}/" class="site-logo">
+                    {{ brand }}
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="hero">
+                <h1>{{ brand }}</h1>
+                <div class="security-badge"
+                    style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
+                    <span title="Processed securely in client-side">{{ secure_badge }}</span>
+                    <button id="pwaInstallBtn" class="btn btn-primary"
+                        style="display: none; padding: 4px 12px; font-size: 12px;">{{ install_app }}</button>
+                </div>
+
+                <p>{{ hero_desc }}</p>
+            </div>
+
+            <h2 class="text-center mb-4">{{ h2_tools }}</h2>
+
+            <div class="card-grid">
+                {{ tool_cards }}
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>{{ footer }}</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/assets/js/common.js"></script>
+</body>
+
+</html>
