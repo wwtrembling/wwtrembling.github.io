@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="google-adsense-account" content="ca-pub-6334819180242631">
   <title>Utilify - Free Online Utilities</title>
-  <meta name="description" content="Collection of free online utilities including unit converter, PDF tools, image converter, calculators, and more. No installation required.">
-  
+  <meta name="description"
+    content="Collection of free online utilities including unit converter, PDF tools, image converter, calculators, and more. No installation required.">
+
   <!-- Open Graph -->
   <meta property="og:title" content="Utilify - Free Online Utilities">
   <meta property="og:description" content="Collection of free online utilities for everyday tasks">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://utilifyapp.net/">
-  
+
   <!-- Canonical -->
   <link rel="canonical" href="https://utilifyapp.net/">
-  
+
   <!-- Language Alternatives -->
   <link rel="alternate" hreflang="ko" href="https://utilifyapp.net/ko/">
   <link rel="alternate" hreflang="en" href="https://utilifyapp.net/en/">
@@ -26,16 +28,18 @@
   <link rel="alternate" hreflang="th" href="https://utilifyapp.net/th/">
   <link rel="alternate" hreflang="de" href="https://utilifyapp.net/de/">
   <link rel="alternate" hreflang="pt" href="https://utilifyapp.net/pt/">
+  <link rel="alternate" hreflang="zh-Hans" href="https://utilifyapp.net/zh-cn/">
+  <link rel="alternate" hreflang="zh-Hant" href="https://utilifyapp.net/zh-tw/">
   <link rel="alternate" hreflang="x-default" href="https://utilifyapp.net/en/">
-  
+
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
+
   <!-- Styles -->
   <link rel="stylesheet" href="/assets/css/main.css">
-  
+
   <!-- JSON-LD -->
   <script type="application/ld+json">
   {
@@ -51,7 +55,7 @@
     }
   }
   </script>
-  
+
   <style>
     .hero {
       text-align: center;
@@ -60,26 +64,26 @@
       border-radius: 1rem;
       margin-bottom: 3rem;
     }
-    
+
     .hero h1 {
       font-size: 3rem;
       margin-bottom: 1rem;
     }
-    
+
     .hero p {
       font-size: 1.25rem;
       color: var(--text-secondary);
       max-width: 600px;
       margin: 0 auto 2rem;
     }
-    
+
     .lang-selector {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 1rem;
       margin-top: 2rem;
     }
-    
+
     .lang-card {
       background: white;
       border: 2px solid var(--border-color);
@@ -91,24 +95,24 @@
       text-decoration: none;
       display: block;
     }
-    
+
     .lang-card:hover {
       transform: translateY(-4px);
       box-shadow: var(--shadow-lg);
       border-color: var(--primary-color);
     }
-    
+
     .lang-flag {
       font-size: 3rem;
       margin-bottom: 0.5rem;
     }
-    
+
     .lang-name {
       font-weight: 600;
       color: var(--text-primary);
       margin-bottom: 0.25rem;
     }
-    
+
     .lang-code {
       font-size: 0.875rem;
       color: var(--text-tertiary);
@@ -116,9 +120,10 @@
   </style>
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631"
-     crossorigin="anonymous"></script>
+    crossorigin="anonymous"></script>
 
 </head>
+
 <body>
   <header class="site-header">
     <div class="container">
@@ -138,60 +143,72 @@
       </div>
 
       <h2 class="text-center mb-4">Choose Your Language</h2>
-      
+
       <div class="lang-selector">
         <a href="/ko/" class="lang-card">
           <div class="lang-flag">🇰🇷</div>
           <div class="lang-name">한국어</div>
           <div class="lang-code">Korean</div>
         </a>
-        
+
         <a href="/en/" class="lang-card">
           <div class="lang-flag">🇺🇸</div>
           <div class="lang-name">English</div>
           <div class="lang-code">English</div>
         </a>
-        
+
         <a href="/ja/" class="lang-card">
           <div class="lang-flag">🇯🇵</div>
           <div class="lang-name">日本語</div>
           <div class="lang-code">Japanese</div>
         </a>
-        
+
         <a href="/hi/" class="lang-card">
           <div class="lang-flag">🇮🇳</div>
           <div class="lang-name">हिन्दी</div>
           <div class="lang-code">Hindi</div>
         </a>
-        
+
         <a href="/id/" class="lang-card">
           <div class="lang-flag">🇮🇩</div>
           <div class="lang-name">Bahasa Indonesia</div>
           <div class="lang-code">Indonesian</div>
         </a>
-        
+
         <a href="/vi/" class="lang-card">
           <div class="lang-flag">🇻🇳</div>
           <div class="lang-name">Tiếng Việt</div>
           <div class="lang-code">Vietnamese</div>
         </a>
-        
+
         <a href="/th/" class="lang-card">
           <div class="lang-flag">🇹🇭</div>
           <div class="lang-name">ภาษาไทย</div>
           <div class="lang-code">Thai</div>
         </a>
-        
+
         <a href="/de/" class="lang-card">
           <div class="lang-flag">🇩🇪</div>
           <div class="lang-name">Deutsch</div>
           <div class="lang-code">German</div>
         </a>
-        
+
         <a href="/pt/" class="lang-card">
           <div class="lang-flag">🇧🇷</div>
           <div class="lang-name">Português</div>
           <div class="lang-code">Portuguese</div>
+        </a>
+
+        <a href="/zh-cn/" class="lang-card">
+          <div class="lang-flag">🇨🇳</div>
+          <div class="lang-name">简体中文</div>
+          <div class="lang-code">Simplified Chinese</div>
+        </a>
+
+        <a href="/zh-tw/" class="lang-card">
+          <div class="lang-flag">🇹🇼</div>
+          <div class="lang-name">繁體中文</div>
+          <div class="lang-code">Traditional Chinese</div>
         </a>
       </div>
     </div>
@@ -208,12 +225,13 @@
   <script>
     // Auto-redirect based on browser language (optional)
     const browserLang = navigator.language.split('-')[0];
-    const supportedLangs = ['ko', 'en', 'ja', 'hi', 'id', 'vi', 'th', 'de', 'pt'];
-    
+    const supportedLangs = ['ko', 'en', 'ja', 'hi', 'id', 'vi', 'th', 'de', 'pt', 'zh-cn', 'zh-tw'];
+
     // Uncomment to enable auto-redirect
     // if (supportedLangs.includes(browserLang)) {
     //   window.location.href = `/${browserLang}/`;
     // }
   </script>
 </body>
+
 </html>
