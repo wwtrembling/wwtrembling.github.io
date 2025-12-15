@@ -40,7 +40,13 @@ JSON_TO_EXCEL = {
     "ko": {"title": "JSON to Excel 변환기", "page_desc": "JSON 데이터를 엑셀로 변환하고 다운로드하세요. (보안)"},
     "zh-cn": {"title": "JSON 转 Excel", "page_desc": "将 JSON 数据转换为 Excel 并下载。（安全）"},
     "zh-tw": {"title": "JSON 轉 Excel", "page_desc": "將 JSON 數據轉換為 Excel 並下載。（安全）"},
-    "ja": {"title": "JSON Excel 変換", "page_desc": "JSONデータをExcelに変換してダウンロードします。（安全）"}
+    "ja": {"title": "JSON Excel 変換", "page_desc": "JSONデータをExcelに変換してダウンロードします。（安全）"},
+    "vi": {"title": "Chuyển đổi JSON sang Excel", "page_desc": "Chuyển đổi dữ liệu JSON sang Excel và tải xuống. (An toàn)"},
+    "th": {"title": "แปลง JSON เป็น Excel", "page_desc": "แปลงข้อมูล JSON เป็น Excel และดาวน์โหลด (ปลอดภัย)"},
+    "de": {"title": "JSON zu Excel Konverter", "page_desc": "JSON-Daten in Excel konvertieren und herunterladen. (Sicher)"},
+    "pt": {"title": "Conversor JSON para Excel", "page_desc": "Converter dados JSON para Excel e baixar. (Seguro)"},
+    "id": {"title": "Konverter JSON ke Excel", "page_desc": "Konversi data JSON ke Excel dan unduh. (Aman)"},
+    "hi": {"title": "JSON से Excel कनवर्टर", "page_desc": "JSON डेटा को Excel में बदलें और डाउनलोड करें। (सुरक्षित)"}
 }
 
 JSON_LD_GENERATOR = {
@@ -48,7 +54,13 @@ JSON_LD_GENERATOR = {
     "ko": {"title": "SEO JSON-LD 생성기", "page_desc": "구글/네이버 노출을 위한 구조화된 데이터(스키마)를 만드세요."},
     "zh-cn": {"title": "SEO JSON-LD 生成器", "page_desc": "生成用于 Google/Naver 曝光的结构化数据（Schema）。"},
     "zh-tw": {"title": "SEO JSON-LD 生成器", "page_desc": "生成用於 Google/Naver 曝光的結構化數據（Schema）。"},
-    "ja": {"title": "SEO JSON-LD ジェネレーター", "page_desc": "Google/Naver公開用の構造化データ（スキーマ）を作成します。"}
+    "ja": {"title": "SEO JSON-LD ジェネレーター", "page_desc": "Google/Naver公開用の構造化データ（スキーマ）を作成します。"},
+    "vi": {"title": "Trình tạo SEO JSON-LD", "page_desc": "Tạo dữ liệu có cấu trúc (schema) cho hiển thị trên Google/Naver."},
+    "th": {"title": "ตัวสร้าง SEO JSON-LD", "page_desc": "สร้างข้อมูลโครงสร้าง (schema) สำหรับการแสดงผลบน Google/Naver"},
+    "de": {"title": "SEO JSON-LD Generator", "page_desc": "Erstellen Sie strukturierte Daten (Schema) für Google/Naver-Sichtbarkeit."},
+    "pt": {"title": "Gerador SEO JSON-LD", "page_desc": "Crie dados estruturados (schema) para exposição no Google/Naver."},
+    "id": {"title": "Generator SEO JSON-LD", "page_desc": "Buat data terstruktur (skema) untuk eksposur Google/Naver."},
+    "hi": {"title": "SEO JSON-LD जेनरेटर", "page_desc": "Google/Naver एक्सपोजर के लिए स्ट्रक्चर्ड डेटा (schema) बनाएं।"}
 }
 
 PDF_TOOLS = {
@@ -56,7 +68,13 @@ PDF_TOOLS = {
     "ko": {"title": "PDF 병합/분리", "page_desc": "서버 전송 없이 브라우저에서 안전하게 PDF를 합치고 나누세요."},
     "zh-cn": {"title": "PDF 合并/拆分", "page_desc": "在浏览器中安全地合并和拆分 PDF，无需上传到服务器。"},
     "zh-tw": {"title": "PDF 合併/拆分", "page_desc": "在瀏覽器中安全地合併和拆分 PDF，無需上傳到伺服器。"},
-    "ja": {"title": "PDF 結合/分割", "page_desc": "サーバーにアップロードせず、ブラウザで安全にPDFを結合・分割します。"}
+    "ja": {"title": "PDF 結合/分割", "page_desc": "サーバーにアップロードせず、ブラウザで安全にPDFを結合・分割します。"},
+    "vi": {"title": "Ghép/Tách PDF", "page_desc": "Ghép và tách PDF an toàn ngay trên trình duyệt mà không cần tải lên máy chủ."},
+    "th": {"title": "รวม/แยก PDF", "page_desc": "รวมและแยก PDF อย่างปลอดภัยในเบราว์เซอร์ของคุณโดยไม่ต้องอัปโหลดไปยังเซิร์ฟเวอร์"},
+    "de": {"title": "PDF zusammenfügen/teilen", "page_desc": "Fügen Sie PDFs sicher in Ihrem Browser zusammen und teilen Sie sie ohne Server-Upload."},
+    "pt": {"title": "Juntar/Dividir PDF", "page_desc": "Junte e divida PDFs de forma segura no seu navegador sem upload para o servidor."},
+    "id": {"title": "Gabung/Pisah PDF", "page_desc": "Gabungkan dan pisahkan PDF secara aman di browser Anda tanpa unggah ke server."},
+    "hi": {"title": "PDF मर्ज/स्प्लिट", "page_desc": "सर्वर पर अपलोड किए बिना अपने ब्राउज़र में सुरक्षित रूप से PDF को मर्ज और स्प्लिट करें।"}
 }
 
 TEXT_TO_DIAGRAM = {
@@ -64,7 +82,13 @@ TEXT_TO_DIAGRAM = {
     "ko": {"title": "텍스트로 다이어그램 그리기", "page_desc": "텍스트만 입력하면 순서도, 시퀀스 다이어그램이 완성됩니다."},
     "zh-cn": {"title": "文本转图表", "page_desc": "从文本创建流程图和时序图。"},
     "zh-tw": {"title": "文本轉圖表", "page_desc": "從文本創建流程圖和時序圖。"},
-    "ja": {"title": "テキスト図解作成", "page_desc": "テキストからフローチャートやシーケンス図を作成します。"}
+    "ja": {"title": "テキスト図解作成", "page_desc": "テキストからフローチャートやシーケンス図を作成します。"},
+    "vi": {"title": "Văn bản sang Sơ đồ", "page_desc": "Tạo lưu đồ và biểu đồ tuần tự từ văn bản."},
+    "th": {"title": "ข้อความเป็นแผนภาพ", "page_desc": "สร้างผังงานและแผนภาพลำดับจากข้อความ"},
+    "de": {"title": "Text zu Diagramm", "page_desc": "Erstellen Sie Flussdiagramme und Sequenzdiagramme aus Text."},
+    "pt": {"title": "Texto para Diagrama", "page_desc": "Crie fluxogramas e diagramas de sequência a partir de texto."},
+    "id": {"title": "Teks ke Diagram", "page_desc": "Buat diagram alur dan diagram urutan dari teks."},
+    "hi": {"title": "टेक्स्ट टू डायग्राम", "page_desc": "टेक्स्ट से फ्लोचार्ट और सीक्वेंस डायग्राम बनाएं।"}
 }
 
 DAILY_VERSE = {
@@ -72,7 +96,13 @@ DAILY_VERSE = {
     "ko": {"title": "오늘의 말씀", "page_desc": "매일 새로운 성경 구절을 받아보세요."},
     "zh-cn": {"title": "每日经文", "page_desc": "每天获取一句新的圣经经文。"},
     "zh-tw": {"title": "每日經文", "page_desc": "每天獲取一句新的聖經經文。"},
-    "ja": {"title": "今日の聖書", "page_desc": "毎日新しい聖書の一節を受け取ります。"}
+    "ja": {"title": "今日の聖書", "page_desc": "毎日新しい聖書の一節を受け取ります。"},
+    "vi": {"title": "Câu Kinh Thánh hàng ngày", "page_desc": "Nhận một câu Kinh Thánh mới mỗi ngày."},
+    "th": {"title": "ข้อพระคัมภีร์ประจำวัน", "page_desc": "รับข้อพระคัมภีร์ใหม่ทุกวัน"},
+    "de": {"title": "Täglicher Bibelvers", "page_desc": "Erhalten Sie jeden Tag einen neuen Bibelvers."},
+    "pt": {"title": "Versículo Bíblico Diário", "page_desc": "Receba um novo versículo bíblico todos os dias."},
+    "id": {"title": "Ayat Alkitab Harian", "page_desc": "Dapatkan ayat Alkitab baru setiap hari."},
+    "hi": {"title": "दैनिक बाइबिल वचन", "page_desc": "हर दिन एक नया बाइबिल वचन प्राप्त करें।"}
 }
 
 IMAGE_EDITOR = {
@@ -80,7 +110,13 @@ IMAGE_EDITOR = {
     "ko": {"title": "이미지 편집기", "page_desc": "이미지를 자르고, 회전하고, 필터를 적용하세요."},
     "zh-cn": {"title": "图片编辑器", "page_desc": "裁剪、旋转图片并应用滤镜。"},
     "zh-tw": {"title": "圖片編輯器", "page_desc": "裁剪、旋轉圖片並應用濾鏡。"},
-    "ja": {"title": "画像エディタ", "page_desc": "画像のトリミング、回転、フィルター適用ができます。"}
+    "ja": {"title": "画像エディタ", "page_desc": "画像のトリミング、回転、フィルター適用ができます。"},
+    "vi": {"title": "Trình sửa ảnh", "page_desc": "Cắt, xoay và áp dụng bộ lọc cho hình ảnh."},
+    "th": {"title": "โปรแกรมแก้ไขรูปภาพ", "page_desc": "ตัด หมุน และใช้ฟิลเตอร์กับรูปภาพ"},
+    "de": {"title": "Bildbearbeitung", "page_desc": "Bilder zuschneiden, drehen und Filter anwenden."},
+    "pt": {"title": "Editor de Imagens", "page_desc": "Recorte, gire e aplique filtros às imagens."},
+    "id": {"title": "Editor Gambar", "page_desc": "Pangkas, putar, dan terapkan filter pada gambar."},
+    "hi": {"title": "इमेज एडिटर", "page_desc": "छवियों को काटें, घुमाएं और फ़िल्टर लागू करें।"}
 }
 
 JPA_CONVERTER = {
@@ -88,7 +124,13 @@ JPA_CONVERTER = {
     "ko": {"title": "DB to JPA 변환기", "page_desc": "SQL 스키마를 JPA Entity, DTO 클래스로 자동 변환합니다."},
     "zh-cn": {"title": "DB 转 JPA 转换器", "page_desc": "将 SQL 模式转换为 JPA 实体和 DTO 类。"},
     "zh-tw": {"title": "DB 轉 JPA 轉換器", "page_desc": "將 SQL 模式轉換為 JPA 實體和 DTO 類。"},
-    "ja": {"title": "DB JPA 変換", "page_desc": "SQLスキーマをJPAエンティティとDTOクラスに変換します。"}
+    "ja": {"title": "DB JPA 変換", "page_desc": "SQLスキーマをJPAエンティティとDTOクラスに変換します。"},
+    "vi": {"title": "Chuyển đổi DB sang JPA", "page_desc": "Chuyển đổi lược đồ SQL sang lớp JPA Entity và DTO."},
+    "th": {"title": "แปลง DB เป็น JPA", "page_desc": "แปลงสคีมา SQL เป็นคลาส JPA Entity และ DTO"},
+    "de": {"title": "DB zu JPA Konverter", "page_desc": "Konvertieren Sie SQL-Schema in JPA-Entity- und DTO-Klassen."},
+    "pt": {"title": "Conversor DB para JPA", "page_desc": "Converta esquema SQL para classes JPA Entity e DTO."},
+    "id": {"title": "Konverter DB ke JPA", "page_desc": "Konversi skema SQL ke kelas JPA Entity dan DTO."},
+    "hi": {"title": "DB से JPA कनवर्टर", "page_desc": "SQL स्कीमा को JPA एंटिटी और DTO क्लास में बदलें।"}
 }
 
 JSON_TO_TS = {
@@ -96,7 +138,13 @@ JSON_TO_TS = {
     "ko": {"title": "JSON to TS/DTO", "page_desc": "JSON을 TypeScript Interface 및 NestJS DTO로 변환합니다."},
     "zh-cn": {"title": "JSON 转 TS/DTO", "page_desc": "将 JSON 转换为 TypeScript 接口和 NestJS DTO。"},
     "zh-tw": {"title": "JSON 轉 TS/DTO", "page_desc": "將 JSON 轉換為 TypeScript 介面和 NestJS DTO。"},
-    "ja": {"title": "JSON TS/DTO 変換", "page_desc": "JSONをTypeScriptインターフェースとNestJS DTOに変換します。"}
+    "ja": {"title": "JSON TS/DTO 変換", "page_desc": "JSONをTypeScriptインターフェースとNestJS DTOに変換します。"},
+    "vi": {"title": "JSON sang TS/DTO", "page_desc": "Chuyển đổi JSON sang giao diện TypeScript và NestJS DTO."},
+    "th": {"title": "JSON เป็น TS/DTO", "page_desc": "แปลง JSON เป็น TypeScript Interface และ NestJS DTO"},
+    "de": {"title": "JSON zu TS/DTO", "page_desc": "Konvertieren Sie JSON in TypeScript Interface und NestJS DTO."},
+    "pt": {"title": "JSON para TS/DTO", "page_desc": "Converta JSON para TypeScript Interface e NestJS DTO."},
+    "id": {"title": "JSON ke TS/DTO", "page_desc": "Konversi JSON ke TypeScript Interface dan NestJS DTO."},
+    "hi": {"title": "JSON से TS/DTO", "page_desc": "JSON को TypeScript Interface और NestJS DTO में बदलें।"}
 }
 
 EXCEL_TO_SQL = {
@@ -104,7 +152,13 @@ EXCEL_TO_SQL = {
     "ko": {"title": "Excel to SQL", "page_desc": "엑셀 데이터를 SQL INSERT 쿼리로 변환하는 도구."},
     "zh-cn": {"title": "Excel 转 SQL", "page_desc": "将 Excel 数据转换为 SQL INSERT 查询。"},
     "zh-tw": {"title": "Excel 轉 SQL", "page_desc": "將 Excel 數據轉換為 SQL INSERT 查詢。"},
-    "ja": {"title": "Excel SQL 変換", "page_desc": "ExcelデータをSQL INSERTクエリに変換します。"}
+    "ja": {"title": "Excel SQL 変換", "page_desc": "ExcelデータをSQL INSERTクエリに変換します。"},
+    "vi": {"title": "Excel sang SQL", "page_desc": "Chuyển đổi dữ liệu Excel sang truy vấn SQL INSERT."},
+    "th": {"title": "Excel เป็น SQL", "page_desc": "แปลงข้อมูล Excel เป็นคำสั่ง SQL INSERT"},
+    "de": {"title": "Excel zu SQL", "page_desc": "Konvertieren Sie Excel-Daten in SQL INSERT-Abfragen."},
+    "pt": {"title": "Excel para SQL", "page_desc": "Converta dados do Excel em consultas SQL INSERT."},
+    "id": {"title": "Excel ke SQL", "page_desc": "Konversi data Excel ke kueri SQL INSERT."},
+    "hi": {"title": "Excel से SQL", "page_desc": "Excel डेटा को SQL INSERT क्वेरी में बदलें।"}
 }
 
 INDEX_PAGE = {
