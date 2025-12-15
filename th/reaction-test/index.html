@@ -5,12 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-adsense-account" content="ca-pub-6334819180242631">
-    <title>Reaction Speed Test - Utilify</title>
-    <meta name="description" content="Test your reaction time. Click as fast as you can when the screen turns green!">
+    <title>ทดสอบความเร็วในการตอบสนอง - Utilify</title>
+    <meta name="description" content="ทดสอบเวลาตอบสนองของคุณ คลิกให้เร็วที่สุดเมื่อหน้าจอเปลี่ยนเป็นสีเขียว!">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Reaction Speed Test - Utilify">
-    <meta property="og:description" content="Test your reaction time. Click as fast as you can when the screen turns green!">
+    <meta property="og:title" content="ทดสอบความเร็วในการตอบสนอง - Utilify">
+    <meta property="og:description" content="ทดสอบเวลาตอบสนองของคุณ คลิกให้เร็วที่สุดเมื่อหน้าจอเปลี่ยนเป็นสีเขียว!">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://utilifyapp.net/th/reaction-test/">
 
@@ -42,8 +42,8 @@
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "Reaction Speed Test",
-    "description": "Test your reaction time. Click as fast as you can when the screen turns green!",
+    "name": "ทดสอบความเร็วในการตอบสนอง",
+    "description": "ทดสอบเวลาตอบสนองของคุณ คลิกให้เร็วที่สุดเมื่อหน้าจอเปลี่ยนเป็นสีเขียว!",
     "url": "https://utilifyapp.net/th/reaction-test/",
     "inLanguage": "th",
     "applicationCategory": "UtilitiesApplication",
@@ -132,7 +132,7 @@
 
     <main class="main-content">
         <div class="container-narrow">
-            <h1>⚡ Reaction Speed Test</h1>
+            <h1>⚡ ทดสอบความเร็วในการตอบสนอง</h1>
             <div class="security-badge"
                 style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
                 <span title="Processed securely in client-side">🔒 Secure & Client-side</span>
@@ -140,7 +140,7 @@
                     style="display: none; padding: 4px 12px; font-size: 12px;">📲 Install App</button>
             </div>
 
-            <p>Test your reaction time. Click as fast as you can when the screen turns green!</p>
+            <p>ทดสอบเวลาตอบสนองของคุณ คลิกให้เร็วที่สุดเมื่อหน้าจอเปลี่ยนเป็นสีเขียว!</p>
 
             <!-- AdSense Placeholder -->
             <div class="adsense-placeholder">
@@ -149,15 +149,15 @@
             </div>
 
             <div id="gameArea" class="game-area state-start">
-                <div id="message">Click anywhere to Start.</div>
+                <div id="message">คลิกเพื่อเริ่ม</div>
             </div>
 
             <div class="card">
-                <h3>Ranking</h3>
-                <p>• < 200 ms: Godlike Reflexes! 🏆</p>
-                <p>• 200 - 300 ms: Great Speed! 🚀</p>
-                <p>• 300 - 450 ms: Average Speed. 👌</p>
-                <p>• > 450 ms: Focus! You can do better. 🐢</p>
+                <h3>อันดับ</h3>
+                <p>• < 200 ms: ปฏิกิริยาขั้นเทพ! 🏆</p>
+                <p>• 200 - 300 ms: ความเร็วเยี่ยม! 🚀</p>
+                <p>• 300 - 450 ms: ความเร็วปานกลาง 👌</p>
+                <p>• > 450 ms: ตั้งสมาธิ! คุณทำได้ดีกว่านี้ 🐢</p>
             </div>
 
             <!-- AdSense Placeholder -->
@@ -167,12 +167,12 @@
             </div>
 
             <div class="related-tools-section">
-                <h3>Related Tools</h3>
+                <h3>เครื่องมือที่เกี่ยวข้อง</h3>
                 <div class="related-buttons">
-                    <a href="/th/unit-converter/" class="related-btn">Unit Converter</a><a
-                        href="/th/bmi-calculator/" class="related-btn">BMI Calculator</a><a
-                        href="/th/date-calculator/" class="related-btn">Date Calculator</a><a
-                        href="/th/timer/" class="related-btn">Timer</a>
+                    <a href="/th/unit-converter/" class="related-btn">แปลงหน่วย</a><a
+                        href="/th/bmi-calculator/" class="related-btn">เครื่องคำนวณ BMI</a><a
+                        href="/th/date-calculator/" class="related-btn">เครื่องคำนวณวันที่</a><a
+                        href="/th/timer/" class="related-btn">ตัวจับเวลา</a>
                 </div>
             </div>
 
@@ -216,13 +216,13 @@
         function startGame() {
             state = 'wait';
             gameArea.className = 'game-area state-wait';
-            message.textContent = 'Wait for Green...';
+            message.textContent = 'รอสีเขียว...';
 
             const randomTime = Math.floor(Math.random() * 3000) + 2000; // 2-5 seconds
             timeoutId = setTimeout(() => {
                 state = 'click';
                 gameArea.className = 'game-area state-click';
-                message.textContent = 'CLICK!';
+                message.textContent = 'คลิก!';
                 startTime = performance.now();
             }, randomTime);
         }
@@ -231,7 +231,7 @@
             clearTimeout(timeoutId);
             state = 'start'; // Click to restart
             gameArea.className = 'game-area state-wait'; // Keep red
-            message.innerHTML = 'Too Soon! Click to try again.';
+            message.innerHTML = 'เร็วเกินไป! คลิกเพื่อลองอีกครั้ง';
         }
 
         function endGame() {
@@ -240,16 +240,16 @@
             state = 'result';
 
             let rankMsg = '';
-            if (time < 200) rankMsg = '< 200 ms: Godlike Reflexes! 🏆';
-            else if (time < 300) rankMsg = '200 - 300 ms: Great Speed! 🚀';
-            else if (time < 450) rankMsg = '300 - 450 ms: Average Speed. 👌';
-            else rankMsg = '> 450 ms: Focus! You can do better. 🐢';
+            if (time < 200) rankMsg = '< 200 ms: ปฏิกิริยาขั้นเทพ! 🏆';
+            else if (time < 300) rankMsg = '200 - 300 ms: ความเร็วเยี่ยม! 🚀';
+            else if (time < 450) rankMsg = '300 - 450 ms: ความเร็วปานกลาง 👌';
+            else rankMsg = '> 450 ms: ตั้งสมาธิ! คุณทำได้ดีกว่านี้ 🐢';
 
             gameArea.className = 'game-area state-result';
             message.innerHTML = `
         <div class="result-text">${time} ms</div>
         <div class="rank-text">${rankMsg}</div>
-        <div class="sub-text">Play Again</div>
+        <div class="sub-text">เล่นอีกครั้ง</div>
       `;
         }
     </script>

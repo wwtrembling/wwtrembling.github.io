@@ -5,12 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-adsense-account" content="ca-pub-6334819180242631">
-    <title>YouTube Thumbnail Downloader - Utilify</title>
-    <meta name="description" content="Extract and download YouTube video thumbnails in high quality (4K, HD). Free and easy tool.">
+    <title>Trình tải xuống hình thu nhỏ YouTube - Utilify</title>
+    <meta name="description" content="Trích xuất và tải xuống hình thu nhỏ video YouTube ở chất lượng cao (4K, HD). Công cụ miễn phí và dễ dàng.">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="YouTube Thumbnail Downloader - Utilify">
-    <meta property="og:description" content="Extract and download YouTube video thumbnails in high quality (4K, HD). Free and easy tool.">
+    <meta property="og:title" content="Trình tải xuống hình thu nhỏ YouTube - Utilify">
+    <meta property="og:description" content="Trích xuất và tải xuống hình thu nhỏ video YouTube ở chất lượng cao (4K, HD). Công cụ miễn phí và dễ dàng.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://utilifyapp.net/vi/thumbnail-downloader/">
 
@@ -42,8 +42,8 @@
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "YouTube Thumbnail Downloader",
-    "description": "Extract and download YouTube video thumbnails in high quality (4K, HD). Free and easy tool.",
+    "name": "Trình tải xuống hình thu nhỏ YouTube",
+    "description": "Trích xuất và tải xuống hình thu nhỏ video YouTube ở chất lượng cao (4K, HD). Công cụ miễn phí và dễ dàng.",
     "url": "https://utilifyapp.net/vi/thumbnail-downloader/",
     "inLanguage": "vi",
     "applicationCategory": "UtilitiesApplication",
@@ -129,7 +129,7 @@
 
     <main class="main-content">
         <div class="container-narrow">
-            <h1>📺 YouTube Thumbnail Downloader</h1>
+            <h1>📺 Trình tải xuống hình thu nhỏ YouTube</h1>
             <div class="security-badge"
                 style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
                 <span title="Processed securely in client-side">🔒 An toàn & Phía máy khách</span>
@@ -137,7 +137,7 @@
                     style="display: none; padding: 4px 12px; font-size: 12px;">📲 Cài đặt ứng dụng</button>
             </div>
 
-            <p>Extract and download YouTube video thumbnails in high quality (4K, HD). Free and easy tool.</p>
+            <p>Trích xuất và tải xuống hình thu nhỏ video YouTube ở chất lượng cao (4K, HD). Công cụ miễn phí và dễ dàng.</p>
 
             <!-- AdSense Placeholder -->
             <div class="adsense-placeholder">
@@ -151,7 +151,7 @@
                         <input type="text" id="urlInput" class="form-input"
                             placeholder="https://www.youtube.com/watch?v=...">
                     </div>
-                    <button class="btn btn-primary" onclick="getThumbnails()">Get Thumbnail</button>
+                    <button class="btn btn-primary" onclick="getThumbnails()">Lấy hình thu nhỏ</button>
                 </div>
 
                 <div id="results" class="results-grid"></div>
@@ -164,12 +164,12 @@
             </div>
 
             <div class="related-tools-section">
-                <h3>Related Tools</h3>
+                <h3>Công cụ liên quan</h3>
                 <div class="related-buttons">
-                    <a href="/vi/image-converter/" class="related-btn">Image Converter</a><a
-                        href="/vi/favicon-generator/" class="related-btn">Favicon Generator</a><a
-                        href="/vi/color-converter/" class="related-btn">Color Converter</a><a
-                        href="/vi/image-watermark/" class="related-btn">Image Watermark</a>
+                    <a href="/vi/image-converter/" class="related-btn">Chuyển đổi hình ảnh</a><a
+                        href="/vi/favicon-generator/" class="related-btn">Tạo Favicon</a><a
+                        href="/vi/color-converter/" class="related-btn">Chuyển đổi màu sắc</a><a
+                        href="/vi/image-watermark/" class="related-btn">Đóng dấu ảnh</a>
                 </div>
             </div>
 
@@ -201,7 +201,7 @@
             const videoId = extractVideoID(url);
 
             if (!videoId) {
-                Utils.showToast('Invalid YouTube URL.');
+                Utils.showToast('URL YouTube không hợp lệ.');
                 return;
             }
 
@@ -210,9 +210,9 @@
 
         function renderThumbnails(videoId) {
             const qualities = [
-                { label: 'Maximum Resolution (1280x720+)', suffix: 'maxresdefault' },
-                { label: 'High Quality (480x360)', suffix: 'hqdefault' },
-                { label: 'Medium Quality (320x180)', suffix: 'mqdefault' },
+                { label: 'Độ phân giải tối đa (1280x720+)', suffix: 'maxresdefault' },
+                { label: 'Chất lượng cao (480x360)', suffix: 'hqdefault' },
+                { label: 'Chất lượng trung bình (320x180)', suffix: 'mqdefault' },
             ];
 
             results.innerHTML = qualities.map(q => {
@@ -222,7 +222,7 @@
             <div class="thumb-header">
               <h3>${q.label}</h3>
               <a href="${imgUrl}" target="_blank" download="thumbnail.jpg" class="download-link">
-                <button class="btn btn-secondary">Download Image</button>
+                <button class="btn btn-secondary">Tải xuống hình ảnh</button>
               </a>
             </div>
             <img src="${imgUrl}" class="thumb-img" alt="Thumbnail">

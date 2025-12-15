@@ -5,12 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-adsense-account" content="ca-pub-6334819180242631">
-    <title>Reaction Speed Test - Utilify</title>
-    <meta name="description" content="Test your reaction time. Click as fast as you can when the screen turns green!">
+    <title>Tes Kecepatan Reaksi - Utilify</title>
+    <meta name="description" content="Uji waktu reaksi Anda. Klik secepat mungkin saat layar berubah menjadi hijau!">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Reaction Speed Test - Utilify">
-    <meta property="og:description" content="Test your reaction time. Click as fast as you can when the screen turns green!">
+    <meta property="og:title" content="Tes Kecepatan Reaksi - Utilify">
+    <meta property="og:description" content="Uji waktu reaksi Anda. Klik secepat mungkin saat layar berubah menjadi hijau!">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://utilifyapp.net/id/reaction-test/">
 
@@ -42,8 +42,8 @@
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "Reaction Speed Test",
-    "description": "Test your reaction time. Click as fast as you can when the screen turns green!",
+    "name": "Tes Kecepatan Reaksi",
+    "description": "Uji waktu reaksi Anda. Klik secepat mungkin saat layar berubah menjadi hijau!",
     "url": "https://utilifyapp.net/id/reaction-test/",
     "inLanguage": "id",
     "applicationCategory": "UtilitiesApplication",
@@ -132,7 +132,7 @@
 
     <main class="main-content">
         <div class="container-narrow">
-            <h1>⚡ Reaction Speed Test</h1>
+            <h1>⚡ Tes Kecepatan Reaksi</h1>
             <div class="security-badge"
                 style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
                 <span title="Processed securely in client-side">🔒 Secure & Client-side</span>
@@ -140,7 +140,7 @@
                     style="display: none; padding: 4px 12px; font-size: 12px;">📲 Install App</button>
             </div>
 
-            <p>Test your reaction time. Click as fast as you can when the screen turns green!</p>
+            <p>Uji waktu reaksi Anda. Klik secepat mungkin saat layar berubah menjadi hijau!</p>
 
             <!-- AdSense Placeholder -->
             <div class="adsense-placeholder">
@@ -149,15 +149,15 @@
             </div>
 
             <div id="gameArea" class="game-area state-start">
-                <div id="message">Click anywhere to Start.</div>
+                <div id="message">Klik untuk Mulai</div>
             </div>
 
             <div class="card">
-                <h3>Ranking</h3>
-                <p>• < 200 ms: Godlike Reflexes! 🏆</p>
-                <p>• 200 - 300 ms: Great Speed! 🚀</p>
-                <p>• 300 - 450 ms: Average Speed. 👌</p>
-                <p>• > 450 ms: Focus! You can do better. 🐢</p>
+                <h3>Peringkat</h3>
+                <p>• < 200 ms: Refleks Dewa! 🏆</p>
+                <p>• 200 - 300 ms: Kecepatan Hebat! 🚀</p>
+                <p>• 300 - 450 ms: Kecepatan Rata-rata. 👌</p>
+                <p>• > 450 ms: Fokus! Kamu bisa lebih baik. 🐢</p>
             </div>
 
             <!-- AdSense Placeholder -->
@@ -167,11 +167,11 @@
             </div>
 
             <div class="related-tools-section">
-                <h3>Related Tools</h3>
+                <h3>Alat Terkait</h3>
                 <div class="related-buttons">
-                    <a href="/id/unit-converter/" class="related-btn">Unit Converter</a><a
-                        href="/id/bmi-calculator/" class="related-btn">BMI Calculator</a><a
-                        href="/id/date-calculator/" class="related-btn">Date Calculator</a><a
+                    <a href="/id/unit-converter/" class="related-btn">Konverter Unit</a><a
+                        href="/id/bmi-calculator/" class="related-btn">Kalkulator BMI</a><a
+                        href="/id/date-calculator/" class="related-btn">Kalkulator Tanggal</a><a
                         href="/id/timer/" class="related-btn">Timer</a>
                 </div>
             </div>
@@ -216,13 +216,13 @@
         function startGame() {
             state = 'wait';
             gameArea.className = 'game-area state-wait';
-            message.textContent = 'Wait for Green...';
+            message.textContent = 'Tunggu Hijau...';
 
             const randomTime = Math.floor(Math.random() * 3000) + 2000; // 2-5 seconds
             timeoutId = setTimeout(() => {
                 state = 'click';
                 gameArea.className = 'game-area state-click';
-                message.textContent = 'CLICK!';
+                message.textContent = 'KLIK!';
                 startTime = performance.now();
             }, randomTime);
         }
@@ -231,7 +231,7 @@
             clearTimeout(timeoutId);
             state = 'start'; // Click to restart
             gameArea.className = 'game-area state-wait'; // Keep red
-            message.innerHTML = 'Too Soon! Click to try again.';
+            message.innerHTML = 'Terlalu Cepat! Klik untuk mencoba lagi.';
         }
 
         function endGame() {
@@ -240,16 +240,16 @@
             state = 'result';
 
             let rankMsg = '';
-            if (time < 200) rankMsg = '< 200 ms: Godlike Reflexes! 🏆';
-            else if (time < 300) rankMsg = '200 - 300 ms: Great Speed! 🚀';
-            else if (time < 450) rankMsg = '300 - 450 ms: Average Speed. 👌';
-            else rankMsg = '> 450 ms: Focus! You can do better. 🐢';
+            if (time < 200) rankMsg = '< 200 ms: Refleks Dewa! 🏆';
+            else if (time < 300) rankMsg = '200 - 300 ms: Kecepatan Hebat! 🚀';
+            else if (time < 450) rankMsg = '300 - 450 ms: Kecepatan Rata-rata. 👌';
+            else rankMsg = '> 450 ms: Fokus! Kamu bisa lebih baik. 🐢';
 
             gameArea.className = 'game-area state-result';
             message.innerHTML = `
         <div class="result-text">${time} ms</div>
         <div class="rank-text">${rankMsg}</div>
-        <div class="sub-text">Play Again</div>
+        <div class="sub-text">Main Lagi</div>
       `;
         }
     </script>

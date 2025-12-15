@@ -5,12 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-adsense-account" content="ca-pub-6334819180242631">
-    <title>Reaction Speed Test - Utilify</title>
-    <meta name="description" content="Test your reaction time. Click as fast as you can when the screen turns green!">
+    <title>Reaktionstest - Utilify</title>
+    <meta name="description" content="Testen Sie Ihre Reaktionszeit. Klicken Sie so schnell wie möglich, wenn der Bildschirm grün wird!">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Reaction Speed Test - Utilify">
-    <meta property="og:description" content="Test your reaction time. Click as fast as you can when the screen turns green!">
+    <meta property="og:title" content="Reaktionstest - Utilify">
+    <meta property="og:description" content="Testen Sie Ihre Reaktionszeit. Klicken Sie so schnell wie möglich, wenn der Bildschirm grün wird!">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://utilifyapp.net/de/reaction-test/">
 
@@ -42,8 +42,8 @@
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "Reaction Speed Test",
-    "description": "Test your reaction time. Click as fast as you can when the screen turns green!",
+    "name": "Reaktionstest",
+    "description": "Testen Sie Ihre Reaktionszeit. Klicken Sie so schnell wie möglich, wenn der Bildschirm grün wird!",
     "url": "https://utilifyapp.net/de/reaction-test/",
     "inLanguage": "de",
     "applicationCategory": "UtilitiesApplication",
@@ -132,7 +132,7 @@
 
     <main class="main-content">
         <div class="container-narrow">
-            <h1>⚡ Reaction Speed Test</h1>
+            <h1>⚡ Reaktionstest</h1>
             <div class="security-badge"
                 style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
                 <span title="Processed securely in client-side">🔒 Sicher & Clientseitig</span>
@@ -140,7 +140,7 @@
                     style="display: none; padding: 4px 12px; font-size: 12px;">📲 App installieren</button>
             </div>
 
-            <p>Test your reaction time. Click as fast as you can when the screen turns green!</p>
+            <p>Testen Sie Ihre Reaktionszeit. Klicken Sie so schnell wie möglich, wenn der Bildschirm grün wird!</p>
 
             <!-- AdSense Placeholder -->
             <div class="adsense-placeholder">
@@ -149,15 +149,15 @@
             </div>
 
             <div id="gameArea" class="game-area state-start">
-                <div id="message">Click anywhere to Start.</div>
+                <div id="message">Klicken zum Starten</div>
             </div>
 
             <div class="card">
-                <h3>Ranking</h3>
-                <p>• < 200 ms: Godlike Reflexes! 🏆</p>
-                <p>• 200 - 300 ms: Great Speed! 🚀</p>
-                <p>• 300 - 450 ms: Average Speed. 👌</p>
-                <p>• > 450 ms: Focus! You can do better. 🐢</p>
+                <h3>Rangliste</h3>
+                <p>• < 200 ms: Gottgleiche Reflexe! 🏆</p>
+                <p>• 200 - 300 ms: Tolle Geschwindigkeit! 🚀</p>
+                <p>• 300 - 450 ms: Durchschnittliche Geschwindigkeit. 👌</p>
+                <p>• > 450 ms: Konzentrieren! Das kannst du besser. 🐢</p>
             </div>
 
             <!-- AdSense Placeholder -->
@@ -167,11 +167,11 @@
             </div>
 
             <div class="related-tools-section">
-                <h3>Related Tools</h3>
+                <h3>Ähnliche Tools</h3>
                 <div class="related-buttons">
-                    <a href="/de/unit-converter/" class="related-btn">Unit Converter</a><a
-                        href="/de/bmi-calculator/" class="related-btn">BMI Calculator</a><a
-                        href="/de/date-calculator/" class="related-btn">Date Calculator</a><a
+                    <a href="/de/unit-converter/" class="related-btn">Einheitenumrechner</a><a
+                        href="/de/bmi-calculator/" class="related-btn">BMI Rechner</a><a
+                        href="/de/date-calculator/" class="related-btn">Datumsrechner</a><a
                         href="/de/timer/" class="related-btn">Timer</a>
                 </div>
             </div>
@@ -216,13 +216,13 @@
         function startGame() {
             state = 'wait';
             gameArea.className = 'game-area state-wait';
-            message.textContent = 'Wait for Green...';
+            message.textContent = 'Warten auf Grün...';
 
             const randomTime = Math.floor(Math.random() * 3000) + 2000; // 2-5 seconds
             timeoutId = setTimeout(() => {
                 state = 'click';
                 gameArea.className = 'game-area state-click';
-                message.textContent = 'CLICK!';
+                message.textContent = 'KLICKEN!';
                 startTime = performance.now();
             }, randomTime);
         }
@@ -231,7 +231,7 @@
             clearTimeout(timeoutId);
             state = 'start'; // Click to restart
             gameArea.className = 'game-area state-wait'; // Keep red
-            message.innerHTML = 'Too Soon! Click to try again.';
+            message.innerHTML = 'Zu früh! Klicken, um es erneut zu versuchen.';
         }
 
         function endGame() {
@@ -240,16 +240,16 @@
             state = 'result';
 
             let rankMsg = '';
-            if (time < 200) rankMsg = '< 200 ms: Godlike Reflexes! 🏆';
-            else if (time < 300) rankMsg = '200 - 300 ms: Great Speed! 🚀';
-            else if (time < 450) rankMsg = '300 - 450 ms: Average Speed. 👌';
-            else rankMsg = '> 450 ms: Focus! You can do better. 🐢';
+            if (time < 200) rankMsg = '< 200 ms: Gottgleiche Reflexe! 🏆';
+            else if (time < 300) rankMsg = '200 - 300 ms: Tolle Geschwindigkeit! 🚀';
+            else if (time < 450) rankMsg = '300 - 450 ms: Durchschnittliche Geschwindigkeit. 👌';
+            else rankMsg = '> 450 ms: Konzentrieren! Das kannst du besser. 🐢';
 
             gameArea.className = 'game-area state-result';
             message.innerHTML = `
         <div class="result-text">${time} ms</div>
         <div class="rank-text">${rankMsg}</div>
-        <div class="sub-text">Play Again</div>
+        <div class="sub-text">Nochmal spielen</div>
       `;
         }
     </script>

@@ -5,12 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-adsense-account" content="ca-pub-6334819180242631">
-    <title>YouTube Thumbnail Downloader - Utilify</title>
-    <meta name="description" content="Extract and download YouTube video thumbnails in high quality (4K, HD). Free and easy tool.">
+    <title>YouTube थंबनेल डाउनलोडर - Utilify</title>
+    <meta name="description" content="YouTube वीडियो थंबनेल को उच्च गुणवत्ता (4K, HD) में निकालें और डाउनलोड करें। नि:शुल्क और आसान उपकरण।">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="YouTube Thumbnail Downloader - Utilify">
-    <meta property="og:description" content="Extract and download YouTube video thumbnails in high quality (4K, HD). Free and easy tool.">
+    <meta property="og:title" content="YouTube थंबनेल डाउनलोडर - Utilify">
+    <meta property="og:description" content="YouTube वीडियो थंबनेल को उच्च गुणवत्ता (4K, HD) में निकालें और डाउनलोड करें। नि:शुल्क और आसान उपकरण।">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://utilifyapp.net/hi/thumbnail-downloader/">
 
@@ -42,8 +42,8 @@
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "YouTube Thumbnail Downloader",
-    "description": "Extract and download YouTube video thumbnails in high quality (4K, HD). Free and easy tool.",
+    "name": "YouTube थंबनेल डाउनलोडर",
+    "description": "YouTube वीडियो थंबनेल को उच्च गुणवत्ता (4K, HD) में निकालें और डाउनलोड करें। नि:शुल्क और आसान उपकरण।",
     "url": "https://utilifyapp.net/hi/thumbnail-downloader/",
     "inLanguage": "hi",
     "applicationCategory": "UtilitiesApplication",
@@ -129,7 +129,7 @@
 
     <main class="main-content">
         <div class="container-narrow">
-            <h1>📺 YouTube Thumbnail Downloader</h1>
+            <h1>📺 YouTube थंबनेल डाउनलोडर</h1>
             <div class="security-badge"
                 style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
                 <span title="Processed securely in client-side">🔒 सुरक्षित और क्लाइंट-साइड</span>
@@ -137,7 +137,7 @@
                     style="display: none; padding: 4px 12px; font-size: 12px;">📲 ऐप इंस्टॉल करें</button>
             </div>
 
-            <p>Extract and download YouTube video thumbnails in high quality (4K, HD). Free and easy tool.</p>
+            <p>YouTube वीडियो थंबनेल को उच्च गुणवत्ता (4K, HD) में निकालें और डाउनलोड करें। नि:शुल्क और आसान उपकरण।</p>
 
             <!-- AdSense Placeholder -->
             <div class="adsense-placeholder">
@@ -151,7 +151,7 @@
                         <input type="text" id="urlInput" class="form-input"
                             placeholder="https://www.youtube.com/watch?v=...">
                     </div>
-                    <button class="btn btn-primary" onclick="getThumbnails()">Get Thumbnail</button>
+                    <button class="btn btn-primary" onclick="getThumbnails()">थंबनेल प्राप्त करें</button>
                 </div>
 
                 <div id="results" class="results-grid"></div>
@@ -164,12 +164,12 @@
             </div>
 
             <div class="related-tools-section">
-                <h3>Related Tools</h3>
+                <h3>संबंधित उपकरण</h3>
                 <div class="related-buttons">
-                    <a href="/hi/image-converter/" class="related-btn">Image Converter</a><a
-                        href="/hi/favicon-generator/" class="related-btn">Favicon Generator</a><a
-                        href="/hi/color-converter/" class="related-btn">Color Converter</a><a
-                        href="/hi/image-watermark/" class="related-btn">Image Watermark</a>
+                    <a href="/hi/image-converter/" class="related-btn">छवि परिवर्तक</a><a
+                        href="/hi/favicon-generator/" class="related-btn">फ़ेविकॉन जेनरेटर</a><a
+                        href="/hi/color-converter/" class="related-btn">रंग परिवर्तक</a><a
+                        href="/hi/image-watermark/" class="related-btn">छवि वॉटरमार्क</a>
                 </div>
             </div>
 
@@ -201,7 +201,7 @@
             const videoId = extractVideoID(url);
 
             if (!videoId) {
-                Utils.showToast('Invalid YouTube URL.');
+                Utils.showToast('अमान्य YouTube URL.');
                 return;
             }
 
@@ -210,9 +210,9 @@
 
         function renderThumbnails(videoId) {
             const qualities = [
-                { label: 'Maximum Resolution (1280x720+)', suffix: 'maxresdefault' },
-                { label: 'High Quality (480x360)', suffix: 'hqdefault' },
-                { label: 'Medium Quality (320x180)', suffix: 'mqdefault' },
+                { label: 'अधिकतम रिज़ॉल्यूशन (MaxRes - 1280x720+)', suffix: 'maxresdefault' },
+                { label: 'उच्च गुणवत्ता (High - 480x360)', suffix: 'hqdefault' },
+                { label: 'मध्यम गुणवत्ता (Medium - 320x180)', suffix: 'mqdefault' },
             ];
 
             results.innerHTML = qualities.map(q => {
@@ -222,7 +222,7 @@
             <div class="thumb-header">
               <h3>${q.label}</h3>
               <a href="${imgUrl}" target="_blank" download="thumbnail.jpg" class="download-link">
-                <button class="btn btn-secondary">Download Image</button>
+                <button class="btn btn-secondary">छवि डाउनलोड करें</button>
               </a>
             </div>
             <img src="${imgUrl}" class="thumb-img" alt="Thumbnail">

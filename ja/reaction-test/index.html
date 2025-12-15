@@ -5,12 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-adsense-account" content="ca-pub-6334819180242631">
-    <title>Reaction Speed Test - Utilify</title>
-    <meta name="description" content="Test your reaction time. Click as fast as you can when the screen turns green!">
+    <title>反応速度テスト - Utilify</title>
+    <meta name="description" content="あなたの反応速度をテストします。画面が緑色になったらできるだけ早くクリックしてください！">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Reaction Speed Test - Utilify">
-    <meta property="og:description" content="Test your reaction time. Click as fast as you can when the screen turns green!">
+    <meta property="og:title" content="反応速度テスト - Utilify">
+    <meta property="og:description" content="あなたの反応速度をテストします。画面が緑色になったらできるだけ早くクリックしてください！">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://utilifyapp.net/ja/reaction-test/">
 
@@ -42,8 +42,8 @@
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "Reaction Speed Test",
-    "description": "Test your reaction time. Click as fast as you can when the screen turns green!",
+    "name": "反応速度テスト",
+    "description": "あなたの反応速度をテストします。画面が緑色になったらできるだけ早くクリックしてください！",
     "url": "https://utilifyapp.net/ja/reaction-test/",
     "inLanguage": "ja",
     "applicationCategory": "UtilitiesApplication",
@@ -132,7 +132,7 @@
 
     <main class="main-content">
         <div class="container-narrow">
-            <h1>⚡ Reaction Speed Test</h1>
+            <h1>⚡ 反応速度テスト</h1>
             <div class="security-badge"
                 style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
                 <span title="Processed securely in client-side">🔒 Secure & Client-side</span>
@@ -140,7 +140,7 @@
                     style="display: none; padding: 4px 12px; font-size: 12px;">📲 Install App</button>
             </div>
 
-            <p>Test your reaction time. Click as fast as you can when the screen turns green!</p>
+            <p>あなたの反応速度をテストします。画面が緑色になったらできるだけ早くクリックしてください！</p>
 
             <!-- AdSense Placeholder -->
             <div class="adsense-placeholder">
@@ -149,15 +149,15 @@
             </div>
 
             <div id="gameArea" class="game-area state-start">
-                <div id="message">Click anywhere to Start.</div>
+                <div id="message">クリックして開始</div>
             </div>
 
             <div class="card">
-                <h3>Ranking</h3>
-                <p>• < 200 ms: Godlike Reflexes! 🏆</p>
-                <p>• 200 - 300 ms: Great Speed! 🚀</p>
-                <p>• 300 - 450 ms: Average Speed. 👌</p>
-                <p>• > 450 ms: Focus! You can do better. 🐢</p>
+                <h3>ランキング</h3>
+                <p>• < 200 ms: 神レベルの反応速度！ 🏆</p>
+                <p>• 200 - 300 ms: 素晴らしい速さです！ 🚀</p>
+                <p>• 300 - 450 ms: 平均的な速度です。 👌</p>
+                <p>• > 450 ms: もっと集中しましょう！ 🐢</p>
             </div>
 
             <!-- AdSense Placeholder -->
@@ -167,12 +167,12 @@
             </div>
 
             <div class="related-tools-section">
-                <h3>Related Tools</h3>
+                <h3>関連ツール</h3>
                 <div class="related-buttons">
-                    <a href="/ja/unit-converter/" class="related-btn">Unit Converter</a><a
-                        href="/ja/bmi-calculator/" class="related-btn">BMI Calculator</a><a
-                        href="/ja/date-calculator/" class="related-btn">Date Calculator</a><a
-                        href="/ja/timer/" class="related-btn">Timer</a>
+                    <a href="/ja/unit-converter/" class="related-btn">単位変換</a><a
+                        href="/ja/bmi-calculator/" class="related-btn">BMI計算機</a><a
+                        href="/ja/date-calculator/" class="related-btn">日付計算</a><a
+                        href="/ja/timer/" class="related-btn">タイマー</a>
                 </div>
             </div>
 
@@ -216,13 +216,13 @@
         function startGame() {
             state = 'wait';
             gameArea.className = 'game-area state-wait';
-            message.textContent = 'Wait for Green...';
+            message.textContent = '緑色になるまで待機...';
 
             const randomTime = Math.floor(Math.random() * 3000) + 2000; // 2-5 seconds
             timeoutId = setTimeout(() => {
                 state = 'click';
                 gameArea.className = 'game-area state-click';
-                message.textContent = 'CLICK!';
+                message.textContent = 'クリック！';
                 startTime = performance.now();
             }, randomTime);
         }
@@ -231,7 +231,7 @@
             clearTimeout(timeoutId);
             state = 'start'; // Click to restart
             gameArea.className = 'game-area state-wait'; // Keep red
-            message.innerHTML = 'Too Soon! Click to try again.';
+            message.innerHTML = '早すぎます！クリックしてやり直してください。';
         }
 
         function endGame() {
@@ -240,16 +240,16 @@
             state = 'result';
 
             let rankMsg = '';
-            if (time < 200) rankMsg = '< 200 ms: Godlike Reflexes! 🏆';
-            else if (time < 300) rankMsg = '200 - 300 ms: Great Speed! 🚀';
-            else if (time < 450) rankMsg = '300 - 450 ms: Average Speed. 👌';
-            else rankMsg = '> 450 ms: Focus! You can do better. 🐢';
+            if (time < 200) rankMsg = '< 200 ms: 神レベルの反応速度！ 🏆';
+            else if (time < 300) rankMsg = '200 - 300 ms: 素晴らしい速さです！ 🚀';
+            else if (time < 450) rankMsg = '300 - 450 ms: 平均的な速度です。 👌';
+            else rankMsg = '> 450 ms: もっと集中しましょう！ 🐢';
 
             gameArea.className = 'game-area state-result';
             message.innerHTML = `
         <div class="result-text">${time} ms</div>
         <div class="rank-text">${rankMsg}</div>
-        <div class="sub-text">Play Again</div>
+        <div class="sub-text">もう一度プレイ</div>
       `;
         }
     </script>
