@@ -4,13 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Ezoic -->
+    <script data-cfasync="false" src="https://cmp.gatekeeperconsent.com/min.js"></script>
+    <script data-cfasync="false" src="https://the.gatekeeperconsent.com/cmp.min.js"></script>
+    <script async src="//www.ezojs.com/ezoic/sa.min.js"></script>
+    <script>
+        window.ezstandalone = window.ezstandalone || {};
+        ezstandalone.cmd = ezstandalone.cmd || [];
+    </script>
+    <script src="//ezoicanalytics.com/analytics.js"></script>
     <meta name="google-adsense-account" content="ca-pub-6334819180242631">
     <title>Lorem Ipsum Generator - Utilify</title>
-    <meta name="description" content="Generate Lorem Ipsum dummy text.">
+    <meta name="description" content="Generieren Sie Lorem Ipsum Blindtext. Absätze, Sätze, Wörter.">
 
     <!-- Open Graph -->
     <meta property="og:title" content="Lorem Ipsum Generator - Utilify">
-    <meta property="og:description" content="Generate Lorem Ipsum dummy text.">
+    <meta property="og:description" content="Generieren Sie Lorem Ipsum Blindtext.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://utilifyapp.net/de/lorem-ipsum/">
 
@@ -37,7 +46,7 @@
       "@context": "https://schema.org",
       "@type": "WebApplication",
       "name": "Lorem Ipsum Generator",
-      "description": "Generate Lorem Ipsum dummy text.",
+      "description": "Generieren Sie Lorem Ipsum Blindtext.",
       "url": "https://utilifyapp.net/de/lorem-ipsum/",
       "inLanguage": "de",
       "applicationCategory": "UtilitiesApplication"
@@ -99,24 +108,24 @@
                     style="display: none; padding: 4px 12px; font-size: 12px;">📲 App installieren</button>
             </div>
 
-            <p>Generate Lorem Ipsum dummy text.</p>
+            <p>Generieren Sie Lorem Ipsum Blindtext.</p>
             <div class="options">
                 <div class="option-group">
-                    <label class="form-label">Type:</label>
+                    <label class="form-label">Typ:</label>
                     <select id="type" class="form-select">
-                        <option value="paragraphs">Paragraphs</option>
-                        <option value="words">Words</option>
-                        <option value="sentences">Sentences</option>
+                        <option value="paragraphs">Absätze</option>
+                        <option value="words">Wörter</option>
+                        <option value="sentences">Sätze</option>
                     </select>
                 </div>
                 <div class="option-group">
-                    <label class="form-label">Count:</label>
+                    <label class="form-label">Anzahl:</label>
                     <input type="number" id="count" class="form-input" value="3" min="1" max="100"
                         style="width: 100px;">
                 </div>
                 <div style="display: flex; gap: var(--spacing-md);">
-                    <button class="btn btn-primary" id="generateBtn">Generate</button>
-                    <button class="btn btn-secondary" id="copyBtn">Copy</button>
+                    <button class="btn btn-primary" id="generateBtn">Generieren</button>
+                    <button class="btn btn-secondary" id="copyBtn">Kopieren</button>
                 </div>
             </div>
             <div>
@@ -124,12 +133,12 @@
             </div>
 
             <div class="related-tools-section">
-                <h3>Related Tools</h3>
+                <h3>Ähnliche Tools</h3>
                 <div class="related-buttons">
-                    <a href="/de/text-utils/" class="related-btn">Text Utils</a><a
-                        href="/de/diff-checker/" class="related-btn">Diff Checker</a><a
-                        href="/de/regex-tester/" class="related-btn">Regex Tester</a><a
-                        href="/de/markdown-previewer/" class="related-btn">Markdown Preview</a>
+                    <a href="/de/text-utils/" class="related-btn">Text-Dienstprogramme</a><a
+                        href="/de/diff-checker/" class="related-btn">Text-Diff-Checker</a><a
+                        href="/de/regex-tester/" class="related-btn">Regex-Tester</a><a
+                        href="/de/markdown-previewer/" class="related-btn">Markdown-Vorschau</a>
                 </div>
             </div>
 
@@ -183,7 +192,7 @@
         document.getElementById('copyBtn').addEventListener('click', () => {
             const output = document.getElementById('output').value;
             if (output) Utils.copyToClipboard(output);
-            else alert('Generate text first.');
+            else alert('Zuerst Text generieren.');
         });
 
         // Generate on load

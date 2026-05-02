@@ -4,13 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Ezoic -->
+    <script data-cfasync="false" src="https://cmp.gatekeeperconsent.com/min.js"></script>
+    <script data-cfasync="false" src="https://the.gatekeeperconsent.com/cmp.min.js"></script>
+    <script async src="//www.ezojs.com/ezoic/sa.min.js"></script>
+    <script>
+        window.ezstandalone = window.ezstandalone || {};
+        ezstandalone.cmd = ezstandalone.cmd || [];
+    </script>
+    <script src="//ezoicanalytics.com/analytics.js"></script>
     <meta name="google-adsense-account" content="ca-pub-6334819180242631">
-    <title>Favicon 생성기 - Utilify</title>
-    <meta name="description" content="이미지를 업로드하여 다양한 크기의 favicon을 생성하세요.">
+    <title>파비콘 생성기 - Utilify</title>
+    <meta name="description" content="이미지를 다양한 크기의 파비콘으로 변환하세요.">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Favicon 생성기 - Utilify">
-    <meta property="og:description" content="이미지를 업로드하여 다양한 크기의 favicon을 생성하세요.">
+    <meta property="og:title" content="파비콘 생성기 - Utilify">
+    <meta property="og:description" content="이미지를 다양한 크기의 파비콘으로 변환하세요.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://utilifyapp.net/ko/favicon-generator/">
 
@@ -36,8 +45,8 @@
     {
       "@context": "https://schema.org",
       "@type": "WebApplication",
-      "name": "Favicon 생성기",
-      "description": "이미지를 업로드하여 다양한 크기의 favicon을 생성하세요.",
+      "name": "파비콘 생성기",
+      "description": "이미지를 다양한 크기의 파비콘으로 변환하세요.",
       "url": "https://utilifyapp.net/ko/favicon-generator/",
       "inLanguage": "ko",
       "applicationCategory": "UtilitiesApplication"
@@ -104,19 +113,19 @@
     </header>
     <main class="main-content">
         <div class="container-narrow">
-            <h1>🎯 Favicon 생성기</h1>
+            <h1>🎯 파비콘 생성기</h1>
             <div class="security-badge"
                 style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
                 <span title="Processed securely in client-side">🔒 Secure & Client-side</span>
                 <button id="pwaInstallBtn" class="btn btn-primary"
                     style="display: none; padding: 4px 12px; font-size: 12px;">📲 Install App</button>
             </div>
-            <p>이미지를 업로드하여 16x16, 32x32, 48x48, 64x64px favicon을 생성하세요.</p>
+            <p>이미지를 다양한 크기의 파비콘으로 변환하세요.</p>
             <div class="upload-area" id="uploadArea">
                 <input type="file" id="fileInput" accept="image/*" style="display: none;">
                 <div>
                     <p style="font-size: 2rem; margin: 0;">📁</p>
-                    <p>이미지를 클릭하거나 드래그하여 업로드</p>
+                    <p>{{ drop_text }}</p>
                 </div>
             </div>
             <div class="preview-grid" id="previewGrid" style="display: none;"></div>
@@ -126,8 +135,8 @@
                 <div class="related-buttons">
                     <a href="/ko/image-converter/" class="related-btn">이미지 변환기</a><a
                         href="/ko/thumbnail-downloader/" class="related-btn">썸네일 다운로더</a><a
-                        href="/ko/color-converter/" class="related-btn">색상 변환기</a><a
-                        href="/ko/image-watermark/" class="related-btn">워터마크 생성기</a>
+                        href="/ko/color-converter/" class="related-btn">{{ related_color }}</a><a
+                        href="/ko/image-watermark/" class="related-btn">이미지 워터마크</a>
                 </div>
             </div>
 
@@ -179,7 +188,7 @@
 
                         const btn = document.createElement('button');
                         btn.className = 'btn';
-                        btn.textContent = '다운로드';
+                        btn.textContent = '{{ btn_download }}';
                         btn.onclick = function () { downloadFavicon(this, size) };
                         item.appendChild(btn);
 

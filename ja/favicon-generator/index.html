@@ -4,13 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Ezoic -->
+    <script data-cfasync="false" src="https://cmp.gatekeeperconsent.com/min.js"></script>
+    <script data-cfasync="false" src="https://the.gatekeeperconsent.com/cmp.min.js"></script>
+    <script async src="//www.ezojs.com/ezoic/sa.min.js"></script>
+    <script>
+        window.ezstandalone = window.ezstandalone || {};
+        ezstandalone.cmd = ezstandalone.cmd || [];
+    </script>
+    <script src="//ezoicanalytics.com/analytics.js"></script>
     <meta name="google-adsense-account" content="ca-pub-6334819180242631">
-    <title>Favicon Generator - Utilify</title>
-    <meta name="description" content="Create favicons from images (16x16 to 64x64).">
+    <title>ファビコン生成 - Utilify</title>
+    <meta name="description" content="画像をさまざまなサイズのファビコンに変換します。">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Favicon Generator - Utilify">
-    <meta property="og:description" content="Create favicons from images (16x16 to 64x64).">
+    <meta property="og:title" content="ファビコン生成 - Utilify">
+    <meta property="og:description" content="画像をさまざまなサイズのファビコンに変換します。">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://utilifyapp.net/ja/favicon-generator/">
 
@@ -36,8 +45,8 @@
     {
       "@context": "https://schema.org",
       "@type": "WebApplication",
-      "name": "Favicon Generator",
-      "description": "Create favicons from images (16x16 to 64x64).",
+      "name": "ファビコン生成",
+      "description": "画像をさまざまなサイズのファビコンに変換します。",
       "url": "https://utilifyapp.net/ja/favicon-generator/",
       "inLanguage": "ja",
       "applicationCategory": "UtilitiesApplication"
@@ -104,30 +113,30 @@
     </header>
     <main class="main-content">
         <div class="container-narrow">
-            <h1>🎯 Favicon Generator</h1>
+            <h1>🎯 ファビコン生成</h1>
             <div class="security-badge"
                 style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
                 <span title="Processed securely in client-side">🔒 Secure & Client-side</span>
                 <button id="pwaInstallBtn" class="btn btn-primary"
                     style="display: none; padding: 4px 12px; font-size: 12px;">📲 Install App</button>
             </div>
-            <p>Create favicons from images (16x16 to 64x64).</p>
+            <p>画像をさまざまなサイズのファビコンに変換します。</p>
             <div class="upload-area" id="uploadArea">
                 <input type="file" id="fileInput" accept="image/*" style="display: none;">
                 <div>
                     <p style="font-size: 2rem; margin: 0;">📁</p>
-                    <p>Click or drag to upload image</p>
+                    <p>{{ drop_text }}</p>
                 </div>
             </div>
             <div class="preview-grid" id="previewGrid" style="display: none;"></div>
 
             <div class="related-tools-section">
-                <h3>Related Tools</h3>
+                <h3>関連ツール</h3>
                 <div class="related-buttons">
-                    <a href="/ja/image-converter/" class="related-btn">Image Converter</a><a
-                        href="/ja/thumbnail-downloader/" class="related-btn">Thumbnail Downloader</a><a
-                        href="/ja/color-converter/" class="related-btn">Color Converter</a><a
-                        href="/ja/image-watermark/" class="related-btn">Image Watermark</a>
+                    <a href="/ja/image-converter/" class="related-btn">画像変換</a><a
+                        href="/ja/thumbnail-downloader/" class="related-btn">サムネイルダウンローダー</a><a
+                        href="/ja/color-converter/" class="related-btn">{{ related_color }}</a><a
+                        href="/ja/image-watermark/" class="related-btn">画像透かし</a>
                 </div>
             </div>
 
@@ -179,7 +188,7 @@
 
                         const btn = document.createElement('button');
                         btn.className = 'btn';
-                        btn.textContent = 'Download';
+                        btn.textContent = '{{ btn_download }}';
                         btn.onclick = function () { downloadFavicon(this, size) };
                         item.appendChild(btn);
 

@@ -4,13 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Ezoic -->
+    <script data-cfasync="false" src="https://cmp.gatekeeperconsent.com/min.js"></script>
+    <script data-cfasync="false" src="https://the.gatekeeperconsent.com/cmp.min.js"></script>
+    <script async src="//www.ezojs.com/ezoic/sa.min.js"></script>
+    <script>
+        window.ezstandalone = window.ezstandalone || {};
+        ezstandalone.cmd = ezstandalone.cmd || [];
+    </script>
+    <script src="//ezoicanalytics.com/analytics.js"></script>
     <meta name="google-adsense-account" content="ca-pub-6334819180242631">
-    <title>Unit Converter (cm to inch, kg to lbs) - Utilify</title>
-    <meta name="description" content="Convert Length (cm to inch), Weight (kg to lbs), Temperature (Celsius to Fahrenheit), Volume, and more. Easy height and weight conversion.">
+    <title>เครื่องมือแปลงหน่วย (ซม. เป็น นิ้ว, กก. เป็น ปอนด์) - Utilify</title>
+    <meta name="description" content="แปลงความยาว (ซม. เป็น นิ้ว), น้ำหนัก (กก. เป็น ปอนด์), อุณหภูมิ (เซลเซียส เป็น ฟาเรนไฮต์), ปริมาตร และอื่นๆ แปลงส่วนสูงและน้ำหนักได้ง่าย">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Unit Converter (cm to inch, kg to lbs) - 🛠️ Utilify">
-    <meta property="og:description" content="Convert Length (cm to inch), Weight (kg to lbs), Temperature (Celsius to Fahrenheit), Volume, and more.">
+    <meta property="og:title" content="เครื่องมือแปลงหน่วย - Utilify">
+    <meta property="og:description" content="แปลงความยาว, น้ำหนัก, อุณหภูมิ, ปริมาตร และอื่นๆ">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://utilifyapp.net/th/unit-converter/">
 
@@ -42,8 +51,8 @@
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "Unit Converter",
-    "description": "Convert Length, Weight, Temperature, Volume, and more.",
+    "name": "เครื่องมือแปลงหน่วย",
+    "description": "แปลงความยาว, น้ำหนัก, อุณหภูมิ, ปริมาตร และอื่นๆ",
     "url": "https://utilifyapp.net/th/unit-converter/",
     "inLanguage": "th",
     "applicationCategory": "UtilitiesApplication",
@@ -135,7 +144,7 @@
 
     <main class="main-content">
         <div class="container-narrow">
-            <h1>📏 Unit Converter</h1>
+            <h1>📏 เครื่องมือแปลงหน่วย</h1>
             <div class="security-badge"
                 style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
                 <span title="Processed securely in client-side">🔒 Secure & Client-side</span>
@@ -143,20 +152,20 @@
                     style="display: none; padding: 4px 12px; font-size: 12px;">📲 Install App</button>
             </div>
 
-            <p>Convert Length, Weight, Temperature, Volume, and more.</p>
+            <p>แปลงความยาว, น้ำหนัก, อุณหภูมิ, ปริมาตร และอื่นๆ</p>
 
 
 
             <!-- Category Selection -->
             <div class="converter-section">
-                <label class="form-label">Category</label>
+                <label class="form-label">หมวดหมู่</label>
                 <select id="category" class="form-select">
-                    <option value="length">Length</option>
-                    <option value="weight">Weight</option>
-                    <option value="temperature">Temperature</option>
-                    <option value="volume">Volume</option>
-                    <option value="area">Area</option>
-                    <option value="speed">Speed</option>
+                    <option value="length">ความยาว</option>
+                    <option value="weight">น้ำหนัก</option>
+                    <option value="temperature">อุณหภูมิ</option>
+                    <option value="volume">ปริมาตร</option>
+                    <option value="area">พื้นที่</option>
+                    <option value="speed">ความเร็ว</option>
                 </select>
             </div>
 
@@ -164,17 +173,17 @@
             <div class="converter-section">
                 <div class="converter-grid">
                     <div>
-                        <label class="form-label">Value to Convert</label>
-                        <input type="number" id="fromValue" class="form-input" placeholder="Enter number" value="1">
+                        <label class="form-label">ค่าที่จะแปลง</label>
+                        <input type="number" id="fromValue" class="form-input" placeholder="ป้อนตัวเลข" value="1">
                         <select id="fromUnit" class="form-select mt-1"></select>
                         <div class="result-display" id="fromDisplay">1</div>
                     </div>
 
-                    <button class="swap-btn" id="swapBtn" title="Swap Units">⇄</button>
+                    <button class="swap-btn" id="swapBtn" title="สลับหน่วย">⇄</button>
 
                     <div>
-                        <label class="form-label">Converted Value</label>
-                        <input type="number" id="toValue" class="form-input" placeholder="Result" readonly>
+                        <label class="form-label">ค่าที่แปลงแล้ว</label>
+                        <input type="number" id="toValue" class="form-input" placeholder="ผลลัพธ์" readonly>
                         <select id="toUnit" class="form-select mt-1"></select>
                         <div class="result-display" id="toDisplay">-</div>
                     </div>
@@ -183,19 +192,19 @@
 
             <!-- Quick Reference -->
             <div class="card">
-                <h3>Common Conversions</h3>
+                <h3>การแปลงทั่วไป</h3>
                 <div id="quickReference"></div>
             </div>
 
 
 
             <div class="related-tools-section">
-                <h3>Related Tools</h3>
+                <h3>เครื่องมือที่เกี่ยวข้อง</h3>
                 <div class="related-buttons">
-                    <a href="/th/bmi-calculator/" class="related-btn">BMI Calculator</a><a
-                        href="/th/date-calculator/" class="related-btn">Date Calculator</a><a
-                        href="/th/timer/" class="related-btn">Timer</a><a
-                        href="/th/reaction-test/" class="related-btn">Reaction Test</a>
+                    <a href="/th/bmi-calculator/" class="related-btn">เครื่องคำนวณ BMI</a><a
+                        href="/th/date-calculator/" class="related-btn">เครื่องคำนวณวันที่</a><a
+                        href="/th/timer/" class="related-btn">ตัวจับเวลา</a><a
+                        href="/th/reaction-test/" class="related-btn">ทดสอบปฏิกิริยา</a>
                 </div>
             </div>
 
@@ -215,7 +224,7 @@
         // Unit conversion data
         const conversionData = {
             length: {
-                name: 'Length',
+                name: 'ความยาว',
                 units: {
                     meter: { name: 'Meter (m)', toBase: 1 },
                     kilometer: { name: 'Kilometer (km)', toBase: 1000 },
@@ -228,7 +237,7 @@
                 }
             },
             weight: {
-                name: 'Weight',
+                name: 'น้ำหนัก',
                 units: {
                     kilogram: { name: 'Kilogram (kg)', toBase: 1 },
                     gram: { name: 'Gram (g)', toBase: 0.001 },
@@ -239,7 +248,7 @@
                 }
             },
             temperature: {
-                name: 'Temperature',
+                name: 'อุณหภูมิ',
                 units: {
                     celsius: { name: 'Celsius (°C)', toBase: null },
                     fahrenheit: { name: 'Fahrenheit (°F)', toBase: null },
@@ -247,7 +256,7 @@
                 }
             },
             volume: {
-                name: 'Volume',
+                name: 'ปริมาตร',
                 units: {
                     liter: { name: 'Liter (L)', toBase: 1 },
                     milliliter: { name: 'Milliliter (mL)', toBase: 0.001 },
@@ -259,7 +268,7 @@
                 }
             },
             area: {
-                name: 'Area',
+                name: 'พื้นที่',
                 units: {
                     squareMeter: { name: 'Square Meter (m²)', toBase: 1 },
                     squareKilometer: { name: 'Square Kilometer (km²)', toBase: 1000000 },
@@ -270,7 +279,7 @@
                 }
             },
             speed: {
-                name: 'Speed',
+                name: 'ความเร็ว',
                 units: {
                     meterPerSecond: { name: 'Meter/Second (m/s)', toBase: 1 },
                     kilometerPerHour: { name: 'Kilometer/Hour (km/h)', toBase: 0.277778 },

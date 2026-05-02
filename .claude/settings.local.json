@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:docs.ezoic.com)",
+      "Bash(python3:*)"
+    ]
+  }
+}

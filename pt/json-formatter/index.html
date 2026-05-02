@@ -4,13 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Ezoic -->
+    <script data-cfasync="false" src="https://cmp.gatekeeperconsent.com/min.js"></script>
+    <script data-cfasync="false" src="https://the.gatekeeperconsent.com/cmp.min.js"></script>
+    <script async src="//www.ezojs.com/ezoic/sa.min.js"></script>
+    <script>
+        window.ezstandalone = window.ezstandalone || {};
+        ezstandalone.cmd = ezstandalone.cmd || [];
+    </script>
+    <script src="//ezoicanalytics.com/analytics.js"></script>
     <meta name="google-adsense-account" content="ca-pub-6334819180242631">
-    <title>JSON Formatter & Validator (Pretty Print) - Utilify</title>
-    <meta name="description" content="Format (Pretty Print), Minify, and Validate JSON data. Ad-free tool for developers.">
+    <title>Formatador JSON & Validador (Pretty Print) - Utilify</title>
+    <meta name="description" content="Formatar (Pretty Print), Minificar e Validar dados JSON. Ferramenta sem anúncios para desenvolvedores.">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="JSON Formatter & Validator - Utilify">
-    <meta property="og:description" content="Format, Minify, and Validate JSON data. Ad-free tool for developers.">
+    <meta property="og:title" content="Formatador JSON & Validador - Utilify">
+    <meta property="og:description" content="Formatar, Minificar e Validar dados JSON. Ferramenta sem anúncios para desenvolvedores.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://utilifyapp.net/pt/json-formatter/">
 
@@ -42,8 +51,8 @@
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "JSON Formatter",
-    "description": "Format and validate JSON data. Features include minification, formatting, and validation.",
+    "name": "Formatador JSON",
+    "description": "Formatar e validar dados JSON. Funcionalidades incluem minificação, formatação e validação.",
     "url": "https://utilifyapp.net/pt/json-formatter/",
     "inLanguage": "pt",
     "applicationCategory": "UtilitiesApplication",
@@ -133,7 +142,7 @@
 
     <main class="main-content">
         <div class="container-narrow">
-            <h1>JSON Formatter</h1>
+            <h1>Formatador JSON</h1>
             <div class="security-badge"
                 style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
                 <span title="Processed securely in client-side">🔒 Seguro e Cliente-side</span>
@@ -141,29 +150,29 @@
                     style="display: none; padding: 4px 12px; font-size: 12px;">📲 Instalar App</button>
             </div>
 
-            <p>Format, validate, and minify JSON data. Ad-free for developers.</p>
+            <p>Formatar, validar e minificar dados JSON. Sem anúncios para desenvolvedores.</p>
 
 
 
             <!-- Action Buttons -->
             <div class="btn-group">
-                <button class="btn btn-primary" onclick="formatJSON()">Format</button>
-                <button class="btn btn-secondary" onclick="minifyJSON()">Minify</button>
-                <button class="btn btn-secondary" onclick="validateJSON()">Validate</button>
-                <button class="btn btn-secondary" onclick="copyOutput()">Copy</button>
-                <button class="btn btn-secondary" onclick="clearAll()">Clear</button>
+                <button class="btn btn-primary" onclick="formatJSON()">Formatar</button>
+                <button class="btn btn-secondary" onclick="minifyJSON()">Minificar</button>
+                <button class="btn btn-secondary" onclick="validateJSON()">Validar</button>
+                <button class="btn btn-secondary" onclick="copyOutput()">Copiar</button>
+                <button class="btn btn-secondary" onclick="clearAll()">Limpar</button>
             </div>
 
             <!-- Editors -->
             <div class="editor-container">
                 <div class="editor-panel">
-                    <label class="form-label">Input JSON</label>
+                    <label class="form-label">Entrada JSON</label>
                     <textarea id="jsonInput" class="form-textarea json-textarea"
-                        placeholder="Enter JSON data..."></textarea>
+                        placeholder="Inserir dados JSON..."></textarea>
                 </div>
 
                 <div class="editor-panel">
-                    <label class="form-label">Result</label>
+                    <label class="form-label">Resultado</label>
                     <textarea id="jsonOutput" class="form-textarea json-textarea" readonly></textarea>
                 </div>
             </div>
@@ -173,11 +182,11 @@
             <div id="errorMessage" style="display: none;"></div>
 
             <div class="related-tools-section">
-                <h3>Related Tools</h3>
+                <h3>Ferramentas Relacionadas</h3>
                 <div class="related-buttons">
-                    <a href="/pt/sql-formatter/" class="related-btn">SQL Formatter</a><a
-                        href="/pt/base64-converter/" class="related-btn">Base64 Converter</a><a
-                        href="/pt/password-generator/" class="related-btn">Password Generator</a>
+                    <a href="/pt/sql-formatter/" class="related-btn">Formatador SQL</a><a
+                        href="/pt/base64-converter/" class="related-btn">Conversor Base64</a><a
+                        href="/pt/password-generator/" class="related-btn">Gerador de Senha</a>
                 </div>
             </div>
 
@@ -234,7 +243,7 @@
             if (output.value) {
                 Utils.copyToClipboard(output.value);
             } else {
-                Utils.showToast('✗ Invalid JSON');
+                Utils.showToast('✗ JSON Inválido');
             }
         }
 
@@ -248,12 +257,12 @@
         function showValidation(isValid, error = '') {
             validationStatus.style.display = 'block';
             validationStatus.className = 'validation-status ' + (isValid ? 'valid' : 'invalid');
-            validationStatus.textContent = isValid ? '✓ Valid JSON' : '✗ Invalid JSON';
+            validationStatus.textContent = isValid ? '✓ JSON Válido' : '✗ JSON Inválido';
 
             if (error) {
                 errorMessage.style.display = 'block';
                 errorMessage.className = 'error-message';
-                errorMessage.textContent = 'Error: ' + error;
+                errorMessage.textContent = 'Erro: ' + error;
             } else {
                 errorMessage.style.display = 'none';
             }

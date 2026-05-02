@@ -4,13 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Ezoic -->
+    <script data-cfasync="false" src="https://cmp.gatekeeperconsent.com/min.js"></script>
+    <script data-cfasync="false" src="https://the.gatekeeperconsent.com/cmp.min.js"></script>
+    <script async src="//www.ezojs.com/ezoic/sa.min.js"></script>
+    <script>
+        window.ezstandalone = window.ezstandalone || {};
+        ezstandalone.cmd = ezstandalone.cmd || [];
+    </script>
+    <script src="//ezoicanalytics.com/analytics.js"></script>
     <meta name="google-adsense-account" content="ca-pub-6334819180242631">
-    <title>Text Diff Checker - Utilify</title>
-    <meta name="description" content="Compare two texts difference easily. Highlights added and removed parts.">
+    <title>Pemeriksa Perbedaan Teks - Utilify</title>
+    <meta name="description" content="Bandingkan perbedaan dua teks dengan mudah. Menyoroti bagian yang ditambahkan dan dihapus.">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Text Diff Checker - Utilify">
-    <meta property="og:description" content="Compare two texts difference easily. Highlights added and removed parts.">
+    <meta property="og:title" content="Pemeriksa Perbedaan Teks - Utilify">
+    <meta property="og:description" content="Bandingkan perbedaan dua teks dengan mudah. Menyoroti bagian yang ditambahkan dan dihapus.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://utilifyapp.net/id/diff-checker/">
 
@@ -42,8 +51,8 @@
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "Text Diff Checker",
-    "description": "Compare two texts difference easily. Highlights added and removed parts.",
+    "name": "Pemeriksa Perbedaan Teks",
+    "description": "Bandingkan perbedaan dua teks dengan mudah. Menyoroti bagian yang ditambahkan dan dihapus.",
     "url": "https://utilifyapp.net/id/diff-checker/",
     "inLanguage": "id",
     "applicationCategory": "UtilitiesApplication",
@@ -134,7 +143,7 @@
 
     <main class="main-content">
         <div class="container-narrow">
-            <h1>🔀 Text Diff Checker</h1>
+            <h1>🔀 Pemeriksa Perbedaan Teks</h1>
             <div class="security-badge"
                 style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
                 <span title="Processed securely in client-side">🔒 Secure & Client-side</span>
@@ -142,49 +151,49 @@
                     style="display: none; padding: 4px 12px; font-size: 12px;">📲 Install App</button>
             </div>
 
-            <p>Compare two texts difference easily. Highlights added and removed parts.</p>
+            <p>Bandingkan perbedaan dua teks dengan mudah. Menyoroti bagian yang ditambahkan dan dihapus.</p>
 
             <!-- AdSense Placeholder -->
             <div class="adsense-placeholder">
                 <!-- AdSense Ad Unit -->
-                <p>Ad Space</p>
+                <p>Ruang Iklan</p>
             </div>
 
             <!-- Editors -->
             <div class="editor-container">
                 <div class="editor-panel">
-                    <label class="form-label">Original Text</label>
-                    <textarea id="origText" class="diff-textarea" placeholder="Enter original text here..."></textarea>
+                    <label class="form-label">Teks Asli</label>
+                    <textarea id="origText" class="diff-textarea" placeholder="Masukkan teks asli di sini..."></textarea>
                 </div>
 
                 <div class="editor-panel">
-                    <label class="form-label">Changed Text</label>
-                    <textarea id="changedText" class="diff-textarea" placeholder="Enter changed text here..."></textarea>
+                    <label class="form-label">Teks yang Diubah</label>
+                    <textarea id="changedText" class="diff-textarea" placeholder="Masukkan teks yang diubah di sini..."></textarea>
                 </div>
             </div>
 
             <div class="btn-group" style="margin-top: var(--spacing-lg);">
-                <button class="btn btn-primary" onclick="computeDiff()">Compare</button>
-                <button class="btn btn-secondary" onclick="clearAll()">Clear</button>
+                <button class="btn btn-primary" onclick="computeDiff()">Bandingkan</button>
+                <button class="btn btn-secondary" onclick="clearAll()">Bersihkan</button>
             </div>
 
             <div class="result-container">
-                <h3 style="margin-bottom: var(--spacing-md);">Comparison Result</h3>
+                <h3 style="margin-bottom: var(--spacing-md);">Hasil Perbandingan</h3>
                 <div id="diffOutput" class="diff-result"></div>
             </div>
 
             <!-- AdSense Placeholder -->
             <div class="adsense-placeholder">
                 <!-- AdSense Ad Unit -->
-                <p>Ad Space</p>
+                <p>Ruang Iklan</p>
             </div>
 
             <div class="related-tools-section">
-                <h3>Related Tools</h3>
+                <h3>Alat Terkait</h3>
                 <div class="related-buttons">
-                    <a href="/id/text-utils/" class="related-btn">Text Utils</a><a
-                        href="/id/regex-tester/" class="related-btn">Regex Tester</a><a
-                        href="/id/markdown-previewer/" class="related-btn">Markdown Preview</a><a
+                    <a href="/id/text-utils/" class="related-btn">Utilitas Teks</a><a
+                        href="/id/regex-tester/" class="related-btn">Penguji Regex</a><a
+                        href="/id/markdown-previewer/" class="related-btn">Pratinjau Markdown</a><a
                         href="/id/lorem-ipsum/" class="related-btn">Lorem Ipsum</a>
                 </div>
             </div>
@@ -236,7 +245,7 @@
 
             output.innerHTML = '';
             if (!hasDiff && text1 === text2 && text1 !== '') {
-                output.textContent = 'No differences found.';
+                output.textContent = 'Tidak ada perbedaan ditemukan.';
             } else {
                 output.appendChild(fragment);
             }

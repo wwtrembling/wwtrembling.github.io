@@ -4,14 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Ezoic -->
+    <script data-cfasync="false" src="https://cmp.gatekeeperconsent.com/min.js"></script>
+    <script data-cfasync="false" src="https://the.gatekeeperconsent.com/cmp.min.js"></script>
+    <script async src="//www.ezojs.com/ezoic/sa.min.js"></script>
+    <script>
+        window.ezstandalone = window.ezstandalone || {};
+        ezstandalone.cmd = ezstandalone.cmd || [];
+    </script>
+    <script src="//ezoicanalytics.com/analytics.js"></script>
     <meta name="google-adsense-account" content="ca-pub-6334819180242631">
-    <title>Date Calculator - Utilify</title>
-    <meta name="description" content="Calculate D-Day and date differences.">
+    <title>日期计算器 - Utilify</title>
+    <meta name="description" content="计算 D-Day 和日期差异。">
     <link rel="canonical" href="https://utilifyapp.net/zh-cn/date-calculator/">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Date Calculator - Utilify">
-    <meta property="og:description" content="Calculate D-Day and date differences.">
+    <meta property="og:title" content="日期计算器 - Utilify">
+    <meta property="og:description" content="计算 D-Day 和日期差异。">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://utilifyapp.net/zh-cn/date-calculator/">
 
@@ -38,8 +47,8 @@
     {
       "@context": "https://schema.org",
       "@type": "WebApplication",
-      "name": "Date Calculator",
-      "description": "Calculate D-Day and date differences.",
+      "name": "日期计算器",
+      "description": "计算 D-Day 和日期差异。",
       "url": "https://utilifyapp.net/zh-cn/date-calculator/",
       "inLanguage": "zh-cn",
       "applicationCategory": "UtilitiesApplication"
@@ -58,7 +67,7 @@
     </header>
     <main class="main-content">
         <div class="container-narrow">
-            <h1>📅 Date Calculator</h1>
+            <h1>📅 日期计算器</h1>
             <div class="security-badge"
                 style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
                 <span title="Processed securely in client-side">🔒 安全 & 客户端处理</span>
@@ -66,41 +75,41 @@
                     style="display: none; padding: 4px 12px; font-size: 12px;">📲 安装应用</button>
             </div>
 
-            <p>Calculate D-Day and date differences.</p>
+            <p>计算 D-Day 和日期差异。</p>
             <div class="card">
-                <h3>D-Day Calculation</h3>
+                <h3>D-Day 计算</h3>
                 <div class="form-group">
-                    <label class="form-label">Target Date</label>
+                    <label class="form-label">目标日期</label>
                     <input type="date" id="targetDate" class="form-input">
                 </div>
-                <button class="btn btn-primary" onclick="calculateDday()">Calculate</button>
+                <button class="btn btn-primary" onclick="calculateDday()">计算</button>
                 <div id="ddayResult" class="result-box" style="display:none; margin-top:1rem;">
                     <div class="result-value" id="ddayValue"></div>
                 </div>
             </div>
             <div class="card">
-                <h3>Date Difference</h3>
+                <h3>日期差异</h3>
                 <div class="form-group">
-                    <label class="form-label">Start Date</label>
+                    <label class="form-label">开始日期</label>
                     <input type="date" id="startDate" class="form-input">
                 </div>
                 <div class="form-group">
-                    <label class="form-label">End Date</label>
+                    <label class="form-label">结束日期</label>
                     <input type="date" id="endDate" class="form-input">
                 </div>
-                <button class="btn btn-primary" onclick="calculateDiff()">Calculate</button>
+                <button class="btn btn-primary" onclick="calculateDiff()">计算</button>
                 <div id="diffResult" class="result-box" style="display:none; margin-top:1rem;">
                     <div class="result-value" id="diffValue"></div>
                 </div>
             </div>
 
             <div class="related-tools-section">
-                <h3>Related Tools</h3>
+                <h3>相关工具</h3>
                 <div class="related-buttons">
-                    <a href="/zh-cn/unit-converter/" class="related-btn">Unit Converter</a><a
-                        href="/zh-cn/bmi-calculator/" class="related-btn">Calculadora de IMC</a><a
-                        href="/zh-cn/timer/" class="related-btn">Cronômetro</a><a
-                        href="/zh-cn/reaction-test/" class="related-btn">Teste de Reação</a>
+                    <a href="/zh-cn/unit-converter/" class="related-btn">单位转换器</a><a
+                        href="/zh-cn/bmi-calculator/" class="related-btn">BMI 计算器</a><a
+                        href="/zh-cn/timer/" class="related-btn">计时器</a><a
+                        href="/zh-cn/reaction-test/" class="related-btn">反应测试</a>
                 </div>
             </div>
 
@@ -127,7 +136,7 @@
             const start = new Date(document.getElementById('startDate').value);
             const end = new Date(document.getElementById('endDate').value);
             const diff = Math.abs(Math.ceil((end - start) / (1000 * 60 * 60 * 24)));
-            document.getElementById('diffValue').textContent = diff + ' Days';
+            document.getElementById('diffValue').textContent = diff + ' 天';
             document.getElementById('diffResult').style.display = 'block';
         }
     </script>

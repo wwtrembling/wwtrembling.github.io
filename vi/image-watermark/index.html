@@ -4,12 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Watermark & Protection - Utilify</title>
-    <meta name="description" content="Add watermarks to images in bulk and optimize to WebP to protect your content. Client-side processing.">
+    <!-- Ezoic -->
+    <script data-cfasync="false" src="https://cmp.gatekeeperconsent.com/min.js"></script>
+    <script data-cfasync="false" src="https://the.gatekeeperconsent.com/cmp.min.js"></script>
+    <script async src="//www.ezojs.com/ezoic/sa.min.js"></script>
+    <script>
+        window.ezstandalone = window.ezstandalone || {};
+        ezstandalone.cmd = ezstandalone.cmd || [];
+    </script>
+    <script src="//ezoicanalytics.com/analytics.js"></script>
+    <title>Đ đóng dấu ảnh - Utilify</title>
+    <meta name="description" content="Thêm hình mờ vào hình ảnh của bạn.">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Image Watermark & Protection - Utilify">
-    <meta property="og:description" content="Add watermarks to images in bulk and optimize to WebP to protect your content. Client-side processing.">
+    <meta property="og:title" content="Đóng dấu ảnh - Utilify">
+    <meta property="og:description" content="Thêm hình mờ vào hình ảnh của bạn.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://utilifyapp.net/vi/image-watermark/">
 
@@ -35,8 +44,8 @@
     {
       "@context": "https://schema.org",
       "@type": "WebApplication",
-      "name": "Image Watermark & Protection",
-      "description": "Add watermarks to images in bulk and optimize to WebP to protect your content. Client-side processing.",
+      "name": "Đóng dấu ảnh",
+      "description": "Thêm hình mờ vào hình ảnh của bạn.",
       "url": "https://utilifyapp.net/vi/image-watermark/",
       "inLanguage": "vi",
       "applicationCategory": "UtilitiesApplication"
@@ -126,7 +135,7 @@
     </header>
     <main class="main-content">
         <div class="container">
-            <h1>🛡️ Image Watermark & Protection</h1>
+            <h1>🛡️ Đóng dấu ảnh</h1>
             <div class="security-badge"
                 style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
                 <span title="Processed securely in client-side">🔒 An toàn & Phía máy khách</span>
@@ -134,54 +143,54 @@
                     style="display: none; padding: 4px 12px; font-size: 12px;">📲 Cài đặt ứng dụng</button>
             </div>
 
-            <p>Batch process hundreds of images! Add watermark and compress to WebP instantly.</p>
+            <p>Thêm hình mờ vào hình ảnh của bạn.</p>
 
             <div class="tool-box">
                 <!-- Step 1: Upload -->
                 <div class="upload-area" id="uploadArea">
                     <input type="file" id="fileInput" accept="image/*" multiple style="display: none;">
                     <div style="font-size: 40px;">📁</div>
-                    <h3>Drag & Drop images here (Multiple allowed)</h3>
-                    <p style="color: var(--text-secondary);">Supports JPG, PNG, WebP</p>
+                    <h3>{{ drop_text }}</h3>
+                    <p style="color: var(--text-secondary);">{{ drop_sub }}</p>
                 </div>
                 <div id="fileListContainer" style="display: none;">
-                    <h4>Selected Files: <span id="fileCount">0</span></h4>
+                    <h4>{{ selected_files }} <span id="fileCount">0</span></h4>
                     <div class="file-list" id="fileList"></div>
                 </div>
 
                 <div class="settings-grid" id="settingsArea" style="display: none;">
                     <!-- Left: Preview -->
                     <div>
-                        <h3>Preview</h3>
+                        <h3>{{ header_preview }}</h3>
                         <canvas id="previewCanvas" class="preview-canvas"></canvas>
-                        <p style="font-size: 12px; color: var(--text-secondary);">* Preview based on the first image.
+                        <p style="font-size: 12px; color: var(--text-secondary);">{{ preview_sub }}
                         </p>
                     </div>
 
                     <!-- Right: Settings -->
                     <div>
-                        <h3>Settings</h3>
+                        <h3>Cài đặt</h3>
 
                         <div class="control-group">
-                            <label class="form-label">Watermark Text</label>
-                            <input type="text" id="watermarkText" class="form-input" value="My Brand"
+                            <label class="form-label">Văn bản hình mờ</label>
+                            <input type="text" id="watermarkText" class="form-input" value="{{ val_text }}"
                                 style="width: 100%; padding: 8px;">
                         </div>
 
                         <div class="control-group">
-                            <label class="form-label">Position</label>
+                            <label class="form-label">{{ label_pos }}</label>
                             <select id="positionSelect" class="form-input" style="width: 100%; padding: 8px;">
-                                <option value="center">Center</option>
-                                <option value="bottom-right" selected>Bottom Right</option>
-                                <option value="bottom-left">Bottom Left</option>
-                                <option value="top-right">Top Right</option>
-                                <option value="top-left">Top Left</option>
-                                <option value="tile">Tile Pattern</option>
+                                <option value="center">{{ opt_center }}</option>
+                                <option value="bottom-right" selected>{{ opt_br }}</option>
+                                <option value="bottom-left">{{ opt_bl }}</option>
+                                <option value="top-right">{{ opt_tr }}</option>
+                                <option value="top-left">{{ opt_tl }}</option>
+                                <option value="tile">{{ opt_tile }}</option>
                             </select>
                         </div>
 
                         <div class="control-group">
-                            <label class="form-label">Size & Opacity</label>
+                            <label class="form-label">{{ label_size }}</label>
                             <div style="display: flex; gap: 10px;">
                                 <input type="number" id="fontSize" value="48" style="width: 60px;"> px
                                 <input type="range" id="opacity" min="0" max="1" step="0.1" value="0.5"
@@ -190,9 +199,9 @@
                         </div>
 
                         <div class="control-group">
-                            <label class="form-label">Output Format</label>
+                            <label class="form-label">{{ label_format }}</label>
                             <select id="formatSelect" class="form-input" style="width: 100%; padding: 8px;">
-                                <option value="image/webp" selected>WebP (Recommended)</option>
+                                <option value="image/webp" selected>{{ opt_webp }}</option>
                                 <option value="image/jpeg">JPEG</option>
                                 <option value="image/png">PNG</option>
                             </select>
@@ -200,27 +209,27 @@
 
                         <button id="processBtn" class="btn btn-primary"
                             style="width: 100%; padding: 15px; margin-top: 20px;">
-                            Process & Download (ZIP)
+                            Thêm hình mờ
                         </button>
                         <button id="resetBtn" class="btn btn-secondary"
                             style="width: 100%; padding: 10px; margin-top: 10px;">
-                            Reset Settings
+                            {{ btn_reset }}
                         </button>
                         <div id="progressArea" style="display: none; margin-top: 10px;">
                             <progress id="progressBar" value="0" max="100" style="width: 100%;"></progress>
-                            <p id="progressText" style="text-align: center;">Processing...</p>
+                            <p id="progressText" style="text-align: center;">{{ prog_proc }}</p>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="related-tools-section">
-                <h3>Related Tools</h3>
+                <h3>Công cụ liên quan</h3>
                 <div class="related-buttons">
-                    <a href="/vi/image-converter/" class="related-btn">Image Converter</a><a
-                        href="/vi/thumbnail-downloader/" class="related-btn">Thumbnail Downloader</a><a
-                        href="/vi/color-converter/" class="related-btn">Color Converter</a><a
-                        href="/vi/favicon-generator/" class="related-btn">Favicon Generator</a>
+                    <a href="/vi/image-converter/" class="related-btn">Chuyển đổi hình ảnh</a><a
+                        href="/vi/thumbnail-downloader/" class="related-btn">Trình tải xuống hình thu nhỏ</a><a
+                        href="/vi/color-converter/" class="related-btn">{{ related_color }}</a><a
+                        href="/vi/favicon-generator/" class="related-btn">Tạo Favicon</a>
                 </div>
             </div>
 
@@ -285,7 +294,7 @@
         }
 
         resetBtn.addEventListener('click', () => {
-            if (confirm('Reset all settings?')) {
+            if (confirm('{{ confirm_reset }}')) {
                 localStorage.removeItem(STORAGE_KEY);
                 location.reload();
             }
@@ -307,7 +316,7 @@
             filesToProcess = Array.from(files).filter(f => f.type.startsWith('image/'));
 
             if (filesToProcess.length === 0) {
-                alert("Please select image files only.");
+                alert("{{ alert_img }}");
                 return;
             }
 
@@ -428,18 +437,18 @@
                     processedCount++;
                     const percent = Math.round((processedCount / filesToProcess.length) * 100);
                     progressBar.value = percent;
-                    progressText.textContent = `Processing... ${processedCount} / ${filesToProcess.length}...`;
+                    progressText.textContent = `{{ prog_proc }} ${processedCount} / ${filesToProcess.length}...`;
                 } catch (e) {
                     console.error("Error processing file", file.name, e);
                 }
             }
 
-            progressText.textContent = "Zipping... (Please wait)";
+            progressText.textContent = "{{ prog_zip }}";
             const content = await zip.generateAsync({ type: "blob" });
             saveAs(content, "watermarked_images.zip");
 
             processBtn.disabled = false;
-            progressText.textContent = "Done! Download started.";
+            progressText.textContent = "{{ prog_done }}";
         });
 
         function processImage(file, format) {

@@ -4,13 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Ezoic -->
+    <script data-cfasync="false" src="https://cmp.gatekeeperconsent.com/min.js"></script>
+    <script data-cfasync="false" src="https://the.gatekeeperconsent.com/cmp.min.js"></script>
+    <script async src="//www.ezojs.com/ezoic/sa.min.js"></script>
+    <script>
+        window.ezstandalone = window.ezstandalone || {};
+        ezstandalone.cmd = ezstandalone.cmd || [];
+    </script>
+    <script src="//ezoicanalytics.com/analytics.js"></script>
     <meta name="google-adsense-account" content="ca-pub-6334819180242631">
-    <title>Unit Converter (cm to inch, kg to lbs) - Utilify</title>
-    <meta name="description" content="Convert Length (cm to inch), Weight (kg to lbs), Temperature (Celsius to Fahrenheit), Volume, and more. Easy height and weight conversion.">
+    <title>単位変換ツール (cm to inch, kg to lbs) - Utilify</title>
+    <meta name="description" content="長さ (cmからインチ), 重量 (kgからポンド), 温度 (摂氏から華氏), 体積などを変換します。身長や体重の変換も簡単。">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Unit Converter (cm to inch, kg to lbs) - 🛠️ Utilify">
-    <meta property="og:description" content="Convert Length (cm to inch), Weight (kg to lbs), Temperature (Celsius to Fahrenheit), Volume, and more.">
+    <meta property="og:title" content="単位変換ツール - Utilify">
+    <meta property="og:description" content="長さ, 重量, 温度, 体積などを変換できます。">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://utilifyapp.net/ja/unit-converter/">
 
@@ -42,8 +51,8 @@
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "Unit Converter",
-    "description": "Convert Length, Weight, Temperature, Volume, and more.",
+    "name": "単位変換ツール",
+    "description": "長さ, 重量, 温度, 体積などを変換できます。",
     "url": "https://utilifyapp.net/ja/unit-converter/",
     "inLanguage": "ja",
     "applicationCategory": "UtilitiesApplication",
@@ -135,7 +144,7 @@
 
     <main class="main-content">
         <div class="container-narrow">
-            <h1>📏 Unit Converter</h1>
+            <h1>📏 単位変換ツール</h1>
             <div class="security-badge"
                 style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
                 <span title="Processed securely in client-side">🔒 Secure & Client-side</span>
@@ -143,20 +152,20 @@
                     style="display: none; padding: 4px 12px; font-size: 12px;">📲 Install App</button>
             </div>
 
-            <p>Convert Length, Weight, Temperature, Volume, and more.</p>
+            <p>長さ, 重量, 温度, 体積などを変換できます。</p>
 
 
 
             <!-- Category Selection -->
             <div class="converter-section">
-                <label class="form-label">Category</label>
+                <label class="form-label">カテゴリー</label>
                 <select id="category" class="form-select">
-                    <option value="length">Length</option>
-                    <option value="weight">Weight</option>
-                    <option value="temperature">Temperature</option>
-                    <option value="volume">Volume</option>
-                    <option value="area">Area</option>
-                    <option value="speed">Speed</option>
+                    <option value="length">長さ</option>
+                    <option value="weight">重量</option>
+                    <option value="temperature">温度</option>
+                    <option value="volume">体積</option>
+                    <option value="area">面積</option>
+                    <option value="speed">速度</option>
                 </select>
             </div>
 
@@ -164,17 +173,17 @@
             <div class="converter-section">
                 <div class="converter-grid">
                     <div>
-                        <label class="form-label">Value to Convert</label>
-                        <input type="number" id="fromValue" class="form-input" placeholder="Enter number" value="1">
+                        <label class="form-label">変換する値</label>
+                        <input type="number" id="fromValue" class="form-input" placeholder="数値を入力" value="1">
                         <select id="fromUnit" class="form-select mt-1"></select>
                         <div class="result-display" id="fromDisplay">1</div>
                     </div>
 
-                    <button class="swap-btn" id="swapBtn" title="Swap Units">⇄</button>
+                    <button class="swap-btn" id="swapBtn" title="単位を交換">⇄</button>
 
                     <div>
-                        <label class="form-label">Converted Value</label>
-                        <input type="number" id="toValue" class="form-input" placeholder="Result" readonly>
+                        <label class="form-label">変換結果</label>
+                        <input type="number" id="toValue" class="form-input" placeholder="結果" readonly>
                         <select id="toUnit" class="form-select mt-1"></select>
                         <div class="result-display" id="toDisplay">-</div>
                     </div>
@@ -183,19 +192,19 @@
 
             <!-- Quick Reference -->
             <div class="card">
-                <h3>Common Conversions</h3>
+                <h3>よく使う変換</h3>
                 <div id="quickReference"></div>
             </div>
 
 
 
             <div class="related-tools-section">
-                <h3>Related Tools</h3>
+                <h3>関連ツール</h3>
                 <div class="related-buttons">
-                    <a href="/ja/bmi-calculator/" class="related-btn">BMI Calculator</a><a
-                        href="/ja/date-calculator/" class="related-btn">Date Calculator</a><a
-                        href="/ja/timer/" class="related-btn">Timer</a><a
-                        href="/ja/reaction-test/" class="related-btn">Reaction Test</a>
+                    <a href="/ja/bmi-calculator/" class="related-btn">BMI計算機</a><a
+                        href="/ja/date-calculator/" class="related-btn">日付計算</a><a
+                        href="/ja/timer/" class="related-btn">タイマー</a><a
+                        href="/ja/reaction-test/" class="related-btn">反応速度テスト</a>
                 </div>
             </div>
 
@@ -215,7 +224,7 @@
         // Unit conversion data
         const conversionData = {
             length: {
-                name: 'Length',
+                name: '長さ',
                 units: {
                     meter: { name: 'Meter (m)', toBase: 1 },
                     kilometer: { name: 'Kilometer (km)', toBase: 1000 },
@@ -228,7 +237,7 @@
                 }
             },
             weight: {
-                name: 'Weight',
+                name: '重量',
                 units: {
                     kilogram: { name: 'Kilogram (kg)', toBase: 1 },
                     gram: { name: 'Gram (g)', toBase: 0.001 },
@@ -239,7 +248,7 @@
                 }
             },
             temperature: {
-                name: 'Temperature',
+                name: '温度',
                 units: {
                     celsius: { name: 'Celsius (°C)', toBase: null },
                     fahrenheit: { name: 'Fahrenheit (°F)', toBase: null },
@@ -247,7 +256,7 @@
                 }
             },
             volume: {
-                name: 'Volume',
+                name: '体積',
                 units: {
                     liter: { name: 'Liter (L)', toBase: 1 },
                     milliliter: { name: 'Milliliter (mL)', toBase: 0.001 },
@@ -259,7 +268,7 @@
                 }
             },
             area: {
-                name: 'Area',
+                name: '面積',
                 units: {
                     squareMeter: { name: 'Square Meter (m²)', toBase: 1 },
                     squareKilometer: { name: 'Square Kilometer (km²)', toBase: 1000000 },
@@ -270,7 +279,7 @@
                 }
             },
             speed: {
-                name: 'Speed',
+                name: '速度',
                 units: {
                     meterPerSecond: { name: 'Meter/Second (m/s)', toBase: 1 },
                     kilometerPerHour: { name: 'Kilometer/Hour (km/h)', toBase: 0.277778 },

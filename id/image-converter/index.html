@@ -4,13 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Ezoic -->
+    <script data-cfasync="false" src="https://cmp.gatekeeperconsent.com/min.js"></script>
+    <script data-cfasync="false" src="https://the.gatekeeperconsent.com/cmp.min.js"></script>
+    <script async src="//www.ezojs.com/ezoic/sa.min.js"></script>
+    <script>
+        window.ezstandalone = window.ezstandalone || {};
+        ezstandalone.cmd = ezstandalone.cmd || [];
+    </script>
+    <script src="//ezoicanalytics.com/analytics.js"></script>
     <meta name="google-adsense-account" content="ca-pub-6334819180242631">
-    <title>Image Converter - Utilify</title>
-    <meta name="description" content="Resize images and convert to WebP, JPEG, PNG formats.">
+    <title>Konverter Gambar - Utilify</title>
+    <meta name="description" content="Ubah ukuran gambar dan konversi ke format WebP, JPEG, PNG.">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Image Converter - Utilify">
-    <meta property="og:description" content="Resize images and convert to WebP, JPEG, PNG formats.">
+    <meta property="og:title" content="Konverter Gambar - Utilify">
+    <meta property="og:description" content="Ubah ukuran gambar dan konversi ke format WebP, JPEG, PNG.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://utilifyapp.net/id/image-converter/">
 
@@ -42,8 +51,8 @@
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "Image Converter",
-    "description": "Resize images and convert to WebP, JPEG, PNG formats.",
+    "name": "Konverter Gambar",
+    "description": "Ubah ukuran gambar dan konversi ke format WebP, JPEG, PNG.",
     "url": "https://utilifyapp.net/id/image-converter/",
     "inLanguage": "id",
     "applicationCategory": "UtilitiesApplication",
@@ -209,7 +218,7 @@
 
     <main class="main-content">
         <div class="container-narrow">
-            <h1>🖼️ Image Converter</h1>
+            <h1>🖼️ Konverter Gambar</h1>
             <div class="security-badge"
                 style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
                 <span title="Processed securely in client-side">🔒 Secure & Client-side</span>
@@ -217,22 +226,22 @@
                     style="display: none; padding: 4px 12px; font-size: 12px;">📲 Install App</button>
             </div>
 
-            <p>Resize images and convert to WebP, JPEG, PNG formats.</p>
+            <p>Ubah ukuran gambar dan konversi ke format WebP, JPEG, PNG.</p>
 
             <!-- Upload Area -->
             <div class="upload-area" id="uploadArea">
                 <input type="file" id="fileInput" accept="image/*" style="display: none;">
                 <div>
                     <p style="font-size: 3rem; margin: 0;">📁</p>
-                    <p style="font-size: 1.25rem; font-weight: 600; margin: var(--spacing-md) 0;">Click or drag to upload image</p>
-                    <p class="info-text">Supports all image formats including JPG, PNG, GIF, WebP.</p>
+                    <p style="font-size: 1.25rem; font-weight: 600; margin: var(--spacing-md) 0;">Klik atau seret untuk mengunggah gambar</p>
+                    <p class="info-text">Mendukung semua format gambar termasuk JPG, PNG, GIF, WebP.</p>
                 </div>
             </div>
 
             <!-- Controls -->
             <div class="controls" id="controls" style="display: none;">
                 <div class="control-group">
-                    <label class="form-label">Width (px)</label>
+                    <label class="form-label">Lebar (px)</label>
                     <div class="slider-container">
                         <input type="range" id="widthSlider" min="100" max="4000" value="1920" class="form-input"
                             style="flex: 1;">
@@ -241,7 +250,7 @@
                 </div>
 
                 <div class="control-group">
-                    <label class="form-label">Height (px)</label>
+                    <label class="form-label">Tinggi (px)</label>
                     <div class="slider-container">
                         <input type="range" id="heightSlider" min="100" max="4000" value="1080" class="form-input"
                             style="flex: 1;">
@@ -250,7 +259,7 @@
                 </div>
 
                 <div class="control-group">
-                    <label class="form-label">Output Format</label>
+                    <label class="form-label">Format Output</label>
                     <select id="formatSelect" class="form-select">
                         <option value="image/webp">WebP</option>
                         <option value="image/jpeg">JPEG</option>
@@ -259,7 +268,7 @@
                 </div>
 
                 <div class="control-group">
-                    <label class="form-label">Quality (%)</label>
+                    <label class="form-label">Kualitas (%)</label>
                     <div class="slider-container">
                         <input type="range" id="qualitySlider" min="1" max="100" value="90" class="form-input"
                             style="flex: 1;">
@@ -268,34 +277,34 @@
                 </div>
 
                 <div class="button-group">
-                    <button class="btn btn-primary" id="convertBtn">Convert</button>
-                    <button class="btn btn-secondary" id="resetBtn">Reset</button>
+                    <button class="btn btn-primary" id="convertBtn">Konversi</button>
+                    <button class="btn btn-secondary" id="resetBtn">Atur Ulang</button>
                 </div>
             </div>
 
             <!-- Preview -->
             <div class="preview-container" id="previewContainer" style="display: none;">
                 <div class="preview-box">
-                    <h3>Original Image</h3>
+                    <h3>Gambar Asli</h3>
                     <img id="originalPreview" alt="Original">
                     <p class="info-text" id="originalInfo"></p>
                 </div>
                 <div class="preview-box">
-                    <h3>Converted Image</h3>
+                    <h3>Gambar Dikonversi</h3>
                     <img id="convertedPreview" alt="Converted">
                     <p class="info-text" id="convertedInfo"></p>
                     <button class="btn btn-primary" id="downloadBtn"
-                        style="margin-top: var(--spacing-md); width: 100%;">Download</button>
+                        style="margin-top: var(--spacing-md); width: 100%;">Unduh</button>
                 </div>
             </div>
 
             <div class="related-tools-section">
-                <h3>Related Tools</h3>
+                <h3>Alat Terkait</h3>
                 <div class="related-buttons">
-                    <a href="/id/image-editor/" class="related-btn">Image Editor</a><a
-                        href="/id/thumbnail-downloader/" class="related-btn">Thumbnail Downloader</a><a
-                        href="/id/favicon-generator/" class="related-btn">Favicon Generator</a><a
-                        href="/id/color-converter/" class="related-btn">Color Converter</a>
+                    <a href="/id/image-editor/" class="related-btn">Editor Gambar</a><a
+                        href="/id/thumbnail-downloader/" class="related-btn">Pengunduh Thumbnail</a><a
+                        href="/id/favicon-generator/" class="related-btn">Generator Favicon</a><a
+                        href="/id/color-converter/" class="related-btn">Konverter Warna</a>
                 </div>
             </div>
 
@@ -362,7 +371,7 @@
         // Handle file
         function handleFile(file) {
             if (!file.type.startsWith('image/')) {
-                alert('Only image files can be uploaded.');
+                alert('Hanya file gambar yang dapat diunggah.');
                 return;
             }
 

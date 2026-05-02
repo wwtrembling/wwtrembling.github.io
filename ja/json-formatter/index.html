@@ -4,13 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Ezoic -->
+    <script data-cfasync="false" src="https://cmp.gatekeeperconsent.com/min.js"></script>
+    <script data-cfasync="false" src="https://the.gatekeeperconsent.com/cmp.min.js"></script>
+    <script async src="//www.ezojs.com/ezoic/sa.min.js"></script>
+    <script>
+        window.ezstandalone = window.ezstandalone || {};
+        ezstandalone.cmd = ezstandalone.cmd || [];
+    </script>
+    <script src="//ezoicanalytics.com/analytics.js"></script>
     <meta name="google-adsense-account" content="ca-pub-6334819180242631">
-    <title>JSON Formatter & Validator (Pretty Print) - Utilify</title>
-    <meta name="description" content="Format (Pretty Print), Minify, and Validate JSON data. Ad-free tool for developers.">
+    <title>JSONフォーマッター & バリデーター (整形) - Utilify</title>
+    <meta name="description" content="JSONデータの整形（Pretty Print）、圧縮、検証を行います。開発者向けの広告なしツール。">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="JSON Formatter & Validator - Utilify">
-    <meta property="og:description" content="Format, Minify, and Validate JSON data. Ad-free tool for developers.">
+    <meta property="og:title" content="JSONフォーマッター & バリデーター - Utilify">
+    <meta property="og:description" content="JSONデータの整形、圧縮、検証を行います。開発者向けの広告なしツール。">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://utilifyapp.net/ja/json-formatter/">
 
@@ -42,8 +51,8 @@
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "JSON Formatter",
-    "description": "Format and validate JSON data. Features include minification, formatting, and validation.",
+    "name": "JSONフォーマッター",
+    "description": "JSONデータの整形、圧縮、検証を行います。圧縮、整形、検証機能を含みます。",
     "url": "https://utilifyapp.net/ja/json-formatter/",
     "inLanguage": "ja",
     "applicationCategory": "UtilitiesApplication",
@@ -133,7 +142,7 @@
 
     <main class="main-content">
         <div class="container-narrow">
-            <h1>JSON Formatter</h1>
+            <h1>JSONフォーマッター</h1>
             <div class="security-badge"
                 style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
                 <span title="Processed securely in client-side">🔒 Secure & Client-side</span>
@@ -141,29 +150,29 @@
                     style="display: none; padding: 4px 12px; font-size: 12px;">📲 Install App</button>
             </div>
 
-            <p>Format, validate, and minify JSON data. Ad-free for developers.</p>
+            <p>JSONデータの整形、検証、圧縮を行います。開発者向けの広告なしツール。</p>
 
 
 
             <!-- Action Buttons -->
             <div class="btn-group">
-                <button class="btn btn-primary" onclick="formatJSON()">Format</button>
-                <button class="btn btn-secondary" onclick="minifyJSON()">Minify</button>
-                <button class="btn btn-secondary" onclick="validateJSON()">Validate</button>
-                <button class="btn btn-secondary" onclick="copyOutput()">Copy</button>
-                <button class="btn btn-secondary" onclick="clearAll()">Clear</button>
+                <button class="btn btn-primary" onclick="formatJSON()">整形</button>
+                <button class="btn btn-secondary" onclick="minifyJSON()">圧縮</button>
+                <button class="btn btn-secondary" onclick="validateJSON()">検証</button>
+                <button class="btn btn-secondary" onclick="copyOutput()">コピー</button>
+                <button class="btn btn-secondary" onclick="clearAll()">クリア</button>
             </div>
 
             <!-- Editors -->
             <div class="editor-container">
                 <div class="editor-panel">
-                    <label class="form-label">Input JSON</label>
+                    <label class="form-label">入力JSON</label>
                     <textarea id="jsonInput" class="form-textarea json-textarea"
-                        placeholder="Enter JSON data..."></textarea>
+                        placeholder="JSONデータを入力..."></textarea>
                 </div>
 
                 <div class="editor-panel">
-                    <label class="form-label">Result</label>
+                    <label class="form-label">結果</label>
                     <textarea id="jsonOutput" class="form-textarea json-textarea" readonly></textarea>
                 </div>
             </div>
@@ -173,11 +182,11 @@
             <div id="errorMessage" style="display: none;"></div>
 
             <div class="related-tools-section">
-                <h3>Related Tools</h3>
+                <h3>関連ツール</h3>
                 <div class="related-buttons">
-                    <a href="/ja/sql-formatter/" class="related-btn">SQL Formatter</a><a
-                        href="/ja/base64-converter/" class="related-btn">Base64 Converter</a><a
-                        href="/ja/password-generator/" class="related-btn">Password Generator</a>
+                    <a href="/ja/sql-formatter/" class="related-btn">SQLフォーマッター</a><a
+                        href="/ja/base64-converter/" class="related-btn">Base64変換</a><a
+                        href="/ja/password-generator/" class="related-btn">パスワード生成</a>
                 </div>
             </div>
 
@@ -234,7 +243,7 @@
             if (output.value) {
                 Utils.copyToClipboard(output.value);
             } else {
-                Utils.showToast('✗ Invalid JSON');
+                Utils.showToast('✗ 無効なJSON');
             }
         }
 
@@ -248,12 +257,12 @@
         function showValidation(isValid, error = '') {
             validationStatus.style.display = 'block';
             validationStatus.className = 'validation-status ' + (isValid ? 'valid' : 'invalid');
-            validationStatus.textContent = isValid ? '✓ Valid JSON' : '✗ Invalid JSON';
+            validationStatus.textContent = isValid ? '✓ 有効なJSON' : '✗ 無効なJSON';
 
             if (error) {
                 errorMessage.style.display = 'block';
                 errorMessage.className = 'error-message';
-                errorMessage.textContent = 'Error: ' + error;
+                errorMessage.textContent = 'エラー: ' + error;
             } else {
                 errorMessage.style.display = 'none';
             }

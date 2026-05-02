@@ -4,13 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Ezoic -->
+    <script data-cfasync="false" src="https://cmp.gatekeeperconsent.com/min.js"></script>
+    <script data-cfasync="false" src="https://the.gatekeeperconsent.com/cmp.min.js"></script>
+    <script async src="//www.ezojs.com/ezoic/sa.min.js"></script>
+    <script>
+        window.ezstandalone = window.ezstandalone || {};
+        ezstandalone.cmd = ezstandalone.cmd || [];
+    </script>
+    <script src="//ezoicanalytics.com/analytics.js"></script>
     <meta name="google-adsense-account" content="ca-pub-6334819180242631">
-    <title>Lorem Ipsum Generator - Utilify</title>
-    <meta name="description" content="Generate Lorem Ipsum dummy text.">
+    <title>लोरेम इप्सम जनरेटर - Utilify</title>
+    <meta name="description" content="लोरेम इप्सम डमी टेक्स्ट जनरेट करें। पैराग्राफ, वाक्य, शब्द।">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Lorem Ipsum Generator - Utilify">
-    <meta property="og:description" content="Generate Lorem Ipsum dummy text.">
+    <meta property="og:title" content="लोरेम इप्सम जनरेटर - Utilify">
+    <meta property="og:description" content="लोरेम इप्सम डमी टेक्स्ट जनरेट करें।">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://utilifyapp.net/hi/lorem-ipsum/">
 
@@ -36,8 +45,8 @@
     {
       "@context": "https://schema.org",
       "@type": "WebApplication",
-      "name": "Lorem Ipsum Generator",
-      "description": "Generate Lorem Ipsum dummy text.",
+      "name": "लोरेम इप्सम जनरेटर",
+      "description": "लोरेम इप्सम डमी टेक्स्ट जनरेट करें।",
       "url": "https://utilifyapp.net/hi/lorem-ipsum/",
       "inLanguage": "hi",
       "applicationCategory": "UtilitiesApplication"
@@ -91,7 +100,7 @@
     </header>
     <main class="main-content">
         <div class="container-narrow">
-            <h1>📋 Lorem Ipsum Generator</h1>
+            <h1>📋 लोरेम इप्सम जनरेटर</h1>
             <div class="security-badge"
                 style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
                 <span title="Processed securely in client-side">🔒 सुरक्षित और क्लाइंट-साइड</span>
@@ -99,24 +108,24 @@
                     style="display: none; padding: 4px 12px; font-size: 12px;">📲 ऐप इंस्टॉल करें</button>
             </div>
 
-            <p>Generate Lorem Ipsum dummy text.</p>
+            <p>लोरेम इप्सम डमी टेक्स्ट जनरेट करें।</p>
             <div class="options">
                 <div class="option-group">
-                    <label class="form-label">Type:</label>
+                    <label class="form-label">प्रकार:</label>
                     <select id="type" class="form-select">
-                        <option value="paragraphs">Paragraphs</option>
-                        <option value="words">Words</option>
-                        <option value="sentences">Sentences</option>
+                        <option value="paragraphs">पैराग्राफ</option>
+                        <option value="words">शब्द</option>
+                        <option value="sentences">वाक्य</option>
                     </select>
                 </div>
                 <div class="option-group">
-                    <label class="form-label">Count:</label>
+                    <label class="form-label">गिनती:</label>
                     <input type="number" id="count" class="form-input" value="3" min="1" max="100"
                         style="width: 100px;">
                 </div>
                 <div style="display: flex; gap: var(--spacing-md);">
-                    <button class="btn btn-primary" id="generateBtn">Generate</button>
-                    <button class="btn btn-secondary" id="copyBtn">Copy</button>
+                    <button class="btn btn-primary" id="generateBtn">उत्पन्न करें</button>
+                    <button class="btn btn-secondary" id="copyBtn">कॉपी</button>
                 </div>
             </div>
             <div>
@@ -124,12 +133,12 @@
             </div>
 
             <div class="related-tools-section">
-                <h3>Related Tools</h3>
+                <h3>संबंधित उपकरण</h3>
                 <div class="related-buttons">
-                    <a href="/hi/text-utils/" class="related-btn">Text Utils</a><a
-                        href="/hi/diff-checker/" class="related-btn">Diff Checker</a><a
-                        href="/hi/regex-tester/" class="related-btn">Regex Tester</a><a
-                        href="/hi/markdown-previewer/" class="related-btn">Markdown Preview</a>
+                    <a href="/hi/text-utils/" class="related-btn">टेक्स्ट यूटिलिटीज</a><a
+                        href="/hi/diff-checker/" class="related-btn">टेक्स्ट डिफ चेकर</a><a
+                        href="/hi/regex-tester/" class="related-btn">रेगेक्स टेस्टर</a><a
+                        href="/hi/markdown-previewer/" class="related-btn">मार्कडाउन पूर्वावलोकन</a>
                 </div>
             </div>
 
@@ -183,7 +192,7 @@
         document.getElementById('copyBtn').addEventListener('click', () => {
             const output = document.getElementById('output').value;
             if (output) Utils.copyToClipboard(output);
-            else alert('Generate text first.');
+            else alert('पहले टेक्स्ट उत्पन्न करें।');
         });
 
         // Generate on load

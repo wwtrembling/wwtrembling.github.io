@@ -4,13 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Ezoic -->
+    <script data-cfasync="false" src="https://cmp.gatekeeperconsent.com/min.js"></script>
+    <script data-cfasync="false" src="https://the.gatekeeperconsent.com/cmp.min.js"></script>
+    <script async src="//www.ezojs.com/ezoic/sa.min.js"></script>
+    <script>
+        window.ezstandalone = window.ezstandalone || {};
+        ezstandalone.cmd = ezstandalone.cmd || [];
+    </script>
+    <script src="//ezoicanalytics.com/analytics.js"></script>
     <meta name="google-adsense-account" content="ca-pub-6334819180242631">
     <title>Favicon 生成器 - Utilify</title>
-    <meta name="description" content="从图片生成 Favicon (16x16 到 64x64)。">
+    <meta name="description" content="将图片转换为 Favicon 图标。支持多种尺寸。">
 
     <!-- Open Graph -->
     <meta property="og:title" content="Favicon 生成器 - Utilify">
-    <meta property="og:description" content="从图片生成 Favicon。">
+    <meta property="og:description" content="将图片转换为 Favicon 图标。">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://utilifyapp.net/zh-cn/favicon-generator/">
 
@@ -37,7 +46,7 @@
       "@context": "https://schema.org",
       "@type": "WebApplication",
       "name": "Favicon 生成器",
-      "description": "从图片生成 Favicon。",
+      "description": "将图片转换为 Favicon 图标。",
       "url": "https://utilifyapp.net/zh-cn/favicon-generator/",
       "inLanguage": "zh-cn",
       "applicationCategory": "UtilitiesApplication"
@@ -111,12 +120,12 @@
                 <button id="pwaInstallBtn" class="btn btn-primary"
                     style="display: none; padding: 4px 12px; font-size: 12px;">📲 安装应用</button>
             </div>
-            <p>从图片生成 Favicon (16x16, 32x32, 48x48, 64x64)。</p>
+            <p>将图片转换为 Favicon 图标。</p>
             <div class="upload-area" id="uploadArea">
                 <input type="file" id="fileInput" accept="image/*" style="display: none;">
                 <div>
                     <p style="font-size: 2rem; margin: 0;">📁</p>
-                    <p>点击或拖放上传图片</p>
+                    <p>{{ drop_text }}</p>
                 </div>
             </div>
             <div class="preview-grid" id="previewGrid" style="display: none;"></div>
@@ -126,7 +135,7 @@
                 <div class="related-buttons">
                     <a href="/zh-cn/image-converter/" class="related-btn">图片格式转换器</a><a
                         href="/zh-cn/thumbnail-downloader/" class="related-btn">缩略图下载</a><a
-                        href="/zh-cn/color-converter/" class="related-btn">颜色格式转换</a><a
+                        href="/zh-cn/color-converter/" class="related-btn">{{ related_color }}</a><a
                         href="/zh-cn/image-watermark/" class="related-btn">图片水印</a>
                 </div>
             </div>
@@ -179,7 +188,7 @@
 
                         const btn = document.createElement('button');
                         btn.className = 'btn';
-                        btn.textContent = '下载';
+                        btn.textContent = '{{ btn_download }}';
                         btn.onclick = function () { downloadFavicon(this, size) };
                         item.appendChild(btn);
 

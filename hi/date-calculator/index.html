@@ -4,14 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Ezoic -->
+    <script data-cfasync="false" src="https://cmp.gatekeeperconsent.com/min.js"></script>
+    <script data-cfasync="false" src="https://the.gatekeeperconsent.com/cmp.min.js"></script>
+    <script async src="//www.ezojs.com/ezoic/sa.min.js"></script>
+    <script>
+        window.ezstandalone = window.ezstandalone || {};
+        ezstandalone.cmd = ezstandalone.cmd || [];
+    </script>
+    <script src="//ezoicanalytics.com/analytics.js"></script>
     <meta name="google-adsense-account" content="ca-pub-6334819180242631">
-    <title>Date Calculator - Utilify</title>
-    <meta name="description" content="Calculate D-Day and date differences.">
+    <title>दिनांक कैलकुलेटर - Utilify</title>
+    <meta name="description" content="डी-डे और दिनांक अंतर की गणना करें।">
     <link rel="canonical" href="https://utilifyapp.net/hi/date-calculator/">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Date Calculator - Utilify">
-    <meta property="og:description" content="Calculate D-Day and date differences.">
+    <meta property="og:title" content="दिनांक कैलकुलेटर - Utilify">
+    <meta property="og:description" content="डी-डे और दिनांक अंतर की गणना करें।">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://utilifyapp.net/hi/date-calculator/">
 
@@ -38,8 +47,8 @@
     {
       "@context": "https://schema.org",
       "@type": "WebApplication",
-      "name": "Date Calculator",
-      "description": "Calculate D-Day and date differences.",
+      "name": "दिनांक कैलकुलेटर",
+      "description": "डी-डे और दिनांक अंतर की गणना करें।",
       "url": "https://utilifyapp.net/hi/date-calculator/",
       "inLanguage": "hi",
       "applicationCategory": "UtilitiesApplication"
@@ -58,7 +67,7 @@
     </header>
     <main class="main-content">
         <div class="container-narrow">
-            <h1>📅 Date Calculator</h1>
+            <h1>📅 दिनांक कैलकुलेटर</h1>
             <div class="security-badge"
                 style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
                 <span title="Processed securely in client-side">🔒 सुरक्षित और क्लाइंट-साइड</span>
@@ -66,41 +75,41 @@
                     style="display: none; padding: 4px 12px; font-size: 12px;">📲 ऐप इंस्टॉल करें</button>
             </div>
 
-            <p>Calculate D-Day and date differences.</p>
+            <p>डी-डे और दिनांक अंतर की गणना करें।</p>
             <div class="card">
-                <h3>D-Day Calculation</h3>
+                <h3>डी-डे गणना</h3>
                 <div class="form-group">
-                    <label class="form-label">Target Date</label>
+                    <label class="form-label">लक्ष्य तिथि</label>
                     <input type="date" id="targetDate" class="form-input">
                 </div>
-                <button class="btn btn-primary" onclick="calculateDday()">Calculate</button>
+                <button class="btn btn-primary" onclick="calculateDday()">गणना करें</button>
                 <div id="ddayResult" class="result-box" style="display:none; margin-top:1rem;">
                     <div class="result-value" id="ddayValue"></div>
                 </div>
             </div>
             <div class="card">
-                <h3>Date Difference</h3>
+                <h3>तारीख का अंतर</h3>
                 <div class="form-group">
-                    <label class="form-label">Start Date</label>
+                    <label class="form-label">आरंभ करने की तिथि</label>
                     <input type="date" id="startDate" class="form-input">
                 </div>
                 <div class="form-group">
-                    <label class="form-label">End Date</label>
+                    <label class="form-label">अंतिम तिथि</label>
                     <input type="date" id="endDate" class="form-input">
                 </div>
-                <button class="btn btn-primary" onclick="calculateDiff()">Calculate</button>
+                <button class="btn btn-primary" onclick="calculateDiff()">गणना करें</button>
                 <div id="diffResult" class="result-box" style="display:none; margin-top:1rem;">
                     <div class="result-value" id="diffValue"></div>
                 </div>
             </div>
 
             <div class="related-tools-section">
-                <h3>Related Tools</h3>
+                <h3>संबंधित उपकरण</h3>
                 <div class="related-buttons">
-                    <a href="/hi/unit-converter/" class="related-btn">Unit Converter</a><a
-                        href="/hi/bmi-calculator/" class="related-btn">Calculadora de IMC</a><a
-                        href="/hi/timer/" class="related-btn">Cronômetro</a><a
-                        href="/hi/reaction-test/" class="related-btn">Teste de Reação</a>
+                    <a href="/hi/unit-converter/" class="related-btn">इकाई परिवर्तक</a><a
+                        href="/hi/bmi-calculator/" class="related-btn">BMI कैलकुलेटर</a><a
+                        href="/hi/timer/" class="related-btn">टाइमर</a><a
+                        href="/hi/reaction-test/" class="related-btn">प्रतिक्रिया परीक्षण</a>
                 </div>
             </div>
 
@@ -127,7 +136,7 @@
             const start = new Date(document.getElementById('startDate').value);
             const end = new Date(document.getElementById('endDate').value);
             const diff = Math.abs(Math.ceil((end - start) / (1000 * 60 * 60 * 24)));
-            document.getElementById('diffValue').textContent = diff + ' Days';
+            document.getElementById('diffValue').textContent = diff + ' दिन';
             document.getElementById('diffResult').style.display = 'block';
         }
     </script>

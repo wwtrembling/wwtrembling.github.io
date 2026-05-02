@@ -4,13 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Ezoic -->
+    <script data-cfasync="false" src="https://cmp.gatekeeperconsent.com/min.js"></script>
+    <script data-cfasync="false" src="https://the.gatekeeperconsent.com/cmp.min.js"></script>
+    <script async src="//www.ezojs.com/ezoic/sa.min.js"></script>
+    <script>
+        window.ezstandalone = window.ezstandalone || {};
+        ezstandalone.cmd = ezstandalone.cmd || [];
+    </script>
+    <script src="//ezoicanalytics.com/analytics.js"></script>
     <meta name="google-adsense-account" content="ca-pub-6334819180242631">
-    <title>Color Converter - Utilify</title>
-    <meta name="description" content="Convert between HEX, RGB, HSL color formats.">
+    <title>Chuyển đổi màu sắc (HEX, RGB, HSL) - Utilify</title>
+    <meta name="description" content="Chuyển đổi các định dạng màu HEX, RGB, HSL, CMYK. Bộ chọn màu và xem trước.">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Color Converter - Utilify">
-    <meta property="og:description" content="Convert between HEX, RGB, HSL color formats.">
+    <meta property="og:title" content="Chuyển đổi màu sắc - Utilify">
+    <meta property="og:description" content="Chuyển đổi các định dạng màu HEX, RGB, HSL, CMYK.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://utilifyapp.net/vi/color-converter/">
 
@@ -42,8 +51,8 @@
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "Color Converter",
-    "description": "Convert between HEX, RGB, HSL color formats.",
+    "name": "Chuyển đổi màu sắc",
+    "description": "Chuyển đổi các định dạng màu HEX, RGB, HSL, CMYK.",
     "url": "https://utilifyapp.net/vi/color-converter/",
     "inLanguage": "vi",
     "applicationCategory": "UtilitiesApplication"
@@ -90,7 +99,7 @@
         }
 
         .color-preview::after {
-            content: 'Copy HEX';
+            content: 'Sao chép HEX';
             background: rgba(0, 0, 0, 0.6);
             color: white;
             padding: 4px 12px;
@@ -232,7 +241,7 @@
 
     <main class="main-content">
         <div class="container-narrow">
-            <h1>🎨 Color Converter</h1>
+            <h1>🎨 Chuyển đổi màu sắc</h1>
             <div class="security-badge"
                 style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
                 <span title="Processed securely in client-side">🔒 An toàn & Phía máy khách</span>
@@ -240,42 +249,42 @@
                     style="display: none; padding: 4px 12px; font-size: 12px;">📲 Cài đặt ứng dụng</button>
             </div>
 
-            <p>Convert between HEX, RGB, HSL color formats.</p>
+            <p>Chuyển đổi các định dạng màu HEX, RGB, HSL, CMYK.</p>
 
             <div class="converter-grid">
                 <!-- Top: Preview -->
                 <div class="color-preview-container">
-                    <div id="colorPreview" class="color-preview" title="Copy HEX"
+                    <div id="colorPreview" class="color-preview" title="Sao chép HEX"
                         onclick="copyHexFromPreview()"></div>
                 </div>
 
                 <!-- Left: Inputs -->
                 <div class="input-section">
-                    <h3>Color Values</h3>
+                    <h3>Giá trị màu</h3>
 
                     <div class="color-input-row">
                         <label>HEX</label>
                         <input type="text" id="hexInput" class="form-input" value="#6366f1" placeholder="#000000"
                             spellcheck="false">
-                        <button class="copy-icon-btn" onclick="copyColor('hex')" title="Copy">📋</button>
+                        <button class="copy-icon-btn" onclick="copyColor('hex')" title="Sao chép">📋</button>
                     </div>
 
                     <div class="color-input-row">
                         <label>RGB</label>
                         <input type="text" id="rgbInput" class="form-input" readonly>
-                        <button class="copy-icon-btn" onclick="copyColor('rgb')" title="Copy">📋</button>
+                        <button class="copy-icon-btn" onclick="copyColor('rgb')" title="Sao chép">📋</button>
                     </div>
 
                     <div class="color-input-row">
                         <label>HSL</label>
                         <input type="text" id="hslInput" class="form-input" readonly>
-                        <button class="copy-icon-btn" onclick="copyColor('hsl')" title="Copy">📋</button>
+                        <button class="copy-icon-btn" onclick="copyColor('hsl')" title="Sao chép">📋</button>
                     </div>
                 </div>
 
                 <!-- Right: Sliders & Palette -->
                 <div class="slider-section">
-                    <h3>RGB Adjust</h3>
+                    <h3>Điều chỉnh RGB</h3>
 
                     <div class="slider-row">
                         <span class="slider-label" style="color: #ef4444">R</span>
@@ -295,7 +304,7 @@
                         <span id="bValue" class="slider-val">241</span>
                     </div>
 
-                    <h3 style="margin-top: 1.5rem; font-size: 0.95rem;">Popular Colors</h3>
+                    <h3 style="margin-top: 1.5rem; font-size: 0.95rem;">Màu phổ biến</h3>
                     <div id="paletteGrid" class="palette-grid"></div>
                 </div>
             </div>
@@ -305,12 +314,12 @@
 
 
             <div class="related-tools-section">
-                <h3>Related Tools</h3>
+                <h3>Công cụ liên quan</h3>
                 <div class="related-buttons">
-                    <a href="/vi/image-converter/" class="related-btn">Image Converter</a><a
-                        href="/vi/image-editor/" class="related-btn">Image Editor</a><a
-                        href="/vi/thumbnail-downloader/" class="related-btn">Thumbnail Downloader</a><a
-                        href="/vi/favicon-generator/" class="related-btn">Favicon Generator</a>
+                    <a href="/vi/image-converter/" class="related-btn">Chuyển đổi hình ảnh</a><a
+                        href="/vi/image-editor/" class="related-btn">Trình sửa ảnh</a><a
+                        href="/vi/thumbnail-downloader/" class="related-btn">Trình tải xuống hình thu nhỏ</a><a
+                        href="/vi/favicon-generator/" class="related-btn">Tạo Favicon</a>
                 </div>
             </div>
 

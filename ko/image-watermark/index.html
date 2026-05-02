@@ -4,12 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>이미지 워터마크 & 불법 복제 방지기 - Utilify</title>
-    <meta name="description" content="이미지에 워터마크를 일괄 적용하고 WebP로 최적화하여 불법 복제를 방지하세요. 쇼핑몰 이미지 대량 처리에 최적화되었습니다.">
+    <!-- Ezoic -->
+    <script data-cfasync="false" src="https://cmp.gatekeeperconsent.com/min.js"></script>
+    <script data-cfasync="false" src="https://the.gatekeeperconsent.com/cmp.min.js"></script>
+    <script async src="//www.ezojs.com/ezoic/sa.min.js"></script>
+    <script>
+        window.ezstandalone = window.ezstandalone || {};
+        ezstandalone.cmd = ezstandalone.cmd || [];
+    </script>
+    <script src="//ezoicanalytics.com/analytics.js"></script>
+    <title>이미지 워터마크 - Utilify</title>
+    <meta name="description" content="이미지에 워터마크를 추가하여 저작권을 보호하세요.">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="이미지 워터마크 & 불법 복제 방지기 - Utilify">
-    <meta property="og:description" content="이미지에 워터마크를 일괄 적용하고 WebP로 최적화하여 불법 복제를 방지하세요. 쇼핑몰 이미지 대량 처리에 최적화되었습니다.">
+    <meta property="og:title" content="이미지 워터마크 - Utilify">
+    <meta property="og:description" content="이미지에 워터마크를 추가하여 저작권을 보호하세요.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://utilifyapp.net/ko/image-watermark/">
 
@@ -35,8 +44,8 @@
     {
       "@context": "https://schema.org",
       "@type": "WebApplication",
-      "name": "이미지 불법 복제 방지기 (워터마크)",
-      "description": "이미지에 워터마크를 일괄 적용하고 WebP로 최적화하여 불법 복제를 방지하세요. 쇼핑몰 이미지 대량 처리에 최적화되었습니다.",
+      "name": "이미지 워터마크",
+      "description": "이미지에 워터마크를 추가하여 저작권을 보호하세요.",
       "url": "https://utilifyapp.net/ko/image-watermark/",
       "inLanguage": "ko",
       "applicationCategory": "UtilitiesApplication"
@@ -126,7 +135,7 @@
     </header>
     <main class="main-content">
         <div class="container">
-            <h1>🛡️ 이미지 불법 복제 방지기 (워터마크)</h1>
+            <h1>🛡️ 이미지 워터마크</h1>
             <div class="security-badge"
                 style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
                 <span title="Processed securely in client-side">🔒 Secure & Client-side</span>
@@ -134,27 +143,27 @@
                     style="display: none; padding: 4px 12px; font-size: 12px;">📲 Install App</button>
             </div>
 
-            <p>상품 이미지 수백 장을 한 번에! 워터마크를 박고 WebP로 압축하여 트래픽까지 아끼세요.</p>
+            <p>이미지에 워터마크를 추가하여 저작권을 보호하세요.</p>
 
             <div class="tool-box">
                 <!-- Step 1: Upload -->
                 <div class="upload-area" id="uploadArea">
                     <input type="file" id="fileInput" accept="image/*" multiple style="display: none;">
                     <div style="font-size: 40px;">📁</div>
-                    <h3>이미지를 드래그하거나 클릭하세요 (여러 장 가능)</h3>
-                    <p style="color: var(--text-secondary);">JPG, PNG, WebP 지원</p>
+                    <h3>{{ drop_text }}</h3>
+                    <p style="color: var(--text-secondary);">{{ drop_sub }}</p>
                 </div>
                 <div id="fileListContainer" style="display: none;">
-                    <h4>선택된 파일: <span id="fileCount">0</span></h4>
+                    <h4>{{ selected_files }} <span id="fileCount">0</span></h4>
                     <div class="file-list" id="fileList"></div>
                 </div>
 
                 <div class="settings-grid" id="settingsArea" style="display: none;">
                     <!-- Left: Preview -->
                     <div>
-                        <h3>미리보기</h3>
+                        <h3>{{ header_preview }}</h3>
                         <canvas id="previewCanvas" class="preview-canvas"></canvas>
-                        <p style="font-size: 12px; color: var(--text-secondary);">* 첫 번째 이미지를 기준으로 미리보여줍니다.
+                        <p style="font-size: 12px; color: var(--text-secondary);">{{ preview_sub }}
                         </p>
                     </div>
 
@@ -164,24 +173,24 @@
 
                         <div class="control-group">
                             <label class="form-label">워터마크 텍스트</label>
-                            <input type="text" id="watermarkText" class="form-input" value="내 쇼핑몰 이름"
+                            <input type="text" id="watermarkText" class="form-input" value="{{ val_text }}"
                                 style="width: 100%; padding: 8px;">
                         </div>
 
                         <div class="control-group">
-                            <label class="form-label">위치</label>
+                            <label class="form-label">{{ label_pos }}</label>
                             <select id="positionSelect" class="form-input" style="width: 100%; padding: 8px;">
-                                <option value="center">정중앙</option>
-                                <option value="bottom-right" selected>우측 하단</option>
-                                <option value="bottom-left">좌측 하단</option>
-                                <option value="top-right">우측 상단</option>
-                                <option value="top-left">좌측 상단</option>
-                                <option value="tile">전체 패턴 (Tile)</option>
+                                <option value="center">{{ opt_center }}</option>
+                                <option value="bottom-right" selected>{{ opt_br }}</option>
+                                <option value="bottom-left">{{ opt_bl }}</option>
+                                <option value="top-right">{{ opt_tr }}</option>
+                                <option value="top-left">{{ opt_tl }}</option>
+                                <option value="tile">{{ opt_tile }}</option>
                             </select>
                         </div>
 
                         <div class="control-group">
-                            <label class="form-label">크기 & 투명도</label>
+                            <label class="form-label">{{ label_size }}</label>
                             <div style="display: flex; gap: 10px;">
                                 <input type="number" id="fontSize" value="48" style="width: 60px;"> px
                                 <input type="range" id="opacity" min="0" max="1" step="0.1" value="0.5"
@@ -190,9 +199,9 @@
                         </div>
 
                         <div class="control-group">
-                            <label class="form-label">저장 옵션 (트래픽 절약)</label>
+                            <label class="form-label">{{ label_format }}</label>
                             <select id="formatSelect" class="form-input" style="width: 100%; padding: 8px;">
-                                <option value="image/webp" selected>WebP (추천 - 용량 최소화)</option>
+                                <option value="image/webp" selected>{{ opt_webp }}</option>
                                 <option value="image/jpeg">JPEG</option>
                                 <option value="image/png">PNG</option>
                             </select>
@@ -200,15 +209,15 @@
 
                         <button id="processBtn" class="btn btn-primary"
                             style="width: 100%; padding: 15px; margin-top: 20px;">
-                            일괄 변환 및 다운로드 (ZIP)
+                            워터마크 추가
                         </button>
                         <button id="resetBtn" class="btn btn-secondary"
                             style="width: 100%; padding: 10px; margin-top: 10px;">
-                            설정 초기화
+                            {{ btn_reset }}
                         </button>
                         <div id="progressArea" style="display: none; margin-top: 10px;">
                             <progress id="progressBar" value="0" max="100" style="width: 100%;"></progress>
-                            <p id="progressText" style="text-align: center;">처리 중...</p>
+                            <p id="progressText" style="text-align: center;">{{ prog_proc }}</p>
                         </div>
                     </div>
                 </div>
@@ -219,7 +228,7 @@
                 <div class="related-buttons">
                     <a href="/ko/image-converter/" class="related-btn">이미지 변환기</a><a
                         href="/ko/thumbnail-downloader/" class="related-btn">썸네일 다운로더</a><a
-                        href="/ko/color-converter/" class="related-btn">색상 변환기</a><a
+                        href="/ko/color-converter/" class="related-btn">{{ related_color }}</a><a
                         href="/ko/favicon-generator/" class="related-btn">파비콘 생성기</a>
                 </div>
             </div>
@@ -285,7 +294,7 @@
         }
 
         resetBtn.addEventListener('click', () => {
-            if (confirm('검색 기록과 설정을 모두 초기화하시겠습니까?')) {
+            if (confirm('{{ confirm_reset }}')) {
                 localStorage.removeItem(STORAGE_KEY);
                 location.reload();
             }
@@ -307,7 +316,7 @@
             filesToProcess = Array.from(files).filter(f => f.type.startsWith('image/'));
 
             if (filesToProcess.length === 0) {
-                alert("이미지 파일만 선택해주세요.");
+                alert("{{ alert_img }}");
                 return;
             }
 
@@ -428,18 +437,18 @@
                     processedCount++;
                     const percent = Math.round((processedCount / filesToProcess.length) * 100);
                     progressBar.value = percent;
-                    progressText.textContent = `처리 중... ${processedCount} / ${filesToProcess.length}...`;
+                    progressText.textContent = `{{ prog_proc }} ${processedCount} / ${filesToProcess.length}...`;
                 } catch (e) {
                     console.error("Error processing file", file.name, e);
                 }
             }
 
-            progressText.textContent = "압축 중... (잠시만 기다려주세요)";
+            progressText.textContent = "{{ prog_zip }}";
             const content = await zip.generateAsync({ type: "blob" });
             saveAs(content, "watermarked_images.zip");
 
             processBtn.disabled = false;
-            progressText.textContent = "완료! 다운로드가 시작됩니다.";
+            progressText.textContent = "{{ prog_done }}";
         });
 
         function processImage(file, format) {

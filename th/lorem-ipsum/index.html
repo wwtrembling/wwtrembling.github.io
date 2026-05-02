@@ -4,13 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Ezoic -->
+    <script data-cfasync="false" src="https://cmp.gatekeeperconsent.com/min.js"></script>
+    <script data-cfasync="false" src="https://the.gatekeeperconsent.com/cmp.min.js"></script>
+    <script async src="//www.ezojs.com/ezoic/sa.min.js"></script>
+    <script>
+        window.ezstandalone = window.ezstandalone || {};
+        ezstandalone.cmd = ezstandalone.cmd || [];
+    </script>
+    <script src="//ezoicanalytics.com/analytics.js"></script>
     <meta name="google-adsense-account" content="ca-pub-6334819180242631">
-    <title>Lorem Ipsum Generator - Utilify</title>
-    <meta name="description" content="Generate Lorem Ipsum dummy text.">
+    <title>สร้าง Lorem Ipsum - Utilify</title>
+    <meta name="description" content="สร้างข้อความจำลอง Lorem Ipsum ย่อหน้า ประโยค คำ">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Lorem Ipsum Generator - Utilify">
-    <meta property="og:description" content="Generate Lorem Ipsum dummy text.">
+    <meta property="og:title" content="สร้าง Lorem Ipsum - Utilify">
+    <meta property="og:description" content="สร้างข้อความจำลอง Lorem Ipsum">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://utilifyapp.net/th/lorem-ipsum/">
 
@@ -36,8 +45,8 @@
     {
       "@context": "https://schema.org",
       "@type": "WebApplication",
-      "name": "Lorem Ipsum Generator",
-      "description": "Generate Lorem Ipsum dummy text.",
+      "name": "สร้าง Lorem Ipsum",
+      "description": "สร้างข้อความจำลอง Lorem Ipsum",
       "url": "https://utilifyapp.net/th/lorem-ipsum/",
       "inLanguage": "th",
       "applicationCategory": "UtilitiesApplication"
@@ -91,7 +100,7 @@
     </header>
     <main class="main-content">
         <div class="container-narrow">
-            <h1>📋 Lorem Ipsum Generator</h1>
+            <h1>📋 สร้าง Lorem Ipsum</h1>
             <div class="security-badge"
                 style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
                 <span title="Processed securely in client-side">🔒 Secure & Client-side</span>
@@ -99,24 +108,24 @@
                     style="display: none; padding: 4px 12px; font-size: 12px;">📲 Install App</button>
             </div>
 
-            <p>Generate Lorem Ipsum dummy text.</p>
+            <p>สร้างข้อความจำลอง Lorem Ipsum</p>
             <div class="options">
                 <div class="option-group">
-                    <label class="form-label">Type:</label>
+                    <label class="form-label">ประเภท:</label>
                     <select id="type" class="form-select">
-                        <option value="paragraphs">Paragraphs</option>
-                        <option value="words">Words</option>
-                        <option value="sentences">Sentences</option>
+                        <option value="paragraphs">ย่อหน้า</option>
+                        <option value="words">คำ</option>
+                        <option value="sentences">ประโยค</option>
                     </select>
                 </div>
                 <div class="option-group">
-                    <label class="form-label">Count:</label>
+                    <label class="form-label">จำนวน:</label>
                     <input type="number" id="count" class="form-input" value="3" min="1" max="100"
                         style="width: 100px;">
                 </div>
                 <div style="display: flex; gap: var(--spacing-md);">
-                    <button class="btn btn-primary" id="generateBtn">Generate</button>
-                    <button class="btn btn-secondary" id="copyBtn">Copy</button>
+                    <button class="btn btn-primary" id="generateBtn">สร้าง</button>
+                    <button class="btn btn-secondary" id="copyBtn">คัดลอก</button>
                 </div>
             </div>
             <div>
@@ -124,12 +133,12 @@
             </div>
 
             <div class="related-tools-section">
-                <h3>Related Tools</h3>
+                <h3>เครื่องมือที่เกี่ยวข้อง</h3>
                 <div class="related-buttons">
-                    <a href="/th/text-utils/" class="related-btn">Text Utils</a><a
-                        href="/th/diff-checker/" class="related-btn">Diff Checker</a><a
-                        href="/th/regex-tester/" class="related-btn">Regex Tester</a><a
-                        href="/th/markdown-previewer/" class="related-btn">Markdown Preview</a>
+                    <a href="/th/text-utils/" class="related-btn">เครื่องมือข้อความ</a><a
+                        href="/th/diff-checker/" class="related-btn">ตรวจสอบความแตกต่าง</a><a
+                        href="/th/regex-tester/" class="related-btn">ทดสอบ Regex</a><a
+                        href="/th/markdown-previewer/" class="related-btn">ดูตัวอย่าง Markdown</a>
                 </div>
             </div>
 
@@ -183,7 +192,7 @@
         document.getElementById('copyBtn').addEventListener('click', () => {
             const output = document.getElementById('output').value;
             if (output) Utils.copyToClipboard(output);
-            else alert('Generate text first.');
+            else alert('สร้างข้อความก่อน');
         });
 
         // Generate on load

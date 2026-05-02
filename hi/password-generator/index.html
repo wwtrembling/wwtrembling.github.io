@@ -4,13 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Ezoic -->
+    <script data-cfasync="false" src="https://cmp.gatekeeperconsent.com/min.js"></script>
+    <script data-cfasync="false" src="https://the.gatekeeperconsent.com/cmp.min.js"></script>
+    <script async src="//www.ezojs.com/ezoic/sa.min.js"></script>
+    <script>
+        window.ezstandalone = window.ezstandalone || {};
+        ezstandalone.cmd = ezstandalone.cmd || [];
+    </script>
+    <script src="//ezoicanalytics.com/analytics.js"></script>
     <meta name="google-adsense-account" content="ca-pub-6334819180242631">
-    <title>Strong Password Generator - Utilify</title>
-    <meta name="description" content="Generate strong and secure passwords. Passwords are generated locally and never sent to a server. (Processed securely in client-side)">
+    <title>मजबूत पासवर्ड जेनरेटर - Utilify</title>
+    <meta name="description" content="मजबूत और सुरक्षित पासवर्ड बनाएं। पासवर्ड स्थानीय रूप से बनाए जाते हैं और कभी भी सर्वर पर नहीं भेजे जाते हैं। (क्लाइंट-साइड में सुरक्षित रूप से संसाधित)">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Strong Password Generator - Utilify">
-    <meta property="og:description" content="Generate strong and secure passwords. Passwords are generated locally and never sent to a server.">
+    <meta property="og:title" content="मजबूत पासवर्ड जेनरेटर - Utilify">
+    <meta property="og:description" content="मजबूत और सुरक्षित पासवर्ड बनाएं। पासवर्ड स्थानीय रूप से बनाए जाते हैं और कभी भी सर्वर पर नहीं भेजे जाते हैं।">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://utilifyapp.net/hi/password-generator/">
 
@@ -42,8 +51,8 @@
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "Strong Password Generator",
-    "description": "Generate strong and secure passwords. Passwords are generated locally and never sent to a server.",
+    "name": "मजबूत पासवर्ड जेनरेटर",
+    "description": "मजबूत और सुरक्षित पासवर्ड बनाएं। पासवर्ड स्थानीय रूप से बनाए जाते हैं और कभी भी सर्वर पर नहीं भेजे जाते हैं।",
     "url": "https://utilifyapp.net/hi/password-generator/",
     "inLanguage": "hi",
     "applicationCategory": "UtilitiesApplication",
@@ -185,18 +194,18 @@
 
     <main class="main-content">
         <div class="container-narrow">
-            <h1>🔐 Strong Password Generator</h1>
-            <p>Generate strong and secure passwords. Passwords are generated locally and never sent to a server.</p>
+            <h1>🔐 मजबूत पासवर्ड जेनरेटर</h1>
+            <p>मजबूत और सुरक्षित पासवर्ड बनाएं। पासवर्ड स्थानीय रूप से बनाए जाते हैं और कभी भी सर्वर पर नहीं भेजे जाते हैं।</p>
 
             <!-- AdSense Placeholder -->
             <div class="adsense-placeholder">
                 <!-- AdSense Ad Unit -->
-                <p>Ad Space</p>
+                <p>विज्ञापन स्थान</p>
             </div>
 
             <div class="generator-container">
                 <!-- Display -->
-                <label class="form-label">Generated Password</label>
+                <label class="form-label">जेनरेट किया गया पासवर्ड</label>
                 <div class="password-display">
                     <div id="passwordOutput" class="password-value">Click Generate</div>
                     <button class="copy-icon-btn" onclick="copyPassword()">
@@ -205,7 +214,7 @@
                             <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
                             <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
                         </svg>
-                        Copy
+                        कॉपी करें
                     </button>
                 </div>
 
@@ -214,7 +223,7 @@
                     <!-- Length -->
                     <div>
                         <div class="flex justify-between mb-2">
-                            <label class="form-label">Password Length: <span id="lengthValue">16</span></label>
+                            <label class="form-label">पासवर्ड की लंबाई: <span id="lengthValue">16</span></label>
                         </div>
                         <div class="range-container">
                             <input type="range" id="lengthSlider" min="4" max="64" value="16" class="range-slider"
@@ -224,19 +233,19 @@
 
                     <!-- Options -->
                     <div>
-                        <label class="form-label mb-2">Options</label>
+                        <label class="form-label mb-2">विकल्प</label>
                         <div class="options-grid">
                             <label class="checkbox-label">
-                                <input type="checkbox" id="useUppercase" checked> Uppercase (A-Z)
+                                <input type="checkbox" id="useUppercase" checked> बड़े अक्षर (A-Z)
                             </label>
                             <label class="checkbox-label">
-                                <input type="checkbox" id="useLowercase" checked> Lowercase (a-z)
+                                <input type="checkbox" id="useLowercase" checked> छोटे अक्षर (a-z)
                             </label>
                             <label class="checkbox-label">
-                                <input type="checkbox" id="useNumbers" checked> Numbers (0-9)
+                                <input type="checkbox" id="useNumbers" checked> संख्याएं (0-9)
                             </label>
                             <label class="checkbox-label">
-                                <input type="checkbox" id="useSymbols" checked> Symbols (@#$%)
+                                <input type="checkbox" id="useSymbols" checked> प्रतीक (@#$%)
                             </label>
                         </div>
                     </div>
@@ -246,22 +255,22 @@
                 </div>
 
                 <div class="security-badge">
-                    🔒 All passwords are generated in your browser and verify sent remotely.
+                    🔒 सभी पासवर्ड आपके ब्राउज़र में बनाए जाते हैं और दूरस्थ रूप से नहीं भेजे जाते हैं।
                 </div>
             </div>
 
             <!-- AdSense Placeholder -->
             <div class="adsense-placeholder">
                 <!-- AdSense Ad Unit -->
-                <p>Ad Space</p>
+                <p>विज्ञापन स्थान</p>
             </div>
 
             <div class="related-tools-section">
-                <h3>Related Tools</h3>
+                <h3>संबंधित उपकरण</h3>
                 <div class="related-buttons">
-                    <a href="/hi/json-formatter/" class="related-btn">JSON Formatter</a><a
-                        href="/hi/sql-formatter/" class="related-btn">SQL Formatter</a><a
-                        href="/hi/base64-converter/" class="related-btn">Base64 Converter</a>
+                    <a href="/hi/json-formatter/" class="related-btn">JSON फॉर्मेटर</a><a
+                        href="/hi/sql-formatter/" class="related-btn">SQL फॉर्मेटर</a><a
+                        href="/hi/base64-converter/" class="related-btn">Base64 कनवर्टर</a>
                 </div>
             </div>
 
@@ -309,7 +318,7 @@
             if (useSymbols) charPool += chars.symbols;
 
             if (charPool === '') {
-                passwordOutput.textContent = 'Select Option';
+                passwordOutput.textContent = 'विकल्प चुनें';
                 return;
             }
 
@@ -329,7 +338,7 @@
 
         function copyPassword() {
             const text = passwordOutput.textContent;
-            if (text && text !== 'Select Option') {
+            if (text && text !== 'विकल्प चुनें') {
                 Utils.copyToClipboard(text);
             }
         }

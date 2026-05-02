@@ -4,12 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>圖片水印 & 保護 - Utilify</title>
-    <meta name="description" content="批量為圖片添加水印並優化為 WebP 以保護您的內容。客戶端處理。">
+    <!-- Ezoic -->
+    <script data-cfasync="false" src="https://cmp.gatekeeperconsent.com/min.js"></script>
+    <script data-cfasync="false" src="https://the.gatekeeperconsent.com/cmp.min.js"></script>
+    <script async src="//www.ezojs.com/ezoic/sa.min.js"></script>
+    <script>
+        window.ezstandalone = window.ezstandalone || {};
+        ezstandalone.cmd = ezstandalone.cmd || [];
+    </script>
+    <script src="//ezoicanalytics.com/analytics.js"></script>
+    <title>圖片浮水印工具 - Utilify</title>
+    <meta name="description" content="給圖片添加自定義浮水印。保護版權。">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="圖片水印 & 保護 - Utilify">
-    <meta property="og:description" content="批量為圖片添加水印並優化為 WebP 以保護您的內容。客戶端處理。">
+    <meta property="og:title" content="圖片浮水印工具 - Utilify">
+    <meta property="og:description" content="給圖片添加自定義浮水印。">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://utilifyapp.net/zh-tw/image-watermark/">
 
@@ -35,8 +44,8 @@
     {
       "@context": "https://schema.org",
       "@type": "WebApplication",
-      "name": "圖片水印 & 保護",
-      "description": "批量為圖片添加水印並優化為 WebP 以保護您的內容。客戶端處理。",
+      "name": "圖片浮水印",
+      "description": "給圖片添加自定義浮水印。",
       "url": "https://utilifyapp.net/zh-tw/image-watermark/",
       "inLanguage": "zh-tw",
       "applicationCategory": "UtilitiesApplication"
@@ -126,7 +135,7 @@
     </header>
     <main class="main-content">
         <div class="container">
-            <h1>🛡️ 圖片水印 & 保護</h1>
+            <h1>🛡️ 圖片浮水印</h1>
             <div class="security-badge"
                 style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
                 <span title="Processed securely in client-side">🔒 安全 & 用戶端處理</span>
@@ -134,27 +143,27 @@
                     style="display: none; padding: 4px 12px; font-size: 12px;">📲 安裝應用</button>
             </div>
 
-            <p>批量處理數百張圖片！立即添加水印並壓縮為 WebP。</p>
+            <p>給圖片添加自定義浮水印。</p>
 
             <div class="tool-box">
                 <!-- Step 1: Upload -->
                 <div class="upload-area" id="uploadArea">
                     <input type="file" id="fileInput" accept="image/*" multiple style="display: none;">
                     <div style="font-size: 40px;">📁</div>
-                    <h3>拖放圖片到此處 (支持多選)</h3>
-                    <p style="color: var(--text-secondary);">支持 JPG, PNG, WebP</p>
+                    <h3>{{ drop_text }}</h3>
+                    <p style="color: var(--text-secondary);">{{ drop_sub }}</p>
                 </div>
                 <div id="fileListContainer" style="display: none;">
-                    <h4>已選文件: <span id="fileCount">0</span></h4>
+                    <h4>{{ selected_files }} <span id="fileCount">0</span></h4>
                     <div class="file-list" id="fileList"></div>
                 </div>
 
                 <div class="settings-grid" id="settingsArea" style="display: none;">
                     <!-- Left: Preview -->
                     <div>
-                        <h3>預覽</h3>
+                        <h3>{{ header_preview }}</h3>
                         <canvas id="previewCanvas" class="preview-canvas"></canvas>
-                        <p style="font-size: 12px; color: var(--text-secondary);">* 基於第一張圖片預覽。
+                        <p style="font-size: 12px; color: var(--text-secondary);">{{ preview_sub }}
                         </p>
                     </div>
 
@@ -163,25 +172,25 @@
                         <h3>設置</h3>
 
                         <div class="control-group">
-                            <label class="form-label">水印文本</label>
-                            <input type="text" id="watermarkText" class="form-input" value="我的品牌"
+                            <label class="form-label">浮水印文字</label>
+                            <input type="text" id="watermarkText" class="form-input" value="{{ val_text }}"
                                 style="width: 100%; padding: 8px;">
                         </div>
 
                         <div class="control-group">
-                            <label class="form-label">位置</label>
+                            <label class="form-label">{{ label_pos }}</label>
                             <select id="positionSelect" class="form-input" style="width: 100%; padding: 8px;">
-                                <option value="center">居中</option>
-                                <option value="bottom-right" selected>右下</option>
-                                <option value="bottom-left">左下</option>
-                                <option value="top-right">右上</option>
-                                <option value="top-left">左上</option>
-                                <option value="tile">平鋪模式</option>
+                                <option value="center">{{ opt_center }}</option>
+                                <option value="bottom-right" selected>{{ opt_br }}</option>
+                                <option value="bottom-left">{{ opt_bl }}</option>
+                                <option value="top-right">{{ opt_tr }}</option>
+                                <option value="top-left">{{ opt_tl }}</option>
+                                <option value="tile">{{ opt_tile }}</option>
                             </select>
                         </div>
 
                         <div class="control-group">
-                            <label class="form-label">大小 & 不透明度</label>
+                            <label class="form-label">{{ label_size }}</label>
                             <div style="display: flex; gap: 10px;">
                                 <input type="number" id="fontSize" value="48" style="width: 60px;"> px
                                 <input type="range" id="opacity" min="0" max="1" step="0.1" value="0.5"
@@ -190,9 +199,9 @@
                         </div>
 
                         <div class="control-group">
-                            <label class="form-label">輸出格式</label>
+                            <label class="form-label">{{ label_format }}</label>
                             <select id="formatSelect" class="form-input" style="width: 100%; padding: 8px;">
-                                <option value="image/webp" selected>WebP (推薦)</option>
+                                <option value="image/webp" selected>{{ opt_webp }}</option>
                                 <option value="image/jpeg">JPEG</option>
                                 <option value="image/png">PNG</option>
                             </select>
@@ -200,15 +209,15 @@
 
                         <button id="processBtn" class="btn btn-primary"
                             style="width: 100%; padding: 15px; margin-top: 20px;">
-                            處理 & 下載 (ZIP)
+                            添加浮水印
                         </button>
                         <button id="resetBtn" class="btn btn-secondary"
                             style="width: 100%; padding: 10px; margin-top: 10px;">
-                            重置設置
+                            {{ btn_reset }}
                         </button>
                         <div id="progressArea" style="display: none; margin-top: 10px;">
                             <progress id="progressBar" value="0" max="100" style="width: 100%;"></progress>
-                            <p id="progressText" style="text-align: center;">處理中...</p>
+                            <p id="progressText" style="text-align: center;">{{ prog_proc }}</p>
                         </div>
                     </div>
                 </div>
@@ -219,7 +228,7 @@
                 <div class="related-buttons">
                     <a href="/zh-tw/image-converter/" class="related-btn">圖片格式轉換器</a><a
                         href="/zh-tw/thumbnail-downloader/" class="related-btn">縮圖下載</a><a
-                        href="/zh-tw/color-converter/" class="related-btn">顏色格式轉換</a><a
+                        href="/zh-tw/color-converter/" class="related-btn">{{ related_color }}</a><a
                         href="/zh-tw/favicon-generator/" class="related-btn">Favicon 生成器</a>
                 </div>
             </div>
@@ -285,7 +294,7 @@
         }
 
         resetBtn.addEventListener('click', () => {
-            if (confirm('重置所有設置？')) {
+            if (confirm('{{ confirm_reset }}')) {
                 localStorage.removeItem(STORAGE_KEY);
                 location.reload();
             }
@@ -307,7 +316,7 @@
             filesToProcess = Array.from(files).filter(f => f.type.startsWith('image/'));
 
             if (filesToProcess.length === 0) {
-                alert("請僅選擇圖片文件。");
+                alert("{{ alert_img }}");
                 return;
             }
 
@@ -428,18 +437,18 @@
                     processedCount++;
                     const percent = Math.round((processedCount / filesToProcess.length) * 100);
                     progressBar.value = percent;
-                    progressText.textContent = `處理中... ${processedCount} / ${filesToProcess.length}...`;
+                    progressText.textContent = `{{ prog_proc }} ${processedCount} / ${filesToProcess.length}...`;
                 } catch (e) {
                     console.error("Error processing file", file.name, e);
                 }
             }
 
-            progressText.textContent = "壓縮中... (請等待)";
+            progressText.textContent = "{{ prog_zip }}";
             const content = await zip.generateAsync({ type: "blob" });
             saveAs(content, "watermarked_images.zip");
 
             processBtn.disabled = false;
-            progressText.textContent = "完成！開始下載。";
+            progressText.textContent = "{{ prog_done }}";
         });
 
         function processImage(file, format) {

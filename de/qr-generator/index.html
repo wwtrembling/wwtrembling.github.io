@@ -4,13 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Ezoic -->
+    <script data-cfasync="false" src="https://cmp.gatekeeperconsent.com/min.js"></script>
+    <script data-cfasync="false" src="https://the.gatekeeperconsent.com/cmp.min.js"></script>
+    <script async src="//www.ezojs.com/ezoic/sa.min.js"></script>
+    <script>
+        window.ezstandalone = window.ezstandalone || {};
+        ezstandalone.cmd = ezstandalone.cmd || [];
+    </script>
+    <script src="//ezoicanalytics.com/analytics.js"></script>
     <meta name="google-adsense-account" content="ca-pub-6334819180242631">
-    <title>QR Code Generator - Utilify</title>
-    <meta name="description" content="Convert text or URL to QR code.">
+    <title>QR-Code-Generator - Utilify</title>
+    <meta name="description" content="Text oder URL in QR-Code konvertieren.">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="QR Code Generator - Utilify">
-    <meta property="og:description" content="Convert text or URL to QR code.">
+    <meta property="og:title" content="QR-Code-Generator - Utilify">
+    <meta property="og:description" content="Text oder URL in QR-Code konvertieren.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://utilifyapp.net/de/qr-generator/">
 
@@ -36,8 +45,8 @@
     {
       "@context": "https://schema.org",
       "@type": "WebApplication",
-      "name": "QR Code Generator",
-      "description": "Convert text or URL to QR code.",
+      "name": "QR-Code-Generator",
+      "description": "Text oder URL in QR-Code konvertieren.",
       "url": "https://utilifyapp.net/de/qr-generator/",
       "inLanguage": "de",
       "applicationCategory": "UtilitiesApplication",
@@ -91,7 +100,7 @@
     </header>
     <main class="main-content">
         <div class="container-narrow">
-            <h1>📱 QR Code Generator</h1>
+            <h1>📱 QR-Code-Generator</h1>
             <div class="security-badge"
                 style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
                 <span title="Processed securely in client-side">🔒 Sicher & Clientseitig</span>
@@ -99,13 +108,13 @@
                     style="display: none; padding: 4px 12px; font-size: 12px;">📲 App installieren</button>
             </div>
 
-            <p>Convert text or URL to QR code.</p>
+            <p>Text oder URL in QR-Code konvertieren.</p>
             <div>
-                <label class="form-label">Text or URL</label>
+                <label class="form-label">Text oder URL</label>
                 <input type="text" id="text" class="form-input" placeholder="https://example.com"
                     value="https://utilifyapp.net">
                 <div style="margin-top: var(--spacing-md);">
-                    <label class="form-label">Size</label>
+                    <label class="form-label">Größe</label>
                     <input type="range" id="size" min="128" max="512" value="256" class="form-input"
                         style="width: 100%;">
                     <span id="sizeValue">256px</span>
@@ -114,7 +123,7 @@
             <div class="qr-container">
                 <div id="qrcode"></div>
                 <div style="margin-top: var(--spacing-lg);">
-                    <button class="btn" id="generateBtn">Generate</button>
+                    <button class="btn" id="generateBtn">Generieren</button>
                     <button class="btn" id="downloadBtn"
                         style="background: var(--bg-secondary); color: var(--text-primary); border: 1px solid var(--border-color);">{{
                         btn_download }}</button>
@@ -122,11 +131,11 @@
             </div>
 
             <div class="related-tools-section">
-                <h3>Related Tools</h3>
+                <h3>Ähnliche Tools</h3>
                 <div class="related-buttons">
-                    <a href="/de/unit-converter/" class="related-btn">Unit Converter</a><a
-                        href="/de/bmi-calculator/" class="related-btn">BMI Calculator</a><a
-                        href="/de/date-calculator/" class="related-btn">Date Calculator</a><a
+                    <a href="/de/unit-converter/" class="related-btn">Einheitenumrechner</a><a
+                        href="/de/bmi-calculator/" class="related-btn">BMI Rechner</a><a
+                        href="/de/date-calculator/" class="related-btn">Datumsrechner</a><a
                         href="/de/timer/" class="related-btn">{{ related_timer }}</a>
                 </div>
             </div>
@@ -155,7 +164,7 @@
 
         function generate() {
             if (!text.value) {
-                alert('Enter text.');
+                alert('Text eingeben.');
                 return;
             }
             qrcodeDiv.innerHTML = '';
@@ -174,7 +183,7 @@
         document.getElementById('downloadBtn').addEventListener('click', () => {
             const canvas = qrcodeDiv.querySelector('canvas');
             if (!canvas) {
-                alert('Generate QR code first.');
+                alert('Zuerst QR-Code generieren.');
                 return;
             }
             const url = canvas.toDataURL('image/png');

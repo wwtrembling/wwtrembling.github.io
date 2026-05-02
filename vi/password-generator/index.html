@@ -4,13 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Ezoic -->
+    <script data-cfasync="false" src="https://cmp.gatekeeperconsent.com/min.js"></script>
+    <script data-cfasync="false" src="https://the.gatekeeperconsent.com/cmp.min.js"></script>
+    <script async src="//www.ezojs.com/ezoic/sa.min.js"></script>
+    <script>
+        window.ezstandalone = window.ezstandalone || {};
+        ezstandalone.cmd = ezstandalone.cmd || [];
+    </script>
+    <script src="//ezoicanalytics.com/analytics.js"></script>
     <meta name="google-adsense-account" content="ca-pub-6334819180242631">
-    <title>Strong Password Generator - Utilify</title>
-    <meta name="description" content="Generate strong and secure passwords. Passwords are generated locally and never sent to a server. (Processed securely in client-side)">
+    <title>Trình tạo mật khẩu mạnh - Utilify</title>
+    <meta name="description" content="Tạo mật khẩu mạnh và an toàn. Mật khẩu được tạo cục bộ và không bao giờ gửi đến máy chủ. (Xử lý an toàn phía máy khách)">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Strong Password Generator - Utilify">
-    <meta property="og:description" content="Generate strong and secure passwords. Passwords are generated locally and never sent to a server.">
+    <meta property="og:title" content="Trình tạo mật khẩu mạnh - Utilify">
+    <meta property="og:description" content="Tạo mật khẩu mạnh và an toàn. Mật khẩu được tạo cục bộ và không bao giờ gửi đến máy chủ.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://utilifyapp.net/vi/password-generator/">
 
@@ -42,8 +51,8 @@
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "Strong Password Generator",
-    "description": "Generate strong and secure passwords. Passwords are generated locally and never sent to a server.",
+    "name": "Trình tạo mật khẩu mạnh",
+    "description": "Tạo mật khẩu mạnh và an toàn. Mật khẩu được tạo cục bộ và không bao giờ gửi đến máy chủ.",
     "url": "https://utilifyapp.net/vi/password-generator/",
     "inLanguage": "vi",
     "applicationCategory": "UtilitiesApplication",
@@ -185,18 +194,18 @@
 
     <main class="main-content">
         <div class="container-narrow">
-            <h1>🔐 Strong Password Generator</h1>
-            <p>Generate strong and secure passwords. Passwords are generated locally and never sent to a server.</p>
+            <h1>🔐 Trình tạo mật khẩu mạnh</h1>
+            <p>Tạo mật khẩu mạnh và an toàn. Mật khẩu được tạo cục bộ và không bao giờ gửi đến máy chủ.</p>
 
             <!-- AdSense Placeholder -->
             <div class="adsense-placeholder">
                 <!-- AdSense Ad Unit -->
-                <p>Ad Space</p>
+                <p>Không gian quảng cáo</p>
             </div>
 
             <div class="generator-container">
                 <!-- Display -->
-                <label class="form-label">Generated Password</label>
+                <label class="form-label">Mật khẩu đã tạo</label>
                 <div class="password-display">
                     <div id="passwordOutput" class="password-value">Click Generate</div>
                     <button class="copy-icon-btn" onclick="copyPassword()">
@@ -205,7 +214,7 @@
                             <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
                             <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
                         </svg>
-                        Copy
+                        Sao chép
                     </button>
                 </div>
 
@@ -214,7 +223,7 @@
                     <!-- Length -->
                     <div>
                         <div class="flex justify-between mb-2">
-                            <label class="form-label">Password Length: <span id="lengthValue">16</span></label>
+                            <label class="form-label">Độ dài mật khẩu: <span id="lengthValue">16</span></label>
                         </div>
                         <div class="range-container">
                             <input type="range" id="lengthSlider" min="4" max="64" value="16" class="range-slider"
@@ -224,19 +233,19 @@
 
                     <!-- Options -->
                     <div>
-                        <label class="form-label mb-2">Options</label>
+                        <label class="form-label mb-2">Tùy chọn</label>
                         <div class="options-grid">
                             <label class="checkbox-label">
-                                <input type="checkbox" id="useUppercase" checked> Uppercase (A-Z)
+                                <input type="checkbox" id="useUppercase" checked> Chữ hoa (A-Z)
                             </label>
                             <label class="checkbox-label">
-                                <input type="checkbox" id="useLowercase" checked> Lowercase (a-z)
+                                <input type="checkbox" id="useLowercase" checked> Chữ thường (a-z)
                             </label>
                             <label class="checkbox-label">
-                                <input type="checkbox" id="useNumbers" checked> Numbers (0-9)
+                                <input type="checkbox" id="useNumbers" checked> Số (0-9)
                             </label>
                             <label class="checkbox-label">
-                                <input type="checkbox" id="useSymbols" checked> Symbols (@#$%)
+                                <input type="checkbox" id="useSymbols" checked> Ký hiệu (@#$%)
                             </label>
                         </div>
                     </div>
@@ -246,22 +255,22 @@
                 </div>
 
                 <div class="security-badge">
-                    🔒 All passwords are generated in your browser and verify sent remotely.
+                    🔒 Tất cả mật khẩu được tạo trong trình duyệt của bạn và không gửi đi xa.
                 </div>
             </div>
 
             <!-- AdSense Placeholder -->
             <div class="adsense-placeholder">
                 <!-- AdSense Ad Unit -->
-                <p>Ad Space</p>
+                <p>Không gian quảng cáo</p>
             </div>
 
             <div class="related-tools-section">
-                <h3>Related Tools</h3>
+                <h3>Công cụ liên quan</h3>
                 <div class="related-buttons">
-                    <a href="/vi/json-formatter/" class="related-btn">JSON Formatter</a><a
-                        href="/vi/sql-formatter/" class="related-btn">SQL Formatter</a><a
-                        href="/vi/base64-converter/" class="related-btn">Base64 Converter</a>
+                    <a href="/vi/json-formatter/" class="related-btn">Trình định dạng JSON</a><a
+                        href="/vi/sql-formatter/" class="related-btn">Định dạng SQL</a><a
+                        href="/vi/base64-converter/" class="related-btn">Chuyển đổi Base64</a>
                 </div>
             </div>
 
@@ -309,7 +318,7 @@
             if (useSymbols) charPool += chars.symbols;
 
             if (charPool === '') {
-                passwordOutput.textContent = 'Select Option';
+                passwordOutput.textContent = 'Chọn Tùy chọn';
                 return;
             }
 
@@ -329,7 +338,7 @@
 
         function copyPassword() {
             const text = passwordOutput.textContent;
-            if (text && text !== 'Select Option') {
+            if (text && text !== 'Chọn Tùy chọn') {
                 Utils.copyToClipboard(text);
             }
         }

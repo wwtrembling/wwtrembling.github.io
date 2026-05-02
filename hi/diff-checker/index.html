@@ -4,13 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Ezoic -->
+    <script data-cfasync="false" src="https://cmp.gatekeeperconsent.com/min.js"></script>
+    <script data-cfasync="false" src="https://the.gatekeeperconsent.com/cmp.min.js"></script>
+    <script async src="//www.ezojs.com/ezoic/sa.min.js"></script>
+    <script>
+        window.ezstandalone = window.ezstandalone || {};
+        ezstandalone.cmd = ezstandalone.cmd || [];
+    </script>
+    <script src="//ezoicanalytics.com/analytics.js"></script>
     <meta name="google-adsense-account" content="ca-pub-6334819180242631">
-    <title>Text Diff Checker - Utilify</title>
-    <meta name="description" content="Compare two texts difference easily. Highlights added and removed parts.">
+    <title>टेक्स्ट अंतर परीक्षक - Utilify</title>
+    <meta name="description" content="दो टेक्स्ट अंतर की तुलना आसानी से करें। जोड़े गए और हटाए गए भागों को हाइलाइट करता है।">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Text Diff Checker - Utilify">
-    <meta property="og:description" content="Compare two texts difference easily. Highlights added and removed parts.">
+    <meta property="og:title" content="टेक्स्ट अंतर परीक्षक - Utilify">
+    <meta property="og:description" content="दो टेक्स्ट अंतर की तुलना आसानी से करें। जोड़े गए और हटाए गए भागों को हाइलाइट करता है।">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://utilifyapp.net/hi/diff-checker/">
 
@@ -42,8 +51,8 @@
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "Text Diff Checker",
-    "description": "Compare two texts difference easily. Highlights added and removed parts.",
+    "name": "टेक्स्ट अंतर परीक्षक",
+    "description": "दो टेक्स्ट अंतर की तुलना आसानी से करें। जोड़े गए और हटाए गए भागों को हाइलाइट करता है।",
     "url": "https://utilifyapp.net/hi/diff-checker/",
     "inLanguage": "hi",
     "applicationCategory": "UtilitiesApplication",
@@ -134,7 +143,7 @@
 
     <main class="main-content">
         <div class="container-narrow">
-            <h1>🔀 Text Diff Checker</h1>
+            <h1>🔀 टेक्स्ट अंतर परीक्षक</h1>
             <div class="security-badge"
                 style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
                 <span title="Processed securely in client-side">🔒 सुरक्षित और क्लाइंट-साइड</span>
@@ -142,49 +151,49 @@
                     style="display: none; padding: 4px 12px; font-size: 12px;">📲 ऐप इंस्टॉल करें</button>
             </div>
 
-            <p>Compare two texts difference easily. Highlights added and removed parts.</p>
+            <p>दो टेक्स्ट अंतर की तुलना आसानी से करें। जोड़े गए और हटाए गए भागों को हाइलाइट करता है।</p>
 
             <!-- AdSense Placeholder -->
             <div class="adsense-placeholder">
                 <!-- AdSense Ad Unit -->
-                <p>Ad Space</p>
+                <p>विज्ञापन स्थान</p>
             </div>
 
             <!-- Editors -->
             <div class="editor-container">
                 <div class="editor-panel">
-                    <label class="form-label">Original Text</label>
-                    <textarea id="origText" class="diff-textarea" placeholder="Enter original text here..."></textarea>
+                    <label class="form-label">मूल पाठ</label>
+                    <textarea id="origText" class="diff-textarea" placeholder="मूल पाठ यहाँ दर्ज करें..."></textarea>
                 </div>
 
                 <div class="editor-panel">
-                    <label class="form-label">Changed Text</label>
-                    <textarea id="changedText" class="diff-textarea" placeholder="Enter changed text here..."></textarea>
+                    <label class="form-label">बदला हुआ पाठ</label>
+                    <textarea id="changedText" class="diff-textarea" placeholder="बदला हुआ पाठ यहाँ दर्ज करें..."></textarea>
                 </div>
             </div>
 
             <div class="btn-group" style="margin-top: var(--spacing-lg);">
-                <button class="btn btn-primary" onclick="computeDiff()">Compare</button>
-                <button class="btn btn-secondary" onclick="clearAll()">Clear</button>
+                <button class="btn btn-primary" onclick="computeDiff()">तुलना करें</button>
+                <button class="btn btn-secondary" onclick="clearAll()">साफ़ करें</button>
             </div>
 
             <div class="result-container">
-                <h3 style="margin-bottom: var(--spacing-md);">Comparison Result</h3>
+                <h3 style="margin-bottom: var(--spacing-md);">तुलना परिणाम</h3>
                 <div id="diffOutput" class="diff-result"></div>
             </div>
 
             <!-- AdSense Placeholder -->
             <div class="adsense-placeholder">
                 <!-- AdSense Ad Unit -->
-                <p>Ad Space</p>
+                <p>विज्ञापन स्थान</p>
             </div>
 
             <div class="related-tools-section">
-                <h3>Related Tools</h3>
+                <h3>संबंधित उपकरण</h3>
                 <div class="related-buttons">
-                    <a href="/hi/text-utils/" class="related-btn">Text Utils</a><a
-                        href="/hi/regex-tester/" class="related-btn">Regex Tester</a><a
-                        href="/hi/markdown-previewer/" class="related-btn">Markdown Preview</a><a
+                    <a href="/hi/text-utils/" class="related-btn">टेक्स्ट यूटिलिटीज</a><a
+                        href="/hi/regex-tester/" class="related-btn">Regex टेस्टर</a><a
+                        href="/hi/markdown-previewer/" class="related-btn">Markdown पूर्वावलोकन</a><a
                         href="/hi/lorem-ipsum/" class="related-btn">Lorem Ipsum</a>
                 </div>
             </div>
@@ -236,7 +245,7 @@
 
             output.innerHTML = '';
             if (!hasDiff && text1 === text2 && text1 !== '') {
-                output.textContent = 'No differences found.';
+                output.textContent = 'कोई अंतर नहीं मिला।';
             } else {
                 output.appendChild(fragment);
             }

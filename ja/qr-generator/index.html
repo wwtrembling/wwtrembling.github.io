@@ -4,13 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Ezoic -->
+    <script data-cfasync="false" src="https://cmp.gatekeeperconsent.com/min.js"></script>
+    <script data-cfasync="false" src="https://the.gatekeeperconsent.com/cmp.min.js"></script>
+    <script async src="//www.ezojs.com/ezoic/sa.min.js"></script>
+    <script>
+        window.ezstandalone = window.ezstandalone || {};
+        ezstandalone.cmd = ezstandalone.cmd || [];
+    </script>
+    <script src="//ezoicanalytics.com/analytics.js"></script>
     <meta name="google-adsense-account" content="ca-pub-6334819180242631">
-    <title>QR Code Generator - Utilify</title>
-    <meta name="description" content="Convert text or URL to QR code.">
+    <title>QRコード生成 - Utilify</title>
+    <meta name="description" content="テキストまたはURLをQRコードに変換します。">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="QR Code Generator - Utilify">
-    <meta property="og:description" content="Convert text or URL to QR code.">
+    <meta property="og:title" content="QRコード生成 - Utilify">
+    <meta property="og:description" content="テキストまたはURLをQRコードに変換します。">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://utilifyapp.net/ja/qr-generator/">
 
@@ -36,8 +45,8 @@
     {
       "@context": "https://schema.org",
       "@type": "WebApplication",
-      "name": "QR Code Generator",
-      "description": "Convert text or URL to QR code.",
+      "name": "QRコード生成",
+      "description": "テキストまたはURLをQRコードに変換します。",
       "url": "https://utilifyapp.net/ja/qr-generator/",
       "inLanguage": "ja",
       "applicationCategory": "UtilitiesApplication",
@@ -91,7 +100,7 @@
     </header>
     <main class="main-content">
         <div class="container-narrow">
-            <h1>📱 QR Code Generator</h1>
+            <h1>📱 QRコード生成</h1>
             <div class="security-badge"
                 style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
                 <span title="Processed securely in client-side">🔒 Secure & Client-side</span>
@@ -99,13 +108,13 @@
                     style="display: none; padding: 4px 12px; font-size: 12px;">📲 Install App</button>
             </div>
 
-            <p>Convert text or URL to QR code.</p>
+            <p>テキストまたはURLをQRコードに変換します。</p>
             <div>
-                <label class="form-label">Text or URL</label>
+                <label class="form-label">テキストまたはURL</label>
                 <input type="text" id="text" class="form-input" placeholder="https://example.com"
                     value="https://utilifyapp.net">
                 <div style="margin-top: var(--spacing-md);">
-                    <label class="form-label">Size</label>
+                    <label class="form-label">サイズ</label>
                     <input type="range" id="size" min="128" max="512" value="256" class="form-input"
                         style="width: 100%;">
                     <span id="sizeValue">256px</span>
@@ -114,7 +123,7 @@
             <div class="qr-container">
                 <div id="qrcode"></div>
                 <div style="margin-top: var(--spacing-lg);">
-                    <button class="btn" id="generateBtn">Generate</button>
+                    <button class="btn" id="generateBtn">生成</button>
                     <button class="btn" id="downloadBtn"
                         style="background: var(--bg-secondary); color: var(--text-primary); border: 1px solid var(--border-color);">{{
                         btn_download }}</button>
@@ -122,11 +131,11 @@
             </div>
 
             <div class="related-tools-section">
-                <h3>Related Tools</h3>
+                <h3>関連ツール</h3>
                 <div class="related-buttons">
-                    <a href="/ja/unit-converter/" class="related-btn">Unit Converter</a><a
-                        href="/ja/bmi-calculator/" class="related-btn">BMI Calculator</a><a
-                        href="/ja/date-calculator/" class="related-btn">Date Calculator</a><a
+                    <a href="/ja/unit-converter/" class="related-btn">単位変換ツール</a><a
+                        href="/ja/bmi-calculator/" class="related-btn">BMI計算機</a><a
+                        href="/ja/date-calculator/" class="related-btn">日付計算</a><a
                         href="/ja/timer/" class="related-btn">{{ related_timer }}</a>
                 </div>
             </div>
@@ -155,7 +164,7 @@
 
         function generate() {
             if (!text.value) {
-                alert('Enter text.');
+                alert('テキストを入力してください。');
                 return;
             }
             qrcodeDiv.innerHTML = '';
@@ -174,7 +183,7 @@
         document.getElementById('downloadBtn').addEventListener('click', () => {
             const canvas = qrcodeDiv.querySelector('canvas');
             if (!canvas) {
-                alert('Generate QR code first.');
+                alert('まずQRコードを生成してください。');
                 return;
             }
             const url = canvas.toDataURL('image/png');

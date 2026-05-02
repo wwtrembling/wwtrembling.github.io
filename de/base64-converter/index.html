@@ -4,9 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Ezoic -->
+    <script data-cfasync="false" src="https://cmp.gatekeeperconsent.com/min.js"></script>
+    <script data-cfasync="false" src="https://the.gatekeeperconsent.com/cmp.min.js"></script>
+    <script async src="//www.ezojs.com/ezoic/sa.min.js"></script>
+    <script>
+        window.ezstandalone = window.ezstandalone || {};
+        ezstandalone.cmd = ezstandalone.cmd || [];
+    </script>
+    <script src="//ezoicanalytics.com/analytics.js"></script>
     <meta name="google-adsense-account" content="ca-pub-6334819180242631">
     <title>Base64 Encoder/Decoder - Utilify</title>
-    <meta name="description" content="Encode or decode text to Base64.">
+    <meta name="description" content="Text in Base64 kodieren oder dekodieren.">
     <link rel="canonical" href="https://utilifyapp.net/de/base64-converter/">
     <link rel="stylesheet" href="/assets/css/main.css">
     <style>
@@ -56,7 +65,7 @@
     </header>
     <main class="main-content">
         <div class="container-narrow">
-            <h1>🔐 Base64 Encoder/Decoder</h1>
+            <h1>🔐 Base64 Konverter</h1>
             <div class="security-badge"
                 style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
                 <span title="Processed securely in client-side">🔒 Sicher & Clientseitig</span>
@@ -64,27 +73,27 @@
                     style="display: none; padding: 4px 12px; font-size: 12px;">📲 App installieren</button>
             </div>
 
-            <p>Encode or decode text to Base64.</p>
+            <p>Text in Base64 kodieren oder dekodieren.</p>
             <div class="converter-box">
-                <label class="form-label">Input Text</label>
+                <label class="form-label">Eingabetext</label>
                 <textarea id="input" class="form-input" style="min-height: 150px;"
-                    placeholder="Enter text to encode">Hello World!</textarea>
+                    placeholder="Text zum Kodieren eingeben">Hello World!</textarea>
                 <div class="btn-group">
-                    <button class="btn btn-primary" id="encodeBtn">⬇️ Encode</button>
-                    <button class="btn btn-primary" id="decodeBtn">⬆️ Decode</button>
-                    <button class="btn btn-secondary" id="copyBtn">📋 Copy</button>
-                    <button class="btn btn-secondary" id="clearBtn">🗑️ Clear</button>
+                    <button class="btn btn-primary" id="encodeBtn">⬇️ Kodieren</button>
+                    <button class="btn btn-primary" id="decodeBtn">⬆️ Dekodieren</button>
+                    <button class="btn btn-secondary" id="copyBtn">📋 Kopieren</button>
+                    <button class="btn btn-secondary" id="clearBtn">🗑️ Löschen</button>
                 </div>
-                <label class="form-label">Output Result</label>
+                <label class="form-label">Ausgabeergebnis</label>
                 <textarea id="output" class="form-input" style="min-height: 150px;" readonly></textarea>
             </div>
 
             <div class="related-tools-section">
-                <h3>Related Tools</h3>
+                <h3>Ähnliche Tools</h3>
                 <div class="related-buttons">
-                    <a href="/de/json-formatter/" class="related-btn">JSON Formatter</a><a
-                        href="/de/sql-formatter/" class="related-btn">SQL Formatter</a><a
-                        href="/de/password-generator/" class="related-btn">Password Generator</a>
+                    <a href="/de/json-formatter/" class="related-btn">JSON Formatierer</a><a
+                        href="/de/sql-formatter/" class="related-btn">SQL-Formatierer</a><a
+                        href="/de/password-generator/" class="related-btn">Passwort Generator</a>
                 </div>
             </div>
 
@@ -106,7 +115,7 @@
             try {
                 output.value = btoa(unescape(encodeURIComponent(input.value)));
             } catch (e) {
-                alert('Encoding Error: ' + e.message);
+                alert('Kodierungsfehler: ' + e.message);
             }
         });
 
@@ -114,13 +123,13 @@
             try {
                 output.value = decodeURIComponent(escape(atob(input.value)));
             } catch (e) {
-                alert('Decoding Error: ' + e.message);
+                alert('Dekodierungsfehler: ' + e.message);
             }
         });
 
         document.getElementById('copyBtn').addEventListener('click', () => {
             if (output.value) Utils.copyToClipboard(output.value);
-            else alert('Nothing to copy.');
+            else alert('Nichts zu kopieren.');
         });
 
         document.getElementById('clearBtn').addEventListener('click', () => {

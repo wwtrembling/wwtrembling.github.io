@@ -4,13 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Ezoic -->
+    <script data-cfasync="false" src="https://cmp.gatekeeperconsent.com/min.js"></script>
+    <script data-cfasync="false" src="https://the.gatekeeperconsent.com/cmp.min.js"></script>
+    <script async src="//www.ezojs.com/ezoic/sa.min.js"></script>
+    <script>
+        window.ezstandalone = window.ezstandalone || {};
+        ezstandalone.cmd = ezstandalone.cmd || [];
+    </script>
+    <script src="//ezoicanalytics.com/analytics.js"></script>
     <meta name="google-adsense-account" content="ca-pub-6334819180242631">
-    <title>Color Converter - Utilify</title>
-    <meta name="description" content="Convert between HEX, RGB, HSL color formats.">
+    <title>रंग परिवर्तक (HEX, RGB, HSL) - Utilify</title>
+    <meta name="description" content="HEX, RGB, HSL, CMYK रंग प्रारूपों को बदलें। रंग चयनकर्ता और पूर्वावलोकन।">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Color Converter - Utilify">
-    <meta property="og:description" content="Convert between HEX, RGB, HSL color formats.">
+    <meta property="og:title" content="रंग परिवर्तक - Utilify">
+    <meta property="og:description" content="HEX, RGB, HSL, CMYK रंग प्रारूपों को बदलें।">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://utilifyapp.net/hi/color-converter/">
 
@@ -42,8 +51,8 @@
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "Color Converter",
-    "description": "Convert between HEX, RGB, HSL color formats.",
+    "name": "रंग परिवर्तक",
+    "description": "HEX, RGB, HSL, CMYK रंग प्रारूपों को बदलें।",
     "url": "https://utilifyapp.net/hi/color-converter/",
     "inLanguage": "hi",
     "applicationCategory": "UtilitiesApplication"
@@ -90,7 +99,7 @@
         }
 
         .color-preview::after {
-            content: 'Copy HEX';
+            content: 'HEX कॉपी करें';
             background: rgba(0, 0, 0, 0.6);
             color: white;
             padding: 4px 12px;
@@ -232,7 +241,7 @@
 
     <main class="main-content">
         <div class="container-narrow">
-            <h1>🎨 Color Converter</h1>
+            <h1>🎨 रंग परिवर्तक</h1>
             <div class="security-badge"
                 style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
                 <span title="Processed securely in client-side">🔒 सुरक्षित और क्लाइंट-साइड</span>
@@ -240,42 +249,42 @@
                     style="display: none; padding: 4px 12px; font-size: 12px;">📲 ऐप इंस्टॉल करें</button>
             </div>
 
-            <p>Convert between HEX, RGB, HSL color formats.</p>
+            <p>HEX, RGB, HSL, CMYK रंग प्रारूपों को बदलें।</p>
 
             <div class="converter-grid">
                 <!-- Top: Preview -->
                 <div class="color-preview-container">
-                    <div id="colorPreview" class="color-preview" title="Copy HEX"
+                    <div id="colorPreview" class="color-preview" title="HEX कॉपी करें"
                         onclick="copyHexFromPreview()"></div>
                 </div>
 
                 <!-- Left: Inputs -->
                 <div class="input-section">
-                    <h3>Color Values</h3>
+                    <h3>रंग मान</h3>
 
                     <div class="color-input-row">
                         <label>HEX</label>
                         <input type="text" id="hexInput" class="form-input" value="#6366f1" placeholder="#000000"
                             spellcheck="false">
-                        <button class="copy-icon-btn" onclick="copyColor('hex')" title="Copy">📋</button>
+                        <button class="copy-icon-btn" onclick="copyColor('hex')" title="कॉपी">📋</button>
                     </div>
 
                     <div class="color-input-row">
                         <label>RGB</label>
                         <input type="text" id="rgbInput" class="form-input" readonly>
-                        <button class="copy-icon-btn" onclick="copyColor('rgb')" title="Copy">📋</button>
+                        <button class="copy-icon-btn" onclick="copyColor('rgb')" title="कॉपी">📋</button>
                     </div>
 
                     <div class="color-input-row">
                         <label>HSL</label>
                         <input type="text" id="hslInput" class="form-input" readonly>
-                        <button class="copy-icon-btn" onclick="copyColor('hsl')" title="Copy">📋</button>
+                        <button class="copy-icon-btn" onclick="copyColor('hsl')" title="कॉपी">📋</button>
                     </div>
                 </div>
 
                 <!-- Right: Sliders & Palette -->
                 <div class="slider-section">
-                    <h3>RGB Adjust</h3>
+                    <h3>RGB समायोजन</h3>
 
                     <div class="slider-row">
                         <span class="slider-label" style="color: #ef4444">R</span>
@@ -295,7 +304,7 @@
                         <span id="bValue" class="slider-val">241</span>
                     </div>
 
-                    <h3 style="margin-top: 1.5rem; font-size: 0.95rem;">Popular Colors</h3>
+                    <h3 style="margin-top: 1.5rem; font-size: 0.95rem;">लोकप्रिय रंग</h3>
                     <div id="paletteGrid" class="palette-grid"></div>
                 </div>
             </div>
@@ -305,12 +314,12 @@
 
 
             <div class="related-tools-section">
-                <h3>Related Tools</h3>
+                <h3>संबंधित उपकरण</h3>
                 <div class="related-buttons">
-                    <a href="/hi/image-converter/" class="related-btn">Image Converter</a><a
-                        href="/hi/image-editor/" class="related-btn">Image Editor</a><a
-                        href="/hi/thumbnail-downloader/" class="related-btn">Thumbnail Downloader</a><a
-                        href="/hi/favicon-generator/" class="related-btn">Favicon Generator</a>
+                    <a href="/hi/image-converter/" class="related-btn">छवि परिवर्तक</a><a
+                        href="/hi/image-editor/" class="related-btn">छवि संपादक</a><a
+                        href="/hi/thumbnail-downloader/" class="related-btn">थंबनेल डाउनलोडर</a><a
+                        href="/hi/favicon-generator/" class="related-btn">फेविकॉन जेनरेटर</a>
                 </div>
             </div>
 
