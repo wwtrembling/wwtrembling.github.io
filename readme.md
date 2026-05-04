@@ -143,6 +143,11 @@ GitHub Pages 기반의 클라이언트 전용 유틸리티 모음 사이트
 프로젝트 관리 및 자동화를 위한 Python 스크립트:
 - `_scripts/build.py` - 인덱스 / 도구 페이지 / sitemap.xml 일괄 생성
 - `_scripts/check_lang_completeness.py` - 언어별 번역 누락 점검
+- `_scripts/inject_sri.py` - 빌드된 HTML의 외부 CDN `<script>` 태그에 SRI 해시(sha384) 자동 주입. 네트워크가 가능한 환경에서 빌드 후 한 번 실행:
+  ```
+  python3 _scripts/build.py
+  python3 _scripts/inject_sri.py
+  ```
 
 번역 데이터는 `_data/lang.py`에서 관리합니다.
 
