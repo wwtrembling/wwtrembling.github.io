@@ -4,15 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy-Report-Only" content="default-src 'self' https: data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https:; frame-src https:;">
     <!-- Ezoic -->
     <script data-cfasync="false" src="https://cmp.gatekeeperconsent.com/min.js"></script>
     <script data-cfasync="false" src="https://the.gatekeeperconsent.com/cmp.min.js"></script>
-    <script async src="//www.ezojs.com/ezoic/sa.min.js"></script>
+    <script async src="https://www.ezojs.com/ezoic/sa.min.js"></script>
     <script>
         window.ezstandalone = window.ezstandalone || {};
         ezstandalone.cmd = ezstandalone.cmd || [];
     </script>
-    <script src="//ezoicanalytics.com/analytics.js"></script>
+    <script src="https://ezoicanalytics.com/analytics.js"></script>
     <meta name="google-adsense-account" content="ca-pub-6334819180242631">
     <title>正则表达式测试 - Utilify</title>
     <meta name="description" content="实时测试正则表达式。">
@@ -25,15 +26,17 @@
     <meta property="og:url" content="https://utilifyapp.net/zh-cn/regex-tester/">
 
     <!-- Language Alternatives -->
-    <link rel="alternate" hreflang="ko" href="https://utilifyapp.net/ko/regex-tester/">
     <link rel="alternate" hreflang="en" href="https://utilifyapp.net/en/regex-tester/">
-    <link rel="alternate" hreflang="ja" href="https://utilifyapp.net/ja/regex-tester/">
-    <link rel="alternate" hreflang="hi" href="https://utilifyapp.net/hi/regex-tester/">
-    <link rel="alternate" hreflang="id" href="https://utilifyapp.net/id/regex-tester/">
+    <link rel="alternate" hreflang="ko" href="https://utilifyapp.net/ko/regex-tester/">
     <link rel="alternate" hreflang="vi" href="https://utilifyapp.net/vi/regex-tester/">
     <link rel="alternate" hreflang="th" href="https://utilifyapp.net/th/regex-tester/">
     <link rel="alternate" hreflang="de" href="https://utilifyapp.net/de/regex-tester/">
     <link rel="alternate" hreflang="pt" href="https://utilifyapp.net/pt/regex-tester/">
+    <link rel="alternate" hreflang="id" href="https://utilifyapp.net/id/regex-tester/">
+    <link rel="alternate" hreflang="hi" href="https://utilifyapp.net/hi/regex-tester/">
+    <link rel="alternate" hreflang="ja" href="https://utilifyapp.net/ja/regex-tester/">
+    <link rel="alternate" hreflang="zh-Hans" href="https://utilifyapp.net/zh-cn/regex-tester/">
+    <link rel="alternate" hreflang="zh-Hant" href="https://utilifyapp.net/zh-tw/regex-tester/">
     <link rel="alternate" hreflang="x-default" href="https://utilifyapp.net/en/regex-tester/">
 
     <link rel="stylesheet" href="/assets/css/main.css">
@@ -149,6 +152,8 @@
         const flagI = document.getElementById('flagI');
         const flagM = document.getElementById('flagM');
 
+        const escapeHtml = (s) => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
         function test() {
             try {
                 const flags = (flagG.checked ? 'g' : '') + (flagI.checked ? 'i' : '') + (flagM.checked ? 'm' : '');
@@ -157,25 +162,35 @@
                 const matches = [...text.matchAll(regex)];
 
                 if (matches.length === 0) {
-                    results.innerHTML = '<p>未找到匹配项</p>';
+                    results.textContent = '';
+                    const p = document.createElement('p');
+                    p.textContent = '未找到匹配项';
+                    results.appendChild(p);
                     return;
                 }
 
                 let html = `<h3>匹配项 (${matches.length})</h3>`;
                 matches.forEach((match, i) => {
-                    html += `<div class="match-item">Match ${i + 1}: "${match[0]}" (Index: ${match.index})</div>`;
+                    html += `<div class="match-item">Match ${i + 1}: "${escapeHtml(match[0])}" (Index: ${match.index})</div>`;
                 });
 
-                let highlighted = text;
-                matches.reverse().forEach(match => {
-                    highlighted = highlighted.slice(0, match.index) +
-                        '<span class="highlight">' + match[0] + '</span>' +
-                        highlighted.slice(match.index + match[0].length);
+                let highlighted = '';
+                let cursor = 0;
+                const ordered = [...matches].sort((a, b) => a.index - b.index);
+                ordered.forEach(match => {
+                    highlighted += escapeHtml(text.slice(cursor, match.index));
+                    highlighted += '<span class="highlight">' + escapeHtml(match[0]) + '</span>';
+                    cursor = match.index + match[0].length;
                 });
+                highlighted += escapeHtml(text.slice(cursor));
                 html += `<h3>高亮</h3><div style="line-height: 1.8;">${highlighted}</div>`;
                 results.innerHTML = html;
             } catch (e) {
-                results.innerHTML = `<p style="color: red;">错误: ${e.message}</p>`;
+                results.textContent = '';
+                const p = document.createElement('p');
+                p.style.color = 'red';
+                p.textContent = '错误: ' + e.message;
+                results.appendChild(p);
             }
         }
 

@@ -4,15 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy-Report-Only" content="default-src 'self' https: data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https:; frame-src https:;">
     <!-- Ezoic -->
     <script data-cfasync="false" src="https://cmp.gatekeeperconsent.com/min.js"></script>
     <script data-cfasync="false" src="https://the.gatekeeperconsent.com/cmp.min.js"></script>
-    <script async src="//www.ezojs.com/ezoic/sa.min.js"></script>
+    <script async src="https://www.ezojs.com/ezoic/sa.min.js"></script>
     <script>
         window.ezstandalone = window.ezstandalone || {};
         ezstandalone.cmd = ezstandalone.cmd || [];
     </script>
-    <script src="//ezoicanalytics.com/analytics.js"></script>
+    <script src="https://ezoicanalytics.com/analytics.js"></script>
     <meta name="google-adsense-account" content="ca-pub-6334819180242631">
     <title>Bildkonverter - Utilify</title>
     <meta name="description" content="Bildergröße ändern und in WebP, JPEG, PNG Formate konvertieren.">
@@ -27,15 +28,17 @@
     <link rel="canonical" href="https://utilifyapp.net/de/image-converter/">
 
     <!-- Language Alternatives -->
-    <link rel="alternate" hreflang="ko" href="https://utilifyapp.net/ko/image-converter/">
     <link rel="alternate" hreflang="en" href="https://utilifyapp.net/en/image-converter/">
-    <link rel="alternate" hreflang="ja" href="https://utilifyapp.net/ja/image-converter/">
-    <link rel="alternate" hreflang="hi" href="https://utilifyapp.net/hi/image-converter/">
-    <link rel="alternate" hreflang="id" href="https://utilifyapp.net/id/image-converter/">
+    <link rel="alternate" hreflang="ko" href="https://utilifyapp.net/ko/image-converter/">
     <link rel="alternate" hreflang="vi" href="https://utilifyapp.net/vi/image-converter/">
     <link rel="alternate" hreflang="th" href="https://utilifyapp.net/th/image-converter/">
     <link rel="alternate" hreflang="de" href="https://utilifyapp.net/de/image-converter/">
     <link rel="alternate" hreflang="pt" href="https://utilifyapp.net/pt/image-converter/">
+    <link rel="alternate" hreflang="id" href="https://utilifyapp.net/id/image-converter/">
+    <link rel="alternate" hreflang="hi" href="https://utilifyapp.net/hi/image-converter/">
+    <link rel="alternate" hreflang="ja" href="https://utilifyapp.net/ja/image-converter/">
+    <link rel="alternate" hreflang="zh-Hans" href="https://utilifyapp.net/zh-cn/image-converter/">
+    <link rel="alternate" hreflang="zh-Hant" href="https://utilifyapp.net/zh-tw/image-converter/">
     <link rel="alternate" hreflang="x-default" href="https://utilifyapp.net/en/image-converter/">
 
     <!-- Fonts -->
@@ -410,6 +413,13 @@
         qualitySlider.addEventListener('input', updateSliderValues);
 
         // Convert image
+        let lastObjectUrl = null;
+        function revokeLastUrl() {
+            if (lastObjectUrl) {
+                URL.revokeObjectURL(lastObjectUrl);
+                lastObjectUrl = null;
+            }
+        }
         convertBtn.addEventListener('click', () => {
             if (!originalImage) return;
 
@@ -425,7 +435,9 @@
             const quality = parseInt(qualitySlider.value) / 100;
 
             canvas.toBlob((blob) => {
+                revokeLastUrl();
                 const url = URL.createObjectURL(blob);
+                lastObjectUrl = url;
                 convertedPreview.src = url;
                 convertedInfo.textContent = `${canvas.width} × ${canvas.height}px, ${formatFileSize(blob.size)}`;
 
@@ -439,8 +451,11 @@
             }, format, quality);
         });
 
+        window.addEventListener('beforeunload', revokeLastUrl);
+
         // Reset
         resetBtn.addEventListener('click', () => {
+            revokeLastUrl();
             originalImage = null;
             originalFile = null;
             fileInput.value = '';

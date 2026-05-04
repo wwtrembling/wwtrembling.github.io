@@ -9,6 +9,8 @@ const LanguageSwitcher = {
     ko: { name: '한국어', flag: '🇰🇷' },
     en: { name: 'English', flag: '🇺🇸' },
     ja: { name: '日本語', flag: '🇯🇵' },
+    'zh-cn': { name: '简体中文', flag: '🇨🇳' },
+    'zh-tw': { name: '繁體中文', flag: '🇹🇼' },
     hi: { name: 'हिन्दी', flag: '🇮🇳' },
     id: { name: 'Bahasa Indonesia', flag: '🇮🇩' },
     vi: { name: 'Tiếng Việt', flag: '🇻🇳' },
@@ -19,7 +21,7 @@ const LanguageSwitcher = {
 
   getCurrentLang() {
     const path = window.location.pathname;
-    const match = path.match(/\/(ko|en|ja|hi|id|vi|th|de|pt)\//);
+    const match = path.match(/\/(zh-cn|zh-tw|ko|en|ja|hi|id|vi|th|de|pt)\//);
     return match ? match[1] : 'en';
   },
 
@@ -63,19 +65,30 @@ const Utils = {
   // Copy text to clipboard
   copyToClipboard(text) {
     if (navigator.clipboard) {
-      navigator.clipboard.writeText(text).then(() => {
-        this.showToast('Copied to clipboard!');
-      });
+      navigator.clipboard.writeText(text)
+        .then(() => this.showToast('Copied to clipboard!'))
+        .catch(() => this.fallbackCopy(text));
     } else {
-      // Fallback for older browsers
-      const textarea = document.createElement('textarea');
-      textarea.value = text;
-      document.body.appendChild(textarea);
-      textarea.select();
-      document.execCommand('copy');
-      document.body.removeChild(textarea);
-      this.showToast('Copied to clipboard!');
+      this.fallbackCopy(text);
     }
+  },
+
+  fallbackCopy(text) {
+    const textarea = document.createElement('textarea');
+    textarea.value = text;
+    textarea.setAttribute('readonly', '');
+    textarea.style.position = 'absolute';
+    textarea.style.left = '-9999px';
+    document.body.appendChild(textarea);
+    textarea.select();
+    let ok = false;
+    try {
+      ok = document.execCommand('copy');
+    } catch (e) {
+      ok = false;
+    }
+    document.body.removeChild(textarea);
+    this.showToast(ok ? 'Copied to clipboard!' : 'Copy failed');
   },
 
   // Show toast notification
@@ -137,7 +150,7 @@ const Utils = {
 };
 
 /**
- * Analytics Helper (placeholder for Google Analytics)
+ * Analytics Helper (gated on window.GA_MEASUREMENT_ID being defined)
  */
 const Analytics = {
   trackEvent(category, action, label) {
@@ -150,8 +163,8 @@ const Analytics = {
   },
 
   trackPageView(path) {
-    if (typeof gtag !== 'undefined') {
-      gtag('config', 'GA_MEASUREMENT_ID', {
+    if (typeof gtag !== 'undefined' && typeof window.GA_MEASUREMENT_ID === 'string') {
+      gtag('config', window.GA_MEASUREMENT_ID, {
         page_path: path
       });
     }
@@ -209,9 +222,7 @@ style.textContent = `
       opacity: 1;
     }
   }
-  
-  }
-  
+
   @keyframes slideOut {
     from {
       transform: translateX(0);

@@ -2,7 +2,7 @@
   "name": "Utilify - Free Online Developer Tools",
   "short_name": "Utilify",
   "description": "A collection of free, client-side online utilities for developers and everyday users.",
-  "start_url": "/ko/",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#3b82f6",

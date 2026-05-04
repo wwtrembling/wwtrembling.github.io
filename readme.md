@@ -9,13 +9,15 @@ GitHub Pages 기반의 클라이언트 전용 유틸리티 모음 사이트
 - **기술 스택**: HTML + CSS + JavaScript (백엔드 없음)
 - **특징**: 완전한 클라이언트 사이드 처리, 개인정보 보호
 
-## 지원 언어 (9개국)
+## 지원 언어 (11개국)
 
 | 국가 | 언어 | 코드 |
 |------|------|------|
 | 한국 | 한국어 | ko |
 | 일본 | 일본어 | ja |
 | 미국 | 영어 | en |
+| 중국 (간체) | 简体中文 | zh-cn |
+| 대만 (번체) | 繁體中文 | zh-tw |
 | 인도 | 힌디어 | hi |
 | 인도네시아 | 인도네시아어 | id |
 | 베트남 | 베트남어 | vi |
@@ -102,10 +104,9 @@ GitHub Pages 기반의 클라이언트 전용 유틸리티 모음 사이트
 ├─ assets/                 # 공통 리소스
 │   ├─ css/
 │   └─ js/
-├─ scripts/                # Python 유틸리티 스크립트
-│   ├─ generate_pages.py
-│   ├─ create_daily_verse_pages.py
-│   └─ ...
+├─ _scripts/               # Python 빌드 스크립트 (build.py 등)
+├─ _templates/             # 도구 / 인덱스 HTML 템플릿
+├─ _data/                  # 번역 및 공통 데이터 (lang.py)
 └─ {lang}/                 # 언어별 디렉토리 (ko, en, ja, hi, id, vi, th, de, pt)
     ├─ index.html          # 언어별 메인 페이지
     ├─ unit-converter/
@@ -137,13 +138,13 @@ GitHub Pages 기반의 클라이언트 전용 유틸리티 모음 사이트
 
 ## 개발 도구
 
-### Python 스크립트 (scripts/)
+### Python 스크립트 (`_scripts/`)
 
 프로젝트 관리 및 자동화를 위한 Python 스크립트:
-- `generate_pages.py` - 페이지 자동 생성
-- `create_daily_verse_pages.py` - Daily Verse 페이지 생성
-- `insert_adsense.py` - AdSense 코드 삽입
-- `update_domain.py` - 도메인 업데이트
+- `_scripts/build.py` - 인덱스 / 도구 페이지 / sitemap.xml 일괄 생성
+- `_scripts/check_lang_completeness.py` - 언어별 번역 누락 점검
+
+번역 데이터는 `_data/lang.py`에서 관리합니다.
 
 ## 배포
 
