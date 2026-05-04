@@ -3,4 +3,16 @@ RULES.md
 .idea/
 .vscode/
 *.DS_Store
+.DS_Store
 node_modules/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.env
+.env.*
+*.swp
+*.swo
+*.tmp
+_scripts/missing_lang_utf8.txt

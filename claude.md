@@ -1,8 +1,8 @@
 # Project Development Rules
 
 ## 1. File & Directory Structure
-- **Root**: `c:\Users\wwtre\OneDrive\문서\workspace\tool_shelf`
-- **Language Folders**: `ko`, `en`, `ja`, `hi`, `id`, `vi`, `th`, `de`, `pt`
+- **Repo**: GitHub Pages site (`wwtrembling/wwtrembling.github.io`).
+- **Language Folders**: `ko`, `en`, `ja`, `zh-cn`, `zh-tw`, `hi`, `id`, `vi`, `th`, `de`, `pt`
 - **Tool Directories**: Inside language folders, use kebab-case (e.g., `jpa-converter`, `json-to-ts`).
 - **File Name**: Main file is always `index.html`.
 
@@ -31,5 +31,5 @@
 
 ## 5. Localization
 - All text must be translatable.
-- English is the source of truth for keys in the translation script (`scripts/translation_v2/translate_master_fix.py`).
-- Supported languages: Korean (ko), English (en), Japanese (ja), Hindi (hi), Indonesian (id), Vietnamese (vi), Thai (th), German (de), Portuguese (pt).
+- Translation strings live in `_data/lang.py`; `_scripts/check_lang_completeness.py` audits coverage.
+- Supported languages: Korean (ko), English (en), Japanese (ja), Simplified Chinese (zh-cn), Traditional Chinese (zh-tw), Hindi (hi), Indonesian (id), Vietnamese (vi), Thai (th), German (de), Portuguese (pt).

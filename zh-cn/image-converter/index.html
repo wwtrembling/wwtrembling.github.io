@@ -4,15 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy-Report-Only" content="default-src 'self' https: data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https:; frame-src https:;">
     <!-- Ezoic -->
     <script data-cfasync="false" src="https://cmp.gatekeeperconsent.com/min.js"></script>
     <script data-cfasync="false" src="https://the.gatekeeperconsent.com/cmp.min.js"></script>
-    <script async src="//www.ezojs.com/ezoic/sa.min.js"></script>
+    <script async src="https://www.ezojs.com/ezoic/sa.min.js"></script>
     <script>
         window.ezstandalone = window.ezstandalone || {};
         ezstandalone.cmd = ezstandalone.cmd || [];
     </script>
-    <script src="//ezoicanalytics.com/analytics.js"></script>
+    <script src="https://ezoicanalytics.com/analytics.js"></script>
     <meta name="google-adsense-account" content="ca-pub-6334819180242631">
     <title>图片格式转换器 (JPG, PNG, WebP) - Utilify</title>
     <meta name="description" content="免费在线将图片转换为 JPG, PNG, WebP 格式。支持批量转换。">
@@ -27,15 +28,17 @@
     <link rel="canonical" href="https://utilifyapp.net/zh-cn/image-converter/">
 
     <!-- Language Alternatives -->
-    <link rel="alternate" hreflang="ko" href="https://utilifyapp.net/ko/image-converter/">
     <link rel="alternate" hreflang="en" href="https://utilifyapp.net/en/image-converter/">
-    <link rel="alternate" hreflang="ja" href="https://utilifyapp.net/ja/image-converter/">
-    <link rel="alternate" hreflang="hi" href="https://utilifyapp.net/hi/image-converter/">
-    <link rel="alternate" hreflang="id" href="https://utilifyapp.net/id/image-converter/">
+    <link rel="alternate" hreflang="ko" href="https://utilifyapp.net/ko/image-converter/">
     <link rel="alternate" hreflang="vi" href="https://utilifyapp.net/vi/image-converter/">
     <link rel="alternate" hreflang="th" href="https://utilifyapp.net/th/image-converter/">
     <link rel="alternate" hreflang="de" href="https://utilifyapp.net/de/image-converter/">
     <link rel="alternate" hreflang="pt" href="https://utilifyapp.net/pt/image-converter/">
+    <link rel="alternate" hreflang="id" href="https://utilifyapp.net/id/image-converter/">
+    <link rel="alternate" hreflang="hi" href="https://utilifyapp.net/hi/image-converter/">
+    <link rel="alternate" hreflang="ja" href="https://utilifyapp.net/ja/image-converter/">
+    <link rel="alternate" hreflang="zh-Hans" href="https://utilifyapp.net/zh-cn/image-converter/">
+    <link rel="alternate" hreflang="zh-Hant" href="https://utilifyapp.net/zh-tw/image-converter/">
     <link rel="alternate" hreflang="x-default" href="https://utilifyapp.net/en/image-converter/">
 
     <!-- Fonts -->
@@ -233,15 +236,15 @@
                 <input type="file" id="fileInput" accept="image/*" style="display: none;">
                 <div>
                     <p style="font-size: 3rem; margin: 0;">📁</p>
-                    <p style="font-size: 1.25rem; font-weight: 600; margin: var(--spacing-md) 0;">{{ drag_text }}</p>
-                    <p class="info-text">{{ drag_sub }}</p>
+                    <p style="font-size: 1.25rem; font-weight: 600; margin: var(--spacing-md) 0;">Click or drag to upload image</p>
+                    <p class="info-text">Supports all image formats including JPG, PNG, GIF, WebP.</p>
                 </div>
             </div>
 
             <!-- Controls -->
             <div class="controls" id="controls" style="display: none;">
                 <div class="control-group">
-                    <label class="form-label">{{ label_width }}</label>
+                    <label class="form-label">Width (px)</label>
                     <div class="slider-container">
                         <input type="range" id="widthSlider" min="100" max="4000" value="1920" class="form-input"
                             style="flex: 1;">
@@ -250,7 +253,7 @@
                 </div>
 
                 <div class="control-group">
-                    <label class="form-label">{{ label_height }}</label>
+                    <label class="form-label">Height (px)</label>
                     <div class="slider-container">
                         <input type="range" id="heightSlider" min="100" max="4000" value="1080" class="form-input"
                             style="flex: 1;">
@@ -259,7 +262,7 @@
                 </div>
 
                 <div class="control-group">
-                    <label class="form-label">{{ label_format }}</label>
+                    <label class="form-label">Output Format</label>
                     <select id="formatSelect" class="form-select">
                         <option value="image/webp">WebP</option>
                         <option value="image/jpeg">JPEG</option>
@@ -268,7 +271,7 @@
                 </div>
 
                 <div class="control-group">
-                    <label class="form-label">{{ label_quality }}</label>
+                    <label class="form-label">Quality (%)</label>
                     <div class="slider-container">
                         <input type="range" id="qualitySlider" min="1" max="100" value="90" class="form-input"
                             style="flex: 1;">
@@ -278,19 +281,19 @@
 
                 <div class="button-group">
                     <button class="btn btn-primary" id="convertBtn">转换为</button>
-                    <button class="btn btn-secondary" id="resetBtn">{{ btn_reset }}</button>
+                    <button class="btn btn-secondary" id="resetBtn">Reset</button>
                 </div>
             </div>
 
             <!-- Preview -->
             <div class="preview-container" id="previewContainer" style="display: none;">
                 <div class="preview-box">
-                    <h3>{{ header_orig }}</h3>
+                    <h3>Original Image</h3>
                     <img id="originalPreview" alt="Original">
                     <p class="info-text" id="originalInfo"></p>
                 </div>
                 <div class="preview-box">
-                    <h3>{{ header_conv }}</h3>
+                    <h3>Converted Image</h3>
                     <img id="convertedPreview" alt="Converted">
                     <p class="info-text" id="convertedInfo"></p>
                     <button class="btn btn-primary" id="downloadBtn"
@@ -301,10 +304,10 @@
             <div class="related-tools-section">
                 <h3>相关工具</h3>
                 <div class="related-buttons">
-                    <a href="/zh-cn/image-editor/" class="related-btn">{{ related_img_editor }}</a><a
+                    <a href="/zh-cn/image-editor/" class="related-btn">Image Editor</a><a
                         href="/zh-cn/thumbnail-downloader/" class="related-btn">缩略图下载</a><a
                         href="/zh-cn/favicon-generator/" class="related-btn">Favicon 生成器</a><a
-                        href="/zh-cn/color-converter/" class="related-btn">{{ related_color }}</a>
+                        href="/zh-cn/color-converter/" class="related-btn">Color Converter</a>
                 </div>
             </div>
 
@@ -371,7 +374,7 @@
         // Handle file
         function handleFile(file) {
             if (!file.type.startsWith('image/')) {
-                alert('{{ alert_type }}');
+                alert('Only image files can be uploaded.');
                 return;
             }
 
@@ -410,6 +413,13 @@
         qualitySlider.addEventListener('input', updateSliderValues);
 
         // Convert image
+        let lastObjectUrl = null;
+        function revokeLastUrl() {
+            if (lastObjectUrl) {
+                URL.revokeObjectURL(lastObjectUrl);
+                lastObjectUrl = null;
+            }
+        }
         convertBtn.addEventListener('click', () => {
             if (!originalImage) return;
 
@@ -425,7 +435,9 @@
             const quality = parseInt(qualitySlider.value) / 100;
 
             canvas.toBlob((blob) => {
+                revokeLastUrl();
                 const url = URL.createObjectURL(blob);
+                lastObjectUrl = url;
                 convertedPreview.src = url;
                 convertedInfo.textContent = `${canvas.width} × ${canvas.height}px, ${formatFileSize(blob.size)}`;
 
@@ -439,8 +451,11 @@
             }, format, quality);
         });
 
+        window.addEventListener('beforeunload', revokeLastUrl);
+
         // Reset
         resetBtn.addEventListener('click', () => {
+            revokeLastUrl();
             originalImage = null;
             originalFile = null;
             fileInput.value = '';

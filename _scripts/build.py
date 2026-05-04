@@ -5,20 +5,15 @@ import sys
 # Add parent directory to path to import _data
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from _data.lang import LANGUAGES, COMMON, INDEX_PAGE, SQL_FORMATTER, JSON_FORMATTER, BASE64_CONVERTER, PASSWORD_GENERATOR, UNIT_CONVERTER, DIFF_CHECKER, IMAGE_CONVERTER, QR_GENERATOR, COLOR_CONVERTER, LOREM_IPSUM, MARKDOWN_PREVIEWER, REGEX_TESTER, TEXT_UTILS, BMI_CALCULATOR, DATE_CALCULATOR, TIMER, IMAGE_WATERMARK, FAVICON_GENERATOR, THUMBNAIL_DOWNLOADER, REACTION_TEST, JSON_TO_EXCEL, JSON_LD_GENERATOR, PDF_TOOLS, TEXT_TO_DIAGRAM, DAILY_VERSE, IMAGE_EDITOR, JPA_CONVERTER, JSON_TO_TS, EXCEL_TO_SQL
+from _data.lang import LANGUAGES, COMMON, INDEX_PAGE, SQL_FORMATTER, JSON_FORMATTER, BASE64_CONVERTER, PASSWORD_GENERATOR, UNIT_CONVERTER, DIFF_CHECKER, IMAGE_CONVERTER, QR_GENERATOR, COLOR_CONVERTER, LOREM_IPSUM, MARKDOWN_PREVIEWER, REGEX_TESTER, TEXT_UTILS, BMI_CALCULATOR, DATE_CALCULATOR, TIMER, IMAGE_WATERMARK, FAVICON_GENERATOR, THUMBNAIL_DOWNLOADER, REACTION_TEST
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE_DIR = os.path.join(BASE_DIR, '_templates')
 
 TOOLS_CONFIG = [
-    ('json-to-excel', '📊', JSON_TO_EXCEL),
     ('image-watermark', '🛡️', IMAGE_WATERMARK),
-    ('json-ld-generator', '🔍', JSON_LD_GENERATOR),
-    ('pdf-tools', '📑', PDF_TOOLS),
-    ('text-to-diagram', '📊', TEXT_TO_DIAGRAM),
     ('unit-converter', '📏', UNIT_CONVERTER),
     ('image-converter', '🖼️', IMAGE_CONVERTER),
-    ('daily-verse', '📖', DAILY_VERSE),
     ('bmi-calculator', '⚖️', BMI_CALCULATOR),
     ('date-calculator', '📅', DATE_CALCULATOR),
     ('text-utils', '📝', TEXT_UTILS),
@@ -29,7 +24,6 @@ TOOLS_CONFIG = [
     ('qr-generator', '📱', QR_GENERATOR),
     ('regex-tester', '🔍', REGEX_TESTER),
     ('sql-formatter', '🗄️', SQL_FORMATTER),
-    ('image-editor', '✂️', IMAGE_EDITOR),
     ('lorem-ipsum', '📋', LOREM_IPSUM),
     ('favicon-generator', '🎯', FAVICON_GENERATOR),
     ('diff-checker', '🔀', DIFF_CHECKER),
@@ -37,24 +31,27 @@ TOOLS_CONFIG = [
     ('thumbnail-downloader', '📺', THUMBNAIL_DOWNLOADER),
     ('markdown-previewer', '📝', MARKDOWN_PREVIEWER),
     ('reaction-test', '⚡', REACTION_TEST),
-    ('jpa-converter', '🏛️', JPA_CONVERTER),
-    ('json-to-ts', '📜', JSON_TO_TS),
-    ('excel-to-sql', '📊', EXCEL_TO_SQL),
 ]
 
 def load_template(template_name):
-    with open(os.path.join(TEMPLATE_DIR, template_name), 'r', encoding='utf-8') as f:
-        return f.read()
+    path = os.path.join(TEMPLATE_DIR, template_name)
+    try:
+        with open(path, 'r', encoding='utf-8') as f:
+            return f.read()
+    except FileNotFoundError:
+        print(f"  WARN: template not found, skipping: {template_name}")
+        return None
 
 def build_index_page():
     print("Building index pages...")
     template = load_template('index.html')
     
     for lang in LANGUAGES:
-        # Prepare data
-        data = COMMON.get(lang, COMMON['en']).copy()
-        idx_data = INDEX_PAGE.get(lang, INDEX_PAGE['en'])
-        data.update(idx_data)
+        # Prepare data: English fallback for any missing sub-keys
+        data = COMMON.get('en', {}).copy()
+        data.update(COMMON.get(lang, {}))
+        data.update(INDEX_PAGE.get('en', {}))
+        data.update(INDEX_PAGE.get(lang, {}))
         data['lang_code'] = lang
         
         # Generate alternate links
@@ -109,17 +106,37 @@ def build_index_page():
             
         print(f"  Generated {lang}/index.html")
 
+def build_alt_links(tool_path):
+    alt = []
+    for l in LANGUAGES:
+        if l == 'zh-cn':
+            hreflang = 'zh-Hans'
+        elif l == 'zh-tw':
+            hreflang = 'zh-Hant'
+        else:
+            hreflang = l
+        alt.append(f'<link rel="alternate" hreflang="{hreflang}" href="https://utilifyapp.net/{l}/{tool_path}/">')
+    alt.append(f'<link rel="alternate" hreflang="x-default" href="https://utilifyapp.net/en/{tool_path}/">')
+    return '\n    '.join(alt)
+
+
 def build_tool(tool_name, tool_data, template_file):
     print(f"Building {tool_name}...")
     template = load_template(template_file)
-    
+    if template is None:
+        return
+
+    alt_links_html = build_alt_links(tool_name)
+
     for lang in LANGUAGES:
-        # Merge common and specific data
-        data = COMMON.get(lang, COMMON['en']).copy()
-        specific_data = tool_data.get(lang, tool_data['en'])
-        data.update(specific_data)
+        # Merge common and specific data with English as fallback for missing sub-keys
+        data = COMMON.get('en', {}).copy()
+        data.update(COMMON.get(lang, {}))
+        data.update(tool_data.get('en', {}))
+        data.update(tool_data.get(lang, {}))
         data['lang_code'] = lang
-        
+        data['alternate_links'] = alt_links_html
+
         # Replace placeholders
         content = template
         for key, value in data.items():
@@ -134,6 +151,62 @@ def build_tool(tool_name, tool_data, template_file):
             f.write(content)
         
         print(f"  Generated {lang}/{tool_name}/index.html")
+
+
+def hreflang_for(lang):
+    if lang == 'zh-cn':
+        return 'zh-Hans'
+    if lang == 'zh-tw':
+        return 'zh-Hant'
+    return lang
+
+
+def build_sitemap(today=None):
+    print("Building sitemap.xml...")
+    from datetime import date
+    lastmod = (today or date.today()).isoformat()
+
+    paths = ['']  # root
+    paths += [f'{l}/' for l in LANGUAGES]
+    for tool_path, _icon, _data in TOOLS_CONFIG:
+        for l in LANGUAGES:
+            paths.append(f'{l}/{tool_path}/')
+
+    lines = ['<?xml version="1.0" encoding="UTF-8"?>',
+             '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"',
+             '        xmlns:xhtml="http://www.w3.org/1999/xhtml">']
+
+    def emit(loc, alternates=None):
+        lines.append('  <url>')
+        lines.append(f'    <loc>{loc}</loc>')
+        lines.append(f'    <lastmod>{lastmod}</lastmod>')
+        if alternates:
+            for hl, href in alternates:
+                lines.append(f'    <xhtml:link rel="alternate" hreflang="{hl}" href="{href}"/>')
+        lines.append('  </url>')
+
+    # Root
+    emit('https://utilifyapp.net/')
+
+    # Language home pages with hreflang siblings
+    home_alts = [(hreflang_for(l), f'https://utilifyapp.net/{l}/') for l in LANGUAGES]
+    home_alts.append(('x-default', 'https://utilifyapp.net/en/'))
+    for l in LANGUAGES:
+        emit(f'https://utilifyapp.net/{l}/', home_alts)
+
+    # Tool pages with hreflang siblings
+    for tool_path, _icon, _data in TOOLS_CONFIG:
+        tool_alts = [(hreflang_for(l), f'https://utilifyapp.net/{l}/{tool_path}/') for l in LANGUAGES]
+        tool_alts.append(('x-default', f'https://utilifyapp.net/en/{tool_path}/'))
+        for l in LANGUAGES:
+            emit(f'https://utilifyapp.net/{l}/{tool_path}/', tool_alts)
+
+    lines.append('</urlset>')
+    out = os.path.join(BASE_DIR, 'sitemap.xml')
+    with open(out, 'w', encoding='utf-8') as f:
+        f.write('\n'.join(lines) + '\n')
+    print(f"  Generated sitemap.xml ({len(paths)} urls)")
+
 
 if __name__ == '__main__':
     # Build Index Pages
@@ -160,4 +233,8 @@ if __name__ == '__main__':
     build_tool('favicon-generator', FAVICON_GENERATOR, 'favicon-generator.html')
     build_tool('thumbnail-downloader', THUMBNAIL_DOWNLOADER, 'thumbnail-downloader.html')
     build_tool('reaction-test', REACTION_TEST, 'reaction-test.html')
+
+    # Build sitemap.xml
+    build_sitemap()
+
     print("Build complete!")
