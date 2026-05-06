@@ -532,7 +532,11 @@ JSON_FORMATTER = {
         "related_pw": "Password Generator",
         "alert_valid": "✓ Valid JSON",
         "alert_invalid": "✗ Invalid JSON",
-        "alert_error": "Error: "
+        "alert_error": "Error: ",
+        "alert_empty": "Input is empty.",
+        "alert_too_large": "Input is over 1 MB. Processing may freeze the browser. Continue?",
+        "alert_bigint_warn": "Heads up: integers longer than 15 digits may lose precision (JavaScript Number limit).",
+        "alert_copy_empty": "Nothing to copy."
     },
     "ko": {
         "title": "JSON 포매터",
@@ -557,7 +561,11 @@ JSON_FORMATTER = {
         "related_pw": "비밀번호 생성기",
         "alert_valid": "✓ 유효한 JSON입니다",
         "alert_invalid": "✗ 유효하지 않은 JSON입니다",
-        "alert_error": "오류: "
+        "alert_error": "오류: ",
+        "alert_empty": "입력이 비어있습니다.",
+        "alert_too_large": "입력이 1MB를 초과합니다. 브라우저가 잠시 멈출 수 있습니다. 진행할까요?",
+        "alert_bigint_warn": "참고: 16자리 이상 정수는 JavaScript Number 한계로 정밀도가 손실될 수 있습니다.",
+        "alert_copy_empty": "복사할 내용이 없습니다."
     },
     "zh-cn": {
         "title": "JSON 格式化",
@@ -5508,3 +5516,152 @@ REACTION_TEST = {
         "related_timer": "計時器"
     }
 }
+
+
+JWT_DECODER = {
+    "en": {
+        "title": "JWT Decoder",
+        "meta_title": "JWT Decoder & Inspector - Utilify",
+        "meta_desc": "Decode and inspect JSON Web Tokens (JWT) in your browser. Header, payload, and expiry checked locally — your token never leaves the page.",
+        "json_name": "JWT Decoder",
+        "json_desc": "Client-side JWT decoder that displays the header and payload and verifies expiry.",
+        "page_desc": "Paste a JWT to decode its header and payload. Tokens are processed locally and never sent to a server.",
+        "label_input": "JWT",
+        "ph_input": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0...",
+        "btn_decode": "Decode",
+        "btn_clear": "Clear",
+        "label_header": "Header",
+        "label_payload": "Payload",
+        "label_signature": "Signature (raw)",
+        "signature_note": "Signature verification requires the issuer's secret/public key and is not performed here.",
+        "alert_empty": "Paste a JWT to decode.",
+        "alert_format": "Not a valid JWT — expected three dot-separated segments.",
+        "alert_decode_error": "Decode error: ",
+        "alert_valid": "Valid token. Expires in ",
+        "alert_expired": "Token expired at ",
+        "alert_no_exp": "Decoded successfully. No 'exp' claim — expiry not checked.",
+        "related_header": "Related Tools",
+        "related_base64": "Base64 Converter",
+        "related_json": "JSON Formatter",
+        "related_hash": "Hash Generator"
+    },
+    "ko": {
+        "title": "JWT 디코더",
+        "meta_title": "JWT 디코더 & 검사기 - Utilify",
+        "meta_desc": "JSON Web Token(JWT)을 브라우저에서 디코딩하고 검사하세요. 헤더, 페이로드, 만료 시간을 로컬에서 확인합니다.",
+        "json_name": "JWT 디코더",
+        "json_desc": "브라우저에서 동작하는 JWT 디코더. 헤더와 페이로드를 표시하고 만료 시간을 확인합니다.",
+        "page_desc": "JWT를 붙여넣어 헤더와 페이로드를 디코딩하세요. 토큰은 로컬에서만 처리되며 서버로 전송되지 않습니다.",
+        "label_input": "JWT",
+        "ph_input": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0...",
+        "btn_decode": "디코딩",
+        "btn_clear": "지우기",
+        "label_header": "Header",
+        "label_payload": "Payload",
+        "label_signature": "Signature (원본)",
+        "signature_note": "서명 검증은 발급자의 비밀키/공개키가 필요하므로 여기에서 수행하지 않습니다.",
+        "alert_empty": "디코딩할 JWT를 입력하세요.",
+        "alert_format": "유효한 JWT 형식이 아닙니다. 점(.)으로 구분된 세 부분이 필요합니다.",
+        "alert_decode_error": "디코딩 오류: ",
+        "alert_valid": "유효한 토큰입니다. 남은 시간 ",
+        "alert_expired": "만료된 토큰입니다. 만료 시각: ",
+        "alert_no_exp": "디코딩 완료. 'exp' 클레임이 없어 만료 시각을 확인하지 못했습니다.",
+        "related_header": "관련 도구",
+        "related_base64": "Base64 변환기",
+        "related_json": "JSON 포매터",
+        "related_hash": "해시 생성기"
+    }
+}
+
+
+HASH_GENERATOR = {
+    "en": {
+        "title": "Hash Generator",
+        "meta_title": "Hash Generator (MD5, SHA-1, SHA-256, SHA-384, SHA-512) - Utilify",
+        "meta_desc": "Generate MD5, SHA-1, SHA-256, SHA-384, and SHA-512 hashes of any text — entirely in your browser.",
+        "json_name": "Hash Generator",
+        "json_desc": "Compute MD5 and SHA-family hashes from text input, all client-side.",
+        "page_desc": "Type any text to instantly compute MD5 and SHA-1/256/384/512 digests. Nothing is uploaded — all hashing runs locally.",
+        "label_input": "Text",
+        "ph_input": "Type text to hash...",
+        "btn_copy": "Copy",
+        "btn_clear": "Clear",
+        "alert_copy_empty": "Nothing to copy.",
+        "related_header": "Related Tools",
+        "related_pw": "Password Generator",
+        "related_base64": "Base64 Converter",
+        "related_jwt": "JWT Decoder"
+    },
+    "ko": {
+        "title": "해시 생성기",
+        "meta_title": "해시 생성기 (MD5, SHA-1, SHA-256, SHA-384, SHA-512) - Utilify",
+        "meta_desc": "임의의 텍스트로부터 MD5, SHA-1, SHA-256, SHA-384, SHA-512 해시를 브라우저에서 바로 생성합니다.",
+        "json_name": "해시 생성기",
+        "json_desc": "텍스트 입력에 대해 MD5와 SHA 계열 해시를 클라이언트에서 계산합니다.",
+        "page_desc": "텍스트를 입력하면 MD5와 SHA-1/256/384/512 다이제스트가 즉시 계산됩니다. 데이터는 외부로 전송되지 않습니다.",
+        "label_input": "텍스트",
+        "ph_input": "해시할 텍스트를 입력하세요...",
+        "btn_copy": "복사",
+        "btn_clear": "지우기",
+        "alert_copy_empty": "복사할 내용이 없습니다.",
+        "related_header": "관련 도구",
+        "related_pw": "비밀번호 생성기",
+        "related_base64": "Base64 변환기",
+        "related_jwt": "JWT 디코더"
+    }
+}
+
+
+UNIX_TIMESTAMP = {
+    "en": {
+        "title": "Unix Timestamp Converter",
+        "meta_title": "Unix Timestamp ↔ Date Converter - Utilify",
+        "meta_desc": "Convert Unix timestamps (seconds or milliseconds) to ISO 8601 dates and back. Live current timestamp included.",
+        "json_name": "Unix Timestamp Converter",
+        "json_desc": "Bidirectional conversion between Unix timestamps and human-readable dates.",
+        "page_desc": "Convert between Unix timestamps and dates. Auto-detects seconds vs. milliseconds and shows both UTC and your local time zone.",
+        "label_now": "Current Unix time (UTC)",
+        "label_ts_input": "Unix timestamp → Date",
+        "ph_ts_input": "e.g. 1700000000 or 1700000000000",
+        "btn_convert_ts": "Convert",
+        "btn_use_now": "Use Now",
+        "label_local": "Local",
+        "label_date_input": "Date → Unix timestamp",
+        "ph_date_input": "e.g. 2024-01-15T12:00:00Z or 2024-01-15",
+        "btn_convert_date": "Convert",
+        "label_seconds": "Seconds",
+        "label_ms": "Milliseconds",
+        "alert_invalid_ts": "Invalid timestamp.",
+        "alert_invalid_date": "Invalid date string.",
+        "related_header": "Related Tools",
+        "related_date": "Date Calculator",
+        "related_timer": "Timer",
+        "related_jwt": "JWT Decoder"
+    },
+    "ko": {
+        "title": "Unix 타임스탬프 변환기",
+        "meta_title": "Unix 타임스탬프 ↔ 날짜 변환기 - Utilify",
+        "meta_desc": "Unix 타임스탬프(초 또는 밀리초)와 ISO 8601 날짜를 양방향으로 변환합니다. 현재 시각도 실시간 표시.",
+        "json_name": "Unix 타임스탬프 변환기",
+        "json_desc": "Unix 타임스탬프와 사람이 읽기 좋은 날짜 사이의 양방향 변환.",
+        "page_desc": "Unix 타임스탬프와 날짜를 변환합니다. 초/밀리초를 자동 감지하고 UTC와 로컬 시간을 함께 보여줍니다.",
+        "label_now": "현재 Unix 시간 (UTC)",
+        "label_ts_input": "Unix 타임스탬프 → 날짜",
+        "ph_ts_input": "예: 1700000000 또는 1700000000000",
+        "btn_convert_ts": "변환",
+        "btn_use_now": "현재 시각",
+        "label_local": "로컬",
+        "label_date_input": "날짜 → Unix 타임스탬프",
+        "ph_date_input": "예: 2024-01-15T12:00:00Z 또는 2024-01-15",
+        "btn_convert_date": "변환",
+        "label_seconds": "초",
+        "label_ms": "밀리초",
+        "alert_invalid_ts": "유효하지 않은 타임스탬프입니다.",
+        "alert_invalid_date": "유효하지 않은 날짜 문자열입니다.",
+        "related_header": "관련 도구",
+        "related_date": "날짜 계산기",
+        "related_timer": "타이머",
+        "related_jwt": "JWT 디코더"
+    }
+}
+

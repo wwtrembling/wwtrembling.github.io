@@ -239,13 +239,19 @@
     <script src="/assets/js/common.js"></script>
     <!-- marked.js CDN -->
     <script src="https://cdn.jsdelivr.net/npm/marked@4.3.0/marked.min.js"></script>
+    <!-- DOMPurify CDN (sanitizes rendered HTML to block XSS) -->
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@3.2.4/dist/purify.min.js"></script>
     <script>
         const input = document.getElementById('markdownInput');
         const preview = document.getElementById('preview');
 
+        function renderMarkdown(text) {
+            const raw = marked.parse(text);
+            return (typeof DOMPurify !== 'undefined') ? DOMPurify.sanitize(raw) : raw;
+        }
+
         function updatePreview() {
-            const text = input.value;
-            preview.innerHTML = marked.parse(text);
+            preview.innerHTML = renderMarkdown(input.value);
         }
 
         input.addEventListener('input', Utils.debounce(updatePreview, 300));

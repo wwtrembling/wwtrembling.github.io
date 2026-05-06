@@ -211,30 +211,60 @@
         const validationStatus = document.getElementById('validationStatus');
         const errorMessage = document.getElementById('errorMessage');
 
+        const MAX_INPUT_BYTES = 1_000_000;
+        const BIG_INT_RE = /(^|[^"0-9.\\-])(-?\d{16,})(?![\d."])/;
+
+        function checkSize() {
+            if (input.value.length > MAX_INPUT_BYTES) {
+                return confirm('입력이 1MB를 초과합니다. 브라우저가 잠시 멈출 수 있습니다. 진행할까요?');
+            }
+            return true;
+        }
+
+        function hasBigIntegers(text) {
+            return BIG_INT_RE.test(text);
+        }
+
         function formatJSON() {
+            if (input.value.trim() === '') {
+                showValidation(false, '입력이 비어있습니다.');
+                return;
+            }
+            if (!checkSize()) return;
             try {
                 const json = JSON.parse(input.value);
                 output.value = JSON.stringify(json, null, 2);
-                showValidation(true);
+                showValidation(true, '', hasBigIntegers(input.value));
             } catch (e) {
                 showValidation(false, e.message);
             }
         }
 
         function minifyJSON() {
+            if (input.value.trim() === '') {
+                showValidation(false, '입력이 비어있습니다.');
+                return;
+            }
+            if (!checkSize()) return;
             try {
                 const json = JSON.parse(input.value);
                 output.value = JSON.stringify(json);
-                showValidation(true);
+                showValidation(true, '', hasBigIntegers(input.value));
             } catch (e) {
                 showValidation(false, e.message);
             }
         }
 
         function validateJSON() {
+            if (input.value.trim() === '') {
+                showValidation(false, '입력이 비어있습니다.');
+                output.value = '';
+                return;
+            }
+            if (!checkSize()) return;
             try {
                 JSON.parse(input.value);
-                showValidation(true);
+                showValidation(true, '', hasBigIntegers(input.value));
                 output.value = '';
             } catch (e) {
                 showValidation(false, e.message);
@@ -246,7 +276,7 @@
             if (output.value) {
                 Utils.copyToClipboard(output.value);
             } else {
-                Utils.showToast('✗ 유효하지 않은 JSON입니다');
+                Utils.showToast('복사할 내용이 없습니다.');
             }
         }
 
@@ -257,10 +287,12 @@
             errorMessage.style.display = 'none';
         }
 
-        function showValidation(isValid, error = '') {
+        function showValidation(isValid, error = '', bigIntWarning = false) {
             validationStatus.style.display = 'block';
             validationStatus.className = 'validation-status ' + (isValid ? 'valid' : 'invalid');
-            validationStatus.textContent = isValid ? '✓ 유효한 JSON입니다' : '✗ 유효하지 않은 JSON입니다';
+            let statusText = isValid ? '✓ 유효한 JSON입니다' : '✗ 유효하지 않은 JSON입니다';
+            if (isValid && bigIntWarning) statusText += ' — 참고: 16자리 이상 정수는 JavaScript Number 한계로 정밀도가 손실될 수 있습니다.';
+            validationStatus.textContent = statusText;
 
             if (error) {
                 errorMessage.style.display = 'block';
@@ -276,7 +308,7 @@
             if (input.value.trim()) {
                 try {
                     JSON.parse(input.value);
-                    showValidation(true);
+                    showValidation(true, '', hasBigIntegers(input.value));
                 } catch (e) {
                     // Don't show error while typing
                 }

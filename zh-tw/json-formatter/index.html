@@ -211,30 +211,60 @@
         const validationStatus = document.getElementById('validationStatus');
         const errorMessage = document.getElementById('errorMessage');
 
+        const MAX_INPUT_BYTES = 1_000_000;
+        const BIG_INT_RE = /(^|[^"0-9.\\-])(-?\d{16,})(?![\d."])/;
+
+        function checkSize() {
+            if (input.value.length > MAX_INPUT_BYTES) {
+                return confirm('Input is over 1 MB. Processing may freeze the browser. Continue?');
+            }
+            return true;
+        }
+
+        function hasBigIntegers(text) {
+            return BIG_INT_RE.test(text);
+        }
+
         function formatJSON() {
+            if (input.value.trim() === '') {
+                showValidation(false, 'Input is empty.');
+                return;
+            }
+            if (!checkSize()) return;
             try {
                 const json = JSON.parse(input.value);
                 output.value = JSON.stringify(json, null, 2);
-                showValidation(true);
+                showValidation(true, '', hasBigIntegers(input.value));
             } catch (e) {
                 showValidation(false, e.message);
             }
         }
 
         function minifyJSON() {
+            if (input.value.trim() === '') {
+                showValidation(false, 'Input is empty.');
+                return;
+            }
+            if (!checkSize()) return;
             try {
                 const json = JSON.parse(input.value);
                 output.value = JSON.stringify(json);
-                showValidation(true);
+                showValidation(true, '', hasBigIntegers(input.value));
             } catch (e) {
                 showValidation(false, e.message);
             }
         }
 
         function validateJSON() {
+            if (input.value.trim() === '') {
+                showValidation(false, 'Input is empty.');
+                output.value = '';
+                return;
+            }
+            if (!checkSize()) return;
             try {
                 JSON.parse(input.value);
-                showValidation(true);
+                showValidation(true, '', hasBigIntegers(input.value));
                 output.value = '';
             } catch (e) {
                 showValidation(false, e.message);
@@ -246,7 +276,7 @@
             if (output.value) {
                 Utils.copyToClipboard(output.value);
             } else {
-                Utils.showToast('✗ 無效的 JSON');
+                Utils.showToast('Nothing to copy.');
             }
         }
 
@@ -257,10 +287,12 @@
             errorMessage.style.display = 'none';
         }
 
-        function showValidation(isValid, error = '') {
+        function showValidation(isValid, error = '', bigIntWarning = false) {
             validationStatus.style.display = 'block';
             validationStatus.className = 'validation-status ' + (isValid ? 'valid' : 'invalid');
-            validationStatus.textContent = isValid ? '✓ 有效的 JSON' : '✗ 無效的 JSON';
+            let statusText = isValid ? '✓ 有效的 JSON' : '✗ 無效的 JSON';
+            if (isValid && bigIntWarning) statusText += ' — Heads up: integers longer than 15 digits may lose precision (JavaScript Number limit).';
+            validationStatus.textContent = statusText;
 
             if (error) {
                 errorMessage.style.display = 'block';
@@ -276,7 +308,7 @@
             if (input.value.trim()) {
                 try {
                     JSON.parse(input.value);
-                    showValidation(true);
+                    showValidation(true, '', hasBigIntegers(input.value));
                 } catch (e) {
                     // Don't show error while typing
                 }

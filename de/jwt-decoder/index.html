@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy-Report-Only" content="default-src 'self' https: data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https:; frame-src https:;">
+    <!-- Ezoic -->
+    <script data-cfasync="false" src="https://cmp.gatekeeperconsent.com/min.js"></script>
+    <script data-cfasync="false" src="https://the.gatekeeperconsent.com/cmp.min.js"></script>
+    <script async src="https://www.ezojs.com/ezoic/sa.min.js"></script>
+    <script>
+        window.ezstandalone = window.ezstandalone || {};
+        ezstandalone.cmd = ezstandalone.cmd || [];
+    </script>
+    <script src="https://ezoicanalytics.com/analytics.js"></script>
+    <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+    <title>JWT Decoder & Inspector - Utilify</title>
+    <meta name="description" content="Decode and inspect JSON Web Tokens (JWT) in your browser. Header, payload, and expiry checked locally — your token never leaves the page.">
+    <link rel="canonical" href="https://utilifyapp.net/de/jwt-decoder/">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="JWT Decoder & Inspector - Utilify">
+    <meta property="og:description" content="Decode and inspect JSON Web Tokens (JWT) in your browser. Header, payload, and expiry checked locally — your token never leaves the page.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://utilifyapp.net/de/jwt-decoder/">
+
+    <!-- Language Alternatives -->
+    <link rel="alternate" hreflang="en" href="https://utilifyapp.net/en/jwt-decoder/">
+    <link rel="alternate" hreflang="ko" href="https://utilifyapp.net/ko/jwt-decoder/">
+    <link rel="alternate" hreflang="vi" href="https://utilifyapp.net/vi/jwt-decoder/">
+    <link rel="alternate" hreflang="th" href="https://utilifyapp.net/th/jwt-decoder/">
+    <link rel="alternate" hreflang="de" href="https://utilifyapp.net/de/jwt-decoder/">
+    <link rel="alternate" hreflang="pt" href="https://utilifyapp.net/pt/jwt-decoder/">
+    <link rel="alternate" hreflang="id" href="https://utilifyapp.net/id/jwt-decoder/">
+    <link rel="alternate" hreflang="hi" href="https://utilifyapp.net/hi/jwt-decoder/">
+    <link rel="alternate" hreflang="ja" href="https://utilifyapp.net/ja/jwt-decoder/">
+    <link rel="alternate" hreflang="zh-Hans" href="https://utilifyapp.net/zh-cn/jwt-decoder/">
+    <link rel="alternate" hreflang="zh-Hant" href="https://utilifyapp.net/zh-tw/jwt-decoder/">
+    <link rel="alternate" hreflang="x-default" href="https://utilifyapp.net/en/jwt-decoder/">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "JWT Decoder",
+        "description": "Client-side JWT decoder that displays the header and payload and verifies expiry.",
+        "url": "https://utilifyapp.net/de/jwt-decoder/",
+        "inLanguage": "de",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Any",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+
+    <style>
+        .jwt-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-lg);
+        }
+
+        .jwt-output pre {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-break: break-all;
+            min-height: 100px;
+        }
+
+        .jwt-status {
+            padding: var(--spacing-md);
+            border-radius: var(--radius-md);
+            margin-top: var(--spacing-md);
+            font-weight: 500;
+        }
+
+        .jwt-status.valid {
+            background: #d1fae5;
+            color: #065f46;
+            border: 1px solid #10b981;
+        }
+
+        .jwt-status.invalid {
+            background: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #ef4444;
+        }
+
+        .jwt-status.warn {
+            background: #fef3c7;
+            color: #78350f;
+            border: 1px solid #f59e0b;
+        }
+
+        .field-label {
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .jwt-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+    <link rel="manifest" href="/manifest.json">
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content"><a href="/de/" class="site-logo">Utilify</a></div>
+        </div>
+    </header>
+    <main class="main-content">
+        <div class="container-narrow">
+            <h1>🪪 JWT Decoder</h1>
+            <div class="security-badge"
+                style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
+                <span title="Processed securely in client-side">🔒 Sicher & Clientseitig</span>
+                <button id="pwaInstallBtn" class="btn btn-primary"
+                    style="display: none; padding: 4px 12px; font-size: 12px;">📲 App installieren</button>
+            </div>
+
+            <p>Paste a JWT to decode its header and payload. Tokens are processed locally and never sent to a server.</p>
+
+            <label class="form-label">JWT</label>
+            <textarea id="jwtInput" class="form-input" style="min-height: 140px; font-family: var(--font-mono);"
+                placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0..."></textarea>
+
+            <div class="btn-group" style="margin: var(--spacing-md) 0;">
+                <button class="btn btn-primary" id="decodeBtn">Decode</button>
+                <button class="btn btn-secondary" id="clearBtn">Clear</button>
+            </div>
+
+            <div id="jwtStatus" style="display: none;"></div>
+
+            <div class="jwt-grid">
+                <div class="jwt-output">
+                    <span class="field-label">Header</span>
+                    <pre id="headerOut"></pre>
+                </div>
+                <div class="jwt-output">
+                    <span class="field-label">Payload</span>
+                    <pre id="payloadOut"></pre>
+                </div>
+            </div>
+
+            <div class="jwt-output" style="margin-top: var(--spacing-lg);">
+                <span class="field-label">Signature (raw)</span>
+                <pre id="signatureOut"></pre>
+                <p style="font-size: 0.875rem; color: var(--text-secondary); margin-top: var(--spacing-sm);">
+                    Signature verification requires the issuer's secret/public key and is not performed here.
+                </p>
+            </div>
+
+            <div class="related-tools-section">
+                <h3>Related Tools</h3>
+                <div class="related-buttons">
+                    <a href="/de/base64-converter/" class="related-btn">Base64 Converter</a><a
+                        href="/de/json-formatter/" class="related-btn">JSON Formatter</a><a
+                        href="/de/hash-generator/" class="related-btn">Hash Generator</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content"><p></p></div>
+        </div>
+    </footer>
+    <script src="/assets/js/common.js"></script>
+    <script>
+        const inputEl = document.getElementById('jwtInput');
+        const headerOut = document.getElementById('headerOut');
+        const payloadOut = document.getElementById('payloadOut');
+        const signatureOut = document.getElementById('signatureOut');
+        const statusEl = document.getElementById('jwtStatus');
+
+        function base64UrlDecode(str) {
+            let s = str.replace(/-/g, '+').replace(/_/g, '/');
+            while (s.length % 4) s += '=';
+            const bin = atob(s);
+            const bytes = new Uint8Array(bin.length);
+            for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+            return new TextDecoder('utf-8').decode(bytes);
+        }
+
+        function showStatus(kind, text) {
+            statusEl.style.display = 'block';
+            statusEl.className = 'jwt-status ' + kind;
+            statusEl.textContent = text;
+        }
+
+        function decodeJwt() {
+            const token = inputEl.value.trim();
+            headerOut.textContent = '';
+            payloadOut.textContent = '';
+            signatureOut.textContent = '';
+            statusEl.style.display = 'none';
+
+            if (!token) {
+                showStatus('invalid', 'Paste a JWT to decode.');
+                return;
+            }
+
+            const parts = token.split('.');
+            if (parts.length !== 3) {
+                showStatus('invalid', 'Not a valid JWT — expected three dot-separated segments.');
+                return;
+            }
+
+            try {
+                const header = JSON.parse(base64UrlDecode(parts[0]));
+                const payload = JSON.parse(base64UrlDecode(parts[1]));
+                headerOut.textContent = JSON.stringify(header, null, 2);
+                payloadOut.textContent = JSON.stringify(payload, null, 2);
+                signatureOut.textContent = parts[2];
+
+                const nowSec = Math.floor(Date.now() / 1000);
+                if (typeof payload.exp === 'number') {
+                    if (payload.exp < nowSec) {
+                        const expDate = new Date(payload.exp * 1000).toISOString();
+                        showStatus('invalid', 'Token expired at ' + expDate);
+                        return;
+                    }
+                    const remain = payload.exp - nowSec;
+                    showStatus('valid', 'Valid token. Expires in ' + ' (' + remain + 's)');
+                    return;
+                }
+                showStatus('warn', 'Decoded successfully. No 'exp' claim — expiry not checked.');
+            } catch (e) {
+                showStatus('invalid', 'Decode error: ' + e.message);
+            }
+        }
+
+        document.getElementById('decodeBtn').addEventListener('click', decodeJwt);
+        document.getElementById('clearBtn').addEventListener('click', () => {
+            inputEl.value = '';
+            headerOut.textContent = '';
+            payloadOut.textContent = '';
+            signatureOut.textContent = '';
+            statusEl.style.display = 'none';
+        });
+    </script>
+</body>
+
+</html>
