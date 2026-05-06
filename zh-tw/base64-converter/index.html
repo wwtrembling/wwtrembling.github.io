@@ -133,9 +133,23 @@
         const input = document.getElementById('input');
         const output = document.getElementById('output');
 
+        function utf8ToBase64(str) {
+            const bytes = new TextEncoder().encode(str);
+            let bin = '';
+            for (let i = 0; i < bytes.length; i++) bin += String.fromCharCode(bytes[i]);
+            return btoa(bin);
+        }
+
+        function base64ToUtf8(b64) {
+            const bin = atob(b64);
+            const bytes = new Uint8Array(bin.length);
+            for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+            return new TextDecoder('utf-8', { fatal: true }).decode(bytes);
+        }
+
         document.getElementById('encodeBtn').addEventListener('click', () => {
             try {
-                output.value = btoa(unescape(encodeURIComponent(input.value)));
+                output.value = utf8ToBase64(input.value);
             } catch (e) {
                 alert('編碼錯誤: ' + e.message);
             }
@@ -143,7 +157,7 @@
 
         document.getElementById('decodeBtn').addEventListener('click', () => {
             try {
-                output.value = decodeURIComponent(escape(atob(input.value)));
+                output.value = base64ToUtf8(input.value);
             } catch (e) {
                 alert('解碼錯誤: ' + e.message);
             }

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy-Report-Only" content="default-src 'self' https: data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https:; frame-src https:;">
+    <!-- Ezoic -->
+    <script data-cfasync="false" src="https://cmp.gatekeeperconsent.com/min.js"></script>
+    <script data-cfasync="false" src="https://the.gatekeeperconsent.com/cmp.min.js"></script>
+    <script async src="https://www.ezojs.com/ezoic/sa.min.js"></script>
+    <script>
+        window.ezstandalone = window.ezstandalone || {};
+        ezstandalone.cmd = ezstandalone.cmd || [];
+    </script>
+    <script src="https://ezoicanalytics.com/analytics.js"></script>
+    <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+    <title>Hash Generator (MD5, SHA-1, SHA-256, SHA-384, SHA-512) - Utilify</title>
+    <meta name="description" content="Generate MD5, SHA-1, SHA-256, SHA-384, and SHA-512 hashes of any text — entirely in your browser.">
+    <link rel="canonical" href="https://utilifyapp.net/vi/hash-generator/">
+
+    <meta property="og:title" content="Hash Generator (MD5, SHA-1, SHA-256, SHA-384, SHA-512) - Utilify">
+    <meta property="og:description" content="Generate MD5, SHA-1, SHA-256, SHA-384, and SHA-512 hashes of any text — entirely in your browser.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://utilifyapp.net/vi/hash-generator/">
+
+    <link rel="alternate" hreflang="en" href="https://utilifyapp.net/en/hash-generator/">
+    <link rel="alternate" hreflang="ko" href="https://utilifyapp.net/ko/hash-generator/">
+    <link rel="alternate" hreflang="vi" href="https://utilifyapp.net/vi/hash-generator/">
+    <link rel="alternate" hreflang="th" href="https://utilifyapp.net/th/hash-generator/">
+    <link rel="alternate" hreflang="de" href="https://utilifyapp.net/de/hash-generator/">
+    <link rel="alternate" hreflang="pt" href="https://utilifyapp.net/pt/hash-generator/">
+    <link rel="alternate" hreflang="id" href="https://utilifyapp.net/id/hash-generator/">
+    <link rel="alternate" hreflang="hi" href="https://utilifyapp.net/hi/hash-generator/">
+    <link rel="alternate" hreflang="ja" href="https://utilifyapp.net/ja/hash-generator/">
+    <link rel="alternate" hreflang="zh-Hans" href="https://utilifyapp.net/zh-cn/hash-generator/">
+    <link rel="alternate" hreflang="zh-Hant" href="https://utilifyapp.net/zh-tw/hash-generator/">
+    <link rel="alternate" hreflang="x-default" href="https://utilifyapp.net/en/hash-generator/">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Hash Generator",
+        "description": "Compute MD5 and SHA-family hashes from text input, all client-side.",
+        "url": "https://utilifyapp.net/vi/hash-generator/",
+        "inLanguage": "vi",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Any",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+
+    <style>
+        .hash-row {
+            display: grid;
+            grid-template-columns: 90px 1fr auto;
+            gap: var(--spacing-md);
+            align-items: center;
+            padding: var(--spacing-sm) 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .hash-row:last-child { border-bottom: none; }
+        .hash-name { font-weight: 600; }
+        .hash-value {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            background: var(--bg-secondary);
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-radius: var(--radius-md);
+            word-break: break-all;
+            min-height: 1.5em;
+        }
+        @media (max-width: 640px) {
+            .hash-row { grid-template-columns: 1fr; gap: 4px; }
+        }
+    </style>
+    <link rel="manifest" href="/manifest.json">
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content"><a href="/vi/" class="site-logo">🛠️ Utilify</a></div>
+        </div>
+    </header>
+    <main class="main-content">
+        <div class="container-narrow">
+            <h1>🔑 Hash Generator</h1>
+            <div class="security-badge"
+                style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
+                <span title="Processed securely in client-side">🔒 An toàn & Phía máy khách</span>
+                <button id="pwaInstallBtn" class="btn btn-primary"
+                    style="display: none; padding: 4px 12px; font-size: 12px;">📲 Cài đặt ứng dụng</button>
+            </div>
+            <p>Type any text to instantly compute MD5 and SHA-1/256/384/512 digests. Nothing is uploaded — all hashing runs locally.</p>
+
+            <label class="form-label">Text</label>
+            <textarea id="hashInput" class="form-input" style="min-height: 120px;"
+                placeholder="Type text to hash..."></textarea>
+
+            <div class="btn-group" style="margin: var(--spacing-md) 0;">
+                <button class="btn btn-secondary" id="clearBtn">Clear</button>
+            </div>
+
+            <div id="hashes" style="background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: var(--spacing-lg); margin-top: var(--spacing-md);">
+                <div class="hash-row">
+                    <span class="hash-name">MD5</span>
+                    <span class="hash-value" id="md5"></span>
+                    <button class="btn btn-secondary" data-target="md5">Copy</button>
+                </div>
+                <div class="hash-row">
+                    <span class="hash-name">SHA-1</span>
+                    <span class="hash-value" id="sha1"></span>
+                    <button class="btn btn-secondary" data-target="sha1">Copy</button>
+                </div>
+                <div class="hash-row">
+                    <span class="hash-name">SHA-256</span>
+                    <span class="hash-value" id="sha256"></span>
+                    <button class="btn btn-secondary" data-target="sha256">Copy</button>
+                </div>
+                <div class="hash-row">
+                    <span class="hash-name">SHA-384</span>
+                    <span class="hash-value" id="sha384"></span>
+                    <button class="btn btn-secondary" data-target="sha384">Copy</button>
+                </div>
+                <div class="hash-row">
+                    <span class="hash-name">SHA-512</span>
+                    <span class="hash-value" id="sha512"></span>
+                    <button class="btn btn-secondary" data-target="sha512">Copy</button>
+                </div>
+            </div>
+
+            <div class="related-tools-section">
+                <h3>Related Tools</h3>
+                <div class="related-buttons">
+                    <a href="/vi/password-generator/" class="related-btn">Password Generator</a><a
+                        href="/vi/base64-converter/" class="related-btn">Base64 Converter</a><a
+                        href="/vi/jwt-decoder/" class="related-btn">JWT Decoder</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content"><p>&copy; 2025 Utilify. All rights reserved.</p></div>
+        </div>
+    </footer>
+
+    <script src="/assets/js/common.js"></script>
+    <script>
+        // Compact MD5 implementation (RFC 1321) — for non-security display use only.
+        function md5(input) {
+            function rh(n) { let s = '', j; for (j = 0; j <= 3; j++) s += ((n >> (j * 8 + 4)) & 0x0F).toString(16) + ((n >> (j * 8)) & 0x0F).toString(16); return s; }
+            function ad(x, y) { const l = (x & 0xFFFF) + (y & 0xFFFF); return (((x >> 16) + (y >> 16) + (l >> 16)) << 16) | (l & 0xFFFF); }
+            function rol(n, c) { return (n << c) | (n >>> (32 - c)); }
+            function cmn(q, a, b, x, s, t) { return ad(rol(ad(ad(a, q), ad(x, t)), s), b); }
+            function ff(a, b, c, d, x, s, t) { return cmn((b & c) | ((~b) & d), a, b, x, s, t); }
+            function gg(a, b, c, d, x, s, t) { return cmn((b & d) | (c & (~d)), a, b, x, s, t); }
+            function hh(a, b, c, d, x, s, t) { return cmn(b ^ c ^ d, a, b, x, s, t); }
+            function ii(a, b, c, d, x, s, t) { return cmn(c ^ (b | (~d)), a, b, x, s, t); }
+            function s2b(s) { const bytes = new TextEncoder().encode(s); const nblk = (((bytes.length + 8) >> 6) + 1) * 16; const blks = new Array(nblk).fill(0); for (let i = 0; i < bytes.length; i++) blks[i >> 2] |= bytes[i] << ((i % 4) * 8); blks[bytes.length >> 2] |= 0x80 << ((bytes.length % 4) * 8); blks[nblk - 2] = bytes.length * 8; return blks; }
+            const x = s2b(input);
+            let a = 1732584193, b = -271733879, c = -1732584194, d = 271733878;
+            for (let i = 0; i < x.length; i += 16) {
+                const oa = a, ob = b, oc = c, od = d;
+                a = ff(a, b, c, d, x[i], 7, -680876936); d = ff(d, a, b, c, x[i + 1], 12, -389564586); c = ff(c, d, a, b, x[i + 2], 17, 606105819); b = ff(b, c, d, a, x[i + 3], 22, -1044525330);
+                a = ff(a, b, c, d, x[i + 4], 7, -176418897); d = ff(d, a, b, c, x[i + 5], 12, 1200080426); c = ff(c, d, a, b, x[i + 6], 17, -1473231341); b = ff(b, c, d, a, x[i + 7], 22, -45705983);
+                a = ff(a, b, c, d, x[i + 8], 7, 1770035416); d = ff(d, a, b, c, x[i + 9], 12, -1958414417); c = ff(c, d, a, b, x[i + 10], 17, -42063); b = ff(b, c, d, a, x[i + 11], 22, -1990404162);
+                a = ff(a, b, c, d, x[i + 12], 7, 1804603682); d = ff(d, a, b, c, x[i + 13], 12, -40341101); c = ff(c, d, a, b, x[i + 14], 17, -1502002290); b = ff(b, c, d, a, x[i + 15], 22, 1236535329);
+                a = gg(a, b, c, d, x[i + 1], 5, -165796510); d = gg(d, a, b, c, x[i + 6], 9, -1069501632); c = gg(c, d, a, b, x[i + 11], 14, 643717713); b = gg(b, c, d, a, x[i], 20, -373897302);
+                a = gg(a, b, c, d, x[i + 5], 5, -701558691); d = gg(d, a, b, c, x[i + 10], 9, 38016083); c = gg(c, d, a, b, x[i + 15], 14, -660478335); b = gg(b, c, d, a, x[i + 4], 20, -405537848);
+                a = gg(a, b, c, d, x[i + 9], 5, 568446438); d = gg(d, a, b, c, x[i + 14], 9, -1019803690); c = gg(c, d, a, b, x[i + 3], 14, -187363961); b = gg(b, c, d, a, x[i + 8], 20, 1163531501);
+                a = gg(a, b, c, d, x[i + 13], 5, -1444681467); d = gg(d, a, b, c, x[i + 2], 9, -51403784); c = gg(c, d, a, b, x[i + 7], 14, 1735328473); b = gg(b, c, d, a, x[i + 12], 20, -1926607734);
+                a = hh(a, b, c, d, x[i + 5], 4, -378558); d = hh(d, a, b, c, x[i + 8], 11, -2022574463); c = hh(c, d, a, b, x[i + 11], 16, 1839030562); b = hh(b, c, d, a, x[i + 14], 23, -35309556);
+                a = hh(a, b, c, d, x[i + 1], 4, -1530992060); d = hh(d, a, b, c, x[i + 4], 11, 1272893353); c = hh(c, d, a, b, x[i + 7], 16, -155497632); b = hh(b, c, d, a, x[i + 10], 23, -1094730640);
+                a = hh(a, b, c, d, x[i + 13], 4, 681279174); d = hh(d, a, b, c, x[i], 11, -358537222); c = hh(c, d, a, b, x[i + 3], 16, -722521979); b = hh(b, c, d, a, x[i + 6], 23, 76029189);
+                a = hh(a, b, c, d, x[i + 9], 4, -640364487); d = hh(d, a, b, c, x[i + 12], 11, -421815835); c = hh(c, d, a, b, x[i + 15], 16, 530742520); b = hh(b, c, d, a, x[i + 2], 23, -995338651);
+                a = ii(a, b, c, d, x[i], 6, -198630844); d = ii(d, a, b, c, x[i + 7], 10, 1126891415); c = ii(c, d, a, b, x[i + 14], 15, -1416354905); b = ii(b, c, d, a, x[i + 5], 21, -57434055);
+                a = ii(a, b, c, d, x[i + 12], 6, 1700485571); d = ii(d, a, b, c, x[i + 3], 10, -1894986606); c = ii(c, d, a, b, x[i + 10], 15, -1051523); b = ii(b, c, d, a, x[i + 1], 21, -2054922799);
+                a = ii(a, b, c, d, x[i + 8], 6, 1873313359); d = ii(d, a, b, c, x[i + 15], 10, -30611744); c = ii(c, d, a, b, x[i + 6], 15, -1560198380); b = ii(b, c, d, a, x[i + 13], 21, 1309151649);
+                a = ii(a, b, c, d, x[i + 4], 6, -145523070); d = ii(d, a, b, c, x[i + 11], 10, -1120210379); c = ii(c, d, a, b, x[i + 2], 15, 718787259); b = ii(b, c, d, a, x[i + 9], 21, -343485551);
+                a = ad(a, oa); b = ad(b, ob); c = ad(c, oc); d = ad(d, od);
+            }
+            return rh(a) + rh(b) + rh(c) + rh(d);
+        }
+
+        async function subtleHex(algo, text) {
+            const bytes = new TextEncoder().encode(text);
+            const buf = await crypto.subtle.digest(algo, bytes);
+            return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+        }
+
+        const inputEl = document.getElementById('hashInput');
+        const ids = ['md5', 'sha1', 'sha256', 'sha384', 'sha512'];
+
+        async function recompute() {
+            const text = inputEl.value;
+            if (text === '') {
+                ids.forEach(id => document.getElementById(id).textContent = '');
+                return;
+            }
+            document.getElementById('md5').textContent = md5(text);
+            const [s1, s2, s3, s5] = await Promise.all([
+                subtleHex('SHA-1', text),
+                subtleHex('SHA-256', text),
+                subtleHex('SHA-384', text),
+                subtleHex('SHA-512', text),
+            ]);
+            document.getElementById('sha1').textContent = s1;
+            document.getElementById('sha256').textContent = s2;
+            document.getElementById('sha384').textContent = s3;
+            document.getElementById('sha512').textContent = s5;
+        }
+
+        inputEl.addEventListener('input', Utils.debounce(recompute, 200));
+
+        document.getElementById('clearBtn').addEventListener('click', () => {
+            inputEl.value = '';
+            ids.forEach(id => document.getElementById(id).textContent = '');
+        });
+
+        document.querySelectorAll('button[data-target]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const v = document.getElementById(btn.dataset.target).textContent;
+                if (v) Utils.copyToClipboard(v);
+                else Utils.showToast('Nothing to copy.');
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy-Report-Only" content="default-src 'self' https: data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https:; frame-src https:;">
+    <!-- Ezoic -->
+    <script data-cfasync="false" src="https://cmp.gatekeeperconsent.com/min.js"></script>
+    <script data-cfasync="false" src="https://the.gatekeeperconsent.com/cmp.min.js"></script>
+    <script async src="https://www.ezojs.com/ezoic/sa.min.js"></script>
+    <script>
+        window.ezstandalone = window.ezstandalone || {};
+        ezstandalone.cmd = ezstandalone.cmd || [];
+    </script>
+    <script src="https://ezoicanalytics.com/analytics.js"></script>
+    <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+    <title>Unix Timestamp ↔ Date Converter - Utilify</title>
+    <meta name="description" content="Convert Unix timestamps (seconds or milliseconds) to ISO 8601 dates and back. Live current timestamp included.">
+    <link rel="canonical" href="https://utilifyapp.net/de/unix-timestamp/">
+
+    <meta property="og:title" content="Unix Timestamp ↔ Date Converter - Utilify">
+    <meta property="og:description" content="Convert Unix timestamps (seconds or milliseconds) to ISO 8601 dates and back. Live current timestamp included.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://utilifyapp.net/de/unix-timestamp/">
+
+    <link rel="alternate" hreflang="en" href="https://utilifyapp.net/en/unix-timestamp/">
+    <link rel="alternate" hreflang="ko" href="https://utilifyapp.net/ko/unix-timestamp/">
+    <link rel="alternate" hreflang="vi" href="https://utilifyapp.net/vi/unix-timestamp/">
+    <link rel="alternate" hreflang="th" href="https://utilifyapp.net/th/unix-timestamp/">
+    <link rel="alternate" hreflang="de" href="https://utilifyapp.net/de/unix-timestamp/">
+    <link rel="alternate" hreflang="pt" href="https://utilifyapp.net/pt/unix-timestamp/">
+    <link rel="alternate" hreflang="id" href="https://utilifyapp.net/id/unix-timestamp/">
+    <link rel="alternate" hreflang="hi" href="https://utilifyapp.net/hi/unix-timestamp/">
+    <link rel="alternate" hreflang="ja" href="https://utilifyapp.net/ja/unix-timestamp/">
+    <link rel="alternate" hreflang="zh-Hans" href="https://utilifyapp.net/zh-cn/unix-timestamp/">
+    <link rel="alternate" hreflang="zh-Hant" href="https://utilifyapp.net/zh-tw/unix-timestamp/">
+    <link rel="alternate" hreflang="x-default" href="https://utilifyapp.net/en/unix-timestamp/">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Unix Timestamp Converter",
+        "description": "Bidirectional conversion between Unix timestamps and human-readable dates.",
+        "url": "https://utilifyapp.net/de/unix-timestamp/",
+        "inLanguage": "de",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Any",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+
+    <style>
+        .ts-section {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+        }
+        .ts-output {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            margin-top: var(--spacing-sm);
+            font-family: var(--font-mono);
+            font-size: 0.95rem;
+        }
+        .ts-output strong { display: block; margin-bottom: 4px; color: var(--text-secondary); font-weight: 500; font-size: 0.8rem; text-transform: uppercase; }
+        .now-display {
+            text-align: center;
+            background: var(--bg-secondary);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+            font-family: var(--font-mono);
+        }
+        .now-display .now-value { font-size: 1.5rem; font-weight: 600; }
+    </style>
+    <link rel="manifest" href="/manifest.json">
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content"><a href="/de/" class="site-logo">Utilify</a></div>
+        </div>
+    </header>
+    <main class="main-content">
+        <div class="container-narrow">
+            <h1>⏲️ Unix Timestamp Converter</h1>
+            <div class="security-badge"
+                style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
+                <span title="Processed securely in client-side">🔒 Sicher & Clientseitig</span>
+                <button id="pwaInstallBtn" class="btn btn-primary"
+                    style="display: none; padding: 4px 12px; font-size: 12px;">📲 App installieren</button>
+            </div>
+            <p>Convert between Unix timestamps and dates. Auto-detects seconds vs. milliseconds and shows both UTC and your local time zone.</p>
+
+            <div class="now-display">
+                <div style="font-size: 0.875rem; color: var(--text-secondary);">Current Unix time (UTC)</div>
+                <div class="now-value" id="nowSec">—</div>
+                <div style="font-size: 0.875rem;" id="nowIso">—</div>
+            </div>
+
+            <div class="ts-section">
+                <label class="form-label">Unix timestamp → Date</label>
+                <input type="text" id="tsInput" class="form-input" placeholder="e.g. 1700000000 or 1700000000000">
+                <div class="btn-group" style="margin-top: var(--spacing-sm);">
+                    <button class="btn btn-primary" id="convertTsBtn">Convert</button>
+                    <button class="btn btn-secondary" id="useNowBtn">Use Now</button>
+                </div>
+                <div class="ts-output" id="tsOutUtc"><strong>UTC</strong><span>—</span></div>
+                <div class="ts-output" id="tsOutLocal"><strong>Local</strong><span>—</span></div>
+            </div>
+
+            <div class="ts-section">
+                <label class="form-label">Date → Unix timestamp</label>
+                <input type="text" id="dateInput" class="form-input" placeholder="e.g. 2024-01-15T12:00:00Z or 2024-01-15">
+                <div class="btn-group" style="margin-top: var(--spacing-sm);">
+                    <button class="btn btn-primary" id="convertDateBtn">Convert</button>
+                </div>
+                <div class="ts-output" id="dateOutSec"><strong>Seconds</strong><span>—</span></div>
+                <div class="ts-output" id="dateOutMs"><strong>Milliseconds</strong><span>—</span></div>
+            </div>
+
+            <div class="related-tools-section">
+                <h3>Related Tools</h3>
+                <div class="related-buttons">
+                    <a href="/de/date-calculator/" class="related-btn">Date Calculator</a><a
+                        href="/de/timer/" class="related-btn">Timer</a><a
+                        href="/de/jwt-decoder/" class="related-btn">JWT Decoder</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content"><p></p></div>
+        </div>
+    </footer>
+
+    <script src="/assets/js/common.js"></script>
+    <script>
+        const nowSecEl = document.getElementById('nowSec');
+        const nowIsoEl = document.getElementById('nowIso');
+        const tsInput = document.getElementById('tsInput');
+        const dateInput = document.getElementById('dateInput');
+
+        function pad(n) { return String(n).padStart(2, '0'); }
+        function localPretty(d) {
+            return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate())
+                + ' ' + pad(d.getHours()) + ':' + pad(d.getMinutes()) + ':' + pad(d.getSeconds());
+        }
+
+        function tickNow() {
+            const now = Math.floor(Date.now() / 1000);
+            nowSecEl.textContent = now;
+            nowIsoEl.textContent = new Date().toISOString();
+        }
+        tickNow();
+        setInterval(tickNow, 1000);
+
+        function setSpan(elId, value) {
+            document.getElementById(elId).querySelector('span').textContent = value;
+        }
+
+        document.getElementById('convertTsBtn').addEventListener('click', () => {
+            const raw = tsInput.value.trim();
+            if (!raw) {
+                setSpan('tsOutUtc', '—');
+                setSpan('tsOutLocal', '—');
+                return;
+            }
+            let n = Number(raw);
+            if (!Number.isFinite(n)) {
+                setSpan('tsOutUtc', 'Invalid timestamp.');
+                setSpan('tsOutLocal', '');
+                return;
+            }
+            // Detect ms vs seconds: any value >= 1e12 is ms.
+            const ms = Math.abs(n) >= 1e12 ? n : n * 1000;
+            const d = new Date(ms);
+            if (isNaN(d.getTime())) {
+                setSpan('tsOutUtc', 'Invalid timestamp.');
+                setSpan('tsOutLocal', '');
+                return;
+            }
+            setSpan('tsOutUtc', d.toISOString());
+            setSpan('tsOutLocal', localPretty(d) + ' (' + Intl.DateTimeFormat().resolvedOptions().timeZone + ')');
+        });
+
+        document.getElementById('useNowBtn').addEventListener('click', () => {
+            tsInput.value = Math.floor(Date.now() / 1000);
+            document.getElementById('convertTsBtn').click();
+        });
+
+        document.getElementById('convertDateBtn').addEventListener('click', () => {
+            const raw = dateInput.value.trim();
+            if (!raw) {
+                setSpan('dateOutSec', '—');
+                setSpan('dateOutMs', '—');
+                return;
+            }
+            const d = new Date(raw);
+            if (isNaN(d.getTime())) {
+                setSpan('dateOutSec', 'Invalid date string.');
+                setSpan('dateOutMs', '');
+                return;
+            }
+            const ms = d.getTime();
+            setSpan('dateOutSec', String(Math.floor(ms / 1000)));
+            setSpan('dateOutMs', String(ms));
+        });
+    </script>
+</body>
+
+</html>

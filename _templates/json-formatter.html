@@ -200,30 +200,60 @@
         const validationStatus = document.getElementById('validationStatus');
         const errorMessage = document.getElementById('errorMessage');
 
+        const MAX_INPUT_BYTES = 1_000_000;
+        const BIG_INT_RE = /(^|[^"0-9.\\-])(-?\d{16,})(?![\d."])/;
+
+        function checkSize() {
+            if (input.value.length > MAX_INPUT_BYTES) {
+                return confirm('{{ alert_too_large }}');
+            }
+            return true;
+        }
+
+        function hasBigIntegers(text) {
+            return BIG_INT_RE.test(text);
+        }
+
         function formatJSON() {
+            if (input.value.trim() === '') {
+                showValidation(false, '{{ alert_empty }}');
+                return;
+            }
+            if (!checkSize()) return;
             try {
                 const json = JSON.parse(input.value);
                 output.value = JSON.stringify(json, null, 2);
-                showValidation(true);
+                showValidation(true, '', hasBigIntegers(input.value));
             } catch (e) {
                 showValidation(false, e.message);
             }
         }
 
         function minifyJSON() {
+            if (input.value.trim() === '') {
+                showValidation(false, '{{ alert_empty }}');
+                return;
+            }
+            if (!checkSize()) return;
             try {
                 const json = JSON.parse(input.value);
                 output.value = JSON.stringify(json);
-                showValidation(true);
+                showValidation(true, '', hasBigIntegers(input.value));
             } catch (e) {
                 showValidation(false, e.message);
             }
         }
 
         function validateJSON() {
+            if (input.value.trim() === '') {
+                showValidation(false, '{{ alert_empty }}');
+                output.value = '';
+                return;
+            }
+            if (!checkSize()) return;
             try {
                 JSON.parse(input.value);
-                showValidation(true);
+                showValidation(true, '', hasBigIntegers(input.value));
                 output.value = '';
             } catch (e) {
                 showValidation(false, e.message);
@@ -235,7 +265,7 @@
             if (output.value) {
                 Utils.copyToClipboard(output.value);
             } else {
-                Utils.showToast('{{ alert_invalid }}');
+                Utils.showToast('{{ alert_copy_empty }}');
             }
         }
 
@@ -246,10 +276,12 @@
             errorMessage.style.display = 'none';
         }
 
-        function showValidation(isValid, error = '') {
+        function showValidation(isValid, error = '', bigIntWarning = false) {
             validationStatus.style.display = 'block';
             validationStatus.className = 'validation-status ' + (isValid ? 'valid' : 'invalid');
-            validationStatus.textContent = isValid ? '{{ alert_valid }}' : '{{ alert_invalid }}';
+            let statusText = isValid ? '{{ alert_valid }}' : '{{ alert_invalid }}';
+            if (isValid && bigIntWarning) statusText += ' — {{ alert_bigint_warn }}';
+            validationStatus.textContent = statusText;
 
             if (error) {
                 errorMessage.style.display = 'block';
@@ -265,7 +297,7 @@
             if (input.value.trim()) {
                 try {
                     JSON.parse(input.value);
-                    showValidation(true);
+                    showValidation(true, '', hasBigIntegers(input.value));
                 } catch (e) {
                     // Don't show error while typing
                 }

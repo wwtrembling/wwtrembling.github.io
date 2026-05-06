@@ -28,6 +28,7 @@ import urllib.request
 
 CDN_URLS = [
     'https://cdn.jsdelivr.net/npm/marked@4.3.0/marked.min.js',
+    'https://cdn.jsdelivr.net/npm/dompurify@3.2.4/dist/purify.min.js',
     'https://cdn.jsdelivr.net/npm/sql-formatter@15.0.2/dist/sql-formatter.min.js',
     'https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js',
     'https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js',
