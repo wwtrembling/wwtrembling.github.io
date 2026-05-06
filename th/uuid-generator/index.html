@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy-Report-Only" content="default-src 'self' https: data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https:; frame-src https:;">
+    <!-- Ezoic -->
+    <script data-cfasync="false" src="https://cmp.gatekeeperconsent.com/min.js"></script>
+    <script data-cfasync="false" src="https://the.gatekeeperconsent.com/cmp.min.js"></script>
+    <script async src="https://www.ezojs.com/ezoic/sa.min.js"></script>
+    <script>
+        window.ezstandalone = window.ezstandalone || {};
+        ezstandalone.cmd = ezstandalone.cmd || [];
+    </script>
+    <script src="https://ezoicanalytics.com/analytics.js"></script>
+    <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+    <title>UUID Generator (v4 / v1) - Utilify</title>
+    <meta name="description" content="Generate RFC 4122 UUIDs (v4 random and v1 time-based) in your browser. Bulk generate 1, 10, or 100 at a time.">
+    <link rel="canonical" href="https://utilifyapp.net/th/uuid-generator/">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="UUID Generator (v4 / v1) - Utilify">
+    <meta property="og:description" content="Generate RFC 4122 UUIDs (v4 random and v1 time-based) in your browser. Bulk generate 1, 10, or 100 at a time.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://utilifyapp.net/th/uuid-generator/">
+
+    <!-- Language Alternatives -->
+    <link rel="alternate" hreflang="en" href="https://utilifyapp.net/en/uuid-generator/">
+    <link rel="alternate" hreflang="ko" href="https://utilifyapp.net/ko/uuid-generator/">
+    <link rel="alternate" hreflang="vi" href="https://utilifyapp.net/vi/uuid-generator/">
+    <link rel="alternate" hreflang="th" href="https://utilifyapp.net/th/uuid-generator/">
+    <link rel="alternate" hreflang="de" href="https://utilifyapp.net/de/uuid-generator/">
+    <link rel="alternate" hreflang="pt" href="https://utilifyapp.net/pt/uuid-generator/">
+    <link rel="alternate" hreflang="id" href="https://utilifyapp.net/id/uuid-generator/">
+    <link rel="alternate" hreflang="hi" href="https://utilifyapp.net/hi/uuid-generator/">
+    <link rel="alternate" hreflang="ja" href="https://utilifyapp.net/ja/uuid-generator/">
+    <link rel="alternate" hreflang="zh-Hans" href="https://utilifyapp.net/zh-cn/uuid-generator/">
+    <link rel="alternate" hreflang="zh-Hant" href="https://utilifyapp.net/zh-tw/uuid-generator/">
+    <link rel="alternate" hreflang="x-default" href="https://utilifyapp.net/en/uuid-generator/">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "UUID Generator",
+        "description": "Client-side UUID generator supporting v4 (random) and v1 (time-based) variants.",
+        "url": "https://utilifyapp.net/th/uuid-generator/",
+        "inLanguage": "th",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Any",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+
+    <style>
+        .uuid-output {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            font-family: var(--font-mono);
+            font-size: 0.95rem;
+            min-height: 140px;
+            white-space: pre;
+            overflow-x: auto;
+            margin-top: var(--spacing-md);
+        }
+
+        .uuid-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-md);
+            align-items: center;
+            margin: var(--spacing-md) 0;
+        }
+
+        .uuid-options label {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.95rem;
+        }
+    </style>
+    <link rel="manifest" href="/manifest.json">
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content"><a href="/th/" class="site-logo">🛠️ Utilify</a></div>
+        </div>
+    </header>
+    <div id="ezoic-pub-ad-placeholder-101"></div>
+    <main class="main-content">
+        <div class="container-narrow">
+            <h1>🆔 UUID Generator</h1>
+            <div class="security-badge"
+                style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
+                <span title="Processed securely in client-side">🔒 Secure & Client-side</span>
+                <button id="pwaInstallBtn" class="btn btn-primary"
+                    style="display: none; padding: 4px 12px; font-size: 12px;">📲 Install App</button>
+            </div>
+
+            <p>Generate cryptographically random UUIDs locally. v4 (random) is the most common choice; v1 embeds a timestamp. Format options for hyphens, casing, and braces.</p>
+
+            <div class="uuid-options">
+                <label>Count
+                    <select id="countSel" class="form-input" style="width:auto;">
+                        <option value="1">1</option>
+                        <option value="10">10</option>
+                        <option value="100">100</option>
+                    </select>
+                </label>
+                <label>Version
+                    <select id="versionSel" class="form-input" style="width:auto;">
+                        <option value="4">v4 (random)</option>
+                        <option value="1">v1 (time-based)</option>
+                        <option value="nil">Nil UUID</option>
+                    </select>
+                </label>
+                <label><input type="checkbox" id="optUpper"> Uppercase</label>
+                <label><input type="checkbox" id="optBraces"> Wrap in braces</label>
+                <label><input type="checkbox" id="optNoHyphen"> No hyphens</label>
+            </div>
+
+            <div class="btn-group" style="margin: var(--spacing-md) 0;">
+                <button class="btn btn-primary" id="generateBtn">Generate</button>
+                <button class="btn btn-secondary" id="copyBtn">Copy</button>
+                <button class="btn btn-secondary" id="clearBtn">Clear</button>
+            </div>
+
+            <pre id="uuidOutput" class="uuid-output" aria-live="polite"></pre>
+
+            <div id="ezoic-pub-ad-placeholder-103"></div>
+            <div class="related-tools-section">
+                <h3>Related Tools</h3>
+                <div class="related-buttons">
+                    <a href="/th/hash-generator/" class="related-btn">Hash Generator</a><a
+                        href="/th/password-generator/" class="related-btn">Password Generator</a><a
+                        href="/th/jwt-decoder/" class="related-btn">JWT Decoder</a>
+                </div>
+            </div>
+        </div>
+        <div id="ezoic-pub-ad-placeholder-104"></div>
+    </main>
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content"><p>&copy; 2025 Utilify. All rights reserved.</p>
+                <p data-legal-links style="font-size: 0.875rem; margin-top: 8px;"><a href="/th/about/">About</a> · <a href="/th/privacy/">Privacy</a> · <a href="/th/terms/">Terms</a></p></div>
+        </div>
+    </footer>
+    <script src="/assets/js/common.js"></script>
+    <script>
+        const out = document.getElementById('uuidOutput');
+        const countSel = document.getElementById('countSel');
+        const versionSel = document.getElementById('versionSel');
+        const optUpper = document.getElementById('optUpper');
+        const optBraces = document.getElementById('optBraces');
+        const optNoHyphen = document.getElementById('optNoHyphen');
+
+        function randomBytes(n) {
+            const buf = new Uint8Array(n);
+            crypto.getRandomValues(buf);
+            return buf;
+        }
+
+        function bytesToUuid(bytes) {
+            const hex = Array.from(bytes, b => b.toString(16).padStart(2, '0')).join('');
+            return hex.slice(0, 8) + '-' + hex.slice(8, 12) + '-' + hex.slice(12, 16) + '-' + hex.slice(16, 20) + '-' + hex.slice(20, 32);
+        }
+
+        function uuidV4() {
+            if (typeof crypto.randomUUID === 'function') return crypto.randomUUID();
+            const b = randomBytes(16);
+            b[6] = (b[6] & 0x0f) | 0x40; // version 4
+            b[8] = (b[8] & 0x3f) | 0x80; // variant
+            return bytesToUuid(b);
+        }
+
+        function uuidV1() {
+            // Simplified v1: gregorian-epoch 100ns ticks + random clock_seq + random node.
+            // Not RFC-strict (no MAC, no monotonic clock_seq) but produces a valid-format v1 UUID.
+            const GREG_EPOCH = -12219292800000n; // 1582-10-15
+            const nowMs = BigInt(Date.now());
+            const ticks = (nowMs - GREG_EPOCH) * 10000n + BigInt(Math.floor(Math.random() * 10000));
+            const tHex = ticks.toString(16).padStart(15, '0');
+            const timeLow = tHex.slice(-8);
+            const timeMid = tHex.slice(-12, -8);
+            const timeHi = '1' + tHex.slice(-15, -12); // version 1
+            const clockSeq = randomBytes(2);
+            clockSeq[0] = (clockSeq[0] & 0x3f) | 0x80;
+            const csHex = Array.from(clockSeq, b => b.toString(16).padStart(2, '0')).join('');
+            const node = Array.from(randomBytes(6), b => b.toString(16).padStart(2, '0')).join('');
+            return `${timeLow}-${timeMid}-${timeHi}-${csHex}-${node}`;
+        }
+
+        function uuidNil() { return '00000000-0000-0000-0000-000000000000'; }
+
+        function formatUuid(u) {
+            let v = u;
+            if (optNoHyphen.checked) v = v.replace(/-/g, '');
+            if (optUpper.checked) v = v.toUpperCase();
+            if (optBraces.checked) v = '{' + v + '}';
+            return v;
+        }
+
+        function generate() {
+            const n = parseInt(countSel.value, 10);
+            const ver = versionSel.value;
+            const lines = [];
+            for (let i = 0; i < n; i++) {
+                let u;
+                if (ver === '1') u = uuidV1();
+                else if (ver === 'nil') u = uuidNil();
+                else u = uuidV4();
+                lines.push(formatUuid(u));
+            }
+            out.textContent = lines.join('\n');
+        }
+
+        document.getElementById('generateBtn').addEventListener('click', generate);
+        document.getElementById('copyBtn').addEventListener('click', () => {
+            if (out.textContent) Utils.copyToClipboard(out.textContent);
+            else Utils.showToast('Nothing to copy.');
+        });
+        document.getElementById('clearBtn').addEventListener('click', () => { out.textContent = ''; });
+
+        // Auto-generate one on load.
+        generate();
+    </script>
+    <script>if(window.ezstandalone){ezstandalone.cmd.push(function(){ezstandalone.showAds(101,103,104);});}</script>
+</body>
+
+</html>

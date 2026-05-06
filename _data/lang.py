@@ -11,12 +11,18 @@ COMMON = {
         "footer": "&copy; 2025 Utilify. All rights reserved.",
         "secure_badge": "🔒 Secure & Client-side",
         "install_app": "📲 Install App",
+        "link_about": "About",
+        "link_privacy": "Privacy",
+        "link_terms": "Terms",
     },
     "ko": {
         "brand": "🛠️ Utilify",
         "footer": "&copy; 2025 Utilify. All rights reserved.",
         "secure_badge": "🔒 Secure & Client-side",
         "install_app": "📲 Install App",
+        "link_about": "소개",
+        "link_privacy": "개인정보",
+        "link_terms": "이용약관",
     },
     "vi": {
         "brand": "🛠️ Utilify",
@@ -5662,6 +5668,318 @@ UNIX_TIMESTAMP = {
         "related_date": "날짜 계산기",
         "related_timer": "타이머",
         "related_jwt": "JWT 디코더"
+    }
+}
+
+
+UUID_GENERATOR = {
+    "en": {
+        "title": "UUID Generator",
+        "meta_title": "UUID Generator (v4 / v1) - Utilify",
+        "meta_desc": "Generate RFC 4122 UUIDs (v4 random and v1 time-based) in your browser. Bulk generate 1, 10, or 100 at a time.",
+        "json_name": "UUID Generator",
+        "json_desc": "Client-side UUID generator supporting v4 (random) and v1 (time-based) variants.",
+        "page_desc": "Generate cryptographically random UUIDs locally. v4 (random) is the most common choice; v1 embeds a timestamp. Format options for hyphens, casing, and braces.",
+        "label_count": "Count",
+        "label_version": "Version",
+        "option_nil": "Nil UUID",
+        "option_upper": "Uppercase",
+        "option_braces": "Wrap in braces",
+        "option_nohyphen": "No hyphens",
+        "btn_generate": "Generate",
+        "btn_copy": "Copy",
+        "btn_clear": "Clear",
+        "alert_copy_empty": "Nothing to copy.",
+        "related_header": "Related Tools",
+        "related_hash": "Hash Generator",
+        "related_pw": "Password Generator",
+        "related_jwt": "JWT Decoder"
+    },
+    "ko": {
+        "title": "UUID 생성기",
+        "meta_title": "UUID 생성기 (v4 / v1) - Utilify",
+        "meta_desc": "RFC 4122 UUID(v4 랜덤 및 v1 시간 기반)를 브라우저에서 생성합니다. 1/10/100개 일괄 생성 지원.",
+        "json_name": "UUID 생성기",
+        "json_desc": "v4(랜덤)와 v1(시간 기반)을 지원하는 클라이언트 사이드 UUID 생성기.",
+        "page_desc": "암호학적으로 안전한 UUID를 로컬에서 생성합니다. v4(랜덤)가 가장 일반적이며, v1은 타임스탬프를 포함합니다. 하이픈/대소문자/중괄호 포맷 옵션을 제공합니다.",
+        "label_count": "개수",
+        "label_version": "버전",
+        "option_nil": "Nil UUID",
+        "option_upper": "대문자",
+        "option_braces": "중괄호 추가",
+        "option_nohyphen": "하이픈 제거",
+        "btn_generate": "생성",
+        "btn_copy": "복사",
+        "btn_clear": "지우기",
+        "alert_copy_empty": "복사할 내용이 없습니다.",
+        "related_header": "관련 도구",
+        "related_hash": "해시 생성기",
+        "related_pw": "비밀번호 생성기",
+        "related_jwt": "JWT 디코더"
+    }
+}
+
+
+URL_ENCODER = {
+    "en": {
+        "title": "URL Encoder / Decoder",
+        "meta_title": "URL Encoder & Decoder (Percent Encoding) - Utilify",
+        "meta_desc": "Encode and decode URLs and query parameters using percent encoding (RFC 3986). Switch between component and full-URL modes.",
+        "json_name": "URL Encoder / Decoder",
+        "json_desc": "Bidirectional URL percent-encoding and decoding with component and full-URL modes.",
+        "page_desc": "Encode characters into percent-encoded form (e.g. space → %20) or decode them back. Use 'Component' for query values; use 'Full URL' to preserve reserved characters like : / ?.",
+        "mode_component": "Component (encodeURIComponent)",
+        "mode_full": "Full URL (encodeURI)",
+        "label_input": "Input",
+        "label_output": "Output",
+        "ph_input": "https://example.com/?q=hello world",
+        "btn_encode": "Encode",
+        "btn_decode": "Decode",
+        "btn_swap": "Swap",
+        "btn_copy": "Copy",
+        "btn_clear": "Clear",
+        "alert_encode_error": "Encode error: ",
+        "alert_decode_error": "Decode error: ",
+        "alert_copy_empty": "Nothing to copy.",
+        "related_header": "Related Tools",
+        "related_base64": "Base64 Converter",
+        "related_json": "JSON Formatter",
+        "related_jwt": "JWT Decoder"
+    },
+    "ko": {
+        "title": "URL 인코더 / 디코더",
+        "meta_title": "URL 인코더 & 디코더 (Percent Encoding) - Utilify",
+        "meta_desc": "URL 및 쿼리 파라미터를 RFC 3986 percent encoding으로 인코딩/디코딩합니다. 컴포넌트/전체 URL 모드 전환 지원.",
+        "json_name": "URL 인코더 / 디코더",
+        "json_desc": "URL percent-encoding 양방향 변환 도구. 컴포넌트와 전체 URL 모드를 지원합니다.",
+        "page_desc": "문자를 percent-encoded 형태(예: 공백 → %20)로 인코딩하거나 다시 디코딩하세요. 쿼리 값은 'Component', 예약 문자(:, /, ?)를 보존해야 한다면 'Full URL' 모드를 사용하세요.",
+        "mode_component": "Component (encodeURIComponent)",
+        "mode_full": "Full URL (encodeURI)",
+        "label_input": "입력",
+        "label_output": "출력",
+        "ph_input": "https://example.com/?q=hello world",
+        "btn_encode": "인코딩",
+        "btn_decode": "디코딩",
+        "btn_swap": "바꿔치기",
+        "btn_copy": "복사",
+        "btn_clear": "지우기",
+        "alert_encode_error": "인코딩 오류: ",
+        "alert_decode_error": "디코딩 오류: ",
+        "alert_copy_empty": "복사할 내용이 없습니다.",
+        "related_header": "관련 도구",
+        "related_base64": "Base64 변환기",
+        "related_json": "JSON 포매터",
+        "related_jwt": "JWT 디코더"
+    }
+}
+
+
+ABOUT = {
+    "en": {
+        "meta_title": "About Utilify - Free Online Developer & Everyday Tools",
+        "meta_desc": "Utilify is a free, ad-supported collection of client-side utilities for developers and everyday users. No signup, no upload — everything runs in your browser.",
+        "page_h1": "About Utilify",
+        "page_body_html": (
+            "<p>Utilify is a free collection of online utilities aimed at developers and everyday users. "
+            "Every tool runs entirely in your browser — your input never leaves your device.</p>"
+            "<h2>Why client-side?</h2>"
+            "<p>Most online tools upload your data to a server. We don't. JSON, base64, hashes, JWTs, "
+            "image conversions, and PDFs are all processed locally in JavaScript. This is faster, "
+            "more private, and works offline once the page is cached.</p>"
+            "<h2>How is it free?</h2>"
+            "<p>Utilify is supported by display advertising delivered through "
+            "<a href=\"https://www.ezoic.com/\" rel=\"nofollow noopener\">Ezoic</a>, which mediates "
+            "Google AdSense and other networks. We do not run separate trackers or sell your data.</p>"
+            "<h2>Contact</h2>"
+            "<p>Questions, bug reports, or suggestions: <a href=\"mailto:contact@utilifyapp.net\">contact@utilifyapp.net</a>.</p>"
+        ),
+    },
+    "ko": {
+        "meta_title": "Utilify 소개 - 무료 개발자 & 일상 도구",
+        "meta_desc": "Utilify는 개발자와 일반 사용자를 위한 무료 클라이언트 사이드 유틸리티 모음입니다. 가입 없음, 업로드 없음 — 모든 처리가 브라우저에서 이루어집니다.",
+        "page_h1": "Utilify 소개",
+        "page_body_html": (
+            "<p>Utilify는 개발자와 일반 사용자를 위한 무료 온라인 유틸리티 모음입니다. "
+            "모든 도구는 브라우저에서만 실행되며 입력 데이터는 절대 기기를 떠나지 않습니다.</p>"
+            "<h2>왜 클라이언트 사이드인가?</h2>"
+            "<p>대부분의 온라인 도구는 사용자의 데이터를 서버로 전송합니다. Utilify는 그렇지 않습니다. "
+            "JSON, Base64, 해시, JWT, 이미지 변환, PDF 모두 JavaScript로 로컬에서 처리됩니다. "
+            "더 빠르고, 더 비공개적이며, 페이지 캐시 후에는 오프라인에서도 작동합니다.</p>"
+            "<h2>어떻게 무료인가요?</h2>"
+            "<p>Utilify는 <a href=\"https://www.ezoic.com/\" rel=\"nofollow noopener\">Ezoic</a>을 통해 "
+            "Google AdSense 등 광고 네트워크를 매개한 디스플레이 광고로 운영됩니다. "
+            "별도의 트래커를 운영하지 않으며 사용자 데이터를 판매하지 않습니다.</p>"
+            "<h2>연락처</h2>"
+            "<p>질문, 버그 제보, 제안: <a href=\"mailto:contact@utilifyapp.net\">contact@utilifyapp.net</a></p>"
+        ),
+    }
+}
+
+
+PRIVACY = {
+    "en": {
+        "meta_title": "Privacy Policy - Utilify",
+        "meta_desc": "Utilify privacy policy. We process all utility input client-side; no data is uploaded. Cookies are used only for ad delivery via Ezoic.",
+        "page_h1": "Privacy Policy",
+        "page_body_html": (
+            "<p><em>Last updated: 2025-05</em></p>"
+            "<h2>1. Data we don't collect</h2>"
+            "<p>Every tool on Utilify (JSON formatter, base64 converter, JWT decoder, hash generator, "
+            "image converter, PDF tools, etc.) processes your input entirely in the browser. We do "
+            "not upload, store, or read the content you paste, type, or upload.</p>"
+            "<h2>2. Cookies & advertising</h2>"
+            "<p>Utilify is monetized through display advertising delivered by "
+            "<a href=\"https://www.ezoic.com/\" rel=\"nofollow noopener\">Ezoic</a>, which mediates "
+            "Google AdSense and other partners. These services may set cookies to personalize ads "
+            "and measure performance. You can manage consent through the Ezoic CMP banner shown on "
+            "first visit, and revoke it at any time via the Ezoic privacy controls.</p>"
+            "<h2>3. Logs</h2>"
+            "<p>Our hosting provider (GitHub Pages) keeps short-lived access logs containing IP "
+            "addresses for abuse prevention. We do not access or correlate these logs with any "
+            "user identity.</p>"
+            "<h2>4. PWA / offline</h2>"
+            "<p>Installing Utilify as a Progressive Web App caches static assets for offline use. "
+            "No personal data is stored.</p>"
+            "<h2>5. Your rights (GDPR / CCPA)</h2>"
+            "<p>You can request information about, or deletion of, any data Ezoic processes about "
+            "you via their <a href=\"https://g.ezoic.net/privacy/utilifyapp.net\" rel=\"nofollow noopener\">privacy portal</a>. "
+            "Because Utilify itself does not store user data, requests directed to us will be "
+            "forwarded to the relevant ad partner.</p>"
+            "<h2>6. Changes</h2>"
+            "<p>Updates to this policy will be posted on this page with a new \"Last updated\" date.</p>"
+        ),
+    },
+    "ko": {
+        "meta_title": "개인정보 처리방침 - Utilify",
+        "meta_desc": "Utilify 개인정보 처리방침. 모든 도구 입력은 클라이언트에서 처리되며 업로드되지 않습니다. 쿠키는 Ezoic을 통한 광고 송출에만 사용됩니다.",
+        "page_h1": "개인정보 처리방침",
+        "page_body_html": (
+            "<p><em>최종 업데이트: 2025-05</em></p>"
+            "<h2>1. 수집하지 않는 데이터</h2>"
+            "<p>Utilify의 모든 도구(JSON 포매터, Base64 변환기, JWT 디코더, 해시 생성기, 이미지 변환기, "
+            "PDF 도구 등)는 입력값을 전적으로 브라우저에서 처리합니다. 사용자가 붙여넣거나 입력하거나 "
+            "업로드한 콘텐츠를 서버에 업로드하거나 저장하거나 열람하지 않습니다.</p>"
+            "<h2>2. 쿠키 및 광고</h2>"
+            "<p>Utilify는 <a href=\"https://www.ezoic.com/\" rel=\"nofollow noopener\">Ezoic</a>을 통해 "
+            "Google AdSense 등 광고 파트너의 디스플레이 광고로 수익을 얻습니다. "
+            "이들 서비스는 광고 개인화 및 성과 측정을 위해 쿠키를 설정할 수 있습니다. "
+            "첫 방문 시 표시되는 Ezoic CMP 배너로 동의를 관리할 수 있으며 언제든지 철회할 수 있습니다.</p>"
+            "<h2>3. 로그</h2>"
+            "<p>호스팅 제공자(GitHub Pages)는 남용 방지 목적의 단기 액세스 로그(IP 포함)를 보관합니다. "
+            "Utilify는 이 로그에 접근하거나 사용자 신원과 연결하지 않습니다.</p>"
+            "<h2>4. PWA / 오프라인</h2>"
+            "<p>Utilify를 PWA로 설치하면 정적 자산이 캐시되어 오프라인 사용이 가능합니다. "
+            "개인정보는 저장되지 않습니다.</p>"
+            "<h2>5. 귀하의 권리 (GDPR / CCPA)</h2>"
+            "<p>Ezoic이 처리하는 데이터에 관한 정보 요청 또는 삭제 요청은 "
+            "<a href=\"https://g.ezoic.net/privacy/utilifyapp.net\" rel=\"nofollow noopener\">개인정보 포털</a>을 "
+            "통해 가능합니다. Utilify 자체는 사용자 데이터를 저장하지 않으므로 우리에게 보내는 요청은 "
+            "해당 광고 파트너로 전달됩니다.</p>"
+            "<h2>6. 변경 사항</h2>"
+            "<p>본 방침의 변경은 새로운 \"최종 업데이트\" 날짜와 함께 이 페이지에 게시됩니다.</p>"
+        ),
+    }
+}
+
+
+TERMS = {
+    "en": {
+        "meta_title": "Terms of Service - Utilify",
+        "meta_desc": "Utilify terms of service. Tools are provided as-is without warranty. You retain responsibility for the content you process.",
+        "page_h1": "Terms of Service",
+        "page_body_html": (
+            "<p><em>Last updated: 2025-05</em></p>"
+            "<h2>1. Acceptance</h2>"
+            "<p>By using utilifyapp.net you agree to these terms. If you do not agree, do not use the site.</p>"
+            "<h2>2. Service description</h2>"
+            "<p>Utilify is a free collection of client-side web utilities. Tools execute in your browser; "
+            "we do not store, transmit, or process the content you paste or upload on our servers.</p>"
+            "<h2>3. No warranty</h2>"
+            "<p>The tools are provided <strong>\"AS IS\"</strong> without warranties of any kind, "
+            "express or implied. We do not guarantee correctness, fitness for a particular purpose, "
+            "availability, or that results are free of defects. Always verify outputs before relying on them.</p>"
+            "<h2>4. Your responsibility</h2>"
+            "<p>You are solely responsible for the content you input. Do not submit content you are "
+            "not authorized to process. We disclaim liability for any loss arising from your use of "
+            "the tools, including data loss, decoding errors, or hash collisions.</p>"
+            "<h2>5. Acceptable use</h2>"
+            "<p>You may not use the site to violate any law, infringe intellectual property, attempt to "
+            "compromise the service or its users, or generate ad fraud. Automated bulk scraping may be "
+            "rate-limited.</p>"
+            "<h2>6. Third-party services</h2>"
+            "<p>Ads are delivered by Ezoic and partners under their own terms. Outbound links are "
+            "provided for convenience and do not constitute endorsement.</p>"
+            "<h2>7. Changes</h2>"
+            "<p>We may update these terms; continued use after changes constitutes acceptance.</p>"
+            "<h2>8. Contact</h2>"
+            "<p><a href=\"mailto:contact@utilifyapp.net\">contact@utilifyapp.net</a></p>"
+        ),
+    },
+    "ko": {
+        "meta_title": "이용약관 - Utilify",
+        "meta_desc": "Utilify 이용약관. 모든 도구는 보증 없이 \"있는 그대로\" 제공됩니다. 처리하는 콘텐츠에 대한 책임은 사용자에게 있습니다.",
+        "page_h1": "이용약관",
+        "page_body_html": (
+            "<p><em>최종 업데이트: 2025-05</em></p>"
+            "<h2>1. 동의</h2>"
+            "<p>utilifyapp.net을 이용함으로써 본 약관에 동의하는 것으로 간주됩니다. 동의하지 않는 경우 사이트를 이용하지 마십시오.</p>"
+            "<h2>2. 서비스 설명</h2>"
+            "<p>Utilify는 무료 클라이언트 사이드 웹 유틸리티 모음입니다. 모든 도구는 브라우저에서 실행되며, "
+            "사용자가 붙여넣거나 업로드한 콘텐츠는 우리 서버에 저장, 전송, 처리되지 않습니다.</p>"
+            "<h2>3. 보증 부인</h2>"
+            "<p>도구는 <strong>\"있는 그대로(AS IS)\"</strong> 제공되며 명시적이든 묵시적이든 어떠한 보증도 하지 않습니다. "
+            "정확성, 특정 목적 적합성, 가용성, 결함 없음을 보장하지 않습니다. 출력에 의존하기 전에 항상 검증하십시오.</p>"
+            "<h2>4. 사용자 책임</h2>"
+            "<p>입력하는 콘텐츠에 대한 책임은 전적으로 사용자에게 있습니다. 처리 권한이 없는 콘텐츠를 입력하지 마십시오. "
+            "도구 사용으로 인한 데이터 손실, 디코딩 오류, 해시 충돌 등 모든 손실에 대해 책임을 지지 않습니다.</p>"
+            "<h2>5. 허용되는 사용</h2>"
+            "<p>법률 위반, 지식재산권 침해, 서비스 또는 사용자에 대한 공격 시도, 광고 사기 등의 목적으로 본 사이트를 사용할 수 없습니다. "
+            "자동화된 대량 스크래핑은 속도 제한될 수 있습니다.</p>"
+            "<h2>6. 제3자 서비스</h2>"
+            "<p>광고는 Ezoic 및 파트너 약관에 따라 송출됩니다. 외부 링크는 편의 제공 목적이며 보증을 의미하지 않습니다.</p>"
+            "<h2>7. 변경</h2>"
+            "<p>본 약관은 변경될 수 있으며 변경 이후 계속 사용하는 것은 동의를 의미합니다.</p>"
+            "<h2>8. 연락처</h2>"
+            "<p><a href=\"mailto:contact@utilifyapp.net\">contact@utilifyapp.net</a></p>"
+        ),
+    }
+}
+
+
+NOT_FOUND = {
+    "en": {
+        "meta_title": "Page Not Found - Utilify",
+        "meta_desc": "The page you requested could not be found.",
+        "page_h1": "404 — Page Not Found",
+        "page_body_html": (
+            "<p>Sorry, we couldn't find that page. It may have moved or never existed.</p>"
+            "<h2>Popular Tools</h2>"
+            "<ul>"
+            "<li><a href=\"/en/json-formatter/\">JSON Formatter</a></li>"
+            "<li><a href=\"/en/base64-converter/\">Base64 Converter</a></li>"
+            "<li><a href=\"/en/unit-converter/\">Unit Converter</a></li>"
+            "<li><a href=\"/en/jwt-decoder/\">JWT Decoder</a></li>"
+            "<li><a href=\"/en/uuid-generator/\">UUID Generator</a></li>"
+            "</ul>"
+            "<p><a href=\"/en/\">← Back to home</a></p>"
+        ),
+    },
+    "ko": {
+        "meta_title": "페이지를 찾을 수 없음 - Utilify",
+        "meta_desc": "요청하신 페이지를 찾을 수 없습니다.",
+        "page_h1": "404 — 페이지를 찾을 수 없습니다",
+        "page_body_html": (
+            "<p>죄송합니다. 해당 페이지를 찾을 수 없습니다. 페이지가 이동되었거나 존재하지 않을 수 있습니다.</p>"
+            "<h2>인기 도구</h2>"
+            "<ul>"
+            "<li><a href=\"/ko/json-formatter/\">JSON 포매터</a></li>"
+            "<li><a href=\"/ko/base64-converter/\">Base64 변환기</a></li>"
+            "<li><a href=\"/ko/unit-converter/\">단위 변환기</a></li>"
+            "<li><a href=\"/ko/jwt-decoder/\">JWT 디코더</a></li>"
+            "<li><a href=\"/ko/uuid-generator/\">UUID 생성기</a></li>"
+            "</ul>"
+            "<p><a href=\"/ko/\">← 홈으로</a></p>"
+        ),
     }
 }
 
