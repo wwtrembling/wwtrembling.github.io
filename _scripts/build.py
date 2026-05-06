@@ -66,70 +66,88 @@ def load_template(template_name):
 
 
 # --- Monetization injection ----------------------------------------------------
-# Ezoic placeholder slot IDs used across all pages. Adding a div for a slot is
-# sufficient — Ezoic delivers ads into whichever placeholders exist on the page.
-EZOIC_SLOTS = (101, 103, 104)
+# Site is monetized via Google AdSense Auto Ads. We inject a single AdSense
+# loader script in <head> and a single Auto Ads enable trigger before </body>.
+# Auto Ads chooses placement automatically — no per-slot divs or slot IDs.
+# Funding Choices CMP for EU/UK consent is added by the user separately.
+ADSENSE_CLIENT = "ca-pub-6334819180242631"
 
 import re as _re_ad
 
 
-def _ad_div(n):
-    return f'<div id="ezoic-pub-ad-placeholder-{n}"></div>'
-
-
 def inject_monetization(html):
-    """Strip duplicate AdSense scripts (Ezoic mediates AdSense itself) and
-    insert Ezoic ad placeholder divs at standard positions, plus the
-    showAds() trigger right before </body>.
-
-    Idempotent: re-running on already-processed HTML is a no-op.
+    """Idempotently strip Ezoic remnants (CMP/sa.min.js/analytics/ezstandalone
+    bootstrap, ad placeholder divs, showAds trigger) and inject the AdSense
+    loader + Auto Ads trigger. Also injects legal footer links.
     """
-    # 1. Remove direct AdSense loader if present (Ezoic + AdSense double-load
-    #    is discouraged and frequently breaks ad fill). We strip both the
-    #    comment header and the active/commented-out script tag in any order.
-    html = _re_ad.sub(r'\s*<!--\s*Google AdSense[^\n]*-->\s*', '\n    ', html)
+    # 1. Strip Ezoic CMP scripts (both gatekeeperconsent endpoints).
     html = _re_ad.sub(
-        r'\s*<!--\s*<script\s+async\s+src="https://pagead2\.googlesyndication\.com[^"]*"[^>]*>\s*</script>\s*-->\s*',
+        r'\s*<script[^>]*\bsrc="https://(?:cmp|the)\.gatekeeperconsent\.com/[^"]*"[^>]*></script>\s*',
         '\n    ', html,
     )
+    # 2. Strip Ezoic SA loader.
     html = _re_ad.sub(
-        r'\s*<script\s+async\s+src="https://pagead2\.googlesyndication\.com[^"]*"[^>]*>\s*</script>\s*',
+        r'\s*<script[^>]*\bsrc="https://www\.ezojs\.com/ezoic/sa\.min\.js"[^>]*></script>\s*',
+        '\n    ', html,
+    )
+    # 3. Strip Ezoic analytics loader.
+    html = _re_ad.sub(
+        r'\s*<script[^>]*\bsrc="https://ezoicanalytics\.com/[^"]*"[^>]*></script>\s*',
+        '\n    ', html,
+    )
+    # 4. Strip the inline ezstandalone bootstrap block.
+    html = _re_ad.sub(
+        r'\s*<script>\s*window\.ezstandalone\s*=[\s\S]*?ezstandalone\.cmd\s*=[\s\S]*?</script>\s*',
+        '\n    ', html,
+    )
+    # 5. Strip the "<!-- Ezoic -->" comment header.
+    html = _re_ad.sub(r'\s*<!--\s*Ezoic\s*-->\s*', '\n    ', html)
+    # 6. Strip any leftover ezoic-pub-ad-placeholder divs.
+    html = _re_ad.sub(
+        r'\s*<div\s+id="ezoic-pub-ad-placeholder-\d+"></div>\s*',
+        '\n    ', html,
+    )
+    # 7. Strip the ezstandalone.showAds() trigger.
+    html = _re_ad.sub(
+        r'\s*<script>[^<]*ezstandalone\.showAds\([^)]*\);[^<]*</script>\s*',
+        '\n', html,
+    )
+
+    # 7b. Strip legacy commented-out AdSense loader blocks left over from
+    #     prior cleanup ("<!-- Google AdSense Removed for Developer Experience -->"
+    #     followed by a commented-out script tag). Otherwise their substring
+    #     match would defeat the idempotency check below and we'd skip
+    #     injecting the live loader.
+    html = _re_ad.sub(
+        r'\s*<!--\s*Google AdSense[^-]*-->\s*\n?'
+        r'(?:\s*<!--\s*Google AdSense Removed[^-]*-->\s*\n?)?'
+        r'(?:\s*<!--\s*<script\s+async\s+src="https://pagead2\.googlesyndication\.com[^>]*>\s*</script>\s*-->\s*\n?)?',
         '\n    ', html,
     )
 
-    # 2. Insert ad placeholders if not yet present.
-    if 'ezoic-pub-ad-placeholder-101' not in html:
-        html = html.replace(
-            '</header>',
-            '</header>\n    ' + _ad_div(101),
-            1,
+    # 8. Inject the AdSense loader once in <head>. Use a *unique* marker
+    #    string in the inserted comment so the idempotency check is robust
+    #    against random substrings in the page.
+    if 'data-utilify-adsense-loader' not in html:
+        loader = (
+            '    <script data-utilify-adsense-loader async '
+            f'src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={ADSENSE_CLIENT}" '
+            'crossorigin="anonymous"></script>\n'
         )
-    if 'ezoic-pub-ad-placeholder-103' not in html and 'related-tools-section' in html:
-        html = html.replace(
-            '<div class="related-tools-section">',
-            _ad_div(103) + '\n            <div class="related-tools-section">',
-            1,
-        )
-    if 'ezoic-pub-ad-placeholder-104' not in html:
-        html = html.replace(
-            '</main>',
-            '    ' + _ad_div(104) + '\n    </main>',
-            1,
-        )
+        html = html.replace('</head>', loader + '</head>', 1)
 
-    # 3. Trigger showAds() once per page (idempotent guard).
-    if 'ezstandalone.showAds' not in html:
-        slot_args = ','.join(str(s) for s in EZOIC_SLOTS)
+    # 9. Inject the Auto Ads enable trigger once before </body>.
+    if 'enable_page_level_ads' not in html:
         trigger = (
-            '    <script>if(window.ezstandalone){ezstandalone.cmd.push(function(){'
-            f'ezstandalone.showAds({slot_args});'
-            '});}</script>\n'
+            '    <script>(adsbygoogle=window.adsbygoogle||[]).push({'
+            f'google_ad_client:"{ADSENSE_CLIENT}",enable_page_level_ads:true'
+            '});</script>\n'
         )
         html = html.replace('</body>', trigger + '</body>', 1)
 
-    # 4. Inject legal-page links into footer of *templates* (those still have
-    #    the {{ lang_code }} placeholder). For prebuilt hand-authored pages we
-    #    inject lang-resolved links separately in sync_prebuilt_tools().
+    # 10. Inject legal-page links into footer of *templates* (those still have
+    #     the {{ lang_code }} placeholder). For prebuilt hand-authored pages we
+    #     inject lang-resolved links separately in sync_prebuilt_tools().
     if '{{ lang_code }}' in html and 'data-legal-links' not in html:
         legal_block = (
             '\n                <p data-legal-links style="font-size: 0.875rem; margin-top: 8px;">'

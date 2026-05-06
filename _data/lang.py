@@ -5788,8 +5788,8 @@ ABOUT = {
             "more private, and works offline once the page is cached.</p>"
             "<h2>How is it free?</h2>"
             "<p>Utilify is supported by display advertising delivered through "
-            "<a href=\"https://www.ezoic.com/\" rel=\"nofollow noopener\">Ezoic</a>, which mediates "
-            "Google AdSense and other networks. We do not run separate trackers or sell your data.</p>"
+            "<a href=\"https://adsense.google.com/\" rel=\"nofollow noopener\">Google AdSense</a>. "
+            "We do not run separate trackers or sell your data.</p>"
             "<h2>Contact</h2>"
             "<p>Questions, bug reports, or suggestions: <a href=\"mailto:contact@utilifyapp.net\">contact@utilifyapp.net</a>.</p>"
         ),
@@ -5806,8 +5806,8 @@ ABOUT = {
             "JSON, Base64, 해시, JWT, 이미지 변환, PDF 모두 JavaScript로 로컬에서 처리됩니다. "
             "더 빠르고, 더 비공개적이며, 페이지 캐시 후에는 오프라인에서도 작동합니다.</p>"
             "<h2>어떻게 무료인가요?</h2>"
-            "<p>Utilify는 <a href=\"https://www.ezoic.com/\" rel=\"nofollow noopener\">Ezoic</a>을 통해 "
-            "Google AdSense 등 광고 네트워크를 매개한 디스플레이 광고로 운영됩니다. "
+            "<p>Utilify는 <a href=\"https://adsense.google.com/\" rel=\"nofollow noopener\">Google AdSense</a>를 "
+            "통해 디스플레이 광고로 운영됩니다. "
             "별도의 트래커를 운영하지 않으며 사용자 데이터를 판매하지 않습니다.</p>"
             "<h2>연락처</h2>"
             "<p>질문, 버그 제보, 제안: <a href=\"mailto:contact@utilifyapp.net\">contact@utilifyapp.net</a></p>"
@@ -5819,7 +5819,7 @@ ABOUT = {
 PRIVACY = {
     "en": {
         "meta_title": "Privacy Policy - Utilify",
-        "meta_desc": "Utilify privacy policy. We process all utility input client-side; no data is uploaded. Cookies are used only for ad delivery via Ezoic.",
+        "meta_desc": "Utilify privacy policy. We process all utility input client-side; no data is uploaded. Cookies are used only for ad delivery via Google AdSense.",
         "page_h1": "Privacy Policy",
         "page_body_html": (
             "<p><em>Last updated: 2025-05</em></p>"
@@ -5829,10 +5829,12 @@ PRIVACY = {
             "not upload, store, or read the content you paste, type, or upload.</p>"
             "<h2>2. Cookies & advertising</h2>"
             "<p>Utilify is monetized through display advertising delivered by "
-            "<a href=\"https://www.ezoic.com/\" rel=\"nofollow noopener\">Ezoic</a>, which mediates "
-            "Google AdSense and other partners. These services may set cookies to personalize ads "
-            "and measure performance. You can manage consent through the Ezoic CMP banner shown on "
-            "first visit, and revoke it at any time via the Ezoic privacy controls.</p>"
+            "<a href=\"https://adsense.google.com/\" rel=\"nofollow noopener\">Google AdSense</a>. "
+            "Google and its partners may set cookies to personalize ads and measure performance. "
+            "You can review and adjust how Google personalizes ads at "
+            "<a href=\"https://adssettings.google.com/\" rel=\"nofollow noopener\">adssettings.google.com</a>, "
+            "and read Google's full advertising privacy notice at "
+            "<a href=\"https://policies.google.com/technologies/ads\" rel=\"nofollow noopener\">policies.google.com/technologies/ads</a>.</p>"
             "<h2>3. Logs</h2>"
             "<p>Our hosting provider (GitHub Pages) keeps short-lived access logs containing IP "
             "addresses for abuse prevention. We do not access or correlate these logs with any "
@@ -5841,17 +5843,19 @@ PRIVACY = {
             "<p>Installing Utilify as a Progressive Web App caches static assets for offline use. "
             "No personal data is stored.</p>"
             "<h2>5. Your rights (GDPR / CCPA)</h2>"
-            "<p>You can request information about, or deletion of, any data Ezoic processes about "
-            "you via their <a href=\"https://g.ezoic.net/privacy/utilifyapp.net\" rel=\"nofollow noopener\">privacy portal</a>. "
-            "Because Utilify itself does not store user data, requests directed to us will be "
-            "forwarded to the relevant ad partner.</p>"
+            "<p>You can manage Google's ad personalization, including opting out, at "
+            "<a href=\"https://adssettings.google.com/\" rel=\"nofollow noopener\">adssettings.google.com</a>. "
+            "For data Google holds about you, see "
+            "<a href=\"https://myaccount.google.com/data-and-privacy\" rel=\"nofollow noopener\">your Google account privacy controls</a>. "
+            "Because Utilify itself does not store user data, any request directed to us will be "
+            "forwarded to Google as the relevant ad partner.</p>"
             "<h2>6. Changes</h2>"
             "<p>Updates to this policy will be posted on this page with a new \"Last updated\" date.</p>"
         ),
     },
     "ko": {
         "meta_title": "개인정보 처리방침 - Utilify",
-        "meta_desc": "Utilify 개인정보 처리방침. 모든 도구 입력은 클라이언트에서 처리되며 업로드되지 않습니다. 쿠키는 Ezoic을 통한 광고 송출에만 사용됩니다.",
+        "meta_desc": "Utilify 개인정보 처리방침. 모든 도구 입력은 클라이언트에서 처리되며 업로드되지 않습니다. 쿠키는 Google AdSense를 통한 광고 송출에만 사용됩니다.",
         "page_h1": "개인정보 처리방침",
         "page_body_html": (
             "<p><em>최종 업데이트: 2025-05</em></p>"
@@ -5860,10 +5864,14 @@ PRIVACY = {
             "PDF 도구 등)는 입력값을 전적으로 브라우저에서 처리합니다. 사용자가 붙여넣거나 입력하거나 "
             "업로드한 콘텐츠를 서버에 업로드하거나 저장하거나 열람하지 않습니다.</p>"
             "<h2>2. 쿠키 및 광고</h2>"
-            "<p>Utilify는 <a href=\"https://www.ezoic.com/\" rel=\"nofollow noopener\">Ezoic</a>을 통해 "
-            "Google AdSense 등 광고 파트너의 디스플레이 광고로 수익을 얻습니다. "
-            "이들 서비스는 광고 개인화 및 성과 측정을 위해 쿠키를 설정할 수 있습니다. "
-            "첫 방문 시 표시되는 Ezoic CMP 배너로 동의를 관리할 수 있으며 언제든지 철회할 수 있습니다.</p>"
+            "<p>Utilify는 <a href=\"https://adsense.google.com/\" rel=\"nofollow noopener\">Google AdSense</a>를 "
+            "통해 디스플레이 광고로 수익을 얻습니다. "
+            "Google 및 파트너는 광고 개인화 및 성과 측정을 위해 쿠키를 설정할 수 있습니다. "
+            "광고 개인화 설정은 "
+            "<a href=\"https://adssettings.google.com/\" rel=\"nofollow noopener\">adssettings.google.com</a>"
+            "에서 확인 및 조정할 수 있으며, Google의 광고 개인정보 정책 전문은 "
+            "<a href=\"https://policies.google.com/technologies/ads\" rel=\"nofollow noopener\">policies.google.com/technologies/ads</a>"
+            "에서 확인하실 수 있습니다.</p>"
             "<h2>3. 로그</h2>"
             "<p>호스팅 제공자(GitHub Pages)는 남용 방지 목적의 단기 액세스 로그(IP 포함)를 보관합니다. "
             "Utilify는 이 로그에 접근하거나 사용자 신원과 연결하지 않습니다.</p>"
@@ -5871,10 +5879,12 @@ PRIVACY = {
             "<p>Utilify를 PWA로 설치하면 정적 자산이 캐시되어 오프라인 사용이 가능합니다. "
             "개인정보는 저장되지 않습니다.</p>"
             "<h2>5. 귀하의 권리 (GDPR / CCPA)</h2>"
-            "<p>Ezoic이 처리하는 데이터에 관한 정보 요청 또는 삭제 요청은 "
-            "<a href=\"https://g.ezoic.net/privacy/utilifyapp.net\" rel=\"nofollow noopener\">개인정보 포털</a>을 "
-            "통해 가능합니다. Utilify 자체는 사용자 데이터를 저장하지 않으므로 우리에게 보내는 요청은 "
-            "해당 광고 파트너로 전달됩니다.</p>"
+            "<p>Google의 광고 개인화 설정 및 옵트아웃은 "
+            "<a href=\"https://adssettings.google.com/\" rel=\"nofollow noopener\">adssettings.google.com</a>"
+            "에서 관리할 수 있습니다. Google이 보유한 사용자 데이터는 "
+            "<a href=\"https://myaccount.google.com/data-and-privacy\" rel=\"nofollow noopener\">Google 계정 개인정보 설정</a>"
+            "에서 확인할 수 있습니다. Utilify 자체는 사용자 데이터를 저장하지 않으므로 "
+            "우리에게 보내는 요청은 광고 파트너인 Google로 전달됩니다.</p>"
             "<h2>6. 변경 사항</h2>"
             "<p>본 방침의 변경은 새로운 \"최종 업데이트\" 날짜와 함께 이 페이지에 게시됩니다.</p>"
         ),
@@ -5907,7 +5917,7 @@ TERMS = {
             "compromise the service or its users, or generate ad fraud. Automated bulk scraping may be "
             "rate-limited.</p>"
             "<h2>6. Third-party services</h2>"
-            "<p>Ads are delivered by Ezoic and partners under their own terms. Outbound links are "
+            "<p>Ads are delivered by Google AdSense under its own terms. Outbound links are "
             "provided for convenience and do not constitute endorsement.</p>"
             "<h2>7. Changes</h2>"
             "<p>We may update these terms; continued use after changes constitutes acceptance.</p>"
@@ -5936,7 +5946,7 @@ TERMS = {
             "<p>법률 위반, 지식재산권 침해, 서비스 또는 사용자에 대한 공격 시도, 광고 사기 등의 목적으로 본 사이트를 사용할 수 없습니다. "
             "자동화된 대량 스크래핑은 속도 제한될 수 있습니다.</p>"
             "<h2>6. 제3자 서비스</h2>"
-            "<p>광고는 Ezoic 및 파트너 약관에 따라 송출됩니다. 외부 링크는 편의 제공 목적이며 보증을 의미하지 않습니다.</p>"
+            "<p>광고는 Google AdSense 약관에 따라 송출됩니다. 외부 링크는 편의 제공 목적이며 보증을 의미하지 않습니다.</p>"
             "<h2>7. 변경</h2>"
             "<p>본 약관은 변경될 수 있으며 변경 이후 계속 사용하는 것은 동의를 의미합니다.</p>"
             "<h2>8. 연락처</h2>"
