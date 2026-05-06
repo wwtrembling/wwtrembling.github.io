@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy-Report-Only" content="default-src 'self' https: data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https:; frame-src https:;">
+    <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+    <title>URL Encoder & Decoder (Percent Encoding) - Utilify</title>
+    <meta name="description" content="Encode and decode URLs and query parameters using percent encoding (RFC 3986). Switch between component and full-URL modes.">
+    <link rel="canonical" href="https://utilifyapp.net/th/url-encoder/">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="URL Encoder & Decoder (Percent Encoding) - Utilify">
+    <meta property="og:description" content="Encode and decode URLs and query parameters using percent encoding (RFC 3986). Switch between component and full-URL modes.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://utilifyapp.net/th/url-encoder/">
+
+    <!-- Language Alternatives -->
+    <link rel="alternate" hreflang="en" href="https://utilifyapp.net/en/url-encoder/">
+    <link rel="alternate" hreflang="ko" href="https://utilifyapp.net/ko/url-encoder/">
+    <link rel="alternate" hreflang="vi" href="https://utilifyapp.net/vi/url-encoder/">
+    <link rel="alternate" hreflang="th" href="https://utilifyapp.net/th/url-encoder/">
+    <link rel="alternate" hreflang="de" href="https://utilifyapp.net/de/url-encoder/">
+    <link rel="alternate" hreflang="pt" href="https://utilifyapp.net/pt/url-encoder/">
+    <link rel="alternate" hreflang="id" href="https://utilifyapp.net/id/url-encoder/">
+    <link rel="alternate" hreflang="hi" href="https://utilifyapp.net/hi/url-encoder/">
+    <link rel="alternate" hreflang="ja" href="https://utilifyapp.net/ja/url-encoder/">
+    <link rel="alternate" hreflang="zh-Hans" href="https://utilifyapp.net/zh-cn/url-encoder/">
+    <link rel="alternate" hreflang="zh-Hant" href="https://utilifyapp.net/zh-tw/url-encoder/">
+    <link rel="alternate" hreflang="x-default" href="https://utilifyapp.net/en/url-encoder/">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "URL Encoder / Decoder",
+        "description": "Bidirectional URL percent-encoding and decoding with component and full-URL modes.",
+        "url": "https://utilifyapp.net/th/url-encoder/",
+        "inLanguage": "th",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Any",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+
+    <style>
+        .url-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-lg);
+        }
+
+        @media (max-width: 768px) {
+            .url-grid { grid-template-columns: 1fr; }
+        }
+
+        .mode-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+        }
+    </style>
+    <link rel="manifest" href="/manifest.json">
+    <script data-utilify-adsense-loader async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content"><a href="/th/" class="site-logo">🛠️ Utilify</a></div>
+        </div>
+    </header>
+    <main class="main-content">
+        <div class="container-narrow">
+            <h1>🔗 URL Encoder / Decoder</h1>
+            <div class="security-badge"
+                style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
+                <span title="Processed securely in client-side">🔒 Secure & Client-side</span>
+                <button id="pwaInstallBtn" class="btn btn-primary"
+                    style="display: none; padding: 4px 12px; font-size: 12px;">📲 Install App</button>
+            </div>
+
+            <p>Encode characters into percent-encoded form (e.g. space → %20) or decode them back. Use 'Component' for query values; use 'Full URL' to preserve reserved characters like : / ?.</p>
+
+            <div class="mode-row">
+                <label><input type="radio" name="mode" value="component" checked> Component (encodeURIComponent)</label>
+                <label><input type="radio" name="mode" value="full"> Full URL (encodeURI)</label>
+            </div>
+
+            <div class="url-grid">
+                <div>
+                    <label class="form-label">Input</label>
+                    <textarea id="inputEl" class="form-input" style="min-height:200px;font-family:var(--font-mono);"
+                        placeholder="https://example.com/?q=hello world"></textarea>
+                </div>
+                <div>
+                    <label class="form-label">Output</label>
+                    <textarea id="outputEl" class="form-input" style="min-height:200px;font-family:var(--font-mono);"
+                        readonly></textarea>
+                </div>
+            </div>
+
+            <div class="btn-group" style="margin-top: var(--spacing-md);">
+                <button class="btn btn-primary" id="encodeBtn">Encode</button>
+                <button class="btn btn-primary" id="decodeBtn">Decode</button>
+                <button class="btn btn-secondary" id="swapBtn">Swap</button>
+                <button class="btn btn-secondary" id="copyBtn">Copy</button>
+                <button class="btn btn-secondary" id="clearBtn">Clear</button>
+            </div>
+
+            <div id="status" style="display:none;margin-top:var(--spacing-md);padding:var(--spacing-md);border-radius:var(--radius-md);"></div>
+
+            <div class="related-tools-section">
+                <h3>Related Tools</h3>
+                <div class="related-buttons">
+                    <a href="/th/base64-converter/" class="related-btn">Base64 Converter</a><a
+                        href="/th/json-formatter/" class="related-btn">JSON Formatter</a><a
+                        href="/th/jwt-decoder/" class="related-btn">JWT Decoder</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content"><p>&copy; 2025 Utilify. All rights reserved.</p>
+                <p data-legal-links style="font-size: 0.875rem; margin-top: 8px;"><a href="/th/about/">About</a> · <a href="/th/privacy/">Privacy</a> · <a href="/th/terms/">Terms</a></p></div>
+        </div>
+    </footer>
+    <script src="/assets/js/common.js"></script>
+    <script>
+        const inputEl = document.getElementById('inputEl');
+        const outputEl = document.getElementById('outputEl');
+        const statusEl = document.getElementById('status');
+
+        function getMode() {
+            const sel = document.querySelector('input[name="mode"]:checked');
+            return sel ? sel.value : 'component';
+        }
+
+        function showError(msg) {
+            statusEl.style.display = 'block';
+            statusEl.style.background = '#fee2e2';
+            statusEl.style.color = '#991b1b';
+            statusEl.style.border = '1px solid #ef4444';
+            statusEl.textContent = msg;
+        }
+
+        function clearStatus() { statusEl.style.display = 'none'; }
+
+        function encode() {
+            clearStatus();
+            try {
+                const fn = getMode() === 'full' ? encodeURI : encodeURIComponent;
+                outputEl.value = fn(inputEl.value);
+            } catch (e) {
+                showError('Encode error: ' + e.message);
+            }
+        }
+
+        function decode() {
+            clearStatus();
+            try {
+                const fn = getMode() === 'full' ? decodeURI : decodeURIComponent;
+                outputEl.value = fn(inputEl.value);
+            } catch (e) {
+                showError('Decode error: ' + e.message);
+            }
+        }
+
+        document.getElementById('encodeBtn').addEventListener('click', encode);
+        document.getElementById('decodeBtn').addEventListener('click', decode);
+        document.getElementById('swapBtn').addEventListener('click', () => {
+            const a = inputEl.value;
+            inputEl.value = outputEl.value;
+            outputEl.value = a;
+        });
+        document.getElementById('copyBtn').addEventListener('click', () => {
+            if (outputEl.value) Utils.copyToClipboard(outputEl.value);
+            else Utils.showToast('Nothing to copy.');
+        });
+        document.getElementById('clearBtn').addEventListener('click', () => {
+            inputEl.value = '';
+            outputEl.value = '';
+            clearStatus();
+        });
+    </script>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({google_ad_client:"ca-pub-6334819180242631",enable_page_level_ads:true});</script>
+</body>
+
+</html>

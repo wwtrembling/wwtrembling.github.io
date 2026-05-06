@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="{{ lang_code }}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy-Report-Only" content="default-src 'self' https: data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https:; frame-src https:;">
+    <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+    <title>{{ meta_title }}</title>
+    <meta name="description" content="{{ meta_desc }}">
+    <link rel="canonical" href="https://utilifyapp.net/{{ lang_code }}/{{ page_slug }}/">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="{{ meta_title }}">
+    <meta property="og:description" content="{{ meta_desc }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://utilifyapp.net/{{ lang_code }}/{{ page_slug }}/">
+
+    <!-- Language Alternatives -->
+    {{ alternate_links }}
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <style>
+        .static-content { max-width: 720px; margin: 0 auto; padding: var(--spacing-lg) 0; }
+        .static-content h2 { margin-top: var(--spacing-xl); }
+        .static-content p, .static-content li { line-height: 1.7; }
+        .static-content ul { padding-left: 1.5em; }
+        .static-content a { color: var(--primary-color); }
+    </style>
+    <link rel="manifest" href="/manifest.json">
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content"><a href="/{{ lang_code }}/" class="site-logo">{{ brand }}</a></div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <article class="static-content">
+                <h1>{{ page_h1 }}</h1>
+                {{ page_body_html }}
+            </article>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>{{ footer }}</p>
+                <p style="font-size: 0.875rem; margin-top: 8px;">
+                    <a href="/{{ lang_code }}/about/">{{ link_about }}</a> ·
+                    <a href="/{{ lang_code }}/privacy/">{{ link_privacy }}</a> ·
+                    <a href="/{{ lang_code }}/terms/">{{ link_terms }}</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/assets/js/common.js"></script>
+</body>
+
+</html>

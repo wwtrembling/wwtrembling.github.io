@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="{{ lang_code }}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy-Report-Only" content="default-src 'self' https: data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https:; frame-src https:;">
+    <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+    <title>{{ meta_title }}</title>
+    <meta name="description" content="{{ meta_desc }}">
+    <link rel="canonical" href="https://utilifyapp.net/{{ lang_code }}/url-encoder/">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="{{ meta_title }}">
+    <meta property="og:description" content="{{ meta_desc }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://utilifyapp.net/{{ lang_code }}/url-encoder/">
+
+    <!-- Language Alternatives -->
+    {{ alternate_links }}
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "{{ json_name }}",
+        "description": "{{ json_desc }}",
+        "url": "https://utilifyapp.net/{{ lang_code }}/url-encoder/",
+        "inLanguage": "{{ lang_code }}",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Any",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+
+    <style>
+        .url-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-lg);
+        }
+
+        @media (max-width: 768px) {
+            .url-grid { grid-template-columns: 1fr; }
+        }
+
+        .mode-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+        }
+    </style>
+    <link rel="manifest" href="/manifest.json">
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content"><a href="/{{ lang_code }}/" class="site-logo">{{ brand }}</a></div>
+        </div>
+    </header>
+    <main class="main-content">
+        <div class="container-narrow">
+            <h1>🔗 {{ title }}</h1>
+            <div class="security-badge"
+                style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
+                <span title="Processed securely in client-side">{{ secure_badge }}</span>
+                <button id="pwaInstallBtn" class="btn btn-primary"
+                    style="display: none; padding: 4px 12px; font-size: 12px;">{{ install_app }}</button>
+            </div>
+
+            <p>{{ page_desc }}</p>
+
+            <div class="mode-row">
+                <label><input type="radio" name="mode" value="component" checked> {{ mode_component }}</label>
+                <label><input type="radio" name="mode" value="full"> {{ mode_full }}</label>
+            </div>
+
+            <div class="url-grid">
+                <div>
+                    <label class="form-label">{{ label_input }}</label>
+                    <textarea id="inputEl" class="form-input" style="min-height:200px;font-family:var(--font-mono);"
+                        placeholder="{{ ph_input }}"></textarea>
+                </div>
+                <div>
+                    <label class="form-label">{{ label_output }}</label>
+                    <textarea id="outputEl" class="form-input" style="min-height:200px;font-family:var(--font-mono);"
+                        readonly></textarea>
+                </div>
+            </div>
+
+            <div class="btn-group" style="margin-top: var(--spacing-md);">
+                <button class="btn btn-primary" id="encodeBtn">{{ btn_encode }}</button>
+                <button class="btn btn-primary" id="decodeBtn">{{ btn_decode }}</button>
+                <button class="btn btn-secondary" id="swapBtn">{{ btn_swap }}</button>
+                <button class="btn btn-secondary" id="copyBtn">{{ btn_copy }}</button>
+                <button class="btn btn-secondary" id="clearBtn">{{ btn_clear }}</button>
+            </div>
+
+            <div id="status" style="display:none;margin-top:var(--spacing-md);padding:var(--spacing-md);border-radius:var(--radius-md);"></div>
+
+            <div class="related-tools-section">
+                <h3>{{ related_header }}</h3>
+                <div class="related-buttons">
+                    <a href="/{{ lang_code }}/base64-converter/" class="related-btn">{{ related_base64 }}</a><a
+                        href="/{{ lang_code }}/json-formatter/" class="related-btn">{{ related_json }}</a><a
+                        href="/{{ lang_code }}/jwt-decoder/" class="related-btn">{{ related_jwt }}</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content"><p>{{ footer }}</p></div>
+        </div>
+    </footer>
+    <script src="/assets/js/common.js"></script>
+    <script>
+        const inputEl = document.getElementById('inputEl');
+        const outputEl = document.getElementById('outputEl');
+        const statusEl = document.getElementById('status');
+
+        function getMode() {
+            const sel = document.querySelector('input[name="mode"]:checked');
+            return sel ? sel.value : 'component';
+        }
+
+        function showError(msg) {
+            statusEl.style.display = 'block';
+            statusEl.style.background = '#fee2e2';
+            statusEl.style.color = '#991b1b';
+            statusEl.style.border = '1px solid #ef4444';
+            statusEl.textContent = msg;
+        }
+
+        function clearStatus() { statusEl.style.display = 'none'; }
+
+        function encode() {
+            clearStatus();
+            try {
+                const fn = getMode() === 'full' ? encodeURI : encodeURIComponent;
+                outputEl.value = fn(inputEl.value);
+            } catch (e) {
+                showError('{{ alert_encode_error }}' + e.message);
+            }
+        }
+
+        function decode() {
+            clearStatus();
+            try {
+                const fn = getMode() === 'full' ? decodeURI : decodeURIComponent;
+                outputEl.value = fn(inputEl.value);
+            } catch (e) {
+                showError('{{ alert_decode_error }}' + e.message);
+            }
+        }
+
+        document.getElementById('encodeBtn').addEventListener('click', encode);
+        document.getElementById('decodeBtn').addEventListener('click', decode);
+        document.getElementById('swapBtn').addEventListener('click', () => {
+            const a = inputEl.value;
+            inputEl.value = outputEl.value;
+            outputEl.value = a;
+        });
+        document.getElementById('copyBtn').addEventListener('click', () => {
+            if (outputEl.value) Utils.copyToClipboard(outputEl.value);
+            else Utils.showToast('{{ alert_copy_empty }}');
+        });
+        document.getElementById('clearBtn').addEventListener('click', () => {
+            inputEl.value = '';
+            outputEl.value = '';
+            clearStatus();
+        });
+    </script>
+</body>
+
+</html>
