@@ -82,12 +82,13 @@
 </head>
 
 <body>
+    <a data-utilify-skip class="skip-link" href="#main">Skip to content</a>
     <header class="site-header">
         <div class="container">
             <div class="header-content"><a href="/vi/" class="site-logo">🛠️ Utilify</a></div>
         </div>
     </header>
-    <main class="main-content">
+    <main id="main" class="main-content">
         <div class="container-narrow">
             <h1>🔗 URL Encoder / Decoder</h1>
             <div class="security-badge"
@@ -125,7 +126,7 @@
                 <button class="btn btn-secondary" id="clearBtn">Clear</button>
             </div>
 
-            <div id="status" style="display:none;margin-top:var(--spacing-md);padding:var(--spacing-md);border-radius:var(--radius-md);"></div>
+            <div id="status" style="display:none;margin-top:var(--spacing-md);padding:var(--spacing-md);border-radius:var(--radius-md);" aria-live="polite"></div>
 
             
             <h2>How to use</h2>

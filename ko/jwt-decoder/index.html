@@ -119,12 +119,13 @@
 </head>
 
 <body>
+    <a data-utilify-skip class="skip-link" href="#main">본문으로 건너뛰기</a>
     <header class="site-header">
         <div class="container">
             <div class="header-content"><a href="/ko/" class="site-logo">🛠️ Utilify</a></div>
         </div>
     </header>
-    <main class="main-content">
+    <main id="main" class="main-content">
         <div class="container-narrow">
             <h1>🪪 JWT 디코더</h1>
             <div class="security-badge"
@@ -145,22 +146,22 @@
                 <button class="btn btn-secondary" id="clearBtn">지우기</button>
             </div>
 
-            <div id="jwtStatus" style="display: none;"></div>
+            <div id="jwtStatus" style="display: none;" aria-live="polite"></div>
 
             <div class="jwt-grid">
                 <div class="jwt-output">
                     <span class="field-label">Header</span>
-                    <pre id="headerOut"></pre>
+                    <pre id="headerOut" aria-live="polite"></pre>
                 </div>
                 <div class="jwt-output">
                     <span class="field-label">Payload</span>
-                    <pre id="payloadOut"></pre>
+                    <pre id="payloadOut" aria-live="polite"></pre>
                 </div>
             </div>
 
             <div class="jwt-output" style="margin-top: var(--spacing-lg);">
                 <span class="field-label">Signature (원본)</span>
-                <pre id="signatureOut"></pre>
+                <pre id="signatureOut" aria-live="polite"></pre>
                 <p style="font-size: 0.875rem; color: var(--text-secondary); margin-top: var(--spacing-sm);">
                     서명 검증은 발급자의 비밀키/공개키가 필요하므로 여기에서 수행하지 않습니다.
                 </p>

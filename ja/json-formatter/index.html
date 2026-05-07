@@ -126,6 +126,7 @@
 </head>
 
 <body>
+    <a data-utilify-skip class="skip-link" href="#main">Skip to content</a>
     <header class="site-header">
         <div class="container">
             <div class="header-content">
@@ -136,7 +137,7 @@
         </div>
     </header>
 
-    <main class="main-content">
+    <main id="main" class="main-content">
         <div class="container-narrow">
             <h1>JSONフォーマッター</h1>
             <div class="security-badge"
@@ -174,8 +175,8 @@
             </div>
 
             <!-- Validation Status -->
-            <div id="validationStatus" style="display: none;"></div>
-            <div id="errorMessage" style="display: none;"></div>
+            <div id="validationStatus" style="display: none;" aria-live="polite"></div>
+            <div id="errorMessage" style="display: none;" aria-live="polite"></div>
 
             
             <h2>How to use</h2>
