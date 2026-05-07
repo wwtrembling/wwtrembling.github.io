@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="{{ lang_code }}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy-Report-Only" content="default-src 'self' https: data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https:; frame-src https:;">
+    <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+    <title>{{ meta_title }}</title>
+    <meta name="description" content="{{ meta_desc }}">
+    <link rel="canonical" href="https://utilifyapp.net/{{ lang_code }}/body-fat-calculator/">
+
+    <meta property="og:title" content="{{ og_title }}">
+    <meta property="og:description" content="{{ og_desc }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://utilifyapp.net/{{ lang_code }}/body-fat-calculator/">
+
+    {{ alternate_links }}
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "{{ json_name }}",
+        "description": "{{ json_desc }}",
+        "url": "https://utilifyapp.net/{{ lang_code }}/body-fat-calculator/",
+        "inLanguage": "{{ lang_code }}",
+        "applicationCategory": "HealthApplication",
+        "operatingSystem": "Any",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+
+    <style>
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-md);
+        }
+        @media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; } }
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+        }
+        .result-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            text-align: center;
+        }
+        .result-card .label { font-size: 0.85rem; color: var(--text-secondary); }
+        .result-card .value { font-size: 1.5rem; font-weight: 700; color: var(--primary-color); margin-top: 4px; font-variant-numeric: tabular-nums; }
+        .result-card.headline .value { font-size: 2rem; }
+        .button-row { display: flex; gap: var(--spacing-sm); flex-wrap: wrap; }
+        .button-row .btn { min-width: 120px; }
+        .hip-row.hidden { display: none; }
+    </style>
+    <link rel="manifest" href="/manifest.json">
+</head>
+
+<body>
+    <header class="site-header"><div class="container"><div class="header-content"><a href="/{{ lang_code }}/" class="site-logo">{{ brand }}</a></div></div></header>
+    <main class="main-content">
+        <div class="container-narrow">
+            <h1>💪 {{ title }}</h1>
+            <div class="security-badge" style="display:flex;align-items:center;justify-content:center;gap:8px;margin:10px 0;font-size:14px;color:var(--text-secondary);">
+                <span>{{ secure_badge }}</span>
+                <button id="pwaInstallBtn" class="btn btn-primary" style="display: none; padding: 4px 12px; font-size: 12px;">{{ install_app }}</button>
+            </div>
+
+            <p>{{ page_desc }}</p>
+
+            <div class="card">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label" for="sex">{{ label_sex }}</label>
+                        <select id="sex" class="form-input" onchange="toggleHip()">
+                            <option value="male" selected>{{ opt_male }}</option>
+                            <option value="female">{{ opt_female }}</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="height">{{ label_height }}</label>
+                        <input type="number" id="height" class="form-input" inputmode="decimal" min="80" max="250" step="0.1" placeholder="{{ ph_height }}" value="{{ ph_height }}">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="neck">{{ label_neck }}</label>
+                        <input type="number" id="neck" class="form-input" inputmode="decimal" min="10" max="80" step="0.1" placeholder="{{ ph_neck }}" value="{{ ph_neck }}">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="waist">{{ label_waist }}</label>
+                        <input type="number" id="waist" class="form-input" inputmode="decimal" min="40" max="200" step="0.1" placeholder="{{ ph_waist }}" value="{{ ph_waist }}">
+                    </div>
+                    <div class="form-group hip-row hidden" id="hipGroup">
+                        <label class="form-label" for="hip">{{ label_hip }}</label>
+                        <input type="number" id="hip" class="form-input" inputmode="decimal" min="40" max="200" step="0.1" placeholder="{{ ph_hip }}" value="{{ ph_hip }}">
+                    </div>
+                </div>
+                <div class="button-row" style="margin-top: var(--spacing-md);">
+                    <button class="btn btn-primary" type="button" onclick="calculate()">{{ btn_calculate }}</button>
+                    <button class="btn" type="button" onclick="resetForm()">{{ btn_reset }}</button>
+                </div>
+            </div>
+
+            <div id="result" style="display:none;" aria-live="polite">
+                <div class="result-grid">
+                    <div class="result-card headline">
+                        <div class="label">{{ res_bfp_label }}</div>
+                        <div class="value" id="bfpVal">—</div>
+                    </div>
+                    <div class="result-card">
+                        <div class="label">{{ res_category_label }}</div>
+                        <div class="value" id="categoryVal" style="font-size:1.2rem;">—</div>
+                    </div>
+                    <div class="result-card">
+                        <div class="label">{{ res_range_label }}</div>
+                        <div class="value" id="rangeVal" style="font-size:1.2rem;">—</div>
+                    </div>
+                </div>
+
+                <div class="button-row" style="margin-top: var(--spacing-md);">
+                    <button class="btn" type="button" onclick="shareResult()">{{ btn_share }}</button>
+                </div>
+            </div>
+
+            <div class="disclaimer">{{ disclaimer }}</div>
+
+            <h2>{{ howto_header }}</h2>
+            <div class="howto-content">{{ howto_html }}</div>
+
+            <div class="related-tools-section">
+                <h3>{{ related_header }}</h3>
+                <div class="related-buttons">
+                    <a href="/{{ lang_code }}/bmi-calculator/" class="related-btn">{{ related_bmi }}</a><a
+                        href="/{{ lang_code }}/calorie-calculator/" class="related-btn">{{ related_calorie }}</a><a
+                        href="/{{ lang_code }}/unit-converter/" class="related-btn">{{ related_unit }}</a><a
+                        href="/{{ lang_code }}/date-calculator/" class="related-btn">{{ related_date }}</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="site-footer"><div class="container"><div class="footer-content"><p>{{ footer }}</p></div></div></footer>
+    <script src="/assets/js/common.js"></script>
+    <script>
+        const LOCALE = document.documentElement.lang || 'en';
+
+        function toggleHip() {
+            const sex = document.getElementById('sex').value;
+            document.getElementById('hipGroup').classList.toggle('hidden', sex !== 'female');
+        }
+
+        function classifyMale(p) {
+            if (p < 6) return { cat: '{{ cat_essential }}', range: '8–19%' };
+            if (p < 14) return { cat: '{{ cat_athletes }}', range: '8–19%' };
+            if (p < 18) return { cat: '{{ cat_fitness }}', range: '8–19%' };
+            if (p < 25) return { cat: '{{ cat_average }}', range: '8–19%' };
+            return { cat: '{{ cat_obese }}', range: '8–19%' };
+        }
+        function classifyFemale(p) {
+            if (p < 14) return { cat: '{{ cat_essential }}', range: '21–32%' };
+            if (p < 21) return { cat: '{{ cat_athletes }}', range: '21–32%' };
+            if (p < 25) return { cat: '{{ cat_fitness }}', range: '21–32%' };
+            if (p < 32) return { cat: '{{ cat_average }}', range: '21–32%' };
+            return { cat: '{{ cat_obese }}', range: '21–32%' };
+        }
+
+        function calculate() {
+            const sex = document.getElementById('sex').value;
+            const h = parseFloat(document.getElementById('height').value);
+            const neck = parseFloat(document.getElementById('neck').value);
+            const waist = parseFloat(document.getElementById('waist').value);
+            const hip = parseFloat(document.getElementById('hip').value);
+            if (!(h > 0) || !(neck > 0) || !(waist > 0) || (sex === 'female' && !(hip > 0))) {
+                alert('{{ alert_invalid }}');
+                return;
+            }
+            let bfp;
+            if (sex === 'male') {
+                const inner = waist - neck;
+                if (inner <= 0) { alert('{{ alert_negative_log }}'); return; }
+                bfp = 86.010 * Math.log10(inner) - 70.041 * Math.log10(h) + 36.76;
+            } else {
+                const inner = waist + hip - neck;
+                if (inner <= 0) { alert('{{ alert_negative_log }}'); return; }
+                bfp = 163.205 * Math.log10(inner) - 97.684 * Math.log10(h) - 78.387;
+            }
+            bfp = Math.max(0, Math.min(70, bfp));
+            const c = sex === 'male' ? classifyMale(bfp) : classifyFemale(bfp);
+
+            document.getElementById('bfpVal').textContent = bfp.toFixed(1) + '%';
+            document.getElementById('categoryVal').textContent = c.cat;
+            document.getElementById('rangeVal').textContent = c.range;
+            document.getElementById('result').style.display = 'block';
+        }
+
+        function resetForm() {
+            document.getElementById('sex').value = 'male';
+            document.getElementById('height').value = '{{ ph_height }}';
+            document.getElementById('neck').value = '{{ ph_neck }}';
+            document.getElementById('waist').value = '{{ ph_waist }}';
+            document.getElementById('hip').value = '{{ ph_hip }}';
+            toggleHip();
+            document.getElementById('result').style.display = 'none';
+        }
+
+        async function shareResult() {
+            const bfp = document.getElementById('bfpVal').textContent;
+            if (bfp === '—') return;
+            const num = bfp.replace('%', '');
+            const text = '{{ share_text }}'.replace('{value}', num) + ' ' + location.href;
+            if (navigator.share) {
+                try { await navigator.share({ title: '{{ title }}', text }); return; }
+                catch (e) { if (e && e.name === 'AbortError') return; }
+            }
+            try {
+                await navigator.clipboard.writeText(text);
+                alert('{{ share_copied }}');
+            } catch (e) { /* clipboard blocked — silent */ }
+        }
+
+        // Initialize hip row visibility on load.
+        toggleHip();
+    </script>
+</body>
+
+</html>

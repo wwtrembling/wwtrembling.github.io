@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="hi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy-Report-Only" content="default-src 'self' https: data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https:; frame-src https:;">
+    <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+    <title>Calorie Calculator — BMR + TDEE (Mifflin-St Jeor) - Utilify</title>
+    <meta name="description" content="Calculate your basal metabolic rate (BMR) and total daily energy expenditure (TDEE) with the Mifflin-St Jeor formula. Get target calories for weight loss, maintenance, or muscle gain.">
+    <link rel="canonical" href="https://utilifyapp.net/hi/calorie-calculator/">
+
+    <meta property="og:title" content="Calorie & BMR Calculator - Utilify">
+    <meta property="og:description" content="BMR + TDEE + targets for cutting, maintenance, and bulking.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://utilifyapp.net/hi/calorie-calculator/">
+
+    <link rel="alternate" hreflang="en" href="https://utilifyapp.net/en/calorie-calculator/">
+    <link rel="alternate" hreflang="ko" href="https://utilifyapp.net/ko/calorie-calculator/">
+    <link rel="alternate" hreflang="vi" href="https://utilifyapp.net/vi/calorie-calculator/">
+    <link rel="alternate" hreflang="th" href="https://utilifyapp.net/th/calorie-calculator/">
+    <link rel="alternate" hreflang="de" href="https://utilifyapp.net/de/calorie-calculator/">
+    <link rel="alternate" hreflang="pt" href="https://utilifyapp.net/pt/calorie-calculator/">
+    <link rel="alternate" hreflang="id" href="https://utilifyapp.net/id/calorie-calculator/">
+    <link rel="alternate" hreflang="hi" href="https://utilifyapp.net/hi/calorie-calculator/">
+    <link rel="alternate" hreflang="ja" href="https://utilifyapp.net/ja/calorie-calculator/">
+    <link rel="alternate" hreflang="zh-Hans" href="https://utilifyapp.net/zh-cn/calorie-calculator/">
+    <link rel="alternate" hreflang="zh-Hant" href="https://utilifyapp.net/zh-tw/calorie-calculator/">
+    <link rel="alternate" hreflang="x-default" href="https://utilifyapp.net/en/calorie-calculator/">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Calorie & BMR Calculator",
+        "description": "Mifflin-St Jeor BMR plus activity multiplier and goal-adjusted calorie targets.",
+        "url": "https://utilifyapp.net/hi/calorie-calculator/",
+        "inLanguage": "hi",
+        "applicationCategory": "HealthApplication",
+        "operatingSystem": "Any",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+
+    <style>
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-md);
+        }
+        @media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; } }
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+        }
+        .result-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            text-align: center;
+        }
+        .result-card .label { font-size: 0.85rem; color: var(--text-secondary); }
+        .result-card .value { font-size: 1.5rem; font-weight: 700; color: var(--primary-color); margin-top: 4px; font-variant-numeric: tabular-nums; }
+        .result-card.headline .value { font-size: 2rem; }
+        .button-row { display: flex; gap: var(--spacing-sm); flex-wrap: wrap; }
+        .button-row .btn { min-width: 120px; }
+    </style>
+    <link rel="manifest" href="/manifest.json">
+    <script data-utilify-adsense-loader async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631" crossorigin="anonymous"></script>
+    <meta data-utilify-og property="og:image" content="https://utilifyapp.net/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Utilify">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://utilifyapp.net/assets/og-image.png">
+    <link data-utilify-favicon rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+</head>
+
+<body>
+    <a data-utilify-skip class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header"><div class="container"><div class="header-content"><a href="/hi/" class="site-logo">Utilify</a></div></div></header>
+    <main id="main" class="main-content">
+        <div class="container-narrow">
+            <h1>🔥 Calorie & BMR Calculator</h1>
+            <div class="security-badge" style="display:flex;align-items:center;justify-content:center;gap:8px;margin:10px 0;font-size:14px;color:var(--text-secondary);">
+                <span>🔒 सुरक्षित और क्लाइंट-साइड</span>
+                <button id="pwaInstallBtn" class="btn btn-primary" style="display: none; padding: 4px 12px; font-size: 12px;">📲 ऐप इंस्टॉल करें</button>
+                    <button data-utilify-fav-toggle class="fav-toggle-page" type="button" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
+            </div>
+
+            <p>Enter your age, sex, height, weight, and activity level to get your basal metabolic rate, total daily calorie burn, and recommended targets for weight loss, maintenance, or muscle gain. Uses the Mifflin-St Jeor equation, the most accurate formula for healthy adults.</p>
+
+            <div class="card">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label" for="age">Age (years)</label>
+                        <input type="number" id="age" class="form-input" inputmode="numeric" min="10" max="120" step="1" placeholder="30" value="30">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="sex">Sex</label>
+                        <select id="sex" class="form-input">
+                            <option value="male" selected>Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="height">Height (cm)</label>
+                        <input type="number" id="height" class="form-input" inputmode="decimal" min="80" max="250" step="0.1" placeholder="170" value="170">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="weight">Weight (kg)</label>
+                        <input type="number" id="weight" class="form-input" inputmode="decimal" min="20" max="350" step="0.1" placeholder="70" value="70">
+                    </div>
+                    <div class="form-group" style="grid-column: 1 / -1;">
+                        <label class="form-label" for="activity">Activity level</label>
+                        <select id="activity" class="form-input">
+                            <option value="1.2">Sedentary (little to no exercise)</option>
+                            <option value="1.375" selected>Light (1–3 days / week)</option>
+                            <option value="1.55">Moderate (3–5 days / week)</option>
+                            <option value="1.725">Active (6–7 days / week)</option>
+                            <option value="1.9">Very active (twice daily / hard training)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="button-row" style="margin-top: var(--spacing-md);">
+                    <button class="btn btn-primary" type="button" onclick="calculate()">Calculate</button>
+                    <button class="btn" type="button" onclick="resetForm()">Reset</button>
+                </div>
+            </div>
+
+            <div id="result" style="display:none;" aria-live="polite">
+                <div class="result-grid">
+                    <div class="result-card headline">
+                        <div class="label">BMR (kcal/day)</div>
+                        <div class="value" id="bmrVal">—</div>
+                    </div>
+                    <div class="result-card">
+                        <div class="label">TDEE (kcal/day)</div>
+                        <div class="value" id="tdeeVal">—</div>
+                    </div>
+                </div>
+
+                <h3>Daily calorie targets</h3>
+                <div class="result-grid">
+                    <div class="result-card">
+                        <div class="label">Weight loss (−500)</div>
+                        <div class="value" id="lossVal">—</div>
+                    </div>
+                    <div class="result-card">
+                        <div class="label">Maintenance</div>
+                        <div class="value" id="maintainVal">—</div>
+                    </div>
+                    <div class="result-card">
+                        <div class="label">Muscle gain (+300)</div>
+                        <div class="value" id="gainVal">—</div>
+                    </div>
+                </div>
+
+                <div class="button-row" style="margin-top: var(--spacing-md);">
+                    <button class="btn" type="button" onclick="shareResult()">Share result</button>
+                </div>
+            </div>
+
+            <div class="disclaimer">Estimate only — not medical advice. Talk to a registered dietitian or physician before changing your diet, especially if pregnant, nursing, or managing a condition.</div>
+
+            <h2>How to use</h2>
+            <div class="howto-content"><ol><li>Enter your age in years.</li><li>Pick your biological sex (the formula has different constants for male and female).</li><li>Enter your height in centimeters and weight in kilograms.</li><li>Pick the activity level that best matches a typical week. Most desk workers are sedentary or light even with weekend exercise.</li><li>Click <strong>Calculate</strong> — BMR, TDEE, and three goal-adjusted targets appear.</li></ol><p><strong>Formula (Mifflin-St Jeor)</strong>: Male BMR = 10·W + 6.25·H − 5·A + 5; Female BMR = 10·W + 6.25·H − 5·A − 161. TDEE = BMR × activity factor (sedentary 1.2, light 1.375, moderate 1.55, active 1.725, very active 1.9).</p><p>BMR is what your body burns at complete rest — heart, brain, breathing. TDEE includes movement and exercise. The 500 kcal/day deficit is a classic 1 lb/week weight-loss target; +300 supports lean muscle gain when paired with strength training.</p></div>
+
+            <div class="related-tools-section">
+                <h3>Related Tools</h3>
+                <div class="related-buttons">
+                    <a href="/hi/bmi-calculator/" class="related-btn">BMI Calculator</a><a
+                        href="/hi/body-fat-calculator/" class="related-btn">Body Fat Calculator</a><a
+                        href="/hi/unit-converter/" class="related-btn">Unit Converter</a><a
+                        href="/hi/date-calculator/" class="related-btn">Date Calculator</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="site-footer"><div class="container"><div class="footer-content"><p></p>
+                <p data-legal-links style="font-size: 0.875rem; margin-top: 8px;"><a href="/hi/about/">About</a> · <a href="/hi/privacy/">Privacy</a> · <a href="/hi/terms/">Terms</a></p></div></div></footer>
+    <script src="/assets/js/common.js"></script>
+    <script>
+        const LOCALE = document.documentElement.lang || 'en';
+        const fmt = n => Number(n).toLocaleString(LOCALE, { maximumFractionDigits: 0 });
+
+        function calculate() {
+            const age = parseFloat(document.getElementById('age').value);
+            const sex = document.getElementById('sex').value;
+            const h = parseFloat(document.getElementById('height').value);
+            const w = parseFloat(document.getElementById('weight').value);
+            const act = parseFloat(document.getElementById('activity').value);
+            if (!(age > 0) || !(h > 0) || !(w > 0)) {
+                alert('Please enter a positive age, height, and weight.');
+                return;
+            }
+            // Mifflin-St Jeor
+            const bmr = sex === 'male'
+                ? 10 * w + 6.25 * h - 5 * age + 5
+                : 10 * w + 6.25 * h - 5 * age - 161;
+            const tdee = bmr * act;
+            document.getElementById('bmrVal').textContent = fmt(bmr);
+            document.getElementById('tdeeVal').textContent = fmt(tdee);
+            document.getElementById('lossVal').textContent = fmt(tdee - 500);
+            document.getElementById('maintainVal').textContent = fmt(tdee);
+            document.getElementById('gainVal').textContent = fmt(tdee + 300);
+            document.getElementById('result').style.display = 'block';
+        }
+
+        function resetForm() {
+            document.getElementById('age').value = '30';
+            document.getElementById('sex').value = 'male';
+            document.getElementById('height').value = '170';
+            document.getElementById('weight').value = '70';
+            document.getElementById('activity').value = '1.375';
+            document.getElementById('result').style.display = 'none';
+        }
+
+        async function shareResult() {
+            const tdee = document.getElementById('tdeeVal').textContent;
+            if (tdee === '—') return;
+            const text = 'My daily calorie need: {value} kcal —'.replace('{value}', tdee) + ' ' + location.href;
+            if (navigator.share) {
+                try { await navigator.share({ title: 'Calorie & BMR Calculator', text }); return; }
+                catch (e) { if (e && e.name === 'AbortError') return; }
+            }
+            try {
+                await navigator.clipboard.writeText(text);
+                alert('Result copied to clipboard.');
+            } catch (e) { /* clipboard blocked — silent */ }
+        }
+    </script>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({google_ad_client:"ca-pub-6334819180242631",enable_page_level_ads:true});</script>
+    <script data-utilify-fav-toggle-script>(function(){var btn=document.querySelector(".fav-toggle-page");if(!btn)return;var m=location.pathname.match(/^\/[^\/]+\/([^\/]+)\/?$/);if(!m)return;var slug=m[1],K="utilify_favorites";function g(){return (localStorage.getItem(K)||"").split(",").filter(Boolean);}function s(a){localStorage.setItem(K,Array.from(new Set(a)).join(","));}function p(f){btn.textContent=f?"★":"☆";btn.classList.toggle("is-fav",f);btn.setAttribute("aria-label",f?btn.dataset.removeLabel:btn.dataset.addLabel);btn.setAttribute("aria-pressed",String(f));}p(g().indexOf(slug)>-1);btn.addEventListener("click",function(){var a=g(),n=a.indexOf(slug)>-1?a.filter(function(x){return x!==slug;}):a.concat([slug]);s(n);p(n.indexOf(slug)>-1);});})();</script>
+</body>
+
+</html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="{{ lang_code }}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy-Report-Only" content="default-src 'self' https: data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https:; frame-src https:;">
+    <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+    <title>{{ meta_title }}</title>
+    <meta name="description" content="{{ meta_desc }}">
+    <link rel="canonical" href="https://utilifyapp.net/{{ lang_code }}/pregnancy-calculator/">
+
+    <meta property="og:title" content="{{ og_title }}">
+    <meta property="og:description" content="{{ og_desc }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://utilifyapp.net/{{ lang_code }}/pregnancy-calculator/">
+
+    {{ alternate_links }}
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "{{ json_name }}",
+        "description": "{{ json_desc }}",
+        "url": "https://utilifyapp.net/{{ lang_code }}/pregnancy-calculator/",
+        "inLanguage": "{{ lang_code }}",
+        "applicationCategory": "HealthApplication",
+        "operatingSystem": "Any",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+
+    <style>
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: var(--spacing-md);
+        }
+        @media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; } }
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+        }
+        .result-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            text-align: center;
+        }
+        .result-card .label { font-size: 0.85rem; color: var(--text-secondary); }
+        .result-card .value { font-size: 1.4rem; font-weight: 700; color: var(--primary-color); margin-top: 4px; font-variant-numeric: tabular-nums; }
+        .result-card.headline .value { font-size: 1.8rem; }
+        .progress-wrap {
+            margin: var(--spacing-md) 0;
+            background: var(--bg-secondary);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            height: 18px;
+            border: 1px solid var(--border-color);
+        }
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            transition: width 0.4s ease-out;
+        }
+        .button-row { display: flex; gap: var(--spacing-sm); flex-wrap: wrap; }
+        .button-row .btn { min-width: 120px; }
+    </style>
+    <link rel="manifest" href="/manifest.json">
+</head>
+
+<body>
+    <header class="site-header"><div class="container"><div class="header-content"><a href="/{{ lang_code }}/" class="site-logo">{{ brand }}</a></div></div></header>
+    <main class="main-content">
+        <div class="container-narrow">
+            <h1>🤰 {{ title }}</h1>
+            <div class="security-badge" style="display:flex;align-items:center;justify-content:center;gap:8px;margin:10px 0;font-size:14px;color:var(--text-secondary);">
+                <span>{{ secure_badge }}</span>
+                <button id="pwaInstallBtn" class="btn btn-primary" style="display: none; padding: 4px 12px; font-size: 12px;">{{ install_app }}</button>
+            </div>
+
+            <p>{{ page_desc }}</p>
+
+            <div class="card">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label" for="lmp">{{ label_lmp }}</label>
+                        <input type="date" id="lmp" class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="cycle">{{ label_cycle }}</label>
+                        <input type="number" id="cycle" class="form-input" inputmode="numeric" min="21" max="45" step="1" placeholder="{{ ph_cycle }}" value="{{ ph_cycle }}">
+                    </div>
+                </div>
+                <div class="button-row" style="margin-top: var(--spacing-md);">
+                    <button class="btn btn-primary" type="button" onclick="calculate()">{{ btn_calculate }}</button>
+                    <button class="btn" type="button" onclick="resetForm()">{{ btn_reset }}</button>
+                </div>
+            </div>
+
+            <div id="result" style="display:none;" aria-live="polite">
+                <div class="result-grid">
+                    <div class="result-card headline">
+                        <div class="label">{{ res_due_label }}</div>
+                        <div class="value" id="dueVal">—</div>
+                    </div>
+                    <div class="result-card">
+                        <div class="label">{{ res_week_label }}</div>
+                        <div class="value" id="weekVal">—</div>
+                    </div>
+                    <div class="result-card">
+                        <div class="label">{{ res_trimester_label }}</div>
+                        <div class="value" id="trimesterVal">—</div>
+                    </div>
+                    <div class="result-card">
+                        <div class="label">{{ res_remaining_label }}</div>
+                        <div class="value" id="remainingVal">—</div>
+                    </div>
+                </div>
+
+                <div class="progress-wrap" aria-hidden="true">
+                    <div class="progress-bar" id="progressBar" style="width: 0%;"></div>
+                </div>
+
+                <div class="button-row" style="margin-top: var(--spacing-md);">
+                    <button class="btn" type="button" onclick="shareResult()">{{ btn_share }}</button>
+                </div>
+            </div>
+
+            <div class="disclaimer">{{ disclaimer }}</div>
+
+            <h2>{{ howto_header }}</h2>
+            <div class="howto-content">{{ howto_html }}</div>
+
+            <div class="related-tools-section">
+                <h3>{{ related_header }}</h3>
+                <div class="related-buttons">
+                    <a href="/{{ lang_code }}/date-calculator/" class="related-btn">{{ related_date }}</a><a
+                        href="/{{ lang_code }}/bmi-calculator/" class="related-btn">{{ related_bmi }}</a><a
+                        href="/{{ lang_code }}/calorie-calculator/" class="related-btn">{{ related_calorie }}</a><a
+                        href="/{{ lang_code }}/unit-converter/" class="related-btn">{{ related_unit }}</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="site-footer"><div class="container"><div class="footer-content"><p>{{ footer }}</p></div></div></footer>
+    <script src="/assets/js/common.js"></script>
+    <script>
+        const LOCALE = document.documentElement.lang || 'en';
+        const DAY_MS = 86400000;
+
+        function calculate() {
+            const lmpStr = document.getElementById('lmp').value;
+            const cycle = parseInt(document.getElementById('cycle').value, 10);
+            if (!lmpStr || !(cycle >= 21 && cycle <= 45)) {
+                alert('{{ alert_invalid }}');
+                return;
+            }
+            const lmp = new Date(lmpStr + 'T00:00:00');
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            if (lmp > today) { alert('{{ alert_future }}'); return; }
+
+            // Naegele's rule + cycle adjustment.
+            const due = new Date(lmp.getTime() + (280 + (cycle - 28)) * DAY_MS);
+            const elapsedDays = Math.floor((today - lmp) / DAY_MS);
+            const week = Math.floor(elapsedDays / 7);
+            const day = elapsedDays % 7;
+            const remaining = Math.max(0, Math.floor((due - today) / DAY_MS));
+
+            let tri;
+            if (week < 14) tri = '{{ trimester_1 }}';
+            else if (week < 28) tri = '{{ trimester_2 }}';
+            else tri = '{{ trimester_3 }}';
+
+            const dueText = due.toLocaleDateString(LOCALE, { year: 'numeric', month: 'long', day: 'numeric' });
+            document.getElementById('dueVal').textContent = dueText;
+            document.getElementById('weekVal').textContent = '{{ week_format }}'
+                .replace('{week}', week)
+                .replace('{day}', day);
+            document.getElementById('trimesterVal').textContent = tri;
+            document.getElementById('remainingVal').textContent = remaining.toLocaleString(LOCALE);
+
+            const totalDays = 280 + (cycle - 28);
+            const progress = Math.max(0, Math.min(100, (elapsedDays / totalDays) * 100));
+            document.getElementById('progressBar').style.width = progress.toFixed(1) + '%';
+
+            document.getElementById('result').style.display = 'block';
+        }
+
+        function resetForm() {
+            document.getElementById('lmp').value = '';
+            document.getElementById('cycle').value = '{{ ph_cycle }}';
+            document.getElementById('result').style.display = 'none';
+        }
+
+        async function shareResult() {
+            const due = document.getElementById('dueVal').textContent;
+            if (due === '—') return;
+            const text = '{{ share_text }}'.replace('{value}', due) + ' ' + location.href;
+            if (navigator.share) {
+                try { await navigator.share({ title: '{{ title }}', text }); return; }
+                catch (e) { if (e && e.name === 'AbortError') return; }
+            }
+            try {
+                await navigator.clipboard.writeText(text);
+                alert('{{ share_copied }}');
+            } catch (e) { /* clipboard blocked — silent */ }
+        }
+    </script>
+</body>
+
+</html>

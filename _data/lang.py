@@ -201,6 +201,7 @@ INDEX_PAGE = {
         "fav_remove_aria": "Remove from favorites",
         "subcat_all": "All",
         "subcat_finance": "Finance",
+        "subcat_health": "Health",
         "subcat_filter_aria": "Subcategory filter"
     },
     "ko": {
@@ -230,6 +231,7 @@ INDEX_PAGE = {
         "fav_remove_aria": "즐겨찾기에서 제거",
         "subcat_all": "전체",
         "subcat_finance": "금융",
+        "subcat_health": "건강",
         "subcat_filter_aria": "하위 카테고리 필터"
     },
     "vi": {
@@ -6909,5 +6911,329 @@ RETIREMENT_CALCULATOR = {
         "related_date": "날짜 계산기",
         "related_bmi": "BMI 계산기",
         "card_blurb": "노후자금이 기대수명까지 버티는지 누적·인출 2단계로 즉시 시뮬레이션."
+    }
+}
+
+
+CALORIE_CALCULATOR = {
+    "en": {
+        "title": "Calorie & BMR Calculator",
+        "meta_title": "Calorie Calculator — BMR + TDEE (Mifflin-St Jeor) - Utilify",
+        "meta_desc": "Calculate your basal metabolic rate (BMR) and total daily energy expenditure (TDEE) with the Mifflin-St Jeor formula. Get target calories for weight loss, maintenance, or muscle gain.",
+        "og_title": "Calorie & BMR Calculator - Utilify",
+        "og_desc": "BMR + TDEE + targets for cutting, maintenance, and bulking.",
+        "json_name": "Calorie & BMR Calculator",
+        "json_desc": "Mifflin-St Jeor BMR plus activity multiplier and goal-adjusted calorie targets.",
+        "page_desc": "Enter your age, sex, height, weight, and activity level to get your basal metabolic rate, total daily calorie burn, and recommended targets for weight loss, maintenance, or muscle gain. Uses the Mifflin-St Jeor equation, the most accurate formula for healthy adults.",
+        "label_age": "Age (years)",
+        "label_sex": "Sex",
+        "label_height": "Height (cm)",
+        "label_weight": "Weight (kg)",
+        "label_activity": "Activity level",
+        "ph_age": "30",
+        "ph_height": "170",
+        "ph_weight": "70",
+        "opt_male": "Male",
+        "opt_female": "Female",
+        "opt_sedentary": "Sedentary (little to no exercise)",
+        "opt_light": "Light (1–3 days / week)",
+        "opt_moderate": "Moderate (3–5 days / week)",
+        "opt_active": "Active (6–7 days / week)",
+        "opt_very_active": "Very active (twice daily / hard training)",
+        "btn_calculate": "Calculate",
+        "btn_reset": "Reset",
+        "btn_share": "Share result",
+        "share_text": "My daily calorie need: {value} kcal —",
+        "share_copied": "Result copied to clipboard.",
+        "res_bmr_label": "BMR (kcal/day)",
+        "res_tdee_label": "TDEE (kcal/day)",
+        "res_targets_header": "Daily calorie targets",
+        "target_loss": "Weight loss (−500)",
+        "target_maintain": "Maintenance",
+        "target_gain": "Muscle gain (+300)",
+        "alert_invalid": "Please enter a positive age, height, and weight.",
+        "disclaimer": "Estimate only — not medical advice. Talk to a registered dietitian or physician before changing your diet, especially if pregnant, nursing, or managing a condition.",
+        "howto_header": "How to use",
+        "howto_html": (
+            "<ol>"
+            "<li>Enter your age in years.</li>"
+            "<li>Pick your biological sex (the formula has different constants for male and female).</li>"
+            "<li>Enter your height in centimeters and weight in kilograms.</li>"
+            "<li>Pick the activity level that best matches a typical week. Most desk workers are sedentary or light even with weekend exercise.</li>"
+            "<li>Click <strong>Calculate</strong> — BMR, TDEE, and three goal-adjusted targets appear.</li>"
+            "</ol>"
+            "<p><strong>Formula (Mifflin-St Jeor)</strong>: Male BMR = 10·W + 6.25·H − 5·A + 5; Female BMR = 10·W + 6.25·H − 5·A − 161. TDEE = BMR × activity factor (sedentary 1.2, light 1.375, moderate 1.55, active 1.725, very active 1.9).</p>"
+            "<p>BMR is what your body burns at complete rest — heart, brain, breathing. TDEE includes movement and exercise. The 500 kcal/day deficit is a classic 1 lb/week weight-loss target; +300 supports lean muscle gain when paired with strength training.</p>"
+        ),
+        "related_header": "Related Tools",
+        "related_bmi": "BMI Calculator",
+        "related_body_fat": "Body Fat Calculator",
+        "related_unit": "Unit Converter",
+        "related_date": "Date Calculator",
+        "card_blurb": "BMR + TDEE + cut/maintain/bulk calorie targets (Mifflin-St Jeor)."
+    },
+    "ko": {
+        "title": "칼로리·BMR 계산기",
+        "meta_title": "칼로리 계산기 — BMR·TDEE 자동 계산 (Mifflin-St Jeor) - Utilify",
+        "meta_desc": "기초대사량(BMR)과 1일 총 소모 칼로리(TDEE)를 Mifflin-St Jeor 공식으로 계산. 다이어트·유지·근증량 목표 칼로리 함께 제공.",
+        "og_title": "칼로리·BMR 계산기 - Utilify",
+        "og_desc": "기초대사량과 1일 활동 칼로리, 목표별 권장 섭취량까지 한번에.",
+        "json_name": "칼로리·BMR 계산기",
+        "json_desc": "Mifflin-St Jeor 공식 기반 기초대사량 + 활동계수 + 목표별 권장 섭취량.",
+        "page_desc": "나이·성별·키·체중·활동 수준을 입력하면 기초대사량, 1일 총 소모 칼로리, 다이어트/유지/근증량 목표 칼로리를 계산합니다. 건강한 성인에게 가장 정확한 Mifflin-St Jeor 공식을 사용합니다.",
+        "label_age": "나이 (년)",
+        "label_sex": "성별",
+        "label_height": "키 (cm)",
+        "label_weight": "체중 (kg)",
+        "label_activity": "활동 수준",
+        "ph_age": "30",
+        "ph_height": "170",
+        "ph_weight": "70",
+        "opt_male": "남성",
+        "opt_female": "여성",
+        "opt_sedentary": "거의 활동 없음 (운동 안 함)",
+        "opt_light": "가벼운 활동 (주 1–3회)",
+        "opt_moderate": "보통 활동 (주 3–5회)",
+        "opt_active": "활발한 활동 (주 6–7회)",
+        "opt_very_active": "매우 활발 (하루 2회 또는 강도 높은 훈련)",
+        "btn_calculate": "계산",
+        "btn_reset": "초기화",
+        "btn_share": "결과 공유",
+        "share_text": "내 1일 권장 칼로리: {value} kcal —",
+        "share_copied": "결과가 클립보드에 복사되었습니다.",
+        "res_bmr_label": "기초대사량 (kcal/일)",
+        "res_tdee_label": "1일 총 소모 (kcal/일)",
+        "res_targets_header": "목표별 1일 칼로리",
+        "target_loss": "감량 (−500)",
+        "target_maintain": "유지",
+        "target_gain": "근증량 (+300)",
+        "alert_invalid": "나이·키·체중은 양수로 입력해 주세요.",
+        "disclaimer": "추정치 — 의료 자문이 아닙니다. 임신·수유·질환 관리 중이라면 식단 변경 전 의료진 또는 임상영양사와 상의하세요.",
+        "howto_header": "사용 방법",
+        "howto_html": (
+            "<ol>"
+            "<li>나이를 년 단위로 입력하세요.</li>"
+            "<li>생물학적 성별을 선택하세요 (공식 상수가 남녀에 따라 다름).</li>"
+            "<li>키(cm)와 체중(kg)을 입력하세요.</li>"
+            "<li>일주일 평균에 가까운 활동 수준을 선택하세요. 사무직은 주말 운동을 해도 보통 \"거의 없음\" 또는 \"가벼움\"에 해당합니다.</li>"
+            "<li><strong>계산</strong>을 누르면 BMR, TDEE, 그리고 목표 칼로리 3가지가 표시됩니다.</li>"
+            "</ol>"
+            "<p><strong>공식 (Mifflin-St Jeor)</strong>: 남성 BMR = 10·W + 6.25·H − 5·A + 5; 여성 BMR = 10·W + 6.25·H − 5·A − 161. TDEE = BMR × 활동계수 (거의 없음 1.2, 가벼움 1.375, 보통 1.55, 활발 1.725, 매우 활발 1.9).</p>"
+            "<p>BMR은 완전 휴식 상태에서 소모되는 칼로리(심장·뇌·호흡)이고, TDEE는 활동까지 포함한 총 소모량입니다. −500 kcal/일은 주당 약 0.45 kg 감량 목표, +300은 근력 운동과 함께 근육 증가 지원에 적합합니다.</p>"
+        ),
+        "related_header": "관련 도구",
+        "related_bmi": "BMI 계산기",
+        "related_body_fat": "체지방 계산기",
+        "related_unit": "단위 변환기",
+        "related_date": "날짜 계산기",
+        "card_blurb": "Mifflin-St Jeor 공식으로 BMR·TDEE·목표별(감량/유지/증량) 칼로리 즉시 계산."
+    }
+}
+
+
+PREGNANCY_CALCULATOR = {
+    "en": {
+        "title": "Pregnancy Due Date Calculator",
+        "meta_title": "Pregnancy Calculator — Due Date, Week, Trimester - Utilify",
+        "meta_desc": "Calculate your due date, current pregnancy week, and trimester from your last menstrual period (LMP). Naegele's rule with cycle-length adjustment.",
+        "og_title": "Pregnancy Due Date Calculator - Utilify",
+        "og_desc": "Due date, current week, trimester, and days remaining.",
+        "json_name": "Pregnancy Calculator",
+        "json_desc": "Estimate due date and current pregnancy week from last menstrual period.",
+        "page_desc": "Enter the first day of your last menstrual period (LMP) and your typical cycle length. The calculator returns the estimated due date, your current pregnancy week and day, the trimester, and how many days remain until delivery. Naegele's rule plus a cycle-length adjustment.",
+        "label_lmp": "First day of last menstrual period",
+        "label_cycle": "Average cycle length (days)",
+        "ph_cycle": "28",
+        "btn_calculate": "Calculate",
+        "btn_reset": "Reset",
+        "btn_share": "Share result",
+        "share_text": "My estimated due date: {value} —",
+        "share_copied": "Result copied to clipboard.",
+        "res_due_label": "Estimated due date",
+        "res_week_label": "Current week",
+        "res_trimester_label": "Trimester",
+        "res_remaining_label": "Days remaining",
+        "trimester_1": "First trimester",
+        "trimester_2": "Second trimester",
+        "trimester_3": "Third trimester",
+        "week_format": "Week {week} day {day}",
+        "alert_invalid": "Enter a valid LMP date and a cycle length between 21 and 45 days.",
+        "alert_future": "LMP cannot be in the future.",
+        "disclaimer": "Estimate only — not medical advice. Only ~5% of babies arrive on the predicted due date. An ultrasound dating scan is more accurate, especially if cycles are irregular.",
+        "howto_header": "How to use",
+        "howto_html": (
+            "<ol>"
+            "<li>Pick the first day of your last menstrual period (LMP). This is day 1 of the cycle that resulted in pregnancy.</li>"
+            "<li>Enter your typical cycle length. The default is 28 days; adjust if yours is consistently shorter or longer.</li>"
+            "<li>Click <strong>Calculate</strong>. You'll see the estimated due date, your current pregnancy week, the trimester, and days remaining.</li>"
+            "</ol>"
+            "<p><strong>Formula (Naegele's rule)</strong>: due date = LMP + 280 days, then adjusted by (cycle length − 28) days to account for variations in ovulation timing. Pregnancy is dated from LMP (not conception), so week 1 starts before you actually conceived. Trimesters: 1st (weeks 1–13), 2nd (14–27), 3rd (28–40+).</p>"
+            "<p>If your cycles are irregular or you don't know your LMP, an ultrasound dating scan in the first trimester is the most accurate method.</p>"
+        ),
+        "related_header": "Related Tools",
+        "related_date": "Date Calculator",
+        "related_bmi": "BMI Calculator",
+        "related_calorie": "Calorie Calculator",
+        "related_unit": "Unit Converter",
+        "card_blurb": "Due date + current pregnancy week + trimester from your LMP. Cycle-length adjustable."
+    },
+    "ko": {
+        "title": "임신 출산예정일 계산기",
+        "meta_title": "임신 계산기 — 출산예정일·주수·삼분기 - Utilify",
+        "meta_desc": "마지막 생리일(LMP)로 출산예정일, 현재 임신 주수와 일수, 삼분기를 계산. Naegele 공식 + 생리주기 보정.",
+        "og_title": "임신 출산예정일 계산기 - Utilify",
+        "og_desc": "출산예정일·현재 주수·삼분기·남은 일수를 한번에.",
+        "json_name": "임신 출산예정일 계산기",
+        "json_desc": "마지막 생리일로부터 출산예정일과 현재 임신 주수를 추정.",
+        "page_desc": "마지막 생리 시작일(LMP)과 평소 생리주기 길이를 입력하면 출산예정일, 현재 임신 주수와 일수, 삼분기, 남은 일수를 계산합니다. Naegele 공식과 생리주기 보정을 함께 적용합니다.",
+        "label_lmp": "마지막 생리 시작일",
+        "label_cycle": "평소 생리주기 (일)",
+        "ph_cycle": "28",
+        "btn_calculate": "계산",
+        "btn_reset": "초기화",
+        "btn_share": "결과 공유",
+        "share_text": "내 출산예정일: {value} —",
+        "share_copied": "결과가 클립보드에 복사되었습니다.",
+        "res_due_label": "출산예정일",
+        "res_week_label": "현재 주수",
+        "res_trimester_label": "삼분기",
+        "res_remaining_label": "남은 일수",
+        "trimester_1": "1삼분기",
+        "trimester_2": "2삼분기",
+        "trimester_3": "3삼분기",
+        "week_format": "{week}주 {day}일",
+        "alert_invalid": "유효한 마지막 생리일과 21~45일 사이의 주기를 입력해 주세요.",
+        "alert_future": "마지막 생리일은 미래일 수 없습니다.",
+        "disclaimer": "추정치 — 의료 자문이 아닙니다. 출산예정일에 정확히 출산하는 비율은 약 5%입니다. 생리주기가 불규칙하거나 LMP가 불확실하면 초음파 검사가 더 정확합니다.",
+        "howto_header": "사용 방법",
+        "howto_html": (
+            "<ol>"
+            "<li>마지막 생리가 시작된 첫날(LMP)을 선택하세요. 임신이 일어난 그 주기의 1일입니다.</li>"
+            "<li>평소 생리주기 길이를 입력하세요. 기본값 28일이며, 일관되게 다르면 조정하세요.</li>"
+            "<li><strong>계산</strong>을 누르면 출산예정일, 현재 주수, 삼분기, 남은 일수가 표시됩니다.</li>"
+            "</ol>"
+            "<p><strong>공식 (Naegele 법칙)</strong>: 출산예정일 = LMP + 280일, 이후 (생리주기 − 28)일만큼 조정해 배란 시점 차이를 반영합니다. 임신 주수는 수정일이 아니라 LMP 기준이므로 1주차는 실제 임신 전부터 시작됩니다. 삼분기 구분: 1삼분기(1~13주), 2삼분기(14~27주), 3삼분기(28주 이후).</p>"
+            "<p>생리주기가 불규칙하거나 LMP가 명확하지 않다면 1삼분기 초음파 검사가 가장 정확한 방법입니다.</p>"
+        ),
+        "related_header": "관련 도구",
+        "related_date": "날짜 계산기",
+        "related_bmi": "BMI 계산기",
+        "related_calorie": "칼로리 계산기",
+        "related_unit": "단위 변환기",
+        "card_blurb": "마지막 생리일(LMP)로 출산예정일·현재 주수·삼분기를 즉시 계산. 생리주기 보정 가능."
+    }
+}
+
+
+BODY_FAT_CALCULATOR = {
+    "en": {
+        "title": "Body Fat Percentage Calculator",
+        "meta_title": "Body Fat Calculator — US Navy Method - Utilify",
+        "meta_desc": "Estimate body fat percentage with the US Navy circumference method. Inputs: height, neck, waist (and hip for women). Includes category and recommended range.",
+        "og_title": "Body Fat Calculator - Utilify",
+        "og_desc": "US Navy method body fat percentage with category and recommended range.",
+        "json_name": "Body Fat Calculator",
+        "json_desc": "US Navy circumference-based body fat estimate plus fitness category.",
+        "page_desc": "Enter your height and circumference measurements (neck, waist, and hip for women) to estimate body fat percentage with the US Navy method. The result includes a fitness-category label and the typical recommended range for your sex.",
+        "label_sex": "Sex",
+        "label_height": "Height (cm)",
+        "label_neck": "Neck circumference (cm)",
+        "label_waist": "Waist circumference (cm)",
+        "label_hip": "Hip circumference (cm)",
+        "ph_height": "170",
+        "ph_neck": "37",
+        "ph_waist": "85",
+        "ph_hip": "95",
+        "opt_male": "Male",
+        "opt_female": "Female",
+        "btn_calculate": "Calculate",
+        "btn_reset": "Reset",
+        "btn_share": "Share result",
+        "share_text": "My body fat: {value}% —",
+        "share_copied": "Result copied to clipboard.",
+        "res_bfp_label": "Body fat",
+        "res_category_label": "Category",
+        "res_range_label": "Recommended range",
+        "cat_essential": "Essential fat",
+        "cat_athletes": "Athletes",
+        "cat_fitness": "Fitness",
+        "cat_average": "Average",
+        "cat_obese": "Obese",
+        "alert_invalid": "All measurements must be positive. For females, hip is required.",
+        "alert_negative_log": "Waist and neck values are inconsistent — please re-measure.",
+        "disclaimer": "Estimate only — not medical advice. Skinfold calipers, DEXA scans, or hydrostatic weighing are more accurate. Use this as a quick check, not a diagnosis.",
+        "howto_header": "How to use",
+        "howto_html": (
+            "<ol>"
+            "<li>Pick your biological sex.</li>"
+            "<li>Measure neck circumference at the narrowest point, just below the larynx.</li>"
+            "<li>Measure waist circumference at the navel for men, at the narrowest point for women. Relax — don't suck in.</li>"
+            "<li>For women, also measure hip circumference at the widest point.</li>"
+            "<li>Enter your height in centimeters. Click <strong>Calculate</strong>.</li>"
+            "</ol>"
+            "<p><strong>Formula (US Navy)</strong>: Male BFP = 86.010·log<sub>10</sub>(waist − neck) − 70.041·log<sub>10</sub>(height) + 36.76. Female BFP = 163.205·log<sub>10</sub>(waist + hip − neck) − 97.684·log<sub>10</sub>(height) − 78.387.</p>"
+            "<p>The Navy method has ±3% accuracy versus hydrostatic weighing for typical body shapes — better than BMI for body composition but worse than DEXA. Take measurements first thing in the morning for consistency.</p>"
+        ),
+        "related_header": "Related Tools",
+        "related_bmi": "BMI Calculator",
+        "related_calorie": "Calorie Calculator",
+        "related_unit": "Unit Converter",
+        "related_date": "Date Calculator",
+        "card_blurb": "US Navy method body fat % from height + neck + waist + hip measurements."
+    },
+    "ko": {
+        "title": "체지방률 계산기",
+        "meta_title": "체지방률 계산기 — 미 해군 둘레 측정법 - Utilify",
+        "meta_desc": "키·목·허리 둘레(여성은 엉덩이까지)로 체지방률을 미 해군 공식으로 추정. 카테고리·권장 범위 함께 표시.",
+        "og_title": "체지방률 계산기 - Utilify",
+        "og_desc": "미 해군 둘레 측정법으로 체지방률·카테고리·권장 범위까지.",
+        "json_name": "체지방률 계산기",
+        "json_desc": "미 해군 둘레 측정 공식으로 체지방률을 추정하고 카테고리를 표시.",
+        "page_desc": "키와 신체 둘레(목·허리, 여성은 엉덩이 추가)를 입력하면 미 해군 공식으로 체지방률을 추정합니다. 결과에는 피트니스 카테고리와 성별 권장 범위가 함께 표시됩니다.",
+        "label_sex": "성별",
+        "label_height": "키 (cm)",
+        "label_neck": "목 둘레 (cm)",
+        "label_waist": "허리 둘레 (cm)",
+        "label_hip": "엉덩이 둘레 (cm)",
+        "ph_height": "170",
+        "ph_neck": "37",
+        "ph_waist": "85",
+        "ph_hip": "95",
+        "opt_male": "남성",
+        "opt_female": "여성",
+        "btn_calculate": "계산",
+        "btn_reset": "초기화",
+        "btn_share": "결과 공유",
+        "share_text": "내 체지방률: {value}% —",
+        "share_copied": "결과가 클립보드에 복사되었습니다.",
+        "res_bfp_label": "체지방률",
+        "res_category_label": "카테고리",
+        "res_range_label": "권장 범위",
+        "cat_essential": "필수 지방",
+        "cat_athletes": "운동선수",
+        "cat_fitness": "피트니스",
+        "cat_average": "보통",
+        "cat_obese": "비만",
+        "alert_invalid": "모든 측정값은 양수여야 합니다. 여성은 엉덩이 둘레가 필수입니다.",
+        "alert_negative_log": "허리와 목 측정값이 일관되지 않습니다 — 다시 측정해 주세요.",
+        "disclaimer": "추정치 — 의료 자문이 아닙니다. 캘리퍼, DEXA 스캔, 수중 측정이 더 정확합니다. 빠른 점검용으로만 사용하세요.",
+        "howto_header": "사용 방법",
+        "howto_html": (
+            "<ol>"
+            "<li>생물학적 성별을 선택하세요.</li>"
+            "<li>목 둘레는 후두 바로 아래 가장 좁은 부위에서 측정하세요.</li>"
+            "<li>허리 둘레는 남성은 배꼽 위치, 여성은 가장 잘록한 부분에서 측정합니다. 숨을 참거나 배를 집어넣지 마세요.</li>"
+            "<li>여성은 엉덩이의 가장 넓은 둘레도 측정합니다.</li>"
+            "<li>키(cm)를 입력하고 <strong>계산</strong>을 누르세요.</li>"
+            "</ol>"
+            "<p><strong>공식 (미 해군)</strong>: 남성 BFP = 86.010·log<sub>10</sub>(허리 − 목) − 70.041·log<sub>10</sub>(키) + 36.76. 여성 BFP = 163.205·log<sub>10</sub>(허리 + 엉덩이 − 목) − 97.684·log<sub>10</sub>(키) − 78.387.</p>"
+            "<p>해군 공식은 평균 체형에 대해 수중 측정 대비 ±3% 정확도 — BMI보다 체구성 평가에 낫지만 DEXA보다는 부정확합니다. 일관된 결과를 위해 아침 첫 측정을 권장합니다.</p>"
+        ),
+        "related_header": "관련 도구",
+        "related_bmi": "BMI 계산기",
+        "related_calorie": "칼로리 계산기",
+        "related_unit": "단위 변환기",
+        "related_date": "날짜 계산기",
+        "card_blurb": "미 해군 둘레 측정법으로 체지방률을 즉시 추정 (키·목·허리 + 엉덩이)."
     }
 }

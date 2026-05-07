@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="{{ lang_code }}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy-Report-Only" content="default-src 'self' https: data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https:; frame-src https:;">
+    <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+    <title>{{ meta_title }}</title>
+    <meta name="description" content="{{ meta_desc }}">
+    <link rel="canonical" href="https://utilifyapp.net/{{ lang_code }}/calorie-calculator/">
+
+    <meta property="og:title" content="{{ og_title }}">
+    <meta property="og:description" content="{{ og_desc }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://utilifyapp.net/{{ lang_code }}/calorie-calculator/">
+
+    {{ alternate_links }}
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "{{ json_name }}",
+        "description": "{{ json_desc }}",
+        "url": "https://utilifyapp.net/{{ lang_code }}/calorie-calculator/",
+        "inLanguage": "{{ lang_code }}",
+        "applicationCategory": "HealthApplication",
+        "operatingSystem": "Any",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+
+    <style>
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-md);
+        }
+        @media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; } }
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+        }
+        .result-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            text-align: center;
+        }
+        .result-card .label { font-size: 0.85rem; color: var(--text-secondary); }
+        .result-card .value { font-size: 1.5rem; font-weight: 700; color: var(--primary-color); margin-top: 4px; font-variant-numeric: tabular-nums; }
+        .result-card.headline .value { font-size: 2rem; }
+        .button-row { display: flex; gap: var(--spacing-sm); flex-wrap: wrap; }
+        .button-row .btn { min-width: 120px; }
+    </style>
+    <link rel="manifest" href="/manifest.json">
+</head>
+
+<body>
+    <header class="site-header"><div class="container"><div class="header-content"><a href="/{{ lang_code }}/" class="site-logo">{{ brand }}</a></div></div></header>
+    <main class="main-content">
+        <div class="container-narrow">
+            <h1>🔥 {{ title }}</h1>
+            <div class="security-badge" style="display:flex;align-items:center;justify-content:center;gap:8px;margin:10px 0;font-size:14px;color:var(--text-secondary);">
+                <span>{{ secure_badge }}</span>
+                <button id="pwaInstallBtn" class="btn btn-primary" style="display: none; padding: 4px 12px; font-size: 12px;">{{ install_app }}</button>
+            </div>
+
+            <p>{{ page_desc }}</p>
+
+            <div class="card">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label" for="age">{{ label_age }}</label>
+                        <input type="number" id="age" class="form-input" inputmode="numeric" min="10" max="120" step="1" placeholder="{{ ph_age }}" value="{{ ph_age }}">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="sex">{{ label_sex }}</label>
+                        <select id="sex" class="form-input">
+                            <option value="male" selected>{{ opt_male }}</option>
+                            <option value="female">{{ opt_female }}</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="height">{{ label_height }}</label>
+                        <input type="number" id="height" class="form-input" inputmode="decimal" min="80" max="250" step="0.1" placeholder="{{ ph_height }}" value="{{ ph_height }}">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="weight">{{ label_weight }}</label>
+                        <input type="number" id="weight" class="form-input" inputmode="decimal" min="20" max="350" step="0.1" placeholder="{{ ph_weight }}" value="{{ ph_weight }}">
+                    </div>
+                    <div class="form-group" style="grid-column: 1 / -1;">
+                        <label class="form-label" for="activity">{{ label_activity }}</label>
+                        <select id="activity" class="form-input">
+                            <option value="1.2">{{ opt_sedentary }}</option>
+                            <option value="1.375" selected>{{ opt_light }}</option>
+                            <option value="1.55">{{ opt_moderate }}</option>
+                            <option value="1.725">{{ opt_active }}</option>
+                            <option value="1.9">{{ opt_very_active }}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="button-row" style="margin-top: var(--spacing-md);">
+                    <button class="btn btn-primary" type="button" onclick="calculate()">{{ btn_calculate }}</button>
+                    <button class="btn" type="button" onclick="resetForm()">{{ btn_reset }}</button>
+                </div>
+            </div>
+
+            <div id="result" style="display:none;" aria-live="polite">
+                <div class="result-grid">
+                    <div class="result-card headline">
+                        <div class="label">{{ res_bmr_label }}</div>
+                        <div class="value" id="bmrVal">—</div>
+                    </div>
+                    <div class="result-card">
+                        <div class="label">{{ res_tdee_label }}</div>
+                        <div class="value" id="tdeeVal">—</div>
+                    </div>
+                </div>
+
+                <h3>{{ res_targets_header }}</h3>
+                <div class="result-grid">
+                    <div class="result-card">
+                        <div class="label">{{ target_loss }}</div>
+                        <div class="value" id="lossVal">—</div>
+                    </div>
+                    <div class="result-card">
+                        <div class="label">{{ target_maintain }}</div>
+                        <div class="value" id="maintainVal">—</div>
+                    </div>
+                    <div class="result-card">
+                        <div class="label">{{ target_gain }}</div>
+                        <div class="value" id="gainVal">—</div>
+                    </div>
+                </div>
+
+                <div class="button-row" style="margin-top: var(--spacing-md);">
+                    <button class="btn" type="button" onclick="shareResult()">{{ btn_share }}</button>
+                </div>
+            </div>
+
+            <div class="disclaimer">{{ disclaimer }}</div>
+
+            <h2>{{ howto_header }}</h2>
+            <div class="howto-content">{{ howto_html }}</div>
+
+            <div class="related-tools-section">
+                <h3>{{ related_header }}</h3>
+                <div class="related-buttons">
+                    <a href="/{{ lang_code }}/bmi-calculator/" class="related-btn">{{ related_bmi }}</a><a
+                        href="/{{ lang_code }}/body-fat-calculator/" class="related-btn">{{ related_body_fat }}</a><a
+                        href="/{{ lang_code }}/unit-converter/" class="related-btn">{{ related_unit }}</a><a
+                        href="/{{ lang_code }}/date-calculator/" class="related-btn">{{ related_date }}</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="site-footer"><div class="container"><div class="footer-content"><p>{{ footer }}</p></div></div></footer>
+    <script src="/assets/js/common.js"></script>
+    <script>
+        const LOCALE = document.documentElement.lang || 'en';
+        const fmt = n => Number(n).toLocaleString(LOCALE, { maximumFractionDigits: 0 });
+
+        function calculate() {
+            const age = parseFloat(document.getElementById('age').value);
+            const sex = document.getElementById('sex').value;
+            const h = parseFloat(document.getElementById('height').value);
+            const w = parseFloat(document.getElementById('weight').value);
+            const act = parseFloat(document.getElementById('activity').value);
+            if (!(age > 0) || !(h > 0) || !(w > 0)) {
+                alert('{{ alert_invalid }}');
+                return;
+            }
+            // Mifflin-St Jeor
+            const bmr = sex === 'male'
+                ? 10 * w + 6.25 * h - 5 * age + 5
+                : 10 * w + 6.25 * h - 5 * age - 161;
+            const tdee = bmr * act;
+            document.getElementById('bmrVal').textContent = fmt(bmr);
+            document.getElementById('tdeeVal').textContent = fmt(tdee);
+            document.getElementById('lossVal').textContent = fmt(tdee - 500);
+            document.getElementById('maintainVal').textContent = fmt(tdee);
+            document.getElementById('gainVal').textContent = fmt(tdee + 300);
+            document.getElementById('result').style.display = 'block';
+        }
+
+        function resetForm() {
+            document.getElementById('age').value = '{{ ph_age }}';
+            document.getElementById('sex').value = 'male';
+            document.getElementById('height').value = '{{ ph_height }}';
+            document.getElementById('weight').value = '{{ ph_weight }}';
+            document.getElementById('activity').value = '1.375';
+            document.getElementById('result').style.display = 'none';
+        }
+
+        async function shareResult() {
+            const tdee = document.getElementById('tdeeVal').textContent;
+            if (tdee === '—') return;
+            const text = '{{ share_text }}'.replace('{value}', tdee) + ' ' + location.href;
+            if (navigator.share) {
+                try { await navigator.share({ title: '{{ title }}', text }); return; }
+                catch (e) { if (e && e.name === 'AbortError') return; }
+            }
+            try {
+                await navigator.clipboard.writeText(text);
+                alert('{{ share_copied }}');
+            } catch (e) { /* clipboard blocked — silent */ }
+        }
+    </script>
+</body>
+
+</html>
