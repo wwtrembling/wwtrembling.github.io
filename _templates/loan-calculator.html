@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="{{ lang_code }}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy-Report-Only" content="default-src 'self' https: data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https:; frame-src https:;">
+    <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+    <title>{{ meta_title }}</title>
+    <meta name="description" content="{{ meta_desc }}">
+    <link rel="canonical" href="https://utilifyapp.net/{{ lang_code }}/loan-calculator/">
+
+    <meta property="og:title" content="{{ og_title }}">
+    <meta property="og:description" content="{{ og_desc }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://utilifyapp.net/{{ lang_code }}/loan-calculator/">
+
+    {{ alternate_links }}
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "{{ json_name }}",
+        "description": "{{ json_desc }}",
+        "url": "https://utilifyapp.net/{{ lang_code }}/loan-calculator/",
+        "inLanguage": "{{ lang_code }}",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Any",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+
+    <style>
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+        }
+        .result-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            text-align: center;
+        }
+        .result-card .label { font-size: 0.85rem; color: var(--text-secondary); }
+        .result-card .value { font-size: 1.5rem; font-weight: 700; color: var(--primary-color); margin-top: 4px; font-variant-numeric: tabular-nums; }
+        .result-card.headline .value { font-size: 2rem; }
+
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: var(--spacing-md);
+            font-variant-numeric: tabular-nums;
+            font-size: 0.92rem;
+        }
+        .schedule-table th, .schedule-table td {
+            padding: 8px 10px;
+            border-bottom: 1px solid var(--border-color);
+            text-align: right;
+        }
+        .schedule-table th:first-child, .schedule-table td:first-child { text-align: left; }
+        .schedule-table th { background: var(--bg-secondary); font-weight: 600; }
+
+        .disclaimer {
+            margin-top: var(--spacing-lg);
+            padding: var(--spacing-md);
+            background: var(--bg-secondary);
+            border-left: 3px solid var(--text-secondary);
+            border-radius: var(--radius-sm);
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+        }
+        .button-row { display: flex; gap: var(--spacing-sm); flex-wrap: wrap; }
+    </style>
+    <link rel="manifest" href="/manifest.json">
+</head>
+
+<body>
+    <header class="site-header"><div class="container"><div class="header-content"><a href="/{{ lang_code }}/" class="site-logo">{{ brand }}</a></div></div></header>
+    <main class="main-content">
+        <div class="container-narrow">
+            <h1>💰 {{ title }}</h1>
+            <div class="security-badge" style="display:flex;align-items:center;justify-content:center;gap:8px;margin:10px 0;font-size:14px;color:var(--text-secondary);">
+                <span>{{ secure_badge }}</span>
+                <button id="pwaInstallBtn" class="btn btn-primary" style="display: none; padding: 4px 12px; font-size: 12px;">{{ install_app }}</button>
+            </div>
+
+            <p>{{ page_desc }}</p>
+
+            <div class="card">
+                <div class="form-group">
+                    <label class="form-label" for="principal">{{ label_principal }}</label>
+                    <input type="number" id="principal" class="form-input" inputmode="decimal" min="1" step="any" placeholder="{{ ph_principal }}" value="{{ ph_principal }}">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="rate">{{ label_rate }}</label>
+                    <input type="number" id="rate" class="form-input" inputmode="decimal" min="0" step="0.01" placeholder="{{ ph_rate }}" value="{{ ph_rate }}">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="term">{{ label_term }}</label>
+                    <input type="number" id="term" class="form-input" inputmode="numeric" min="1" max="50" step="1" placeholder="{{ ph_term }}" value="{{ ph_term }}">
+                </div>
+                <div class="button-row">
+                    <button class="btn btn-primary" type="button" onclick="calculate()">{{ btn_calculate }}</button>
+                    <button class="btn" type="button" onclick="resetForm()">{{ btn_reset }}</button>
+                </div>
+            </div>
+
+            <div id="result" style="display:none;" aria-live="polite">
+                <div class="result-grid">
+                    <div class="result-card headline">
+                        <div class="label">{{ res_monthly_label }}</div>
+                        <div class="value" id="monthlyVal">—</div>
+                    </div>
+                    <div class="result-card">
+                        <div class="label">{{ res_total_label }}</div>
+                        <div class="value" id="totalVal">—</div>
+                    </div>
+                    <div class="result-card">
+                        <div class="label">{{ res_interest_label }}</div>
+                        <div class="value" id="interestVal">—</div>
+                    </div>
+                </div>
+
+                <h3>{{ res_schedule_header }}</h3>
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th>{{ th_month }}</th>
+                            <th>{{ th_payment }}</th>
+                            <th>{{ th_principal_col }}</th>
+                            <th>{{ th_interest_col }}</th>
+                            <th>{{ th_balance }}</th>
+                        </tr>
+                    </thead>
+                    <tbody id="scheduleBody"></tbody>
+                </table>
+            </div>
+
+            <div class="disclaimer">{{ disclaimer }}</div>
+
+            <h2>{{ howto_header }}</h2>
+            <div class="howto-content">{{ howto_html }}</div>
+
+            <div class="related-tools-section">
+                <h3>{{ related_header }}</h3>
+                <div class="related-buttons">
+                    <a href="/{{ lang_code }}/compound-interest/" class="related-btn">{{ related_compound }}</a><a
+                        href="/{{ lang_code }}/retirement-calculator/" class="related-btn">{{ related_retirement }}</a><a
+                        href="/{{ lang_code }}/date-calculator/" class="related-btn">{{ related_date }}</a><a
+                        href="/{{ lang_code }}/unit-converter/" class="related-btn">{{ related_unit }}</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="site-footer"><div class="container"><div class="footer-content"><p>{{ footer }}</p></div></div></footer>
+    <script src="/assets/js/common.js"></script>
+    <script>
+        const LOCALE = document.documentElement.lang || 'en';
+        const fmt = n => Number(n).toLocaleString(LOCALE, { maximumFractionDigits: 0 });
+
+        function calculate() {
+            const P = parseFloat(document.getElementById('principal').value);
+            const annualRate = parseFloat(document.getElementById('rate').value);
+            const years = parseFloat(document.getElementById('term').value);
+            if (!(P > 0) || !(years > 0) || !(annualRate >= 0)) {
+                alert('{{ alert_invalid }}');
+                return;
+            }
+            const n = Math.round(years * 12);
+            const r = annualRate / 100 / 12;
+            let M;
+            if (r === 0) {
+                M = P / n;
+            } else {
+                const pow = Math.pow(1 + r, n);
+                M = P * r * pow / (pow - 1);
+            }
+            const total = M * n;
+            const interest = total - P;
+
+            document.getElementById('monthlyVal').textContent = fmt(M);
+            document.getElementById('totalVal').textContent = fmt(total);
+            document.getElementById('interestVal').textContent = fmt(interest);
+
+            // Build first 12-month amortization schedule.
+            const tbody = document.getElementById('scheduleBody');
+            tbody.innerHTML = '';
+            let balance = P;
+            const months = Math.min(12, n);
+            for (let i = 1; i <= months; i++) {
+                const interestPart = balance * r;
+                const principalPart = M - interestPart;
+                balance = Math.max(0, balance - principalPart);
+                const tr = document.createElement('tr');
+                tr.innerHTML =
+                    '<td>' + i + '</td>' +
+                    '<td>' + fmt(M) + '</td>' +
+                    '<td>' + fmt(principalPart) + '</td>' +
+                    '<td>' + fmt(interestPart) + '</td>' +
+                    '<td>' + fmt(balance) + '</td>';
+                tbody.appendChild(tr);
+            }
+
+            document.getElementById('result').style.display = 'block';
+        }
+
+        function resetForm() {
+            document.getElementById('principal').value = '{{ ph_principal }}';
+            document.getElementById('rate').value = '{{ ph_rate }}';
+            document.getElementById('term').value = '{{ ph_term }}';
+            document.getElementById('result').style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="{{ lang_code }}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy-Report-Only" content="default-src 'self' https: data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https:; frame-src https:;">
+    <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+    <title>{{ meta_title }}</title>
+    <meta name="description" content="{{ meta_desc }}">
+    <link rel="canonical" href="https://utilifyapp.net/{{ lang_code }}/retirement-calculator/">
+
+    <meta property="og:title" content="{{ og_title }}">
+    <meta property="og:description" content="{{ og_desc }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://utilifyapp.net/{{ lang_code }}/retirement-calculator/">
+
+    {{ alternate_links }}
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "{{ json_name }}",
+        "description": "{{ json_desc }}",
+        "url": "https://utilifyapp.net/{{ lang_code }}/retirement-calculator/",
+        "inLanguage": "{{ lang_code }}",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Any",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+
+    <style>
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: var(--spacing-md);
+        }
+        .result-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            text-align: center;
+            margin: var(--spacing-md) 0;
+        }
+        .result-card .label { font-size: 0.85rem; color: var(--text-secondary); }
+        .result-card .value { font-size: 2rem; font-weight: 700; color: var(--primary-color); margin-top: 4px; font-variant-numeric: tabular-nums; }
+        .outcome-box {
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+            font-size: 1rem;
+            background: var(--bg-secondary);
+        }
+        .outcome-box.success { border-left: 4px solid #2e7d32; }
+        .outcome-box.warn { border-left: 4px solid #c62828; }
+
+        .chart-wrap {
+            margin: var(--spacing-md) 0;
+            padding: var(--spacing-md);
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+        }
+        .balance-chart { width: 100%; height: auto; display: block; }
+        .balance-chart .accumulation { fill: none; stroke: var(--primary-color); stroke-width: 2; }
+        .balance-chart .withdrawal { fill: none; stroke: #c62828; stroke-width: 2; }
+        .balance-chart .area-acc { fill: var(--primary-color); fill-opacity: 0.12; stroke: none; }
+        .balance-chart .area-wd { fill: #c62828; fill-opacity: 0.10; stroke: none; }
+        .balance-chart .axis { stroke: var(--border-color); stroke-width: 1; }
+        .balance-chart .retire-line { stroke: var(--text-secondary); stroke-dasharray: 4 4; stroke-width: 1; }
+        .balance-chart text { font-size: 11px; fill: var(--text-secondary); font-family: var(--font-sans); }
+
+        .disclaimer {
+            margin-top: var(--spacing-lg);
+            padding: var(--spacing-md);
+            background: var(--bg-secondary);
+            border-left: 3px solid var(--text-secondary);
+            border-radius: var(--radius-sm);
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+        }
+        .button-row { display: flex; gap: var(--spacing-sm); flex-wrap: wrap; margin-top: var(--spacing-md); }
+    </style>
+    <link rel="manifest" href="/manifest.json">
+</head>
+
+<body>
+    <header class="site-header"><div class="container"><div class="header-content"><a href="/{{ lang_code }}/" class="site-logo">{{ brand }}</a></div></div></header>
+    <main class="main-content">
+        <div class="container-narrow">
+            <h1>🏖️ {{ title }}</h1>
+            <div class="security-badge" style="display:flex;align-items:center;justify-content:center;gap:8px;margin:10px 0;font-size:14px;color:var(--text-secondary);">
+                <span>{{ secure_badge }}</span>
+                <button id="pwaInstallBtn" class="btn btn-primary" style="display: none; padding: 4px 12px; font-size: 12px;">{{ install_app }}</button>
+            </div>
+
+            <p>{{ page_desc }}</p>
+
+            <div class="card">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label" for="currentAge">{{ label_current_age }}</label>
+                        <input type="number" id="currentAge" class="form-input" inputmode="numeric" min="10" max="100" step="1" placeholder="{{ ph_current_age }}" value="{{ ph_current_age }}">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="retireAge">{{ label_retire_age }}</label>
+                        <input type="number" id="retireAge" class="form-input" inputmode="numeric" min="20" max="100" step="1" placeholder="{{ ph_retire_age }}" value="{{ ph_retire_age }}">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="currentSavings">{{ label_current_savings }}</label>
+                        <input type="number" id="currentSavings" class="form-input" inputmode="decimal" min="0" step="any" placeholder="{{ ph_current_savings }}" value="{{ ph_current_savings }}">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="monthlyContrib">{{ label_monthly_contrib }}</label>
+                        <input type="number" id="monthlyContrib" class="form-input" inputmode="decimal" min="0" step="any" placeholder="{{ ph_monthly_contrib }}" value="{{ ph_monthly_contrib }}">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="annualReturn">{{ label_annual_return }}</label>
+                        <input type="number" id="annualReturn" class="form-input" inputmode="decimal" min="0" step="0.1" placeholder="{{ ph_annual_return }}" value="{{ ph_annual_return }}">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="annualWithdrawal">{{ label_annual_withdrawal }}</label>
+                        <input type="number" id="annualWithdrawal" class="form-input" inputmode="decimal" min="0" step="any" placeholder="{{ ph_annual_withdrawal }}" value="{{ ph_annual_withdrawal }}">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="lifeExp">{{ label_life_expectancy }}</label>
+                        <input type="number" id="lifeExp" class="form-input" inputmode="numeric" min="20" max="120" step="1" placeholder="{{ ph_life_expectancy }}" value="{{ ph_life_expectancy }}">
+                    </div>
+                </div>
+                <div class="button-row">
+                    <button class="btn btn-primary" type="button" onclick="calculate()">{{ btn_calculate }}</button>
+                    <button class="btn" type="button" onclick="resetForm()">{{ btn_reset }}</button>
+                </div>
+            </div>
+
+            <div id="result" style="display:none;" aria-live="polite">
+                <div class="result-card">
+                    <div class="label">{{ res_at_retirement_label }}</div>
+                    <div class="value" id="nestEggVal">—</div>
+                </div>
+                <h3>{{ res_outcome_header }}</h3>
+                <div id="outcomeBox" class="outcome-box"></div>
+                <h3>{{ res_chart_header }}</h3>
+                <div class="chart-wrap">
+                    <svg id="balanceChart" class="balance-chart" viewBox="0 0 600 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="{{ res_chart_header }}"></svg>
+                </div>
+            </div>
+
+            <div class="disclaimer">{{ disclaimer }}</div>
+
+            <h2>{{ howto_header }}</h2>
+            <div class="howto-content">{{ howto_html }}</div>
+
+            <div class="related-tools-section">
+                <h3>{{ related_header }}</h3>
+                <div class="related-buttons">
+                    <a href="/{{ lang_code }}/compound-interest/" class="related-btn">{{ related_compound }}</a><a
+                        href="/{{ lang_code }}/loan-calculator/" class="related-btn">{{ related_loan }}</a><a
+                        href="/{{ lang_code }}/date-calculator/" class="related-btn">{{ related_date }}</a><a
+                        href="/{{ lang_code }}/bmi-calculator/" class="related-btn">{{ related_bmi }}</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="site-footer"><div class="container"><div class="footer-content"><p>{{ footer }}</p></div></div></footer>
+    <script src="/assets/js/common.js"></script>
+    <script>
+        const LOCALE = document.documentElement.lang || 'en';
+        const fmt = n => Number(n).toLocaleString(LOCALE, { maximumFractionDigits: 0 });
+
+        function calculate() {
+            const currentAge = parseInt(document.getElementById('currentAge').value, 10);
+            const retireAge = parseInt(document.getElementById('retireAge').value, 10);
+            const lifeExp = parseInt(document.getElementById('lifeExp').value, 10);
+            const currentSavings = parseFloat(document.getElementById('currentSavings').value) || 0;
+            const monthlyContrib = parseFloat(document.getElementById('monthlyContrib').value) || 0;
+            const annualReturn = parseFloat(document.getElementById('annualReturn').value) || 0;
+            const annualWithdrawal = parseFloat(document.getElementById('annualWithdrawal').value) || 0;
+
+            if (!(retireAge > currentAge) || !(lifeExp > retireAge)) {
+                alert('{{ alert_invalid }}');
+                return;
+            }
+
+            const r = annualReturn / 100;
+            const monthlyR = r / 12;
+
+            // Accumulation phase: monthly compounding from currentAge to retireAge.
+            const points = [];  // { age, balance, phase }
+            let balance = currentSavings;
+            points.push({ age: currentAge, balance, phase: 'acc' });
+            for (let age = currentAge; age < retireAge; age++) {
+                for (let m = 0; m < 12; m++) {
+                    balance = balance * (1 + monthlyR) + monthlyContrib;
+                }
+                points.push({ age: age + 1, balance, phase: 'acc' });
+            }
+            const nestEgg = balance;
+
+            // Withdrawal phase: at start of each year, deduct withdrawal, then grow remainder.
+            let runOutAge = null;
+            for (let age = retireAge; age < lifeExp; age++) {
+                balance = balance - annualWithdrawal;
+                if (balance <= 0) {
+                    balance = 0;
+                    runOutAge = age + 1;
+                    points.push({ age: age + 1, balance: 0, phase: 'wd' });
+                    break;
+                }
+                balance = balance * (1 + r);
+                points.push({ age: age + 1, balance, phase: 'wd' });
+            }
+
+            document.getElementById('nestEggVal').textContent = fmt(nestEgg);
+
+            // Outcome message.
+            const outcomeBox = document.getElementById('outcomeBox');
+            if (runOutAge !== null) {
+                const yearsShort = lifeExp - runOutAge;
+                outcomeBox.className = 'outcome-box warn';
+                outcomeBox.textContent = '{{ outcome_runs_out }}'
+                    .replace('{age}', runOutAge)
+                    .replace('{years}', yearsShort);
+            } else {
+                outcomeBox.className = 'outcome-box success';
+                outcomeBox.textContent = '{{ outcome_lasts }}'
+                    .replace('{age}', lifeExp)
+                    .replace('{amount}', fmt(balance));
+            }
+
+            // Chart.
+            renderChart(points, currentAge, lifeExp, retireAge);
+
+            document.getElementById('result').style.display = 'block';
+        }
+
+        function renderChart(points, currentAge, lifeExp, retireAge) {
+            const svg = document.getElementById('balanceChart');
+            const W = 600, H = 220, padL = 40, padR = 10, padT = 10, padB = 26;
+            const innerW = W - padL - padR;
+            const innerH = H - padT - padB;
+            const ageRange = lifeExp - currentAge;
+            const maxBalance = Math.max(...points.map(p => p.balance), 1);
+
+            const x = age => padL + ((age - currentAge) / ageRange) * innerW;
+            const y = bal => padT + (1 - bal / maxBalance) * innerH;
+
+            // Split points by phase to draw two segments.
+            const accPts = points.filter(p => p.phase === 'acc');
+            const wdPts = points.filter(p => p.phase === 'wd');
+            // Bridge: include the last accumulation point as the first withdrawal point so the line is continuous.
+            if (accPts.length && wdPts.length) {
+                wdPts.unshift(accPts[accPts.length - 1]);
+            }
+
+            const toPath = pts => pts.map((p, i) => (i === 0 ? 'M' : 'L') + x(p.age).toFixed(1) + ',' + y(p.balance).toFixed(1)).join(' ');
+            const toAreaPath = pts => {
+                if (!pts.length) return '';
+                const top = pts.map((p, i) => (i === 0 ? 'M' : 'L') + x(p.age).toFixed(1) + ',' + y(p.balance).toFixed(1)).join(' ');
+                const right = ' L' + x(pts[pts.length - 1].age).toFixed(1) + ',' + (padT + innerH).toFixed(1);
+                const left = ' L' + x(pts[0].age).toFixed(1) + ',' + (padT + innerH).toFixed(1) + ' Z';
+                return top + right + left;
+            };
+
+            const xRetire = x(retireAge);
+            const yAxisTicks = 4;
+            let ticksHtml = '';
+            for (let i = 0; i <= yAxisTicks; i++) {
+                const v = (maxBalance * (yAxisTicks - i)) / yAxisTicks;
+                const yy = padT + (i / yAxisTicks) * innerH;
+                const label = v >= 1e6 ? (v / 1e6).toFixed(1) + 'M' : v >= 1e3 ? Math.round(v / 1e3) + 'K' : Math.round(v);
+                ticksHtml += '<line class="axis" x1="' + padL + '" y1="' + yy.toFixed(1) + '" x2="' + (W - padR) + '" y2="' + yy.toFixed(1) + '" opacity="0.3"/>';
+                ticksHtml += '<text x="' + (padL - 4) + '" y="' + (yy + 4).toFixed(1) + '" text-anchor="end">' + label + '</text>';
+            }
+
+            const xTicks = 5;
+            for (let i = 0; i <= xTicks; i++) {
+                const age = currentAge + Math.round((ageRange * i) / xTicks);
+                const xx = x(age);
+                ticksHtml += '<text x="' + xx.toFixed(1) + '" y="' + (H - 8) + '" text-anchor="middle">' + age + '</text>';
+            }
+
+            svg.innerHTML =
+                ticksHtml +
+                '<path class="area-acc" d="' + toAreaPath(accPts) + '"/>' +
+                '<path class="area-wd" d="' + toAreaPath(wdPts) + '"/>' +
+                '<line class="retire-line" x1="' + xRetire + '" y1="' + padT + '" x2="' + xRetire + '" y2="' + (padT + innerH) + '"/>' +
+                '<path class="accumulation" d="' + toPath(accPts) + '"/>' +
+                '<path class="withdrawal" d="' + toPath(wdPts) + '"/>';
+        }
+
+        function resetForm() {
+            document.getElementById('currentAge').value = '{{ ph_current_age }}';
+            document.getElementById('retireAge').value = '{{ ph_retire_age }}';
+            document.getElementById('currentSavings').value = '{{ ph_current_savings }}';
+            document.getElementById('monthlyContrib').value = '{{ ph_monthly_contrib }}';
+            document.getElementById('annualReturn').value = '{{ ph_annual_return }}';
+            document.getElementById('annualWithdrawal').value = '{{ ph_annual_withdrawal }}';
+            document.getElementById('lifeExp').value = '{{ ph_life_expectancy }}';
+            document.getElementById('result').style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>

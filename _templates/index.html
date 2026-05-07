@@ -184,6 +184,7 @@
 
             <div class="category-filter" role="group" aria-label="Filter tools by category">
                 <button type="button" data-cat="all" aria-pressed="true">{{ cat_all }}</button>
+                <button type="button" class="fav-filter-chip" data-cat="favorites" aria-pressed="false">{{ favorites_label }}</button>
                 <button type="button" data-cat="ai" aria-pressed="false">{{ cat_ai }}</button>
                 <button type="button" data-cat="dev" aria-pressed="false">{{ cat_dev }}</button>
                 <button type="button" data-cat="text" aria-pressed="false">{{ cat_text }}</button>
@@ -191,6 +192,10 @@
                 <button type="button" data-cat="convert" aria-pressed="false">{{ cat_convert }}</button>
                 <button type="button" data-cat="calc" aria-pressed="false">{{ cat_calc }}</button>
             </div>
+
+            {{ subcategory_chips }}
+
+            <p id="emptyState" class="empty-state" hidden>{{ favorites_empty }}</p>
 
             <div class="card-grid" id="toolGrid">
                 {{ tool_cards }}
@@ -215,20 +220,117 @@
 
     <script src="/assets/js/common.js"></script>
     <script>
-        // Category filter — pure DOM, no library.
+        // Combined filter (category + subcategory + favorites) + per-card star toggle.
         (function () {
-            const buttons = document.querySelectorAll('.category-filter button');
+            const FAV_KEY = 'utilify_favorites';
+            const getFavs = () => (localStorage.getItem(FAV_KEY) || '').split(',').filter(Boolean);
+            const setFavs = ids => localStorage.setItem(FAV_KEY, [...new Set(ids)].join(','));
+            const isFav = id => getFavs().includes(id);
+
+            const catButtons = document.querySelectorAll('.category-filter button');
             const cards = document.querySelectorAll('#toolGrid .card');
-            buttons.forEach(btn => {
+            const subcatGroups = document.querySelectorAll('.subcat-chips');
+            const emptyState = document.getElementById('emptyState');
+
+            // Initialize ★ state on each card from localStorage.
+            cards.forEach(card => {
+                const slug = card.dataset.slug;
+                const star = card.querySelector('.fav-toggle');
+                if (!star || !slug) return;
+                const fav = isFav(slug);
+                star.textContent = fav ? '★' : '☆';
+                star.classList.toggle('is-fav', fav);
+                star.setAttribute('aria-label',
+                    fav ? star.dataset.removeLabel : star.dataset.addLabel);
+                star.setAttribute('aria-pressed', String(fav));
+            });
+
+            let activeCat = 'all';
+            let activeSubcat = '';   // '' = no subcategory filter
+
+            function applyFilters() {
+                let visible = 0;
+                cards.forEach(card => {
+                    let match = true;
+                    if (activeCat === 'favorites') {
+                        match = isFav(card.dataset.slug);
+                    } else if (activeCat !== 'all') {
+                        match = card.dataset.category === activeCat;
+                        if (match && activeSubcat) {
+                            match = card.dataset.subcategory === activeSubcat;
+                        }
+                    }
+                    card.style.display = match ? '' : 'none';
+                    if (match) visible++;
+                });
+
+                // Show subcategory group only for the active main category.
+                subcatGroups.forEach(group => {
+                    const showGroup = activeCat !== 'all' &&
+                        activeCat !== 'favorites' &&
+                        group.dataset.parentCat === activeCat;
+                    group.hidden = !showGroup;
+                });
+
+                // Empty-state message — only meaningful for the favorites filter
+                // (other filters always have results given the tool roster).
+                if (emptyState) {
+                    emptyState.hidden = !(activeCat === 'favorites' && visible === 0);
+                }
+            }
+
+            catButtons.forEach(btn => {
                 btn.addEventListener('click', () => {
-                    const cat = btn.dataset.cat;
-                    buttons.forEach(b => b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'));
-                    cards.forEach(card => {
-                        const match = cat === 'all' || card.dataset.category === cat;
-                        card.style.display = match ? '' : 'none';
+                    activeCat = btn.dataset.cat;
+                    activeSubcat = '';
+                    catButtons.forEach(b =>
+                        b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'));
+                    // Reset subcategory chips so the next visit to a category starts at "All".
+                    subcatGroups.forEach(group => {
+                        group.querySelectorAll('.subcat-chip').forEach(chip => {
+                            chip.setAttribute('aria-pressed',
+                                chip.dataset.subcat === '' ? 'true' : 'false');
+                        });
+                    });
+                    applyFilters();
+                });
+            });
+
+            subcatGroups.forEach(group => {
+                group.querySelectorAll('.subcat-chip').forEach(chip => {
+                    chip.addEventListener('click', () => {
+                        activeSubcat = chip.dataset.subcat;
+                        group.querySelectorAll('.subcat-chip').forEach(c =>
+                            c.setAttribute('aria-pressed', c === chip ? 'true' : 'false'));
+                        applyFilters();
                     });
                 });
             });
+
+            // ★ toggle on each card.
+            cards.forEach(card => {
+                const star = card.querySelector('.fav-toggle');
+                if (!star) return;
+                star.addEventListener('click', e => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const slug = star.dataset.fav;
+                    const favs = getFavs();
+                    const next = favs.includes(slug)
+                        ? favs.filter(x => x !== slug)
+                        : [...favs, slug];
+                    setFavs(next);
+                    const nowFav = next.includes(slug);
+                    star.textContent = nowFav ? '★' : '☆';
+                    star.classList.toggle('is-fav', nowFav);
+                    star.setAttribute('aria-label',
+                        nowFav ? star.dataset.removeLabel : star.dataset.addLabel);
+                    star.setAttribute('aria-pressed', String(nowFav));
+                    if (activeCat === 'favorites') applyFilters();
+                });
+            });
+
+            applyFilters();
         })();
     </script>
 </body>

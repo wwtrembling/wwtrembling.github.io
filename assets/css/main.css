@@ -90,10 +90,15 @@ h6 {
 
 h1 {
   font-size: 2.5rem;
+  color: var(--primary-color);
   background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  h1 {
+    -webkit-text-fill-color: transparent;
+  }
 }
 
 h2 {
@@ -675,6 +680,78 @@ a:hover {
   font-weight: 600;
   transition: top 0.15s;
 }
+/* Favorites star toggle (on tool cards in the index).
+   The card itself is an <a>, so the star button uses pointer-events to keep
+   its own click separate from navigation (handled in JS via stopPropagation). */
+.fav-toggle {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: transparent;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  color: var(--text-tertiary);
+  border-radius: var(--radius-sm);
+  transition: color var(--transition-fast), background-color var(--transition-fast), transform var(--transition-fast);
+  z-index: 2;
+}
+.fav-toggle:hover { color: #f59e0b; background: rgba(245, 158, 11, 0.08); }
+.fav-toggle.is-fav { color: #f59e0b; }
+.fav-toggle:active { transform: scale(0.92); }
+
+/* Tool-page header star — sits in the security-badge row next to the install button. */
+.fav-toggle-page {
+  border: 1px solid var(--border-color);
+  background: var(--bg-primary);
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  color: var(--text-tertiary);
+  padding: 4px 10px;
+  border-radius: var(--radius-md);
+  transition: color var(--transition-fast), border-color var(--transition-fast);
+}
+.fav-toggle-page:hover { color: #f59e0b; border-color: #f59e0b; }
+.fav-toggle-page.is-fav { color: #f59e0b; border-color: #f59e0b; }
+
+/* Subcategory chips (shown when a main category with sub-categories is active). */
+.subcat-chips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--spacing-xs);
+  margin: calc(-1 * var(--spacing-md)) 0 var(--spacing-lg);
+}
+.subcat-chip {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+  padding: 4px 12px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  color: var(--text-secondary);
+  transition: all 0.15s;
+}
+.subcat-chip:hover { border-color: var(--primary-color); color: var(--primary-color); }
+.subcat-chip[aria-pressed="true"] {
+  background: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+}
+
+/* Empty state (e.g. when favorites filter has no matches). */
+.empty-state {
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  padding: var(--spacing-xl) var(--spacing-md);
+  margin: 0;
+}
+
 .skip-link:focus {
   top: 8px;
   outline: 3px solid white;

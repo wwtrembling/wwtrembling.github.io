@@ -211,6 +211,7 @@
 
             <div class="category-filter" role="group" aria-label="Filter tools by category">
                 <button type="button" data-cat="all" aria-pressed="true">All</button>
+                <button type="button" class="fav-filter-chip" data-cat="favorites" aria-pressed="false">★ Favorites</button>
                 <button type="button" data-cat="ai" aria-pressed="false">AI</button>
                 <button type="button" data-cat="dev" aria-pressed="false">Developer</button>
                 <button type="button" data-cat="text" aria-pressed="false">Text</button>
@@ -219,237 +220,301 @@
                 <button type="button" data-cat="calc" aria-pressed="false">Calculators</button>
             </div>
 
+            <div class="subcat-chips" data-parent-cat="calc" role="group" aria-label="Subcategory filter" hidden><button type="button" class="subcat-chip" data-subcat="" aria-pressed="true">All</button><button type="button" class="subcat-chip" data-subcat="finance" aria-pressed="false">Finance</button></div>
+
+            <p id="emptyState" class="empty-state" hidden>No favorites yet. Click ☆ on any tool card to save it.</p>
+
             <div class="card-grid" id="toolGrid">
                 
-        <a href="/ja/image-watermark/" class="card" data-category="image">
+        <a href="/ja/image-watermark/" class="card" data-category="image" data-subcategory="" data-slug="image-watermark">
+          <button type="button" class="fav-toggle" data-fav="image-watermark" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">🛡️</div>
           <h3 class="card-title">画像透かし</h3>
           <p class="card-description">画像に透かしを追加して著作権を保護します。</p>
         </a>
 
-        <a href="/ja/unit-converter/" class="card" data-category="convert">
+        <a href="/ja/unit-converter/" class="card" data-category="convert" data-subcategory="" data-slug="unit-converter">
+          <button type="button" class="fav-toggle" data-fav="unit-converter" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">📏</div>
           <h3 class="card-title">単位変換ツール</h3>
           <p class="card-description">長さ, 重量, 温度, 体積などを変換できます。</p>
         </a>
 
-        <a href="/ja/image-converter/" class="card" data-category="image">
+        <a href="/ja/image-converter/" class="card" data-category="image" data-subcategory="" data-slug="image-converter">
+          <button type="button" class="fav-toggle" data-fav="image-converter" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">🖼️</div>
           <h3 class="card-title">画像変換ツール</h3>
           <p class="card-description">画像のサイズを変更し、WebP、JPEG、PNG形式に変換します。</p>
         </a>
 
-        <a href="/ja/bmi-calculator/" class="card" data-category="calc">
+        <a href="/ja/bmi-calculator/" class="card" data-category="calc" data-subcategory="" data-slug="bmi-calculator">
+          <button type="button" class="fav-toggle" data-fav="bmi-calculator" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">⚖️</div>
           <h3 class="card-title">BMI計算機</h3>
           <p class="card-description">BMI（ボディマス指数）を計算します。</p>
         </a>
 
-        <a href="/ja/date-calculator/" class="card" data-category="calc">
+        <a href="/ja/date-calculator/" class="card" data-category="calc" data-subcategory="" data-slug="date-calculator">
+          <button type="button" class="fav-toggle" data-fav="date-calculator" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">📅</div>
           <h3 class="card-title">日付計算</h3>
           <p class="card-description">D-Dayと日付の差を計算します。</p>
         </a>
 
-        <a href="/ja/text-utils/" class="card" data-category="text">
+        <a href="/ja/text-utils/" class="card" data-category="text" data-subcategory="" data-slug="text-utils">
+          <button type="button" class="fav-toggle" data-fav="text-utils" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">📝</div>
           <h3 class="card-title">テキストユーティリティ</h3>
           <p class="card-description">単語数、文字数のカウント、重複削除、大文字小文字変換など。</p>
         </a>
 
-        <a href="/ja/json-formatter/" class="card" data-category="dev">
+        <a href="/ja/json-formatter/" class="card" data-category="dev" data-subcategory="" data-slug="json-formatter">
+          <button type="button" class="fav-toggle" data-fav="json-formatter" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">{ }</div>
           <h3 class="card-title">JSONフォーマッター</h3>
           <p class="card-description">JSONデータの整形、検証、圧縮を行います。開発者向けの広告なしツール。</p>
         </a>
 
-        <a href="/ja/color-converter/" class="card" data-category="convert">
+        <a href="/ja/color-converter/" class="card" data-category="convert" data-subcategory="" data-slug="color-converter">
+          <button type="button" class="fav-toggle" data-fav="color-converter" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">🎨</div>
           <h3 class="card-title">色変換ツール</h3>
           <p class="card-description">HEX、RGB、HSL、CMYKカラー形式を変換します。</p>
         </a>
 
-        <a href="/ja/timer/" class="card" data-category="calc">
+        <a href="/ja/timer/" class="card" data-category="calc" data-subcategory="" data-slug="timer">
+          <button type="button" class="fav-toggle" data-fav="timer" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">⏱️</div>
           <h3 class="card-title">タイマー / ポモドーロ</h3>
           <p class="card-description">オンラインタイマーとポモドーロテクニック。</p>
         </a>
 
-        <a href="/ja/base64-converter/" class="card" data-category="dev">
+        <a href="/ja/base64-converter/" class="card" data-category="dev" data-subcategory="" data-slug="base64-converter">
+          <button type="button" class="fav-toggle" data-fav="base64-converter" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">🔤</div>
           <h3 class="card-title">Base64エンコーダー/デコーダー</h3>
           <p class="card-description">テキストをBase64にエンコードまたはデコードします。</p>
         </a>
 
-        <a href="/ja/qr-generator/" class="card" data-category="image">
+        <a href="/ja/qr-generator/" class="card" data-category="image" data-subcategory="" data-slug="qr-generator">
+          <button type="button" class="fav-toggle" data-fav="qr-generator" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">📱</div>
           <h3 class="card-title">QRコード生成</h3>
           <p class="card-description">テキストまたはURLをQRコードに変換します。</p>
         </a>
 
-        <a href="/ja/regex-tester/" class="card" data-category="dev">
+        <a href="/ja/regex-tester/" class="card" data-category="dev" data-subcategory="" data-slug="regex-tester">
+          <button type="button" class="fav-toggle" data-fav="regex-tester" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">🔍</div>
           <h3 class="card-title">正規表現テスター</h3>
           <p class="card-description">リアルタイムで正規表現パターンをテストします。</p>
         </a>
 
-        <a href="/ja/sql-formatter/" class="card" data-category="dev">
+        <a href="/ja/sql-formatter/" class="card" data-category="dev" data-subcategory="" data-slug="sql-formatter">
+          <button type="button" class="fav-toggle" data-fav="sql-formatter" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">🗄️</div>
           <h3 class="card-title">SQLフォーマッター</h3>
           <p class="card-description">SQLクエリを自動的に整形・圧縮。</p>
         </a>
 
-        <a href="/ja/lorem-ipsum/" class="card" data-category="text">
+        <a href="/ja/lorem-ipsum/" class="card" data-category="text" data-subcategory="" data-slug="lorem-ipsum">
+          <button type="button" class="fav-toggle" data-fav="lorem-ipsum" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">📋</div>
           <h3 class="card-title">Lorem Ipsum生成</h3>
           <p class="card-description">Lorem Ipsumダミーテキストを生成します。</p>
         </a>
 
-        <a href="/ja/favicon-generator/" class="card" data-category="image">
+        <a href="/ja/favicon-generator/" class="card" data-category="image" data-subcategory="" data-slug="favicon-generator">
+          <button type="button" class="fav-toggle" data-fav="favicon-generator" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">🎯</div>
           <h3 class="card-title">ファビコン生成</h3>
           <p class="card-description">画像をさまざまなサイズのファビコンに変換します。</p>
         </a>
 
-        <a href="/ja/diff-checker/" class="card" data-category="text">
+        <a href="/ja/diff-checker/" class="card" data-category="text" data-subcategory="" data-slug="diff-checker">
+          <button type="button" class="fav-toggle" data-fav="diff-checker" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">🔀</div>
           <h3 class="card-title">テキスト差分チェッカー</h3>
           <p class="card-description">2つのテキストの差分を簡単に比較します。追加および削除された部分をハイライト表示します。</p>
         </a>
 
-        <a href="/ja/password-generator/" class="card" data-category="calc">
+        <a href="/ja/password-generator/" class="card" data-category="calc" data-subcategory="" data-slug="password-generator">
+          <button type="button" class="fav-toggle" data-fav="password-generator" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">🔐</div>
           <h3 class="card-title">強力なパスワード生成ツール</h3>
           <p class="card-description">強力で安全なパスワードを生成します。パスワードはローカルで生成され、サーバーに送信されることはありません。</p>
         </a>
 
-        <a href="/ja/thumbnail-downloader/" class="card" data-category="image">
+        <a href="/ja/thumbnail-downloader/" class="card" data-category="image" data-subcategory="" data-slug="thumbnail-downloader">
+          <button type="button" class="fav-toggle" data-fav="thumbnail-downloader" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">📺</div>
           <h3 class="card-title">YouTubeサムネイルダウンローダー</h3>
           <p class="card-description">YouTube動画のサムネイルを高画質（4K, HD）で抽出してダウンロード。無料で簡単なツール。</p>
         </a>
 
-        <a href="/ja/markdown-previewer/" class="card" data-category="text">
+        <a href="/ja/markdown-previewer/" class="card" data-category="text" data-subcategory="" data-slug="markdown-previewer">
+          <button type="button" class="fav-toggle" data-fav="markdown-previewer" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">📝</div>
           <h3 class="card-title">マークダウンエディタ＆プレビュー</h3>
           <p class="card-description">リアルタイムマークダウンプレビューツール。マークダウンを簡単に作成し、変換されたHTMLを即座に確認できます。</p>
         </a>
 
-        <a href="/ja/reaction-test/" class="card" data-category="calc">
+        <a href="/ja/reaction-test/" class="card" data-category="calc" data-subcategory="" data-slug="reaction-test">
+          <button type="button" class="fav-toggle" data-fav="reaction-test" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">⚡</div>
           <h3 class="card-title">反応速度テスト</h3>
           <p class="card-description">あなたの反応速度をテストします。画面が緑色になったらできるだけ早くクリックしてください！</p>
         </a>
 
-        <a href="/ja/jwt-decoder/" class="card" data-category="dev">
+        <a href="/ja/jwt-decoder/" class="card" data-category="dev" data-subcategory="" data-slug="jwt-decoder">
+          <button type="button" class="fav-toggle" data-fav="jwt-decoder" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">🪪</div>
           <h3 class="card-title">JWT Decoder</h3>
           <p class="card-description">Paste a JWT to decode its header and payload. Tokens are processed locally and never sent to a server.</p>
         </a>
 
-        <a href="/ja/hash-generator/" class="card" data-category="dev">
+        <a href="/ja/hash-generator/" class="card" data-category="dev" data-subcategory="" data-slug="hash-generator">
+          <button type="button" class="fav-toggle" data-fav="hash-generator" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">🔑</div>
           <h3 class="card-title">Hash Generator</h3>
           <p class="card-description">Type any text to instantly compute MD5 and SHA-1/256/384/512 digests. Nothing is uploaded — all hashing runs locally.</p>
         </a>
 
-        <a href="/ja/unix-timestamp/" class="card" data-category="convert">
+        <a href="/ja/unix-timestamp/" class="card" data-category="convert" data-subcategory="" data-slug="unix-timestamp">
+          <button type="button" class="fav-toggle" data-fav="unix-timestamp" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">⏲️</div>
           <h3 class="card-title">Unix Timestamp Converter</h3>
           <p class="card-description">Convert between Unix timestamps and dates. Auto-detects seconds vs. milliseconds and shows both UTC and your local time zone.</p>
         </a>
 
-        <a href="/ja/uuid-generator/" class="card" data-category="dev">
+        <a href="/ja/uuid-generator/" class="card" data-category="dev" data-subcategory="" data-slug="uuid-generator">
+          <button type="button" class="fav-toggle" data-fav="uuid-generator" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">🆔</div>
           <h3 class="card-title">UUID Generator</h3>
           <p class="card-description">Generate cryptographically random UUIDs locally. v4 (random) is the most common choice; v1 embeds a timestamp. Format options for hyphens, casing, and braces.</p>
         </a>
 
-        <a href="/ja/url-encoder/" class="card" data-category="dev">
+        <a href="/ja/url-encoder/" class="card" data-category="dev" data-subcategory="" data-slug="url-encoder">
+          <button type="button" class="fav-toggle" data-fav="url-encoder" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">🔗</div>
           <h3 class="card-title">URL Encoder / Decoder</h3>
           <p class="card-description">Encode characters into percent-encoded form (e.g. space → %20) or decode them back. Use 'Component' for query values; use 'Full URL' to preserve reserved characters like : / ?.</p>
         </a>
 
-        <a href="/ja/token-counter/" class="card" data-category="ai">
+        <a href="/ja/token-counter/" class="card" data-category="ai" data-subcategory="" data-slug="token-counter">
+          <button type="button" class="fav-toggle" data-fav="token-counter" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">🪙</div>
           <h3 class="card-title">AI Token Counter & Cost Calculator</h3>
           <p class="card-description">Estimate the token count of any text and the per-model API cost across GPT-4o, Claude Opus 4.7, Gemini 2.5, and more. Heuristic count (≈4 chars/token English, ≈1.5 chars/token CJK) — exact tokenization needs the provider API.</p>
         </a>
 
-        <a href="/ja/mcp-config-generator/" class="card" data-category="ai">
+        <a href="/ja/mcp-config-generator/" class="card" data-category="ai" data-subcategory="" data-slug="mcp-config-generator">
+          <button type="button" class="fav-toggle" data-fav="mcp-config-generator" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">🔌</div>
           <h3 class="card-title">MCP Server Config Generator</h3>
           <p class="card-description">Generate Model Context Protocol (MCP) server configuration for Claude Desktop, Cursor, or VS Code. Pick transport, command, args, and env vars — the tool emits the correct JSON shape for each client and shows the config file path.</p>
         </a>
 
-        <a href="/ja/ai-image-inspector/" class="card" data-category="ai">
+        <a href="/ja/ai-image-inspector/" class="card" data-category="ai" data-subcategory="" data-slug="ai-image-inspector">
+          <button type="button" class="fav-toggle" data-fav="ai-image-inspector" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">🔬</div>
           <h3 class="card-title">AI Image Metadata Inspector</h3>
           <p class="card-description">Drop or pick an image to inspect its embedded metadata. The tool reads PNG tEXt/iTXt chunks (Stable Diffusion stores prompts there), JPEG EXIF UserComment (Midjourney/DALL-E often embed details), and detects C2PA Content Credentials boxes. Files never leave your browser.</p>
         </a>
 
-        <a href="/ja/chatgpt-to-blog/" class="card" data-category="ai">
+        <a href="/ja/chatgpt-to-blog/" class="card" data-category="ai" data-subcategory="" data-slug="chatgpt-to-blog">
+          <button type="button" class="fav-toggle" data-fav="chatgpt-to-blog" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">📝</div>
           <h3 class="card-title">ChatGPT → Blog Post Converter</h3>
           <p class="card-description">Paste a ChatGPT (or Claude) conversation — text or exported JSON — and the tool splits it into user/assistant turns, optionally strips your prompts, and formats the assistant responses as clean Markdown ready for your blog.</p>
         </a>
 
-        <a href="/ja/prompt-pii-scrubber/" class="card" data-category="ai">
+        <a href="/ja/prompt-pii-scrubber/" class="card" data-category="ai" data-subcategory="" data-slug="prompt-pii-scrubber">
+          <button type="button" class="fav-toggle" data-fav="prompt-pii-scrubber" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">🛡️</div>
           <h3 class="card-title">Prompt PII Scrubber</h3>
           <p class="card-description">Mask sensitive data (emails, phones, SSNs, credit cards, API keys, IPs, URLs) before pasting prompts into ChatGPT, Claude, or any AI service. Runs entirely in your browser — your text never leaves the page.</p>
         </a>
 
-        <a href="/ja/claude-md-generator/" class="card" data-category="ai">
+        <a href="/ja/claude-md-generator/" class="card" data-category="ai" data-subcategory="" data-slug="claude-md-generator">
+          <button type="button" class="fav-toggle" data-fav="claude-md-generator" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">📜</div>
           <h3 class="card-title">Claude.md Generator</h3>
           <p class="card-description">Generate a CLAUDE.md (or any AI agent system prompt) from a simple form. Specify the project role, coding conventions, constraints, and commands; copy or download the resulting Markdown.</p>
         </a>
 
-        <a href="/ja/image-editor/" class="card" data-category="image">
+        <a href="/ja/loan-calculator/" class="card" data-category="calc" data-subcategory="finance" data-slug="loan-calculator">
+          <button type="button" class="fav-toggle" data-fav="loan-calculator" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
+          <div class="card-icon">💰</div>
+          <h3 class="card-title">Loan Calculator</h3>
+          <p class="card-description">Enter the loan amount, annual interest rate, and term in years to see your monthly payment, total interest paid, and a 12-month amortization preview. Standard formula for fixed-rate loans — mortgages, auto, personal.</p>
+        </a>
+
+        <a href="/ja/compound-interest/" class="card" data-category="calc" data-subcategory="finance" data-slug="compound-interest">
+          <button type="button" class="fav-toggle" data-fav="compound-interest" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
+          <div class="card-icon">📈</div>
+          <h3 class="card-title">Compound Interest Calculator</h3>
+          <p class="card-description">Enter your starting principal, annual return, time horizon, compounding frequency, and optional monthly contributions to project the future value of an investment or savings account. Includes a year-by-year balance breakdown.</p>
+        </a>
+
+        <a href="/ja/retirement-calculator/" class="card" data-category="calc" data-subcategory="finance" data-slug="retirement-calculator">
+          <button type="button" class="fav-toggle" data-fav="retirement-calculator" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
+          <div class="card-icon">🏖️</div>
+          <h3 class="card-title">Retirement Calculator</h3>
+          <p class="card-description">Enter your current age, target retirement age, current savings, monthly contributions, expected return, planned annual withdrawal, and life expectancy. The calculator runs an accumulation phase, then a withdrawal phase to show whether your nest egg lasts.</p>
+        </a>
+
+        <a href="/ja/image-editor/" class="card" data-category="image" data-subcategory="" data-slug="image-editor">
+          <button type="button" class="fav-toggle" data-fav="image-editor" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">🎨</div>
           <h3 class="card-title">画像エディタ</h3>
           <p class="card-description">画像のトリミング、回転、フィルター適用ができます。</p>
         </a>
 
-        <a href="/ja/jpa-converter/" class="card" data-category="dev">
+        <a href="/ja/jpa-converter/" class="card" data-category="dev" data-subcategory="" data-slug="jpa-converter">
+          <button type="button" class="fav-toggle" data-fav="jpa-converter" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">🗃️</div>
           <h3 class="card-title">DB JPA 変換</h3>
           <p class="card-description">SQLスキーマをJPAエンティティとDTOクラスに変換します。</p>
         </a>
 
-        <a href="/ja/json-to-ts/" class="card" data-category="dev">
+        <a href="/ja/json-to-ts/" class="card" data-category="dev" data-subcategory="" data-slug="json-to-ts">
+          <button type="button" class="fav-toggle" data-fav="json-to-ts" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">🔁</div>
           <h3 class="card-title">JSON TS/DTO 変換</h3>
           <p class="card-description">JSONをTypeScriptインターフェースとNestJS DTOに変換します。</p>
         </a>
 
-        <a href="/ja/excel-to-sql/" class="card" data-category="convert">
+        <a href="/ja/excel-to-sql/" class="card" data-category="convert" data-subcategory="" data-slug="excel-to-sql">
+          <button type="button" class="fav-toggle" data-fav="excel-to-sql" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">📊</div>
           <h3 class="card-title">Excel SQL 変換</h3>
           <p class="card-description">ExcelデータをSQL INSERTクエリに変換します。</p>
         </a>
 
-        <a href="/ja/json-to-excel/" class="card" data-category="convert">
+        <a href="/ja/json-to-excel/" class="card" data-category="convert" data-subcategory="" data-slug="json-to-excel">
+          <button type="button" class="fav-toggle" data-fav="json-to-excel" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">📈</div>
           <h3 class="card-title">JSON Excel 変換</h3>
           <p class="card-description">JSONデータをExcelに変換してダウンロードします。（安全）</p>
         </a>
 
-        <a href="/ja/json-ld-generator/" class="card" data-category="dev">
+        <a href="/ja/json-ld-generator/" class="card" data-category="dev" data-subcategory="" data-slug="json-ld-generator">
+          <button type="button" class="fav-toggle" data-fav="json-ld-generator" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">🏷️</div>
           <h3 class="card-title">SEO JSON-LD ジェネレーター</h3>
           <p class="card-description">Google/Naver公開用の構造化データ（スキーマ）を作成します。</p>
         </a>
 
-        <a href="/ja/pdf-tools/" class="card" data-category="convert">
+        <a href="/ja/pdf-tools/" class="card" data-category="convert" data-subcategory="" data-slug="pdf-tools">
+          <button type="button" class="fav-toggle" data-fav="pdf-tools" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">📄</div>
           <h3 class="card-title">PDF 結合/分割</h3>
           <p class="card-description">サーバーにアップロードせず、ブラウザで安全にPDFを結合・分割します。</p>
         </a>
 
-        <a href="/ja/text-to-diagram/" class="card" data-category="convert">
+        <a href="/ja/text-to-diagram/" class="card" data-category="convert" data-subcategory="" data-slug="text-to-diagram">
+          <button type="button" class="fav-toggle" data-fav="text-to-diagram" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">🧩</div>
           <h3 class="card-title">テキスト図解作成</h3>
           <p class="card-description">テキストからフローチャートやシーケンス図を作成します。</p>
@@ -485,20 +550,117 @@
 
     <script src="/assets/js/common.js"></script>
     <script>
-        // Category filter — pure DOM, no library.
+        // Combined filter (category + subcategory + favorites) + per-card star toggle.
         (function () {
-            const buttons = document.querySelectorAll('.category-filter button');
+            const FAV_KEY = 'utilify_favorites';
+            const getFavs = () => (localStorage.getItem(FAV_KEY) || '').split(',').filter(Boolean);
+            const setFavs = ids => localStorage.setItem(FAV_KEY, [...new Set(ids)].join(','));
+            const isFav = id => getFavs().includes(id);
+
+            const catButtons = document.querySelectorAll('.category-filter button');
             const cards = document.querySelectorAll('#toolGrid .card');
-            buttons.forEach(btn => {
+            const subcatGroups = document.querySelectorAll('.subcat-chips');
+            const emptyState = document.getElementById('emptyState');
+
+            // Initialize ★ state on each card from localStorage.
+            cards.forEach(card => {
+                const slug = card.dataset.slug;
+                const star = card.querySelector('.fav-toggle');
+                if (!star || !slug) return;
+                const fav = isFav(slug);
+                star.textContent = fav ? '★' : '☆';
+                star.classList.toggle('is-fav', fav);
+                star.setAttribute('aria-label',
+                    fav ? star.dataset.removeLabel : star.dataset.addLabel);
+                star.setAttribute('aria-pressed', String(fav));
+            });
+
+            let activeCat = 'all';
+            let activeSubcat = '';   // '' = no subcategory filter
+
+            function applyFilters() {
+                let visible = 0;
+                cards.forEach(card => {
+                    let match = true;
+                    if (activeCat === 'favorites') {
+                        match = isFav(card.dataset.slug);
+                    } else if (activeCat !== 'all') {
+                        match = card.dataset.category === activeCat;
+                        if (match && activeSubcat) {
+                            match = card.dataset.subcategory === activeSubcat;
+                        }
+                    }
+                    card.style.display = match ? '' : 'none';
+                    if (match) visible++;
+                });
+
+                // Show subcategory group only for the active main category.
+                subcatGroups.forEach(group => {
+                    const showGroup = activeCat !== 'all' &&
+                        activeCat !== 'favorites' &&
+                        group.dataset.parentCat === activeCat;
+                    group.hidden = !showGroup;
+                });
+
+                // Empty-state message — only meaningful for the favorites filter
+                // (other filters always have results given the tool roster).
+                if (emptyState) {
+                    emptyState.hidden = !(activeCat === 'favorites' && visible === 0);
+                }
+            }
+
+            catButtons.forEach(btn => {
                 btn.addEventListener('click', () => {
-                    const cat = btn.dataset.cat;
-                    buttons.forEach(b => b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'));
-                    cards.forEach(card => {
-                        const match = cat === 'all' || card.dataset.category === cat;
-                        card.style.display = match ? '' : 'none';
+                    activeCat = btn.dataset.cat;
+                    activeSubcat = '';
+                    catButtons.forEach(b =>
+                        b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'));
+                    // Reset subcategory chips so the next visit to a category starts at "All".
+                    subcatGroups.forEach(group => {
+                        group.querySelectorAll('.subcat-chip').forEach(chip => {
+                            chip.setAttribute('aria-pressed',
+                                chip.dataset.subcat === '' ? 'true' : 'false');
+                        });
+                    });
+                    applyFilters();
+                });
+            });
+
+            subcatGroups.forEach(group => {
+                group.querySelectorAll('.subcat-chip').forEach(chip => {
+                    chip.addEventListener('click', () => {
+                        activeSubcat = chip.dataset.subcat;
+                        group.querySelectorAll('.subcat-chip').forEach(c =>
+                            c.setAttribute('aria-pressed', c === chip ? 'true' : 'false'));
+                        applyFilters();
                     });
                 });
             });
+
+            // ★ toggle on each card.
+            cards.forEach(card => {
+                const star = card.querySelector('.fav-toggle');
+                if (!star) return;
+                star.addEventListener('click', e => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const slug = star.dataset.fav;
+                    const favs = getFavs();
+                    const next = favs.includes(slug)
+                        ? favs.filter(x => x !== slug)
+                        : [...favs, slug];
+                    setFavs(next);
+                    const nowFav = next.includes(slug);
+                    star.textContent = nowFav ? '★' : '☆';
+                    star.classList.toggle('is-fav', nowFav);
+                    star.setAttribute('aria-label',
+                        nowFav ? star.dataset.removeLabel : star.dataset.addLabel);
+                    star.setAttribute('aria-pressed', String(nowFav));
+                    if (activeCat === 'favorites') applyFilters();
+                });
+            });
+
+            applyFilters();
         })();
     </script>
     <script>(adsbygoogle=window.adsbygoogle||[]).push({google_ad_client:"ca-pub-6334819180242631",enable_page_level_ads:true});</script>

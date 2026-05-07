@@ -211,6 +211,7 @@
 
             <div class="category-filter" role="group" aria-label="Filter tools by category">
                 <button type="button" data-cat="all" aria-pressed="true">All</button>
+                <button type="button" class="fav-filter-chip" data-cat="favorites" aria-pressed="false">★ Favorites</button>
                 <button type="button" data-cat="ai" aria-pressed="false">AI</button>
                 <button type="button" data-cat="dev" aria-pressed="false">Developer</button>
                 <button type="button" data-cat="text" aria-pressed="false">Text</button>
@@ -219,237 +220,301 @@
                 <button type="button" data-cat="calc" aria-pressed="false">Calculators</button>
             </div>
 
+            <div class="subcat-chips" data-parent-cat="calc" role="group" aria-label="Subcategory filter" hidden><button type="button" class="subcat-chip" data-subcat="" aria-pressed="true">All</button><button type="button" class="subcat-chip" data-subcat="finance" aria-pressed="false">Finance</button></div>
+
+            <p id="emptyState" class="empty-state" hidden>No favorites yet. Click ☆ on any tool card to save it.</p>
+
             <div class="card-grid" id="toolGrid">
                 
-        <a href="/vi/image-watermark/" class="card" data-category="image">
+        <a href="/vi/image-watermark/" class="card" data-category="image" data-subcategory="" data-slug="image-watermark">
+          <button type="button" class="fav-toggle" data-fav="image-watermark" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">🛡️</div>
           <h3 class="card-title">Đóng dấu ảnh</h3>
           <p class="card-description">Thêm hình mờ vào hình ảnh của bạn.</p>
         </a>
 
-        <a href="/vi/unit-converter/" class="card" data-category="convert">
+        <a href="/vi/unit-converter/" class="card" data-category="convert" data-subcategory="" data-slug="unit-converter">
+          <button type="button" class="fav-toggle" data-fav="unit-converter" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">📏</div>
           <h3 class="card-title">Chuyển đổi đơn vị</h3>
           <p class="card-description">Chuyển đổi Chiều dài, Cân nặng, Nhiệt độ, Thể tích, và hơn thế nữa.</p>
         </a>
 
-        <a href="/vi/image-converter/" class="card" data-category="image">
+        <a href="/vi/image-converter/" class="card" data-category="image" data-subcategory="" data-slug="image-converter">
+          <button type="button" class="fav-toggle" data-fav="image-converter" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">🖼️</div>
           <h3 class="card-title">Chuyển đổi hình ảnh</h3>
           <p class="card-description">Thay đổi kích thước hình ảnh và chuyển đổi sang các định dạng WebP, JPEG, PNG.</p>
         </a>
 
-        <a href="/vi/bmi-calculator/" class="card" data-category="calc">
+        <a href="/vi/bmi-calculator/" class="card" data-category="calc" data-subcategory="" data-slug="bmi-calculator">
+          <button type="button" class="fav-toggle" data-fav="bmi-calculator" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">⚖️</div>
           <h3 class="card-title">Máy tính BMI</h3>
           <p class="card-description">Tính Chỉ số Khối cơ thể (BMI) của bạn.</p>
         </a>
 
-        <a href="/vi/date-calculator/" class="card" data-category="calc">
+        <a href="/vi/date-calculator/" class="card" data-category="calc" data-subcategory="" data-slug="date-calculator">
+          <button type="button" class="fav-toggle" data-fav="date-calculator" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">📅</div>
           <h3 class="card-title">Máy tính ngày</h3>
           <p class="card-description">Tính ngày D-Day và chênh lệch ngày.</p>
         </a>
 
-        <a href="/vi/text-utils/" class="card" data-category="text">
+        <a href="/vi/text-utils/" class="card" data-category="text" data-subcategory="" data-slug="text-utils">
+          <button type="button" class="fav-toggle" data-fav="text-utils" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">📝</div>
           <h3 class="card-title">Tiện ích văn bản</h3>
           <p class="card-description">Đếm từ, ký tự, xóa trùng lặp, chuyển đổi chữ hoa/thường và hơn thế nữa.</p>
         </a>
 
-        <a href="/vi/json-formatter/" class="card" data-category="dev">
+        <a href="/vi/json-formatter/" class="card" data-category="dev" data-subcategory="" data-slug="json-formatter">
+          <button type="button" class="fav-toggle" data-fav="json-formatter" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">{ }</div>
           <h3 class="card-title">Trình định dạng JSON</h3>
           <p class="card-description">Định dạng, xác thực và thu nhỏ dữ liệu JSON. Không quảng cáo cho nhà phát triển.</p>
         </a>
 
-        <a href="/vi/color-converter/" class="card" data-category="convert">
+        <a href="/vi/color-converter/" class="card" data-category="convert" data-subcategory="" data-slug="color-converter">
+          <button type="button" class="fav-toggle" data-fav="color-converter" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">🎨</div>
           <h3 class="card-title">Chuyển đổi màu sắc</h3>
           <p class="card-description">Chuyển đổi các định dạng màu HEX, RGB, HSL, CMYK.</p>
         </a>
 
-        <a href="/vi/timer/" class="card" data-category="calc">
+        <a href="/vi/timer/" class="card" data-category="calc" data-subcategory="" data-slug="timer">
+          <button type="button" class="fav-toggle" data-fav="timer" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">⏱️</div>
           <h3 class="card-title">Bộ hẹn giờ / Pomodoro</h3>
           <p class="card-description">Hẹn giờ trực tuyến và kỹ thuật Pomodoro.</p>
         </a>
 
-        <a href="/vi/base64-converter/" class="card" data-category="dev">
+        <a href="/vi/base64-converter/" class="card" data-category="dev" data-subcategory="" data-slug="base64-converter">
+          <button type="button" class="fav-toggle" data-fav="base64-converter" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">🔤</div>
           <h3 class="card-title">Bộ mã hóa/giải mã Base64</h3>
           <p class="card-description">Mã hóa hoặc giải mã văn bản sang Base64.</p>
         </a>
 
-        <a href="/vi/qr-generator/" class="card" data-category="image">
+        <a href="/vi/qr-generator/" class="card" data-category="image" data-subcategory="" data-slug="qr-generator">
+          <button type="button" class="fav-toggle" data-fav="qr-generator" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">📱</div>
           <h3 class="card-title">Tạo mã QR</h3>
           <p class="card-description">Chuyển đổi văn bản hoặc URL thành mã QR.</p>
         </a>
 
-        <a href="/vi/regex-tester/" class="card" data-category="dev">
+        <a href="/vi/regex-tester/" class="card" data-category="dev" data-subcategory="" data-slug="regex-tester">
+          <button type="button" class="fav-toggle" data-fav="regex-tester" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">🔍</div>
           <h3 class="card-title">Kiểm tra Regex</h3>
           <p class="card-description">Kiểm tra các biểu thức chính quy trong thời gian thực.</p>
         </a>
 
-        <a href="/vi/sql-formatter/" class="card" data-category="dev">
+        <a href="/vi/sql-formatter/" class="card" data-category="dev" data-subcategory="" data-slug="sql-formatter">
+          <button type="button" class="fav-toggle" data-fav="sql-formatter" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">🗄️</div>
           <h3 class="card-title">Định dạng SQL</h3>
           <p class="card-description">Định dạng, làm đẹp và tối ưu hóa truy vấn SQL.</p>
         </a>
 
-        <a href="/vi/lorem-ipsum/" class="card" data-category="text">
+        <a href="/vi/lorem-ipsum/" class="card" data-category="text" data-subcategory="" data-slug="lorem-ipsum">
+          <button type="button" class="fav-toggle" data-fav="lorem-ipsum" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">📋</div>
           <h3 class="card-title">Tạo Lorem Ipsum</h3>
           <p class="card-description">Tạo văn bản giả Lorem Ipsum.</p>
         </a>
 
-        <a href="/vi/favicon-generator/" class="card" data-category="image">
+        <a href="/vi/favicon-generator/" class="card" data-category="image" data-subcategory="" data-slug="favicon-generator">
+          <button type="button" class="fav-toggle" data-fav="favicon-generator" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">🎯</div>
           <h3 class="card-title">Tạo Favicon</h3>
           <p class="card-description">Chuyển đổi hình ảnh thành favicon với nhiều kích thước khác nhau.</p>
         </a>
 
-        <a href="/vi/diff-checker/" class="card" data-category="text">
+        <a href="/vi/diff-checker/" class="card" data-category="text" data-subcategory="" data-slug="diff-checker">
+          <button type="button" class="fav-toggle" data-fav="diff-checker" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">🔀</div>
           <h3 class="card-title">Kiểm tra sự khác biệt văn bản</h3>
           <p class="card-description">So sánh sự khác biệt giữa hai văn bản dễ dàng. Đánh dấu các phần đã thêm và bị xóa.</p>
         </a>
 
-        <a href="/vi/password-generator/" class="card" data-category="calc">
+        <a href="/vi/password-generator/" class="card" data-category="calc" data-subcategory="" data-slug="password-generator">
+          <button type="button" class="fav-toggle" data-fav="password-generator" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">🔐</div>
           <h3 class="card-title">Trình tạo mật khẩu mạnh</h3>
           <p class="card-description">Tạo mật khẩu mạnh và an toàn. Mật khẩu được tạo cục bộ và không bao giờ gửi đến máy chủ.</p>
         </a>
 
-        <a href="/vi/thumbnail-downloader/" class="card" data-category="image">
+        <a href="/vi/thumbnail-downloader/" class="card" data-category="image" data-subcategory="" data-slug="thumbnail-downloader">
+          <button type="button" class="fav-toggle" data-fav="thumbnail-downloader" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">📺</div>
           <h3 class="card-title">Trình tải xuống hình thu nhỏ YouTube</h3>
           <p class="card-description">Trích xuất và tải xuống hình thu nhỏ video YouTube ở chất lượng cao (4K, HD). Công cụ miễn phí và dễ dàng.</p>
         </a>
 
-        <a href="/vi/markdown-previewer/" class="card" data-category="text">
+        <a href="/vi/markdown-previewer/" class="card" data-category="text" data-subcategory="" data-slug="markdown-previewer">
+          <button type="button" class="fav-toggle" data-fav="markdown-previewer" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">📝</div>
           <h3 class="card-title">Trình biên tập & Xem trước Markdown</h3>
           <p class="card-description">Công cụ xem trước Markdown thời gian thực. Viết Markdown dễ dàng và xem kết quả HTML được chuyển đổi ngay lập tức.</p>
         </a>
 
-        <a href="/vi/reaction-test/" class="card" data-category="calc">
+        <a href="/vi/reaction-test/" class="card" data-category="calc" data-subcategory="" data-slug="reaction-test">
+          <button type="button" class="fav-toggle" data-fav="reaction-test" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">⚡</div>
           <h3 class="card-title">Kiểm tra tốc độ phản ứng</h3>
           <p class="card-description">Kiểm tra thời gian phản ứng của bạn. Nhấp càng nhanh càng tốt khi màn hình chuyển sang màu xanh lá cây!</p>
         </a>
 
-        <a href="/vi/jwt-decoder/" class="card" data-category="dev">
+        <a href="/vi/jwt-decoder/" class="card" data-category="dev" data-subcategory="" data-slug="jwt-decoder">
+          <button type="button" class="fav-toggle" data-fav="jwt-decoder" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">🪪</div>
           <h3 class="card-title">JWT Decoder</h3>
           <p class="card-description">Paste a JWT to decode its header and payload. Tokens are processed locally and never sent to a server.</p>
         </a>
 
-        <a href="/vi/hash-generator/" class="card" data-category="dev">
+        <a href="/vi/hash-generator/" class="card" data-category="dev" data-subcategory="" data-slug="hash-generator">
+          <button type="button" class="fav-toggle" data-fav="hash-generator" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">🔑</div>
           <h3 class="card-title">Hash Generator</h3>
           <p class="card-description">Type any text to instantly compute MD5 and SHA-1/256/384/512 digests. Nothing is uploaded — all hashing runs locally.</p>
         </a>
 
-        <a href="/vi/unix-timestamp/" class="card" data-category="convert">
+        <a href="/vi/unix-timestamp/" class="card" data-category="convert" data-subcategory="" data-slug="unix-timestamp">
+          <button type="button" class="fav-toggle" data-fav="unix-timestamp" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">⏲️</div>
           <h3 class="card-title">Unix Timestamp Converter</h3>
           <p class="card-description">Convert between Unix timestamps and dates. Auto-detects seconds vs. milliseconds and shows both UTC and your local time zone.</p>
         </a>
 
-        <a href="/vi/uuid-generator/" class="card" data-category="dev">
+        <a href="/vi/uuid-generator/" class="card" data-category="dev" data-subcategory="" data-slug="uuid-generator">
+          <button type="button" class="fav-toggle" data-fav="uuid-generator" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">🆔</div>
           <h3 class="card-title">UUID Generator</h3>
           <p class="card-description">Generate cryptographically random UUIDs locally. v4 (random) is the most common choice; v1 embeds a timestamp. Format options for hyphens, casing, and braces.</p>
         </a>
 
-        <a href="/vi/url-encoder/" class="card" data-category="dev">
+        <a href="/vi/url-encoder/" class="card" data-category="dev" data-subcategory="" data-slug="url-encoder">
+          <button type="button" class="fav-toggle" data-fav="url-encoder" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">🔗</div>
           <h3 class="card-title">URL Encoder / Decoder</h3>
           <p class="card-description">Encode characters into percent-encoded form (e.g. space → %20) or decode them back. Use 'Component' for query values; use 'Full URL' to preserve reserved characters like : / ?.</p>
         </a>
 
-        <a href="/vi/token-counter/" class="card" data-category="ai">
+        <a href="/vi/token-counter/" class="card" data-category="ai" data-subcategory="" data-slug="token-counter">
+          <button type="button" class="fav-toggle" data-fav="token-counter" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">🪙</div>
           <h3 class="card-title">AI Token Counter & Cost Calculator</h3>
           <p class="card-description">Estimate the token count of any text and the per-model API cost across GPT-4o, Claude Opus 4.7, Gemini 2.5, and more. Heuristic count (≈4 chars/token English, ≈1.5 chars/token CJK) — exact tokenization needs the provider API.</p>
         </a>
 
-        <a href="/vi/mcp-config-generator/" class="card" data-category="ai">
+        <a href="/vi/mcp-config-generator/" class="card" data-category="ai" data-subcategory="" data-slug="mcp-config-generator">
+          <button type="button" class="fav-toggle" data-fav="mcp-config-generator" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">🔌</div>
           <h3 class="card-title">MCP Server Config Generator</h3>
           <p class="card-description">Generate Model Context Protocol (MCP) server configuration for Claude Desktop, Cursor, or VS Code. Pick transport, command, args, and env vars — the tool emits the correct JSON shape for each client and shows the config file path.</p>
         </a>
 
-        <a href="/vi/ai-image-inspector/" class="card" data-category="ai">
+        <a href="/vi/ai-image-inspector/" class="card" data-category="ai" data-subcategory="" data-slug="ai-image-inspector">
+          <button type="button" class="fav-toggle" data-fav="ai-image-inspector" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">🔬</div>
           <h3 class="card-title">AI Image Metadata Inspector</h3>
           <p class="card-description">Drop or pick an image to inspect its embedded metadata. The tool reads PNG tEXt/iTXt chunks (Stable Diffusion stores prompts there), JPEG EXIF UserComment (Midjourney/DALL-E often embed details), and detects C2PA Content Credentials boxes. Files never leave your browser.</p>
         </a>
 
-        <a href="/vi/chatgpt-to-blog/" class="card" data-category="ai">
+        <a href="/vi/chatgpt-to-blog/" class="card" data-category="ai" data-subcategory="" data-slug="chatgpt-to-blog">
+          <button type="button" class="fav-toggle" data-fav="chatgpt-to-blog" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">📝</div>
           <h3 class="card-title">ChatGPT → Blog Post Converter</h3>
           <p class="card-description">Paste a ChatGPT (or Claude) conversation — text or exported JSON — and the tool splits it into user/assistant turns, optionally strips your prompts, and formats the assistant responses as clean Markdown ready for your blog.</p>
         </a>
 
-        <a href="/vi/prompt-pii-scrubber/" class="card" data-category="ai">
+        <a href="/vi/prompt-pii-scrubber/" class="card" data-category="ai" data-subcategory="" data-slug="prompt-pii-scrubber">
+          <button type="button" class="fav-toggle" data-fav="prompt-pii-scrubber" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">🛡️</div>
           <h3 class="card-title">Prompt PII Scrubber</h3>
           <p class="card-description">Mask sensitive data (emails, phones, SSNs, credit cards, API keys, IPs, URLs) before pasting prompts into ChatGPT, Claude, or any AI service. Runs entirely in your browser — your text never leaves the page.</p>
         </a>
 
-        <a href="/vi/claude-md-generator/" class="card" data-category="ai">
+        <a href="/vi/claude-md-generator/" class="card" data-category="ai" data-subcategory="" data-slug="claude-md-generator">
+          <button type="button" class="fav-toggle" data-fav="claude-md-generator" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">📜</div>
           <h3 class="card-title">Claude.md Generator</h3>
           <p class="card-description">Generate a CLAUDE.md (or any AI agent system prompt) from a simple form. Specify the project role, coding conventions, constraints, and commands; copy or download the resulting Markdown.</p>
         </a>
 
-        <a href="/vi/image-editor/" class="card" data-category="image">
+        <a href="/vi/loan-calculator/" class="card" data-category="calc" data-subcategory="finance" data-slug="loan-calculator">
+          <button type="button" class="fav-toggle" data-fav="loan-calculator" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
+          <div class="card-icon">💰</div>
+          <h3 class="card-title">Loan Calculator</h3>
+          <p class="card-description">Enter the loan amount, annual interest rate, and term in years to see your monthly payment, total interest paid, and a 12-month amortization preview. Standard formula for fixed-rate loans — mortgages, auto, personal.</p>
+        </a>
+
+        <a href="/vi/compound-interest/" class="card" data-category="calc" data-subcategory="finance" data-slug="compound-interest">
+          <button type="button" class="fav-toggle" data-fav="compound-interest" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
+          <div class="card-icon">📈</div>
+          <h3 class="card-title">Compound Interest Calculator</h3>
+          <p class="card-description">Enter your starting principal, annual return, time horizon, compounding frequency, and optional monthly contributions to project the future value of an investment or savings account. Includes a year-by-year balance breakdown.</p>
+        </a>
+
+        <a href="/vi/retirement-calculator/" class="card" data-category="calc" data-subcategory="finance" data-slug="retirement-calculator">
+          <button type="button" class="fav-toggle" data-fav="retirement-calculator" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
+          <div class="card-icon">🏖️</div>
+          <h3 class="card-title">Retirement Calculator</h3>
+          <p class="card-description">Enter your current age, target retirement age, current savings, monthly contributions, expected return, planned annual withdrawal, and life expectancy. The calculator runs an accumulation phase, then a withdrawal phase to show whether your nest egg lasts.</p>
+        </a>
+
+        <a href="/vi/image-editor/" class="card" data-category="image" data-subcategory="" data-slug="image-editor">
+          <button type="button" class="fav-toggle" data-fav="image-editor" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">🎨</div>
           <h3 class="card-title">Trình sửa ảnh</h3>
           <p class="card-description">Cắt, xoay và áp dụng bộ lọc cho hình ảnh.</p>
         </a>
 
-        <a href="/vi/jpa-converter/" class="card" data-category="dev">
+        <a href="/vi/jpa-converter/" class="card" data-category="dev" data-subcategory="" data-slug="jpa-converter">
+          <button type="button" class="fav-toggle" data-fav="jpa-converter" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">🗃️</div>
           <h3 class="card-title">Chuyển đổi DB sang JPA</h3>
           <p class="card-description">Chuyển đổi lược đồ SQL sang lớp JPA Entity và DTO.</p>
         </a>
 
-        <a href="/vi/json-to-ts/" class="card" data-category="dev">
+        <a href="/vi/json-to-ts/" class="card" data-category="dev" data-subcategory="" data-slug="json-to-ts">
+          <button type="button" class="fav-toggle" data-fav="json-to-ts" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">🔁</div>
           <h3 class="card-title">JSON sang TS/DTO</h3>
           <p class="card-description">Chuyển đổi JSON sang giao diện TypeScript và NestJS DTO.</p>
         </a>
 
-        <a href="/vi/excel-to-sql/" class="card" data-category="convert">
+        <a href="/vi/excel-to-sql/" class="card" data-category="convert" data-subcategory="" data-slug="excel-to-sql">
+          <button type="button" class="fav-toggle" data-fav="excel-to-sql" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">📊</div>
           <h3 class="card-title">Excel sang SQL</h3>
           <p class="card-description">Chuyển đổi dữ liệu Excel sang truy vấn SQL INSERT.</p>
         </a>
 
-        <a href="/vi/json-to-excel/" class="card" data-category="convert">
+        <a href="/vi/json-to-excel/" class="card" data-category="convert" data-subcategory="" data-slug="json-to-excel">
+          <button type="button" class="fav-toggle" data-fav="json-to-excel" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">📈</div>
           <h3 class="card-title">Chuyển đổi JSON sang Excel</h3>
           <p class="card-description">Chuyển đổi dữ liệu JSON sang Excel và tải xuống. (An toàn)</p>
         </a>
 
-        <a href="/vi/json-ld-generator/" class="card" data-category="dev">
+        <a href="/vi/json-ld-generator/" class="card" data-category="dev" data-subcategory="" data-slug="json-ld-generator">
+          <button type="button" class="fav-toggle" data-fav="json-ld-generator" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">🏷️</div>
           <h3 class="card-title">Trình tạo SEO JSON-LD</h3>
           <p class="card-description">Tạo dữ liệu có cấu trúc (schema) cho hiển thị trên Google/Naver.</p>
         </a>
 
-        <a href="/vi/pdf-tools/" class="card" data-category="convert">
+        <a href="/vi/pdf-tools/" class="card" data-category="convert" data-subcategory="" data-slug="pdf-tools">
+          <button type="button" class="fav-toggle" data-fav="pdf-tools" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">📄</div>
           <h3 class="card-title">Ghép/Tách PDF</h3>
           <p class="card-description">Ghép và tách PDF an toàn ngay trên trình duyệt mà không cần tải lên máy chủ.</p>
         </a>
 
-        <a href="/vi/text-to-diagram/" class="card" data-category="convert">
+        <a href="/vi/text-to-diagram/" class="card" data-category="convert" data-subcategory="" data-slug="text-to-diagram">
+          <button type="button" class="fav-toggle" data-fav="text-to-diagram" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">🧩</div>
           <h3 class="card-title">Văn bản sang Sơ đồ</h3>
           <p class="card-description">Tạo lưu đồ và biểu đồ tuần tự từ văn bản.</p>
@@ -485,20 +550,117 @@
 
     <script src="/assets/js/common.js"></script>
     <script>
-        // Category filter — pure DOM, no library.
+        // Combined filter (category + subcategory + favorites) + per-card star toggle.
         (function () {
-            const buttons = document.querySelectorAll('.category-filter button');
+            const FAV_KEY = 'utilify_favorites';
+            const getFavs = () => (localStorage.getItem(FAV_KEY) || '').split(',').filter(Boolean);
+            const setFavs = ids => localStorage.setItem(FAV_KEY, [...new Set(ids)].join(','));
+            const isFav = id => getFavs().includes(id);
+
+            const catButtons = document.querySelectorAll('.category-filter button');
             const cards = document.querySelectorAll('#toolGrid .card');
-            buttons.forEach(btn => {
+            const subcatGroups = document.querySelectorAll('.subcat-chips');
+            const emptyState = document.getElementById('emptyState');
+
+            // Initialize ★ state on each card from localStorage.
+            cards.forEach(card => {
+                const slug = card.dataset.slug;
+                const star = card.querySelector('.fav-toggle');
+                if (!star || !slug) return;
+                const fav = isFav(slug);
+                star.textContent = fav ? '★' : '☆';
+                star.classList.toggle('is-fav', fav);
+                star.setAttribute('aria-label',
+                    fav ? star.dataset.removeLabel : star.dataset.addLabel);
+                star.setAttribute('aria-pressed', String(fav));
+            });
+
+            let activeCat = 'all';
+            let activeSubcat = '';   // '' = no subcategory filter
+
+            function applyFilters() {
+                let visible = 0;
+                cards.forEach(card => {
+                    let match = true;
+                    if (activeCat === 'favorites') {
+                        match = isFav(card.dataset.slug);
+                    } else if (activeCat !== 'all') {
+                        match = card.dataset.category === activeCat;
+                        if (match && activeSubcat) {
+                            match = card.dataset.subcategory === activeSubcat;
+                        }
+                    }
+                    card.style.display = match ? '' : 'none';
+                    if (match) visible++;
+                });
+
+                // Show subcategory group only for the active main category.
+                subcatGroups.forEach(group => {
+                    const showGroup = activeCat !== 'all' &&
+                        activeCat !== 'favorites' &&
+                        group.dataset.parentCat === activeCat;
+                    group.hidden = !showGroup;
+                });
+
+                // Empty-state message — only meaningful for the favorites filter
+                // (other filters always have results given the tool roster).
+                if (emptyState) {
+                    emptyState.hidden = !(activeCat === 'favorites' && visible === 0);
+                }
+            }
+
+            catButtons.forEach(btn => {
                 btn.addEventListener('click', () => {
-                    const cat = btn.dataset.cat;
-                    buttons.forEach(b => b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'));
-                    cards.forEach(card => {
-                        const match = cat === 'all' || card.dataset.category === cat;
-                        card.style.display = match ? '' : 'none';
+                    activeCat = btn.dataset.cat;
+                    activeSubcat = '';
+                    catButtons.forEach(b =>
+                        b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'));
+                    // Reset subcategory chips so the next visit to a category starts at "All".
+                    subcatGroups.forEach(group => {
+                        group.querySelectorAll('.subcat-chip').forEach(chip => {
+                            chip.setAttribute('aria-pressed',
+                                chip.dataset.subcat === '' ? 'true' : 'false');
+                        });
+                    });
+                    applyFilters();
+                });
+            });
+
+            subcatGroups.forEach(group => {
+                group.querySelectorAll('.subcat-chip').forEach(chip => {
+                    chip.addEventListener('click', () => {
+                        activeSubcat = chip.dataset.subcat;
+                        group.querySelectorAll('.subcat-chip').forEach(c =>
+                            c.setAttribute('aria-pressed', c === chip ? 'true' : 'false'));
+                        applyFilters();
                     });
                 });
             });
+
+            // ★ toggle on each card.
+            cards.forEach(card => {
+                const star = card.querySelector('.fav-toggle');
+                if (!star) return;
+                star.addEventListener('click', e => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const slug = star.dataset.fav;
+                    const favs = getFavs();
+                    const next = favs.includes(slug)
+                        ? favs.filter(x => x !== slug)
+                        : [...favs, slug];
+                    setFavs(next);
+                    const nowFav = next.includes(slug);
+                    star.textContent = nowFav ? '★' : '☆';
+                    star.classList.toggle('is-fav', nowFav);
+                    star.setAttribute('aria-label',
+                        nowFav ? star.dataset.removeLabel : star.dataset.addLabel);
+                    star.setAttribute('aria-pressed', String(nowFav));
+                    if (activeCat === 'favorites') applyFilters();
+                });
+            });
+
+            applyFilters();
         })();
     </script>
     <script>(adsbygoogle=window.adsbygoogle||[]).push({google_ad_client:"ca-pub-6334819180242631",enable_page_level_ads:true});</script>

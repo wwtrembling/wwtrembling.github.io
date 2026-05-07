@@ -15,6 +15,8 @@ COMMON = {
         "link_privacy": "Privacy",
         "link_terms": "Terms",
         "skip_link": "Skip to content",
+        "fav_add_aria": "Add to favorites",
+        "fav_remove_aria": "Remove from favorites",
     },
     "ko": {
         "brand": "🛠️ Utilify",
@@ -25,6 +27,8 @@ COMMON = {
         "link_privacy": "개인정보",
         "link_terms": "이용약관",
         "skip_link": "본문으로 건너뛰기",
+        "fav_add_aria": "즐겨찾기에 추가",
+        "fav_remove_aria": "즐겨찾기에서 제거",
     },
     "vi": {
         "brand": "🛠️ Utilify",
@@ -190,7 +194,14 @@ INDEX_PAGE = {
         "cat_convert": "Converters",
         "cat_calc": "Calculators",
         "cat_ai": "AI",
-        "github_label": "GitHub"
+        "github_label": "GitHub",
+        "favorites_label": "★ Favorites",
+        "favorites_empty": "No favorites yet. Click ☆ on any tool card to save it.",
+        "fav_add_aria": "Add to favorites",
+        "fav_remove_aria": "Remove from favorites",
+        "subcat_all": "All",
+        "subcat_finance": "Finance",
+        "subcat_filter_aria": "Subcategory filter"
     },
     "ko": {
         "title": "무료 온라인 유틸리티 모음 - Utilify",
@@ -212,7 +223,14 @@ INDEX_PAGE = {
         "cat_convert": "변환기",
         "cat_calc": "계산기",
         "cat_ai": "AI",
-        "github_label": "GitHub"
+        "github_label": "GitHub",
+        "favorites_label": "★ 즐겨찾기",
+        "favorites_empty": "즐겨찾기가 없습니다. 도구 카드의 ☆를 눌러 추가하세요.",
+        "fav_add_aria": "즐겨찾기에 추가",
+        "fav_remove_aria": "즐겨찾기에서 제거",
+        "subcat_all": "전체",
+        "subcat_finance": "금융",
+        "subcat_filter_aria": "하위 카테고리 필터"
     },
     "vi": {
         "title": "Bộ tiện ích trực tuyến miễn phí - Utilify",
@@ -6563,5 +6581,315 @@ CHATGPT_TO_BLOG = {
         "related_token": "토큰 카운터",
         "related_pii": "프롬프트 PII 마스킹",
         "card_blurb": "ChatGPT 대화를 깔끔한 블로그용 Markdown으로 즉시 변환."
+    }
+}
+
+
+LOAN_CALCULATOR = {
+    "en": {
+        "title": "Loan Calculator",
+        "meta_title": "Loan Calculator — Monthly Payment, Interest, Amortization - Utilify",
+        "meta_desc": "Calculate monthly loan payments, total interest, and amortization schedule. Works for mortgages, auto loans, and personal loans. Runs entirely in your browser.",
+        "og_title": "Loan Calculator - Utilify",
+        "og_desc": "Calculate monthly payment, total interest, and amortization for any fixed-rate loan.",
+        "json_name": "Loan Calculator",
+        "json_desc": "Compute monthly payment, total interest, and amortization schedule for fixed-rate loans.",
+        "page_desc": "Enter the loan amount, annual interest rate, and term in years to see your monthly payment, total interest paid, and a 12-month amortization preview. Standard formula for fixed-rate loans — mortgages, auto, personal.",
+        "label_principal": "Loan amount",
+        "label_rate": "Annual interest rate (%)",
+        "label_term": "Term (years)",
+        "ph_principal": "100000",
+        "ph_rate": "4.5",
+        "ph_term": "30",
+        "btn_calculate": "Calculate",
+        "btn_reset": "Reset",
+        "res_monthly_label": "Monthly payment",
+        "res_total_label": "Total paid",
+        "res_interest_label": "Total interest",
+        "res_schedule_header": "First 12 months",
+        "th_month": "Month",
+        "th_payment": "Payment",
+        "th_principal_col": "Principal",
+        "th_interest_col": "Interest",
+        "th_balance": "Balance",
+        "alert_invalid": "Please enter positive numbers for amount and term.",
+        "disclaimer": "Estimate only — not financial advice. Consult a qualified professional for important decisions.",
+        "howto_header": "How to use",
+        "howto_html": (
+            "<ol>"
+            "<li>Enter the loan principal (the amount you borrow).</li>"
+            "<li>Enter the annual interest rate as a percent (e.g. 4.5 for 4.5%).</li>"
+            "<li>Enter the loan term in years.</li>"
+            "<li>Click <strong>Calculate</strong> — the monthly payment, total cost, and amortization preview appear instantly.</li>"
+            "</ol>"
+            "<p><strong>Formula</strong>: M = P · r(1+r)<sup>n</sup> / ((1+r)<sup>n</sup> − 1), where r is the monthly rate (annual rate / 12) and n is the number of months. For a zero-rate loan the monthly payment is simply principal / months.</p>"
+            "<p>Assumes a fixed rate, equal monthly payments, and no fees, taxes, or insurance. Real loans usually include origination fees, escrow, and PMI — your actual monthly cost may be higher.</p>"
+        ),
+        "related_header": "Related Tools",
+        "related_compound": "Compound Interest",
+        "related_retirement": "Retirement Calculator",
+        "related_date": "Date Calculator",
+        "related_unit": "Unit Converter",
+        "card_blurb": "Monthly payment, total interest, and 12-month amortization for any fixed-rate loan."
+    },
+    "ko": {
+        "title": "대출 계산기",
+        "meta_title": "대출 계산기 — 월 상환금, 이자, 분할상환표 - Utilify",
+        "meta_desc": "주택담보·자동차·신용대출의 월 상환금, 총 이자, 분할상환표를 즉시 계산. 모든 처리는 브라우저에서.",
+        "og_title": "대출 계산기 - Utilify",
+        "og_desc": "고정금리 대출의 월 상환금, 총 이자, 분할상환을 계산하세요.",
+        "json_name": "대출 계산기",
+        "json_desc": "고정금리 대출의 월 상환금, 총 이자, 분할상환표를 계산하는 도구.",
+        "page_desc": "대출 원금·연 이자율·기간(년)을 입력하면 월 상환금, 총 상환액, 첫 12개월 분할상환표가 표시됩니다. 주택담보·자동차·신용 등 고정금리 대출 표준 공식을 사용합니다.",
+        "label_principal": "대출 원금",
+        "label_rate": "연 이자율 (%)",
+        "label_term": "기간 (년)",
+        "ph_principal": "100000000",
+        "ph_rate": "4.5",
+        "ph_term": "30",
+        "btn_calculate": "계산",
+        "btn_reset": "초기화",
+        "res_monthly_label": "월 상환금",
+        "res_total_label": "총 상환액",
+        "res_interest_label": "총 이자",
+        "res_schedule_header": "첫 12개월 분할상환",
+        "th_month": "월차",
+        "th_payment": "상환금",
+        "th_principal_col": "원금",
+        "th_interest_col": "이자",
+        "th_balance": "잔액",
+        "alert_invalid": "원금과 기간은 양수로 입력해 주세요.",
+        "disclaimer": "추정치 — 재정 자문이 아닙니다. 중대한 결정은 자격 있는 전문가와 상의하세요.",
+        "howto_header": "사용 방법",
+        "howto_html": (
+            "<ol>"
+            "<li>대출 원금(빌리는 금액)을 입력하세요.</li>"
+            "<li>연 이자율을 퍼센트로 입력하세요 (예: 4.5%는 <code>4.5</code>).</li>"
+            "<li>대출 기간을 연 단위로 입력하세요.</li>"
+            "<li><strong>계산</strong>을 누르면 월 상환금, 총 상환액, 분할상환표가 즉시 표시됩니다.</li>"
+            "</ol>"
+            "<p><strong>공식</strong>: M = P · r(1+r)<sup>n</sup> / ((1+r)<sup>n</sup> − 1). r은 월 이자율(연 이자율 / 12), n은 총 개월 수입니다. 무이자(0%) 대출은 원금 / 개월수로 계산합니다.</p>"
+            "<p>고정금리·원리금균등상환·수수료 없음을 가정합니다. 실제 대출은 인지세·중도상환수수료·보증료 등이 추가될 수 있어 실제 부담은 더 클 수 있습니다.</p>"
+        ),
+        "related_header": "관련 도구",
+        "related_compound": "복리 계산기",
+        "related_retirement": "은퇴 계산기",
+        "related_date": "날짜 계산기",
+        "related_unit": "단위 변환기",
+        "card_blurb": "고정금리 대출의 월 상환금·총 이자·12개월 분할상환표를 즉시 계산."
+    }
+}
+
+
+COMPOUND_INTEREST = {
+    "en": {
+        "title": "Compound Interest Calculator",
+        "meta_title": "Compound Interest Calculator — Investment Growth - Utilify",
+        "meta_desc": "Project savings or investment growth with compound interest and optional monthly contributions. See final balance, total contributions, and yearly breakdown.",
+        "og_title": "Compound Interest Calculator - Utilify",
+        "og_desc": "Project investment growth with compound interest and monthly contributions.",
+        "json_name": "Compound Interest Calculator",
+        "json_desc": "Estimate future value with compound interest, configurable compounding frequency, and monthly contributions.",
+        "page_desc": "Enter your starting principal, annual return, time horizon, compounding frequency, and optional monthly contributions to project the future value of an investment or savings account. Includes a year-by-year balance breakdown.",
+        "label_principal": "Starting principal",
+        "label_rate": "Annual return (%)",
+        "label_years": "Time horizon (years)",
+        "label_freq": "Compounding frequency",
+        "label_monthly_contrib": "Monthly contribution",
+        "ph_principal": "10000",
+        "ph_rate": "7",
+        "ph_years": "20",
+        "ph_monthly_contrib": "500",
+        "opt_freq_yearly": "Yearly",
+        "opt_freq_monthly": "Monthly",
+        "opt_freq_daily": "Daily",
+        "btn_calculate": "Calculate",
+        "btn_reset": "Reset",
+        "res_final_label": "Final balance",
+        "res_total_contrib_label": "Total contributions",
+        "res_total_interest_label": "Total interest earned",
+        "res_yearly_header": "Year-by-year balance",
+        "th_year": "Year",
+        "th_balance": "Balance",
+        "th_contributed": "Contributed",
+        "th_interest": "Interest earned",
+        "alert_invalid": "Please enter non-negative numbers and a positive time horizon.",
+        "disclaimer": "Estimate only — not financial advice. Real returns vary and are not guaranteed.",
+        "howto_header": "How to use",
+        "howto_html": (
+            "<ol>"
+            "<li>Enter your starting principal — the amount you have today.</li>"
+            "<li>Enter the expected annual return as a percent (historical S&amp;P 500 average is ~7% real, ~10% nominal).</li>"
+            "<li>Enter the time horizon in years.</li>"
+            "<li>Pick the compounding frequency: yearly, monthly, or daily. Most index funds compound continuously — monthly is a close approximation.</li>"
+            "<li>Optionally add a monthly contribution. Click <strong>Calculate</strong>.</li>"
+            "</ol>"
+            "<p><strong>Formula</strong>: FV = P(1 + r/m)<sup>m·t</sup> + C · ((1 + r/m)<sup>m·t</sup> − 1) / (r/m), where P is principal, r is the annual rate, m is compounding periods per year, t is years, and C is the periodic contribution converted to the compounding period.</p>"
+            "<p>Inflation, taxes, and fees are not modeled. A 7% nominal return at 3% inflation is roughly a 4% real return — the future balance will buy less than today's purchasing power suggests.</p>"
+        ),
+        "related_header": "Related Tools",
+        "related_loan": "Loan Calculator",
+        "related_retirement": "Retirement Calculator",
+        "related_date": "Date Calculator",
+        "related_unit": "Unit Converter",
+        "card_blurb": "Project investment growth with compound interest and monthly contributions."
+    },
+    "ko": {
+        "title": "복리 계산기",
+        "meta_title": "복리 계산기 — 투자 성장 시뮬레이션 - Utilify",
+        "meta_desc": "원금·연 수익률·기간·월 적립으로 복리 효과를 적용한 미래 잔액, 총 납입, 총 이자를 계산. 연도별 잔액 표 포함.",
+        "og_title": "복리 계산기 - Utilify",
+        "og_desc": "복리와 월 적립을 적용한 투자 성장을 시뮬레이션하세요.",
+        "json_name": "복리 계산기",
+        "json_desc": "원금·연 수익률·복리 빈도·월 적립을 입력하면 미래 가치를 계산하는 도구.",
+        "page_desc": "초기 원금·연 수익률·기간·복리 빈도·월 적립을 입력하면 투자 또는 저축 계좌의 미래 가치를 계산합니다. 연도별 잔액 흐름도 함께 표시됩니다.",
+        "label_principal": "초기 원금",
+        "label_rate": "연 수익률 (%)",
+        "label_years": "기간 (년)",
+        "label_freq": "복리 빈도",
+        "label_monthly_contrib": "월 적립금",
+        "ph_principal": "10000000",
+        "ph_rate": "7",
+        "ph_years": "20",
+        "ph_monthly_contrib": "500000",
+        "opt_freq_yearly": "연 1회",
+        "opt_freq_monthly": "월 복리",
+        "opt_freq_daily": "일 복리",
+        "btn_calculate": "계산",
+        "btn_reset": "초기화",
+        "res_final_label": "최종 잔액",
+        "res_total_contrib_label": "총 납입금",
+        "res_total_interest_label": "총 이자 수익",
+        "res_yearly_header": "연도별 잔액",
+        "th_year": "연차",
+        "th_balance": "잔액",
+        "th_contributed": "납입 누적",
+        "th_interest": "이자 수익",
+        "alert_invalid": "원금과 적립금은 0 이상, 기간은 양수로 입력해 주세요.",
+        "disclaimer": "추정치 — 재정 자문이 아닙니다. 실제 수익은 변동하며 보장되지 않습니다.",
+        "howto_header": "사용 방법",
+        "howto_html": (
+            "<ol>"
+            "<li>현재 가지고 있는 초기 원금을 입력하세요.</li>"
+            "<li>예상 연 수익률을 퍼센트로 입력하세요 (S&amp;P 500 장기 평균은 명목 약 10%, 실질 약 7%).</li>"
+            "<li>투자 기간을 연 단위로 입력하세요.</li>"
+            "<li>복리 빈도를 선택합니다: 연 1회·월·일. 인덱스 펀드는 사실상 연속복리이므로 월 복리가 근사값입니다.</li>"
+            "<li>월 적립금을 입력 (없으면 0)하고 <strong>계산</strong>을 누르세요.</li>"
+            "</ol>"
+            "<p><strong>공식</strong>: FV = P(1 + r/m)<sup>m·t</sup> + C · ((1 + r/m)<sup>m·t</sup> − 1) / (r/m). P는 원금, r은 연 이자율, m은 연 복리 횟수, t는 년수, C는 정기 적립금입니다.</p>"
+            "<p>인플레이션·세금·수수료는 반영되지 않습니다. 명목 7%에 인플레이션 3%면 실질 수익률은 약 4% — 미래 잔액의 구매력은 보이는 숫자보다 작습니다.</p>"
+        ),
+        "related_header": "관련 도구",
+        "related_loan": "대출 계산기",
+        "related_retirement": "은퇴 계산기",
+        "related_date": "날짜 계산기",
+        "related_unit": "단위 변환기",
+        "card_blurb": "복리와 월 적립을 적용한 투자·저축의 미래 가치를 즉시 시뮬레이션."
+    }
+}
+
+
+RETIREMENT_CALCULATOR = {
+    "en": {
+        "title": "Retirement Calculator",
+        "meta_title": "Retirement Calculator — Will Your Savings Last? - Utilify",
+        "meta_desc": "Estimate retirement nest egg and how long it lasts. Inputs: current age, retirement age, savings, monthly contributions, return, withdrawal, life expectancy.",
+        "og_title": "Retirement Calculator - Utilify",
+        "og_desc": "Project retirement savings and check whether they last through life expectancy.",
+        "json_name": "Retirement Calculator",
+        "json_desc": "Two-phase retirement model: accumulation with monthly contributions, then withdrawal with annual income.",
+        "page_desc": "Enter your current age, target retirement age, current savings, monthly contributions, expected return, planned annual withdrawal, and life expectancy. The calculator runs an accumulation phase, then a withdrawal phase to show whether your nest egg lasts.",
+        "label_current_age": "Current age",
+        "label_retire_age": "Retirement age",
+        "label_current_savings": "Current savings",
+        "label_monthly_contrib": "Monthly contribution",
+        "label_annual_return": "Annual return (%)",
+        "label_annual_withdrawal": "Annual withdrawal in retirement",
+        "label_life_expectancy": "Life expectancy",
+        "ph_current_age": "30",
+        "ph_retire_age": "65",
+        "ph_current_savings": "50000",
+        "ph_monthly_contrib": "500",
+        "ph_annual_return": "6",
+        "ph_annual_withdrawal": "30000",
+        "ph_life_expectancy": "85",
+        "btn_calculate": "Calculate",
+        "btn_reset": "Reset",
+        "res_at_retirement_label": "Nest egg at retirement",
+        "res_outcome_header": "Outcome",
+        "outcome_lasts": "Funds last through life expectancy. Surplus at age {age}: {amount}.",
+        "outcome_runs_out": "Funds run out at age {age} — {years} years short of life expectancy.",
+        "res_chart_header": "Balance over time",
+        "alert_invalid": "Retirement age must be greater than current age, and life expectancy greater than retirement age.",
+        "disclaimer": "Estimate only — not financial advice. Consult a qualified retirement planner before making decisions.",
+        "howto_header": "How to use",
+        "howto_html": (
+            "<ol>"
+            "<li>Enter your <em>current age</em> and <em>target retirement age</em>.</li>"
+            "<li>Enter your current savings (the amount in retirement accounts today) and your monthly contribution until retirement.</li>"
+            "<li>Set an expected annual return (a common assumption is 6% real for a balanced portfolio).</li>"
+            "<li>Enter how much you plan to withdraw <em>per year</em> in retirement (about 4% of the nest egg is the classic guideline).</li>"
+            "<li>Enter your life expectancy. Click <strong>Calculate</strong> — the chart shows the balance trajectory.</li>"
+            "</ol>"
+            "<p><strong>Model</strong>: accumulation phase compounds monthly with your contributions until retirement age, then withdrawal phase deducts the annual withdrawal at the start of each year and grows the remainder by the annual return until the balance hits zero or life expectancy is reached.</p>"
+            "<p>Real retirement is messier: returns are sequence-sensitive (a bad first year can sink the plan), Social Security or pensions add income, and healthcare costs spike late. Treat this as a sanity check, not a plan.</p>"
+        ),
+        "related_header": "Related Tools",
+        "related_compound": "Compound Interest",
+        "related_loan": "Loan Calculator",
+        "related_date": "Date Calculator",
+        "related_bmi": "BMI Calculator",
+        "card_blurb": "Project retirement nest egg and check whether it lasts through life expectancy."
+    },
+    "ko": {
+        "title": "은퇴 계산기",
+        "meta_title": "은퇴 계산기 — 노후자금 충분한지 시뮬레이션 - Utilify",
+        "meta_desc": "현재 나이·은퇴 나이·자산·월 적립·수익률·연 인출·기대수명을 입력해 은퇴 시점 자산과 자금 유지 가능 나이를 시뮬레이션.",
+        "og_title": "은퇴 계산기 - Utilify",
+        "og_desc": "노후자금이 기대수명까지 버티는지 시뮬레이션하세요.",
+        "json_name": "은퇴 계산기",
+        "json_desc": "월 적립으로 누적하는 단계와 연 인출 단계를 모두 시뮬레이션하는 2단계 모델.",
+        "page_desc": "현재 나이·목표 은퇴 나이·현재 자산·월 적립금·기대 수익률·은퇴 후 연 인출액·기대수명을 입력하면 누적 단계와 인출 단계를 시뮬레이션해 자금이 언제까지 버티는지 알려줍니다.",
+        "label_current_age": "현재 나이",
+        "label_retire_age": "은퇴 나이",
+        "label_current_savings": "현재 자산",
+        "label_monthly_contrib": "월 적립금",
+        "label_annual_return": "연 수익률 (%)",
+        "label_annual_withdrawal": "은퇴 후 연 인출액",
+        "label_life_expectancy": "기대수명",
+        "ph_current_age": "30",
+        "ph_retire_age": "65",
+        "ph_current_savings": "50000000",
+        "ph_monthly_contrib": "500000",
+        "ph_annual_return": "6",
+        "ph_annual_withdrawal": "30000000",
+        "ph_life_expectancy": "85",
+        "btn_calculate": "계산",
+        "btn_reset": "초기화",
+        "res_at_retirement_label": "은퇴 시점 자산",
+        "res_outcome_header": "결과",
+        "outcome_lasts": "기대수명까지 자금이 유지됩니다. {age}세 시점 잉여: {amount}.",
+        "outcome_runs_out": "{age}세에 자금이 소진됩니다 — 기대수명까지 {years}년 부족.",
+        "res_chart_header": "잔액 추이",
+        "alert_invalid": "은퇴 나이는 현재 나이보다, 기대수명은 은퇴 나이보다 커야 합니다.",
+        "disclaimer": "추정치 — 재정 자문이 아닙니다. 실제 은퇴 계획은 자격 있는 전문가와 상의하세요.",
+        "howto_header": "사용 방법",
+        "howto_html": (
+            "<ol>"
+            "<li><em>현재 나이</em>와 <em>목표 은퇴 나이</em>를 입력하세요.</li>"
+            "<li>오늘 보유한 노후자금과 은퇴까지의 월 적립금을 입력하세요.</li>"
+            "<li>예상 연 수익률을 입력하세요 (분산형 포트폴리오는 실질 6% 정도가 흔한 가정).</li>"
+            "<li>은퇴 후 매년 인출할 금액을 입력하세요 (자산의 4% 룰이 고전적 기준).</li>"
+            "<li>기대수명을 입력하고 <strong>계산</strong>을 누르세요. 잔액 추이가 그래프로 표시됩니다.</li>"
+            "</ol>"
+            "<p><strong>모델</strong>: 누적 단계는 은퇴까지 월 단위 복리로 적립금을 더하며, 인출 단계는 매년 초 연 인출액을 빼고 남은 잔액에 연 수익률을 곱합니다. 잔액이 0이 되거나 기대수명에 도달할 때까지 반복합니다.</p>"
+            "<p>실제 은퇴는 더 복잡합니다 — 초기 몇 년의 수익률 순서가 결과를 크게 좌우하고(시퀀스 리스크), 국민연금/퇴직연금 같은 소득이 더해지며, 노년 의료비가 급증할 수 있습니다. 검산용으로만 사용하세요.</p>"
+        ),
+        "related_header": "관련 도구",
+        "related_compound": "복리 계산기",
+        "related_loan": "대출 계산기",
+        "related_date": "날짜 계산기",
+        "related_bmi": "BMI 계산기",
+        "card_blurb": "노후자금이 기대수명까지 버티는지 누적·인출 2단계로 즉시 시뮬레이션."
     }
 }
