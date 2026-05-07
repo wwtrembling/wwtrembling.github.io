@@ -117,6 +117,12 @@
     </style>
     <link rel="manifest" href="/manifest.json">
     <script data-utilify-adsense-loader async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631" crossorigin="anonymous"></script>
+    <meta data-utilify-og property="og:image" content="https://utilifyapp.net/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Utilify">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://utilifyapp.net/assets/og-image.png">
 </head>
 
 <body>
@@ -170,6 +176,21 @@
             <!-- Validation Status -->
             <div id="validationStatus" style="display: none;"></div>
             <div id="errorMessage" style="display: none;"></div>
+
+            
+            <h2>사용 방법</h2>
+            <div class="howto-content"><ol><li>왼쪽 패널에 JSON 데이터를 붙여넣으세요.</li><li><strong>Format</strong>으로 2-space 들여쓰기 적용, <strong>Minify</strong>로 공백 제거, <strong>Validate</strong>로 문법만 검사할 수 있습니다.</li><li><strong>Copy</strong> 버튼으로 결과를 클립보드에 복사하세요.</li><li>모든 처리는 브라우저에서만 이루어지며 데이터가 서버로 전송되지 않습니다.</li></ol><p>1 MB 이상 입력은 페이지가 잠깐 멈출 수 있어 확인 창이 표시됩니다. 15자리 초과 정수는 JavaScript의 64-bit float 한계로 정밀도 손실 경고가 표시됩니다.</p></div>
+
+            <h2>예시</h2>
+            <div class="examples-content"><p><strong>축약된 JSON을 보기 좋게 정렬:</strong></p><pre><code>입력:  {"name":"Ada","tags":["dev","math"]}
+출력: {
+  "name": "Ada",
+  "tags": [
+    "dev",
+    "math"
+  ]
+}</code></pre><p><strong>후행 쉼표 오류 검출:</strong></p><pre><code>입력:  {"a": 1, "b": 2,}
+결과: ✗ Invalid JSON — Unexpected token } in JSON</code></pre></div>
 
             <div class="related-tools-section">
                 <h3>함께 보면 좋은 도구</h3>

@@ -576,3 +576,45 @@ a:hover {
     color: white;
     border-color: var(--primary-color);
 }
+
+/* How-to / Examples sections (tool pages) */
+.howto-content,
+.examples-content {
+    line-height: 1.7;
+    margin-bottom: var(--spacing-xl);
+}
+
+.howto-content ol {
+    padding-left: 1.5em;
+}
+
+.howto-content li {
+    margin-bottom: var(--spacing-sm);
+}
+
+.howto-content code,
+.examples-content code {
+    background: var(--bg-tertiary);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+}
+
+.howto-content pre,
+.examples-content pre {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    overflow-x: auto;
+    font-size: 0.875rem;
+    line-height: 1.5;
+}
+
+.howto-content pre code,
+.examples-content pre code {
+    background: none;
+    padding: 0;
+    font-size: inherit;
+}

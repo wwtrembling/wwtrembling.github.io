@@ -73,6 +73,12 @@
     </style>
     <link rel="manifest" href="/manifest.json">
     <script data-utilify-adsense-loader async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631" crossorigin="anonymous"></script>
+    <meta data-utilify-og property="og:image" content="https://utilifyapp.net/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Utilify">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://utilifyapp.net/assets/og-image.png">
 </head>
 
 <body>
@@ -127,6 +133,16 @@
                     <button class="btn btn-secondary" data-target="sha512">복사</button>
                 </div>
             </div>
+
+            
+            <h2>사용 방법</h2>
+            <div class="howto-content"><ol><li>텍스트를 입력하거나 붙여넣으세요.</li><li>MD5와 SHA-1/256/384/512 다이제스트가 입력하는 즉시 계산됩니다.</li><li>각 다이제스트 옆 <strong>Copy</strong> 버튼으로 복사할 수 있습니다.</li><li>SHA 계열은 브라우저 내장 <code>crypto.subtle.digest()</code>를 사용하며, Web Crypto API에 없는 MD5만 인라인 구현되어 있습니다.</li></ol><p><strong>보안 주의:</strong> MD5와 SHA-1은 충돌이 발견되어 암호학적 용도로 <em>부적합</em>합니다. 보안과 무관한 무결성 검사에만 사용하세요. 비밀번호는 항상 bcrypt·scrypt·argon2 같은 KDF를 서버에서 사용해야 합니다.</p></div>
+
+            <h2>예시</h2>
+            <div class="examples-content"><p><strong>"abc" 다이제스트:</strong></p><pre><code>MD5    : 900150983cd24fb0d6963f7d28e17f72
+SHA-1  : a9993e364706816aba3e25717850c26c9cd0d89d
+SHA-256: ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad</code></pre><p><strong>빈 문자열:</strong></p><pre><code>MD5    : d41d8cd98f00b204e9800998ecf8427e
+SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855</code></pre></div>
 
             <div class="related-tools-section">
                 <h3>관련 도구</h3>

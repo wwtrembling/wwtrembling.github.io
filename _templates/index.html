@@ -33,21 +33,112 @@
     <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "{{ title }}",
-    "description": "{{ meta_desc }}",
-    "url": "https://utilifyapp.net/{{ lang_code }}/",
+    "@type": "WebSite",
+    "name": "Utilify",
+    "url": "https://utilifyapp.net/",
     "inLanguage": "{{ lang_code }}",
-    "isPartOf": {
-      "@type": "WebSite",
+    "description": "{{ meta_desc }}",
+    "publisher": {
+      "@type": "Organization",
       "name": "Utilify",
       "url": "https://utilifyapp.net/"
     }
   }
   </script>
-    <!-- Google AdSense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631"
-        crossorigin="anonymous"></script>
+
+    <style>
+        .trust-strip {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: var(--spacing-md) var(--spacing-lg);
+            margin: var(--spacing-md) 0 var(--spacing-xl);
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+        .trust-strip .trust-item { white-space: nowrap; }
+        .trust-strip a { color: inherit; text-decoration: none; }
+        .trust-strip a:hover { color: var(--primary-color); text-decoration: underline; }
+
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-xl);
+        }
+        .featured-card {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-lg);
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-xs);
+        }
+        .featured-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary-color);
+        }
+        .featured-card .card-icon { font-size: 2rem; }
+        .featured-card .card-title { font-size: 1.05rem; margin: 0; }
+        .featured-card .card-description { font-size: 0.85rem; color: var(--text-secondary); margin: 0; }
+
+        .category-filter {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-lg);
+        }
+        .category-filter button {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 6px 14px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            color: var(--text-secondary);
+            transition: all 0.15s;
+        }
+        .category-filter button:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+        .category-filter button[aria-pressed="true"] {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+            color: white;
+        }
+
+        .popular-conversions {
+            margin: var(--spacing-xl) 0;
+        }
+        .popular-conv-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: var(--spacing-sm);
+        }
+        .popular-conv-link {
+            display: block;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.15s;
+        }
+        .popular-conv-link:hover {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+    </style>
 
     <link rel="manifest" href="/manifest.json">
 </head>
@@ -63,7 +154,7 @@
         </div>
     </header>
 
-    <main class="main-content">
+    <main class="main-content" id="main">
         <div class="container">
             <div class="hero">
                 <h1>{{ brand }}</h1>
@@ -77,11 +168,39 @@
                 <p>{{ hero_desc }}</p>
             </div>
 
+            <div class="trust-strip" role="list">
+                <span class="trust-item" role="listitem">{{ trust_client }}</span>
+                <span class="trust-item" role="listitem"><a href="https://github.com/wwtrembling/wwtrembling.github.io" rel="noopener" target="_blank">{{ trust_oss }}</a></span>
+                <span class="trust-item" role="listitem">{{ trust_langs }}</span>
+                <span class="trust-item" role="listitem">{{ trust_pwa }}</span>
+            </div>
+
+            <h2 class="text-center mb-4">{{ h2_featured }}</h2>
+            <div class="featured-grid">
+          {{ featured_cards }}
+            </div>
+
             <h2 class="text-center mb-4">{{ h2_tools }}</h2>
 
-            <div class="card-grid">
+            <div class="category-filter" role="group" aria-label="Filter tools by category">
+                <button type="button" data-cat="all" aria-pressed="true">{{ cat_all }}</button>
+                <button type="button" data-cat="dev" aria-pressed="false">{{ cat_dev }}</button>
+                <button type="button" data-cat="text" aria-pressed="false">{{ cat_text }}</button>
+                <button type="button" data-cat="image" aria-pressed="false">{{ cat_image }}</button>
+                <button type="button" data-cat="convert" aria-pressed="false">{{ cat_convert }}</button>
+                <button type="button" data-cat="calc" aria-pressed="false">{{ cat_calc }}</button>
+            </div>
+
+            <div class="card-grid" id="toolGrid">
                 {{ tool_cards }}
             </div>
+
+            <section class="popular-conversions">
+                <h2 class="text-center mb-4">{{ h2_popular_conv }}</h2>
+                <div class="popular-conv-grid">
+          {{ popular_conversions }}
+                </div>
+            </section>
         </div>
     </main>
 
@@ -94,6 +213,23 @@
     </footer>
 
     <script src="/assets/js/common.js"></script>
+    <script>
+        // Category filter — pure DOM, no library.
+        (function () {
+            const buttons = document.querySelectorAll('.category-filter button');
+            const cards = document.querySelectorAll('#toolGrid .card');
+            buttons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const cat = btn.dataset.cat;
+                    buttons.forEach(b => b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'));
+                    cards.forEach(card => {
+                        const match = cat === 'all' || card.dataset.category === cat;
+                        card.style.display = match ? '' : 'none';
+                    });
+                });
+            });
+        })();
+    </script>
 </body>
 
 </html>

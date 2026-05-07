@@ -69,6 +69,12 @@
         crossorigin="anonymous"></script>
     <link rel="manifest" href="/manifest.json">
     <script data-utilify-adsense-loader async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631" crossorigin="anonymous"></script>
+    <meta data-utilify-og property="og:image" content="https://utilifyapp.net/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Utilify">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://utilifyapp.net/assets/og-image.png">
 </head>
 
 <body>
@@ -101,6 +107,15 @@
                 <label class="form-label">출력 결과</label>
                 <textarea id="output" class="form-input" style="min-height: 150px;" readonly></textarea>
             </div>
+
+            
+            <h2>사용 방법</h2>
+            <div class="howto-content"><ol><li>입력 칸에 텍스트를 입력하거나 붙여넣으세요.</li><li><strong>Encode</strong>로 Base64 인코딩, <strong>Decode</strong>로 디코딩합니다.</li><li>이모지·한글 등 멀티바이트 문자도 <code>TextEncoder/TextDecoder</code>로 정확히 처리됩니다.</li><li><strong>Copy</strong>로 결과를 복사할 수 있습니다.</li></ol><p>Base64는 HTTP Basic Auth 헤더, Data URI(<code>data:image/png;base64,...</code>), 이메일 첨부(MIME), JWT 세그먼트 등에 널리 쓰입니다. 암호화가 아니라 단순 인코딩이므로 누구나 디코딩할 수 있습니다.</p></div>
+
+            <h2>예시</h2>
+            <div class="examples-content"><p><strong>UTF-8 라운드트립:</strong></p><pre><code>Encode: "안녕 🌍" → 7JWI64WVIPCfjI0=
+Decode: 7JWI64WVIPCfjI0= → "안녕 🌍"</code></pre><p><strong>JWT 페이로드 디코딩:</strong></p><pre><code>eyJzdWIiOiIxMjMiLCJuYW1lIjoiQWRhIn0
+→ {"sub":"123","name":"Ada"}</code></pre></div>
 
             <div class="related-tools-section">
                 <h3>함께 보면 좋은 도구</h3>

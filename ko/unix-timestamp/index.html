@@ -76,6 +76,12 @@
     </style>
     <link rel="manifest" href="/manifest.json">
     <script data-utilify-adsense-loader async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631" crossorigin="anonymous"></script>
+    <meta data-utilify-og property="og:image" content="https://utilifyapp.net/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Utilify">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://utilifyapp.net/assets/og-image.png">
 </head>
 
 <body>
@@ -121,6 +127,16 @@
                 <div class="ts-output" id="dateOutSec"><strong>초</strong><span>—</span></div>
                 <div class="ts-output" id="dateOutMs"><strong>밀리초</strong><span>—</span></div>
             </div>
+
+            
+            <h2>사용 방법</h2>
+            <div class="howto-content"><ol><li>상단에 현재 Unix 시간이 실시간 표시됩니다 — <strong>Use Now</strong>로 변환기에 입력할 수 있습니다.</li><li>타임스탬프를 날짜로: 숫자를 붙여넣고 <strong>Convert</strong>를 누르세요. 초(10자리)와 밀리초(13자리)가 자동 감지됩니다.</li><li>날짜를 타임스탬프로: ISO 8601(<code>2024-01-15T12:00:00Z</code>) 또는 <code>2024-01-15</code> 형식을 입력하고 <strong>Convert</strong>를 누르세요.</li><li>UTC와 로컬 타임존이 함께 표시되어 시간대 계산이 불필요합니다.</li></ol><p>Unix time은 1970-01-01 UTC 이후의 초를 세며 윤초는 무시합니다. 32-bit signed는 2038년에 오버플로하지만 대부분의 현대 시스템은 64-bit이므로 영향이 없습니다.</p></div>
+
+            <h2>예시</h2>
+            <div class="examples-content"><p><strong>타임스탬프 → 날짜:</strong></p><pre><code>1700000000      → 2023-11-14T22:13:20Z (UTC)
+1700000000000   → 2023-11-14T22:13:20.000Z
+0               → 1970-01-01T00:00:00Z (Unix epoch)</code></pre><p><strong>날짜 → 타임스탬프:</strong></p><pre><code>2024-01-15T12:00:00Z → 1705320000  (초)
+                     → 1705320000000 (밀리초)</code></pre></div>
 
             <div class="related-tools-section">
                 <h3>관련 도구</h3>

@@ -73,6 +73,12 @@
     </style>
     <link rel="manifest" href="/manifest.json">
     <script data-utilify-adsense-loader async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631" crossorigin="anonymous"></script>
+    <meta data-utilify-og property="og:image" content="https://utilifyapp.net/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Utilify">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://utilifyapp.net/assets/og-image.png">
 </head>
 
 <body>
@@ -120,6 +126,16 @@
             </div>
 
             <div id="status" style="display:none;margin-top:var(--spacing-md);padding:var(--spacing-md);border-radius:var(--radius-md);"></div>
+
+            
+            <h2>How to use</h2>
+            <div class="howto-content"><ol><li>Paste your URL or text into the input panel.</li><li>Pick <strong>Component</strong> mode for query values or path segments — this escapes reserved characters like <code>:/?&amp;=</code>.</li><li>Pick <strong>Full URL</strong> mode when encoding a complete URL — this preserves <code>:/?&amp;=</code> so the URL stays valid.</li><li>Click <strong>Encode</strong> or <strong>Decode</strong>; use <strong>Swap</strong> to flip input/output.</li></ol><p><strong>Component vs Full:</strong> use Component (<code>encodeURIComponent</code>) for anything that goes <em>inside</em> a URL piece — query values, path segments, fragment IDs. Use Full (<code>encodeURI</code>) only when escaping characters in an <em>entire</em> URL where you must keep <code>?</code> and <code>&amp;</code> as separators.</p></div>
+
+            <h2>Examples</h2>
+            <div class="examples-content"><p><strong>Component encoding (e.g., for a search query):</strong></p><pre><code>"hello world" → hello%20world
+"a&b=c"       → a%26b%3Dc
+"안녕"         → %EC%95%88%EB%85%95</code></pre><p><strong>Full-URL encoding:</strong></p><pre><code>"https://x.com/?q=hello world"
+→ https://x.com/?q=hello%20world</code></pre></div>
 
             <div class="related-tools-section">
                 <h3>Related Tools</h3>

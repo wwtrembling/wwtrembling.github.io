@@ -170,19 +170,45 @@ EXCEL_TO_SQL = {
 INDEX_PAGE = {
     "en": {
         "title": "Utilify - Free Online Utilities",
-        "meta_desc": "Collection of free online utilities including unit converter, PDF tools, image converter, calculators, and more. No installation required.",
+        "meta_desc": "Privacy-first online tools that run entirely in your browser. JSON formatter, JWT decoder, Base64 converter, unit conversion, and 30+ more. No signup, no upload.",
         "hero_title": "🛠️ Utilify",
-        "hero_desc": "Free online utilities for everyday tasks. No installation required. Works in your browser.",
-        "h2_tools": "Available Tools",
-        "h2_lang": "Choose Your Language"
+        "hero_desc": "Privacy-first online tools — runs entirely in your browser. JSON · JWT · Base64 · UUID · 110+ unit converters. No signup, no upload.",
+        "trust_client": "🔒 Client-side only",
+        "trust_oss": "⭐ Open source",
+        "trust_langs": "🌐 11 languages",
+        "trust_pwa": "📲 Installable PWA",
+        "h2_featured": "Featured Tools",
+        "h2_tools": "All Tools",
+        "h2_popular_conv": "Popular Conversions",
+        "h2_lang": "Choose Your Language",
+        "cat_all": "All",
+        "cat_dev": "Developer",
+        "cat_text": "Text",
+        "cat_image": "Image",
+        "cat_convert": "Converters",
+        "cat_calc": "Calculators",
+        "github_label": "GitHub"
     },
     "ko": {
         "title": "무료 온라인 유틸리티 모음 - Utilify",
-        "meta_desc": "단위 변환, PDF 도구, 이미지 변환, 계산기 등 다양한 무료 온라인 도구를 제공합니다.",
+        "meta_desc": "브라우저에서 모두 실행되는 프라이버시 우선 온라인 도구. JSON 포매터, JWT 디코더, Base64 변환기, 단위 변환 등 30개 이상. 가입·업로드 불필요.",
         "hero_title": "🛠️ Utilify",
-        "hero_desc": "설치 없이 브라우저에서 바로 사용하세요",
-        "h2_tools": "사용 가능한 도구",
-        "h2_lang": "언어 선택"
+        "hero_desc": "프라이버시 우선 온라인 도구 — 모든 처리는 브라우저에서. JSON · JWT · Base64 · UUID · 110개+ 단위 변환. 가입·업로드 없음.",
+        "trust_client": "🔒 클라이언트 전용",
+        "trust_oss": "⭐ 오픈소스",
+        "trust_langs": "🌐 11개 언어",
+        "trust_pwa": "📲 PWA 설치 가능",
+        "h2_featured": "주요 도구",
+        "h2_tools": "전체 도구",
+        "h2_popular_conv": "인기 변환",
+        "h2_lang": "언어 선택",
+        "cat_all": "전체",
+        "cat_dev": "개발자",
+        "cat_text": "텍스트",
+        "cat_image": "이미지",
+        "cat_convert": "변환기",
+        "cat_calc": "계산기",
+        "github_label": "GitHub"
     },
     "vi": {
         "title": "Bộ tiện ích trực tuyến miễn phí - Utilify",
@@ -542,7 +568,11 @@ JSON_FORMATTER = {
         "alert_empty": "Input is empty.",
         "alert_too_large": "Input is over 1 MB. Processing may freeze the browser. Continue?",
         "alert_bigint_warn": "Heads up: integers longer than 15 digits may lose precision (JavaScript Number limit).",
-        "alert_copy_empty": "Nothing to copy."
+        "alert_copy_empty": "Nothing to copy.",
+        "howto_header": "How to use",
+        "howto_html": '<ol><li>Paste your JSON into the input panel on the left.</li><li>Click <strong>Format</strong> to pretty-print with 2-space indentation, <strong>Minify</strong> to strip whitespace, or <strong>Validate</strong> to check syntax without changing the output.</li><li>Click <strong>Copy</strong> to copy the result to your clipboard.</li><li>Everything runs in your browser — your JSON is never uploaded to a server.</li></ol><p>Large inputs (over 1 MB) trigger a confirmation prompt because parsing them may briefly freeze the page. Numbers longer than 15 digits will trigger a precision warning since JavaScript stores them as 64-bit floats.</p>',
+        "examples_header": "Examples",
+        "examples_html": '<p><strong>Pretty-print compact JSON:</strong></p><pre><code>Input:  {"name":"Ada","tags":["dev","math"]}\nOutput: {\n  "name": "Ada",\n  "tags": [\n    "dev",\n    "math"\n  ]\n}</code></pre><p><strong>Minify with trailing-comma error:</strong></p><pre><code>Input:  {"a": 1, "b": 2,}\nResult: ✗ Invalid JSON — Unexpected token } in JSON</code></pre>'
     },
     "ko": {
         "title": "JSON 포매터",
@@ -571,7 +601,11 @@ JSON_FORMATTER = {
         "alert_empty": "입력이 비어있습니다.",
         "alert_too_large": "입력이 1MB를 초과합니다. 브라우저가 잠시 멈출 수 있습니다. 진행할까요?",
         "alert_bigint_warn": "참고: 16자리 이상 정수는 JavaScript Number 한계로 정밀도가 손실될 수 있습니다.",
-        "alert_copy_empty": "복사할 내용이 없습니다."
+        "alert_copy_empty": "복사할 내용이 없습니다.",
+        "howto_header": "사용 방법",
+        "howto_html": '<ol><li>왼쪽 패널에 JSON 데이터를 붙여넣으세요.</li><li><strong>Format</strong>으로 2-space 들여쓰기 적용, <strong>Minify</strong>로 공백 제거, <strong>Validate</strong>로 문법만 검사할 수 있습니다.</li><li><strong>Copy</strong> 버튼으로 결과를 클립보드에 복사하세요.</li><li>모든 처리는 브라우저에서만 이루어지며 데이터가 서버로 전송되지 않습니다.</li></ol><p>1 MB 이상 입력은 페이지가 잠깐 멈출 수 있어 확인 창이 표시됩니다. 15자리 초과 정수는 JavaScript의 64-bit float 한계로 정밀도 손실 경고가 표시됩니다.</p>',
+        "examples_header": "예시",
+        "examples_html": '<p><strong>축약된 JSON을 보기 좋게 정렬:</strong></p><pre><code>입력:  {"name":"Ada","tags":["dev","math"]}\n출력: {\n  "name": "Ada",\n  "tags": [\n    "dev",\n    "math"\n  ]\n}</code></pre><p><strong>후행 쉼표 오류 검출:</strong></p><pre><code>입력:  {"a": 1, "b": 2,}\n결과: ✗ Invalid JSON — Unexpected token } in JSON</code></pre>'
     },
     "zh-cn": {
         "title": "JSON 格式化",
@@ -821,7 +855,11 @@ BASE64_CONVERTER = {
         "related_pw": "Password Generator",
         "alert_encode_error": "Encoding Error: ",
         "alert_decode_error": "Decoding Error: ",
-        "alert_copy_empty": "Nothing to copy."
+        "alert_copy_empty": "Nothing to copy.",
+        "howto_header": "How to use",
+        "howto_html": '<ol><li>Type or paste text into the input box.</li><li>Click <strong>Encode</strong> to convert text to Base64, or <strong>Decode</strong> to reverse it.</li><li>Multi-byte characters (emoji, CJK) are handled correctly via <code>TextEncoder</code>/<code>TextDecoder</code>.</li><li>Click <strong>Copy</strong> to send the result to your clipboard.</li></ol><p>Base64 is commonly used in HTTP Basic Auth headers, Data URIs (<code>data:image/png;base64,...</code>), email attachments (MIME), and JWT segments. It is <em>encoding</em>, not encryption — anyone can decode it.</p>',
+        "examples_header": "Examples",
+        "examples_html": '<p><strong>UTF-8 round-trip:</strong></p><pre><code>Encode: "Hello 🌍" → SGVsbG8g8J+MjQ==\nDecode: SGVsbG8g8J+MjQ== → "Hello 🌍"</code></pre><p><strong>Decoding a JWT payload:</strong></p><pre><code>eyJzdWIiOiIxMjMiLCJuYW1lIjoiQWRhIn0\n→ {"sub":"123","name":"Ada"}</code></pre>'
     },
     "ko": {
         "title": "Base64 인코더/디코더",
@@ -843,7 +881,11 @@ BASE64_CONVERTER = {
         "related_pw": "비밀번호 생성기",
         "alert_encode_error": "인코딩 오류: ",
         "alert_decode_error": "디코딩 오류: ",
-        "alert_copy_empty": "복사할 내용이 없습니다."
+        "alert_copy_empty": "복사할 내용이 없습니다.",
+        "howto_header": "사용 방법",
+        "howto_html": '<ol><li>입력 칸에 텍스트를 입력하거나 붙여넣으세요.</li><li><strong>Encode</strong>로 Base64 인코딩, <strong>Decode</strong>로 디코딩합니다.</li><li>이모지·한글 등 멀티바이트 문자도 <code>TextEncoder/TextDecoder</code>로 정확히 처리됩니다.</li><li><strong>Copy</strong>로 결과를 복사할 수 있습니다.</li></ol><p>Base64는 HTTP Basic Auth 헤더, Data URI(<code>data:image/png;base64,...</code>), 이메일 첨부(MIME), JWT 세그먼트 등에 널리 쓰입니다. 암호화가 아니라 단순 인코딩이므로 누구나 디코딩할 수 있습니다.</p>',
+        "examples_header": "예시",
+        "examples_html": '<p><strong>UTF-8 라운드트립:</strong></p><pre><code>Encode: "안녕 🌍" → 7JWI64WVIPCfjI0=\nDecode: 7JWI64WVIPCfjI0= → "안녕 🌍"</code></pre><p><strong>JWT 페이로드 디코딩:</strong></p><pre><code>eyJzdWIiOiIxMjMiLCJuYW1lIjoiQWRhIn0\n→ {"sub":"123","name":"Ada"}</code></pre>'
     },
     "zh-cn": {
         "title": "Base64 编码/解码",
@@ -5549,7 +5591,11 @@ JWT_DECODER = {
         "related_header": "Related Tools",
         "related_base64": "Base64 Converter",
         "related_json": "JSON Formatter",
-        "related_hash": "Hash Generator"
+        "related_hash": "Hash Generator",
+        "howto_header": "How to use",
+        "howto_html": "<ol><li>Paste a JWT (three Base64URL segments separated by dots) into the input.</li><li>Click <strong>Decode</strong> to view the header and payload as JSON.</li><li>If the payload contains an <code>exp</code> claim, the page checks expiry against your local clock and shows valid / expired status.</li><li>Signature verification requires the issuer's secret or public key and is NOT performed here — this tool inspects the contents only.</li></ol><p>JWTs are <em>not encrypted</em>. Anyone with the token can read its contents. Treat the payload as public information unless it's wrapped in JWE.</p>",
+        "examples_header": "Examples",
+        "examples_html": '<p><strong>Sample token:</strong></p><pre><code>eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.\neyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkFkYSJ9.\nTJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ</code></pre><p><strong>Decoded:</strong></p><pre><code>Header:  {"alg":"HS256","typ":"JWT"}\nPayload: {"sub":"1234567890","name":"Ada"}</code></pre>'
     },
     "ko": {
         "title": "JWT 디코더",
@@ -5575,7 +5621,11 @@ JWT_DECODER = {
         "related_header": "관련 도구",
         "related_base64": "Base64 변환기",
         "related_json": "JSON 포매터",
-        "related_hash": "해시 생성기"
+        "related_hash": "해시 생성기",
+        "howto_header": "사용 방법",
+        "howto_html": '<ol><li>JWT(점으로 구분된 Base64URL 3개)를 입력 창에 붙여넣으세요.</li><li><strong>Decode</strong>를 눌러 header와 payload를 JSON으로 확인합니다.</li><li>payload에 <code>exp</code> 클레임이 있으면 로컬 시각과 비교해 유효/만료 여부를 표시합니다.</li><li>서명 검증은 발급자의 비밀키/공개키가 필요하므로 여기서는 수행하지 않습니다 — 내용 검사 전용입니다.</li></ol><p>JWT는 <em>암호화된 것이 아닙니다</em>. 토큰을 가진 누구나 내용을 읽을 수 있으므로 JWE로 감싸지 않은 이상 payload는 공개 정보로 취급해야 합니다.</p>',
+        "examples_header": "예시",
+        "examples_html": '<p><strong>샘플 토큰:</strong></p><pre><code>eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.\neyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkFkYSJ9.\nTJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ</code></pre><p><strong>디코딩 결과:</strong></p><pre><code>Header:  {"alg":"HS256","typ":"JWT"}\nPayload: {"sub":"1234567890","name":"Ada"}</code></pre>'
     }
 }
 
@@ -5596,7 +5646,11 @@ HASH_GENERATOR = {
         "related_header": "Related Tools",
         "related_pw": "Password Generator",
         "related_base64": "Base64 Converter",
-        "related_jwt": "JWT Decoder"
+        "related_jwt": "JWT Decoder",
+        "howto_header": "How to use",
+        "howto_html": "<ol><li>Type or paste text into the input area.</li><li>MD5 and SHA-1/256/384/512 digests are computed live as you type.</li><li>Click <strong>Copy</strong> next to any digest to copy it.</li><li>SHA family uses the browser's built-in <code>crypto.subtle.digest()</code>; MD5 is implemented inline since the Web Crypto API does not include it.</li></ol><p><strong>Security note:</strong> MD5 and SHA-1 are <em>broken</em> for cryptographic use (collisions exist). Use them only for non-security integrity checks. For passwords, use a slow KDF like bcrypt, scrypt, or argon2 on the server, never plain hashes.</p>",
+        "examples_header": "Examples",
+        "examples_html": '<p><strong>"abc" digests:</strong></p><pre><code>MD5    : 900150983cd24fb0d6963f7d28e17f72\nSHA-1  : a9993e364706816aba3e25717850c26c9cd0d89d\nSHA-256: ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad</code></pre><p><strong>Empty string:</strong></p><pre><code>MD5    : d41d8cd98f00b204e9800998ecf8427e\nSHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855</code></pre>'
     },
     "ko": {
         "title": "해시 생성기",
@@ -5613,7 +5667,11 @@ HASH_GENERATOR = {
         "related_header": "관련 도구",
         "related_pw": "비밀번호 생성기",
         "related_base64": "Base64 변환기",
-        "related_jwt": "JWT 디코더"
+        "related_jwt": "JWT 디코더",
+        "howto_header": "사용 방법",
+        "howto_html": '<ol><li>텍스트를 입력하거나 붙여넣으세요.</li><li>MD5와 SHA-1/256/384/512 다이제스트가 입력하는 즉시 계산됩니다.</li><li>각 다이제스트 옆 <strong>Copy</strong> 버튼으로 복사할 수 있습니다.</li><li>SHA 계열은 브라우저 내장 <code>crypto.subtle.digest()</code>를 사용하며, Web Crypto API에 없는 MD5만 인라인 구현되어 있습니다.</li></ol><p><strong>보안 주의:</strong> MD5와 SHA-1은 충돌이 발견되어 암호학적 용도로 <em>부적합</em>합니다. 보안과 무관한 무결성 검사에만 사용하세요. 비밀번호는 항상 bcrypt·scrypt·argon2 같은 KDF를 서버에서 사용해야 합니다.</p>',
+        "examples_header": "예시",
+        "examples_html": '<p><strong>"abc" 다이제스트:</strong></p><pre><code>MD5    : 900150983cd24fb0d6963f7d28e17f72\nSHA-1  : a9993e364706816aba3e25717850c26c9cd0d89d\nSHA-256: ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad</code></pre><p><strong>빈 문자열:</strong></p><pre><code>MD5    : d41d8cd98f00b204e9800998ecf8427e\nSHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855</code></pre>'
     }
 }
 
@@ -5642,7 +5700,11 @@ UNIX_TIMESTAMP = {
         "related_header": "Related Tools",
         "related_date": "Date Calculator",
         "related_timer": "Timer",
-        "related_jwt": "JWT Decoder"
+        "related_jwt": "JWT Decoder",
+        "howto_header": "How to use",
+        "howto_html": "<ol><li>The current Unix time updates live at the top — click <strong>Use Now</strong> to copy it into the converter.</li><li>To convert a timestamp to a date: paste the number and press <strong>Convert</strong>. Seconds (10 digits) and milliseconds (13 digits) are auto-detected.</li><li>To convert a date string to a timestamp: paste an ISO 8601 string (<code>2024-01-15T12:00:00Z</code>) or just <code>2024-01-15</code> and press <strong>Convert</strong>.</li><li>Both UTC and your local time-zone are shown so you don't need to do time-zone math.</li></ol><p>Unix time counts seconds since 1970-01-01 UTC, ignoring leap seconds. The 32-bit signed range overflows in 2038 — most modern systems use 64-bit and are unaffected.</p>",
+        "examples_header": "Examples",
+        "examples_html": '<p><strong>Timestamp → date:</strong></p><pre><code>1700000000      → 2023-11-14T22:13:20Z (UTC)\n1700000000000   → 2023-11-14T22:13:20.000Z\n0               → 1970-01-01T00:00:00Z (Unix epoch)</code></pre><p><strong>Date → timestamp:</strong></p><pre><code>2024-01-15T12:00:00Z → 1705320000  (seconds)\n                     → 1705320000000 (ms)</code></pre>'
     },
     "ko": {
         "title": "Unix 타임스탬프 변환기",
@@ -5667,7 +5729,11 @@ UNIX_TIMESTAMP = {
         "related_header": "관련 도구",
         "related_date": "날짜 계산기",
         "related_timer": "타이머",
-        "related_jwt": "JWT 디코더"
+        "related_jwt": "JWT 디코더",
+        "howto_header": "사용 방법",
+        "howto_html": '<ol><li>상단에 현재 Unix 시간이 실시간 표시됩니다 — <strong>Use Now</strong>로 변환기에 입력할 수 있습니다.</li><li>타임스탬프를 날짜로: 숫자를 붙여넣고 <strong>Convert</strong>를 누르세요. 초(10자리)와 밀리초(13자리)가 자동 감지됩니다.</li><li>날짜를 타임스탬프로: ISO 8601(<code>2024-01-15T12:00:00Z</code>) 또는 <code>2024-01-15</code> 형식을 입력하고 <strong>Convert</strong>를 누르세요.</li><li>UTC와 로컬 타임존이 함께 표시되어 시간대 계산이 불필요합니다.</li></ol><p>Unix time은 1970-01-01 UTC 이후의 초를 세며 윤초는 무시합니다. 32-bit signed는 2038년에 오버플로하지만 대부분의 현대 시스템은 64-bit이므로 영향이 없습니다.</p>',
+        "examples_header": "예시",
+        "examples_html": '<p><strong>타임스탬프 → 날짜:</strong></p><pre><code>1700000000      → 2023-11-14T22:13:20Z (UTC)\n1700000000000   → 2023-11-14T22:13:20.000Z\n0               → 1970-01-01T00:00:00Z (Unix epoch)</code></pre><p><strong>날짜 → 타임스탬프:</strong></p><pre><code>2024-01-15T12:00:00Z → 1705320000  (초)\n                     → 1705320000000 (밀리초)</code></pre>'
     }
 }
 
@@ -5693,7 +5759,11 @@ UUID_GENERATOR = {
         "related_header": "Related Tools",
         "related_hash": "Hash Generator",
         "related_pw": "Password Generator",
-        "related_jwt": "JWT Decoder"
+        "related_jwt": "JWT Decoder",
+        "howto_header": "How to use",
+        "howto_html": '<ol><li>Choose how many UUIDs to generate (1, 10, or 100) and which version.</li><li>Click <strong>Generate</strong> — UUIDs appear in the output box.</li><li>Use the format toggles for uppercase, brace-wrapping (<code>{...}</code>), or hyphen-stripped output.</li><li>Generation uses <code>crypto.randomUUID()</code> when available, falling back to <code>crypto.getRandomValues()</code> with the v4 bit pattern applied.</li></ol><p><strong>v4 vs v1:</strong> v4 is purely random (122 bits of entropy, collision probability essentially zero). v1 embeds a timestamp + clock-seq + node ID, making UUIDs roughly time-ordered — useful for database indexes that benefit from temporal locality. The Nil UUID (<code>00000000-0000-0000-0000-000000000000</code>) is a placeholder value.</p>',
+        "examples_header": "Examples",
+        "examples_html": '<p><strong>Default v4 (lowercase, hyphenated):</strong></p><pre><code>f47ac10b-58cc-4372-a567-0e02b2c3d479</code></pre><p><strong>v4 with braces, uppercase:</strong></p><pre><code>{F47AC10B-58CC-4372-A567-0E02B2C3D479}</code></pre><p><strong>v1 (time-based):</strong></p><pre><code>3aaa8c0e-9b87-11ee-8c90-0242ac120002</code></pre>'
     },
     "ko": {
         "title": "UUID 생성기",
@@ -5715,7 +5785,11 @@ UUID_GENERATOR = {
         "related_header": "관련 도구",
         "related_hash": "해시 생성기",
         "related_pw": "비밀번호 생성기",
-        "related_jwt": "JWT 디코더"
+        "related_jwt": "JWT 디코더",
+        "howto_header": "사용 방법",
+        "howto_html": '<ol><li>생성할 개수(1/10/100)와 버전을 선택하세요.</li><li><strong>Generate</strong>를 누르면 출력 박스에 UUID가 표시됩니다.</li><li>대문자, 중괄호 감싸기(<code>{...}</code>), 하이픈 제거 등의 포맷 옵션이 있습니다.</li><li><code>crypto.randomUUID()</code>가 가능하면 사용하고, 그렇지 않으면 <code>crypto.getRandomValues()</code>로 v4 비트 패턴을 적용합니다.</li></ol><p><strong>v4와 v1 차이:</strong> v4는 순수 랜덤(엔트로피 122 bit, 충돌 확률 사실상 0). v1은 타임스탬프+clock-seq+노드 ID를 포함해 시간순 정렬에 가깝습니다 — 시간적 지역성으로 이득을 보는 데이터베이스 인덱스에 유용합니다. Nil UUID (<code>00000000-0000-0000-0000-000000000000</code>)는 placeholder 값입니다.</p>',
+        "examples_header": "예시",
+        "examples_html": '<p><strong>기본 v4 (소문자, 하이픈):</strong></p><pre><code>f47ac10b-58cc-4372-a567-0e02b2c3d479</code></pre><p><strong>v4 + 중괄호 + 대문자:</strong></p><pre><code>{F47AC10B-58CC-4372-A567-0E02B2C3D479}</code></pre><p><strong>v1 (시간 기반):</strong></p><pre><code>3aaa8c0e-9b87-11ee-8c90-0242ac120002</code></pre>'
     }
 }
 
@@ -5744,7 +5818,11 @@ URL_ENCODER = {
         "related_header": "Related Tools",
         "related_base64": "Base64 Converter",
         "related_json": "JSON Formatter",
-        "related_jwt": "JWT Decoder"
+        "related_jwt": "JWT Decoder",
+        "howto_header": "How to use",
+        "howto_html": '<ol><li>Paste your URL or text into the input panel.</li><li>Pick <strong>Component</strong> mode for query values or path segments — this escapes reserved characters like <code>:/?&amp;=</code>.</li><li>Pick <strong>Full URL</strong> mode when encoding a complete URL — this preserves <code>:/?&amp;=</code> so the URL stays valid.</li><li>Click <strong>Encode</strong> or <strong>Decode</strong>; use <strong>Swap</strong> to flip input/output.</li></ol><p><strong>Component vs Full:</strong> use Component (<code>encodeURIComponent</code>) for anything that goes <em>inside</em> a URL piece — query values, path segments, fragment IDs. Use Full (<code>encodeURI</code>) only when escaping characters in an <em>entire</em> URL where you must keep <code>?</code> and <code>&amp;</code> as separators.</p>',
+        "examples_header": "Examples",
+        "examples_html": '<p><strong>Component encoding (e.g., for a search query):</strong></p><pre><code>"hello world" → hello%20world\n"a&b=c"       → a%26b%3Dc\n"안녕"         → %EC%95%88%EB%85%95</code></pre><p><strong>Full-URL encoding:</strong></p><pre><code>"https://x.com/?q=hello world"\n→ https://x.com/?q=hello%20world</code></pre>'
     },
     "ko": {
         "title": "URL 인코더 / 디코더",
@@ -5769,7 +5847,11 @@ URL_ENCODER = {
         "related_header": "관련 도구",
         "related_base64": "Base64 변환기",
         "related_json": "JSON 포매터",
-        "related_jwt": "JWT 디코더"
+        "related_jwt": "JWT 디코더",
+        "howto_header": "사용 방법",
+        "howto_html": '<ol><li>URL 또는 텍스트를 입력 패널에 붙여넣으세요.</li><li>쿼리 값이나 경로 세그먼트 인코딩에는 <strong>Component</strong> 모드 — <code>:/?&amp;=</code> 같은 예약 문자를 이스케이프합니다.</li><li>완성된 URL 전체를 인코딩할 때는 <strong>Full URL</strong> 모드 — <code>:/?&amp;=</code>를 보존해 URL 형식을 유지합니다.</li><li><strong>Encode</strong>/<strong>Decode</strong>를 누르고, <strong>Swap</strong>으로 입력과 출력을 뒤집을 수 있습니다.</li></ol><p><strong>Component vs Full:</strong> Component(<code>encodeURIComponent</code>)는 URL 안에 들어가는 <em>조각</em>(쿼리 값, 경로 세그먼트, fragment)에 사용합니다. Full(<code>encodeURI</code>)은 <code>?</code>와 <code>&amp;</code>를 구분자로 유지해야 하는 <em>전체 URL</em>을 인코딩할 때만 사용하세요.</p>',
+        "examples_header": "예시",
+        "examples_html": '<p><strong>Component 인코딩 (검색 쿼리 등):</strong></p><pre><code>"hello world" → hello%20world\n"a&b=c"       → a%26b%3Dc\n"안녕"         → %EC%95%88%EB%85%95</code></pre><p><strong>Full URL 인코딩:</strong></p><pre><code>"https://x.com/?q=hello world"\n→ https://x.com/?q=hello%20world</code></pre>'
     }
 }
 

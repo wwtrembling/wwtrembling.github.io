@@ -73,6 +73,12 @@
     </style>
     <link rel="manifest" href="/manifest.json">
     <script data-utilify-adsense-loader async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631" crossorigin="anonymous"></script>
+    <meta data-utilify-og property="og:image" content="https://utilifyapp.net/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Utilify">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://utilifyapp.net/assets/og-image.png">
 </head>
 
 <body>
@@ -127,6 +133,16 @@
                     <button class="btn btn-secondary" data-target="sha512">Copy</button>
                 </div>
             </div>
+
+            
+            <h2>How to use</h2>
+            <div class="howto-content"><ol><li>Type or paste text into the input area.</li><li>MD5 and SHA-1/256/384/512 digests are computed live as you type.</li><li>Click <strong>Copy</strong> next to any digest to copy it.</li><li>SHA family uses the browser's built-in <code>crypto.subtle.digest()</code>; MD5 is implemented inline since the Web Crypto API does not include it.</li></ol><p><strong>Security note:</strong> MD5 and SHA-1 are <em>broken</em> for cryptographic use (collisions exist). Use them only for non-security integrity checks. For passwords, use a slow KDF like bcrypt, scrypt, or argon2 on the server, never plain hashes.</p></div>
+
+            <h2>Examples</h2>
+            <div class="examples-content"><p><strong>"abc" digests:</strong></p><pre><code>MD5    : 900150983cd24fb0d6963f7d28e17f72
+SHA-1  : a9993e364706816aba3e25717850c26c9cd0d89d
+SHA-256: ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad</code></pre><p><strong>Empty string:</strong></p><pre><code>MD5    : d41d8cd98f00b204e9800998ecf8427e
+SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855</code></pre></div>
 
             <div class="related-tools-section">
                 <h3>Related Tools</h3>

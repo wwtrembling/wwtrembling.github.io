@@ -110,6 +110,12 @@
     </style>
     <link rel="manifest" href="/manifest.json">
     <script data-utilify-adsense-loader async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631" crossorigin="anonymous"></script>
+    <meta data-utilify-og property="og:image" content="https://utilifyapp.net/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Utilify">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://utilifyapp.net/assets/og-image.png">
 </head>
 
 <body>
@@ -159,6 +165,16 @@
                     Signature verification requires the issuer's secret/public key and is not performed here.
                 </p>
             </div>
+
+            
+            <h2>How to use</h2>
+            <div class="howto-content"><ol><li>Paste a JWT (three Base64URL segments separated by dots) into the input.</li><li>Click <strong>Decode</strong> to view the header and payload as JSON.</li><li>If the payload contains an <code>exp</code> claim, the page checks expiry against your local clock and shows valid / expired status.</li><li>Signature verification requires the issuer's secret or public key and is NOT performed here — this tool inspects the contents only.</li></ol><p>JWTs are <em>not encrypted</em>. Anyone with the token can read its contents. Treat the payload as public information unless it's wrapped in JWE.</p></div>
+
+            <h2>Examples</h2>
+            <div class="examples-content"><p><strong>Sample token:</strong></p><pre><code>eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.
+eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkFkYSJ9.
+TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ</code></pre><p><strong>Decoded:</strong></p><pre><code>Header:  {"alg":"HS256","typ":"JWT"}
+Payload: {"sub":"1234567890","name":"Ada"}</code></pre></div>
 
             <div class="related-tools-section">
                 <h3>Related Tools</h3>

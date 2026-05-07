@@ -73,6 +73,12 @@
     </style>
     <link rel="manifest" href="/manifest.json">
     <script data-utilify-adsense-loader async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631" crossorigin="anonymous"></script>
+    <meta data-utilify-og property="og:image" content="https://utilifyapp.net/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Utilify">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://utilifyapp.net/assets/og-image.png">
 </head>
 
 <body>
@@ -120,6 +126,16 @@
             </div>
 
             <div id="status" style="display:none;margin-top:var(--spacing-md);padding:var(--spacing-md);border-radius:var(--radius-md);"></div>
+
+            
+            <h2>사용 방법</h2>
+            <div class="howto-content"><ol><li>URL 또는 텍스트를 입력 패널에 붙여넣으세요.</li><li>쿼리 값이나 경로 세그먼트 인코딩에는 <strong>Component</strong> 모드 — <code>:/?&amp;=</code> 같은 예약 문자를 이스케이프합니다.</li><li>완성된 URL 전체를 인코딩할 때는 <strong>Full URL</strong> 모드 — <code>:/?&amp;=</code>를 보존해 URL 형식을 유지합니다.</li><li><strong>Encode</strong>/<strong>Decode</strong>를 누르고, <strong>Swap</strong>으로 입력과 출력을 뒤집을 수 있습니다.</li></ol><p><strong>Component vs Full:</strong> Component(<code>encodeURIComponent</code>)는 URL 안에 들어가는 <em>조각</em>(쿼리 값, 경로 세그먼트, fragment)에 사용합니다. Full(<code>encodeURI</code>)은 <code>?</code>와 <code>&amp;</code>를 구분자로 유지해야 하는 <em>전체 URL</em>을 인코딩할 때만 사용하세요.</p></div>
+
+            <h2>예시</h2>
+            <div class="examples-content"><p><strong>Component 인코딩 (검색 쿼리 등):</strong></p><pre><code>"hello world" → hello%20world
+"a&b=c"       → a%26b%3Dc
+"안녕"         → %EC%95%88%EB%85%95</code></pre><p><strong>Full URL 인코딩:</strong></p><pre><code>"https://x.com/?q=hello world"
+→ https://x.com/?q=hello%20world</code></pre></div>
 
             <div class="related-tools-section">
                 <h3>관련 도구</h3>
