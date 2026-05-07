@@ -117,6 +117,12 @@
     </style>
     <link rel="manifest" href="/manifest.json">
     <script data-utilify-adsense-loader async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631" crossorigin="anonymous"></script>
+    <meta data-utilify-og property="og:image" content="https://utilifyapp.net/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Utilify">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://utilifyapp.net/assets/og-image.png">
 </head>
 
 <body>
@@ -170,6 +176,21 @@
             <!-- Validation Status -->
             <div id="validationStatus" style="display: none;"></div>
             <div id="errorMessage" style="display: none;"></div>
+
+            
+            <h2>How to use</h2>
+            <div class="howto-content"><ol><li>Paste your JSON into the input panel on the left.</li><li>Click <strong>Format</strong> to pretty-print with 2-space indentation, <strong>Minify</strong> to strip whitespace, or <strong>Validate</strong> to check syntax without changing the output.</li><li>Click <strong>Copy</strong> to copy the result to your clipboard.</li><li>Everything runs in your browser — your JSON is never uploaded to a server.</li></ol><p>Large inputs (over 1 MB) trigger a confirmation prompt because parsing them may briefly freeze the page. Numbers longer than 15 digits will trigger a precision warning since JavaScript stores them as 64-bit floats.</p></div>
+
+            <h2>Examples</h2>
+            <div class="examples-content"><p><strong>Pretty-print compact JSON:</strong></p><pre><code>Input:  {"name":"Ada","tags":["dev","math"]}
+Output: {
+  "name": "Ada",
+  "tags": [
+    "dev",
+    "math"
+  ]
+}</code></pre><p><strong>Minify with trailing-comma error:</strong></p><pre><code>Input:  {"a": 1, "b": 2,}
+Result: ✗ Invalid JSON — Unexpected token } in JSON</code></pre></div>
 
             <div class="related-tools-section">
                 <h3>Ferramentas Relacionadas</h3>

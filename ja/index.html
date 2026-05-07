@@ -44,23 +44,121 @@
     <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "無料オンラインユーティリティ - Utilify",
-    "description": "単位変換、PDFツール、画像変換、計算機など、無料のオンラインユーティリティコレクション。",
-    "url": "https://utilifyapp.net/ja/",
+    "@type": "WebSite",
+    "name": "Utilify",
+    "url": "https://utilifyapp.net/",
     "inLanguage": "ja",
-    "isPartOf": {
-      "@type": "WebSite",
+    "description": "単位変換、PDFツール、画像変換、計算機など、無料のオンラインユーティリティコレクション。",
+    "publisher": {
+      "@type": "Organization",
       "name": "Utilify",
       "url": "https://utilifyapp.net/"
     }
   }
   </script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631"
-        crossorigin="anonymous"></script>
+
+    <style>
+        .trust-strip {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: var(--spacing-md) var(--spacing-lg);
+            margin: var(--spacing-md) 0 var(--spacing-xl);
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+        .trust-strip .trust-item { white-space: nowrap; }
+        .trust-strip a { color: inherit; text-decoration: none; }
+        .trust-strip a:hover { color: var(--primary-color); text-decoration: underline; }
+
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-xl);
+        }
+        .featured-card {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-lg);
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-xs);
+        }
+        .featured-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary-color);
+        }
+        .featured-card .card-icon { font-size: 2rem; }
+        .featured-card .card-title { font-size: 1.05rem; margin: 0; }
+        .featured-card .card-description { font-size: 0.85rem; color: var(--text-secondary); margin: 0; }
+
+        .category-filter {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-lg);
+        }
+        .category-filter button {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 6px 14px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            color: var(--text-secondary);
+            transition: all 0.15s;
+        }
+        .category-filter button:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+        .category-filter button[aria-pressed="true"] {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+            color: white;
+        }
+
+        .popular-conversions {
+            margin: var(--spacing-xl) 0;
+        }
+        .popular-conv-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: var(--spacing-sm);
+        }
+        .popular-conv-link {
+            display: block;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.15s;
+        }
+        .popular-conv-link:hover {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+    </style>
 
     <link rel="manifest" href="/manifest.json">
     <script data-utilify-adsense-loader async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631" crossorigin="anonymous"></script>
+    <meta data-utilify-og property="og:image" content="https://utilifyapp.net/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Utilify">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://utilifyapp.net/assets/og-image.png">
 </head>
 
 <body>
@@ -74,7 +172,7 @@
         </div>
     </header>
 
-    <main class="main-content">
+    <main class="main-content" id="main">
         <div class="container">
             <div class="hero">
                 <h1>🛠️ Utilify</h1>
@@ -88,208 +186,249 @@
                 <p>日常業務のための無料オンラインユーティリティ。インストール不要。</p>
             </div>
 
+            <div class="trust-strip" role="list">
+                <span class="trust-item" role="listitem">🔒 Client-side only</span>
+                <span class="trust-item" role="listitem"><a href="https://github.com/wwtrembling/wwtrembling.github.io" rel="noopener" target="_blank">⭐ Open source</a></span>
+                <span class="trust-item" role="listitem">🌐 11 languages</span>
+                <span class="trust-item" role="listitem">📲 Installable PWA</span>
+            </div>
+
+            <h2 class="text-center mb-4">Featured Tools</h2>
+            <div class="featured-grid">
+          <a href="/ja/json-formatter/" class="featured-card"><div class="card-icon">{ }</div><h3 class="card-title">JSONフォーマッター</h3><p class="card-description">JSONデータの整形、検証、圧縮を行います。開発者向けの広告なしツール。</p></a>
+          <a href="/ja/jwt-decoder/" class="featured-card"><div class="card-icon">🪪</div><h3 class="card-title">JWT Decoder</h3><p class="card-description">Paste a JWT to decode its header and payload. Tokens are processed locally and never sent to a server.</p></a>
+          <a href="/ja/uuid-generator/" class="featured-card"><div class="card-icon">🆔</div><h3 class="card-title">UUID Generator</h3><p class="card-description">Generate cryptographically random UUIDs locally. v4 (random) is the most common choice; v1 embeds a timestamp. Format options for hyphens, casing, and braces.</p></a>
+          <a href="/ja/base64-converter/" class="featured-card"><div class="card-icon">🔤</div><h3 class="card-title">Base64エンコーダー/デコーダー</h3><p class="card-description">テキストをBase64にエンコードまたはデコードします。</p></a>
+          <a href="/ja/hash-generator/" class="featured-card"><div class="card-icon">🔑</div><h3 class="card-title">Hash Generator</h3><p class="card-description">Type any text to instantly compute MD5 and SHA-1/256/384/512 digests. Nothing is uploaded — all hashing runs locally.</p></a>
+            </div>
+
             <h2 class="text-center mb-4">利用可能なツール</h2>
 
-            <div class="card-grid">
+            <div class="category-filter" role="group" aria-label="Filter tools by category">
+                <button type="button" data-cat="all" aria-pressed="true">All</button>
+                <button type="button" data-cat="dev" aria-pressed="false">Developer</button>
+                <button type="button" data-cat="text" aria-pressed="false">Text</button>
+                <button type="button" data-cat="image" aria-pressed="false">Image</button>
+                <button type="button" data-cat="convert" aria-pressed="false">Converters</button>
+                <button type="button" data-cat="calc" aria-pressed="false">Calculators</button>
+            </div>
+
+            <div class="card-grid" id="toolGrid">
                 
-        <a href="/ja/image-watermark/" class="card">
+        <a href="/ja/image-watermark/" class="card" data-category="image">
           <div class="card-icon">🛡️</div>
           <h3 class="card-title">画像透かし</h3>
           <p class="card-description">画像に透かしを追加して著作権を保護します。</p>
         </a>
 
-        <a href="/ja/unit-converter/" class="card">
+        <a href="/ja/unit-converter/" class="card" data-category="convert">
           <div class="card-icon">📏</div>
           <h3 class="card-title">単位変換ツール</h3>
           <p class="card-description">長さ, 重量, 温度, 体積などを変換できます。</p>
         </a>
 
-        <a href="/ja/image-converter/" class="card">
+        <a href="/ja/image-converter/" class="card" data-category="image">
           <div class="card-icon">🖼️</div>
           <h3 class="card-title">画像変換ツール</h3>
           <p class="card-description">画像のサイズを変更し、WebP、JPEG、PNG形式に変換します。</p>
         </a>
 
-        <a href="/ja/bmi-calculator/" class="card">
+        <a href="/ja/bmi-calculator/" class="card" data-category="calc">
           <div class="card-icon">⚖️</div>
           <h3 class="card-title">BMI計算機</h3>
           <p class="card-description">BMI（ボディマス指数）を計算します。</p>
         </a>
 
-        <a href="/ja/date-calculator/" class="card">
+        <a href="/ja/date-calculator/" class="card" data-category="calc">
           <div class="card-icon">📅</div>
           <h3 class="card-title">日付計算</h3>
           <p class="card-description">D-Dayと日付の差を計算します。</p>
         </a>
 
-        <a href="/ja/text-utils/" class="card">
+        <a href="/ja/text-utils/" class="card" data-category="text">
           <div class="card-icon">📝</div>
           <h3 class="card-title">テキストユーティリティ</h3>
           <p class="card-description">単語数、文字数のカウント、重複削除、大文字小文字変換など。</p>
         </a>
 
-        <a href="/ja/json-formatter/" class="card">
+        <a href="/ja/json-formatter/" class="card" data-category="dev">
           <div class="card-icon">{ }</div>
           <h3 class="card-title">JSONフォーマッター</h3>
           <p class="card-description">JSONデータの整形、検証、圧縮を行います。開発者向けの広告なしツール。</p>
         </a>
 
-        <a href="/ja/color-converter/" class="card">
+        <a href="/ja/color-converter/" class="card" data-category="convert">
           <div class="card-icon">🎨</div>
           <h3 class="card-title">色変換ツール</h3>
           <p class="card-description">HEX、RGB、HSL、CMYKカラー形式を変換します。</p>
         </a>
 
-        <a href="/ja/timer/" class="card">
+        <a href="/ja/timer/" class="card" data-category="calc">
           <div class="card-icon">⏱️</div>
           <h3 class="card-title">タイマー / ポモドーロ</h3>
           <p class="card-description">オンラインタイマーとポモドーロテクニック。</p>
         </a>
 
-        <a href="/ja/base64-converter/" class="card">
+        <a href="/ja/base64-converter/" class="card" data-category="dev">
           <div class="card-icon">🔤</div>
           <h3 class="card-title">Base64エンコーダー/デコーダー</h3>
           <p class="card-description">テキストをBase64にエンコードまたはデコードします。</p>
         </a>
 
-        <a href="/ja/qr-generator/" class="card">
+        <a href="/ja/qr-generator/" class="card" data-category="image">
           <div class="card-icon">📱</div>
           <h3 class="card-title">QRコード生成</h3>
           <p class="card-description">テキストまたはURLをQRコードに変換します。</p>
         </a>
 
-        <a href="/ja/regex-tester/" class="card">
+        <a href="/ja/regex-tester/" class="card" data-category="dev">
           <div class="card-icon">🔍</div>
           <h3 class="card-title">正規表現テスター</h3>
           <p class="card-description">リアルタイムで正規表現パターンをテストします。</p>
         </a>
 
-        <a href="/ja/sql-formatter/" class="card">
+        <a href="/ja/sql-formatter/" class="card" data-category="dev">
           <div class="card-icon">🗄️</div>
           <h3 class="card-title">SQLフォーマッター</h3>
           <p class="card-description">SQLクエリを自動的に整形・圧縮。</p>
         </a>
 
-        <a href="/ja/lorem-ipsum/" class="card">
+        <a href="/ja/lorem-ipsum/" class="card" data-category="text">
           <div class="card-icon">📋</div>
           <h3 class="card-title">Lorem Ipsum生成</h3>
           <p class="card-description">Lorem Ipsumダミーテキストを生成します。</p>
         </a>
 
-        <a href="/ja/favicon-generator/" class="card">
+        <a href="/ja/favicon-generator/" class="card" data-category="image">
           <div class="card-icon">🎯</div>
           <h3 class="card-title">ファビコン生成</h3>
           <p class="card-description">画像をさまざまなサイズのファビコンに変換します。</p>
         </a>
 
-        <a href="/ja/diff-checker/" class="card">
+        <a href="/ja/diff-checker/" class="card" data-category="text">
           <div class="card-icon">🔀</div>
           <h3 class="card-title">テキスト差分チェッカー</h3>
           <p class="card-description">2つのテキストの差分を簡単に比較します。追加および削除された部分をハイライト表示します。</p>
         </a>
 
-        <a href="/ja/password-generator/" class="card">
+        <a href="/ja/password-generator/" class="card" data-category="calc">
           <div class="card-icon">🔐</div>
           <h3 class="card-title">強力なパスワード生成ツール</h3>
           <p class="card-description">強力で安全なパスワードを生成します。パスワードはローカルで生成され、サーバーに送信されることはありません。</p>
         </a>
 
-        <a href="/ja/thumbnail-downloader/" class="card">
+        <a href="/ja/thumbnail-downloader/" class="card" data-category="image">
           <div class="card-icon">📺</div>
           <h3 class="card-title">YouTubeサムネイルダウンローダー</h3>
           <p class="card-description">YouTube動画のサムネイルを高画質（4K, HD）で抽出してダウンロード。無料で簡単なツール。</p>
         </a>
 
-        <a href="/ja/markdown-previewer/" class="card">
+        <a href="/ja/markdown-previewer/" class="card" data-category="text">
           <div class="card-icon">📝</div>
           <h3 class="card-title">マークダウンエディタ＆プレビュー</h3>
           <p class="card-description">リアルタイムマークダウンプレビューツール。マークダウンを簡単に作成し、変換されたHTMLを即座に確認できます。</p>
         </a>
 
-        <a href="/ja/reaction-test/" class="card">
+        <a href="/ja/reaction-test/" class="card" data-category="calc">
           <div class="card-icon">⚡</div>
           <h3 class="card-title">反応速度テスト</h3>
           <p class="card-description">あなたの反応速度をテストします。画面が緑色になったらできるだけ早くクリックしてください！</p>
         </a>
 
-        <a href="/ja/jwt-decoder/" class="card">
+        <a href="/ja/jwt-decoder/" class="card" data-category="dev">
           <div class="card-icon">🪪</div>
           <h3 class="card-title">JWT Decoder</h3>
           <p class="card-description">Paste a JWT to decode its header and payload. Tokens are processed locally and never sent to a server.</p>
         </a>
 
-        <a href="/ja/hash-generator/" class="card">
+        <a href="/ja/hash-generator/" class="card" data-category="dev">
           <div class="card-icon">🔑</div>
           <h3 class="card-title">Hash Generator</h3>
           <p class="card-description">Type any text to instantly compute MD5 and SHA-1/256/384/512 digests. Nothing is uploaded — all hashing runs locally.</p>
         </a>
 
-        <a href="/ja/unix-timestamp/" class="card">
+        <a href="/ja/unix-timestamp/" class="card" data-category="convert">
           <div class="card-icon">⏲️</div>
           <h3 class="card-title">Unix Timestamp Converter</h3>
           <p class="card-description">Convert between Unix timestamps and dates. Auto-detects seconds vs. milliseconds and shows both UTC and your local time zone.</p>
         </a>
 
-        <a href="/ja/uuid-generator/" class="card">
+        <a href="/ja/uuid-generator/" class="card" data-category="dev">
           <div class="card-icon">🆔</div>
           <h3 class="card-title">UUID Generator</h3>
           <p class="card-description">Generate cryptographically random UUIDs locally. v4 (random) is the most common choice; v1 embeds a timestamp. Format options for hyphens, casing, and braces.</p>
         </a>
 
-        <a href="/ja/url-encoder/" class="card">
+        <a href="/ja/url-encoder/" class="card" data-category="dev">
           <div class="card-icon">🔗</div>
           <h3 class="card-title">URL Encoder / Decoder</h3>
           <p class="card-description">Encode characters into percent-encoded form (e.g. space → %20) or decode them back. Use 'Component' for query values; use 'Full URL' to preserve reserved characters like : / ?.</p>
         </a>
 
-        <a href="/ja/image-editor/" class="card">
+        <a href="/ja/image-editor/" class="card" data-category="image">
           <div class="card-icon">🎨</div>
           <h3 class="card-title">画像エディタ</h3>
           <p class="card-description">画像のトリミング、回転、フィルター適用ができます。</p>
         </a>
 
-        <a href="/ja/jpa-converter/" class="card">
+        <a href="/ja/jpa-converter/" class="card" data-category="dev">
           <div class="card-icon">🗃️</div>
           <h3 class="card-title">DB JPA 変換</h3>
           <p class="card-description">SQLスキーマをJPAエンティティとDTOクラスに変換します。</p>
         </a>
 
-        <a href="/ja/json-to-ts/" class="card">
+        <a href="/ja/json-to-ts/" class="card" data-category="dev">
           <div class="card-icon">🔁</div>
           <h3 class="card-title">JSON TS/DTO 変換</h3>
           <p class="card-description">JSONをTypeScriptインターフェースとNestJS DTOに変換します。</p>
         </a>
 
-        <a href="/ja/excel-to-sql/" class="card">
+        <a href="/ja/excel-to-sql/" class="card" data-category="convert">
           <div class="card-icon">📊</div>
           <h3 class="card-title">Excel SQL 変換</h3>
           <p class="card-description">ExcelデータをSQL INSERTクエリに変換します。</p>
         </a>
 
-        <a href="/ja/json-to-excel/" class="card">
+        <a href="/ja/json-to-excel/" class="card" data-category="convert">
           <div class="card-icon">📈</div>
           <h3 class="card-title">JSON Excel 変換</h3>
           <p class="card-description">JSONデータをExcelに変換してダウンロードします。（安全）</p>
         </a>
 
-        <a href="/ja/json-ld-generator/" class="card">
+        <a href="/ja/json-ld-generator/" class="card" data-category="dev">
           <div class="card-icon">🏷️</div>
           <h3 class="card-title">SEO JSON-LD ジェネレーター</h3>
           <p class="card-description">Google/Naver公開用の構造化データ（スキーマ）を作成します。</p>
         </a>
 
-        <a href="/ja/pdf-tools/" class="card">
+        <a href="/ja/pdf-tools/" class="card" data-category="convert">
           <div class="card-icon">📄</div>
           <h3 class="card-title">PDF 結合/分割</h3>
           <p class="card-description">サーバーにアップロードせず、ブラウザで安全にPDFを結合・分割します。</p>
         </a>
 
-        <a href="/ja/text-to-diagram/" class="card">
+        <a href="/ja/text-to-diagram/" class="card" data-category="convert">
           <div class="card-icon">🧩</div>
           <h3 class="card-title">テキスト図解作成</h3>
           <p class="card-description">テキストからフローチャートやシーケンス図を作成します。</p>
         </a>
             </div>
+
+            <section class="popular-conversions">
+                <h2 class="text-center mb-4">Popular Conversions</h2>
+                <div class="popular-conv-grid">
+          <a href="/ja/convert/cm-to-inches/" class="popular-conv-link">Centimeters → Inches</a>
+          <a href="/ja/convert/inches-to-cm/" class="popular-conv-link">Inches → Centimeters</a>
+          <a href="/ja/convert/kg-to-lbs/" class="popular-conv-link">Kilograms → Pounds</a>
+          <a href="/ja/convert/lbs-to-kg/" class="popular-conv-link">Pounds → Kilograms</a>
+          <a href="/ja/convert/celsius-to-fahrenheit/" class="popular-conv-link">Celsius → Fahrenheit</a>
+          <a href="/ja/convert/fahrenheit-to-celsius/" class="popular-conv-link">Fahrenheit → Celsius</a>
+          <a href="/ja/convert/miles-to-km/" class="popular-conv-link">Miles → Kilometers</a>
+          <a href="/ja/convert/km-to-miles/" class="popular-conv-link">Kilometers → Miles</a>
+          <a href="/ja/convert/meters-to-feet/" class="popular-conv-link">Meters → Feet</a>
+          <a href="/ja/convert/feet-to-meters/" class="popular-conv-link">Feet → Meters</a>
+                </div>
+            </section>
         </div>
     </main>
 
@@ -303,6 +442,23 @@
     </footer>
 
     <script src="/assets/js/common.js"></script>
+    <script>
+        // Category filter — pure DOM, no library.
+        (function () {
+            const buttons = document.querySelectorAll('.category-filter button');
+            const cards = document.querySelectorAll('#toolGrid .card');
+            buttons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const cat = btn.dataset.cat;
+                    buttons.forEach(b => b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'));
+                    cards.forEach(card => {
+                        const match = cat === 'all' || card.dataset.category === cat;
+                        card.style.display = match ? '' : 'none';
+                    });
+                });
+            });
+        })();
+    </script>
     <script>(adsbygoogle=window.adsbygoogle||[]).push({google_ad_client:"ca-pub-6334819180242631",enable_page_level_ads:true});</script>
 </body>
 

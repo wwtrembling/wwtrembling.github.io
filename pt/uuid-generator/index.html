@@ -83,6 +83,12 @@
     </style>
     <link rel="manifest" href="/manifest.json">
     <script data-utilify-adsense-loader async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631" crossorigin="anonymous"></script>
+    <meta data-utilify-og property="og:image" content="https://utilifyapp.net/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Utilify">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://utilifyapp.net/assets/og-image.png">
 </head>
 
 <body>
@@ -130,6 +136,13 @@
             </div>
 
             <pre id="uuidOutput" class="uuid-output" aria-live="polite"></pre>
+
+            
+            <h2>How to use</h2>
+            <div class="howto-content"><ol><li>Choose how many UUIDs to generate (1, 10, or 100) and which version.</li><li>Click <strong>Generate</strong> — UUIDs appear in the output box.</li><li>Use the format toggles for uppercase, brace-wrapping (<code>{...}</code>), or hyphen-stripped output.</li><li>Generation uses <code>crypto.randomUUID()</code> when available, falling back to <code>crypto.getRandomValues()</code> with the v4 bit pattern applied.</li></ol><p><strong>v4 vs v1:</strong> v4 is purely random (122 bits of entropy, collision probability essentially zero). v1 embeds a timestamp + clock-seq + node ID, making UUIDs roughly time-ordered — useful for database indexes that benefit from temporal locality. The Nil UUID (<code>00000000-0000-0000-0000-000000000000</code>) is a placeholder value.</p></div>
+
+            <h2>Examples</h2>
+            <div class="examples-content"><p><strong>Default v4 (lowercase, hyphenated):</strong></p><pre><code>f47ac10b-58cc-4372-a567-0e02b2c3d479</code></pre><p><strong>v4 with braces, uppercase:</strong></p><pre><code>{F47AC10B-58CC-4372-A567-0E02B2C3D479}</code></pre><p><strong>v1 (time-based):</strong></p><pre><code>3aaa8c0e-9b87-11ee-8c90-0242ac120002</code></pre></div>
 
             <div class="related-tools-section">
                 <h3>Related Tools</h3>

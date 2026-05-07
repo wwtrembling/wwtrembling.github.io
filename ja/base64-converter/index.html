@@ -69,6 +69,12 @@
         crossorigin="anonymous"></script>
     <link rel="manifest" href="/manifest.json">
     <script data-utilify-adsense-loader async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631" crossorigin="anonymous"></script>
+    <meta data-utilify-og property="og:image" content="https://utilifyapp.net/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Utilify">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://utilifyapp.net/assets/og-image.png">
 </head>
 
 <body>
@@ -101,6 +107,15 @@
                 <label class="form-label">出力結果</label>
                 <textarea id="output" class="form-input" style="min-height: 150px;" readonly></textarea>
             </div>
+
+            
+            <h2>How to use</h2>
+            <div class="howto-content"><ol><li>Type or paste text into the input box.</li><li>Click <strong>Encode</strong> to convert text to Base64, or <strong>Decode</strong> to reverse it.</li><li>Multi-byte characters (emoji, CJK) are handled correctly via <code>TextEncoder</code>/<code>TextDecoder</code>.</li><li>Click <strong>Copy</strong> to send the result to your clipboard.</li></ol><p>Base64 is commonly used in HTTP Basic Auth headers, Data URIs (<code>data:image/png;base64,...</code>), email attachments (MIME), and JWT segments. It is <em>encoding</em>, not encryption — anyone can decode it.</p></div>
+
+            <h2>Examples</h2>
+            <div class="examples-content"><p><strong>UTF-8 round-trip:</strong></p><pre><code>Encode: "Hello 🌍" → SGVsbG8g8J+MjQ==
+Decode: SGVsbG8g8J+MjQ== → "Hello 🌍"</code></pre><p><strong>Decoding a JWT payload:</strong></p><pre><code>eyJzdWIiOiIxMjMiLCJuYW1lIjoiQWRhIn0
+→ {"sub":"123","name":"Ada"}</code></pre></div>
 
             <div class="related-tools-section">
                 <h3>関連ツール</h3>

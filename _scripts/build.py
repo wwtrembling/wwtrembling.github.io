@@ -145,6 +145,19 @@ def inject_monetization(html):
         )
         html = html.replace('</body>', trigger + '</body>', 1)
 
+    # 9b. Inject OG image + Twitter card meta once in <head>. Marker
+    #     `data-utilify-og` guards idempotency against re-runs.
+    if 'data-utilify-og' not in html:
+        og_block = (
+            '    <meta data-utilify-og property="og:image" content="https://utilifyapp.net/assets/og-image.png">\n'
+            '    <meta property="og:image:width" content="1200">\n'
+            '    <meta property="og:image:height" content="630">\n'
+            '    <meta property="og:site_name" content="Utilify">\n'
+            '    <meta name="twitter:card" content="summary_large_image">\n'
+            '    <meta name="twitter:image" content="https://utilifyapp.net/assets/og-image.png">\n'
+        )
+        html = html.replace('</head>', og_block + '</head>', 1)
+
     # 10. Inject legal-page links into footer of *templates* (those still have
     #     the {{ lang_code }} placeholder). For prebuilt hand-authored pages we
     #     inject lang-resolved links separately in sync_prebuilt_tools().
@@ -192,10 +205,58 @@ def inject_legal_links_resolved(html, lang):
     return out
 # --- end monetization ----------------------------------------------------------
 
+# Tool category mapping for the index filter. Tools not listed default to 'convert'.
+TOOL_CATEGORIES = {
+    # Developer
+    'json-formatter': 'dev', 'jwt-decoder': 'dev', 'hash-generator': 'dev',
+    'uuid-generator': 'dev', 'base64-converter': 'dev', 'url-encoder': 'dev',
+    'sql-formatter': 'dev', 'regex-tester': 'dev', 'json-to-ts': 'dev',
+    'jpa-converter': 'dev', 'json-ld-generator': 'dev',
+    # Text
+    'text-utils': 'text', 'diff-checker': 'text', 'lorem-ipsum': 'text',
+    'markdown-previewer': 'text',
+    # Image
+    'image-converter': 'image', 'image-watermark': 'image', 'image-editor': 'image',
+    'favicon-generator': 'image', 'qr-generator': 'image', 'thumbnail-downloader': 'image',
+    # Converters
+    'unit-converter': 'convert', 'color-converter': 'convert',
+    'unix-timestamp': 'convert', 'json-to-excel': 'convert',
+    'excel-to-sql': 'convert', 'text-to-diagram': 'convert', 'pdf-tools': 'convert',
+    # Calculators / misc
+    'bmi-calculator': 'calc', 'date-calculator': 'calc', 'timer': 'calc',
+    'reaction-test': 'calc', 'password-generator': 'calc',
+}
+
+# Slugs of the 5 tools surfaced in the "Featured" hero strip.
+FEATURED_SLUGS = ['json-formatter', 'jwt-decoder', 'uuid-generator',
+                  'base64-converter', 'hash-generator']
+
+# Conversion-pair slugs surfaced in the "Popular Conversions" section,
+# linking the index to /convert/* SEO pages for crawl + discovery.
+POPULAR_CONVERSION_SLUGS = [
+    'cm-to-inches', 'inches-to-cm',
+    'kg-to-lbs', 'lbs-to-kg',
+    'celsius-to-fahrenheit', 'fahrenheit-to-celsius',
+    'miles-to-km', 'km-to-miles',
+    'meters-to-feet', 'feet-to-meters',
+]
+
+
 def build_index_page():
     print("Building index pages...")
     template = load_template('index.html')
-    
+
+    # Build a lookup for tool dicts (TOOLS_CONFIG + PREBUILT_TOOLS).
+    tool_lookup = {tool_path: tool_dict for tool_path, _icon, tool_dict in ALL_TOOLS}
+    icon_lookup = {tool_path: icon for tool_path, icon, _td in ALL_TOOLS}
+
+    # Conversion pair display names (en/ko fall back to en for other locales).
+    try:
+        from _data.conversions import CONVERSION_PAIRS
+    except ImportError:
+        CONVERSION_PAIRS = []
+    pair_lookup = {f"{p['from']}-to-{p['to']}": p for p in CONVERSION_PAIRS}
+
     for lang in LANGUAGES:
         # Prepare data: English fallback for any missing sub-keys
         data = COMMON.get('en', {}).copy()
@@ -203,7 +264,7 @@ def build_index_page():
         data.update(INDEX_PAGE.get('en', {}))
         data.update(INDEX_PAGE.get(lang, {}))
         data['lang_code'] = lang
-        
+
         # Generate alternate links
         alt_links = []
         for l in LANGUAGES:
@@ -214,46 +275,76 @@ def build_index_page():
             else:
                 hreflang = l
             alt_links.append(f'<link rel="alternate" hreflang="{hreflang}" href="https://utilifyapp.net/{l}/">')
-            
+
         alt_links.append('<link rel="alternate" hreflang="x-default" href="https://utilifyapp.net/en/">')
         data['alternate_links'] = '\n  '.join(alt_links)
 
-        # Generate tool cards
+        # Featured cards (5 high-traffic tools).
+        featured_html = []
+        for slug in FEATURED_SLUGS:
+            tool_dict = tool_lookup.get(slug)
+            if not tool_dict:
+                continue
+            t_data = tool_dict.get(lang, tool_dict.get('en', {}))
+            title = t_data.get('title') or tool_dict['en']['title']
+            desc = t_data.get('page_desc') or t_data.get('meta_desc') \
+                or tool_dict['en'].get('page_desc', tool_dict['en'].get('meta_desc', ''))
+            icon = icon_lookup.get(slug, '🛠️')
+            featured_html.append(
+                f'<a href="/{lang}/{slug}/" class="featured-card">'
+                f'<div class="card-icon">{icon}</div>'
+                f'<h3 class="card-title">{title}</h3>'
+                f'<p class="card-description">{desc}</p></a>'
+            )
+        data['featured_cards'] = '\n          '.join(featured_html)
+
+        # Generate tool cards with data-category for the filter.
         cards_html = []
         for tool_path, icon, tool_dict in ALL_TOOLS:
             t_data = tool_dict.get(lang, tool_dict.get('en', {}))
             title = t_data.get('title', tool_dict.get('en', {}).get('title', ''))
-            
-            # Try page_desc first, then meta_desc
             desc = t_data.get('page_desc', t_data.get('meta_desc', ''))
-            
-            # Fallback to English if missing
             if not title:
                 title = tool_dict['en']['title']
             if not desc:
                 desc = tool_dict['en'].get('page_desc', tool_dict['en'].get('meta_desc', ''))
-
+            cat = TOOL_CATEGORIES.get(tool_path, 'convert')
             card = f'''
-        <a href="/{lang}/{tool_path}/" class="card">
+        <a href="/{lang}/{tool_path}/" class="card" data-category="{cat}">
           <div class="card-icon">{icon}</div>
           <h3 class="card-title">{title}</h3>
           <p class="card-description">{desc}</p>
         </a>'''
             cards_html.append(card)
-        
         data['tool_cards'] = '\n'.join(cards_html)
-        
+
+        # Popular Conversions text-link grid.
+        popular_html = []
+        for pair_slug in POPULAR_CONVERSION_SLUGS:
+            p = pair_lookup.get(pair_slug)
+            if not p:
+                continue
+            from_long = p['from_long'].get(lang, p['from_long']['en'])
+            to_long = p['to_long'].get(lang, p['to_long']['en'])
+            if lang != 'ko':
+                from_long, to_long = from_long.title(), to_long.title()
+            popular_html.append(
+                f'<a href="/{lang}/convert/{pair_slug}/" class="popular-conv-link">'
+                f'{from_long} → {to_long}</a>'
+            )
+        data['popular_conversions'] = '\n          '.join(popular_html)
+
         # Replace placeholders
         content = template
         for key, value in data.items():
-             content = content.replace(f'{{{{ {key} }}}}', str(value))
-             
+            content = content.replace(f'{{{{ {key} }}}}', str(value))
+
         # Write
         output_dir = os.path.join(BASE_DIR, lang)
         os.makedirs(output_dir, exist_ok=True)
         with open(os.path.join(output_dir, 'index.html'), 'w', encoding='utf-8') as f:
             f.write(content)
-            
+
         print(f"  Generated {lang}/index.html")
 
 def build_conversion_pages():
@@ -534,6 +625,12 @@ def build_sitemap(today=None):
     from datetime import date
     lastmod = (today or date.today()).isoformat()
 
+    # High-traffic developer tools — get higher priority + monthly changefreq.
+    POPULAR_TOOLS = {
+        'json-formatter', 'base64-converter', 'jwt-decoder', 'uuid-generator',
+        'hash-generator', 'unix-timestamp', 'url-encoder',
+    }
+
     paths = ['']  # root
     paths += [f'{l}/' for l in LANGUAGES]
     for tool_path, _icon, _data in ALL_TOOLS:
@@ -544,37 +641,40 @@ def build_sitemap(today=None):
              '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"',
              '        xmlns:xhtml="http://www.w3.org/1999/xhtml">']
 
-    def emit(loc, alternates=None):
+    def emit(loc, alternates=None, priority='0.5', changefreq='monthly'):
         lines.append('  <url>')
         lines.append(f'    <loc>{loc}</loc>')
         lines.append(f'    <lastmod>{lastmod}</lastmod>')
+        lines.append(f'    <changefreq>{changefreq}</changefreq>')
+        lines.append(f'    <priority>{priority}</priority>')
         if alternates:
             for hl, href in alternates:
                 lines.append(f'    <xhtml:link rel="alternate" hreflang="{hl}" href="{href}"/>')
         lines.append('  </url>')
 
     # Root
-    emit('https://utilifyapp.net/')
+    emit('https://utilifyapp.net/', priority='1.0', changefreq='weekly')
 
     # Language home pages with hreflang siblings
     home_alts = [(hreflang_for(l), f'https://utilifyapp.net/{l}/') for l in LANGUAGES]
     home_alts.append(('x-default', 'https://utilifyapp.net/en/'))
     for l in LANGUAGES:
-        emit(f'https://utilifyapp.net/{l}/', home_alts)
+        emit(f'https://utilifyapp.net/{l}/', home_alts, priority='0.9', changefreq='weekly')
 
     # Tool pages with hreflang siblings
     for tool_path, _icon, _data in ALL_TOOLS:
         tool_alts = [(hreflang_for(l), f'https://utilifyapp.net/{l}/{tool_path}/') for l in LANGUAGES]
         tool_alts.append(('x-default', f'https://utilifyapp.net/en/{tool_path}/'))
+        priority = '0.8' if tool_path in POPULAR_TOOLS else '0.7'
         for l in LANGUAGES:
-            emit(f'https://utilifyapp.net/{l}/{tool_path}/', tool_alts)
+            emit(f'https://utilifyapp.net/{l}/{tool_path}/', tool_alts, priority=priority, changefreq='monthly')
 
     # Static / legal pages
     for slug in STATIC_PAGE_SLUGS:
         slug_alts = [(hreflang_for(l), f'https://utilifyapp.net/{l}/{slug}/') for l in LANGUAGES]
         slug_alts.append(('x-default', f'https://utilifyapp.net/en/{slug}/'))
         for l in LANGUAGES:
-            emit(f'https://utilifyapp.net/{l}/{slug}/', slug_alts)
+            emit(f'https://utilifyapp.net/{l}/{slug}/', slug_alts, priority='0.3', changefreq='yearly')
         paths.extend([f'{l}/{slug}/' for l in LANGUAGES])
 
     # Programmatic SEO conversion pairs
@@ -587,7 +687,7 @@ def build_sitemap(today=None):
         pair_alts = [(hreflang_for(l), f'https://utilifyapp.net/{l}/{slug}/') for l in LANGUAGES]
         pair_alts.append(('x-default', f'https://utilifyapp.net/en/{slug}/'))
         for l in LANGUAGES:
-            emit(f'https://utilifyapp.net/{l}/{slug}/', pair_alts)
+            emit(f'https://utilifyapp.net/{l}/{slug}/', pair_alts, priority='0.6', changefreq='monthly')
         paths.extend([f'{l}/{slug}/' for l in LANGUAGES])
 
     lines.append('</urlset>')
