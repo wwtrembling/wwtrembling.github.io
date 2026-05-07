@@ -119,12 +119,13 @@
 </head>
 
 <body>
+    <a data-utilify-skip class="skip-link" href="#main">Skip to content</a>
     <header class="site-header">
         <div class="container">
             <div class="header-content"><a href="/zh-tw/" class="site-logo">🛠️ Utilify</a></div>
         </div>
     </header>
-    <main class="main-content">
+    <main id="main" class="main-content">
         <div class="container-narrow">
             <h1>🪪 JWT Decoder</h1>
             <div class="security-badge"
@@ -145,22 +146,22 @@
                 <button class="btn btn-secondary" id="clearBtn">Clear</button>
             </div>
 
-            <div id="jwtStatus" style="display: none;"></div>
+            <div id="jwtStatus" style="display: none;" aria-live="polite"></div>
 
             <div class="jwt-grid">
                 <div class="jwt-output">
                     <span class="field-label">Header</span>
-                    <pre id="headerOut"></pre>
+                    <pre id="headerOut" aria-live="polite"></pre>
                 </div>
                 <div class="jwt-output">
                     <span class="field-label">Payload</span>
-                    <pre id="payloadOut"></pre>
+                    <pre id="payloadOut" aria-live="polite"></pre>
                 </div>
             </div>
 
             <div class="jwt-output" style="margin-top: var(--spacing-lg);">
                 <span class="field-label">Signature (raw)</span>
-                <pre id="signatureOut"></pre>
+                <pre id="signatureOut" aria-live="polite"></pre>
                 <p style="font-size: 0.875rem; color: var(--text-secondary); margin-top: var(--spacing-sm);">
                     Signature verification requires the issuer's secret/public key and is not performed here.
                 </p>

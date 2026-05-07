@@ -158,6 +158,26 @@ def inject_monetization(html):
         )
         html = html.replace('</head>', og_block + '</head>', 1)
 
+    # 9c. Inject skip-to-content link as first child of <body>, and ensure
+    #     <main> has id="main" so the skip link has a target. Idempotent
+    #     via marker `data-utilify-skip`.
+    if 'data-utilify-skip' not in html:
+        if '{{ lang_code }}' in html:
+            link_text = '{{ skip_link }}'
+        else:
+            link_text = 'Skip to content'
+        skip = (
+            f'\n    <a data-utilify-skip class="skip-link" href="#main">{link_text}</a>'
+        )
+        html = _re_ad.sub(r'(<body[^>]*>)', r'\1' + skip, html, count=1)
+        # Ensure <main ...> has id="main"; only patch if missing.
+        if '<main' in html and 'id="main"' not in html:
+            html = _re_ad.sub(
+                r'(<main\b)([^>]*)(>)',
+                lambda m: m.group(1) + ' id="main"' + m.group(2) + m.group(3),
+                html, count=1,
+            )
+
     # 10. Inject legal-page links into footer of *templates* (those still have
     #     the {{ lang_code }} placeholder). For prebuilt hand-authored pages we
     #     inject lang-resolved links separately in sync_prebuilt_tools().

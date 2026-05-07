@@ -14,6 +14,7 @@ COMMON = {
         "link_about": "About",
         "link_privacy": "Privacy",
         "link_terms": "Terms",
+        "skip_link": "Skip to content",
     },
     "ko": {
         "brand": "🛠️ Utilify",
@@ -23,6 +24,7 @@ COMMON = {
         "link_about": "소개",
         "link_privacy": "개인정보",
         "link_terms": "이용약관",
+        "skip_link": "본문으로 건너뛰기",
     },
     "vi": {
         "brand": "🛠️ Utilify",
