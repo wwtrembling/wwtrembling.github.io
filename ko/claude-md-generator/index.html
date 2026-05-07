@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy-Report-Only" content="default-src 'self' https: data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https:; frame-src https:;">
+    <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+    <title>Claude.md / 시스템 프롬프트 생성기 - Utilify</title>
+    <meta name="description" content="폼 입력만으로 CLAUDE.md 프로젝트 파일을 생성하세요. 역할·규칙·제약·명령어를 입력하면 Markdown으로 출력.">
+    <link rel="canonical" href="https://utilifyapp.net/ko/claude-md-generator/">
+
+    <meta property="og:title" content="Claude.md / 시스템 프롬프트 생성기 - Utilify">
+    <meta property="og:description" content="폼 입력만으로 CLAUDE.md 프로젝트 파일을 생성하세요. 역할·규칙·제약·명령어를 입력하면 Markdown으로 출력.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://utilifyapp.net/ko/claude-md-generator/">
+
+    <link rel="alternate" hreflang="en" href="https://utilifyapp.net/en/claude-md-generator/">
+    <link rel="alternate" hreflang="ko" href="https://utilifyapp.net/ko/claude-md-generator/">
+    <link rel="alternate" hreflang="vi" href="https://utilifyapp.net/vi/claude-md-generator/">
+    <link rel="alternate" hreflang="th" href="https://utilifyapp.net/th/claude-md-generator/">
+    <link rel="alternate" hreflang="de" href="https://utilifyapp.net/de/claude-md-generator/">
+    <link rel="alternate" hreflang="pt" href="https://utilifyapp.net/pt/claude-md-generator/">
+    <link rel="alternate" hreflang="id" href="https://utilifyapp.net/id/claude-md-generator/">
+    <link rel="alternate" hreflang="hi" href="https://utilifyapp.net/hi/claude-md-generator/">
+    <link rel="alternate" hreflang="ja" href="https://utilifyapp.net/ja/claude-md-generator/">
+    <link rel="alternate" hreflang="zh-Hans" href="https://utilifyapp.net/zh-cn/claude-md-generator/">
+    <link rel="alternate" hreflang="zh-Hant" href="https://utilifyapp.net/zh-tw/claude-md-generator/">
+    <link rel="alternate" hreflang="x-default" href="https://utilifyapp.net/en/claude-md-generator/">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Claude.md 생성기",
+        "description": "Anthropic CLAUDE.md 프로젝트 컨텍스트 파일을 폼 기반으로 생성하는 도구.",
+        "url": "https://utilifyapp.net/ko/claude-md-generator/",
+        "inLanguage": "ko",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Any",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+
+    <style>
+        .form-grid { display: grid; gap: var(--spacing-md); margin-top: var(--spacing-lg); }
+        .form-grid label { font-weight: 600; }
+        .form-grid input, .form-grid textarea { font-family: var(--font-mono); font-size: 0.95rem; }
+        .preview-box {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            white-space: pre-wrap;
+            min-height: 200px;
+        }
+    </style>
+    <link rel="manifest" href="/manifest.json">
+    <script data-utilify-adsense-loader async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631" crossorigin="anonymous"></script>
+    <meta data-utilify-og property="og:image" content="https://utilifyapp.net/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Utilify">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://utilifyapp.net/assets/og-image.png">
+    <link data-utilify-favicon rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+</head>
+
+<body>
+    <a data-utilify-skip class="skip-link" href="#main">본문으로 건너뛰기</a>
+    <header class="site-header"><div class="container"><div class="header-content"><a href="/ko/" class="site-logo">🛠️ Utilify</a></div></div></header>
+    <main id="main" class="main-content">
+        <div class="container-narrow">
+            <h1>📜 Claude.md 생성기</h1>
+            <div class="security-badge" style="display:flex;align-items:center;justify-content:center;gap:8px;margin:10px 0;font-size:14px;color:var(--text-secondary);">
+                <span>🔒 Secure & Client-side</span>
+            </div>
+
+            <p>간단한 폼으로 CLAUDE.md(또는 AI 에이전트 시스템 프롬프트)를 생성합니다. 프로젝트 역할·코딩 규칙·제약·명령어를 입력하고 Markdown으로 복사하거나 다운로드하세요.</p>
+
+            <div class="form-grid">
+                <div>
+                    <label for="projectName">프로젝트 이름</label>
+                    <input id="projectName" class="form-input" type="text" placeholder="my-app">
+                </div>
+                <div>
+                    <label for="role">역할 / 페르소나</label>
+                    <textarea id="role" class="form-input" rows="2" placeholder="Python 웹 서비스를 담당하는 시니어 백엔드 엔지니어입니다."></textarea>
+                </div>
+                <div>
+                    <label for="conventions">코딩 규칙 (한 줄에 하나)</label>
+                    <textarea id="conventions" class="form-input" rows="4" placeholder="4-space 들여쓰기 사용
+PEP 8 준수
+공개 함수에 타입 힌트 작성"></textarea>
+                </div>
+                <div>
+                    <label for="constraints">제약 사항 (한 줄에 하나)</label>
+                    <textarea id="constraints" class="form-input" rows="4" placeholder="마이그레이션은 명시 승인 없이 수정 금지
+레거시 인증 모듈 건드리지 말 것"></textarea>
+                </div>
+                <div>
+                    <label for="commands">자주 쓰는 명령어</label>
+                    <textarea id="commands" class="form-input" rows="4" placeholder="make test
+ruff check .
+python manage.py runserver"></textarea>
+                </div>
+            </div>
+
+            <div class="btn-group" style="margin-top: var(--spacing-md);">
+                <button class="btn btn-primary" id="generateBtn">생성</button>
+                <button class="btn btn-secondary" id="copyBtn">복사</button>
+                <button class="btn btn-secondary" id="downloadBtn">.md 다운로드</button>
+                <button class="btn btn-secondary" id="clearBtn">지우기</button>
+            </div>
+
+            <h2>생성된 CLAUDE.md</h2>
+            <pre id="output" class="preview-box" aria-live="polite"></pre>
+
+            <h2>사용 방법</h2>
+            <div class="howto-content"><ol><li>프로젝트 이름과 역할 설명을 입력하세요.</li><li>코딩 규칙은 한 줄에 하나씩 — 출력에서 bullet 리스트로 변환됩니다.</li><li>제약 사항도 한 줄에 하나씩.</li><li>자주 쓰는 명령어(테스트·린트·개발 서버 등)를 입력 — <code>```bash</code> 블록으로 감싸집니다.</li><li><strong>생성</strong>을 눌러 검토 후 <strong>.md 다운로드</strong>로 저장하면 레포 루트의 <code>CLAUDE.md</code>로 사용할 수 있습니다.</li></ol><p>같은 파일은 Cursor(<code>.cursorrules</code>), Aider 등 다른 에이전트의 시스템 프롬프트로도 사용 가능합니다. Cursor는 다운로드한 파일 이름만 바꾸면 됩니다.</p></div>
+
+            <div class="related-tools-section">
+                <h3>관련 도구</h3>
+                <div class="related-buttons">
+                    <a href="/ko/mcp-config-generator/" class="related-btn">MCP 설정 생성기</a><a
+                        href="/ko/prompt-pii-scrubber/" class="related-btn">프롬프트 PII 마스킹</a><a
+                        href="/ko/token-counter/" class="related-btn">토큰 카운터</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="site-footer"><div class="container"><div class="footer-content"><p>&copy; 2025 Utilify. All rights reserved.</p>
+                <p data-legal-links style="font-size: 0.875rem; margin-top: 8px;"><a href="/ko/about/">소개</a> · <a href="/ko/privacy/">개인정보</a> · <a href="/ko/terms/">이용약관</a></p></div></div></footer>
+    <script src="/assets/js/common.js"></script>
+    <script>
+        const out = document.getElementById('output');
+
+        function bullets(text) {
+            return text.split('\n').map(l => l.trim()).filter(Boolean).map(l => l.startsWith('-') ? l : '- ' + l).join('\n');
+        }
+
+        function generate() {
+            const proj = document.getElementById('projectName').value.trim() || 'Project';
+            const role = document.getElementById('role').value.trim();
+            const conv = document.getElementById('conventions').value.trim();
+            const cons = document.getElementById('constraints').value.trim();
+            const cmds = document.getElementById('commands').value.trim();
+
+            let md = '# ' + proj + ' — CLAUDE.md\n\n';
+            md += '> 이 파일은 Claude Code가 프로젝트를 열 때 자동으로 로드합니다.\n\n';
+            if (role) md += '## 역할\n\n' + role + '\n\n';
+            if (conv) md += '## 규칙\n\n' + bullets(conv) + '\n\n';
+            if (cons) md += '## 제약\n\n' + bullets(cons) + '\n\n';
+            if (cmds) md += '## 자주 쓰는 명령어\n\n```bash\n' + cmds + '\n```\n\n';
+            out.textContent = md.trimEnd();
+        }
+
+        function download() {
+            const blob = new Blob([out.textContent], { type: 'text/markdown' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url; a.download = 'CLAUDE.md';
+            document.body.appendChild(a); a.click();
+            document.body.removeChild(a); URL.revokeObjectURL(url);
+        }
+
+        document.getElementById('generateBtn').addEventListener('click', generate);
+        document.getElementById('copyBtn').addEventListener('click', () => {
+            if (out.textContent) Utils.copyToClipboard(out.textContent);
+            else Utils.showToast('먼저 생성을 눌러주세요.');
+        });
+        document.getElementById('downloadBtn').addEventListener('click', () => {
+            if (!out.textContent) { generate(); }
+            if (out.textContent) download();
+        });
+        document.getElementById('clearBtn').addEventListener('click', () => {
+            ['projectName','role','conventions','constraints','commands'].forEach(id => document.getElementById(id).value = '');
+            out.textContent = '';
+        });
+    </script>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({google_ad_client:"ca-pub-6334819180242631",enable_page_level_ads:true});</script>
+</body>
+
+</html>

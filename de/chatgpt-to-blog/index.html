@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy-Report-Only" content="default-src 'self' https: data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https:; frame-src https:;">
+    <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+    <title>ChatGPT Conversation to Blog Post Markdown - Utilify</title>
+    <meta name="description" content="Paste a ChatGPT conversation and get clean Markdown ready for your blog. Strips prompts, merges assistant turns, and formats for publishing.">
+    <link rel="canonical" href="https://utilifyapp.net/de/chatgpt-to-blog/">
+
+    <meta property="og:title" content="ChatGPT Conversation to Blog Post Markdown - Utilify">
+    <meta property="og:description" content="Paste a ChatGPT conversation and get clean Markdown ready for your blog. Strips prompts, merges assistant turns, and formats for publishing.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://utilifyapp.net/de/chatgpt-to-blog/">
+
+    <link rel="alternate" hreflang="en" href="https://utilifyapp.net/en/chatgpt-to-blog/">
+    <link rel="alternate" hreflang="ko" href="https://utilifyapp.net/ko/chatgpt-to-blog/">
+    <link rel="alternate" hreflang="vi" href="https://utilifyapp.net/vi/chatgpt-to-blog/">
+    <link rel="alternate" hreflang="th" href="https://utilifyapp.net/th/chatgpt-to-blog/">
+    <link rel="alternate" hreflang="de" href="https://utilifyapp.net/de/chatgpt-to-blog/">
+    <link rel="alternate" hreflang="pt" href="https://utilifyapp.net/pt/chatgpt-to-blog/">
+    <link rel="alternate" hreflang="id" href="https://utilifyapp.net/id/chatgpt-to-blog/">
+    <link rel="alternate" hreflang="hi" href="https://utilifyapp.net/hi/chatgpt-to-blog/">
+    <link rel="alternate" hreflang="ja" href="https://utilifyapp.net/ja/chatgpt-to-blog/">
+    <link rel="alternate" hreflang="zh-Hans" href="https://utilifyapp.net/zh-cn/chatgpt-to-blog/">
+    <link rel="alternate" hreflang="zh-Hant" href="https://utilifyapp.net/zh-tw/chatgpt-to-blog/">
+    <link rel="alternate" hreflang="x-default" href="https://utilifyapp.net/en/chatgpt-to-blog/">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "ChatGPT to Blog",
+        "description": "Convert a pasted ChatGPT conversation into clean blog-ready Markdown.",
+        "url": "https://utilifyapp.net/de/chatgpt-to-blog/",
+        "inLanguage": "de",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Any",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+
+    <style>
+        .conv-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-lg);
+        }
+        @media (max-width: 768px) { .conv-grid { grid-template-columns: 1fr; } }
+
+        .options-row {
+            display: flex; flex-wrap: wrap; gap: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+            font-size: 0.95rem;
+        }
+        .options-row label { display: inline-flex; align-items: center; gap: 6px; }
+        .options-row input[type="text"] { width: 220px; padding: 4px 8px; }
+    </style>
+    <link rel="manifest" href="/manifest.json">
+    <script data-utilify-adsense-loader async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631" crossorigin="anonymous"></script>
+    <meta data-utilify-og property="og:image" content="https://utilifyapp.net/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Utilify">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://utilifyapp.net/assets/og-image.png">
+    <link data-utilify-favicon rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+</head>
+
+<body>
+    <a data-utilify-skip class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header"><div class="container"><div class="header-content"><a href="/de/" class="site-logo">Utilify</a></div></div></header>
+    <main id="main" class="main-content">
+        <div class="container-narrow">
+            <h1>📝 ChatGPT → Blog Post Converter</h1>
+            <div class="security-badge" style="display:flex;align-items:center;justify-content:center;gap:8px;margin:10px 0;font-size:14px;color:var(--text-secondary);">
+                <span>🔒 Sicher & Clientseitig</span>
+            </div>
+
+            <p>Paste a ChatGPT (or Claude) conversation — text or exported JSON — and the tool splits it into user/assistant turns, optionally strips your prompts, and formats the assistant responses as clean Markdown ready for your blog.</p>
+
+            <div class="options-row">
+                <label><input type="checkbox" id="optStripPrompts" checked> Strip user prompts (assistant only)</label>
+                <label><input type="checkbox" id="optMergeAssistant" checked> Merge assistant turns into one post</label>
+                <label><input type="checkbox" id="optAddTitle"> Add H1 title</label>
+                <label>Title: <input type="text" id="postTitle" placeholder="My Conversation"></label>
+            </div>
+
+            <div class="conv-grid">
+                <div>
+                    <label class="form-label" for="inputEl">ChatGPT conversation (text or JSON)</label>
+                    <textarea id="inputEl" class="form-input" style="min-height:340px;font-family:var(--font-mono);" placeholder="Paste the conversation here. Both 'You said: ...' / 'ChatGPT said: ...' format and the JSON export are accepted."></textarea>
+                </div>
+                <div>
+                    <label class="form-label" for="outputEl">Markdown</label>
+                    <textarea id="outputEl" class="form-input" style="min-height:340px;font-family:var(--font-mono);" readonly aria-live="polite"></textarea>
+                </div>
+            </div>
+
+            <div class="btn-group" style="margin-top: var(--spacing-md);">
+                <button class="btn btn-primary" id="convertBtn">Convert</button>
+                <button class="btn btn-secondary" id="copyBtn">Copy</button>
+                <button class="btn btn-secondary" id="downloadBtn">Download .md</button>
+                <button class="btn btn-secondary" id="clearBtn">Clear</button>
+            </div>
+
+            <h2>How to use</h2>
+            <div class="howto-content"><ol><li>In ChatGPT, click the share icon → Copy or Share. You can also export your data and use the JSON file.</li><li>Paste the conversation into the left panel.</li><li>Toggle the options: <em>Strip user prompts</em> drops your questions; <em>Merge assistant turns</em> joins all answers into one continuous post; <em>Add H1 title</em> prepends a heading.</li><li>Click <strong>Convert</strong>; review the Markdown on the right.</li><li><strong>Download .md</strong> to save the post locally.</li></ol><p><strong>What's parsed</strong>: text format with "You said:" / "ChatGPT said:" labels (also "User:" / "Assistant:" / Korean "사용자" / "어시스턴트"); the JSON export shape with <code>mapping</code> nodes; and a generic <code>{messages: [{role, content}]}</code> shape. If no role markers are detected the entire input is treated as a single assistant message.</p></div>
+
+            <div class="related-tools-section">
+                <h3>Related Tools</h3>
+                <div class="related-buttons">
+                    <a href="/de/markdown-previewer/" class="related-btn">Markdown Previewer</a><a
+                        href="/de/token-counter/" class="related-btn">Token Counter</a><a
+                        href="/de/prompt-pii-scrubber/" class="related-btn">Prompt PII Scrubber</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="site-footer"><div class="container"><div class="footer-content"><p></p>
+                <p data-legal-links style="font-size: 0.875rem; margin-top: 8px;"><a href="/de/about/">About</a> · <a href="/de/privacy/">Privacy</a> · <a href="/de/terms/">Terms</a></p></div></div></footer>
+    <script src="/assets/js/common.js"></script>
+    <script>
+        const inputEl = document.getElementById('inputEl');
+        const outputEl = document.getElementById('outputEl');
+
+        // Heuristics: ChatGPT shared/exported text typically alternates "You said:" / "ChatGPT said:" labels,
+        // or in JSON exports has role:"user" / role:"assistant". Try both.
+        const ROLE_PATTERNS = [
+            /^(?:You|User|Q|Question|사용자)(?:\s*said)?\s*:?\s*$/im,
+            /^(?:ChatGPT|Assistant|AI|A|Answer|어시스턴트|GPT)(?:\s*said)?\s*:?\s*$/im,
+        ];
+
+        function tryParseJSON(text) {
+            try {
+                const data = JSON.parse(text);
+                // ChatGPT export shape: array of { mapping: {...} } or single conversation object.
+                const arr = Array.isArray(data) ? data : [data];
+                const turns = [];
+                for (const conv of arr) {
+                    if (conv.mapping) {
+                        for (const node of Object.values(conv.mapping)) {
+                            if (node && node.message && node.message.author && node.message.content) {
+                                const role = node.message.author.role;
+                                const parts = node.message.content.parts || [];
+                                const txt = parts.filter(p => typeof p === 'string').join('\n').trim();
+                                if (role && txt && (role === 'user' || role === 'assistant')) {
+                                    turns.push({ role, text: txt, ts: node.message.create_time || 0 });
+                                }
+                            }
+                        }
+                    } else if (Array.isArray(conv.messages)) {
+                        for (const m of conv.messages) {
+                            if (m.role && m.content) turns.push({ role: m.role, text: typeof m.content === 'string' ? m.content : '', ts: 0 });
+                        }
+                    }
+                }
+                turns.sort((a, b) => a.ts - b.ts);
+                return turns.length ? turns : null;
+            } catch (e) {
+                return null;
+            }
+        }
+
+        function parsePlainText(text) {
+            // Split on lines that look like role labels.
+            const lines = text.split('\n');
+            const turns = [];
+            let current = { role: null, lines: [] };
+            for (const line of lines) {
+                if (ROLE_PATTERNS[0].test(line)) {
+                    if (current.role && current.lines.length) turns.push({ role: current.role, text: current.lines.join('\n').trim() });
+                    current = { role: 'user', lines: [] };
+                } else if (ROLE_PATTERNS[1].test(line)) {
+                    if (current.role && current.lines.length) turns.push({ role: current.role, text: current.lines.join('\n').trim() });
+                    current = { role: 'assistant', lines: [] };
+                } else {
+                    current.lines.push(line);
+                }
+            }
+            if (current.role && current.lines.length) turns.push({ role: current.role, text: current.lines.join('\n').trim() });
+            // If we found no role markers, treat whole input as a single assistant message.
+            if (turns.length === 0 && text.trim()) {
+                turns.push({ role: 'assistant', text: text.trim() });
+            }
+            return turns.filter(t => t.text);
+        }
+
+        function toMarkdown(turns) {
+            const stripPrompts = document.getElementById('optStripPrompts').checked;
+            const mergeAssistant = document.getElementById('optMergeAssistant').checked;
+            const addTitle = document.getElementById('optAddTitle').checked;
+            const title = document.getElementById('postTitle').value.trim() || 'Conversation';
+
+            let md = '';
+            if (addTitle) md += '# ' + title + '\n\n';
+            if (mergeAssistant) {
+                const assistantTurns = turns.filter(t => t.role === 'assistant').map(t => t.text);
+                if (stripPrompts) {
+                    md += assistantTurns.join('\n\n');
+                } else {
+                    md += turns.map(t => (t.role === 'user' ? '> **Q:** ' + t.text.replace(/\n/g, '\n> ') : t.text)).join('\n\n');
+                }
+            } else {
+                md += turns.map(t => (t.role === 'user' ? '## Q\n\n' + t.text : '## A\n\n' + t.text)).join('\n\n');
+            }
+            return md.trim();
+        }
+
+        function convert() {
+            const text = inputEl.value;
+            if (!text.trim()) { outputEl.value = ''; return; }
+            const turns = tryParseJSON(text) || parsePlainText(text);
+            outputEl.value = toMarkdown(turns);
+        }
+
+        function download() {
+            const blob = new Blob([outputEl.value], { type: 'text/markdown' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url; a.download = 'post.md';
+            document.body.appendChild(a); a.click();
+            document.body.removeChild(a); URL.revokeObjectURL(url);
+        }
+
+        document.getElementById('convertBtn').addEventListener('click', convert);
+        document.getElementById('copyBtn').addEventListener('click', () => {
+            if (outputEl.value) Utils.copyToClipboard(outputEl.value);
+            else Utils.showToast('Click Convert first.');
+        });
+        document.getElementById('downloadBtn').addEventListener('click', () => {
+            if (!outputEl.value) convert();
+            if (outputEl.value) download();
+        });
+        document.getElementById('clearBtn').addEventListener('click', () => { inputEl.value = ''; outputEl.value = ''; });
+        ['optStripPrompts','optMergeAssistant','optAddTitle','postTitle'].forEach(id =>
+            document.getElementById(id).addEventListener('change', () => { if (inputEl.value) convert(); })
+        );
+    </script>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({google_ad_client:"ca-pub-6334819180242631",enable_page_level_ads:true});</script>
+</body>
+
+</html>

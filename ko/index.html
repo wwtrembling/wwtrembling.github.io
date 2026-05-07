@@ -211,6 +211,7 @@
 
             <div class="category-filter" role="group" aria-label="Filter tools by category">
                 <button type="button" data-cat="all" aria-pressed="true">전체</button>
+                <button type="button" data-cat="ai" aria-pressed="false">AI</button>
                 <button type="button" data-cat="dev" aria-pressed="false">개발자</button>
                 <button type="button" data-cat="text" aria-pressed="false">텍스트</button>
                 <button type="button" data-cat="image" aria-pressed="false">이미지</button>
@@ -368,6 +369,42 @@
           <div class="card-icon">🔗</div>
           <h3 class="card-title">URL 인코더 / 디코더</h3>
           <p class="card-description">문자를 percent-encoded 형태(예: 공백 → %20)로 인코딩하거나 다시 디코딩하세요. 쿼리 값은 'Component', 예약 문자(:, /, ?)를 보존해야 한다면 'Full URL' 모드를 사용하세요.</p>
+        </a>
+
+        <a href="/ko/token-counter/" class="card" data-category="ai">
+          <div class="card-icon">🪙</div>
+          <h3 class="card-title">AI 토큰 카운터 & 비용 계산기</h3>
+          <p class="card-description">텍스트의 토큰 수를 추정하고 GPT-4o·Claude Opus 4.7·Gemini 2.5 등 모델별 API 비용을 표시합니다. 휴리스틱(영문 ≈4자/토큰, CJK ≈1.5자/토큰) 기반 — 정확한 토큰화는 제공자 API가 필요합니다.</p>
+        </a>
+
+        <a href="/ko/mcp-config-generator/" class="card" data-category="ai">
+          <div class="card-icon">🔌</div>
+          <h3 class="card-title">MCP 서버 설정 생성기</h3>
+          <p class="card-description">Claude Desktop·Cursor·VS Code용 Model Context Protocol(MCP) 서버 설정을 생성합니다. transport·command·args·env 입력 → 클라이언트별 올바른 JSON 포맷과 설치 경로를 자동 출력.</p>
+        </a>
+
+        <a href="/ko/ai-image-inspector/" class="card" data-category="ai">
+          <div class="card-icon">🔬</div>
+          <h3 class="card-title">AI 이미지 메타데이터 검사기</h3>
+          <p class="card-description">이미지를 드롭하거나 선택해 메타데이터를 검사합니다. PNG의 tEXt·iTXt 청크(Stable Diffusion이 프롬프트 저장), JPEG EXIF UserComment(Midjourney·DALL-E가 식별 정보 포함), C2PA Content Credentials 박스 감지. 파일은 브라우저를 벗어나지 않습니다.</p>
+        </a>
+
+        <a href="/ko/chatgpt-to-blog/" class="card" data-category="ai">
+          <div class="card-icon">📝</div>
+          <h3 class="card-title">ChatGPT → 블로그 변환기</h3>
+          <p class="card-description">ChatGPT(또는 Claude) 대화 — 텍스트 또는 JSON export — 를 붙여넣으면 사용자/AI 턴을 분리하고, 프롬프트를 선택적으로 제거하며, AI 응답을 블로그용 Markdown으로 정리합니다.</p>
+        </a>
+
+        <a href="/ko/prompt-pii-scrubber/" class="card" data-category="ai">
+          <div class="card-icon">🛡️</div>
+          <h3 class="card-title">프롬프트 PII 마스킹</h3>
+          <p class="card-description">ChatGPT·Claude·Gemini 등에 프롬프트를 붙여넣기 전 민감 정보(이메일·전화·주민번호·카드·API 키·IP·URL)를 자동 마스킹. 모든 처리는 브라우저에서 이루어집니다.</p>
+        </a>
+
+        <a href="/ko/claude-md-generator/" class="card" data-category="ai">
+          <div class="card-icon">📜</div>
+          <h3 class="card-title">Claude.md 생성기</h3>
+          <p class="card-description">간단한 폼으로 CLAUDE.md(또는 AI 에이전트 시스템 프롬프트)를 생성합니다. 프로젝트 역할·코딩 규칙·제약·명령어를 입력하고 Markdown으로 복사하거나 다운로드하세요.</p>
         </a>
 
         <a href="/ko/image-editor/" class="card" data-category="image">

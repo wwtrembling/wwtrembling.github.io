@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="{{ lang_code }}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy-Report-Only" content="default-src 'self' https: data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https:; frame-src https:;">
+    <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+    <title>{{ meta_title }}</title>
+    <meta name="description" content="{{ meta_desc }}">
+    <link rel="canonical" href="https://utilifyapp.net/{{ lang_code }}/claude-md-generator/">
+
+    <meta property="og:title" content="{{ meta_title }}">
+    <meta property="og:description" content="{{ meta_desc }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://utilifyapp.net/{{ lang_code }}/claude-md-generator/">
+
+    {{ alternate_links }}
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "{{ json_name }}",
+        "description": "{{ json_desc }}",
+        "url": "https://utilifyapp.net/{{ lang_code }}/claude-md-generator/",
+        "inLanguage": "{{ lang_code }}",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Any",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+
+    <style>
+        .form-grid { display: grid; gap: var(--spacing-md); margin-top: var(--spacing-lg); }
+        .form-grid label { font-weight: 600; }
+        .form-grid input, .form-grid textarea { font-family: var(--font-mono); font-size: 0.95rem; }
+        .preview-box {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            white-space: pre-wrap;
+            min-height: 200px;
+        }
+    </style>
+    <link rel="manifest" href="/manifest.json">
+</head>
+
+<body>
+    <header class="site-header"><div class="container"><div class="header-content"><a href="/{{ lang_code }}/" class="site-logo">{{ brand }}</a></div></div></header>
+    <main class="main-content">
+        <div class="container-narrow">
+            <h1>📜 {{ title }}</h1>
+            <div class="security-badge" style="display:flex;align-items:center;justify-content:center;gap:8px;margin:10px 0;font-size:14px;color:var(--text-secondary);">
+                <span>{{ secure_badge }}</span>
+            </div>
+
+            <p>{{ page_desc }}</p>
+
+            <div class="form-grid">
+                <div>
+                    <label for="projectName">{{ label_project }}</label>
+                    <input id="projectName" class="form-input" type="text" placeholder="my-app">
+                </div>
+                <div>
+                    <label for="role">{{ label_role }}</label>
+                    <textarea id="role" class="form-input" rows="2" placeholder="{{ ph_role }}"></textarea>
+                </div>
+                <div>
+                    <label for="conventions">{{ label_conventions }}</label>
+                    <textarea id="conventions" class="form-input" rows="4" placeholder="{{ ph_conventions }}"></textarea>
+                </div>
+                <div>
+                    <label for="constraints">{{ label_constraints }}</label>
+                    <textarea id="constraints" class="form-input" rows="4" placeholder="{{ ph_constraints }}"></textarea>
+                </div>
+                <div>
+                    <label for="commands">{{ label_commands }}</label>
+                    <textarea id="commands" class="form-input" rows="4" placeholder="{{ ph_commands }}"></textarea>
+                </div>
+            </div>
+
+            <div class="btn-group" style="margin-top: var(--spacing-md);">
+                <button class="btn btn-primary" id="generateBtn">{{ btn_generate }}</button>
+                <button class="btn btn-secondary" id="copyBtn">{{ btn_copy }}</button>
+                <button class="btn btn-secondary" id="downloadBtn">{{ btn_download }}</button>
+                <button class="btn btn-secondary" id="clearBtn">{{ btn_clear }}</button>
+            </div>
+
+            <h2>{{ output_label }}</h2>
+            <pre id="output" class="preview-box" aria-live="polite"></pre>
+
+            <h2>{{ howto_header }}</h2>
+            <div class="howto-content">{{ howto_html }}</div>
+
+            <div class="related-tools-section">
+                <h3>{{ related_header }}</h3>
+                <div class="related-buttons">
+                    <a href="/{{ lang_code }}/mcp-config-generator/" class="related-btn">{{ related_mcp }}</a><a
+                        href="/{{ lang_code }}/prompt-pii-scrubber/" class="related-btn">{{ related_pii }}</a><a
+                        href="/{{ lang_code }}/token-counter/" class="related-btn">{{ related_token }}</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="site-footer"><div class="container"><div class="footer-content"><p>{{ footer }}</p></div></div></footer>
+    <script src="/assets/js/common.js"></script>
+    <script>
+        const out = document.getElementById('output');
+
+        function bullets(text) {
+            return text.split('\n').map(l => l.trim()).filter(Boolean).map(l => l.startsWith('-') ? l : '- ' + l).join('\n');
+        }
+
+        function generate() {
+            const proj = document.getElementById('projectName').value.trim() || 'Project';
+            const role = document.getElementById('role').value.trim();
+            const conv = document.getElementById('conventions').value.trim();
+            const cons = document.getElementById('constraints').value.trim();
+            const cmds = document.getElementById('commands').value.trim();
+
+            let md = '# ' + proj + ' — CLAUDE.md\n\n';
+            md += '> {{ note_intro }}\n\n';
+            if (role) md += '## {{ section_role }}\n\n' + role + '\n\n';
+            if (conv) md += '## {{ section_conventions }}\n\n' + bullets(conv) + '\n\n';
+            if (cons) md += '## {{ section_constraints }}\n\n' + bullets(cons) + '\n\n';
+            if (cmds) md += '## {{ section_commands }}\n\n```bash\n' + cmds + '\n```\n\n';
+            out.textContent = md.trimEnd();
+        }
+
+        function download() {
+            const blob = new Blob([out.textContent], { type: 'text/markdown' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url; a.download = 'CLAUDE.md';
+            document.body.appendChild(a); a.click();
+            document.body.removeChild(a); URL.revokeObjectURL(url);
+        }
+
+        document.getElementById('generateBtn').addEventListener('click', generate);
+        document.getElementById('copyBtn').addEventListener('click', () => {
+            if (out.textContent) Utils.copyToClipboard(out.textContent);
+            else Utils.showToast('{{ alert_copy_empty }}');
+        });
+        document.getElementById('downloadBtn').addEventListener('click', () => {
+            if (!out.textContent) { generate(); }
+            if (out.textContent) download();
+        });
+        document.getElementById('clearBtn').addEventListener('click', () => {
+            ['projectName','role','conventions','constraints','commands'].forEach(id => document.getElementById(id).value = '');
+            out.textContent = '';
+        });
+    </script>
+</body>
+
+</html>

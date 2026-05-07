@@ -189,6 +189,7 @@ INDEX_PAGE = {
         "cat_image": "Image",
         "cat_convert": "Converters",
         "cat_calc": "Calculators",
+        "cat_ai": "AI",
         "github_label": "GitHub"
     },
     "ko": {
@@ -210,6 +211,7 @@ INDEX_PAGE = {
         "cat_image": "이미지",
         "cat_convert": "변환기",
         "cat_calc": "계산기",
+        "cat_ai": "AI",
         "github_label": "GitHub"
     },
     "vi": {
@@ -6077,3 +6079,489 @@ NOT_FOUND = {
     }
 }
 
+
+
+PROMPT_PII_SCRUBBER = {
+    "en": {
+        "title": "Prompt PII Scrubber",
+        "meta_title": "Prompt PII Scrubber — Safely Paste into ChatGPT / Claude - Utilify",
+        "meta_desc": "Mask emails, phone numbers, SSNs, credit cards, API keys, and IPs in your text before pasting it into AI chatbots. Runs entirely in your browser.",
+        "json_name": "Prompt PII Scrubber",
+        "json_desc": "Client-side regex sweep that masks PII in text destined for AI chatbots.",
+        "page_desc": "Mask sensitive data (emails, phones, SSNs, credit cards, API keys, IPs, URLs) before pasting prompts into ChatGPT, Claude, or any AI service. Runs entirely in your browser — your text never leaves the page.",
+        "label_input": "Original text",
+        "label_output": "Scrubbed text",
+        "ph_input": "Paste text containing PII (emails, phones, etc.)...",
+        "btn_scrub": "Scrub",
+        "btn_copy": "Copy",
+        "btn_clear": "Clear",
+        "summary_label": "Masked items:",
+        "opt_email": "Email",
+        "opt_phone": "Phone",
+        "opt_ssn": "SSN / RRN",
+        "opt_card": "Credit card",
+        "opt_apikey": "API key",
+        "opt_ip": "IP address",
+        "opt_url": "URL",
+        "alert_no_pii": "No PII detected.",
+        "alert_copy_empty": "Nothing to copy.",
+        "howto_header": "How to use",
+        "howto_html": (
+            "<ol>"
+            "<li>Paste the prompt or document you want to send to an AI service.</li>"
+            "<li>Toggle the categories you want to mask (default: all on).</li>"
+            "<li>Click <strong>Scrub</strong>; the right panel shows the masked version with placeholders like <code>[EMAIL]</code>, <code>[PHONE]</code>, etc.</li>"
+            "<li>Copy the scrubbed text and paste it into ChatGPT, Claude, Gemini, etc.</li>"
+            "</ol>"
+            "<p><strong>What is detected</strong>: standard email addresses; phone numbers in common international formats; US SSN and Korean RRN (주민등록번호); credit-card-like number sequences validated with the Luhn algorithm to avoid false positives; API keys matching well-known prefixes (<code>sk-</code>, <code>pk-</code>, <code>AKIA</code>, <code>AIza</code>, <code>github_pat_</code>, <code>xoxb-</code>); IPv4 addresses; and any HTTP(S) URL.</p>"
+            "<p>Heuristic limits: free-text addresses, names, and proprietary IDs are <em>not</em> detected. Always review the scrubbed output before sending.</p>"
+        ),
+        "related_header": "Related Tools",
+        "related_token": "Token Counter",
+        "related_claude": "Claude.md Generator",
+        "related_mcp": "MCP Config Generator",
+        "card_blurb": "Mask emails, phones, cards, API keys before pasting into ChatGPT or Claude."
+    },
+    "ko": {
+        "title": "프롬프트 PII 마스킹",
+        "meta_title": "프롬프트 PII 마스킹 — ChatGPT/Claude에 안전하게 붙여넣기 - Utilify",
+        "meta_desc": "ChatGPT·Claude·Gemini에 텍스트를 붙여넣기 전 이메일·전화·주민번호·카드·API 키·IP를 자동 마스킹. 모든 처리는 브라우저에서.",
+        "json_name": "프롬프트 PII 마스킹",
+        "json_desc": "AI 챗봇으로 보낼 텍스트의 개인정보를 정규식으로 마스킹하는 클라이언트 사이드 도구.",
+        "page_desc": "ChatGPT·Claude·Gemini 등에 프롬프트를 붙여넣기 전 민감 정보(이메일·전화·주민번호·카드·API 키·IP·URL)를 자동 마스킹. 모든 처리는 브라우저에서 이루어집니다.",
+        "label_input": "원본 텍스트",
+        "label_output": "마스킹된 텍스트",
+        "ph_input": "PII가 포함된 텍스트를 붙여넣으세요 (이메일·전화 등)...",
+        "btn_scrub": "마스킹",
+        "btn_copy": "복사",
+        "btn_clear": "지우기",
+        "summary_label": "마스킹된 항목:",
+        "opt_email": "이메일",
+        "opt_phone": "전화번호",
+        "opt_ssn": "주민번호 / SSN",
+        "opt_card": "카드번호",
+        "opt_apikey": "API 키",
+        "opt_ip": "IP 주소",
+        "opt_url": "URL",
+        "alert_no_pii": "PII가 감지되지 않았습니다.",
+        "alert_copy_empty": "복사할 내용이 없습니다.",
+        "howto_header": "사용 방법",
+        "howto_html": (
+            "<ol>"
+            "<li>AI에 보낼 프롬프트 또는 문서를 붙여넣으세요.</li>"
+            "<li>마스킹할 카테고리를 선택합니다 (기본: 전부 활성).</li>"
+            "<li><strong>마스킹</strong>을 누르면 오른쪽에 <code>[EMAIL]</code>, <code>[PHONE]</code> 등의 자리표시자로 치환된 결과가 표시됩니다.</li>"
+            "<li>마스킹된 텍스트를 복사해 ChatGPT·Claude·Gemini 등에 붙여넣으세요.</li>"
+            "</ol>"
+            "<p><strong>감지되는 항목</strong>: 일반 이메일; 국제 표준 전화번호; 한국 주민등록번호와 미국 SSN; Luhn 검증을 통과한 신용카드 번호; 잘 알려진 접두사(<code>sk-</code>, <code>pk-</code>, <code>AKIA</code>, <code>AIza</code>, <code>github_pat_</code>, <code>xoxb-</code>)의 API 키; IPv4 주소; HTTP(S) URL.</p>"
+            "<p>한계: 자유 형식 주소, 이름, 독자 ID는 감지되지 <em>않습니다</em>. 보내기 전 결과를 반드시 확인하세요.</p>"
+        ),
+        "related_header": "관련 도구",
+        "related_token": "토큰 카운터",
+        "related_claude": "Claude.md 생성기",
+        "related_mcp": "MCP 설정 생성기",
+        "card_blurb": "이메일·전화·카드·API 키를 자동 마스킹 후 ChatGPT/Claude에 안전하게 붙여넣기."
+    }
+}
+
+
+CLAUDE_MD_GEN = {
+    "en": {
+        "title": "Claude.md Generator",
+        "meta_title": "Claude.md / System Prompt Generator - Utilify",
+        "meta_desc": "Generate a CLAUDE.md project file from a simple form. Define role, conventions, constraints, and commands; download as Markdown.",
+        "json_name": "Claude.md Generator",
+        "json_desc": "Form-based generator for Anthropic CLAUDE.md project context files.",
+        "page_desc": "Generate a CLAUDE.md (or any AI agent system prompt) from a simple form. Specify the project role, coding conventions, constraints, and commands; copy or download the resulting Markdown.",
+        "label_project": "Project name",
+        "label_role": "Role / persona",
+        "ph_role": "You are a senior backend engineer working on a Python web service.",
+        "label_conventions": "Conventions (one per line)",
+        "ph_conventions": "Use 4-space indentation\nFollow PEP 8\nWrite type hints on all public functions",
+        "label_constraints": "Constraints (one per line)",
+        "ph_constraints": "Never modify migrations without explicit approval\nDo not touch the legacy auth module",
+        "label_commands": "Common commands",
+        "ph_commands": "make test\nruff check .\npython manage.py runserver",
+        "btn_generate": "Generate",
+        "btn_copy": "Copy",
+        "btn_download": "Download .md",
+        "btn_clear": "Clear",
+        "output_label": "Generated CLAUDE.md",
+        "note_intro": "This file is loaded automatically by Claude Code when you open the project.",
+        "section_role": "Role",
+        "section_conventions": "Conventions",
+        "section_constraints": "Constraints",
+        "section_commands": "Common commands",
+        "alert_copy_empty": "Click Generate first.",
+        "howto_header": "How to use",
+        "howto_html": (
+            "<ol>"
+            "<li>Fill in your project name and role description.</li>"
+            "<li>List conventions one per line — they become a bulleted list in the output.</li>"
+            "<li>List constraints one per line — also bulleted.</li>"
+            "<li>Add the common commands you run (test, lint, dev server) — wrapped in a <code>```bash</code> block.</li>"
+            "<li>Click <strong>Generate</strong>, review, then <strong>Download .md</strong> to save as <code>CLAUDE.md</code> at your repo root.</li>"
+            "</ol>"
+            "<p>The same file works as a system prompt for Cursor (<code>.cursorrules</code>), Aider, and any other agent that reads project-level context. For Cursor, just rename the downloaded file.</p>"
+        ),
+        "related_header": "Related Tools",
+        "related_mcp": "MCP Config Generator",
+        "related_pii": "Prompt PII Scrubber",
+        "related_token": "Token Counter",
+        "card_blurb": "Build a CLAUDE.md from a form: role, conventions, constraints, commands."
+    },
+    "ko": {
+        "title": "Claude.md 생성기",
+        "meta_title": "Claude.md / 시스템 프롬프트 생성기 - Utilify",
+        "meta_desc": "폼 입력만으로 CLAUDE.md 프로젝트 파일을 생성하세요. 역할·규칙·제약·명령어를 입력하면 Markdown으로 출력.",
+        "json_name": "Claude.md 생성기",
+        "json_desc": "Anthropic CLAUDE.md 프로젝트 컨텍스트 파일을 폼 기반으로 생성하는 도구.",
+        "page_desc": "간단한 폼으로 CLAUDE.md(또는 AI 에이전트 시스템 프롬프트)를 생성합니다. 프로젝트 역할·코딩 규칙·제약·명령어를 입력하고 Markdown으로 복사하거나 다운로드하세요.",
+        "label_project": "프로젝트 이름",
+        "label_role": "역할 / 페르소나",
+        "ph_role": "Python 웹 서비스를 담당하는 시니어 백엔드 엔지니어입니다.",
+        "label_conventions": "코딩 규칙 (한 줄에 하나)",
+        "ph_conventions": "4-space 들여쓰기 사용\nPEP 8 준수\n공개 함수에 타입 힌트 작성",
+        "label_constraints": "제약 사항 (한 줄에 하나)",
+        "ph_constraints": "마이그레이션은 명시 승인 없이 수정 금지\n레거시 인증 모듈 건드리지 말 것",
+        "label_commands": "자주 쓰는 명령어",
+        "ph_commands": "make test\nruff check .\npython manage.py runserver",
+        "btn_generate": "생성",
+        "btn_copy": "복사",
+        "btn_download": ".md 다운로드",
+        "btn_clear": "지우기",
+        "output_label": "생성된 CLAUDE.md",
+        "note_intro": "이 파일은 Claude Code가 프로젝트를 열 때 자동으로 로드합니다.",
+        "section_role": "역할",
+        "section_conventions": "규칙",
+        "section_constraints": "제약",
+        "section_commands": "자주 쓰는 명령어",
+        "alert_copy_empty": "먼저 생성을 눌러주세요.",
+        "howto_header": "사용 방법",
+        "howto_html": (
+            "<ol>"
+            "<li>프로젝트 이름과 역할 설명을 입력하세요.</li>"
+            "<li>코딩 규칙은 한 줄에 하나씩 — 출력에서 bullet 리스트로 변환됩니다.</li>"
+            "<li>제약 사항도 한 줄에 하나씩.</li>"
+            "<li>자주 쓰는 명령어(테스트·린트·개발 서버 등)를 입력 — <code>```bash</code> 블록으로 감싸집니다.</li>"
+            "<li><strong>생성</strong>을 눌러 검토 후 <strong>.md 다운로드</strong>로 저장하면 레포 루트의 <code>CLAUDE.md</code>로 사용할 수 있습니다.</li>"
+            "</ol>"
+            "<p>같은 파일은 Cursor(<code>.cursorrules</code>), Aider 등 다른 에이전트의 시스템 프롬프트로도 사용 가능합니다. Cursor는 다운로드한 파일 이름만 바꾸면 됩니다.</p>"
+        ),
+        "related_header": "관련 도구",
+        "related_mcp": "MCP 설정 생성기",
+        "related_pii": "프롬프트 PII 마스킹",
+        "related_token": "토큰 카운터",
+        "card_blurb": "역할·규칙·제약·명령어 폼 입력 → CLAUDE.md 즉시 생성."
+    }
+}
+
+
+MCP_CONFIG_GEN = {
+    "en": {
+        "title": "MCP Server Config Generator",
+        "meta_title": "MCP Server Config Generator (Claude Desktop / Cursor / VS Code) - Utilify",
+        "meta_desc": "Generate Model Context Protocol server config JSON for Claude Desktop, Cursor, and VS Code. Pick transport, command, args, env — get the right format for each client.",
+        "json_name": "MCP Config Generator",
+        "json_desc": "Form-based generator for Model Context Protocol server configurations.",
+        "page_desc": "Generate Model Context Protocol (MCP) server configuration for Claude Desktop, Cursor, or VS Code. Pick transport, command, args, and env vars — the tool emits the correct JSON shape for each client and shows the config file path.",
+        "label_target": "Target client",
+        "label_name": "Server name",
+        "label_transport": "Transport",
+        "label_command": "Command",
+        "label_args": "Args (one per line)",
+        "label_url": "Server URL",
+        "label_env": "Environment vars (KEY=value, one per line)",
+        "btn_generate": "Generate",
+        "btn_copy": "Copy",
+        "btn_clear": "Clear",
+        "output_label": "Config JSON",
+        "install_label": "Install path:",
+        "alert_copy_empty": "Click Generate first.",
+        "howto_header": "How to use",
+        "howto_html": (
+            "<ol>"
+            "<li>Pick the client (Claude Desktop, Cursor, or VS Code).</li>"
+            "<li>Set the server name (used as the dictionary key).</li>"
+            "<li>Pick transport: <code>stdio</code> for local processes (most common), <code>streamable-http</code> or <code>sse</code> for remote servers.</li>"
+            "<li>For stdio: enter the command and args; for HTTP/SSE: enter the URL.</li>"
+            "<li>Optionally add environment variables.</li>"
+            "<li>Click <strong>Generate</strong>; copy the JSON into the config file at the path shown.</li>"
+            "</ol>"
+            "<p><strong>Where the config goes</strong>:<br>"
+            "<code>Claude Desktop</code> — macOS: <code>~/Library/Application Support/Claude/claude_desktop_config.json</code>; Windows: <code>%APPDATA%\\Claude\\claude_desktop_config.json</code><br>"
+            "<code>Cursor</code> — global: <code>~/.cursor/mcp.json</code>; per-project: <code>.cursor/mcp.json</code><br>"
+            "<code>VS Code</code> — workspace: <code>.vscode/mcp.json</code> (or User Settings → MCP Servers)</p>"
+        ),
+        "related_header": "Related Tools",
+        "related_claude": "Claude.md Generator",
+        "related_json": "JSON Formatter",
+        "related_pii": "Prompt PII Scrubber",
+        "card_blurb": "Generate MCP server JSON for Claude Desktop, Cursor, or VS Code in seconds."
+    },
+    "ko": {
+        "title": "MCP 서버 설정 생성기",
+        "meta_title": "MCP 서버 설정 생성기 (Claude Desktop / Cursor / VS Code) - Utilify",
+        "meta_desc": "Claude Desktop·Cursor·VS Code용 Model Context Protocol 서버 설정 JSON을 폼으로 생성. transport·command·args·env를 입력하면 클라이언트별 올바른 JSON과 경로를 출력.",
+        "json_name": "MCP 설정 생성기",
+        "json_desc": "Model Context Protocol 서버 설정을 폼 기반으로 생성하는 도구.",
+        "page_desc": "Claude Desktop·Cursor·VS Code용 Model Context Protocol(MCP) 서버 설정을 생성합니다. transport·command·args·env 입력 → 클라이언트별 올바른 JSON 포맷과 설치 경로를 자동 출력.",
+        "label_target": "대상 클라이언트",
+        "label_name": "서버 이름",
+        "label_transport": "Transport",
+        "label_command": "Command",
+        "label_args": "Args (한 줄에 하나)",
+        "label_url": "서버 URL",
+        "label_env": "환경 변수 (KEY=value, 한 줄에 하나)",
+        "btn_generate": "생성",
+        "btn_copy": "복사",
+        "btn_clear": "지우기",
+        "output_label": "설정 JSON",
+        "install_label": "설치 경로:",
+        "alert_copy_empty": "먼저 생성을 눌러주세요.",
+        "howto_header": "사용 방법",
+        "howto_html": (
+            "<ol>"
+            "<li>대상 클라이언트(Claude Desktop·Cursor·VS Code)를 선택하세요.</li>"
+            "<li>서버 이름(dict 키로 사용됩니다)을 입력합니다.</li>"
+            "<li>transport 선택: <code>stdio</code>는 로컬 프로세스(가장 일반적), <code>streamable-http</code>·<code>sse</code>는 원격 서버용.</li>"
+            "<li>stdio: command와 args 입력 / HTTP·SSE: URL 입력.</li>"
+            "<li>필요시 환경 변수 추가.</li>"
+            "<li><strong>생성</strong> 후 표시된 경로의 설정 파일에 JSON을 복사하세요.</li>"
+            "</ol>"
+            "<p><strong>설정 파일 경로</strong>:<br>"
+            "<code>Claude Desktop</code> — macOS: <code>~/Library/Application Support/Claude/claude_desktop_config.json</code>; Windows: <code>%APPDATA%\\Claude\\claude_desktop_config.json</code><br>"
+            "<code>Cursor</code> — 전역: <code>~/.cursor/mcp.json</code>; 프로젝트별: <code>.cursor/mcp.json</code><br>"
+            "<code>VS Code</code> — 워크스페이스: <code>.vscode/mcp.json</code> (또는 User Settings → MCP Servers)</p>"
+        ),
+        "related_header": "관련 도구",
+        "related_claude": "Claude.md 생성기",
+        "related_json": "JSON 포매터",
+        "related_pii": "프롬프트 PII 마스킹",
+        "card_blurb": "Claude Desktop·Cursor·VS Code용 MCP 서버 JSON을 즉시 생성."
+    }
+}
+
+
+TOKEN_COUNTER = {
+    "en": {
+        "title": "AI Token Counter & Cost Calculator",
+        "meta_title": "GPT / Claude / Gemini Token Counter & Cost Calculator - Utilify",
+        "meta_desc": "Estimate token count and per-model API cost (GPT-4o, Claude Opus, Gemini 2.5) for any text. Free, no signup, runs entirely in your browser.",
+        "json_name": "AI Token Counter",
+        "json_desc": "Estimate tokens and per-model API cost for OpenAI, Anthropic, and Google models.",
+        "page_desc": "Estimate the token count of any text and the per-model API cost across GPT-4o, Claude Opus 4.7, Gemini 2.5, and more. Heuristic count (≈4 chars/token English, ≈1.5 chars/token CJK) — exact tokenization needs the provider API.",
+        "label_input": "Text",
+        "ph_input": "Paste your prompt or document here...",
+        "stat_chars": "Characters",
+        "stat_words": "Words",
+        "stat_tokens": "Est. tokens",
+        "stat_lines": "Lines",
+        "label_out_tokens": "Estimated output tokens",
+        "note_estimate": "(used for output cost column)",
+        "cost_table_title": "Cost per model",
+        "col_model": "Model",
+        "col_input_price": "Input $/1M",
+        "col_output_price": "Output $/1M",
+        "col_input_cost": "Input cost",
+        "col_output_cost": "Output cost",
+        "col_total": "Total",
+        "howto_header": "How to use",
+        "howto_html": (
+            "<ol>"
+            "<li>Paste the prompt, document, or transcript you want to estimate.</li>"
+            "<li>The character/word/token/line counts update live.</li>"
+            "<li>Adjust the <strong>estimated output tokens</strong> if you expect a long response (default 500).</li>"
+            "<li>The cost table shows input cost, output cost, and total per popular model.</li>"
+            "</ol>"
+            "<p><strong>Token counting accuracy</strong>: this tool uses a fast character-based heuristic that detects CJK characters (Korean, Japanese, Chinese) and adjusts the chars-per-token ratio. Real BPE tokenization (cl100k_base, o200k_base, etc.) requires the provider API or a 1-3MB vocabulary download. For cost estimation purposes the heuristic is typically within ±10% of the exact count.</p>"
+            "<p><strong>Pricing</strong>: based on publicly listed per-million-token prices as of 2026-05. Always check the provider's pricing page before billing-critical decisions.</p>"
+        ),
+        "related_header": "Related Tools",
+        "related_pii": "Prompt PII Scrubber",
+        "related_claude": "Claude.md Generator",
+        "related_mcp": "MCP Config Generator",
+        "card_blurb": "Estimate tokens & per-model API cost (GPT-4o, Claude, Gemini) for any text."
+    },
+    "ko": {
+        "title": "AI 토큰 카운터 & 비용 계산기",
+        "meta_title": "GPT / Claude / Gemini 토큰 카운터 & 비용 계산기 - Utilify",
+        "meta_desc": "임의의 텍스트로 토큰 수와 모델별 API 비용(GPT-4o·Claude Opus·Gemini 2.5 등)을 추정. 무료, 가입 불필요, 브라우저에서 동작.",
+        "json_name": "AI 토큰 카운터",
+        "json_desc": "OpenAI·Anthropic·Google 모델의 토큰 수와 API 비용을 추정합니다.",
+        "page_desc": "텍스트의 토큰 수를 추정하고 GPT-4o·Claude Opus 4.7·Gemini 2.5 등 모델별 API 비용을 표시합니다. 휴리스틱(영문 ≈4자/토큰, CJK ≈1.5자/토큰) 기반 — 정확한 토큰화는 제공자 API가 필요합니다.",
+        "label_input": "텍스트",
+        "ph_input": "프롬프트 또는 문서를 붙여넣으세요...",
+        "stat_chars": "문자 수",
+        "stat_words": "단어 수",
+        "stat_tokens": "추정 토큰",
+        "stat_lines": "줄 수",
+        "label_out_tokens": "예상 출력 토큰",
+        "note_estimate": "(출력 비용 계산에 사용)",
+        "cost_table_title": "모델별 비용",
+        "col_model": "모델",
+        "col_input_price": "입력 $/1M",
+        "col_output_price": "출력 $/1M",
+        "col_input_cost": "입력 비용",
+        "col_output_cost": "출력 비용",
+        "col_total": "합계",
+        "howto_header": "사용 방법",
+        "howto_html": (
+            "<ol>"
+            "<li>비용을 추정할 프롬프트·문서·트랜스크립트를 붙여넣으세요.</li>"
+            "<li>문자/단어/토큰/줄 수가 실시간으로 갱신됩니다.</li>"
+            "<li>긴 응답이 예상되면 <strong>예상 출력 토큰</strong>을 조정하세요 (기본 500).</li>"
+            "<li>비용 표에 인기 모델별 입력·출력·합계 비용이 표시됩니다.</li>"
+            "</ol>"
+            "<p><strong>토큰 정확도</strong>: 한글·일본어·중국어 비율을 감지해 chars-per-token 비율을 조정하는 빠른 휴리스틱입니다. 정확한 BPE 토큰화(cl100k_base, o200k_base 등)는 제공자 API 또는 1-3MB의 사전 다운로드가 필요합니다. 비용 추정 목적에는 일반적으로 정확값 ±10% 이내입니다.</p>"
+            "<p><strong>가격</strong>: 2026년 5월 기준 공개된 1M 토큰당 가격. 정산이 중요한 결정 전에는 반드시 제공자의 공식 가격 페이지를 확인하세요.</p>"
+        ),
+        "related_header": "관련 도구",
+        "related_pii": "프롬프트 PII 마스킹",
+        "related_claude": "Claude.md 생성기",
+        "related_mcp": "MCP 설정 생성기",
+        "card_blurb": "텍스트의 토큰 수와 모델별 API 비용을 즉시 추정 (GPT/Claude/Gemini)."
+    }
+}
+
+
+AI_IMAGE_INSPECTOR = {
+    "en": {
+        "title": "AI Image Metadata Inspector",
+        "meta_title": "AI Image Inspector — Detect Stable Diffusion / Midjourney / DALL-E - Utilify",
+        "meta_desc": "Inspect PNG and JPEG metadata to find AI generation parameters (Stable Diffusion prompts, EXIF UserComment, C2PA Content Credentials). Local file processing only.",
+        "json_name": "AI Image Inspector",
+        "json_desc": "Reads PNG tEXt/iTXt chunks, JPEG EXIF, and C2PA boxes to surface AI-image fingerprints.",
+        "page_desc": "Drop or pick an image to inspect its embedded metadata. The tool reads PNG tEXt/iTXt chunks (Stable Diffusion stores prompts there), JPEG EXIF UserComment (Midjourney/DALL-E often embed details), and detects C2PA Content Credentials boxes. Files never leave your browser.",
+        "ph_drop": "Drop a PNG/JPEG/WebP here, or click to choose",
+        "section_sd": "Stable Diffusion / generation parameters",
+        "section_exif": "EXIF / metadata text",
+        "section_raw": "Raw metadata",
+        "verdict_ai": "🤖 AI generation signatures detected",
+        "verdict_unknown": "🔍 Metadata present but no clear AI signature",
+        "verdict_clean": "✅ No metadata found (likely stripped or never embedded)",
+        "howto_header": "How to use",
+        "howto_html": (
+            "<ol>"
+            "<li>Drag-drop or pick a PNG/JPEG/WebP image.</li>"
+            "<li>The tool reads PNG ancillary chunks and JPEG APP1 (EXIF) segments locally.</li>"
+            "<li>If a Stable Diffusion <code>parameters</code> chunk is found, the prompt and settings appear in the first section.</li>"
+            "<li>If EXIF UserComment contains identifying text (e.g., \"Midjourney\", \"Generated by ...\"), it shows in the second section.</li>"
+            "<li>C2PA / Content Credentials boxes are flagged when present.</li>"
+            "</ol>"
+            "<p><strong>What this <em>cannot</em> tell you</strong>: whether an image is AI-generated when metadata has been stripped (most social platforms strip metadata on upload). A \"no metadata\" verdict is not a clean bill of health — many genuinely AI-generated images have no embedded fingerprint after re-saving.</p>"
+        ),
+        "related_header": "Related Tools",
+        "related_imgconv": "Image Converter",
+        "related_watermark": "Image Watermark",
+        "related_token": "Token Counter",
+        "card_blurb": "Detect Stable Diffusion / Midjourney metadata in PNG / JPEG. Files stay local."
+    },
+    "ko": {
+        "title": "AI 이미지 메타데이터 검사기",
+        "meta_title": "AI 이미지 검사기 — Stable Diffusion / Midjourney / DALL-E 감지 - Utilify",
+        "meta_desc": "PNG/JPEG 메타데이터를 분석해 AI 생성 흔적(Stable Diffusion 프롬프트·EXIF UserComment·C2PA Content Credentials)을 찾습니다. 파일은 브라우저에서만 처리됩니다.",
+        "json_name": "AI 이미지 검사기",
+        "json_desc": "PNG tEXt/iTXt 청크와 JPEG EXIF, C2PA 박스를 읽어 AI 이미지 흔적을 표시.",
+        "page_desc": "이미지를 드롭하거나 선택해 메타데이터를 검사합니다. PNG의 tEXt·iTXt 청크(Stable Diffusion이 프롬프트 저장), JPEG EXIF UserComment(Midjourney·DALL-E가 식별 정보 포함), C2PA Content Credentials 박스 감지. 파일은 브라우저를 벗어나지 않습니다.",
+        "ph_drop": "PNG/JPEG/WebP를 드롭하거나 클릭해 선택하세요",
+        "section_sd": "Stable Diffusion / 생성 파라미터",
+        "section_exif": "EXIF / 메타데이터 텍스트",
+        "section_raw": "Raw 메타데이터",
+        "verdict_ai": "🤖 AI 생성 시그니처 감지됨",
+        "verdict_unknown": "🔍 메타데이터는 있지만 명확한 AI 시그니처 없음",
+        "verdict_clean": "✅ 메타데이터 없음 (제거되었거나 처음부터 없었음)",
+        "howto_header": "사용 방법",
+        "howto_html": (
+            "<ol>"
+            "<li>PNG·JPEG·WebP를 드래그-드롭하거나 선택하세요.</li>"
+            "<li>PNG 보조 청크와 JPEG APP1(EXIF) 세그먼트를 로컬에서 읽습니다.</li>"
+            "<li>Stable Diffusion의 <code>parameters</code> 청크가 있으면 프롬프트·설정이 첫 섹션에 표시됩니다.</li>"
+            "<li>EXIF UserComment에 식별 텍스트(\"Midjourney\", \"Generated by ...\")가 있으면 두 번째 섹션에 표시됩니다.</li>"
+            "<li>C2PA·Content Credentials 박스가 있으면 표시됩니다.</li>"
+            "</ol>"
+            "<p><strong>이 도구가 <em>알 수 없는 것</em></strong>: 메타데이터가 제거된 AI 이미지(대부분의 SNS는 업로드 시 메타데이터를 제거함). \"메타데이터 없음\" 결과가 \"AI 아님\"을 보장하지는 않습니다.</p>"
+        ),
+        "related_header": "관련 도구",
+        "related_imgconv": "이미지 변환기",
+        "related_watermark": "이미지 워터마크",
+        "related_token": "토큰 카운터",
+        "card_blurb": "PNG·JPEG에서 Stable Diffusion·Midjourney 메타데이터 감지. 파일은 로컬 처리."
+    }
+}
+
+
+CHATGPT_TO_BLOG = {
+    "en": {
+        "title": "ChatGPT → Blog Post Converter",
+        "meta_title": "ChatGPT Conversation to Blog Post Markdown - Utilify",
+        "meta_desc": "Paste a ChatGPT conversation and get clean Markdown ready for your blog. Strips prompts, merges assistant turns, and formats for publishing.",
+        "json_name": "ChatGPT to Blog",
+        "json_desc": "Convert a pasted ChatGPT conversation into clean blog-ready Markdown.",
+        "page_desc": "Paste a ChatGPT (or Claude) conversation — text or exported JSON — and the tool splits it into user/assistant turns, optionally strips your prompts, and formats the assistant responses as clean Markdown ready for your blog.",
+        "label_input": "ChatGPT conversation (text or JSON)",
+        "label_output": "Markdown",
+        "ph_input": "Paste the conversation here. Both 'You said: ...' / 'ChatGPT said: ...' format and the JSON export are accepted.",
+        "opt_strip_prompts": "Strip user prompts (assistant only)",
+        "opt_merge": "Merge assistant turns into one post",
+        "opt_add_title": "Add H1 title",
+        "label_title": "Title",
+        "btn_convert": "Convert",
+        "btn_copy": "Copy",
+        "btn_download": "Download .md",
+        "btn_clear": "Clear",
+        "alert_copy_empty": "Click Convert first.",
+        "howto_header": "How to use",
+        "howto_html": (
+            "<ol>"
+            "<li>In ChatGPT, click the share icon → Copy or Share. You can also export your data and use the JSON file.</li>"
+            "<li>Paste the conversation into the left panel.</li>"
+            "<li>Toggle the options: <em>Strip user prompts</em> drops your questions; <em>Merge assistant turns</em> joins all answers into one continuous post; <em>Add H1 title</em> prepends a heading.</li>"
+            "<li>Click <strong>Convert</strong>; review the Markdown on the right.</li>"
+            "<li><strong>Download .md</strong> to save the post locally.</li>"
+            "</ol>"
+            "<p><strong>What's parsed</strong>: text format with \"You said:\" / \"ChatGPT said:\" labels (also \"User:\" / \"Assistant:\" / Korean \"사용자\" / \"어시스턴트\"); the JSON export shape with <code>mapping</code> nodes; and a generic <code>{messages: [{role, content}]}</code> shape. If no role markers are detected the entire input is treated as a single assistant message.</p>"
+        ),
+        "related_header": "Related Tools",
+        "related_md": "Markdown Previewer",
+        "related_token": "Token Counter",
+        "related_pii": "Prompt PII Scrubber",
+        "card_blurb": "Convert a ChatGPT conversation into clean blog-ready Markdown."
+    },
+    "ko": {
+        "title": "ChatGPT → 블로그 변환기",
+        "meta_title": "ChatGPT 대화를 블로그 Markdown으로 변환 - Utilify",
+        "meta_desc": "ChatGPT 대화를 붙여넣으면 블로그 게시용 Markdown으로 정리. 프롬프트 제거, assistant 턴 병합, 게시용 포맷.",
+        "json_name": "ChatGPT 블로그 변환기",
+        "json_desc": "붙여넣은 ChatGPT 대화를 깔끔한 블로그용 Markdown으로 변환합니다.",
+        "page_desc": "ChatGPT(또는 Claude) 대화 — 텍스트 또는 JSON export — 를 붙여넣으면 사용자/AI 턴을 분리하고, 프롬프트를 선택적으로 제거하며, AI 응답을 블로그용 Markdown으로 정리합니다.",
+        "label_input": "ChatGPT 대화 (텍스트 또는 JSON)",
+        "label_output": "Markdown",
+        "ph_input": "여기에 대화를 붙여넣으세요. 'You said: ...' / 'ChatGPT said: ...' 형식과 JSON export 모두 지원됩니다.",
+        "opt_strip_prompts": "사용자 프롬프트 제거 (AI 답변만)",
+        "opt_merge": "AI 턴을 하나의 글로 병합",
+        "opt_add_title": "H1 제목 추가",
+        "label_title": "제목",
+        "btn_convert": "변환",
+        "btn_copy": "복사",
+        "btn_download": ".md 다운로드",
+        "btn_clear": "지우기",
+        "alert_copy_empty": "먼저 변환을 눌러주세요.",
+        "howto_header": "사용 방법",
+        "howto_html": (
+            "<ol>"
+            "<li>ChatGPT에서 공유 아이콘 → Copy 또는 Share. 또는 데이터 export로 JSON 파일을 받으세요.</li>"
+            "<li>대화를 왼쪽 패널에 붙여넣으세요.</li>"
+            "<li>옵션 선택: <em>사용자 프롬프트 제거</em>는 질문을 빼고, <em>AI 턴 병합</em>은 모든 답변을 하나의 글로 합치며, <em>H1 제목 추가</em>는 제목 헤딩을 앞에 붙입니다.</li>"
+            "<li><strong>변환</strong> 후 오른쪽 Markdown을 확인하세요.</li>"
+            "<li><strong>.md 다운로드</strong>로 로컬 저장 가능합니다.</li>"
+            "</ol>"
+            "<p><strong>지원 포맷</strong>: \"You said:\" / \"ChatGPT said:\" 라벨 텍스트 (한글 \"사용자\" / \"어시스턴트\"도 인식); <code>mapping</code> 노드가 있는 JSON export; <code>{messages: [{role, content}]}</code> 일반 형식. 역할 마커가 없으면 입력 전체를 하나의 AI 응답으로 처리합니다.</p>"
+        ),
+        "related_header": "관련 도구",
+        "related_md": "Markdown 프리뷰어",
+        "related_token": "토큰 카운터",
+        "related_pii": "프롬프트 PII 마스킹",
+        "card_blurb": "ChatGPT 대화를 깔끔한 블로그용 Markdown으로 즉시 변환."
+    }
+}

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy-Report-Only" content="default-src 'self' https: data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https:; frame-src https:;">
+    <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+    <title>Prompt PII Scrubber — Safely Paste into ChatGPT / Claude - Utilify</title>
+    <meta name="description" content="Mask emails, phone numbers, SSNs, credit cards, API keys, and IPs in your text before pasting it into AI chatbots. Runs entirely in your browser.">
+    <link rel="canonical" href="https://utilifyapp.net/zh-tw/prompt-pii-scrubber/">
+
+    <meta property="og:title" content="Prompt PII Scrubber — Safely Paste into ChatGPT / Claude - Utilify">
+    <meta property="og:description" content="Mask emails, phone numbers, SSNs, credit cards, API keys, and IPs in your text before pasting it into AI chatbots. Runs entirely in your browser.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://utilifyapp.net/zh-tw/prompt-pii-scrubber/">
+
+    <link rel="alternate" hreflang="en" href="https://utilifyapp.net/en/prompt-pii-scrubber/">
+    <link rel="alternate" hreflang="ko" href="https://utilifyapp.net/ko/prompt-pii-scrubber/">
+    <link rel="alternate" hreflang="vi" href="https://utilifyapp.net/vi/prompt-pii-scrubber/">
+    <link rel="alternate" hreflang="th" href="https://utilifyapp.net/th/prompt-pii-scrubber/">
+    <link rel="alternate" hreflang="de" href="https://utilifyapp.net/de/prompt-pii-scrubber/">
+    <link rel="alternate" hreflang="pt" href="https://utilifyapp.net/pt/prompt-pii-scrubber/">
+    <link rel="alternate" hreflang="id" href="https://utilifyapp.net/id/prompt-pii-scrubber/">
+    <link rel="alternate" hreflang="hi" href="https://utilifyapp.net/hi/prompt-pii-scrubber/">
+    <link rel="alternate" hreflang="ja" href="https://utilifyapp.net/ja/prompt-pii-scrubber/">
+    <link rel="alternate" hreflang="zh-Hans" href="https://utilifyapp.net/zh-cn/prompt-pii-scrubber/">
+    <link rel="alternate" hreflang="zh-Hant" href="https://utilifyapp.net/zh-tw/prompt-pii-scrubber/">
+    <link rel="alternate" hreflang="x-default" href="https://utilifyapp.net/en/prompt-pii-scrubber/">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Prompt PII Scrubber",
+        "description": "Client-side regex sweep that masks PII in text destined for AI chatbots.",
+        "url": "https://utilifyapp.net/zh-tw/prompt-pii-scrubber/",
+        "inLanguage": "zh-tw",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Any",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+
+    <style>
+        .pii-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-lg);
+        }
+        @media (max-width: 768px) { .pii-grid { grid-template-columns: 1fr; } }
+
+        .pii-summary {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            margin-top: var(--spacing-md);
+        }
+        .pii-summary ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: var(--spacing-md); }
+        .pii-summary li { font-family: var(--font-mono); font-size: 0.9rem; }
+        .pii-summary .count { font-weight: 700; color: var(--primary-color); margin-left: 6px; }
+
+        .pii-options {
+            display: flex; flex-wrap: wrap; gap: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+        }
+        .pii-options label { display: inline-flex; align-items: center; gap: 6px; font-size: 0.95rem; }
+    </style>
+    <link rel="manifest" href="/manifest.json">
+    <script data-utilify-adsense-loader async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631" crossorigin="anonymous"></script>
+    <meta data-utilify-og property="og:image" content="https://utilifyapp.net/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Utilify">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://utilifyapp.net/assets/og-image.png">
+    <link data-utilify-favicon rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+</head>
+
+<body>
+    <a data-utilify-skip class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+        <div class="container"><div class="header-content"><a href="/zh-tw/" class="site-logo">🛠️ Utilify</a></div></div>
+    </header>
+    <main id="main" class="main-content">
+        <div class="container-narrow">
+            <h1>🛡️ Prompt PII Scrubber</h1>
+            <div class="security-badge" style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
+                <span title="Processed securely in client-side">🔒 安全 & 用戶端處理</span>
+            </div>
+
+            <p>Mask sensitive data (emails, phones, SSNs, credit cards, API keys, IPs, URLs) before pasting prompts into ChatGPT, Claude, or any AI service. Runs entirely in your browser — your text never leaves the page.</p>
+
+            <div class="pii-options">
+                <label><input type="checkbox" data-pii="email" checked> Email</label>
+                <label><input type="checkbox" data-pii="phone" checked> Phone</label>
+                <label><input type="checkbox" data-pii="ssn" checked> SSN / RRN</label>
+                <label><input type="checkbox" data-pii="card" checked> Credit card</label>
+                <label><input type="checkbox" data-pii="apikey" checked> API key</label>
+                <label><input type="checkbox" data-pii="ip" checked> IP address</label>
+                <label><input type="checkbox" data-pii="url" checked> URL</label>
+            </div>
+
+            <div class="pii-grid">
+                <div>
+                    <label class="form-label" for="inputEl">Original text</label>
+                    <textarea id="inputEl" class="form-input" style="min-height:260px;font-family:var(--font-mono);" placeholder="Paste text containing PII (emails, phones, etc.)..."></textarea>
+                </div>
+                <div>
+                    <label class="form-label" for="outputEl">Scrubbed text</label>
+                    <textarea id="outputEl" class="form-input" style="min-height:260px;font-family:var(--font-mono);" readonly aria-live="polite"></textarea>
+                </div>
+            </div>
+
+            <div class="btn-group" style="margin-top: var(--spacing-md);">
+                <button class="btn btn-primary" id="scrubBtn">Scrub</button>
+                <button class="btn btn-secondary" id="copyBtn">Copy</button>
+                <button class="btn btn-secondary" id="clearBtn">Clear</button>
+            </div>
+
+            <div id="summaryBox" class="pii-summary" hidden aria-live="polite">
+                <strong>Masked items:</strong>
+                <ul id="summaryList"></ul>
+            </div>
+
+            <h2>How to use</h2>
+            <div class="howto-content"><ol><li>Paste the prompt or document you want to send to an AI service.</li><li>Toggle the categories you want to mask (default: all on).</li><li>Click <strong>Scrub</strong>; the right panel shows the masked version with placeholders like <code>[EMAIL]</code>, <code>[PHONE]</code>, etc.</li><li>Copy the scrubbed text and paste it into ChatGPT, Claude, Gemini, etc.</li></ol><p><strong>What is detected</strong>: standard email addresses; phone numbers in common international formats; US SSN and Korean RRN (주민등록번호); credit-card-like number sequences validated with the Luhn algorithm to avoid false positives; API keys matching well-known prefixes (<code>sk-</code>, <code>pk-</code>, <code>AKIA</code>, <code>AIza</code>, <code>github_pat_</code>, <code>xoxb-</code>); IPv4 addresses; and any HTTP(S) URL.</p><p>Heuristic limits: free-text addresses, names, and proprietary IDs are <em>not</em> detected. Always review the scrubbed output before sending.</p></div>
+
+            <div class="related-tools-section">
+                <h3>Related Tools</h3>
+                <div class="related-buttons">
+                    <a href="/zh-tw/token-counter/" class="related-btn">Token Counter</a><a
+                        href="/zh-tw/claude-md-generator/" class="related-btn">Claude.md Generator</a><a
+                        href="/zh-tw/mcp-config-generator/" class="related-btn">MCP Config Generator</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="site-footer"><div class="container"><div class="footer-content"><p>&copy; 2025 Utilify. 版權所有。</p>
+                <p data-legal-links style="font-size: 0.875rem; margin-top: 8px;"><a href="/zh-tw/about/">About</a> · <a href="/zh-tw/privacy/">Privacy</a> · <a href="/zh-tw/terms/">Terms</a></p></div></div></footer>
+    <script src="/assets/js/common.js"></script>
+    <script>
+        const inputEl = document.getElementById('inputEl');
+        const outputEl = document.getElementById('outputEl');
+        const summaryBox = document.getElementById('summaryBox');
+        const summaryList = document.getElementById('summaryList');
+        const labels = {
+            email: 'Email', phone: 'Phone', ssn: 'SSN / RRN',
+            card: 'Credit card', apikey: 'API key', ip: 'IP address', url: 'URL',
+        };
+
+        const PATTERNS = {
+            email:  /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b/g,
+            phone:  /(?:\+?\d{1,3}[\s.-]?)?(?:\(?\d{2,4}\)?[\s.-]?){2,4}\d{2,4}\b/g,
+            ssn:    /\b\d{3}-\d{2}-\d{4}\b|\b\d{6}-\d{7}\b/g,
+            card:   /\b(?:\d[ -]?){13,19}\b/g,
+            apikey: /\b(?:sk|pk|rk)-[A-Za-z0-9_-]{16,}\b|\bAKIA[0-9A-Z]{16}\b|\bAIza[0-9A-Za-z_-]{35}\b|\bgithub_pat_[A-Za-z0-9_]{20,}\b|\bxox[abporsu]-[A-Za-z0-9-]{10,}\b/g,
+            ip:     /\b(?:(?:25[0-5]|2[0-4]\d|1?\d?\d)\.){3}(?:25[0-5]|2[0-4]\d|1?\d?\d)\b/g,
+            url:    /https?:\/\/[^\s<>"]+/g,
+        };
+
+        function luhn(s) {
+            const digits = s.replace(/\D/g, '');
+            if (digits.length < 13 || digits.length > 19) return false;
+            let sum = 0, alt = false;
+            for (let i = digits.length - 1; i >= 0; i--) {
+                let n = +digits[i];
+                if (alt) { n *= 2; if (n > 9) n -= 9; }
+                sum += n;
+                alt = !alt;
+            }
+            return sum % 10 === 0;
+        }
+
+        function scrub() {
+            const text = inputEl.value;
+            const enabled = {};
+            document.querySelectorAll('[data-pii]').forEach(cb => enabled[cb.dataset.pii] = cb.checked);
+            const counts = {};
+            let out = text;
+            for (const [kind, re] of Object.entries(PATTERNS)) {
+                if (!enabled[kind]) continue;
+                const placeholder = '[' + kind.toUpperCase() + ']';
+                const matches = [];
+                out = out.replace(re, (m) => {
+                    if (kind === 'card' && !luhn(m)) return m;
+                    matches.push(m);
+                    return placeholder;
+                });
+                if (matches.length) counts[kind] = matches.length;
+            }
+            outputEl.value = out;
+            summaryList.innerHTML = '';
+            const total = Object.values(counts).reduce((a, b) => a + b, 0);
+            if (total === 0) {
+                summaryBox.hidden = false;
+                summaryList.innerHTML = '<li>No PII detected.</li>';
+                return;
+            }
+            for (const [k, n] of Object.entries(counts)) {
+                const li = document.createElement('li');
+                li.innerHTML = labels[k] + '<span class="count">' + n + '</span>';
+                summaryList.appendChild(li);
+            }
+            summaryBox.hidden = false;
+        }
+
+        document.getElementById('scrubBtn').addEventListener('click', scrub);
+        document.getElementById('copyBtn').addEventListener('click', () => {
+            if (outputEl.value) Utils.copyToClipboard(outputEl.value);
+            else Utils.showToast('Nothing to copy.');
+        });
+        document.getElementById('clearBtn').addEventListener('click', () => {
+            inputEl.value = ''; outputEl.value = '';
+            summaryBox.hidden = true;
+        });
+        inputEl.addEventListener('input', Utils.debounce(scrub, 400));
+    </script>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({google_ad_client:"ca-pub-6334819180242631",enable_page_level_ads:true});</script>
+</body>
+
+</html>

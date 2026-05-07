@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="{{ lang_code }}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy-Report-Only" content="default-src 'self' https: data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https:; frame-src https:;">
+    <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+    <title>{{ meta_title }}</title>
+    <meta name="description" content="{{ meta_desc }}">
+    <link rel="canonical" href="https://utilifyapp.net/{{ lang_code }}/mcp-config-generator/">
+
+    <meta property="og:title" content="{{ meta_title }}">
+    <meta property="og:description" content="{{ meta_desc }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://utilifyapp.net/{{ lang_code }}/mcp-config-generator/">
+
+    {{ alternate_links }}
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "{{ json_name }}",
+        "description": "{{ json_desc }}",
+        "url": "https://utilifyapp.net/{{ lang_code }}/mcp-config-generator/",
+        "inLanguage": "{{ lang_code }}",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Any",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+
+    <style>
+        .mcp-form { display: grid; gap: var(--spacing-md); margin-top: var(--spacing-lg); }
+        .mcp-form label { font-weight: 600; }
+        .mcp-form input, .mcp-form textarea, .mcp-form select { font-family: var(--font-mono); }
+        .target-row { display: flex; flex-wrap: wrap; gap: var(--spacing-md); margin: var(--spacing-md) 0; }
+        .target-row label { display: inline-flex; gap: 6px; font-weight: 500; }
+        .preview-box {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            margin-top: var(--spacing-md);
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            white-space: pre-wrap;
+            min-height: 150px;
+            overflow-x: auto;
+        }
+        .install-path {
+            background: var(--bg-tertiary);
+            padding: 6px 10px; border-radius: 4px;
+            font-family: var(--font-mono); font-size: 0.85rem;
+            display: inline-block; margin-top: 6px;
+        }
+    </style>
+    <link rel="manifest" href="/manifest.json">
+</head>
+
+<body>
+    <header class="site-header"><div class="container"><div class="header-content"><a href="/{{ lang_code }}/" class="site-logo">{{ brand }}</a></div></div></header>
+    <main class="main-content">
+        <div class="container-narrow">
+            <h1>🔌 {{ title }}</h1>
+            <div class="security-badge" style="display:flex;align-items:center;justify-content:center;gap:8px;margin:10px 0;font-size:14px;color:var(--text-secondary);">
+                <span>{{ secure_badge }}</span>
+            </div>
+
+            <p>{{ page_desc }}</p>
+
+            <div class="target-row" role="radiogroup" aria-label="{{ label_target }}">
+                <strong>{{ label_target }}:</strong>
+                <label><input type="radio" name="target" value="claude-desktop" checked> Claude Desktop</label>
+                <label><input type="radio" name="target" value="cursor"> Cursor</label>
+                <label><input type="radio" name="target" value="vscode"> VS Code</label>
+            </div>
+
+            <div class="mcp-form">
+                <div>
+                    <label for="serverName">{{ label_name }}</label>
+                    <input id="serverName" class="form-input" type="text" value="my-server" placeholder="filesystem">
+                </div>
+                <div>
+                    <label for="transport">{{ label_transport }}</label>
+                    <select id="transport" class="form-input">
+                        <option value="stdio">stdio</option>
+                        <option value="http">streamable-http</option>
+                        <option value="sse">sse</option>
+                    </select>
+                </div>
+                <div id="cmdGroup">
+                    <label for="command">{{ label_command }}</label>
+                    <input id="command" class="form-input" type="text" placeholder="npx">
+                    <label for="args" style="margin-top: 8px; display:block;">{{ label_args }}</label>
+                    <textarea id="args" class="form-input" rows="3" placeholder="-y&#10;@modelcontextprotocol/server-filesystem&#10;/path/to/dir"></textarea>
+                </div>
+                <div id="urlGroup" hidden>
+                    <label for="serverUrl">{{ label_url }}</label>
+                    <input id="serverUrl" class="form-input" type="text" placeholder="https://example.com/mcp">
+                </div>
+                <div>
+                    <label for="env">{{ label_env }}</label>
+                    <textarea id="env" class="form-input" rows="3" placeholder="API_KEY=xxx&#10;DEBUG=1"></textarea>
+                </div>
+            </div>
+
+            <div class="btn-group" style="margin-top: var(--spacing-md);">
+                <button class="btn btn-primary" id="generateBtn">{{ btn_generate }}</button>
+                <button class="btn btn-secondary" id="copyBtn">{{ btn_copy }}</button>
+                <button class="btn btn-secondary" id="clearBtn">{{ btn_clear }}</button>
+            </div>
+
+            <h2>{{ output_label }}</h2>
+            <p>{{ install_label }} <span id="installPath" class="install-path"></span></p>
+            <pre id="output" class="preview-box" aria-live="polite"></pre>
+
+            <h2>{{ howto_header }}</h2>
+            <div class="howto-content">{{ howto_html }}</div>
+
+            <div class="related-tools-section">
+                <h3>{{ related_header }}</h3>
+                <div class="related-buttons">
+                    <a href="/{{ lang_code }}/claude-md-generator/" class="related-btn">{{ related_claude }}</a><a
+                        href="/{{ lang_code }}/json-formatter/" class="related-btn">{{ related_json }}</a><a
+                        href="/{{ lang_code }}/prompt-pii-scrubber/" class="related-btn">{{ related_pii }}</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="site-footer"><div class="container"><div class="footer-content"><p>{{ footer }}</p></div></div></footer>
+    <script src="/assets/js/common.js"></script>
+    <script>
+        const out = document.getElementById('output');
+        const transportSel = document.getElementById('transport');
+        const cmdGroup = document.getElementById('cmdGroup');
+        const urlGroup = document.getElementById('urlGroup');
+        const installEl = document.getElementById('installPath');
+
+        const PATHS = {
+            'claude-desktop': {
+                macos: '~/Library/Application Support/Claude/claude_desktop_config.json',
+                windows: '%APPDATA%\\Claude\\claude_desktop_config.json',
+            },
+            'cursor': {
+                global: '~/.cursor/mcp.json',
+                project: '<project>/.cursor/mcp.json',
+            },
+            'vscode': {
+                workspace: '<project>/.vscode/mcp.json',
+                user: 'User Settings → MCP Servers',
+            },
+        };
+
+        function refreshTransport() {
+            const t = transportSel.value;
+            cmdGroup.hidden = t !== 'stdio';
+            urlGroup.hidden = t === 'stdio';
+        }
+        transportSel.addEventListener('change', refreshTransport);
+
+        function parseLines(text) {
+            return text.split('\n').map(l => l.trim()).filter(Boolean);
+        }
+
+        function buildServer() {
+            const name = document.getElementById('serverName').value.trim() || 'server';
+            const transport = transportSel.value;
+            const env = {};
+            for (const line of parseLines(document.getElementById('env').value)) {
+                const i = line.indexOf('=');
+                if (i > 0) env[line.slice(0, i).trim()] = line.slice(i + 1).trim();
+            }
+            const server = {};
+            if (transport === 'stdio') {
+                server.command = document.getElementById('command').value.trim() || 'npx';
+                const args = parseLines(document.getElementById('args').value);
+                if (args.length) server.args = args;
+            } else {
+                server.type = transport;
+                server.url = document.getElementById('serverUrl').value.trim() || 'https://example.com/mcp';
+            }
+            if (Object.keys(env).length) server.env = env;
+            return [name, server];
+        }
+
+        function generate() {
+            const target = document.querySelector('input[name="target"]:checked').value;
+            const [name, server] = buildServer();
+            let payload;
+            if (target === 'claude-desktop') {
+                payload = { mcpServers: { [name]: server } };
+            } else if (target === 'cursor') {
+                payload = { mcpServers: { [name]: server } };
+            } else { // vscode
+                payload = { servers: { [name]: server } };
+            }
+            out.textContent = JSON.stringify(payload, null, 2);
+
+            const paths = PATHS[target];
+            installEl.textContent = Object.entries(paths).map(([k, v]) => k + ': ' + v).join('  •  ');
+        }
+
+        document.getElementById('generateBtn').addEventListener('click', generate);
+        document.getElementById('copyBtn').addEventListener('click', () => {
+            if (out.textContent) Utils.copyToClipboard(out.textContent);
+            else Utils.showToast('{{ alert_copy_empty }}');
+        });
+        document.getElementById('clearBtn').addEventListener('click', () => {
+            ['serverName','command','args','serverUrl','env'].forEach(id => document.getElementById(id).value = '');
+            document.getElementById('serverName').value = 'my-server';
+            out.textContent = ''; installEl.textContent = '';
+        });
+
+        // Initial
+        refreshTransport();
+        generate();
+    </script>
+</body>
+
+</html>

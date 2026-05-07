@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="{{ lang_code }}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy-Report-Only" content="default-src 'self' https: data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https:; frame-src https:;">
+    <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+    <title>{{ meta_title }}</title>
+    <meta name="description" content="{{ meta_desc }}">
+    <link rel="canonical" href="https://utilifyapp.net/{{ lang_code }}/token-counter/">
+
+    <meta property="og:title" content="{{ meta_title }}">
+    <meta property="og:description" content="{{ meta_desc }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://utilifyapp.net/{{ lang_code }}/token-counter/">
+
+    {{ alternate_links }}
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "{{ json_name }}",
+        "description": "{{ json_desc }}",
+        "url": "https://utilifyapp.net/{{ lang_code }}/token-counter/",
+        "inLanguage": "{{ lang_code }}",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Any",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+
+    <style>
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+        }
+        .stat-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            text-align: center;
+        }
+        .stat-card .label { font-size: 0.85rem; color: var(--text-secondary); }
+        .stat-card .value { font-size: 1.6rem; font-weight: 700; color: var(--primary-color); margin-top: 4px; font-variant-numeric: tabular-nums; }
+
+        .cost-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: var(--spacing-md);
+            font-variant-numeric: tabular-nums;
+        }
+        .cost-table th, .cost-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--border-color);
+            text-align: right;
+        }
+        .cost-table th:first-child, .cost-table td:first-child { text-align: left; }
+        .cost-table th { background: var(--bg-secondary); font-weight: 600; }
+        .cost-table td.total { font-weight: 700; color: var(--primary-color); }
+
+        .out-tokens-row {
+            display: flex; gap: var(--spacing-md); align-items: center;
+            margin: var(--spacing-md) 0;
+            font-size: 0.95rem;
+        }
+        .out-tokens-row input { width: 100px; }
+    </style>
+    <link rel="manifest" href="/manifest.json">
+</head>
+
+<body>
+    <header class="site-header"><div class="container"><div class="header-content"><a href="/{{ lang_code }}/" class="site-logo">{{ brand }}</a></div></div></header>
+    <main class="main-content">
+        <div class="container-narrow">
+            <h1>🪙 {{ title }}</h1>
+            <div class="security-badge" style="display:flex;align-items:center;justify-content:center;gap:8px;margin:10px 0;font-size:14px;color:var(--text-secondary);">
+                <span>{{ secure_badge }}</span>
+            </div>
+
+            <p>{{ page_desc }}</p>
+
+            <label class="form-label" for="textInput">{{ label_input }}</label>
+            <textarea id="textInput" class="form-input" style="min-height:200px;font-family:var(--font-mono);" placeholder="{{ ph_input }}"></textarea>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="label">{{ stat_chars }}</div>
+                    <div class="value" id="chars" aria-live="polite">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="label">{{ stat_words }}</div>
+                    <div class="value" id="words" aria-live="polite">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="label">{{ stat_tokens }}</div>
+                    <div class="value" id="tokens" aria-live="polite">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="label">{{ stat_lines }}</div>
+                    <div class="value" id="lines" aria-live="polite">0</div>
+                </div>
+            </div>
+
+            <div class="out-tokens-row">
+                <label for="outTokens">{{ label_out_tokens }}:</label>
+                <input id="outTokens" class="form-input" type="number" min="0" value="500">
+                <span style="color: var(--text-secondary); font-size: 0.85rem;">{{ note_estimate }}</span>
+            </div>
+
+            <h2>{{ cost_table_title }}</h2>
+            <table class="cost-table">
+                <thead>
+                    <tr>
+                        <th>{{ col_model }}</th>
+                        <th>{{ col_input_price }}</th>
+                        <th>{{ col_output_price }}</th>
+                        <th>{{ col_input_cost }}</th>
+                        <th>{{ col_output_cost }}</th>
+                        <th>{{ col_total }}</th>
+                    </tr>
+                </thead>
+                <tbody id="costBody"></tbody>
+            </table>
+
+            <h2>{{ howto_header }}</h2>
+            <div class="howto-content">{{ howto_html }}</div>
+
+            <div class="related-tools-section">
+                <h3>{{ related_header }}</h3>
+                <div class="related-buttons">
+                    <a href="/{{ lang_code }}/prompt-pii-scrubber/" class="related-btn">{{ related_pii }}</a><a
+                        href="/{{ lang_code }}/claude-md-generator/" class="related-btn">{{ related_claude }}</a><a
+                        href="/{{ lang_code }}/mcp-config-generator/" class="related-btn">{{ related_mcp }}</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="site-footer"><div class="container"><div class="footer-content"><p>{{ footer }}</p></div></div></footer>
+    <script src="/assets/js/common.js"></script>
+    <script>
+        // Pricing as of 2026 — input/output USD per 1M tokens.
+        const MODELS = [
+            { name: 'GPT-4o',         input: 2.50,  output: 10.00 },
+            { name: 'GPT-4o mini',    input: 0.15,  output: 0.60  },
+            { name: 'GPT-4 Turbo',    input: 10.00, output: 30.00 },
+            { name: 'Claude Opus 4.7',  input: 15.00, output: 75.00 },
+            { name: 'Claude Sonnet 4.6', input: 3.00,  output: 15.00 },
+            { name: 'Claude Haiku 4.5',  input: 1.00,  output: 5.00  },
+            { name: 'Gemini 2.5 Pro', input: 1.25,  output: 5.00  },
+            { name: 'Gemini 2.5 Flash', input: 0.30,  output: 2.50  },
+        ];
+
+        const textInput = document.getElementById('textInput');
+        const outTokensEl = document.getElementById('outTokens');
+
+        function estimateTokens(text) {
+            // Rough heuristic: ~4 chars per token (English) but CJK ~1-2 chars per token.
+            // Detect CJK ratio; blend.
+            if (!text) return 0;
+            const cjk = (text.match(/[　-鿿가-힣぀-ヿ]/g) || []).length;
+            const ratio = cjk / text.length;
+            const charsPerToken = 4 - 2.5 * ratio;  // 4 for pure English, ~1.5 for pure CJK
+            return Math.ceil(text.length / Math.max(charsPerToken, 1.2));
+        }
+
+        function fmtCost(c) {
+            if (c < 0.01) return '$' + c.toFixed(5);
+            if (c < 1) return '$' + c.toFixed(4);
+            return '$' + c.toFixed(2);
+        }
+
+        function update() {
+            const t = textInput.value;
+            const chars = t.length;
+            const words = t.trim() ? t.trim().split(/\s+/).length : 0;
+            const lines = t ? t.split('\n').length : 0;
+            const tokens = estimateTokens(t);
+            document.getElementById('chars').textContent = chars.toLocaleString();
+            document.getElementById('words').textContent = words.toLocaleString();
+            document.getElementById('tokens').textContent = tokens.toLocaleString();
+            document.getElementById('lines').textContent = lines.toLocaleString();
+
+            const outTokens = parseInt(outTokensEl.value, 10) || 0;
+            const tbody = document.getElementById('costBody');
+            tbody.innerHTML = '';
+            for (const m of MODELS) {
+                const inCost = (tokens / 1_000_000) * m.input;
+                const outCost = (outTokens / 1_000_000) * m.output;
+                const total = inCost + outCost;
+                const tr = document.createElement('tr');
+                tr.innerHTML =
+                    '<td>' + m.name + '</td>' +
+                    '<td>$' + m.input.toFixed(2) + '</td>' +
+                    '<td>$' + m.output.toFixed(2) + '</td>' +
+                    '<td>' + fmtCost(inCost) + '</td>' +
+                    '<td>' + fmtCost(outCost) + '</td>' +
+                    '<td class="total">' + fmtCost(total) + '</td>';
+                tbody.appendChild(tr);
+            }
+        }
+
+        textInput.addEventListener('input', update);
+        outTokensEl.addEventListener('input', update);
+        update();
+    </script>
+</body>
+
+</html>
