@@ -39,8 +39,11 @@
     <style>
         .form-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: var(--spacing-md);
+        }
+        @media (max-width: 600px) {
+            .form-grid { grid-template-columns: 1fr; }
         }
         .result-card {
             background: var(--bg-secondary);
@@ -77,18 +80,13 @@
         .balance-chart .area-wd { fill: #c62828; fill-opacity: 0.10; stroke: none; }
         .balance-chart .axis { stroke: var(--border-color); stroke-width: 1; }
         .balance-chart .retire-line { stroke: var(--text-secondary); stroke-dasharray: 4 4; stroke-width: 1; }
-        .balance-chart text { font-size: 11px; fill: var(--text-secondary); font-family: var(--font-sans); }
+        /* viewBox is 600 wide; bumping the font ensures legibility when the
+           SVG renders at <600px (e.g. on mobile the effective text size is
+           14 * displayWidth / 600). */
+        .balance-chart text { font-size: 14px; fill: var(--text-secondary); font-family: var(--font-sans); }
 
-        .disclaimer {
-            margin-top: var(--spacing-lg);
-            padding: var(--spacing-md);
-            background: var(--bg-secondary);
-            border-left: 3px solid var(--text-secondary);
-            border-radius: var(--radius-sm);
-            font-size: 0.88rem;
-            color: var(--text-secondary);
-        }
         .button-row { display: flex; gap: var(--spacing-sm); flex-wrap: wrap; margin-top: var(--spacing-md); }
+        .button-row .btn { min-width: 120px; }
     </style>
     <link rel="manifest" href="/manifest.json">
 </head>
@@ -152,6 +150,10 @@
                 <h3>{{ res_chart_header }}</h3>
                 <div class="chart-wrap">
                     <svg id="balanceChart" class="balance-chart" viewBox="0 0 600 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="{{ res_chart_header }}"></svg>
+                </div>
+
+                <div class="button-row">
+                    <button class="btn" type="button" onclick="shareResult()">{{ btn_share }}</button>
                 </div>
             </div>
 
@@ -307,6 +309,20 @@
             document.getElementById('annualWithdrawal').value = '{{ ph_annual_withdrawal }}';
             document.getElementById('lifeExp').value = '{{ ph_life_expectancy }}';
             document.getElementById('result').style.display = 'none';
+        }
+
+        async function shareResult() {
+            const nest = document.getElementById('nestEggVal').textContent;
+            if (nest === '—') return;
+            const text = '{{ share_text }}'.replace('{value}', nest) + ' ' + location.href;
+            if (navigator.share) {
+                try { await navigator.share({ title: '{{ title }}', text }); return; }
+                catch (e) { if (e && e.name === 'AbortError') return; }
+            }
+            try {
+                await navigator.clipboard.writeText(text);
+                alert('{{ share_copied }}');
+            } catch (e) { /* clipboard blocked — silent */ }
         }
     </script>
 </body>

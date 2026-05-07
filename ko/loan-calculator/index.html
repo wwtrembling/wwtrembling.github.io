@@ -68,28 +68,20 @@
         .schedule-table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: var(--spacing-md);
             font-variant-numeric: tabular-nums;
             font-size: 0.92rem;
+            min-width: 480px;
         }
         .schedule-table th, .schedule-table td {
             padding: 8px 10px;
             border-bottom: 1px solid var(--border-color);
             text-align: right;
+            white-space: nowrap;
         }
         .schedule-table th:first-child, .schedule-table td:first-child { text-align: left; }
         .schedule-table th { background: var(--bg-secondary); font-weight: 600; }
-
-        .disclaimer {
-            margin-top: var(--spacing-lg);
-            padding: var(--spacing-md);
-            background: var(--bg-secondary);
-            border-left: 3px solid var(--text-secondary);
-            border-radius: var(--radius-sm);
-            font-size: 0.88rem;
-            color: var(--text-secondary);
-        }
         .button-row { display: flex; gap: var(--spacing-sm); flex-wrap: wrap; }
+        .button-row .btn { min-width: 120px; }
     </style>
     <link rel="manifest" href="/manifest.json">
     <script data-utilify-adsense-loader async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631" crossorigin="anonymous"></script>
@@ -155,18 +147,24 @@
                 </div>
 
                 <h3>첫 12개월 분할상환</h3>
-                <table class="schedule-table">
-                    <thead>
-                        <tr>
-                            <th>월차</th>
-                            <th>상환금</th>
-                            <th>원금</th>
-                            <th>이자</th>
-                            <th>잔액</th>
-                        </tr>
-                    </thead>
-                    <tbody id="scheduleBody"></tbody>
-                </table>
+                <div class="table-responsive">
+                    <table class="schedule-table">
+                        <thead>
+                            <tr>
+                                <th>월차</th>
+                                <th>상환금</th>
+                                <th>원금</th>
+                                <th>이자</th>
+                                <th>잔액</th>
+                            </tr>
+                        </thead>
+                        <tbody id="scheduleBody"></tbody>
+                    </table>
+                </div>
+
+                <div class="button-row" style="margin-top: var(--spacing-md);">
+                    <button class="btn" type="button" onclick="shareResult()">결과 공유</button>
+                </div>
             </div>
 
             <div class="disclaimer">추정치 — 재정 자문이 아닙니다. 중대한 결정은 자격 있는 전문가와 상의하세요.</div>
@@ -243,6 +241,20 @@
             document.getElementById('rate').value = '4.5';
             document.getElementById('term').value = '30';
             document.getElementById('result').style.display = 'none';
+        }
+
+        async function shareResult() {
+            const monthly = document.getElementById('monthlyVal').textContent;
+            if (monthly === '—') return;
+            const text = '내 월 대출 상환금은 {value} —'.replace('{value}', monthly) + ' ' + location.href;
+            if (navigator.share) {
+                try { await navigator.share({ title: '대출 계산기', text }); return; }
+                catch (e) { if (e && e.name === 'AbortError') return; }
+            }
+            try {
+                await navigator.clipboard.writeText(text);
+                alert('결과가 클립보드에 복사되었습니다.');
+            } catch (e) { /* clipboard blocked — silent */ }
         }
     </script>
     <script>(adsbygoogle=window.adsbygoogle||[]).push({google_ad_client:"ca-pub-6334819180242631",enable_page_level_ads:true});</script>

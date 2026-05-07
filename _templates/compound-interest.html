@@ -57,28 +57,20 @@
         .schedule-table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: var(--spacing-md);
             font-variant-numeric: tabular-nums;
             font-size: 0.92rem;
+            min-width: 420px;
         }
         .schedule-table th, .schedule-table td {
             padding: 8px 10px;
             border-bottom: 1px solid var(--border-color);
             text-align: right;
+            white-space: nowrap;
         }
         .schedule-table th:first-child, .schedule-table td:first-child { text-align: left; }
         .schedule-table th { background: var(--bg-secondary); font-weight: 600; }
-
-        .disclaimer {
-            margin-top: var(--spacing-lg);
-            padding: var(--spacing-md);
-            background: var(--bg-secondary);
-            border-left: 3px solid var(--text-secondary);
-            border-radius: var(--radius-sm);
-            font-size: 0.88rem;
-            color: var(--text-secondary);
-        }
         .button-row { display: flex; gap: var(--spacing-sm); flex-wrap: wrap; }
+        .button-row .btn { min-width: 120px; }
     </style>
     <link rel="manifest" href="/manifest.json">
 </head>
@@ -143,17 +135,23 @@
                 </div>
 
                 <h3>{{ res_yearly_header }}</h3>
-                <table class="schedule-table">
-                    <thead>
-                        <tr>
-                            <th>{{ th_year }}</th>
-                            <th>{{ th_balance }}</th>
-                            <th>{{ th_contributed }}</th>
-                            <th>{{ th_interest }}</th>
-                        </tr>
-                    </thead>
-                    <tbody id="yearBody"></tbody>
-                </table>
+                <div class="table-responsive">
+                    <table class="schedule-table">
+                        <thead>
+                            <tr>
+                                <th>{{ th_year }}</th>
+                                <th>{{ th_balance }}</th>
+                                <th>{{ th_contributed }}</th>
+                                <th>{{ th_interest }}</th>
+                            </tr>
+                        </thead>
+                        <tbody id="yearBody"></tbody>
+                    </table>
+                </div>
+
+                <div class="button-row" style="margin-top: var(--spacing-md);">
+                    <button class="btn" type="button" onclick="shareResult()">{{ btn_share }}</button>
+                </div>
             </div>
 
             <div class="disclaimer">{{ disclaimer }}</div>
@@ -246,6 +244,20 @@
             document.getElementById('frequency').value = '12';
             document.getElementById('contrib').value = '{{ ph_monthly_contrib }}';
             document.getElementById('result').style.display = 'none';
+        }
+
+        async function shareResult() {
+            const final = document.getElementById('finalVal').textContent;
+            if (final === '—') return;
+            const text = '{{ share_text }}'.replace('{value}', final) + ' ' + location.href;
+            if (navigator.share) {
+                try { await navigator.share({ title: '{{ title }}', text }); return; }
+                catch (e) { if (e && e.name === 'AbortError') return; }
+            }
+            try {
+                await navigator.clipboard.writeText(text);
+                alert('{{ share_copied }}');
+            } catch (e) { /* clipboard blocked — silent */ }
         }
     </script>
 </body>
