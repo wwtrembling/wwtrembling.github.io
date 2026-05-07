@@ -158,6 +158,19 @@ def inject_monetization(html):
         )
         html = html.replace('</head>', og_block + '</head>', 1)
 
+    # 9d. Inject favicon links once in <head>. Marker `data-utilify-favicon`
+    #     guards idempotency. Browsers auto-request /favicon.ico anyway, but
+    #     advertising the multi-size set yields a sharper tab/bookmark icon
+    #     and gives Apple/Android proper home-screen icons.
+    if 'data-utilify-favicon' not in html:
+        favicon_block = (
+            '    <link data-utilify-favicon rel="icon" type="image/x-icon" href="/favicon.ico">\n'
+            '    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">\n'
+            '    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">\n'
+            '    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">\n'
+        )
+        html = html.replace('</head>', favicon_block + '</head>', 1)
+
     # 9c. Inject skip-to-content link as first child of <body>, and ensure
     #     <main> has id="main" so the skip link has a target. Idempotent
     #     via marker `data-utilify-skip`.
