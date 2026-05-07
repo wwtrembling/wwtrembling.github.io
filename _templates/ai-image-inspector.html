@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="{{ lang_code }}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy-Report-Only" content="default-src 'self' https: data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https:; frame-src https:;">
+    <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+    <title>{{ meta_title }}</title>
+    <meta name="description" content="{{ meta_desc }}">
+    <link rel="canonical" href="https://utilifyapp.net/{{ lang_code }}/ai-image-inspector/">
+
+    <meta property="og:title" content="{{ meta_title }}">
+    <meta property="og:description" content="{{ meta_desc }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://utilifyapp.net/{{ lang_code }}/ai-image-inspector/">
+
+    {{ alternate_links }}
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "{{ json_name }}",
+        "description": "{{ json_desc }}",
+        "url": "https://utilifyapp.net/{{ lang_code }}/ai-image-inspector/",
+        "inLanguage": "{{ lang_code }}",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Any",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+
+    <style>
+        .drop-zone {
+            border: 2px dashed var(--border-color);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-xl);
+            text-align: center;
+            cursor: pointer;
+            transition: border-color 0.15s, background 0.15s;
+            margin-top: var(--spacing-lg);
+        }
+        .drop-zone:hover, .drop-zone.dragging { border-color: var(--primary-color); background: var(--bg-secondary); }
+        .drop-zone img { max-width: 280px; max-height: 280px; margin-top: var(--spacing-md); border-radius: var(--radius-md); }
+
+        .verdict {
+            padding: var(--spacing-md);
+            border-radius: var(--radius-md);
+            margin: var(--spacing-md) 0;
+            font-weight: 600;
+        }
+        .verdict.ai { background: #fef3c7; color: #78350f; border: 1px solid #f59e0b; }
+        .verdict.unknown { background: #e0e7ff; color: #1e3a8a; border: 1px solid #6366f1; }
+        .verdict.clean { background: #d1fae5; color: #065f46; border: 1px solid #10b981; }
+
+        .meta-section { margin-top: var(--spacing-md); }
+        .meta-section h3 { margin-bottom: var(--spacing-sm); font-size: 1.05rem; }
+        .meta-section pre {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            font-size: 0.85rem;
+            white-space: pre-wrap;
+            word-break: break-all;
+            overflow-x: auto;
+        }
+    </style>
+    <link rel="manifest" href="/manifest.json">
+</head>
+
+<body>
+    <header class="site-header"><div class="container"><div class="header-content"><a href="/{{ lang_code }}/" class="site-logo">{{ brand }}</a></div></div></header>
+    <main class="main-content">
+        <div class="container-narrow">
+            <h1>🔬 {{ title }}</h1>
+            <div class="security-badge" style="display:flex;align-items:center;justify-content:center;gap:8px;margin:10px 0;font-size:14px;color:var(--text-secondary);">
+                <span>{{ secure_badge }}</span>
+            </div>
+
+            <p>{{ page_desc }}</p>
+
+            <div class="drop-zone" id="dropZone" tabindex="0" role="button" aria-label="{{ ph_drop }}">
+                <div>📁 {{ ph_drop }}</div>
+                <input type="file" id="fileInput" accept="image/png,image/jpeg,image/webp" hidden>
+                <img id="preview" alt="" hidden>
+            </div>
+
+            <div id="verdict" class="verdict" hidden aria-live="polite"></div>
+
+            <div id="results" hidden>
+                <div class="meta-section" id="sdSection" hidden>
+                    <h3>{{ section_sd }}</h3>
+                    <pre id="sdContent"></pre>
+                </div>
+                <div class="meta-section" id="exifSection" hidden>
+                    <h3>{{ section_exif }}</h3>
+                    <pre id="exifContent"></pre>
+                </div>
+                <div class="meta-section" id="rawSection" hidden>
+                    <h3>{{ section_raw }}</h3>
+                    <pre id="rawContent"></pre>
+                </div>
+            </div>
+
+            <h2>{{ howto_header }}</h2>
+            <div class="howto-content">{{ howto_html }}</div>
+
+            <div class="related-tools-section">
+                <h3>{{ related_header }}</h3>
+                <div class="related-buttons">
+                    <a href="/{{ lang_code }}/image-converter/" class="related-btn">{{ related_imgconv }}</a><a
+                        href="/{{ lang_code }}/image-watermark/" class="related-btn">{{ related_watermark }}</a><a
+                        href="/{{ lang_code }}/token-counter/" class="related-btn">{{ related_token }}</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="site-footer"><div class="container"><div class="footer-content"><p>{{ footer }}</p></div></div></footer>
+    <script src="/assets/js/common.js"></script>
+    <script>
+        const dropZone = document.getElementById('dropZone');
+        const fileInput = document.getElementById('fileInput');
+        const preview = document.getElementById('preview');
+        const verdict = document.getElementById('verdict');
+        const results = document.getElementById('results');
+
+        dropZone.addEventListener('click', () => fileInput.click());
+        dropZone.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); fileInput.click(); } });
+        ['dragover','dragenter'].forEach(t => dropZone.addEventListener(t, e => { e.preventDefault(); dropZone.classList.add('dragging'); }));
+        ['dragleave','drop'].forEach(t => dropZone.addEventListener(t, e => { e.preventDefault(); dropZone.classList.remove('dragging'); }));
+        dropZone.addEventListener('drop', e => {
+            const f = e.dataTransfer.files[0];
+            if (f) handleFile(f);
+        });
+        fileInput.addEventListener('change', e => {
+            if (e.target.files[0]) handleFile(e.target.files[0]);
+        });
+
+        function showVerdict(kind, text) {
+            verdict.hidden = false;
+            verdict.className = 'verdict ' + kind;
+            verdict.textContent = text;
+        }
+
+        function setSection(id, contentId, content) {
+            document.getElementById(id).hidden = !content;
+            if (content) document.getElementById(contentId).textContent = content;
+        }
+
+        async function handleFile(file) {
+            const reader = new FileReader();
+            reader.onload = () => { preview.src = reader.result; preview.hidden = false; };
+            reader.readAsDataURL(file);
+
+            const buf = await file.arrayBuffer();
+            const bytes = new Uint8Array(buf);
+
+            results.hidden = false;
+            const findings = parsePNG(bytes) || parseJPEG(bytes) || { sd: null, exif: null, raw: null };
+
+            // Reset sections.
+            ['sdSection','exifSection','rawSection'].forEach(id => document.getElementById(id).hidden = true);
+
+            const aiSignals = [];
+            if (findings.sd) {
+                setSection('sdSection', 'sdContent', findings.sd);
+                aiSignals.push('Stable Diffusion');
+            }
+            if (findings.exif) {
+                setSection('exifSection', 'exifContent', findings.exif);
+                if (/midjourney|dall[- ]?e|firefly|imagen/i.test(findings.exif)) aiSignals.push('AI');
+            }
+            if (findings.raw) setSection('rawSection', 'rawContent', findings.raw);
+
+            if (aiSignals.length) {
+                showVerdict('ai', '{{ verdict_ai }}' + ' (' + aiSignals.join(', ') + ')');
+            } else if (findings.sd === null && findings.exif === null && findings.raw === null) {
+                showVerdict('clean', '{{ verdict_clean }}');
+            } else {
+                showVerdict('unknown', '{{ verdict_unknown }}');
+            }
+        }
+
+        // PNG parser — extract tEXt / iTXt / zTXt chunks.
+        function parsePNG(bytes) {
+            if (bytes[0] !== 0x89 || bytes[1] !== 0x50 || bytes[2] !== 0x4E || bytes[3] !== 0x47) return null;
+            let pos = 8;
+            const dec = new TextDecoder('utf-8');
+            const dec_latin = new TextDecoder('latin1');
+            const meta = {};
+            let hasC2PA = false;
+            while (pos < bytes.length - 8) {
+                const len = (bytes[pos] << 24) | (bytes[pos+1] << 16) | (bytes[pos+2] << 8) | bytes[pos+3];
+                const type = String.fromCharCode(bytes[pos+4], bytes[pos+5], bytes[pos+6], bytes[pos+7]);
+                const data = bytes.slice(pos + 8, pos + 8 + len);
+                if (type === 'tEXt' || type === 'iTXt') {
+                    const s = (type === 'iTXt' ? dec : dec_latin).decode(data);
+                    const nullIdx = s.indexOf('\x00');
+                    if (nullIdx > 0) {
+                        const key = s.slice(0, nullIdx);
+                        const val = s.slice(nullIdx + 1).replace(/^\x00+/, '');
+                        meta[key] = val;
+                    }
+                } else if (type === 'caBX' || type === 'jumb') {
+                    hasC2PA = true;
+                }
+                if (type === 'IEND') break;
+                pos += 12 + len;
+            }
+            if (Object.keys(meta).length === 0 && !hasC2PA) return null;
+            const sd = meta.parameters || meta.prompt || meta['Stable Diffusion'];
+            const raw = JSON.stringify(meta, null, 2);
+            return { sd: sd ? sd.replace(/\x00/g, '') : null, exif: hasC2PA ? 'C2PA box detected' : null, raw };
+        }
+
+        // JPEG parser — extract APP1 (EXIF) UserComment.
+        function parseJPEG(bytes) {
+            if (bytes[0] !== 0xFF || bytes[1] !== 0xD8) return null;
+            let pos = 2;
+            const exifChunks = [];
+            while (pos < bytes.length - 4) {
+                if (bytes[pos] !== 0xFF) break;
+                const marker = bytes[pos + 1];
+                if (marker === 0xD9 || marker === 0xDA) break;
+                const len = (bytes[pos + 2] << 8) | bytes[pos + 3];
+                const segment = bytes.slice(pos + 4, pos + 2 + len);
+                if (marker === 0xE1) {
+                    const sig = String.fromCharCode(...segment.slice(0, 6));
+                    if (sig.startsWith('Exif')) {
+                        // crude: scan for printable ASCII strings
+                        const text = new TextDecoder('latin1').decode(segment).replace(/[^\x20-\x7E]+/g, ' ').trim();
+                        if (text.length > 20) exifChunks.push(text);
+                    }
+                }
+                pos += 2 + len;
+            }
+            if (exifChunks.length === 0) return null;
+            return { sd: null, exif: exifChunks.join('\n').slice(0, 4000), raw: null };
+        }
+    </script>
+</body>
+
+</html>

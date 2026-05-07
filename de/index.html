@@ -211,6 +211,7 @@
 
             <div class="category-filter" role="group" aria-label="Filter tools by category">
                 <button type="button" data-cat="all" aria-pressed="true">All</button>
+                <button type="button" data-cat="ai" aria-pressed="false">AI</button>
                 <button type="button" data-cat="dev" aria-pressed="false">Developer</button>
                 <button type="button" data-cat="text" aria-pressed="false">Text</button>
                 <button type="button" data-cat="image" aria-pressed="false">Image</button>
@@ -368,6 +369,42 @@
           <div class="card-icon">🔗</div>
           <h3 class="card-title">URL Encoder / Decoder</h3>
           <p class="card-description">Encode characters into percent-encoded form (e.g. space → %20) or decode them back. Use 'Component' for query values; use 'Full URL' to preserve reserved characters like : / ?.</p>
+        </a>
+
+        <a href="/de/token-counter/" class="card" data-category="ai">
+          <div class="card-icon">🪙</div>
+          <h3 class="card-title">AI Token Counter & Cost Calculator</h3>
+          <p class="card-description">Estimate the token count of any text and the per-model API cost across GPT-4o, Claude Opus 4.7, Gemini 2.5, and more. Heuristic count (≈4 chars/token English, ≈1.5 chars/token CJK) — exact tokenization needs the provider API.</p>
+        </a>
+
+        <a href="/de/mcp-config-generator/" class="card" data-category="ai">
+          <div class="card-icon">🔌</div>
+          <h3 class="card-title">MCP Server Config Generator</h3>
+          <p class="card-description">Generate Model Context Protocol (MCP) server configuration for Claude Desktop, Cursor, or VS Code. Pick transport, command, args, and env vars — the tool emits the correct JSON shape for each client and shows the config file path.</p>
+        </a>
+
+        <a href="/de/ai-image-inspector/" class="card" data-category="ai">
+          <div class="card-icon">🔬</div>
+          <h3 class="card-title">AI Image Metadata Inspector</h3>
+          <p class="card-description">Drop or pick an image to inspect its embedded metadata. The tool reads PNG tEXt/iTXt chunks (Stable Diffusion stores prompts there), JPEG EXIF UserComment (Midjourney/DALL-E often embed details), and detects C2PA Content Credentials boxes. Files never leave your browser.</p>
+        </a>
+
+        <a href="/de/chatgpt-to-blog/" class="card" data-category="ai">
+          <div class="card-icon">📝</div>
+          <h3 class="card-title">ChatGPT → Blog Post Converter</h3>
+          <p class="card-description">Paste a ChatGPT (or Claude) conversation — text or exported JSON — and the tool splits it into user/assistant turns, optionally strips your prompts, and formats the assistant responses as clean Markdown ready for your blog.</p>
+        </a>
+
+        <a href="/de/prompt-pii-scrubber/" class="card" data-category="ai">
+          <div class="card-icon">🛡️</div>
+          <h3 class="card-title">Prompt PII Scrubber</h3>
+          <p class="card-description">Mask sensitive data (emails, phones, SSNs, credit cards, API keys, IPs, URLs) before pasting prompts into ChatGPT, Claude, or any AI service. Runs entirely in your browser — your text never leaves the page.</p>
+        </a>
+
+        <a href="/de/claude-md-generator/" class="card" data-category="ai">
+          <div class="card-icon">📜</div>
+          <h3 class="card-title">Claude.md Generator</h3>
+          <p class="card-description">Generate a CLAUDE.md (or any AI agent system prompt) from a simple form. Specify the project role, coding conventions, constraints, and commands; copy or download the resulting Markdown.</p>
         </a>
 
         <a href="/de/image-editor/" class="card" data-category="image">

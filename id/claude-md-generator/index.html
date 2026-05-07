@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy-Report-Only" content="default-src 'self' https: data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https:; frame-src https:;">
+    <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+    <title>Claude.md / System Prompt Generator - Utilify</title>
+    <meta name="description" content="Generate a CLAUDE.md project file from a simple form. Define role, conventions, constraints, and commands; download as Markdown.">
+    <link rel="canonical" href="https://utilifyapp.net/id/claude-md-generator/">
+
+    <meta property="og:title" content="Claude.md / System Prompt Generator - Utilify">
+    <meta property="og:description" content="Generate a CLAUDE.md project file from a simple form. Define role, conventions, constraints, and commands; download as Markdown.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://utilifyapp.net/id/claude-md-generator/">
+
+    <link rel="alternate" hreflang="en" href="https://utilifyapp.net/en/claude-md-generator/">
+    <link rel="alternate" hreflang="ko" href="https://utilifyapp.net/ko/claude-md-generator/">
+    <link rel="alternate" hreflang="vi" href="https://utilifyapp.net/vi/claude-md-generator/">
+    <link rel="alternate" hreflang="th" href="https://utilifyapp.net/th/claude-md-generator/">
+    <link rel="alternate" hreflang="de" href="https://utilifyapp.net/de/claude-md-generator/">
+    <link rel="alternate" hreflang="pt" href="https://utilifyapp.net/pt/claude-md-generator/">
+    <link rel="alternate" hreflang="id" href="https://utilifyapp.net/id/claude-md-generator/">
+    <link rel="alternate" hreflang="hi" href="https://utilifyapp.net/hi/claude-md-generator/">
+    <link rel="alternate" hreflang="ja" href="https://utilifyapp.net/ja/claude-md-generator/">
+    <link rel="alternate" hreflang="zh-Hans" href="https://utilifyapp.net/zh-cn/claude-md-generator/">
+    <link rel="alternate" hreflang="zh-Hant" href="https://utilifyapp.net/zh-tw/claude-md-generator/">
+    <link rel="alternate" hreflang="x-default" href="https://utilifyapp.net/en/claude-md-generator/">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Claude.md Generator",
+        "description": "Form-based generator for Anthropic CLAUDE.md project context files.",
+        "url": "https://utilifyapp.net/id/claude-md-generator/",
+        "inLanguage": "id",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Any",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+
+    <style>
+        .form-grid { display: grid; gap: var(--spacing-md); margin-top: var(--spacing-lg); }
+        .form-grid label { font-weight: 600; }
+        .form-grid input, .form-grid textarea { font-family: var(--font-mono); font-size: 0.95rem; }
+        .preview-box {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            white-space: pre-wrap;
+            min-height: 200px;
+        }
+    </style>
+    <link rel="manifest" href="/manifest.json">
+    <script data-utilify-adsense-loader async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631" crossorigin="anonymous"></script>
+    <meta data-utilify-og property="og:image" content="https://utilifyapp.net/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Utilify">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://utilifyapp.net/assets/og-image.png">
+    <link data-utilify-favicon rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+</head>
+
+<body>
+    <a data-utilify-skip class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header"><div class="container"><div class="header-content"><a href="/id/" class="site-logo">🛠️ Utilify</a></div></div></header>
+    <main id="main" class="main-content">
+        <div class="container-narrow">
+            <h1>📜 Claude.md Generator</h1>
+            <div class="security-badge" style="display:flex;align-items:center;justify-content:center;gap:8px;margin:10px 0;font-size:14px;color:var(--text-secondary);">
+                <span>🔒 Secure & Client-side</span>
+            </div>
+
+            <p>Generate a CLAUDE.md (or any AI agent system prompt) from a simple form. Specify the project role, coding conventions, constraints, and commands; copy or download the resulting Markdown.</p>
+
+            <div class="form-grid">
+                <div>
+                    <label for="projectName">Project name</label>
+                    <input id="projectName" class="form-input" type="text" placeholder="my-app">
+                </div>
+                <div>
+                    <label for="role">Role / persona</label>
+                    <textarea id="role" class="form-input" rows="2" placeholder="You are a senior backend engineer working on a Python web service."></textarea>
+                </div>
+                <div>
+                    <label for="conventions">Conventions (one per line)</label>
+                    <textarea id="conventions" class="form-input" rows="4" placeholder="Use 4-space indentation
+Follow PEP 8
+Write type hints on all public functions"></textarea>
+                </div>
+                <div>
+                    <label for="constraints">Constraints (one per line)</label>
+                    <textarea id="constraints" class="form-input" rows="4" placeholder="Never modify migrations without explicit approval
+Do not touch the legacy auth module"></textarea>
+                </div>
+                <div>
+                    <label for="commands">Common commands</label>
+                    <textarea id="commands" class="form-input" rows="4" placeholder="make test
+ruff check .
+python manage.py runserver"></textarea>
+                </div>
+            </div>
+
+            <div class="btn-group" style="margin-top: var(--spacing-md);">
+                <button class="btn btn-primary" id="generateBtn">Generate</button>
+                <button class="btn btn-secondary" id="copyBtn">Copy</button>
+                <button class="btn btn-secondary" id="downloadBtn">Download .md</button>
+                <button class="btn btn-secondary" id="clearBtn">Clear</button>
+            </div>
+
+            <h2>Generated CLAUDE.md</h2>
+            <pre id="output" class="preview-box" aria-live="polite"></pre>
+
+            <h2>How to use</h2>
+            <div class="howto-content"><ol><li>Fill in your project name and role description.</li><li>List conventions one per line — they become a bulleted list in the output.</li><li>List constraints one per line — also bulleted.</li><li>Add the common commands you run (test, lint, dev server) — wrapped in a <code>```bash</code> block.</li><li>Click <strong>Generate</strong>, review, then <strong>Download .md</strong> to save as <code>CLAUDE.md</code> at your repo root.</li></ol><p>The same file works as a system prompt for Cursor (<code>.cursorrules</code>), Aider, and any other agent that reads project-level context. For Cursor, just rename the downloaded file.</p></div>
+
+            <div class="related-tools-section">
+                <h3>Related Tools</h3>
+                <div class="related-buttons">
+                    <a href="/id/mcp-config-generator/" class="related-btn">MCP Config Generator</a><a
+                        href="/id/prompt-pii-scrubber/" class="related-btn">Prompt PII Scrubber</a><a
+                        href="/id/token-counter/" class="related-btn">Token Counter</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="site-footer"><div class="container"><div class="footer-content"><p>&copy; 2025 Utilify. All rights reserved.</p>
+                <p data-legal-links style="font-size: 0.875rem; margin-top: 8px;"><a href="/id/about/">About</a> · <a href="/id/privacy/">Privacy</a> · <a href="/id/terms/">Terms</a></p></div></div></footer>
+    <script src="/assets/js/common.js"></script>
+    <script>
+        const out = document.getElementById('output');
+
+        function bullets(text) {
+            return text.split('\n').map(l => l.trim()).filter(Boolean).map(l => l.startsWith('-') ? l : '- ' + l).join('\n');
+        }
+
+        function generate() {
+            const proj = document.getElementById('projectName').value.trim() || 'Project';
+            const role = document.getElementById('role').value.trim();
+            const conv = document.getElementById('conventions').value.trim();
+            const cons = document.getElementById('constraints').value.trim();
+            const cmds = document.getElementById('commands').value.trim();
+
+            let md = '# ' + proj + ' — CLAUDE.md\n\n';
+            md += '> This file is loaded automatically by Claude Code when you open the project.\n\n';
+            if (role) md += '## Role\n\n' + role + '\n\n';
+            if (conv) md += '## Conventions\n\n' + bullets(conv) + '\n\n';
+            if (cons) md += '## Constraints\n\n' + bullets(cons) + '\n\n';
+            if (cmds) md += '## Common commands\n\n```bash\n' + cmds + '\n```\n\n';
+            out.textContent = md.trimEnd();
+        }
+
+        function download() {
+            const blob = new Blob([out.textContent], { type: 'text/markdown' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url; a.download = 'CLAUDE.md';
+            document.body.appendChild(a); a.click();
+            document.body.removeChild(a); URL.revokeObjectURL(url);
+        }
+
+        document.getElementById('generateBtn').addEventListener('click', generate);
+        document.getElementById('copyBtn').addEventListener('click', () => {
+            if (out.textContent) Utils.copyToClipboard(out.textContent);
+            else Utils.showToast('Click Generate first.');
+        });
+        document.getElementById('downloadBtn').addEventListener('click', () => {
+            if (!out.textContent) { generate(); }
+            if (out.textContent) download();
+        });
+        document.getElementById('clearBtn').addEventListener('click', () => {
+            ['projectName','role','conventions','constraints','commands'].forEach(id => document.getElementById(id).value = '');
+            out.textContent = '';
+        });
+    </script>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({google_ad_client:"ca-pub-6334819180242631",enable_page_level_ads:true});</script>
+</body>
+
+</html>

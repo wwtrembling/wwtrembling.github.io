@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy-Report-Only" content="default-src 'self' https: data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https:; frame-src https:;">
+    <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+    <title>MCP 서버 설정 생성기 (Claude Desktop / Cursor / VS Code) - Utilify</title>
+    <meta name="description" content="Claude Desktop·Cursor·VS Code용 Model Context Protocol 서버 설정 JSON을 폼으로 생성. transport·command·args·env를 입력하면 클라이언트별 올바른 JSON과 경로를 출력.">
+    <link rel="canonical" href="https://utilifyapp.net/ko/mcp-config-generator/">
+
+    <meta property="og:title" content="MCP 서버 설정 생성기 (Claude Desktop / Cursor / VS Code) - Utilify">
+    <meta property="og:description" content="Claude Desktop·Cursor·VS Code용 Model Context Protocol 서버 설정 JSON을 폼으로 생성. transport·command·args·env를 입력하면 클라이언트별 올바른 JSON과 경로를 출력.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://utilifyapp.net/ko/mcp-config-generator/">
+
+    <link rel="alternate" hreflang="en" href="https://utilifyapp.net/en/mcp-config-generator/">
+    <link rel="alternate" hreflang="ko" href="https://utilifyapp.net/ko/mcp-config-generator/">
+    <link rel="alternate" hreflang="vi" href="https://utilifyapp.net/vi/mcp-config-generator/">
+    <link rel="alternate" hreflang="th" href="https://utilifyapp.net/th/mcp-config-generator/">
+    <link rel="alternate" hreflang="de" href="https://utilifyapp.net/de/mcp-config-generator/">
+    <link rel="alternate" hreflang="pt" href="https://utilifyapp.net/pt/mcp-config-generator/">
+    <link rel="alternate" hreflang="id" href="https://utilifyapp.net/id/mcp-config-generator/">
+    <link rel="alternate" hreflang="hi" href="https://utilifyapp.net/hi/mcp-config-generator/">
+    <link rel="alternate" hreflang="ja" href="https://utilifyapp.net/ja/mcp-config-generator/">
+    <link rel="alternate" hreflang="zh-Hans" href="https://utilifyapp.net/zh-cn/mcp-config-generator/">
+    <link rel="alternate" hreflang="zh-Hant" href="https://utilifyapp.net/zh-tw/mcp-config-generator/">
+    <link rel="alternate" hreflang="x-default" href="https://utilifyapp.net/en/mcp-config-generator/">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "MCP 설정 생성기",
+        "description": "Model Context Protocol 서버 설정을 폼 기반으로 생성하는 도구.",
+        "url": "https://utilifyapp.net/ko/mcp-config-generator/",
+        "inLanguage": "ko",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Any",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+
+    <style>
+        .mcp-form { display: grid; gap: var(--spacing-md); margin-top: var(--spacing-lg); }
+        .mcp-form label { font-weight: 600; }
+        .mcp-form input, .mcp-form textarea, .mcp-form select { font-family: var(--font-mono); }
+        .target-row { display: flex; flex-wrap: wrap; gap: var(--spacing-md); margin: var(--spacing-md) 0; }
+        .target-row label { display: inline-flex; gap: 6px; font-weight: 500; }
+        .preview-box {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            margin-top: var(--spacing-md);
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            white-space: pre-wrap;
+            min-height: 150px;
+            overflow-x: auto;
+        }
+        .install-path {
+            background: var(--bg-tertiary);
+            padding: 6px 10px; border-radius: 4px;
+            font-family: var(--font-mono); font-size: 0.85rem;
+            display: inline-block; margin-top: 6px;
+        }
+    </style>
+    <link rel="manifest" href="/manifest.json">
+    <script data-utilify-adsense-loader async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631" crossorigin="anonymous"></script>
+    <meta data-utilify-og property="og:image" content="https://utilifyapp.net/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Utilify">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://utilifyapp.net/assets/og-image.png">
+    <link data-utilify-favicon rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+</head>
+
+<body>
+    <a data-utilify-skip class="skip-link" href="#main">본문으로 건너뛰기</a>
+    <header class="site-header"><div class="container"><div class="header-content"><a href="/ko/" class="site-logo">🛠️ Utilify</a></div></div></header>
+    <main id="main" class="main-content">
+        <div class="container-narrow">
+            <h1>🔌 MCP 서버 설정 생성기</h1>
+            <div class="security-badge" style="display:flex;align-items:center;justify-content:center;gap:8px;margin:10px 0;font-size:14px;color:var(--text-secondary);">
+                <span>🔒 Secure & Client-side</span>
+            </div>
+
+            <p>Claude Desktop·Cursor·VS Code용 Model Context Protocol(MCP) 서버 설정을 생성합니다. transport·command·args·env 입력 → 클라이언트별 올바른 JSON 포맷과 설치 경로를 자동 출력.</p>
+
+            <div class="target-row" role="radiogroup" aria-label="대상 클라이언트">
+                <strong>대상 클라이언트:</strong>
+                <label><input type="radio" name="target" value="claude-desktop" checked> Claude Desktop</label>
+                <label><input type="radio" name="target" value="cursor"> Cursor</label>
+                <label><input type="radio" name="target" value="vscode"> VS Code</label>
+            </div>
+
+            <div class="mcp-form">
+                <div>
+                    <label for="serverName">서버 이름</label>
+                    <input id="serverName" class="form-input" type="text" value="my-server" placeholder="filesystem">
+                </div>
+                <div>
+                    <label for="transport">Transport</label>
+                    <select id="transport" class="form-input">
+                        <option value="stdio">stdio</option>
+                        <option value="http">streamable-http</option>
+                        <option value="sse">sse</option>
+                    </select>
+                </div>
+                <div id="cmdGroup">
+                    <label for="command">Command</label>
+                    <input id="command" class="form-input" type="text" placeholder="npx">
+                    <label for="args" style="margin-top: 8px; display:block;">Args (한 줄에 하나)</label>
+                    <textarea id="args" class="form-input" rows="3" placeholder="-y&#10;@modelcontextprotocol/server-filesystem&#10;/path/to/dir"></textarea>
+                </div>
+                <div id="urlGroup" hidden>
+                    <label for="serverUrl">서버 URL</label>
+                    <input id="serverUrl" class="form-input" type="text" placeholder="https://example.com/mcp">
+                </div>
+                <div>
+                    <label for="env">환경 변수 (KEY=value, 한 줄에 하나)</label>
+                    <textarea id="env" class="form-input" rows="3" placeholder="API_KEY=xxx&#10;DEBUG=1"></textarea>
+                </div>
+            </div>
+
+            <div class="btn-group" style="margin-top: var(--spacing-md);">
+                <button class="btn btn-primary" id="generateBtn">생성</button>
+                <button class="btn btn-secondary" id="copyBtn">복사</button>
+                <button class="btn btn-secondary" id="clearBtn">지우기</button>
+            </div>
+
+            <h2>설정 JSON</h2>
+            <p>설치 경로: <span id="installPath" class="install-path"></span></p>
+            <pre id="output" class="preview-box" aria-live="polite"></pre>
+
+            <h2>사용 방법</h2>
+            <div class="howto-content"><ol><li>대상 클라이언트(Claude Desktop·Cursor·VS Code)를 선택하세요.</li><li>서버 이름(dict 키로 사용됩니다)을 입력합니다.</li><li>transport 선택: <code>stdio</code>는 로컬 프로세스(가장 일반적), <code>streamable-http</code>·<code>sse</code>는 원격 서버용.</li><li>stdio: command와 args 입력 / HTTP·SSE: URL 입력.</li><li>필요시 환경 변수 추가.</li><li><strong>생성</strong> 후 표시된 경로의 설정 파일에 JSON을 복사하세요.</li></ol><p><strong>설정 파일 경로</strong>:<br><code>Claude Desktop</code> — macOS: <code>~/Library/Application Support/Claude/claude_desktop_config.json</code>; Windows: <code>%APPDATA%\Claude\claude_desktop_config.json</code><br><code>Cursor</code> — 전역: <code>~/.cursor/mcp.json</code>; 프로젝트별: <code>.cursor/mcp.json</code><br><code>VS Code</code> — 워크스페이스: <code>.vscode/mcp.json</code> (또는 User Settings → MCP Servers)</p></div>
+
+            <div class="related-tools-section">
+                <h3>관련 도구</h3>
+                <div class="related-buttons">
+                    <a href="/ko/claude-md-generator/" class="related-btn">Claude.md 생성기</a><a
+                        href="/ko/json-formatter/" class="related-btn">JSON 포매터</a><a
+                        href="/ko/prompt-pii-scrubber/" class="related-btn">프롬프트 PII 마스킹</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="site-footer"><div class="container"><div class="footer-content"><p>&copy; 2025 Utilify. All rights reserved.</p>
+                <p data-legal-links style="font-size: 0.875rem; margin-top: 8px;"><a href="/ko/about/">소개</a> · <a href="/ko/privacy/">개인정보</a> · <a href="/ko/terms/">이용약관</a></p></div></div></footer>
+    <script src="/assets/js/common.js"></script>
+    <script>
+        const out = document.getElementById('output');
+        const transportSel = document.getElementById('transport');
+        const cmdGroup = document.getElementById('cmdGroup');
+        const urlGroup = document.getElementById('urlGroup');
+        const installEl = document.getElementById('installPath');
+
+        const PATHS = {
+            'claude-desktop': {
+                macos: '~/Library/Application Support/Claude/claude_desktop_config.json',
+                windows: '%APPDATA%\\Claude\\claude_desktop_config.json',
+            },
+            'cursor': {
+                global: '~/.cursor/mcp.json',
+                project: '<project>/.cursor/mcp.json',
+            },
+            'vscode': {
+                workspace: '<project>/.vscode/mcp.json',
+                user: 'User Settings → MCP Servers',
+            },
+        };
+
+        function refreshTransport() {
+            const t = transportSel.value;
+            cmdGroup.hidden = t !== 'stdio';
+            urlGroup.hidden = t === 'stdio';
+        }
+        transportSel.addEventListener('change', refreshTransport);
+
+        function parseLines(text) {
+            return text.split('\n').map(l => l.trim()).filter(Boolean);
+        }
+
+        function buildServer() {
+            const name = document.getElementById('serverName').value.trim() || 'server';
+            const transport = transportSel.value;
+            const env = {};
+            for (const line of parseLines(document.getElementById('env').value)) {
+                const i = line.indexOf('=');
+                if (i > 0) env[line.slice(0, i).trim()] = line.slice(i + 1).trim();
+            }
+            const server = {};
+            if (transport === 'stdio') {
+                server.command = document.getElementById('command').value.trim() || 'npx';
+                const args = parseLines(document.getElementById('args').value);
+                if (args.length) server.args = args;
+            } else {
+                server.type = transport;
+                server.url = document.getElementById('serverUrl').value.trim() || 'https://example.com/mcp';
+            }
+            if (Object.keys(env).length) server.env = env;
+            return [name, server];
+        }
+
+        function generate() {
+            const target = document.querySelector('input[name="target"]:checked').value;
+            const [name, server] = buildServer();
+            let payload;
+            if (target === 'claude-desktop') {
+                payload = { mcpServers: { [name]: server } };
+            } else if (target === 'cursor') {
+                payload = { mcpServers: { [name]: server } };
+            } else { // vscode
+                payload = { servers: { [name]: server } };
+            }
+            out.textContent = JSON.stringify(payload, null, 2);
+
+            const paths = PATHS[target];
+            installEl.textContent = Object.entries(paths).map(([k, v]) => k + ': ' + v).join('  •  ');
+        }
+
+        document.getElementById('generateBtn').addEventListener('click', generate);
+        document.getElementById('copyBtn').addEventListener('click', () => {
+            if (out.textContent) Utils.copyToClipboard(out.textContent);
+            else Utils.showToast('먼저 생성을 눌러주세요.');
+        });
+        document.getElementById('clearBtn').addEventListener('click', () => {
+            ['serverName','command','args','serverUrl','env'].forEach(id => document.getElementById(id).value = '');
+            document.getElementById('serverName').value = 'my-server';
+            out.textContent = ''; installEl.textContent = '';
+        });
+
+        // Initial
+        refreshTransport();
+        generate();
+    </script>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({google_ad_client:"ca-pub-6334819180242631",enable_page_level_ads:true});</script>
+</body>
+
+</html>

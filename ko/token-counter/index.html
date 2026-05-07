@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy-Report-Only" content="default-src 'self' https: data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https:; frame-src https:;">
+    <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+    <title>GPT / Claude / Gemini 토큰 카운터 & 비용 계산기 - Utilify</title>
+    <meta name="description" content="임의의 텍스트로 토큰 수와 모델별 API 비용(GPT-4o·Claude Opus·Gemini 2.5 등)을 추정. 무료, 가입 불필요, 브라우저에서 동작.">
+    <link rel="canonical" href="https://utilifyapp.net/ko/token-counter/">
+
+    <meta property="og:title" content="GPT / Claude / Gemini 토큰 카운터 & 비용 계산기 - Utilify">
+    <meta property="og:description" content="임의의 텍스트로 토큰 수와 모델별 API 비용(GPT-4o·Claude Opus·Gemini 2.5 등)을 추정. 무료, 가입 불필요, 브라우저에서 동작.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://utilifyapp.net/ko/token-counter/">
+
+    <link rel="alternate" hreflang="en" href="https://utilifyapp.net/en/token-counter/">
+    <link rel="alternate" hreflang="ko" href="https://utilifyapp.net/ko/token-counter/">
+    <link rel="alternate" hreflang="vi" href="https://utilifyapp.net/vi/token-counter/">
+    <link rel="alternate" hreflang="th" href="https://utilifyapp.net/th/token-counter/">
+    <link rel="alternate" hreflang="de" href="https://utilifyapp.net/de/token-counter/">
+    <link rel="alternate" hreflang="pt" href="https://utilifyapp.net/pt/token-counter/">
+    <link rel="alternate" hreflang="id" href="https://utilifyapp.net/id/token-counter/">
+    <link rel="alternate" hreflang="hi" href="https://utilifyapp.net/hi/token-counter/">
+    <link rel="alternate" hreflang="ja" href="https://utilifyapp.net/ja/token-counter/">
+    <link rel="alternate" hreflang="zh-Hans" href="https://utilifyapp.net/zh-cn/token-counter/">
+    <link rel="alternate" hreflang="zh-Hant" href="https://utilifyapp.net/zh-tw/token-counter/">
+    <link rel="alternate" hreflang="x-default" href="https://utilifyapp.net/en/token-counter/">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "AI 토큰 카운터",
+        "description": "OpenAI·Anthropic·Google 모델의 토큰 수와 API 비용을 추정합니다.",
+        "url": "https://utilifyapp.net/ko/token-counter/",
+        "inLanguage": "ko",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Any",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+
+    <style>
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+        }
+        .stat-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            text-align: center;
+        }
+        .stat-card .label { font-size: 0.85rem; color: var(--text-secondary); }
+        .stat-card .value { font-size: 1.6rem; font-weight: 700; color: var(--primary-color); margin-top: 4px; font-variant-numeric: tabular-nums; }
+
+        .cost-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: var(--spacing-md);
+            font-variant-numeric: tabular-nums;
+        }
+        .cost-table th, .cost-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--border-color);
+            text-align: right;
+        }
+        .cost-table th:first-child, .cost-table td:first-child { text-align: left; }
+        .cost-table th { background: var(--bg-secondary); font-weight: 600; }
+        .cost-table td.total { font-weight: 700; color: var(--primary-color); }
+
+        .out-tokens-row {
+            display: flex; gap: var(--spacing-md); align-items: center;
+            margin: var(--spacing-md) 0;
+            font-size: 0.95rem;
+        }
+        .out-tokens-row input { width: 100px; }
+    </style>
+    <link rel="manifest" href="/manifest.json">
+    <script data-utilify-adsense-loader async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631" crossorigin="anonymous"></script>
+    <meta data-utilify-og property="og:image" content="https://utilifyapp.net/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Utilify">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://utilifyapp.net/assets/og-image.png">
+    <link data-utilify-favicon rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+</head>
+
+<body>
+    <a data-utilify-skip class="skip-link" href="#main">본문으로 건너뛰기</a>
+    <header class="site-header"><div class="container"><div class="header-content"><a href="/ko/" class="site-logo">🛠️ Utilify</a></div></div></header>
+    <main id="main" class="main-content">
+        <div class="container-narrow">
+            <h1>🪙 AI 토큰 카운터 & 비용 계산기</h1>
+            <div class="security-badge" style="display:flex;align-items:center;justify-content:center;gap:8px;margin:10px 0;font-size:14px;color:var(--text-secondary);">
+                <span>🔒 Secure & Client-side</span>
+            </div>
+
+            <p>텍스트의 토큰 수를 추정하고 GPT-4o·Claude Opus 4.7·Gemini 2.5 등 모델별 API 비용을 표시합니다. 휴리스틱(영문 ≈4자/토큰, CJK ≈1.5자/토큰) 기반 — 정확한 토큰화는 제공자 API가 필요합니다.</p>
+
+            <label class="form-label" for="textInput">텍스트</label>
+            <textarea id="textInput" class="form-input" style="min-height:200px;font-family:var(--font-mono);" placeholder="프롬프트 또는 문서를 붙여넣으세요..."></textarea>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="label">문자 수</div>
+                    <div class="value" id="chars" aria-live="polite">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="label">단어 수</div>
+                    <div class="value" id="words" aria-live="polite">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="label">추정 토큰</div>
+                    <div class="value" id="tokens" aria-live="polite">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="label">줄 수</div>
+                    <div class="value" id="lines" aria-live="polite">0</div>
+                </div>
+            </div>
+
+            <div class="out-tokens-row">
+                <label for="outTokens">예상 출력 토큰:</label>
+                <input id="outTokens" class="form-input" type="number" min="0" value="500">
+                <span style="color: var(--text-secondary); font-size: 0.85rem;">(출력 비용 계산에 사용)</span>
+            </div>
+
+            <h2>모델별 비용</h2>
+            <table class="cost-table">
+                <thead>
+                    <tr>
+                        <th>모델</th>
+                        <th>입력 $/1M</th>
+                        <th>출력 $/1M</th>
+                        <th>입력 비용</th>
+                        <th>출력 비용</th>
+                        <th>합계</th>
+                    </tr>
+                </thead>
+                <tbody id="costBody"></tbody>
+            </table>
+
+            <h2>사용 방법</h2>
+            <div class="howto-content"><ol><li>비용을 추정할 프롬프트·문서·트랜스크립트를 붙여넣으세요.</li><li>문자/단어/토큰/줄 수가 실시간으로 갱신됩니다.</li><li>긴 응답이 예상되면 <strong>예상 출력 토큰</strong>을 조정하세요 (기본 500).</li><li>비용 표에 인기 모델별 입력·출력·합계 비용이 표시됩니다.</li></ol><p><strong>토큰 정확도</strong>: 한글·일본어·중국어 비율을 감지해 chars-per-token 비율을 조정하는 빠른 휴리스틱입니다. 정확한 BPE 토큰화(cl100k_base, o200k_base 등)는 제공자 API 또는 1-3MB의 사전 다운로드가 필요합니다. 비용 추정 목적에는 일반적으로 정확값 ±10% 이내입니다.</p><p><strong>가격</strong>: 2026년 5월 기준 공개된 1M 토큰당 가격. 정산이 중요한 결정 전에는 반드시 제공자의 공식 가격 페이지를 확인하세요.</p></div>
+
+            <div class="related-tools-section">
+                <h3>관련 도구</h3>
+                <div class="related-buttons">
+                    <a href="/ko/prompt-pii-scrubber/" class="related-btn">프롬프트 PII 마스킹</a><a
+                        href="/ko/claude-md-generator/" class="related-btn">Claude.md 생성기</a><a
+                        href="/ko/mcp-config-generator/" class="related-btn">MCP 설정 생성기</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="site-footer"><div class="container"><div class="footer-content"><p>&copy; 2025 Utilify. All rights reserved.</p>
+                <p data-legal-links style="font-size: 0.875rem; margin-top: 8px;"><a href="/ko/about/">소개</a> · <a href="/ko/privacy/">개인정보</a> · <a href="/ko/terms/">이용약관</a></p></div></div></footer>
+    <script src="/assets/js/common.js"></script>
+    <script>
+        // Pricing as of 2026 — input/output USD per 1M tokens.
+        const MODELS = [
+            { name: 'GPT-4o',         input: 2.50,  output: 10.00 },
+            { name: 'GPT-4o mini',    input: 0.15,  output: 0.60  },
+            { name: 'GPT-4 Turbo',    input: 10.00, output: 30.00 },
+            { name: 'Claude Opus 4.7',  input: 15.00, output: 75.00 },
+            { name: 'Claude Sonnet 4.6', input: 3.00,  output: 15.00 },
+            { name: 'Claude Haiku 4.5',  input: 1.00,  output: 5.00  },
+            { name: 'Gemini 2.5 Pro', input: 1.25,  output: 5.00  },
+            { name: 'Gemini 2.5 Flash', input: 0.30,  output: 2.50  },
+        ];
+
+        const textInput = document.getElementById('textInput');
+        const outTokensEl = document.getElementById('outTokens');
+
+        function estimateTokens(text) {
+            // Rough heuristic: ~4 chars per token (English) but CJK ~1-2 chars per token.
+            // Detect CJK ratio; blend.
+            if (!text) return 0;
+            const cjk = (text.match(/[　-鿿가-힣぀-ヿ]/g) || []).length;
+            const ratio = cjk / text.length;
+            const charsPerToken = 4 - 2.5 * ratio;  // 4 for pure English, ~1.5 for pure CJK
+            return Math.ceil(text.length / Math.max(charsPerToken, 1.2));
+        }
+
+        function fmtCost(c) {
+            if (c < 0.01) return '$' + c.toFixed(5);
+            if (c < 1) return '$' + c.toFixed(4);
+            return '$' + c.toFixed(2);
+        }
+
+        function update() {
+            const t = textInput.value;
+            const chars = t.length;
+            const words = t.trim() ? t.trim().split(/\s+/).length : 0;
+            const lines = t ? t.split('\n').length : 0;
+            const tokens = estimateTokens(t);
+            document.getElementById('chars').textContent = chars.toLocaleString();
+            document.getElementById('words').textContent = words.toLocaleString();
+            document.getElementById('tokens').textContent = tokens.toLocaleString();
+            document.getElementById('lines').textContent = lines.toLocaleString();
+
+            const outTokens = parseInt(outTokensEl.value, 10) || 0;
+            const tbody = document.getElementById('costBody');
+            tbody.innerHTML = '';
+            for (const m of MODELS) {
+                const inCost = (tokens / 1_000_000) * m.input;
+                const outCost = (outTokens / 1_000_000) * m.output;
+                const total = inCost + outCost;
+                const tr = document.createElement('tr');
+                tr.innerHTML =
+                    '<td>' + m.name + '</td>' +
+                    '<td>$' + m.input.toFixed(2) + '</td>' +
+                    '<td>$' + m.output.toFixed(2) + '</td>' +
+                    '<td>' + fmtCost(inCost) + '</td>' +
+                    '<td>' + fmtCost(outCost) + '</td>' +
+                    '<td class="total">' + fmtCost(total) + '</td>';
+                tbody.appendChild(tr);
+            }
+        }
+
+        textInput.addEventListener('input', update);
+        outTokensEl.addEventListener('input', update);
+        update();
+    </script>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({google_ad_client:"ca-pub-6334819180242631",enable_page_level_ads:true});</script>
+</body>
+
+</html>
