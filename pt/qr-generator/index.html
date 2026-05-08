@@ -63,23 +63,16 @@
             margin: var(--spacing-lg) 0;
         }
 
+        /* QR codes need a white quiet zone to remain scannable — even in
+           dark mode, the inner frame stays white intentionally. */
         #qrcode {
             display: inline-block;
             padding: var(--spacing-lg);
             background: white;
             border-radius: var(--radius-md);
         }
-
-        .btn {
-            padding: var(--spacing-md) var(--spacing-lg);
-            border: none;
-            border-radius: var(--radius-md);
-            font-weight: 600;
-            cursor: pointer;
-            background: var(--primary-color);
-            color: white;
-            margin: var(--spacing-sm);
-        }
+        .button-row { display: flex; gap: var(--spacing-sm); flex-wrap: wrap; justify-content: center; margin-top: var(--spacing-lg); }
+        .button-row .btn { min-width: 140px; }
     </style>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631"
         crossorigin="anonymous"></script>
@@ -130,10 +123,9 @@
             </div>
             <div class="qr-container">
                 <div id="qrcode"></div>
-                <div style="margin-top: var(--spacing-lg);">
-                    <button class="btn" id="generateBtn">Gerar</button>
-                    <button class="btn" id="downloadBtn"
-                        style="background: var(--bg-secondary); color: var(--text-primary); border: 1px solid var(--border-color);">Baixar</button>
+                <div class="button-row">
+                    <button class="btn btn-primary" id="generateBtn">Gerar</button>
+                    <button class="btn btn-secondary" id="downloadBtn">Baixar</button>
                 </div>
             </div>
 
