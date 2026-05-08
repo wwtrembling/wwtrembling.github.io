@@ -780,6 +780,71 @@ a:hover {
 }
 .table-responsive > table { margin-top: 0; }
 
+/* L3 — index page live search bar. */
+.search-bar {
+  max-width: 480px;
+  margin: 0 auto var(--spacing-lg);
+}
+.search-bar .form-input { width: 100%; }
+
+/* L2 — category hub pages: intro copy + tool grid + FAQ + hub-link from index. */
+.page-intro {
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: var(--spacing-xl);
+}
+.page-intro p { margin-bottom: var(--spacing-md); }
+.page-intro p:last-child { margin-bottom: 0; }
+
+.hub-tool-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+}
+.hub-card { padding: var(--spacing-lg); }
+
+.hub-faq { margin-bottom: var(--spacing-xl); }
+.hub-faq details {
+  padding: var(--spacing-md);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--spacing-sm);
+  background: var(--bg-primary);
+}
+.hub-faq details[open] { background: var(--bg-secondary); }
+.hub-faq summary {
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--text-primary);
+  list-style: none;
+}
+.hub-faq summary::-webkit-details-marker { display: none; }
+.hub-faq summary::before {
+  content: '▸';
+  display: inline-block;
+  margin-right: 6px;
+  color: var(--primary-color);
+  transition: transform 0.15s;
+}
+.hub-faq details[open] summary::before { transform: rotate(90deg); }
+.hub-faq details p { margin: var(--spacing-sm) 0 0; color: var(--text-secondary); }
+
+/* "→ Finance hub" link rendered next to the matching subcat chip on the index. */
+.hub-link {
+  font-size: 0.9rem;
+  color: var(--primary-color);
+  text-decoration: none;
+  align-self: center;
+  padding: 4px 8px;
+  border-radius: var(--radius-md);
+  transition: background-color var(--transition-fast);
+}
+.hub-link:hover {
+  background: rgba(99, 102, 241, 0.08);
+  text-decoration: underline;
+}
+
 .skip-link:focus {
   position: fixed;
   left: 8px;

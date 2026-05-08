@@ -202,7 +202,11 @@ INDEX_PAGE = {
         "subcat_all": "All",
         "subcat_finance": "Finance",
         "subcat_health": "Health",
-        "subcat_filter_aria": "Subcategory filter"
+        "subcat_filter_aria": "Subcategory filter",
+        "search_placeholder": "Search tools…",
+        "search_no_results": "No tools match your search.",
+        "hub_link_finance": "Finance hub",
+        "hub_link_health": "Health hub"
     },
     "ko": {
         "title": "무료 온라인 유틸리티 모음 - Utilify",
@@ -232,7 +236,11 @@ INDEX_PAGE = {
         "subcat_all": "전체",
         "subcat_finance": "금융",
         "subcat_health": "건강",
-        "subcat_filter_aria": "하위 카테고리 필터"
+        "subcat_filter_aria": "하위 카테고리 필터",
+        "search_placeholder": "도구 검색…",
+        "search_no_results": "검색 결과가 없습니다.",
+        "hub_link_finance": "금융 허브",
+        "hub_link_health": "건강 허브"
     },
     "vi": {
         "title": "Bộ tiện ích trực tuyến miễn phí - Utilify",
@@ -7235,5 +7243,222 @@ BODY_FAT_CALCULATOR = {
         "related_unit": "단위 변환기",
         "related_date": "날짜 계산기",
         "card_blurb": "미 해군 둘레 측정법으로 체지방률을 즉시 추정 (키·목·허리 + 엉덩이)."
+    }
+}
+
+
+FINANCE_HUB = {
+    "en": {
+        "title": "Finance Calculators",
+        "meta_title": "Finance Calculators — Loan, Compound Interest, Retirement - Utilify",
+        "meta_desc": "Free finance calculators that run entirely in your browser. Loan payments, compound interest projections, retirement nest-egg simulations. No signup, no upload.",
+        "og_title": "Finance Calculators - Utilify",
+        "og_desc": "Loan, compound interest, and retirement calculators — all client-side.",
+        "json_name": "Finance Calculators",
+        "json_desc": "Curated finance calculators for loans, savings, and retirement planning.",
+        "h1": "Finance Calculators",
+        "intro_html": (
+            "<p>Money decisions reward curiosity. Whether you're shopping for a mortgage, "
+            "deciding how much to save each month, or stress-testing a retirement plan, a "
+            "good calculator turns a vague worry into a concrete number you can act on.</p>"
+            "<p>The tools below cover the three financial questions most people return to "
+            "again and again: <strong>What will this loan actually cost me?</strong> "
+            "<strong>How much could my savings grow if I leave them alone?</strong> "
+            "<strong>Will I run out of money in retirement?</strong> Every calculator runs "
+            "in your browser — your inputs never leave the page, no account is required, "
+            "and the formulas are documented on each page so you can verify the math.</p>"
+            "<p>Treat these as decision-support tools, not advice. Real loans include fees "
+            "and escrow; real returns are not constant; real retirement is messier than any "
+            "smooth projection. Use the numbers as a sanity check, then talk to a qualified "
+            "professional before locking in a major decision.</p>"
+        ),
+        "tools_header": "Tools in this category",
+        "faq_header": "Frequently asked questions",
+        "faq_html": (
+            "<details><summary>Are these calculators a substitute for financial advice?</summary>"
+            "<p>No. They use standard formulas and reasonable defaults, but they don't know your "
+            "tax situation, debt mix, employer benefits, or risk tolerance. Use the output as a "
+            "starting point for a conversation with a registered advisor or CPA.</p></details>"
+            "<details><summary>Why does the calculated loan payment differ from my mortgage statement?</summary>"
+            "<p>Lenders typically bundle property tax, homeowners insurance, PMI, and HOA fees "
+            "into the monthly payment via escrow. The loan calculator only computes principal + "
+            "interest. Add ~20–30% on top for a realistic all-in housing cost in most US markets.</p></details>"
+            "<details><summary>What return rate should I assume for compound interest?</summary>"
+            "<p>The S&amp;P 500 has averaged about 10% nominal / 7% real over the last century, "
+            "but past performance is not a guarantee. For long-horizon planning, 6–7% real is a "
+            "common conservative assumption; for short horizons, treat market exposure as risky.</p></details>"
+            "<details><summary>Can I trust these for retirement planning?</summary>"
+            "<p>Use them as a sanity check, not a plan. The retirement calculator assumes a "
+            "constant return rate, which masks <em>sequence-of-returns risk</em> — a bad first "
+            "few years of retirement can sink an otherwise viable plan. A Monte Carlo simulator "
+            "or a flat-fee planner is better for high-stakes decisions.</p></details>"
+        ),
+        "related_header": "Other calculators",
+        "related_other_hub": "Health Calculators",
+        "related_bmi": "BMI Calculator",
+        "related_date": "Date Calculator",
+        "related_unit": "Unit Converter",
+        "card_blurb": "Loan, compound interest, and retirement calculators — all client-side."
+    },
+    "ko": {
+        "title": "금융 계산기 모음",
+        "meta_title": "금융 계산기 — 대출·복리·은퇴 시뮬레이션 - Utilify",
+        "meta_desc": "브라우저에서 모두 실행되는 무료 금융 계산기. 대출 월 상환, 복리 투자 성장, 은퇴자금 시뮬레이션. 가입·업로드 없음.",
+        "og_title": "금융 계산기 - Utilify",
+        "og_desc": "대출·복리·은퇴 계산기 — 모두 클라이언트 사이드.",
+        "json_name": "금융 계산기 모음",
+        "json_desc": "대출·저축·은퇴 계획을 위한 금융 계산기 큐레이션.",
+        "h1": "금융 계산기",
+        "intro_html": (
+            "<p>돈에 관한 결정은 \"막연한 걱정\"을 \"행동 가능한 숫자\"로 바꿀 때 가장 좋습니다. "
+            "주택담보대출을 알아보거나, 매달 얼마 저축해야 할지 고민하거나, 은퇴자금이 충분한지 "
+            "검산할 때 — 좋은 계산기는 그 결정을 구체화해 줍니다.</p>"
+            "<p>아래 도구들은 사람들이 가장 자주 마주치는 세 가지 질문을 다룹니다: "
+            "<strong>이 대출은 실제로 얼마를 부담하는가?</strong> "
+            "<strong>지금 저축하면 시간이 흘러 얼마가 되는가?</strong> "
+            "<strong>은퇴 후 자금이 기대수명까지 버틸까?</strong> 모든 계산은 브라우저에서만 "
+            "이루어지며 — 입력 데이터가 서버로 전송되지 않습니다. 가입 불필요, 사용된 공식은 "
+            "각 페이지에 명시되어 있어 직접 검증할 수 있습니다.</p>"
+            "<p>의사결정 보조 도구로 쓰세요 — 자문이 아닙니다. 실제 대출에는 수수료·보증료가 "
+            "추가되고, 실제 수익률은 일정하지 않으며, 실제 은퇴는 어떤 부드러운 시뮬레이션보다 "
+            "복잡합니다. 결과를 검산용으로 사용한 뒤, 중대한 결정 전에는 자격 있는 전문가와 "
+            "상의하세요.</p>"
+        ),
+        "tools_header": "이 카테고리의 도구",
+        "faq_header": "자주 묻는 질문",
+        "faq_html": (
+            "<details><summary>이 계산기들이 재정 자문을 대체할 수 있나요?</summary>"
+            "<p>아니요. 표준 공식과 합리적인 기본값을 사용하지만, 사용자의 세금 상황·부채 "
+            "구성·복리후생·위험 감수도를 알 수 없습니다. 결과는 자격 있는 재무 자문가 또는 "
+            "세무사와의 대화 시작점으로 활용하세요.</p></details>"
+            "<details><summary>계산된 대출 상환금이 실제 명세서와 다른 이유는?</summary>"
+            "<p>금융기관은 재산세·주택보험·PMI·관리비 등을 월 상환금에 포함시켜 에스크로 형태로 "
+            "처리하는 경우가 많습니다. 본 계산기는 원리금만 계산합니다. 한국 시장에서는 인지세·"
+            "근저당설정비·보증료·중도상환수수료를 추가로 고려해야 실제 부담에 가깝습니다.</p></details>"
+            "<details><summary>복리 계산에 어떤 수익률을 가정해야 하나요?</summary>"
+            "<p>S&amp;P 500 100년 평균은 명목 약 10%, 실질 약 7%입니다. 과거 수익률이 미래를 "
+            "보장하지는 않습니다. 장기 계획에는 실질 6~7%가 보수적 기준이며, 단기 자금은 시장 "
+            "노출을 위험하게 봐야 합니다.</p></details>"
+            "<details><summary>은퇴 계획에 사용해도 되나요?</summary>"
+            "<p>검산용으로만 사용하세요. 은퇴 계산기는 일정한 수익률을 가정하므로 <em>시퀀스 "
+            "리스크</em>(은퇴 초기 몇 년의 수익률 순서가 결과에 미치는 큰 영향)를 반영하지 "
+            "못합니다. 중대한 결정에는 몬테카를로 시뮬레이터 또는 정액제 재무 자문가가 적합합니다."
+            "</p></details>"
+        ),
+        "related_header": "다른 계산기",
+        "related_other_hub": "건강 계산기",
+        "related_bmi": "BMI 계산기",
+        "related_date": "날짜 계산기",
+        "related_unit": "단위 변환기",
+        "card_blurb": "대출·복리·은퇴 계산기 — 모두 브라우저에서."
+    }
+}
+
+
+HEALTH_HUB = {
+    "en": {
+        "title": "Health Calculators",
+        "meta_title": "Health Calculators — Calorie, Pregnancy, Body Fat - Utilify",
+        "meta_desc": "Free health calculators that run entirely in your browser. BMR + TDEE, pregnancy due date, body fat percentage. No signup, no upload.",
+        "og_title": "Health Calculators - Utilify",
+        "og_desc": "Calorie, pregnancy, and body fat calculators — all client-side.",
+        "json_name": "Health Calculators",
+        "json_desc": "Curated health calculators for nutrition, pregnancy, and body composition.",
+        "h1": "Health Calculators",
+        "intro_html": (
+            "<p>Bodies don't come with a dashboard. The next-best thing is a small set of "
+            "calculators that translate measurements into context: how much you can eat without "
+            "gaining weight, when a baby is due, where your body composition sits relative to a "
+            "typical range. None of these replace a doctor — they help you ask better questions "
+            "the next time you see one.</p>"
+            "<p>The tools below address three of the most-searched health questions: "
+            "<strong>How many calories do I actually need?</strong> "
+            "<strong>When is my baby due, and what trimester am I in?</strong> "
+            "<strong>What's my body fat percentage?</strong> Each runs entirely in your browser, "
+            "uses widely-cited formulas (Mifflin-St Jeor, Naegele's rule, US Navy method), and "
+            "shows the math on each page so you can verify it.</p>"
+            "<p>Use these as quick checks. For pregnancy, an early ultrasound dating scan is more "
+            "accurate. For body fat, DEXA or hydrostatic weighing is the gold standard. For "
+            "nutrition, an RD can personalize beyond what any one-size-fits-all formula can "
+            "produce.</p>"
+        ),
+        "tools_header": "Tools in this category",
+        "faq_header": "Frequently asked questions",
+        "faq_html": (
+            "<details><summary>Which BMR formula is the most accurate?</summary>"
+            "<p>Mifflin-St Jeor (used here) outperforms the older Harris-Benedict and Katch-McArdle "
+            "for healthy adults across most studies. Margin of error is roughly ±10% — fine for "
+            "planning, less fine for clinical use.</p></details>"
+            "<details><summary>Is BMI alone enough to assess health?</summary>"
+            "<p>No. BMI doesn't distinguish muscle from fat, ignores fat distribution, and "
+            "performs poorly for athletes and the elderly. The body fat calculator (US Navy "
+            "method) is a better composition signal; combine with a waist-to-hip ratio for "
+            "cardiovascular risk.</p></details>"
+            "<details><summary>Why doesn't my pregnancy due date match my doctor's estimate?</summary>"
+            "<p>The calculator uses Naegele's rule (LMP + 280 days) with a cycle-length "
+            "adjustment. If your cycles are irregular or your LMP is uncertain, an early "
+            "ultrasound is more accurate and is what your doctor likely uses.</p></details>"
+            "<details><summary>Should I aim for the lowest body fat possible?</summary>"
+            "<p>No — there's a healthy range, not a minimum. Men below ~6% and women below ~14% "
+            "is essential-fat territory and not safe to maintain. Athletes optimize for performance, "
+            "not the lowest number.</p></details>"
+        ),
+        "related_header": "Other calculators",
+        "related_other_hub": "Finance Calculators",
+        "related_bmi": "BMI Calculator",
+        "related_date": "Date Calculator",
+        "related_unit": "Unit Converter",
+        "card_blurb": "Calorie, pregnancy, and body-fat calculators — all client-side."
+    },
+    "ko": {
+        "title": "건강 계산기 모음",
+        "meta_title": "건강 계산기 — 칼로리·임신·체지방 - Utilify",
+        "meta_desc": "브라우저에서 모두 실행되는 무료 건강 계산기. BMR·TDEE 칼로리, 임신 출산예정일, 체지방률. 가입·업로드 없음.",
+        "og_title": "건강 계산기 - Utilify",
+        "og_desc": "칼로리·임신·체지방 계산기 — 모두 클라이언트 사이드.",
+        "json_name": "건강 계산기 모음",
+        "json_desc": "영양·임신·체구성을 위한 건강 계산기 큐레이션.",
+        "h1": "건강 계산기",
+        "intro_html": (
+            "<p>몸에는 대시보드가 없습니다. 그래서 측정값을 맥락으로 바꿔 주는 작은 계산기들이 "
+            "유용합니다 — 체중을 유지하려면 얼마나 먹어도 되는지, 출산일이 언제인지, 체지방률이 "
+            "정상 범위 어디쯤인지. 의사를 대체하지는 않지만, 다음 진료에서 더 좋은 질문을 할 수 "
+            "있게 도와줍니다.</p>"
+            "<p>아래 도구들은 가장 많이 검색되는 세 가지 건강 질문을 다룹니다: "
+            "<strong>나에게 필요한 칼로리는 몇 kcal인가?</strong> "
+            "<strong>출산예정일은 언제이고 지금 몇 주차인가?</strong> "
+            "<strong>내 체지방률은 얼마인가?</strong> 모두 브라우저에서만 동작하며, 널리 인용되는 "
+            "공식(Mifflin-St Jeor, Naegele 법칙, 미 해군 둘레 측정법)을 사용하고, 각 페이지에 "
+            "계산 과정이 명시되어 있어 직접 검증할 수 있습니다.</p>"
+            "<p>빠른 점검용으로 사용하세요. 임신 주수는 1삼분기 초음파가 더 정확하고, 체지방률은 "
+            "DEXA·수중 측정이 표준이며, 영양은 임상영양사가 어떤 공식보다도 개인화된 조언을 줄 수 "
+            "있습니다.</p>"
+        ),
+        "tools_header": "이 카테고리의 도구",
+        "faq_header": "자주 묻는 질문",
+        "faq_html": (
+            "<details><summary>가장 정확한 BMR 공식은 무엇인가요?</summary>"
+            "<p>본 계산기에서 사용하는 Mifflin-St Jeor가 대부분 연구에서 Harris-Benedict, "
+            "Katch-McArdle보다 건강한 성인에게 더 정확합니다. 오차 범위는 약 ±10% — 계획용으로는 "
+            "충분하지만 임상 진단용으로는 부족합니다.</p></details>"
+            "<details><summary>BMI만으로 건강을 판단할 수 있나요?</summary>"
+            "<p>아닙니다. BMI는 근육과 지방을 구분하지 못하고 지방 분포를 무시하며, 운동선수와 "
+            "고령층에서 부정확합니다. 체지방 계산기(미 해군 공식)가 체구성 신호로 더 낫고, "
+            "허리-엉덩이 비율과 함께 보면 심혈관 위험 평가에 도움이 됩니다.</p></details>"
+            "<details><summary>출산예정일이 의사 진단과 다른 이유는?</summary>"
+            "<p>본 계산기는 Naegele 법칙(LMP + 280일)에 생리주기 보정을 적용합니다. 생리가 "
+            "불규칙하거나 LMP가 불확실하면 1삼분기 초음파가 더 정확하며, 의사는 보통 이 결과를 "
+            "기준으로 삼습니다.</p></details>"
+            "<details><summary>체지방률은 낮을수록 좋은 건가요?</summary>"
+            "<p>아닙니다 — 건강한 범위가 있고 최소치가 있는 게 아닙니다. 남성 약 6% 미만, 여성 "
+            "약 14% 미만은 필수 지방 영역으로 안전하게 유지할 수 없습니다. 운동선수도 최저 "
+            "수치가 아닌 경기력에 맞춰 조절합니다.</p></details>"
+        ),
+        "related_header": "다른 계산기",
+        "related_other_hub": "금융 계산기",
+        "related_bmi": "BMI 계산기",
+        "related_date": "날짜 계산기",
+        "related_unit": "단위 변환기",
+        "card_blurb": "칼로리·임신·체지방 계산기 — 모두 브라우저에서."
     }
 }

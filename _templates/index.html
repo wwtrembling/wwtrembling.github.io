@@ -193,9 +193,18 @@
                 <button type="button" data-cat="calc" aria-pressed="false">{{ cat_calc }}</button>
             </div>
 
+            <div class="search-bar">
+                <input type="search" id="searchInput" class="form-input"
+                       placeholder="{{ search_placeholder }}"
+                       aria-label="{{ search_placeholder }}"
+                       autocomplete="off">
+            </div>
+
             {{ subcategory_chips }}
 
-            <p id="emptyState" class="empty-state" hidden>{{ favorites_empty }}</p>
+            <p id="emptyState" class="empty-state" hidden
+               data-msg-favorites="{{ favorites_empty }}"
+               data-msg-search="{{ search_no_results }}">{{ favorites_empty }}</p>
 
             <div class="card-grid" id="toolGrid">
                 {{ tool_cards }}
@@ -231,6 +240,7 @@
             const cards = document.querySelectorAll('#toolGrid .card');
             const subcatGroups = document.querySelectorAll('.subcat-chips');
             const emptyState = document.getElementById('emptyState');
+            const searchInput = document.getElementById('searchInput');
 
             // Initialize ★ state on each card from localStorage.
             cards.forEach(card => {
@@ -247,9 +257,19 @@
 
             let activeCat = 'all';
             let activeSubcat = '';   // '' = no subcategory filter
+            let activeSearch = '';
+
+            function matchSearch(card, q) {
+                if (!q) return true;
+                const t = (card.querySelector('.card-title')?.textContent || '').toLowerCase();
+                const d = (card.querySelector('.card-description')?.textContent || '').toLowerCase();
+                const k = (card.dataset.keywords || '').toLowerCase();
+                return t.includes(q) || d.includes(q) || k.includes(q);
+            }
 
             function applyFilters() {
                 let visible = 0;
+                const q = activeSearch.toLowerCase().trim();
                 cards.forEach(card => {
                     let match = true;
                     if (activeCat === 'favorites') {
@@ -260,23 +280,45 @@
                             match = card.dataset.subcategory === activeSubcat;
                         }
                     }
+                    if (match) match = matchSearch(card, q);
                     card.style.display = match ? '' : 'none';
                     if (match) visible++;
                 });
 
                 // Show subcategory group only for the active main category.
+                // Hub-link inside the group: visible only when its sub-category
+                // is the active one (data-for-subcat === activeSubcat).
                 subcatGroups.forEach(group => {
                     const showGroup = activeCat !== 'all' &&
                         activeCat !== 'favorites' &&
                         group.dataset.parentCat === activeCat;
                     group.hidden = !showGroup;
+                    group.querySelectorAll('.hub-link').forEach(link => {
+                        link.hidden = !(showGroup && link.dataset.forSubcat === activeSubcat);
+                    });
                 });
 
-                // Empty-state message — only meaningful for the favorites filter
-                // (other filters always have results given the tool roster).
+                // Empty state — applies to favorites-with-zero or search-with-zero.
                 if (emptyState) {
-                    emptyState.hidden = !(activeCat === 'favorites' && visible === 0);
+                    const isSearchEmpty = q && visible === 0;
+                    const isFavEmpty = activeCat === 'favorites' && visible === 0 && !q;
+                    if (isSearchEmpty) {
+                        emptyState.textContent = emptyState.dataset.msgSearch;
+                        emptyState.hidden = false;
+                    } else if (isFavEmpty) {
+                        emptyState.textContent = emptyState.dataset.msgFavorites;
+                        emptyState.hidden = false;
+                    } else {
+                        emptyState.hidden = true;
+                    }
                 }
+            }
+
+            if (searchInput) {
+                searchInput.addEventListener('input', e => {
+                    activeSearch = e.target.value;
+                    applyFilters();
+                });
             }
 
             catButtons.forEach(btn => {

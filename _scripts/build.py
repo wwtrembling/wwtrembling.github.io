@@ -5,7 +5,7 @@ import sys
 # Add parent directory to path to import _data
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from _data.lang import LANGUAGES, COMMON, INDEX_PAGE, SQL_FORMATTER, JSON_FORMATTER, BASE64_CONVERTER, PASSWORD_GENERATOR, UNIT_CONVERTER, DIFF_CHECKER, IMAGE_CONVERTER, QR_GENERATOR, COLOR_CONVERTER, LOREM_IPSUM, MARKDOWN_PREVIEWER, REGEX_TESTER, TEXT_UTILS, BMI_CALCULATOR, DATE_CALCULATOR, TIMER, IMAGE_WATERMARK, FAVICON_GENERATOR, THUMBNAIL_DOWNLOADER, REACTION_TEST, JWT_DECODER, HASH_GENERATOR, UNIX_TIMESTAMP, UUID_GENERATOR, URL_ENCODER, IMAGE_EDITOR, JPA_CONVERTER, JSON_TO_TS, EXCEL_TO_SQL, JSON_TO_EXCEL, JSON_LD_GENERATOR, PDF_TOOLS, TEXT_TO_DIAGRAM, ABOUT, PRIVACY, TERMS, NOT_FOUND, PROMPT_PII_SCRUBBER, CLAUDE_MD_GEN, MCP_CONFIG_GEN, TOKEN_COUNTER, AI_IMAGE_INSPECTOR, CHATGPT_TO_BLOG, LOAN_CALCULATOR, COMPOUND_INTEREST, RETIREMENT_CALCULATOR, CALORIE_CALCULATOR, PREGNANCY_CALCULATOR, BODY_FAT_CALCULATOR
+from _data.lang import LANGUAGES, COMMON, INDEX_PAGE, SQL_FORMATTER, JSON_FORMATTER, BASE64_CONVERTER, PASSWORD_GENERATOR, UNIT_CONVERTER, DIFF_CHECKER, IMAGE_CONVERTER, QR_GENERATOR, COLOR_CONVERTER, LOREM_IPSUM, MARKDOWN_PREVIEWER, REGEX_TESTER, TEXT_UTILS, BMI_CALCULATOR, DATE_CALCULATOR, TIMER, IMAGE_WATERMARK, FAVICON_GENERATOR, THUMBNAIL_DOWNLOADER, REACTION_TEST, JWT_DECODER, HASH_GENERATOR, UNIX_TIMESTAMP, UUID_GENERATOR, URL_ENCODER, IMAGE_EDITOR, JPA_CONVERTER, JSON_TO_TS, EXCEL_TO_SQL, JSON_TO_EXCEL, JSON_LD_GENERATOR, PDF_TOOLS, TEXT_TO_DIAGRAM, ABOUT, PRIVACY, TERMS, NOT_FOUND, PROMPT_PII_SCRUBBER, CLAUDE_MD_GEN, MCP_CONFIG_GEN, TOKEN_COUNTER, AI_IMAGE_INSPECTOR, CHATGPT_TO_BLOG, LOAN_CALCULATOR, COMPOUND_INTEREST, RETIREMENT_CALCULATOR, CALORIE_CALCULATOR, PREGNANCY_CALCULATOR, BODY_FAT_CALCULATOR, FINANCE_HUB, HEALTH_HUB
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE_DIR = os.path.join(BASE_DIR, '_templates')
@@ -343,6 +343,67 @@ CATEGORY_SUBCATS = {
     'calc': ['finance', 'health'],
 }
 
+# L2 hub pages — one curated landing page per sub-category. Slug = sub-category
+# id; data dict provides intro / FAQ / cross-links. Build script iterates this
+# dict in build_hub_pages() and renders /<lang>/<slug>/. Hubs cross-link to
+# each other via the `other_hub_slug` field.
+HUB_PAGES = {
+    'finance': {'data': FINANCE_HUB, 'icon': '💰', 'other_hub': 'health'},
+    'health':  {'data': HEALTH_HUB,  'icon': '🩺', 'other_hub': 'finance'},
+}
+
+# Search-keyword aliases per tool. Powers the index page's live search bar
+# (see L3 in _templates/index.html). Entries are space-joined into the
+# `data-keywords` attribute on each card; matched against the search query
+# alongside the card's title and description.
+TOOL_KEYWORDS = {
+    'json-formatter': ['json', 'format', 'pretty', 'minify', 'validate'],
+    'jwt-decoder': ['jwt', 'token', 'auth', 'jose', 'decode'],
+    'base64-converter': ['base64', 'encode', 'decode', 'b64'],
+    'hash-generator': ['hash', 'md5', 'sha', 'sha256', 'digest'],
+    'uuid-generator': ['uuid', 'guid', 'random', 'identifier'],
+    'url-encoder': ['url', 'encode', 'decode', 'percent', 'escape'],
+    'unit-converter': ['unit', 'convert', 'length', 'weight', 'volume', 'temperature'],
+    'color-converter': ['color', 'colour', 'hex', 'rgb', 'hsl'],
+    'qr-generator': ['qr', 'qrcode', 'barcode'],
+    'image-converter': ['image', 'png', 'jpg', 'webp', 'avif', 'convert'],
+    'image-watermark': ['watermark', 'image', 'overlay', 'logo'],
+    'favicon-generator': ['favicon', 'icon', 'apple-touch'],
+    'thumbnail-downloader': ['thumbnail', 'youtube', 'download', 'image'],
+    'bmi-calculator': ['bmi', 'body mass', 'weight', 'health'],
+    'date-calculator': ['date', 'duration', 'between', 'days'],
+    'unix-timestamp': ['unix', 'timestamp', 'epoch', 'time'],
+    'timer': ['timer', 'stopwatch', 'countdown'],
+    'reaction-test': ['reaction', 'reflex', 'speed'],
+    'password-generator': ['password', 'random', 'secure', 'strong'],
+    'sql-formatter': ['sql', 'format', 'query', 'database'],
+    'lorem-ipsum': ['lorem', 'ipsum', 'placeholder', 'dummy'],
+    'markdown-previewer': ['markdown', 'md', 'preview', 'render'],
+    'regex-tester': ['regex', 'regular expression', 'pattern', 'match'],
+    'text-utils': ['text', 'case', 'uppercase', 'lowercase', 'count'],
+    'diff-checker': ['diff', 'compare', 'text', 'difference'],
+    'token-counter': ['token', 'gpt', 'claude', 'cost', 'tiktoken'],
+    'mcp-config-generator': ['mcp', 'claude desktop', 'cursor', 'config'],
+    'ai-image-inspector': ['ai', 'image', 'metadata', 'midjourney', 'stable diffusion'],
+    'chatgpt-to-blog': ['chatgpt', 'blog', 'markdown', 'export'],
+    'prompt-pii-scrubber': ['pii', 'prompt', 'mask', 'redact', 'privacy'],
+    'claude-md-generator': ['claude', 'claude.md', 'system prompt'],
+    'loan-calculator': ['loan', 'mortgage', 'amortization', 'payment', 'interest'],
+    'compound-interest': ['compound', 'interest', 'investment', 'savings'],
+    'retirement-calculator': ['retirement', '401k', 'pension', 'nest egg'],
+    'calorie-calculator': ['calorie', 'bmr', 'tdee', 'macro', 'diet'],
+    'pregnancy-calculator': ['pregnancy', 'due date', 'lmp', 'gestation', 'trimester'],
+    'body-fat-calculator': ['body fat', 'bfp', 'navy', 'composition'],
+    'json-to-ts': ['json', 'typescript', 'interface', 'dto'],
+    'jpa-converter': ['jpa', 'entity', 'sql', 'hibernate'],
+    'excel-to-sql': ['excel', 'sql', 'insert', 'csv'],
+    'json-to-excel': ['json', 'excel', 'xlsx', 'spreadsheet'],
+    'json-ld-generator': ['json-ld', 'schema', 'seo', 'structured'],
+    'image-editor': ['image', 'crop', 'rotate', 'filter'],
+    'pdf-tools': ['pdf', 'merge', 'split'],
+    'text-to-diagram': ['diagram', 'flowchart', 'sequence', 'mermaid'],
+}
+
 # Slugs of the 5 tools surfaced in the "Featured" hero strip.
 FEATURED_SLUGS = ['json-formatter', 'jwt-decoder', 'uuid-generator',
                   'base64-converter', 'hash-generator']
@@ -429,8 +490,9 @@ def build_index_page():
                 desc = tool_dict['en'].get('page_desc', tool_dict['en'].get('meta_desc', ''))
             cat = TOOL_CATEGORIES.get(tool_path, 'convert')
             sub = TOOL_SUBCATEGORIES.get(tool_path, '')
+            keywords = ' '.join(TOOL_KEYWORDS.get(tool_path, []))
             card = f'''
-        <a href="/{lang}/{tool_path}/" class="card" data-category="{cat}" data-subcategory="{sub}" data-slug="{tool_path}">
+        <a href="/{lang}/{tool_path}/" class="card" data-category="{cat}" data-subcategory="{sub}" data-slug="{tool_path}" data-keywords="{keywords}">
           <button type="button" class="fav-toggle" data-fav="{tool_path}" aria-label="{fav_add_aria}" data-add-label="{fav_add_aria}" data-remove-label="{fav_remove_aria}">☆</button>
           <div class="card-icon">{icon}</div>
           <h3 class="card-title">{title}</h3>
@@ -440,6 +502,8 @@ def build_index_page():
         data['tool_cards'] = '\n'.join(cards_html)
 
         # Build subcategory chip groups for any main category that has sub-categories.
+        # Sub-categories that also have a hub page (`HUB_PAGES`) get a "→ <hub>"
+        # text link rendered next to the chip, hidden until that subcat is active.
         subcat_html = []
         for main_cat, subs in CATEGORY_SUBCATS.items():
             chips = [
@@ -450,6 +514,12 @@ def build_index_page():
                 chips.append(
                     f'<button type="button" class="subcat-chip" data-subcat="{sub}" aria-pressed="false">{label}</button>'
                 )
+                if sub in HUB_PAGES:
+                    hub_label = data.get(f'hub_link_{sub}', f'{sub.title()} hub')
+                    chips.append(
+                        f'<a href="/{lang}/{sub}/" class="hub-link" '
+                        f'data-for-subcat="{sub}" hidden>→ {hub_label}</a>'
+                    )
             subcat_html.append(
                 f'<div class="subcat-chips" data-parent-cat="{main_cat}" role="group" '
                 f'aria-label="{data.get("subcat_filter_aria", "Subcategory filter")}" hidden>'
@@ -705,6 +775,68 @@ def build_static_page(slug, page_data, root_404=False):
         print(f"  Generated /404.html")
 
 
+def build_hub_pages():
+    """Render `_templates/category_hub.html` for each entry in HUB_PAGES,
+    once per language. Each hub is a curated landing page that lists the tools
+    mapped to its sub-category in TOOL_SUBCATEGORIES, plus intro copy and FAQs.
+    Mirrors build_conversion_pages() in shape — one template × N pages."""
+    print("Building category hub pages...")
+    template = load_template('category_hub.html')
+    if template is None:
+        return
+
+    for hub_slug, hub_meta in HUB_PAGES.items():
+        hub_data = hub_meta['data']
+        hub_icon = hub_meta['icon']
+        other_hub = hub_meta['other_hub']
+
+        # Tools that belong to this hub via TOOL_SUBCATEGORIES.
+        tools_in_hub = [
+            (t_path, icon, t_dict)
+            for t_path, icon, t_dict in ALL_TOOLS
+            if TOOL_SUBCATEGORIES.get(t_path) == hub_slug
+        ]
+        alt_links_html = build_alt_links(hub_slug)
+
+        for lang in LANGUAGES:
+            data = COMMON.get('en', {}).copy()
+            data.update(COMMON.get(lang, {}))
+            data.update(hub_data.get('en', {}))
+            data.update(hub_data.get(lang, {}))
+            data['lang_code'] = lang
+            data['hub_slug'] = hub_slug
+            data['hub_icon'] = hub_icon
+            data['other_hub_slug'] = other_hub
+            data['alternate_links'] = alt_links_html
+
+            cards = []
+            for t_path, icon, t_dict in tools_in_hub:
+                t_data = t_dict.get(lang, t_dict.get('en', {}))
+                title = t_data.get('title') or t_dict['en'].get('title', '')
+                desc = (t_data.get('card_blurb')
+                        or t_data.get('page_desc')
+                        or t_data.get('meta_desc')
+                        or t_dict['en'].get('card_blurb', t_dict['en'].get('page_desc', '')))
+                cards.append(
+                    f'<a href="/{lang}/{t_path}/" class="card hub-card" data-slug="{t_path}">'
+                    f'<div class="card-icon">{icon}</div>'
+                    f'<h3 class="card-title">{title}</h3>'
+                    f'<p class="card-description">{desc}</p>'
+                    f'</a>'
+                )
+            data['tool_cards_html'] = '\n                '.join(cards)
+
+            content = template
+            for key, value in data.items():
+                content = content.replace(f'{{{{ {key} }}}}', str(value))
+
+            output_dir = os.path.join(BASE_DIR, lang, hub_slug)
+            os.makedirs(output_dir, exist_ok=True)
+            with open(os.path.join(output_dir, 'index.html'), 'w', encoding='utf-8') as f:
+                f.write(content)
+            print(f"  Generated {lang}/{hub_slug}/index.html")
+
+
 def build_alt_links(tool_path):
     alt = []
     for l in LANGUAGES:
@@ -816,6 +948,14 @@ def build_sitemap(today=None):
         for l in LANGUAGES:
             emit(f'https://utilifyapp.net/{l}/{slug}/', slug_alts, priority='0.3', changefreq='yearly')
         paths.extend([f'{l}/{slug}/' for l in LANGUAGES])
+
+    # Category hub pages — between conversion pages and tool pages in priority.
+    for hub_slug in HUB_PAGES:
+        hub_alts = [(hreflang_for(l), f'https://utilifyapp.net/{l}/{hub_slug}/') for l in LANGUAGES]
+        hub_alts.append(('x-default', f'https://utilifyapp.net/en/{hub_slug}/'))
+        for l in LANGUAGES:
+            emit(f'https://utilifyapp.net/{l}/{hub_slug}/', hub_alts, priority='0.6', changefreq='monthly')
+        paths.extend([f'{l}/{hub_slug}/' for l in LANGUAGES])
 
     # Programmatic SEO conversion pairs
     try:
@@ -1004,6 +1144,9 @@ if __name__ == '__main__':
 
     # Programmatic SEO conversion pages.
     build_conversion_pages()
+
+    # L2 category hub pages (e.g. /<lang>/finance/, /<lang>/health/).
+    build_hub_pages()
 
     # Sync hand-authored prebuilt tools (refresh hreflang block, clone to zh-cn/zh-tw).
     sync_prebuilt_tools()
