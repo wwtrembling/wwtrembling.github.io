@@ -173,7 +173,7 @@
             <div class="header-content">
                 <a href="/en/" class="site-logo">
                     🛠️ Utilify
-                </a><button data-utilify-theme-toggle id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode" type="button">🌙</button>
+                </a><button data-utilify-theme-toggle id="themeToggle" class="theme-toggle" type="button" aria-label="Switch to dark mode" data-aria-to-dark="Switch to dark mode" data-aria-to-light="Switch to light mode">🌙</button>
             </div>
         </div>
     </header>
@@ -222,10 +222,13 @@
             </div>
 
             <div class="search-bar">
-                <input type="search" id="searchInput" class="form-input"
-                       placeholder="Search tools…"
-                       aria-label="Search tools…"
-                       autocomplete="off">
+                <div class="search-input-wrap">
+                    <input type="search" id="searchInput" class="form-input"
+                           placeholder="Search tools…"
+                           aria-label="Search tools…"
+                           autocomplete="off">
+                    <kbd class="search-shortcut" aria-hidden="true">/</kbd>
+                </div>
             </div>
 
             <div class="subcat-chips" data-parent-cat="calc" role="group" aria-label="Subcategory filter" hidden><button type="button" class="subcat-chip" data-subcat="" aria-pressed="true">All</button><button type="button" class="subcat-chip" data-subcat="finance" aria-pressed="false">Finance</button><a href="/en/finance/" class="hub-link" data-for-subcat="finance" hidden>→ Finance hub</a><button type="button" class="subcat-chip" data-subcat="health" aria-pressed="false">Health</button><a href="/en/health/" class="hub-link" data-for-subcat="health" hidden>→ Health hub</a></div>
@@ -744,9 +747,34 @@
             }
 
             if (searchInput) {
+                // Debounce input to avoid filtering on every keystroke for fast typers.
+                let searchDebounce;
+                const shortcut = document.querySelector('.search-shortcut');
                 searchInput.addEventListener('input', e => {
-                    activeSearch = e.target.value;
-                    applyFilters();
+                    clearTimeout(searchDebounce);
+                    searchDebounce = setTimeout(() => {
+                        activeSearch = e.target.value;
+                        applyFilters();
+                    }, 120);
+                    if (shortcut) shortcut.style.display = e.target.value ? 'none' : '';
+                });
+                // `/` keyboard shortcut focuses the search input (same as Slack/GitHub).
+                document.addEventListener('keydown', e => {
+                    if (e.key !== '/' || e.metaKey || e.ctrlKey || e.altKey) return;
+                    const t = e.target;
+                    if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable)) return;
+                    e.preventDefault();
+                    searchInput.focus();
+                    searchInput.select();
+                });
+                // ESC clears + blurs.
+                searchInput.addEventListener('keydown', e => {
+                    if (e.key === 'Escape' && searchInput.value) {
+                        searchInput.value = '';
+                        activeSearch = '';
+                        applyFilters();
+                        if (shortcut) shortcut.style.display = '';
+                    }
                 });
             }
 
@@ -805,7 +833,7 @@
         })();
     </script>
     <script>(adsbygoogle=window.adsbygoogle||[]).push({google_ad_client:"ca-pub-6334819180242631",enable_page_level_ads:true});</script>
-    <script data-utilify-theme-toggle-script>(function(){var b=document.getElementById("themeToggle");if(!b)return;function p(){var t=document.documentElement.getAttribute("data-theme")||"light";b.textContent=t==="dark"?"☀️":"🌙";b.setAttribute("aria-pressed",String(t==="dark"));}p();b.addEventListener("click",function(){var c=document.documentElement.getAttribute("data-theme")||"light";var n=c==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",n);try{localStorage.setItem("utilify_theme",n);}catch(e){}p();});})();</script>
+    <script data-utilify-theme-toggle-script>(function(){var b=document.getElementById("themeToggle");if(!b)return;function p(){var t=document.documentElement.getAttribute("data-theme")||"light";b.textContent=t==="dark"?"☀️":"🌙";b.setAttribute("aria-pressed",String(t==="dark"));b.setAttribute("aria-label",t==="dark"?b.dataset.ariaToLight:b.dataset.ariaToDark);}p();b.addEventListener("click",function(){var c=document.documentElement.getAttribute("data-theme")||"light";var n=c==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",n);try{localStorage.setItem("utilify_theme",n);}catch(e){}p();});})();</script>
 </body>
 
 </html>

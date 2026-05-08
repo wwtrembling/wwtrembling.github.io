@@ -18,6 +18,8 @@ COMMON = {
         "fav_add_aria": "Add to favorites",
         "fav_remove_aria": "Remove from favorites",
         "theme_toggle_aria": "Toggle dark mode",
+        "theme_to_dark_aria": "Switch to dark mode",
+        "theme_to_light_aria": "Switch to light mode",
         "breadcrumb_home": "Home",
     },
     "ko": {
@@ -32,6 +34,8 @@ COMMON = {
         "fav_add_aria": "즐겨찾기에 추가",
         "fav_remove_aria": "즐겨찾기에서 제거",
         "theme_toggle_aria": "다크 모드 전환",
+        "theme_to_dark_aria": "다크 모드로 전환",
+        "theme_to_light_aria": "라이트 모드로 전환",
         "breadcrumb_home": "홈",
     },
     "vi": {
