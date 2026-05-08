@@ -190,6 +190,66 @@ def inject_monetization(html):
         )
         html = html.replace('</head>', favicon_block + '</head>', 1)
 
+    # 9f. Dark-mode init: read localStorage 'utilify_theme' (or
+    #     prefers-color-scheme as fallback) and set `data-theme` on <html>
+    #     before paint. Inlined and synchronous — runs as the first thing
+    #     in <head> after meta charset, so the body never renders in the
+    #     wrong theme.
+    if 'data-utilify-theme-init' not in html:
+        theme_init = (
+            '    <script data-utilify-theme-init>(function(){try{'
+            'var s=localStorage.getItem("utilify_theme");'
+            'var t=(s==="dark"||s==="light")?s:'
+            '(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");'
+            'document.documentElement.setAttribute("data-theme",t);'
+            '}catch(e){}})();</script>\n'
+        )
+        html = html.replace('</head>', theme_init + '</head>', 1)
+
+    # 9g. Inject the theme-toggle button next to the site logo + the click
+    #     handler before </body>. The button uses {{ theme_toggle_aria }}
+    #     for its aria-label; the placeholder resolves at template-fill time
+    #     for `{{ lang_code }}` templates and is replaced inline for prebuilt
+    #     pages with their resolved language string.
+    if 'data-utilify-theme-toggle' not in html:
+        is_template = '{{ lang_code }}' in html
+        if is_template:
+            aria_label = '{{ theme_toggle_aria }}'
+        else:
+            # Detect language from <html lang="..."> for prebuilt pages.
+            lang_match = _re_ad.search(r'<html[^>]+lang="([^"]+)"', html)
+            lang_code = lang_match.group(1) if lang_match else 'en'
+            common_en = COMMON.get('en', {})
+            common_lang = COMMON.get(lang_code, {})
+            aria_label = (common_lang.get('theme_toggle_aria')
+                          or common_en.get('theme_toggle_aria')
+                          or 'Toggle dark mode')
+        toggle_btn = (
+            f'<button data-utilify-theme-toggle id="themeToggle" '
+            f'class="theme-toggle" aria-label="{aria_label}" type="button">🌙</button>'
+        )
+        # Insert immediately after the logo's closing </a> tag.
+        html = _re_ad.sub(
+            r'(<a\s+href="[^"]+"\s+class="site-logo"[^>]*>[^<]*</a>)',
+            r'\1' + toggle_btn,
+            html, count=1,
+        )
+        # Append handler before </body>.
+        toggle_handler = (
+            '    <script data-utilify-theme-toggle-script>(function(){'
+            'var b=document.getElementById("themeToggle");if(!b)return;'
+            'function p(){var t=document.documentElement.getAttribute("data-theme")||"light";'
+            'b.textContent=t==="dark"?"☀️":"🌙";'
+            'b.setAttribute("aria-pressed",String(t==="dark"));}'
+            'p();b.addEventListener("click",function(){'
+            'var c=document.documentElement.getAttribute("data-theme")||"light";'
+            'var n=c==="dark"?"light":"dark";'
+            'document.documentElement.setAttribute("data-theme",n);'
+            'try{localStorage.setItem("utilify_theme",n);}catch(e){}p();});'
+            '})();</script>\n'
+        )
+        html = html.replace('</body>', toggle_handler + '</body>', 1)
+
     # 9e. Inject favorites star toggle into tool-page security-badge row, plus
     #     the init script before </body>. Only on templates (`{{ lang_code }}`
     #     placeholder present) AND tool pages (`container-narrow` layout) — the
