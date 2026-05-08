@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy-Report-Only" content="default-src 'self' https: data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https:; frame-src https:;">
+    <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+    <title>Few-Shot 프롬프트 포매터 — Markdown·XML·OpenAI JSON - Utilify</title>
+    <meta name="description" content="입력/출력 예시를 Few-shot 프롬프트로 포맷. Markdown, Anthropic XML 태그, OpenAI messages JSON, 일반 텍스트로 출력. 모든 처리는 브라우저에서.">
+    <link rel="canonical" href="https://utilifyapp.net/ko/few-shot-formatter/">
+
+    <meta property="og:title" content="Few-Shot 프롬프트 포매터 - Utilify">
+    <meta property="og:description" content="ChatGPT·Claude·자체 파이프라인용 Few-shot 프롬프트를 깔끔하게 정리.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://utilifyapp.net/ko/few-shot-formatter/">
+
+    <link rel="alternate" hreflang="en" href="https://utilifyapp.net/en/few-shot-formatter/">
+    <link rel="alternate" hreflang="ko" href="https://utilifyapp.net/ko/few-shot-formatter/">
+    <link rel="alternate" hreflang="vi" href="https://utilifyapp.net/vi/few-shot-formatter/">
+    <link rel="alternate" hreflang="th" href="https://utilifyapp.net/th/few-shot-formatter/">
+    <link rel="alternate" hreflang="de" href="https://utilifyapp.net/de/few-shot-formatter/">
+    <link rel="alternate" hreflang="pt" href="https://utilifyapp.net/pt/few-shot-formatter/">
+    <link rel="alternate" hreflang="id" href="https://utilifyapp.net/id/few-shot-formatter/">
+    <link rel="alternate" hreflang="hi" href="https://utilifyapp.net/hi/few-shot-formatter/">
+    <link rel="alternate" hreflang="ja" href="https://utilifyapp.net/ja/few-shot-formatter/">
+    <link rel="alternate" hreflang="zh-Hans" href="https://utilifyapp.net/zh-cn/few-shot-formatter/">
+    <link rel="alternate" hreflang="zh-Hant" href="https://utilifyapp.net/zh-tw/few-shot-formatter/">
+    <link rel="alternate" hreflang="x-default" href="https://utilifyapp.net/en/few-shot-formatter/">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Few-Shot 프롬프트 포매터",
+        "description": "입력/출력 예시 쌍을 Few-shot 프롬프트 형식으로 변환합니다.",
+        "url": "https://utilifyapp.net/ko/few-shot-formatter/",
+        "inLanguage": "ko",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Any",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+
+    <style>
+        .pair-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr auto;
+            gap: var(--spacing-sm);
+            align-items: start;
+            margin-bottom: var(--spacing-sm);
+        }
+        @media (max-width: 600px) { .pair-row { grid-template-columns: 1fr; } }
+        .pair-row textarea {
+            min-height: 70px;
+            font-family: var(--font-mono);
+            font-size: 0.92rem;
+        }
+        .pair-row .remove-btn {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            color: var(--text-secondary);
+            cursor: pointer;
+            padding: 4px 10px;
+            align-self: stretch;
+            transition: color var(--transition-fast), border-color var(--transition-fast);
+        }
+        .pair-row .remove-btn:hover { color: #c62828; border-color: #c62828; }
+        .pair-index {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            grid-column: 1 / -1;
+            margin-bottom: -2px;
+        }
+        .button-row { display: flex; gap: var(--spacing-sm); flex-wrap: wrap; }
+        .button-row .btn { min-width: 120px; }
+        .output-block {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            font-family: var(--font-mono);
+            font-size: 0.88rem;
+            white-space: pre-wrap;
+            word-break: break-word;
+            line-height: 1.5;
+            max-height: 30em;
+            overflow: auto;
+            margin: var(--spacing-md) 0;
+        }
+    </style>
+    <link rel="manifest" href="/manifest.json">
+    <script data-utilify-adsense-loader async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631" crossorigin="anonymous"></script>
+    <meta data-utilify-og property="og:image" content="https://utilifyapp.net/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Utilify">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://utilifyapp.net/assets/og-image.png">
+    <link data-utilify-favicon rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+</head>
+
+<body>
+    <a data-utilify-skip class="skip-link" href="#main">본문으로 건너뛰기</a>
+    <header class="site-header"><div class="container"><div class="header-content"><a href="/ko/" class="site-logo">🛠️ Utilify</a></div></div></header>
+    <main id="main" class="main-content">
+        <div class="container-narrow">
+            <h1>🎯 Few-Shot 프롬프트 포매터</h1>
+            <div class="security-badge" style="display:flex;align-items:center;justify-content:center;gap:8px;margin:10px 0;font-size:14px;color:var(--text-secondary);">
+                <span>🔒 Secure & Client-side</span>
+                <button id="pwaInstallBtn" class="btn btn-primary" style="display: none; padding: 4px 12px; font-size: 12px;">📲 Install App</button>
+                    <button data-utilify-fav-toggle class="fav-toggle-page" type="button" aria-label="즐겨찾기에 추가" data-add-label="즐겨찾기에 추가" data-remove-label="즐겨찾기에서 제거">☆</button>
+            </div>
+
+            <p>시스템 지시와 입력→출력 예시 목록을 입력하면, Markdown, Anthropic XML 태그, OpenAI messages JSON, 또는 일반 텍스트 형식의 깔끔한 Few-shot 프롬프트로 변환합니다 — ChatGPT·Claude·스크립트에 바로 붙여넣을 수 있습니다.</p>
+
+            <div class="card">
+                <div class="form-group">
+                    <label class="form-label" for="systemInput">시스템 지시 (선택)</label>
+                    <textarea id="systemInput" class="form-input" rows="2" placeholder="친절하고 간결하게 답하는 어시스턴트입니다." style="font-family: var(--font-mono);"></textarea>
+                </div>
+
+                <div id="pairList"></div>
+
+                <div class="button-row" style="margin-top: var(--spacing-md);">
+                    <button class="btn" type="button" onclick="addPair()">+ 예시 추가</button>
+                </div>
+
+                <div class="form-group" style="margin-top: var(--spacing-lg);">
+                    <label class="form-label" for="formatSelect">출력 형식</label>
+                    <select id="formatSelect" class="form-input">
+                        <option value="md" selected>Markdown</option>
+                        <option value="xml">Anthropic XML 태그</option>
+                        <option value="json">OpenAI messages JSON</option>
+                        <option value="plain">일반 텍스트</option>
+                    </select>
+                </div>
+
+                <div class="button-row">
+                    <button class="btn btn-primary" type="button" onclick="format()">포맷</button>
+                    <button class="btn" type="button" onclick="resetForm()">초기화</button>
+                </div>
+            </div>
+
+            <div id="result" style="display:none;" aria-live="polite">
+                <h3>포맷된 프롬프트</h3>
+                <pre class="output-block" id="outputBlock"></pre>
+                <div class="button-row">
+                    <button class="btn" type="button" onclick="copyResult()">복사</button>
+                    <button class="btn" type="button" onclick="shareResult()">결과 공유</button>
+                </div>
+            </div>
+
+            <div class="disclaimer">이 도구는 텍스트를 재구성할 뿐, AI 제공자에 호출하지 않습니다. 유료 API에 보내기 전 결과를 반드시 검토하세요.</div>
+
+            <h2>사용 방법</h2>
+            <div class="howto-content"><ol><li>(선택) 작업이나 페르소나를 정의하는 시스템 지시를 입력하세요.</li><li><strong>+ 예시 추가</strong>를 눌러 입력/출력 쌍을 추가합니다. Few-shot은 보통 3~5개가 적당합니다.</li><li>출력 형식을 선택하세요:<ul><li><strong>Markdown</strong> — 가독성이 좋고 채팅 UI에 어울립니다.</li><li><strong>XML 태그</strong> — Anthropic은 Claude에 사용 시 각 예시를 <code>&lt;example&gt;</code> 태그로 감싸기를 권장합니다.</li><li><strong>OpenAI messages JSON</strong> — <code>{role, content}</code> 배열, Chat Completions API에 그대로 전달 가능.</li><li><strong>일반 텍스트</strong> — 마크업 없이 단순 형식.</li></ul></li><li><strong>포맷</strong> 후 결과를 복사하세요.</li></ol><p>Claude·Anthropic에는 XML 태그가 예시 구조 인식률을 일관되게 높입니다. ChatGPT에는 Markdown 또는 messages JSON이 일반적으로 더 잘 작동합니다. OpenAI 형식은 각 예시 쌍을 user/assistant 메시지로 번갈아 배열해 API가 대화 이력으로 처리하게 합니다.</p></div>
+
+            <div class="related-tools-section">
+                <h3>관련 도구</h3>
+                <div class="related-buttons">
+                    <a href="/ko/token-counter/" class="related-btn">토큰 카운터</a><a
+                        href="/ko/prompt-pii-scrubber/" class="related-btn">프롬프트 PII 마스킹</a><a
+                        href="/ko/chatgpt-to-blog/" class="related-btn">ChatGPT 블로그 변환</a><a
+                        href="/ko/claude-md-generator/" class="related-btn">Claude.md 생성기</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="site-footer"><div class="container"><div class="footer-content"><p>&copy; 2025 Utilify. All rights reserved.</p>
+                <p data-legal-links style="font-size: 0.875rem; margin-top: 8px;"><a href="/ko/about/">소개</a> · <a href="/ko/privacy/">개인정보</a> · <a href="/ko/terms/">이용약관</a></p></div></div></footer>
+    <script src="/assets/js/common.js"></script>
+    <script>
+        const PH_INPUT = '사용자 메시지';
+        const PH_OUTPUT = '기대하는 답변';
+        const REMOVE_LABEL = '삭제';
+        const list = document.getElementById('pairList');
+
+        function addPair(input, output) {
+            const idx = list.children.length;
+            const wrap = document.createElement('div');
+            wrap.className = 'pair-row';
+            wrap.innerHTML =
+                '<div class="pair-index">#' + (idx + 1) + '</div>' +
+                '<textarea class="form-input pair-input" placeholder="' + PH_INPUT + '"></textarea>' +
+                '<textarea class="form-input pair-output" placeholder="' + PH_OUTPUT + '"></textarea>' +
+                '<button type="button" class="remove-btn">' + REMOVE_LABEL + '</button>';
+            wrap.querySelector('.remove-btn').addEventListener('click', () => {
+                wrap.remove();
+                renumber();
+            });
+            if (input) wrap.querySelector('.pair-input').value = input;
+            if (output) wrap.querySelector('.pair-output').value = output;
+            list.appendChild(wrap);
+        }
+
+        function renumber() {
+            [...list.children].forEach((row, i) => {
+                row.querySelector('.pair-index').textContent = '#' + (i + 1);
+            });
+        }
+
+        function collectPairs() {
+            return [...list.querySelectorAll('.pair-row')]
+                .map(r => ({
+                    input: r.querySelector('.pair-input').value.trim(),
+                    output: r.querySelector('.pair-output').value.trim(),
+                }))
+                .filter(p => p.input || p.output);
+        }
+
+        function format() {
+            const system = document.getElementById('systemInput').value.trim();
+            const pairs = collectPairs();
+            if (!pairs.length) {
+                alert('최소 1개의 입력/출력 예시를 추가해 주세요.');
+                return;
+            }
+            const fmt = document.getElementById('formatSelect').value;
+            const out = render(system, pairs, fmt);
+            document.getElementById('outputBlock').textContent = out;
+            document.getElementById('result').style.display = 'block';
+        }
+
+        function render(system, pairs, fmt) {
+            if (fmt === 'json') {
+                const arr = [];
+                if (system) arr.push({ role: 'system', content: system });
+                pairs.forEach(p => {
+                    arr.push({ role: 'user', content: p.input });
+                    arr.push({ role: 'assistant', content: p.output });
+                });
+                return JSON.stringify(arr, null, 2);
+            }
+            if (fmt === 'xml') {
+                const parts = [];
+                if (system) parts.push('<system>\n' + system + '\n</system>');
+                parts.push('<examples>');
+                pairs.forEach(p => {
+                    parts.push('  <example>');
+                    parts.push('    <input>' + p.input + '</input>');
+                    parts.push('    <output>' + p.output + '</output>');
+                    parts.push('  </example>');
+                });
+                parts.push('</examples>');
+                return parts.join('\n');
+            }
+            if (fmt === 'plain') {
+                const parts = [];
+                if (system) parts.push(system, '');
+                pairs.forEach(p => {
+                    parts.push('Input: ' + p.input);
+                    parts.push('Output: ' + p.output);
+                    parts.push('');
+                });
+                return parts.join('\n').trimEnd();
+            }
+            // markdown (default)
+            const parts = [];
+            if (system) parts.push('## System', '', system, '');
+            parts.push('## Examples', '');
+            pairs.forEach((p, i) => {
+                parts.push('**Example ' + (i + 1) + ':**');
+                parts.push('Input: ' + p.input);
+                parts.push('Output: ' + p.output);
+                parts.push('');
+            });
+            return parts.join('\n').trimEnd();
+        }
+
+        async function copyResult() {
+            const text = document.getElementById('outputBlock').textContent;
+            if (!text) return;
+            try {
+                await navigator.clipboard.writeText(text);
+                alert('복사되었습니다.');
+            } catch (e) { /* clipboard blocked */ }
+        }
+
+        async function shareResult() {
+            const pairs = collectPairs();
+            if (!pairs.length) return;
+            const text = '{value}개 예시로 Few-shot 프롬프트를 만들었습니다 —'.replace('{value}', pairs.length) + ' ' + location.href;
+            if (navigator.share) {
+                try { await navigator.share({ title: 'Few-Shot 프롬프트 포매터', text }); return; }
+                catch (e) { if (e && e.name === 'AbortError') return; }
+            }
+            try {
+                await navigator.clipboard.writeText(text);
+                alert('결과가 클립보드에 복사되었습니다.');
+            } catch (e) { /* clipboard blocked */ }
+        }
+
+        function resetForm() {
+            document.getElementById('systemInput').value = '';
+            list.innerHTML = '';
+            addPair();
+            addPair();
+            document.getElementById('formatSelect').value = 'md';
+            document.getElementById('result').style.display = 'none';
+        }
+
+        // Seed with two empty pairs.
+        addPair();
+        addPair();
+    </script>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({google_ad_client:"ca-pub-6334819180242631",enable_page_level_ads:true});</script>
+    <script data-utilify-fav-toggle-script>(function(){var btn=document.querySelector(".fav-toggle-page");if(!btn)return;var m=location.pathname.match(/^\/[^\/]+\/([^\/]+)\/?$/);if(!m)return;var slug=m[1],K="utilify_favorites";function g(){return (localStorage.getItem(K)||"").split(",").filter(Boolean);}function s(a){localStorage.setItem(K,Array.from(new Set(a)).join(","));}function p(f){btn.textContent=f?"★":"☆";btn.classList.toggle("is-fav",f);btn.setAttribute("aria-label",f?btn.dataset.removeLabel:btn.dataset.addLabel);btn.setAttribute("aria-pressed",String(f));}p(g().indexOf(slug)>-1);btn.addEventListener("click",function(){var a=g(),n=a.indexOf(slug)>-1?a.filter(function(x){return x!==slug;}):a.concat([slug]);s(n);p(n.indexOf(slug)>-1);});})();</script>
+</body>
+
+</html>

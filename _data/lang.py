@@ -7564,3 +7564,117 @@ RAG_CHUNKER = {
         "card_blurb": "임베딩·RAG 파이프라인을 위한 슬라이딩 윈도우 텍스트 청크 분할기."
     }
 }
+
+
+FEW_SHOT_FORMATTER = {
+    "en": {
+        "title": "Few-Shot Prompt Formatter",
+        "meta_title": "Few-Shot Prompt Formatter — Markdown / XML / OpenAI JSON - Utilify",
+        "meta_desc": "Format input/output examples as a few-shot prompt. Output as Markdown, Anthropic XML tags, OpenAI messages JSON, or plain text. Runs in your browser.",
+        "og_title": "Few-Shot Prompt Formatter - Utilify",
+        "og_desc": "Format examples as a clean few-shot prompt for ChatGPT, Claude, or your own pipeline.",
+        "json_name": "Few-Shot Prompt Formatter",
+        "json_desc": "Convert input/output example pairs into a formatted few-shot prompt.",
+        "page_desc": "Add a system instruction and a list of input → output examples. The tool emits a clean few-shot prompt in Markdown, Anthropic-style XML tags, OpenAI messages JSON, or plain text — ready to paste into ChatGPT, Claude, or a script.",
+        "label_system": "System instruction (optional)",
+        "label_input": "Input",
+        "label_output": "Output",
+        "label_format": "Output format",
+        "ph_system": "You are a helpful assistant. Answer questions concisely.",
+        "ph_input": "User message",
+        "ph_output": "Expected reply",
+        "opt_md": "Markdown",
+        "opt_xml": "Anthropic XML tags",
+        "opt_json": "OpenAI messages JSON",
+        "opt_plain": "Plain text",
+        "btn_add_pair": "+ Add example",
+        "btn_remove_pair": "Remove",
+        "btn_format": "Format",
+        "btn_reset": "Reset",
+        "btn_copy": "Copy",
+        "btn_share": "Share result",
+        "share_text": "I built a few-shot prompt with {value} examples —",
+        "share_copied": "Result copied to clipboard.",
+        "copied": "Copied.",
+        "res_label": "Formatted prompt",
+        "alert_no_pairs": "Add at least one input/output example.",
+        "disclaimer": "The tool reformats your text — it does not call any AI provider. Review the output before sending to a paid API.",
+        "howto_header": "How to use",
+        "howto_html": (
+            "<ol>"
+            "<li>(Optional) Paste a system instruction that defines the task or persona.</li>"
+            "<li>Click <strong>+ Add example</strong> to add input/output pairs. 3–5 examples is typical for few-shot.</li>"
+            "<li>Pick the output format:"
+            "<ul>"
+            "<li><strong>Markdown</strong> — readable, good for chat UIs.</li>"
+            "<li><strong>XML tags</strong> — Anthropic recommends <code>&lt;example&gt;</code> tags around each pair for Claude.</li>"
+            "<li><strong>OpenAI messages JSON</strong> — array of <code>{role, content}</code> objects, ready for the Chat Completions API.</li>"
+            "<li><strong>Plain</strong> — minimal, no markup.</li>"
+            "</ul></li>"
+            "<li>Click <strong>Format</strong> and copy the result.</li>"
+            "</ol>"
+            "<p>For Claude / Anthropic, XML tags consistently improve adherence to the example structure. For ChatGPT, Markdown or messages JSON usually works best. The OpenAI format alternates user/assistant turns for each pair, which the API treats as conversation history.</p>"
+        ),
+        "related_header": "Related Tools",
+        "related_token": "Token Counter",
+        "related_pii": "Prompt PII Scrubber",
+        "related_chatgpt": "ChatGPT to Blog",
+        "related_claude": "Claude.md Generator",
+        "card_blurb": "Format input/output examples as a few-shot prompt — Markdown, XML, or OpenAI JSON."
+    },
+    "ko": {
+        "title": "Few-Shot 프롬프트 포매터",
+        "meta_title": "Few-Shot 프롬프트 포매터 — Markdown·XML·OpenAI JSON - Utilify",
+        "meta_desc": "입력/출력 예시를 Few-shot 프롬프트로 포맷. Markdown, Anthropic XML 태그, OpenAI messages JSON, 일반 텍스트로 출력. 모든 처리는 브라우저에서.",
+        "og_title": "Few-Shot 프롬프트 포매터 - Utilify",
+        "og_desc": "ChatGPT·Claude·자체 파이프라인용 Few-shot 프롬프트를 깔끔하게 정리.",
+        "json_name": "Few-Shot 프롬프트 포매터",
+        "json_desc": "입력/출력 예시 쌍을 Few-shot 프롬프트 형식으로 변환합니다.",
+        "page_desc": "시스템 지시와 입력→출력 예시 목록을 입력하면, Markdown, Anthropic XML 태그, OpenAI messages JSON, 또는 일반 텍스트 형식의 깔끔한 Few-shot 프롬프트로 변환합니다 — ChatGPT·Claude·스크립트에 바로 붙여넣을 수 있습니다.",
+        "label_system": "시스템 지시 (선택)",
+        "label_input": "입력",
+        "label_output": "출력",
+        "label_format": "출력 형식",
+        "ph_system": "친절하고 간결하게 답하는 어시스턴트입니다.",
+        "ph_input": "사용자 메시지",
+        "ph_output": "기대하는 답변",
+        "opt_md": "Markdown",
+        "opt_xml": "Anthropic XML 태그",
+        "opt_json": "OpenAI messages JSON",
+        "opt_plain": "일반 텍스트",
+        "btn_add_pair": "+ 예시 추가",
+        "btn_remove_pair": "삭제",
+        "btn_format": "포맷",
+        "btn_reset": "초기화",
+        "btn_copy": "복사",
+        "btn_share": "결과 공유",
+        "share_text": "{value}개 예시로 Few-shot 프롬프트를 만들었습니다 —",
+        "share_copied": "결과가 클립보드에 복사되었습니다.",
+        "copied": "복사되었습니다.",
+        "res_label": "포맷된 프롬프트",
+        "alert_no_pairs": "최소 1개의 입력/출력 예시를 추가해 주세요.",
+        "disclaimer": "이 도구는 텍스트를 재구성할 뿐, AI 제공자에 호출하지 않습니다. 유료 API에 보내기 전 결과를 반드시 검토하세요.",
+        "howto_header": "사용 방법",
+        "howto_html": (
+            "<ol>"
+            "<li>(선택) 작업이나 페르소나를 정의하는 시스템 지시를 입력하세요.</li>"
+            "<li><strong>+ 예시 추가</strong>를 눌러 입력/출력 쌍을 추가합니다. Few-shot은 보통 3~5개가 적당합니다.</li>"
+            "<li>출력 형식을 선택하세요:"
+            "<ul>"
+            "<li><strong>Markdown</strong> — 가독성이 좋고 채팅 UI에 어울립니다.</li>"
+            "<li><strong>XML 태그</strong> — Anthropic은 Claude에 사용 시 각 예시를 <code>&lt;example&gt;</code> 태그로 감싸기를 권장합니다.</li>"
+            "<li><strong>OpenAI messages JSON</strong> — <code>{role, content}</code> 배열, Chat Completions API에 그대로 전달 가능.</li>"
+            "<li><strong>일반 텍스트</strong> — 마크업 없이 단순 형식.</li>"
+            "</ul></li>"
+            "<li><strong>포맷</strong> 후 결과를 복사하세요.</li>"
+            "</ol>"
+            "<p>Claude·Anthropic에는 XML 태그가 예시 구조 인식률을 일관되게 높입니다. ChatGPT에는 Markdown 또는 messages JSON이 일반적으로 더 잘 작동합니다. OpenAI 형식은 각 예시 쌍을 user/assistant 메시지로 번갈아 배열해 API가 대화 이력으로 처리하게 합니다.</p>"
+        ),
+        "related_header": "관련 도구",
+        "related_token": "토큰 카운터",
+        "related_pii": "프롬프트 PII 마스킹",
+        "related_chatgpt": "ChatGPT 블로그 변환",
+        "related_claude": "Claude.md 생성기",
+        "card_blurb": "입력/출력 예시를 Few-shot 프롬프트로 — Markdown·XML·OpenAI JSON."
+    }
+}
