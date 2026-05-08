@@ -1130,6 +1130,28 @@ def inject_pair_breadcrumb(html, slug, lang, data):
     return html
 
 
+def inject_prebuilt_breadcrumb(html, slug, lang, tool_dict):
+    """Wrapper around inject_tool_breadcrumb() for hand-authored prebuilt tool
+    pages. Builds the minimal `data` dict (resolved breadcrumb_home + title)
+    that the shared injector expects, then delegates. Prebuilt tools have no
+    sub-category in TOOL_SUBCATEGORIES, so the result is always 2-level.
+    Idempotent via the shared `data-utilify-breadcrumb` marker."""
+    if 'data-utilify-breadcrumb' in html:
+        return html
+    common_en = COMMON.get('en', {})
+    common_lang = COMMON.get(lang, {})
+    home = (common_lang.get('breadcrumb_home')
+            or common_en.get('breadcrumb_home')
+            or 'Home')
+    title = (tool_dict.get(lang, {}).get('title')
+             or tool_dict.get('en', {}).get('title')
+             or slug)
+    return inject_tool_breadcrumb(html, slug, lang, {
+        'breadcrumb_home': home,
+        'title': title,
+    })
+
+
 def build_tool(tool_name, tool_data, template_file):
     print(f"Building {tool_name}...")
     template = load_template(template_file)
@@ -1321,7 +1343,7 @@ def _retarget_lang(html: str, tool_path: str, dst_lang: str) -> str:
 
 def sync_prebuilt_tools():
     print("Syncing prebuilt tool pages (hreflang refresh + zh-cn/zh-tw clones)...")
-    for tool_path, _icon, _tool_dict in PREBUILT_TOOLS:
+    for tool_path, _icon, tool_dict in PREBUILT_TOOLS:
         # Refresh authored language pages so they include zh-cn / zh-tw alternates.
         for lang in PREBUILT_LANGS_AUTHORED:
             page = os.path.join(BASE_DIR, lang, tool_path, 'index.html')
@@ -1332,6 +1354,7 @@ def sync_prebuilt_tools():
             new_content = _refresh_alternates(content, tool_path)
             new_content = inject_monetization(new_content)
             new_content = inject_legal_links_resolved(new_content, lang)
+            new_content = inject_prebuilt_breadcrumb(new_content, tool_path, lang, tool_dict)
             if new_content != content:
                 with open(page, 'w', encoding='utf-8') as f:
                     f.write(new_content)
@@ -1358,6 +1381,7 @@ def sync_prebuilt_tools():
                 refreshed = _refresh_alternates(existing, tool_path)
                 refreshed = inject_monetization(refreshed)
                 refreshed = inject_legal_links_resolved(refreshed, clone_lang)
+                refreshed = inject_prebuilt_breadcrumb(refreshed, tool_path, clone_lang, tool_dict)
                 if refreshed != existing:
                     with open(clone_path, 'w', encoding='utf-8') as f:
                         f.write(refreshed)
@@ -1367,6 +1391,7 @@ def sync_prebuilt_tools():
             retargeted = _refresh_alternates(retargeted, tool_path)
             retargeted = inject_monetization(retargeted)
             retargeted = inject_legal_links_resolved(retargeted, clone_lang)
+            retargeted = inject_prebuilt_breadcrumb(retargeted, tool_path, clone_lang, tool_dict)
             os.makedirs(clone_dir, exist_ok=True)
             with open(clone_path, 'w', encoding='utf-8') as f:
                 f.write(retargeted)
