@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="{{ lang_code }}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy-Report-Only" content="default-src 'self' https: data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https:; frame-src https:;">
+    <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+    <title>{{ meta_title }}</title>
+    <meta name="description" content="{{ meta_desc }}">
+    <link rel="canonical" href="https://utilifyapp.net/{{ lang_code }}/json-schema-validator/">
+
+    <meta property="og:title" content="{{ og_title }}">
+    <meta property="og:description" content="{{ og_desc }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://utilifyapp.net/{{ lang_code }}/json-schema-validator/">
+
+    {{ alternate_links }}
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "{{ json_name }}",
+        "description": "{{ json_desc }}",
+        "url": "https://utilifyapp.net/{{ lang_code }}/json-schema-validator/",
+        "inLanguage": "{{ lang_code }}",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Any",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+
+    <style>
+        .pane-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-md);
+        }
+        @media (max-width: 720px) { .pane-grid { grid-template-columns: 1fr; } }
+        .pane-grid textarea {
+            font-family: var(--font-mono);
+            font-size: 0.92rem;
+            min-height: 280px;
+        }
+        .button-row { display: flex; gap: var(--spacing-sm); flex-wrap: wrap; }
+        .button-row .btn { min-width: 120px; }
+        .verdict {
+            padding: var(--spacing-md);
+            border-radius: var(--radius-md);
+            margin: var(--spacing-md) 0;
+            font-weight: 600;
+        }
+        .verdict.valid { background: rgba(46, 125, 50, 0.10); color: #2e7d32; border: 1px solid #2e7d32; }
+        .verdict.invalid { background: rgba(198, 40, 40, 0.06); color: #c62828; border: 1px solid #c62828; font-weight: 700; }
+        .err-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 var(--spacing-md);
+        }
+        .err-list li {
+            padding: 8px 12px;
+            border-left: 3px solid #c62828;
+            background: var(--bg-secondary);
+            margin-bottom: 6px;
+            font-family: var(--font-mono);
+            font-size: 0.88rem;
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+        }
+        .err-list .path { color: var(--primary-color); font-weight: 600; }
+    </style>
+    <link rel="manifest" href="/manifest.json">
+</head>
+
+<body>
+    <header class="site-header"><div class="container"><div class="header-content"><a href="/{{ lang_code }}/" class="site-logo">{{ brand }}</a></div></div></header>
+    <main class="main-content">
+        <div class="container-narrow">
+            <h1>🛡️ {{ title }}</h1>
+            <div class="security-badge" style="display:flex;align-items:center;justify-content:center;gap:8px;margin:10px 0;font-size:14px;color:var(--text-secondary);">
+                <span>{{ secure_badge }}</span>
+                <button id="pwaInstallBtn" class="btn btn-primary" style="display: none; padding: 4px 12px; font-size: 12px;">{{ install_app }}</button>
+            </div>
+
+            <p>{{ page_desc }}</p>
+
+            <div class="card">
+                <div class="pane-grid">
+                    <div class="form-group">
+                        <label class="form-label" for="dataInput">{{ label_data }}</label>
+                        <textarea id="dataInput" class="form-input" placeholder="{{ ph_data }}"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="schemaInput">{{ label_schema }}</label>
+                        <textarea id="schemaInput" class="form-input" placeholder="{{ ph_schema }}"></textarea>
+                    </div>
+                </div>
+                <div class="button-row" style="margin-top: var(--spacing-md);">
+                    <button class="btn btn-primary" type="button" onclick="run()">{{ btn_validate }}</button>
+                    <button class="btn" type="button" onclick="loadSample()">{{ btn_load_sample }}</button>
+                    <button class="btn" type="button" onclick="resetForm()">{{ btn_reset }}</button>
+                </div>
+            </div>
+
+            <div id="result" style="display:none;" aria-live="polite">
+                <div id="verdict" class="verdict"></div>
+                <ul id="errList" class="err-list"></ul>
+                <div class="button-row">
+                    <button class="btn" type="button" onclick="shareResult()">{{ btn_share }}</button>
+                </div>
+            </div>
+
+            <div class="disclaimer">{{ disclaimer }}</div>
+
+            <h2>{{ howto_header }}</h2>
+            <div class="howto-content">{{ howto_html }}</div>
+
+            <div class="related-tools-section">
+                <h3>{{ related_header }}</h3>
+                <div class="related-buttons">
+                    <a href="/{{ lang_code }}/json-formatter/" class="related-btn">{{ related_json }}</a><a
+                        href="/{{ lang_code }}/json-to-ts/" class="related-btn">{{ related_json_ts }}</a><a
+                        href="/{{ lang_code }}/jwt-decoder/" class="related-btn">{{ related_jwt }}</a><a
+                        href="/{{ lang_code }}/token-counter/" class="related-btn">{{ related_token }}</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="site-footer"><div class="container"><div class="footer-content"><p>{{ footer }}</p></div></div></footer>
+    <script src="/assets/js/common.js"></script>
+    <script>
+        // --- Validator ---
+        function jsonTypeName(v) {
+            if (v === null) return 'null';
+            if (Array.isArray(v)) return 'array';
+            if (typeof v === 'number') return Number.isInteger(v) ? 'integer' : 'number';
+            return typeof v;
+        }
+
+        function matchesType(data, t) {
+            if (t === 'integer') return typeof data === 'number' && Number.isInteger(data);
+            if (t === 'number') return typeof data === 'number';
+            if (t === 'string') return typeof data === 'string';
+            if (t === 'boolean') return typeof data === 'boolean';
+            if (t === 'null') return data === null;
+            if (t === 'array') return Array.isArray(data);
+            if (t === 'object') return data !== null && typeof data === 'object' && !Array.isArray(data);
+            return false;
+        }
+
+        function deepEqual(a, b) {
+            if (a === b) return true;
+            if (typeof a !== typeof b) return false;
+            if (a && b && typeof a === 'object') {
+                if (Array.isArray(a) !== Array.isArray(b)) return false;
+                const ka = Object.keys(a), kb = Object.keys(b);
+                if (ka.length !== kb.length) return false;
+                return ka.every(k => deepEqual(a[k], b[k]));
+            }
+            return false;
+        }
+
+        function checkFormat(s, fmt) {
+            if (fmt === 'email') return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s) ? null : 'invalid email';
+            if (fmt === 'uri' || fmt === 'url') {
+                try { new URL(s); return null; } catch (e) { return 'invalid uri'; }
+            }
+            if (fmt === 'date') return /^\d{4}-\d{2}-\d{2}$/.test(s) ? null : 'invalid date (YYYY-MM-DD)';
+            if (fmt === 'date-time') return !isNaN(Date.parse(s)) ? null : 'invalid date-time';
+            if (fmt === 'uuid') return /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(s) ? null : 'invalid uuid';
+            return null;
+        }
+
+        function validate(data, schema, path) {
+            const errors = [];
+            if (!schema || typeof schema !== 'object') return errors;
+            path = path || '$';
+
+            if (schema.type) {
+                const types = Array.isArray(schema.type) ? schema.type : [schema.type];
+                if (!types.some(t => matchesType(data, t))) {
+                    errors.push({ path, msg: 'expected ' + types.join(' | ') + ', got ' + jsonTypeName(data) });
+                    return errors;
+                }
+            }
+
+            if ('const' in schema && !deepEqual(schema.const, data)) {
+                errors.push({ path, msg: 'must equal ' + JSON.stringify(schema.const) });
+            }
+            if (Array.isArray(schema.enum) && !schema.enum.some(v => deepEqual(v, data))) {
+                errors.push({ path, msg: 'not in enum' });
+            }
+
+            if (typeof data === 'string') {
+                if (schema.minLength != null && data.length < schema.minLength)
+                    errors.push({ path, msg: 'length ' + data.length + ' < minLength ' + schema.minLength });
+                if (schema.maxLength != null && data.length > schema.maxLength)
+                    errors.push({ path, msg: 'length ' + data.length + ' > maxLength ' + schema.maxLength });
+                if (schema.pattern) {
+                    try {
+                        if (!new RegExp(schema.pattern).test(data))
+                            errors.push({ path, msg: 'does not match pattern ' + schema.pattern });
+                    } catch (e) {
+                        errors.push({ path, msg: 'invalid pattern in schema: ' + schema.pattern });
+                    }
+                }
+                if (schema.format) {
+                    const fe = checkFormat(data, schema.format);
+                    if (fe) errors.push({ path, msg: fe });
+                }
+            }
+
+            if (typeof data === 'number') {
+                if (schema.minimum != null && data < schema.minimum)
+                    errors.push({ path, msg: data + ' < minimum ' + schema.minimum });
+                if (schema.maximum != null && data > schema.maximum)
+                    errors.push({ path, msg: data + ' > maximum ' + schema.maximum });
+                if (schema.exclusiveMinimum != null && data <= schema.exclusiveMinimum)
+                    errors.push({ path, msg: data + ' <= exclusiveMinimum ' + schema.exclusiveMinimum });
+                if (schema.exclusiveMaximum != null && data >= schema.exclusiveMaximum)
+                    errors.push({ path, msg: data + ' >= exclusiveMaximum ' + schema.exclusiveMaximum });
+                if (schema.multipleOf != null && Math.abs(data % schema.multipleOf) > 1e-12)
+                    errors.push({ path, msg: 'not multiple of ' + schema.multipleOf });
+            }
+
+            if (data !== null && typeof data === 'object' && !Array.isArray(data)) {
+                if (Array.isArray(schema.required)) {
+                    schema.required.forEach(k => {
+                        if (!Object.prototype.hasOwnProperty.call(data, k))
+                            errors.push({ path, msg: "missing required property '" + k + "'" });
+                    });
+                }
+                if (schema.properties && typeof schema.properties === 'object') {
+                    for (const key of Object.keys(schema.properties)) {
+                        if (Object.prototype.hasOwnProperty.call(data, key)) {
+                            errors.push(...validate(data[key], schema.properties[key], path + '.' + key));
+                        }
+                    }
+                }
+                if (schema.additionalProperties === false && schema.properties) {
+                    const allowed = new Set(Object.keys(schema.properties));
+                    for (const key of Object.keys(data)) {
+                        if (!allowed.has(key))
+                            errors.push({ path, msg: "additional property '" + key + "' not allowed" });
+                    }
+                }
+            }
+
+            if (Array.isArray(data)) {
+                if (schema.minItems != null && data.length < schema.minItems)
+                    errors.push({ path, msg: 'length ' + data.length + ' < minItems ' + schema.minItems });
+                if (schema.maxItems != null && data.length > schema.maxItems)
+                    errors.push({ path, msg: 'length ' + data.length + ' > maxItems ' + schema.maxItems });
+                if (schema.items && typeof schema.items === 'object') {
+                    data.forEach((item, i) => {
+                        errors.push(...validate(item, schema.items, path + '[' + i + ']'));
+                    });
+                }
+            }
+
+            return errors;
+        }
+
+        function run() {
+            const dataStr = document.getElementById('dataInput').value;
+            const schemaStr = document.getElementById('schemaInput').value;
+            let data, schema;
+            try { data = JSON.parse(dataStr); }
+            catch (e) { alert('{{ alert_data_invalid }}' + e.message); return; }
+            try { schema = JSON.parse(schemaStr); }
+            catch (e) { alert('{{ alert_schema_invalid }}' + e.message); return; }
+
+            const errors = validate(data, schema);
+            const verdict = document.getElementById('verdict');
+            const errList = document.getElementById('errList');
+            errList.innerHTML = '';
+            if (errors.length === 0) {
+                verdict.className = 'verdict valid';
+                verdict.textContent = '{{ res_valid }}';
+            } else {
+                verdict.className = 'verdict invalid';
+                verdict.textContent = '{{ res_invalid_header }} — '
+                    + '{{ res_error_count }}'.replace('{count}', errors.length);
+                errors.forEach(e => {
+                    const li = document.createElement('li');
+                    const path = document.createElement('span');
+                    path.className = 'path';
+                    path.textContent = e.path;
+                    li.appendChild(path);
+                    li.appendChild(document.createTextNode('  ' + e.msg));
+                    errList.appendChild(li);
+                });
+            }
+            document.getElementById('result').style.display = 'block';
+        }
+
+        function loadSample() {
+            document.getElementById('dataInput').value = JSON.stringify({
+                name: 'Alice',
+                age: 30,
+                email: 'alice@example.com',
+                roles: ['admin', 'editor']
+            }, null, 2);
+            document.getElementById('schemaInput').value = JSON.stringify({
+                type: 'object',
+                required: ['name', 'age'],
+                additionalProperties: false,
+                properties: {
+                    name: { type: 'string', minLength: 1 },
+                    age: { type: 'integer', minimum: 0, maximum: 150 },
+                    email: { type: 'string', format: 'email' },
+                    roles: { type: 'array', items: { type: 'string', enum: ['admin', 'editor', 'viewer'] }, minItems: 1 }
+                }
+            }, null, 2);
+        }
+
+        function resetForm() {
+            document.getElementById('dataInput').value = '';
+            document.getElementById('schemaInput').value = '';
+            document.getElementById('result').style.display = 'none';
+        }
+
+        async function shareResult() {
+            const verdict = document.getElementById('verdict').textContent;
+            if (!verdict) return;
+            const text = '{{ share_text }}'.replace('{value}', verdict) + ' ' + location.href;
+            if (navigator.share) {
+                try { await navigator.share({ title: '{{ title }}', text }); return; }
+                catch (e) { if (e && e.name === 'AbortError') return; }
+            }
+            try {
+                await navigator.clipboard.writeText(text);
+                alert('{{ share_copied }}');
+            } catch (e) { /* clipboard blocked */ }
+        }
+    </script>
+</body>
+
+</html>

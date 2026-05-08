@@ -7678,3 +7678,91 @@ FEW_SHOT_FORMATTER = {
         "card_blurb": "입력/출력 예시를 Few-shot 프롬프트로 — Markdown·XML·OpenAI JSON."
     }
 }
+
+
+JSON_SCHEMA_VALIDATOR = {
+    "en": {
+        "title": "JSON Schema Validator",
+        "meta_title": "JSON Schema Validator — Validate JSON Against a Schema - Utilify",
+        "meta_desc": "Validate JSON data against a JSON Schema in your browser. Supports type, properties, required, items, enum, format, pattern, min/max. No upload, no signup.",
+        "og_title": "JSON Schema Validator - Utilify",
+        "og_desc": "Validate JSON against a schema. Errors include the JSONPath of every failure.",
+        "json_name": "JSON Schema Validator",
+        "json_desc": "Client-side JSON Schema validator covering core JSON Schema 2020-12 keywords.",
+        "page_desc": "Paste your JSON data and a JSON Schema. The validator checks type, required, properties, items, enum, format, pattern, and min/max constraints, and reports each failure with the JSONPath where it occurred. All processing in your browser.",
+        "label_data": "JSON data",
+        "label_schema": "JSON Schema",
+        "ph_data": "{\n  \"name\": \"Alice\",\n  \"age\": 30\n}",
+        "ph_schema": "{\n  \"type\": \"object\",\n  \"required\": [\"name\"],\n  \"properties\": {\n    \"name\": {\"type\": \"string\"}\n  }\n}",
+        "btn_validate": "Validate",
+        "btn_reset": "Reset",
+        "btn_load_sample": "Load sample",
+        "btn_share": "Share result",
+        "share_text": "JSON validation: {value} —",
+        "share_copied": "Result copied to clipboard.",
+        "res_valid": "✓ Valid against schema.",
+        "res_invalid_header": "✗ Validation errors",
+        "res_error_count": "{count} error(s) at:",
+        "alert_data_invalid": "Data is not valid JSON: ",
+        "alert_schema_invalid": "Schema is not valid JSON: ",
+        "disclaimer": "Implements a useful subset of JSON Schema 2020-12 (type, properties, required, items, enum, const, format, pattern, min/max for strings/numbers/arrays). Advanced keywords like $ref, allOf/anyOf/oneOf, dependentSchemas, and prefixItems are not supported — for those, use a server-side validator like ajv.",
+        "howto_header": "How to use",
+        "howto_html": (
+            "<ol>"
+            "<li>Paste your JSON data into the left panel.</li>"
+            "<li>Paste the JSON Schema you want to validate against into the right panel. Click <strong>Load sample</strong> for a worked example.</li>"
+            "<li>Click <strong>Validate</strong>. If the data passes, you see a green check. Otherwise each error is listed with the JSONPath where it occurred (e.g., <code>$.user.email</code>).</li>"
+            "</ol>"
+            "<p><strong>Supported keywords</strong>: <code>type</code> (string, number, integer, boolean, object, array, null), <code>properties</code>, <code>required</code>, <code>additionalProperties: false</code>, <code>items</code>, <code>enum</code>, <code>const</code>, <code>minimum</code>/<code>maximum</code>/<code>exclusiveMinimum</code>/<code>exclusiveMaximum</code>/<code>multipleOf</code>, <code>minLength</code>/<code>maxLength</code>/<code>pattern</code>, <code>minItems</code>/<code>maxItems</code>, and <code>format</code> (email, uri, url, date, date-time, uuid).</p>"
+            "<p><strong>Not supported</strong>: <code>$ref</code>, <code>allOf</code>/<code>anyOf</code>/<code>oneOf</code>/<code>not</code>, <code>dependentSchemas</code>, <code>prefixItems</code>, <code>contains</code>, <code>if</code>/<code>then</code>/<code>else</code>. For those, use ajv or a server-side validator.</p>"
+        ),
+        "related_header": "Related Tools",
+        "related_json": "JSON Formatter",
+        "related_json_ts": "JSON to TS/DTO",
+        "related_jwt": "JWT Decoder",
+        "related_token": "Token Counter",
+        "card_blurb": "Validate JSON against a schema — type, required, items, enum, format, pattern."
+    },
+    "ko": {
+        "title": "JSON Schema 검증기",
+        "meta_title": "JSON Schema 검증기 — JSON 데이터를 스키마와 대조 - Utilify",
+        "meta_desc": "JSON 데이터를 JSON Schema로 검증. type, properties, required, items, enum, format, pattern, min/max 지원. 모든 처리는 브라우저에서.",
+        "og_title": "JSON Schema 검증기 - Utilify",
+        "og_desc": "JSON을 스키마로 검증 — 모든 오류에 JSONPath 위치 표시.",
+        "json_name": "JSON Schema 검증기",
+        "json_desc": "JSON Schema 2020-12 핵심 키워드를 다루는 클라이언트 사이드 검증기.",
+        "page_desc": "JSON 데이터와 JSON Schema를 붙여넣으면 type·required·properties·items·enum·format·pattern·min/max 제약을 모두 검사하고, 실패 위치를 JSONPath로 표시합니다. 모든 처리는 브라우저에서 이루어집니다.",
+        "label_data": "JSON 데이터",
+        "label_schema": "JSON Schema",
+        "ph_data": "{\n  \"name\": \"Alice\",\n  \"age\": 30\n}",
+        "ph_schema": "{\n  \"type\": \"object\",\n  \"required\": [\"name\"],\n  \"properties\": {\n    \"name\": {\"type\": \"string\"}\n  }\n}",
+        "btn_validate": "검증",
+        "btn_reset": "초기화",
+        "btn_load_sample": "예시 불러오기",
+        "btn_share": "결과 공유",
+        "share_text": "JSON 검증 결과: {value} —",
+        "share_copied": "결과가 클립보드에 복사되었습니다.",
+        "res_valid": "✓ 스키마와 일치합니다.",
+        "res_invalid_header": "✗ 검증 오류",
+        "res_error_count": "{count}개 오류:",
+        "alert_data_invalid": "데이터가 유효한 JSON이 아닙니다: ",
+        "alert_schema_invalid": "스키마가 유효한 JSON이 아닙니다: ",
+        "disclaimer": "JSON Schema 2020-12의 유용한 일부를 구현합니다(type, properties, required, items, enum, const, format, pattern, 문자열/숫자/배열의 min/max). $ref, allOf/anyOf/oneOf, dependentSchemas, prefixItems 등 고급 키워드는 지원하지 않습니다 — 필요 시 ajv 같은 서버 사이드 검증기를 사용하세요.",
+        "howto_header": "사용 방법",
+        "howto_html": (
+            "<ol>"
+            "<li>JSON 데이터를 왼쪽 패널에 붙여넣으세요.</li>"
+            "<li>검증할 JSON Schema를 오른쪽 패널에 붙여넣으세요. <strong>예시 불러오기</strong>로 작동 예제를 확인할 수 있습니다.</li>"
+            "<li><strong>검증</strong>을 누르세요. 통과하면 초록 체크가, 실패하면 각 오류의 JSONPath 위치(<code>$.user.email</code> 등)가 함께 표시됩니다.</li>"
+            "</ol>"
+            "<p><strong>지원 키워드</strong>: <code>type</code>(string, number, integer, boolean, object, array, null), <code>properties</code>, <code>required</code>, <code>additionalProperties: false</code>, <code>items</code>, <code>enum</code>, <code>const</code>, <code>minimum</code>/<code>maximum</code>/<code>exclusiveMinimum</code>/<code>exclusiveMaximum</code>/<code>multipleOf</code>, <code>minLength</code>/<code>maxLength</code>/<code>pattern</code>, <code>minItems</code>/<code>maxItems</code>, <code>format</code>(email, uri, url, date, date-time, uuid).</p>"
+            "<p><strong>미지원</strong>: <code>$ref</code>, <code>allOf</code>/<code>anyOf</code>/<code>oneOf</code>/<code>not</code>, <code>dependentSchemas</code>, <code>prefixItems</code>, <code>contains</code>, <code>if</code>/<code>then</code>/<code>else</code>. 필요 시 ajv 또는 서버 사이드 검증기를 권장합니다.</p>"
+        ),
+        "related_header": "관련 도구",
+        "related_json": "JSON 포매터",
+        "related_json_ts": "JSON to TS/DTO",
+        "related_jwt": "JWT 디코더",
+        "related_token": "토큰 카운터",
+        "card_blurb": "JSON을 Schema로 검증 — type·required·items·enum·format·pattern."
+    }
+}
