@@ -222,10 +222,13 @@
             </div>
 
             <div class="search-bar">
-                <input type="search" id="searchInput" class="form-input"
-                       placeholder="도구 검색…"
-                       aria-label="도구 검색…"
-                       autocomplete="off">
+                <div class="search-input-wrap">
+                    <input type="search" id="searchInput" class="form-input"
+                           placeholder="도구 검색…"
+                           aria-label="도구 검색…"
+                           autocomplete="off">
+                    <kbd class="search-shortcut" aria-hidden="true">/</kbd>
+                </div>
             </div>
 
             <div class="subcat-chips" data-parent-cat="calc" role="group" aria-label="하위 카테고리 필터" hidden><button type="button" class="subcat-chip" data-subcat="" aria-pressed="true">전체</button><button type="button" class="subcat-chip" data-subcat="finance" aria-pressed="false">금융</button><a href="/ko/finance/" class="hub-link" data-for-subcat="finance" hidden>→ 금융 허브</a><button type="button" class="subcat-chip" data-subcat="health" aria-pressed="false">건강</button><a href="/ko/health/" class="hub-link" data-for-subcat="health" hidden>→ 건강 허브</a></div>
@@ -744,9 +747,34 @@
             }
 
             if (searchInput) {
+                // Debounce input to avoid filtering on every keystroke for fast typers.
+                let searchDebounce;
+                const shortcut = document.querySelector('.search-shortcut');
                 searchInput.addEventListener('input', e => {
-                    activeSearch = e.target.value;
-                    applyFilters();
+                    clearTimeout(searchDebounce);
+                    searchDebounce = setTimeout(() => {
+                        activeSearch = e.target.value;
+                        applyFilters();
+                    }, 120);
+                    if (shortcut) shortcut.style.display = e.target.value ? 'none' : '';
+                });
+                // `/` keyboard shortcut focuses the search input (same as Slack/GitHub).
+                document.addEventListener('keydown', e => {
+                    if (e.key !== '/' || e.metaKey || e.ctrlKey || e.altKey) return;
+                    const t = e.target;
+                    if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable)) return;
+                    e.preventDefault();
+                    searchInput.focus();
+                    searchInput.select();
+                });
+                // ESC clears + blurs.
+                searchInput.addEventListener('keydown', e => {
+                    if (e.key === 'Escape' && searchInput.value) {
+                        searchInput.value = '';
+                        activeSearch = '';
+                        applyFilters();
+                        if (shortcut) shortcut.style.display = '';
+                    }
                 });
             }
 

@@ -830,7 +830,32 @@ a:hover {
   max-width: 480px;
   margin: 0 auto var(--spacing-lg);
 }
-.search-bar .form-input { width: 100%; }
+.search-input-wrap {
+  position: relative;
+}
+.search-bar .form-input {
+  width: 100%;
+  padding-right: 36px;
+}
+/* `/` keycap hint at the right edge of the search input. Hidden on focus and
+   when the input has a value (handled in JS). Mirrors GitHub / Slack patterns. */
+.search-shortcut {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.78rem;
+  font-family: var(--font-mono);
+  color: var(--text-tertiary);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: 1px 6px;
+  pointer-events: none;
+  user-select: none;
+  line-height: 1.4;
+}
+.search-input-wrap:focus-within .search-shortcut { display: none; }
 
 /* L2 — category hub pages: intro copy + tool grid + FAQ + hub-link from index. */
 .page-intro {
