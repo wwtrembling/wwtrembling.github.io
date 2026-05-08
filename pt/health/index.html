@@ -43,6 +43,62 @@
         "inLanguage": "pt"
     }
     </script>
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://utilifyapp.net/pt/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Health Calculators",
+      "item": "https://utilifyapp.net/pt/health/"
+    }
+  ]
+}</script>
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Which BMR formula is the most accurate?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Mifflin-St Jeor (used here) outperforms the older Harris-Benedict and Katch-McArdle for healthy adults across most studies. Margin of error is roughly ±10% — fine for planning, less fine for clinical use."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is BMI alone enough to assess health?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. BMI doesn't distinguish muscle from fat, ignores fat distribution, and performs poorly for athletes and the elderly. The body fat calculator (US Navy method) is a better composition signal; combine with a waist-to-hip ratio for cardiovascular risk."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why doesn't my pregnancy due date match my doctor's estimate?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The calculator uses Naegele's rule (LMP + 280 days) with a cycle-length adjustment. If your cycles are irregular or your LMP is uncertain, an early ultrasound is more accurate and is what your doctor likely uses."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I aim for the lowest body fat possible?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No — there's a healthy range, not a minimum. Men below ~6% and women below ~14% is essential-fat territory and not safe to maintain. Athletes optimize for performance, not the lowest number."
+      }
+    }
+  ]
+}</script>
     <link rel="manifest" href="/manifest.json">
     <script data-utilify-adsense-loader async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631" crossorigin="anonymous"></script>
     <meta data-utilify-og property="og:image" content="https://utilifyapp.net/assets/og-image.png">
@@ -63,6 +119,12 @@
     <header class="site-header"><div class="container"><div class="header-content"><a href="/pt/" class="site-logo">🛠️ Utilify</a><button data-utilify-theme-toggle id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode" type="button">🌙</button></div></div></header>
     <main id="main" class="main-content">
         <div class="container-narrow">
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+                <ol>
+                    <li><a href="/pt/">Home</a></li>
+                    <li aria-current="page">Health Calculators</li>
+                </ol>
+            </nav>
             <h1>🩺 Health Calculators</h1>
 
             <div class="page-intro"><p>Bodies don't come with a dashboard. The next-best thing is a small set of calculators that translate measurements into context: how much you can eat without gaining weight, when a baby is due, where your body composition sits relative to a typical range. None of these replace a doctor — they help you ask better questions the next time you see one.</p><p>The tools below address three of the most-searched health questions: <strong>How many calories do I actually need?</strong> <strong>When is my baby due, and what trimester am I in?</strong> <strong>What's my body fat percentage?</strong> Each runs entirely in your browser, uses widely-cited formulas (Mifflin-St Jeor, Naegele's rule, US Navy method), and shows the math on each page so you can verify it.</p><p>Use these as quick checks. For pregnancy, an early ultrasound dating scan is more accurate. For body fat, DEXA or hydrostatic weighing is the gold standard. For nutrition, an RD can personalize beyond what any one-size-fits-all formula can produce.</p></div>

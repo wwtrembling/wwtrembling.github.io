@@ -18,6 +18,7 @@ COMMON = {
         "fav_add_aria": "Add to favorites",
         "fav_remove_aria": "Remove from favorites",
         "theme_toggle_aria": "Toggle dark mode",
+        "breadcrumb_home": "Home",
     },
     "ko": {
         "brand": "🛠️ Utilify",
@@ -31,6 +32,7 @@ COMMON = {
         "fav_add_aria": "즐겨찾기에 추가",
         "fav_remove_aria": "즐겨찾기에서 제거",
         "theme_toggle_aria": "다크 모드 전환",
+        "breadcrumb_home": "홈",
     },
     "vi": {
         "brand": "🛠️ Utilify",

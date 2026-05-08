@@ -857,11 +857,23 @@ def build_hub_pages():
     """Render `_templates/category_hub.html` for each entry in HUB_PAGES,
     once per language. Each hub is a curated landing page that lists the tools
     mapped to its sub-category in TOOL_SUBCATEGORIES, plus intro copy and FAQs.
-    Mirrors build_conversion_pages() in shape — one template × N pages."""
+    Mirrors build_conversion_pages() in shape — one template × N pages.
+
+    Also emits FAQPage + BreadcrumbList JSON-LD parsed from the rendered FAQ
+    HTML so hubs are eligible for Google rich-snippet treatment. The visible
+    breadcrumb in the template uses the same data."""
     print("Building category hub pages...")
+    import json as _json_hub
+    import re as _re_hub
     template = load_template('category_hub.html')
     if template is None:
         return
+
+    faq_pat = _re_hub.compile(
+        r'<details>\s*<summary>(.*?)</summary>\s*(.*?)</details>',
+        _re_hub.DOTALL,
+    )
+    tag_pat = _re_hub.compile(r'<[^>]+>')
 
     for hub_slug, hub_meta in HUB_PAGES.items():
         hub_data = hub_meta['data']
@@ -903,6 +915,51 @@ def build_hub_pages():
                     f'</a>'
                 )
             data['tool_cards_html'] = '\n                '.join(cards)
+
+            # BreadcrumbList JSON-LD: Home > Hub.
+            breadcrumb_schema = {
+                "@context": "https://schema.org",
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "name": data.get('breadcrumb_home', 'Home'),
+                        "item": f"https://utilifyapp.net/{lang}/",
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "name": data.get('h1', hub_slug.title()),
+                        "item": f"https://utilifyapp.net/{lang}/{hub_slug}/",
+                    },
+                ],
+            }
+            data['breadcrumb_schema'] = _json_hub.dumps(
+                breadcrumb_schema, ensure_ascii=False, indent=2,
+            )
+
+            # FAQPage JSON-LD parsed from the rendered FAQ HTML (the same
+            # source the template renders into the visible <details> blocks).
+            faq_pairs = faq_pat.findall(data.get('faq_html', '') or '')
+            faq_schema = {
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": tag_pat.sub('', q).strip(),
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": tag_pat.sub('', a).strip(),
+                        },
+                    }
+                    for q, a in faq_pairs
+                ],
+            }
+            data['faq_schema'] = _json_hub.dumps(
+                faq_schema, ensure_ascii=False, indent=2,
+            )
 
             content = template
             for key, value in data.items():

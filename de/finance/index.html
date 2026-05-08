@@ -43,6 +43,62 @@
         "inLanguage": "de"
     }
     </script>
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://utilifyapp.net/de/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Finance Calculators",
+      "item": "https://utilifyapp.net/de/finance/"
+    }
+  ]
+}</script>
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Are these calculators a substitute for financial advice?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. They use standard formulas and reasonable defaults, but they don't know your tax situation, debt mix, employer benefits, or risk tolerance. Use the output as a starting point for a conversation with a registered advisor or CPA."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does the calculated loan payment differ from my mortgage statement?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Lenders typically bundle property tax, homeowners insurance, PMI, and HOA fees into the monthly payment via escrow. The loan calculator only computes principal + interest. Add ~20–30% on top for a realistic all-in housing cost in most US markets."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What return rate should I assume for compound interest?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The S&amp;P 500 has averaged about 10% nominal / 7% real over the last century, but past performance is not a guarantee. For long-horizon planning, 6–7% real is a common conservative assumption; for short horizons, treat market exposure as risky."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I trust these for retirement planning?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Use them as a sanity check, not a plan. The retirement calculator assumes a constant return rate, which masks sequence-of-returns risk — a bad first few years of retirement can sink an otherwise viable plan. A Monte Carlo simulator or a flat-fee planner is better for high-stakes decisions."
+      }
+    }
+  ]
+}</script>
     <link rel="manifest" href="/manifest.json">
     <script data-utilify-adsense-loader async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631" crossorigin="anonymous"></script>
     <meta data-utilify-og property="og:image" content="https://utilifyapp.net/assets/og-image.png">
@@ -63,6 +119,12 @@
     <header class="site-header"><div class="container"><div class="header-content"><a href="/de/" class="site-logo">Utilify</a><button data-utilify-theme-toggle id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode" type="button">🌙</button></div></div></header>
     <main id="main" class="main-content">
         <div class="container-narrow">
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+                <ol>
+                    <li><a href="/de/">Home</a></li>
+                    <li aria-current="page">Finance Calculators</li>
+                </ol>
+            </nav>
             <h1>💰 Finance Calculators</h1>
 
             <div class="page-intro"><p>Money decisions reward curiosity. Whether you're shopping for a mortgage, deciding how much to save each month, or stress-testing a retirement plan, a good calculator turns a vague worry into a concrete number you can act on.</p><p>The tools below cover the three financial questions most people return to again and again: <strong>What will this loan actually cost me?</strong> <strong>How much could my savings grow if I leave them alone?</strong> <strong>Will I run out of money in retirement?</strong> Every calculator runs in your browser — your inputs never leave the page, no account is required, and the formulas are documented on each page so you can verify the math.</p><p>Treat these as decision-support tools, not advice. Real loans include fees and escrow; real returns are not constant; real retirement is messier than any smooth projection. Use the numbers as a sanity check, then talk to a qualified professional before locking in a major decision.</p></div>
