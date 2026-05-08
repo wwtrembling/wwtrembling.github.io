@@ -7462,3 +7462,105 @@ HEALTH_HUB = {
         "card_blurb": "칼로리·임신·체지방 계산기 — 모두 브라우저에서."
     }
 }
+
+
+RAG_CHUNKER = {
+    "en": {
+        "title": "RAG Text Chunker",
+        "meta_title": "RAG Text Chunker — Sliding Window Chunks for Embeddings - Utilify",
+        "meta_desc": "Split text into overlapping chunks for RAG / embedding pipelines. Configurable size and overlap, character or token-estimate mode. Runs entirely in your browser.",
+        "og_title": "RAG Text Chunker - Utilify",
+        "og_desc": "Split text into chunks with overlap for embedding-based retrieval pipelines.",
+        "json_name": "RAG Text Chunker",
+        "json_desc": "Sliding-window text chunker for retrieval-augmented generation pipelines.",
+        "page_desc": "Paste a long document and split it into overlapping chunks for embedding-based retrieval. Pick chunks-by-characters for predictable size or chunks-by-token-estimate for closer alignment with embedding model limits. All processing happens in your browser.",
+        "label_text": "Source text",
+        "label_size": "Chunk size",
+        "label_overlap": "Overlap",
+        "label_mode": "Unit",
+        "ph_text": "Paste the document you want to chunk…",
+        "ph_size": "512",
+        "ph_overlap": "50",
+        "opt_chars": "Characters",
+        "opt_tokens": "Tokens (estimated)",
+        "btn_chunk": "Chunk",
+        "btn_reset": "Reset",
+        "btn_copy_all": "Copy all (JSON)",
+        "btn_share": "Share result",
+        "share_text": "I split a {value}-character document into chunks —",
+        "share_copied": "Copied to clipboard.",
+        "copied_one": "Chunk copied.",
+        "res_count_label": "Chunks",
+        "res_total_label": "Source size",
+        "res_avg_label": "Avg chunk size",
+        "chunk_label": "Chunk",
+        "alert_invalid": "Enter source text and a chunk size larger than overlap.",
+        "disclaimer": "Token mode is an approximate (~4 chars/token English, ~1.5 chars/token CJK). For exact tokenization, use the embedding model's tokenizer.",
+        "howto_header": "How to use",
+        "howto_html": (
+            "<ol>"
+            "<li>Paste your source document.</li>"
+            "<li>Pick chunk size and overlap. Common starting points: 512 chunk / 50 overlap (chars), or 256 / 32 (tokens).</li>"
+            "<li>Choose <em>characters</em> for predictable byte-size or <em>tokens</em> to align with embedding model context limits.</li>"
+            "<li>Click <strong>Chunk</strong>. Each chunk is numbered with byte length; click any chunk to copy it, or use <strong>Copy all (JSON)</strong> to grab the whole array.</li>"
+            "</ol>"
+            "<p><strong>Why overlap?</strong> Overlap preserves context across chunk boundaries — a sentence split mid-thought won't lose its anchor. Common ratio: overlap = 10–20% of chunk size.</p>"
+            "<p>Splitting strategy is plain sliding window; no semantic boundary detection. For prose, that's usually fine. For code or structured documents, consider a parser-aware splitter.</p>"
+        ),
+        "related_header": "Related Tools",
+        "related_token": "Token Counter",
+        "related_pii": "Prompt PII Scrubber",
+        "related_chatgpt": "ChatGPT to Blog",
+        "related_md": "Markdown Previewer",
+        "card_blurb": "Sliding-window text chunker for embeddings & RAG pipelines."
+    },
+    "ko": {
+        "title": "RAG 텍스트 청크 분할기",
+        "meta_title": "RAG 청크 분할기 — 임베딩용 슬라이딩 윈도우 분할 - Utilify",
+        "meta_desc": "RAG·임베딩 파이프라인을 위한 텍스트를 겹침 가능한 청크로 분할. 크기·겹침 설정 가능, 문자/토큰 모드 지원. 모든 처리는 브라우저에서.",
+        "og_title": "RAG 텍스트 청크 분할기 - Utilify",
+        "og_desc": "임베딩 기반 검색 파이프라인용 텍스트를 겹침 청크로 분할.",
+        "json_name": "RAG 텍스트 청크 분할기",
+        "json_desc": "검색 증강 생성(RAG) 파이프라인을 위한 슬라이딩 윈도우 텍스트 분할기.",
+        "page_desc": "긴 문서를 임베딩 기반 검색용 겹침 청크로 분할합니다. 일정한 크기를 위해 문자 모드를, 임베딩 모델 컨텍스트 한계에 맞추려면 토큰 모드를 선택하세요. 모든 처리는 브라우저에서 이루어집니다.",
+        "label_text": "원본 텍스트",
+        "label_size": "청크 크기",
+        "label_overlap": "겹침 크기",
+        "label_mode": "단위",
+        "ph_text": "분할할 문서를 붙여넣으세요…",
+        "ph_size": "512",
+        "ph_overlap": "50",
+        "opt_chars": "문자",
+        "opt_tokens": "토큰 (추정)",
+        "btn_chunk": "분할",
+        "btn_reset": "초기화",
+        "btn_copy_all": "전체 복사 (JSON)",
+        "btn_share": "결과 공유",
+        "share_text": "{value}자 문서를 청크로 분할했습니다 —",
+        "share_copied": "클립보드에 복사되었습니다.",
+        "copied_one": "청크가 복사되었습니다.",
+        "res_count_label": "청크 수",
+        "res_total_label": "원본 크기",
+        "res_avg_label": "평균 청크 크기",
+        "chunk_label": "청크",
+        "alert_invalid": "원본 텍스트와 겹침보다 큰 청크 크기를 입력하세요.",
+        "disclaimer": "토큰 모드는 근사치입니다(영문 약 4자/토큰, 한·중·일 약 1.5자/토큰). 정확한 토큰화는 사용하시는 임베딩 모델의 토크나이저를 이용하세요.",
+        "howto_header": "사용 방법",
+        "howto_html": (
+            "<ol>"
+            "<li>원본 문서를 붙여넣으세요.</li>"
+            "<li>청크 크기와 겹침을 입력하세요. 흔한 시작값: 문자 모드 512/50, 토큰 모드 256/32.</li>"
+            "<li>일정한 바이트 크기를 원하면 <em>문자</em>, 임베딩 모델 컨텍스트 한계에 맞추려면 <em>토큰</em>을 선택하세요.</li>"
+            "<li><strong>분할</strong>을 누르면 청크가 번호와 길이로 표시됩니다. 각 청크 클릭으로 개별 복사, <strong>전체 복사 (JSON)</strong>로 배열 전체를 복사할 수 있습니다.</li>"
+            "</ol>"
+            "<p><strong>왜 겹침이 필요한가?</strong> 청크 경계에서 문맥이 끊기는 것을 방지합니다 — 한 문장이 두 청크에 걸치더라도 양쪽에서 일부 맥락이 유지됩니다. 일반적으로 청크 크기의 10~20%를 겹침으로 설정합니다.</p>"
+            "<p>분할 방식은 단순 슬라이딩 윈도우입니다 — 의미 단위 인식은 하지 않습니다. 일반 산문에는 충분하지만 코드·구조 문서에는 파서 기반 분할기를 권장합니다.</p>"
+        ),
+        "related_header": "관련 도구",
+        "related_token": "토큰 카운터",
+        "related_pii": "프롬프트 PII 마스킹",
+        "related_chatgpt": "ChatGPT 블로그 변환",
+        "related_md": "Markdown 프리뷰어",
+        "card_blurb": "임베딩·RAG 파이프라인을 위한 슬라이딩 윈도우 텍스트 청크 분할기."
+    }
+}

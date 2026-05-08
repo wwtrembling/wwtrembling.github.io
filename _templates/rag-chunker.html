@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="{{ lang_code }}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy-Report-Only" content="default-src 'self' https: data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https:; frame-src https:;">
+    <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+    <title>{{ meta_title }}</title>
+    <meta name="description" content="{{ meta_desc }}">
+    <link rel="canonical" href="https://utilifyapp.net/{{ lang_code }}/rag-chunker/">
+
+    <meta property="og:title" content="{{ og_title }}">
+    <meta property="og:description" content="{{ og_desc }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://utilifyapp.net/{{ lang_code }}/rag-chunker/">
+
+    {{ alternate_links }}
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "{{ json_name }}",
+        "description": "{{ json_desc }}",
+        "url": "https://utilifyapp.net/{{ lang_code }}/rag-chunker/",
+        "inLanguage": "{{ lang_code }}",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Any",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+
+    <style>
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: var(--spacing-md);
+        }
+        @media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; } }
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+        }
+        .stat-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            text-align: center;
+        }
+        .stat-card .label { font-size: 0.85rem; color: var(--text-secondary); }
+        .stat-card .value { font-size: 1.4rem; font-weight: 700; color: var(--primary-color); margin-top: 4px; font-variant-numeric: tabular-nums; }
+
+        .chunk-list { display: grid; gap: var(--spacing-sm); margin-top: var(--spacing-md); }
+        .chunk-item {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            cursor: pointer;
+            transition: border-color var(--transition-fast);
+        }
+        .chunk-item:hover { border-color: var(--primary-color); }
+        .chunk-item .chunk-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+        }
+        .chunk-item .chunk-title { font-weight: 600; color: var(--primary-color); }
+        .chunk-item pre {
+            margin: 0;
+            white-space: pre-wrap;
+            word-break: break-word;
+            font-family: var(--font-mono);
+            font-size: 0.88rem;
+            line-height: 1.5;
+            max-height: 8em;
+            overflow: hidden;
+        }
+        .button-row { display: flex; gap: var(--spacing-sm); flex-wrap: wrap; }
+        .button-row .btn { min-width: 120px; }
+    </style>
+    <link rel="manifest" href="/manifest.json">
+</head>
+
+<body>
+    <header class="site-header"><div class="container"><div class="header-content"><a href="/{{ lang_code }}/" class="site-logo">{{ brand }}</a></div></div></header>
+    <main class="main-content">
+        <div class="container-narrow">
+            <h1>✂️ {{ title }}</h1>
+            <div class="security-badge" style="display:flex;align-items:center;justify-content:center;gap:8px;margin:10px 0;font-size:14px;color:var(--text-secondary);">
+                <span>{{ secure_badge }}</span>
+                <button id="pwaInstallBtn" class="btn btn-primary" style="display: none; padding: 4px 12px; font-size: 12px;">{{ install_app }}</button>
+            </div>
+
+            <p>{{ page_desc }}</p>
+
+            <div class="card">
+                <div class="form-group">
+                    <label class="form-label" for="textInput">{{ label_text }}</label>
+                    <textarea id="textInput" class="form-input" rows="10" placeholder="{{ ph_text }}" style="font-family: var(--font-mono); min-height: 220px;"></textarea>
+                </div>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label" for="size">{{ label_size }}</label>
+                        <input type="number" id="size" class="form-input" inputmode="numeric" min="20" max="20000" step="1" placeholder="{{ ph_size }}" value="{{ ph_size }}">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="overlap">{{ label_overlap }}</label>
+                        <input type="number" id="overlap" class="form-input" inputmode="numeric" min="0" max="5000" step="1" placeholder="{{ ph_overlap }}" value="{{ ph_overlap }}">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="mode">{{ label_mode }}</label>
+                        <select id="mode" class="form-input">
+                            <option value="chars" selected>{{ opt_chars }}</option>
+                            <option value="tokens">{{ opt_tokens }}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="button-row" style="margin-top: var(--spacing-md);">
+                    <button class="btn btn-primary" type="button" onclick="run()">{{ btn_chunk }}</button>
+                    <button class="btn" type="button" onclick="resetForm()">{{ btn_reset }}</button>
+                </div>
+            </div>
+
+            <div id="result" style="display:none;" aria-live="polite">
+                <div class="stat-grid">
+                    <div class="stat-card">
+                        <div class="label">{{ res_count_label }}</div>
+                        <div class="value" id="countVal">—</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="label">{{ res_total_label }}</div>
+                        <div class="value" id="totalVal">—</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="label">{{ res_avg_label }}</div>
+                        <div class="value" id="avgVal">—</div>
+                    </div>
+                </div>
+
+                <div class="button-row">
+                    <button class="btn" type="button" onclick="copyAll()">{{ btn_copy_all }}</button>
+                    <button class="btn" type="button" onclick="shareResult()">{{ btn_share }}</button>
+                </div>
+
+                <div class="chunk-list" id="chunkList"></div>
+            </div>
+
+            <div class="disclaimer">{{ disclaimer }}</div>
+
+            <h2>{{ howto_header }}</h2>
+            <div class="howto-content">{{ howto_html }}</div>
+
+            <div class="related-tools-section">
+                <h3>{{ related_header }}</h3>
+                <div class="related-buttons">
+                    <a href="/{{ lang_code }}/token-counter/" class="related-btn">{{ related_token }}</a><a
+                        href="/{{ lang_code }}/prompt-pii-scrubber/" class="related-btn">{{ related_pii }}</a><a
+                        href="/{{ lang_code }}/chatgpt-to-blog/" class="related-btn">{{ related_chatgpt }}</a><a
+                        href="/{{ lang_code }}/markdown-previewer/" class="related-btn">{{ related_md }}</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="site-footer"><div class="container"><div class="footer-content"><p>{{ footer }}</p></div></div></footer>
+    <script src="/assets/js/common.js"></script>
+    <script>
+        const LOCALE = document.documentElement.lang || 'en';
+        let currentChunks = [];
+
+        function estimateTokens(text) {
+            if (!text) return 0;
+            const cjk = (text.match(/[　-鿿가-힣぀-ヿ]/g) || []).length;
+            const ratio = cjk / Math.max(text.length, 1);
+            const charsPerToken = 4 - 2.5 * ratio;
+            return Math.ceil(text.length / Math.max(charsPerToken, 1.2));
+        }
+
+        function tokenStep(charsPerToken) {
+            // Approximate chars-per-token globally for the input. Used to convert
+            // the user's "tokens" chunk size into a character-window for slicing.
+            return charsPerToken;
+        }
+
+        function chunk(text, size, overlap, mode) {
+            const t = text;
+            if (!t.length || size <= overlap) return [];
+
+            // In token mode we slice by characters but scale the size so the
+            // result roughly matches the user-stated token count.
+            let charSize = size;
+            let charOverlap = overlap;
+            if (mode === 'tokens') {
+                const cjk = (t.match(/[　-鿿가-힣぀-ヿ]/g) || []).length;
+                const ratio = cjk / Math.max(t.length, 1);
+                const charsPerToken = 4 - 2.5 * ratio;
+                charSize = Math.max(1, Math.round(size * charsPerToken));
+                charOverlap = Math.max(0, Math.round(overlap * charsPerToken));
+                if (charSize <= charOverlap) return [];
+            }
+
+            const out = [];
+            let i = 0;
+            while (i < t.length) {
+                const end = Math.min(i + charSize, t.length);
+                out.push(t.slice(i, end));
+                if (end === t.length) break;
+                i += (charSize - charOverlap);
+            }
+            return out;
+        }
+
+        function run() {
+            const text = document.getElementById('textInput').value;
+            const size = parseInt(document.getElementById('size').value, 10);
+            const overlap = parseInt(document.getElementById('overlap').value, 10);
+            const mode = document.getElementById('mode').value;
+            if (!text.trim() || !(size > 0) || size <= overlap) {
+                alert('{{ alert_invalid }}');
+                return;
+            }
+            const chunks = chunk(text, size, overlap, mode);
+            currentChunks = chunks;
+
+            const total = text.length;
+            const avg = chunks.length
+                ? Math.round(chunks.reduce((s, c) => s + c.length, 0) / chunks.length)
+                : 0;
+            document.getElementById('countVal').textContent = chunks.length.toLocaleString(LOCALE);
+            document.getElementById('totalVal').textContent = total.toLocaleString(LOCALE);
+            document.getElementById('avgVal').textContent = avg.toLocaleString(LOCALE);
+
+            const list = document.getElementById('chunkList');
+            list.innerHTML = '';
+            const unit = mode === 'tokens' ? '~tok' : 'ch';
+            chunks.forEach((c, i) => {
+                const item = document.createElement('div');
+                item.className = 'chunk-item';
+                item.title = '{{ copied_one }}';
+                const tokenLen = mode === 'tokens' ? estimateTokens(c) : c.length;
+                const header = document.createElement('div');
+                header.className = 'chunk-header';
+                const title = document.createElement('span');
+                title.className = 'chunk-title';
+                title.textContent = '{{ chunk_label }} #' + (i + 1);
+                const len = document.createElement('span');
+                len.textContent = c.length + ' ch · ' + estimateTokens(c) + ' ~tok';
+                header.appendChild(title);
+                header.appendChild(len);
+                const pre = document.createElement('pre');
+                pre.textContent = c;
+                item.appendChild(header);
+                item.appendChild(pre);
+                item.addEventListener('click', async () => {
+                    try {
+                        await navigator.clipboard.writeText(c);
+                        const old = title.textContent;
+                        title.textContent = '✓ ' + old;
+                        setTimeout(() => { title.textContent = old; }, 1200);
+                    } catch (e) { /* clipboard blocked */ }
+                });
+                list.appendChild(item);
+            });
+
+            document.getElementById('result').style.display = 'block';
+        }
+
+        async function copyAll() {
+            if (!currentChunks.length) return;
+            try {
+                await navigator.clipboard.writeText(JSON.stringify(currentChunks, null, 2));
+                alert('{{ share_copied }}');
+            } catch (e) { /* clipboard blocked */ }
+        }
+
+        function resetForm() {
+            document.getElementById('textInput').value = '';
+            document.getElementById('size').value = '{{ ph_size }}';
+            document.getElementById('overlap').value = '{{ ph_overlap }}';
+            document.getElementById('mode').value = 'chars';
+            document.getElementById('result').style.display = 'none';
+            currentChunks = [];
+        }
+
+        async function shareResult() {
+            if (!currentChunks.length) return;
+            const sourceLen = document.getElementById('textInput').value.length;
+            const text = '{{ share_text }}'.replace('{value}', sourceLen.toLocaleString(LOCALE)) + ' ' + location.href;
+            if (navigator.share) {
+                try { await navigator.share({ title: '{{ title }}', text }); return; }
+                catch (e) { if (e && e.name === 'AbortError') return; }
+            }
+            try {
+                await navigator.clipboard.writeText(text);
+                alert('{{ share_copied }}');
+            } catch (e) { /* clipboard blocked */ }
+        }
+    </script>
+</body>
+
+</html>
