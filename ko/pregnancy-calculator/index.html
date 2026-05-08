@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy-Report-Only" content="default-src 'self' https: data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https:; frame-src https:;">
+    <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+    <title>임신 계산기 — 출산예정일·주수·삼분기 - Utilify</title>
+    <meta name="description" content="마지막 생리일(LMP)로 출산예정일, 현재 임신 주수와 일수, 삼분기를 계산. Naegele 공식 + 생리주기 보정.">
+    <link rel="canonical" href="https://utilifyapp.net/ko/pregnancy-calculator/">
+
+    <meta property="og:title" content="임신 출산예정일 계산기 - Utilify">
+    <meta property="og:description" content="출산예정일·현재 주수·삼분기·남은 일수를 한번에.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://utilifyapp.net/ko/pregnancy-calculator/">
+
+    <link rel="alternate" hreflang="en" href="https://utilifyapp.net/en/pregnancy-calculator/">
+    <link rel="alternate" hreflang="ko" href="https://utilifyapp.net/ko/pregnancy-calculator/">
+    <link rel="alternate" hreflang="vi" href="https://utilifyapp.net/vi/pregnancy-calculator/">
+    <link rel="alternate" hreflang="th" href="https://utilifyapp.net/th/pregnancy-calculator/">
+    <link rel="alternate" hreflang="de" href="https://utilifyapp.net/de/pregnancy-calculator/">
+    <link rel="alternate" hreflang="pt" href="https://utilifyapp.net/pt/pregnancy-calculator/">
+    <link rel="alternate" hreflang="id" href="https://utilifyapp.net/id/pregnancy-calculator/">
+    <link rel="alternate" hreflang="hi" href="https://utilifyapp.net/hi/pregnancy-calculator/">
+    <link rel="alternate" hreflang="ja" href="https://utilifyapp.net/ja/pregnancy-calculator/">
+    <link rel="alternate" hreflang="zh-Hans" href="https://utilifyapp.net/zh-cn/pregnancy-calculator/">
+    <link rel="alternate" hreflang="zh-Hant" href="https://utilifyapp.net/zh-tw/pregnancy-calculator/">
+    <link rel="alternate" hreflang="x-default" href="https://utilifyapp.net/en/pregnancy-calculator/">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "임신 출산예정일 계산기",
+        "description": "마지막 생리일로부터 출산예정일과 현재 임신 주수를 추정.",
+        "url": "https://utilifyapp.net/ko/pregnancy-calculator/",
+        "inLanguage": "ko",
+        "applicationCategory": "HealthApplication",
+        "operatingSystem": "Any",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+
+    <style>
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: var(--spacing-md);
+        }
+        @media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; } }
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+        }
+        .result-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            text-align: center;
+        }
+        .result-card .label { font-size: 0.85rem; color: var(--text-secondary); }
+        .result-card .value { font-size: 1.4rem; font-weight: 700; color: var(--primary-color); margin-top: 4px; font-variant-numeric: tabular-nums; }
+        .result-card.headline .value { font-size: 1.8rem; }
+        .progress-wrap {
+            margin: var(--spacing-md) 0;
+            background: var(--bg-secondary);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            height: 18px;
+            border: 1px solid var(--border-color);
+        }
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            transition: width 0.4s ease-out;
+        }
+        .button-row { display: flex; gap: var(--spacing-sm); flex-wrap: wrap; }
+        .button-row .btn { min-width: 120px; }
+    </style>
+    <link rel="manifest" href="/manifest.json">
+    <script data-utilify-adsense-loader async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631" crossorigin="anonymous"></script>
+    <meta data-utilify-og property="og:image" content="https://utilifyapp.net/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Utilify">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://utilifyapp.net/assets/og-image.png">
+    <link data-utilify-favicon rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+</head>
+
+<body>
+    <a data-utilify-skip class="skip-link" href="#main">본문으로 건너뛰기</a>
+    <header class="site-header"><div class="container"><div class="header-content"><a href="/ko/" class="site-logo">🛠️ Utilify</a></div></div></header>
+    <main id="main" class="main-content">
+        <div class="container-narrow">
+            <h1>🤰 임신 출산예정일 계산기</h1>
+            <div class="security-badge" style="display:flex;align-items:center;justify-content:center;gap:8px;margin:10px 0;font-size:14px;color:var(--text-secondary);">
+                <span>🔒 Secure & Client-side</span>
+                <button id="pwaInstallBtn" class="btn btn-primary" style="display: none; padding: 4px 12px; font-size: 12px;">📲 Install App</button>
+                    <button data-utilify-fav-toggle class="fav-toggle-page" type="button" aria-label="즐겨찾기에 추가" data-add-label="즐겨찾기에 추가" data-remove-label="즐겨찾기에서 제거">☆</button>
+            </div>
+
+            <p>마지막 생리 시작일(LMP)과 평소 생리주기 길이를 입력하면 출산예정일, 현재 임신 주수와 일수, 삼분기, 남은 일수를 계산합니다. Naegele 공식과 생리주기 보정을 함께 적용합니다.</p>
+
+            <div class="card">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label" for="lmp">마지막 생리 시작일</label>
+                        <input type="date" id="lmp" class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="cycle">평소 생리주기 (일)</label>
+                        <input type="number" id="cycle" class="form-input" inputmode="numeric" min="21" max="45" step="1" placeholder="28" value="28">
+                    </div>
+                </div>
+                <div class="button-row" style="margin-top: var(--spacing-md);">
+                    <button class="btn btn-primary" type="button" onclick="calculate()">계산</button>
+                    <button class="btn" type="button" onclick="resetForm()">초기화</button>
+                </div>
+            </div>
+
+            <div id="result" style="display:none;" aria-live="polite">
+                <div class="result-grid">
+                    <div class="result-card headline">
+                        <div class="label">출산예정일</div>
+                        <div class="value" id="dueVal">—</div>
+                    </div>
+                    <div class="result-card">
+                        <div class="label">현재 주수</div>
+                        <div class="value" id="weekVal">—</div>
+                    </div>
+                    <div class="result-card">
+                        <div class="label">삼분기</div>
+                        <div class="value" id="trimesterVal">—</div>
+                    </div>
+                    <div class="result-card">
+                        <div class="label">남은 일수</div>
+                        <div class="value" id="remainingVal">—</div>
+                    </div>
+                </div>
+
+                <div class="progress-wrap" aria-hidden="true">
+                    <div class="progress-bar" id="progressBar" style="width: 0%;"></div>
+                </div>
+
+                <div class="button-row" style="margin-top: var(--spacing-md);">
+                    <button class="btn" type="button" onclick="shareResult()">결과 공유</button>
+                </div>
+            </div>
+
+            <div class="disclaimer">추정치 — 의료 자문이 아닙니다. 출산예정일에 정확히 출산하는 비율은 약 5%입니다. 생리주기가 불규칙하거나 LMP가 불확실하면 초음파 검사가 더 정확합니다.</div>
+
+            <h2>사용 방법</h2>
+            <div class="howto-content"><ol><li>마지막 생리가 시작된 첫날(LMP)을 선택하세요. 임신이 일어난 그 주기의 1일입니다.</li><li>평소 생리주기 길이를 입력하세요. 기본값 28일이며, 일관되게 다르면 조정하세요.</li><li><strong>계산</strong>을 누르면 출산예정일, 현재 주수, 삼분기, 남은 일수가 표시됩니다.</li></ol><p><strong>공식 (Naegele 법칙)</strong>: 출산예정일 = LMP + 280일, 이후 (생리주기 − 28)일만큼 조정해 배란 시점 차이를 반영합니다. 임신 주수는 수정일이 아니라 LMP 기준이므로 1주차는 실제 임신 전부터 시작됩니다. 삼분기 구분: 1삼분기(1~13주), 2삼분기(14~27주), 3삼분기(28주 이후).</p><p>생리주기가 불규칙하거나 LMP가 명확하지 않다면 1삼분기 초음파 검사가 가장 정확한 방법입니다.</p></div>
+
+            <div class="related-tools-section">
+                <h3>관련 도구</h3>
+                <div class="related-buttons">
+                    <a href="/ko/date-calculator/" class="related-btn">날짜 계산기</a><a
+                        href="/ko/bmi-calculator/" class="related-btn">BMI 계산기</a><a
+                        href="/ko/calorie-calculator/" class="related-btn">칼로리 계산기</a><a
+                        href="/ko/unit-converter/" class="related-btn">단위 변환기</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="site-footer"><div class="container"><div class="footer-content"><p>&copy; 2025 Utilify. All rights reserved.</p>
+                <p data-legal-links style="font-size: 0.875rem; margin-top: 8px;"><a href="/ko/about/">소개</a> · <a href="/ko/privacy/">개인정보</a> · <a href="/ko/terms/">이용약관</a></p></div></div></footer>
+    <script src="/assets/js/common.js"></script>
+    <script>
+        const LOCALE = document.documentElement.lang || 'en';
+        const DAY_MS = 86400000;
+
+        function calculate() {
+            const lmpStr = document.getElementById('lmp').value;
+            const cycle = parseInt(document.getElementById('cycle').value, 10);
+            if (!lmpStr || !(cycle >= 21 && cycle <= 45)) {
+                alert('유효한 마지막 생리일과 21~45일 사이의 주기를 입력해 주세요.');
+                return;
+            }
+            const lmp = new Date(lmpStr + 'T00:00:00');
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            if (lmp > today) { alert('마지막 생리일은 미래일 수 없습니다.'); return; }
+
+            // Naegele's rule + cycle adjustment.
+            const due = new Date(lmp.getTime() + (280 + (cycle - 28)) * DAY_MS);
+            const elapsedDays = Math.floor((today - lmp) / DAY_MS);
+            const week = Math.floor(elapsedDays / 7);
+            const day = elapsedDays % 7;
+            const remaining = Math.max(0, Math.floor((due - today) / DAY_MS));
+
+            let tri;
+            if (week < 14) tri = '1삼분기';
+            else if (week < 28) tri = '2삼분기';
+            else tri = '3삼분기';
+
+            const dueText = due.toLocaleDateString(LOCALE, { year: 'numeric', month: 'long', day: 'numeric' });
+            document.getElementById('dueVal').textContent = dueText;
+            document.getElementById('weekVal').textContent = '{week}주 {day}일'
+                .replace('{week}', week)
+                .replace('{day}', day);
+            document.getElementById('trimesterVal').textContent = tri;
+            document.getElementById('remainingVal').textContent = remaining.toLocaleString(LOCALE);
+
+            const totalDays = 280 + (cycle - 28);
+            const progress = Math.max(0, Math.min(100, (elapsedDays / totalDays) * 100));
+            document.getElementById('progressBar').style.width = progress.toFixed(1) + '%';
+
+            document.getElementById('result').style.display = 'block';
+        }
+
+        function resetForm() {
+            document.getElementById('lmp').value = '';
+            document.getElementById('cycle').value = '28';
+            document.getElementById('result').style.display = 'none';
+        }
+
+        async function shareResult() {
+            const due = document.getElementById('dueVal').textContent;
+            if (due === '—') return;
+            const text = '내 출산예정일: {value} —'.replace('{value}', due) + ' ' + location.href;
+            if (navigator.share) {
+                try { await navigator.share({ title: '임신 출산예정일 계산기', text }); return; }
+                catch (e) { if (e && e.name === 'AbortError') return; }
+            }
+            try {
+                await navigator.clipboard.writeText(text);
+                alert('결과가 클립보드에 복사되었습니다.');
+            } catch (e) { /* clipboard blocked — silent */ }
+        }
+    </script>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({google_ad_client:"ca-pub-6334819180242631",enable_page_level_ads:true});</script>
+    <script data-utilify-fav-toggle-script>(function(){var btn=document.querySelector(".fav-toggle-page");if(!btn)return;var m=location.pathname.match(/^\/[^\/]+\/([^\/]+)\/?$/);if(!m)return;var slug=m[1],K="utilify_favorites";function g(){return (localStorage.getItem(K)||"").split(",").filter(Boolean);}function s(a){localStorage.setItem(K,Array.from(new Set(a)).join(","));}function p(f){btn.textContent=f?"★":"☆";btn.classList.toggle("is-fav",f);btn.setAttribute("aria-label",f?btn.dataset.removeLabel:btn.dataset.addLabel);btn.setAttribute("aria-pressed",String(f));}p(g().indexOf(slug)>-1);btn.addEventListener("click",function(){var a=g(),n=a.indexOf(slug)>-1?a.filter(function(x){return x!==slug;}):a.concat([slug]);s(n);p(n.indexOf(slug)>-1);});})();</script>
+</body>
+
+</html>

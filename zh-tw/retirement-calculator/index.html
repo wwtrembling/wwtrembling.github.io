@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy-Report-Only" content="default-src 'self' https: data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https:; frame-src https:;">
+    <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+    <title>Retirement Calculator — Will Your Savings Last? - Utilify</title>
+    <meta name="description" content="Estimate retirement nest egg and how long it lasts. Inputs: current age, retirement age, savings, monthly contributions, return, withdrawal, life expectancy.">
+    <link rel="canonical" href="https://utilifyapp.net/zh-tw/retirement-calculator/">
+
+    <meta property="og:title" content="Retirement Calculator - Utilify">
+    <meta property="og:description" content="Project retirement savings and check whether they last through life expectancy.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://utilifyapp.net/zh-tw/retirement-calculator/">
+
+    <link rel="alternate" hreflang="en" href="https://utilifyapp.net/en/retirement-calculator/">
+    <link rel="alternate" hreflang="ko" href="https://utilifyapp.net/ko/retirement-calculator/">
+    <link rel="alternate" hreflang="vi" href="https://utilifyapp.net/vi/retirement-calculator/">
+    <link rel="alternate" hreflang="th" href="https://utilifyapp.net/th/retirement-calculator/">
+    <link rel="alternate" hreflang="de" href="https://utilifyapp.net/de/retirement-calculator/">
+    <link rel="alternate" hreflang="pt" href="https://utilifyapp.net/pt/retirement-calculator/">
+    <link rel="alternate" hreflang="id" href="https://utilifyapp.net/id/retirement-calculator/">
+    <link rel="alternate" hreflang="hi" href="https://utilifyapp.net/hi/retirement-calculator/">
+    <link rel="alternate" hreflang="ja" href="https://utilifyapp.net/ja/retirement-calculator/">
+    <link rel="alternate" hreflang="zh-Hans" href="https://utilifyapp.net/zh-cn/retirement-calculator/">
+    <link rel="alternate" hreflang="zh-Hant" href="https://utilifyapp.net/zh-tw/retirement-calculator/">
+    <link rel="alternate" hreflang="x-default" href="https://utilifyapp.net/en/retirement-calculator/">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Retirement Calculator",
+        "description": "Two-phase retirement model: accumulation with monthly contributions, then withdrawal with annual income.",
+        "url": "https://utilifyapp.net/zh-tw/retirement-calculator/",
+        "inLanguage": "zh-tw",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Any",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+
+    <style>
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-md);
+        }
+        @media (max-width: 600px) {
+            .form-grid { grid-template-columns: 1fr; }
+        }
+        .result-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            text-align: center;
+            margin: var(--spacing-md) 0;
+        }
+        .result-card .label { font-size: 0.85rem; color: var(--text-secondary); }
+        .result-card .value { font-size: 2rem; font-weight: 700; color: var(--primary-color); margin-top: 4px; font-variant-numeric: tabular-nums; }
+        .outcome-box {
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+            font-size: 1rem;
+            background: var(--bg-secondary);
+        }
+        .outcome-box.success { border-left: 4px solid #2e7d32; }
+        .outcome-box.warn { border-left: 4px solid #c62828; }
+
+        .chart-wrap {
+            margin: var(--spacing-md) 0;
+            padding: var(--spacing-md);
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+        }
+        .balance-chart { width: 100%; height: auto; display: block; }
+        .balance-chart .accumulation { fill: none; stroke: var(--primary-color); stroke-width: 2; }
+        .balance-chart .withdrawal { fill: none; stroke: #c62828; stroke-width: 2; }
+        .balance-chart .area-acc { fill: var(--primary-color); fill-opacity: 0.12; stroke: none; }
+        .balance-chart .area-wd { fill: #c62828; fill-opacity: 0.10; stroke: none; }
+        .balance-chart .axis { stroke: var(--border-color); stroke-width: 1; }
+        .balance-chart .retire-line { stroke: var(--text-secondary); stroke-dasharray: 4 4; stroke-width: 1; }
+        /* viewBox is 600 wide; bumping the font ensures legibility when the
+           SVG renders at <600px (e.g. on mobile the effective text size is
+           14 * displayWidth / 600). */
+        .balance-chart text { font-size: 14px; fill: var(--text-secondary); font-family: var(--font-sans); }
+
+        .button-row { display: flex; gap: var(--spacing-sm); flex-wrap: wrap; margin-top: var(--spacing-md); }
+        .button-row .btn { min-width: 120px; }
+    </style>
+    <link rel="manifest" href="/manifest.json">
+    <script data-utilify-adsense-loader async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631" crossorigin="anonymous"></script>
+    <meta data-utilify-og property="og:image" content="https://utilifyapp.net/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Utilify">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://utilifyapp.net/assets/og-image.png">
+    <link data-utilify-favicon rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+</head>
+
+<body>
+    <a data-utilify-skip class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header"><div class="container"><div class="header-content"><a href="/zh-tw/" class="site-logo">🛠️ Utilify</a></div></div></header>
+    <main id="main" class="main-content">
+        <div class="container-narrow">
+            <h1>🏖️ Retirement Calculator</h1>
+            <div class="security-badge" style="display:flex;align-items:center;justify-content:center;gap:8px;margin:10px 0;font-size:14px;color:var(--text-secondary);">
+                <span>🔒 安全 & 用戶端處理</span>
+                <button id="pwaInstallBtn" class="btn btn-primary" style="display: none; padding: 4px 12px; font-size: 12px;">📲 安裝應用</button>
+                    <button data-utilify-fav-toggle class="fav-toggle-page" type="button" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
+            </div>
+
+            <p>Enter your current age, target retirement age, current savings, monthly contributions, expected return, planned annual withdrawal, and life expectancy. The calculator runs an accumulation phase, then a withdrawal phase to show whether your nest egg lasts.</p>
+
+            <div class="card">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label" for="currentAge">Current age</label>
+                        <input type="number" id="currentAge" class="form-input" inputmode="numeric" min="10" max="100" step="1" placeholder="30" value="30">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="retireAge">Retirement age</label>
+                        <input type="number" id="retireAge" class="form-input" inputmode="numeric" min="20" max="100" step="1" placeholder="65" value="65">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="currentSavings">Current savings</label>
+                        <input type="number" id="currentSavings" class="form-input" inputmode="decimal" min="0" step="any" placeholder="50000" value="50000">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="monthlyContrib">Monthly contribution</label>
+                        <input type="number" id="monthlyContrib" class="form-input" inputmode="decimal" min="0" step="any" placeholder="500" value="500">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="annualReturn">Annual return (%)</label>
+                        <input type="number" id="annualReturn" class="form-input" inputmode="decimal" min="0" step="0.1" placeholder="6" value="6">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="annualWithdrawal">Annual withdrawal in retirement</label>
+                        <input type="number" id="annualWithdrawal" class="form-input" inputmode="decimal" min="0" step="any" placeholder="30000" value="30000">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="lifeExp">Life expectancy</label>
+                        <input type="number" id="lifeExp" class="form-input" inputmode="numeric" min="20" max="120" step="1" placeholder="85" value="85">
+                    </div>
+                </div>
+                <div class="button-row">
+                    <button class="btn btn-primary" type="button" onclick="calculate()">Calculate</button>
+                    <button class="btn" type="button" onclick="resetForm()">Reset</button>
+                </div>
+            </div>
+
+            <div id="result" style="display:none;" aria-live="polite">
+                <div class="result-card">
+                    <div class="label">Nest egg at retirement</div>
+                    <div class="value" id="nestEggVal">—</div>
+                </div>
+                <h3>Outcome</h3>
+                <div id="outcomeBox" class="outcome-box"></div>
+                <h3>Balance over time</h3>
+                <div class="chart-wrap">
+                    <svg id="balanceChart" class="balance-chart" viewBox="0 0 600 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Balance over time"></svg>
+                </div>
+
+                <div class="button-row">
+                    <button class="btn" type="button" onclick="shareResult()">Share result</button>
+                </div>
+            </div>
+
+            <div class="disclaimer">Estimate only — not financial advice. Consult a qualified retirement planner before making decisions.</div>
+
+            <h2>How to use</h2>
+            <div class="howto-content"><ol><li>Enter your <em>current age</em> and <em>target retirement age</em>.</li><li>Enter your current savings (the amount in retirement accounts today) and your monthly contribution until retirement.</li><li>Set an expected annual return (a common assumption is 6% real for a balanced portfolio).</li><li>Enter how much you plan to withdraw <em>per year</em> in retirement (about 4% of the nest egg is the classic guideline).</li><li>Enter your life expectancy. Click <strong>Calculate</strong> — the chart shows the balance trajectory.</li></ol><p><strong>Model</strong>: accumulation phase compounds monthly with your contributions until retirement age, then withdrawal phase deducts the annual withdrawal at the start of each year and grows the remainder by the annual return until the balance hits zero or life expectancy is reached.</p><p>Real retirement is messier: returns are sequence-sensitive (a bad first year can sink the plan), Social Security or pensions add income, and healthcare costs spike late. Treat this as a sanity check, not a plan.</p></div>
+
+            <div class="related-tools-section">
+                <h3>Related Tools</h3>
+                <div class="related-buttons">
+                    <a href="/zh-tw/compound-interest/" class="related-btn">Compound Interest</a><a
+                        href="/zh-tw/loan-calculator/" class="related-btn">Loan Calculator</a><a
+                        href="/zh-tw/date-calculator/" class="related-btn">Date Calculator</a><a
+                        href="/zh-tw/bmi-calculator/" class="related-btn">BMI Calculator</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="site-footer"><div class="container"><div class="footer-content"><p>&copy; 2025 Utilify. 版權所有。</p>
+                <p data-legal-links style="font-size: 0.875rem; margin-top: 8px;"><a href="/zh-tw/about/">About</a> · <a href="/zh-tw/privacy/">Privacy</a> · <a href="/zh-tw/terms/">Terms</a></p></div></div></footer>
+    <script src="/assets/js/common.js"></script>
+    <script>
+        const LOCALE = document.documentElement.lang || 'en';
+        const fmt = n => Number(n).toLocaleString(LOCALE, { maximumFractionDigits: 0 });
+
+        function calculate() {
+            const currentAge = parseInt(document.getElementById('currentAge').value, 10);
+            const retireAge = parseInt(document.getElementById('retireAge').value, 10);
+            const lifeExp = parseInt(document.getElementById('lifeExp').value, 10);
+            const currentSavings = parseFloat(document.getElementById('currentSavings').value) || 0;
+            const monthlyContrib = parseFloat(document.getElementById('monthlyContrib').value) || 0;
+            const annualReturn = parseFloat(document.getElementById('annualReturn').value) || 0;
+            const annualWithdrawal = parseFloat(document.getElementById('annualWithdrawal').value) || 0;
+
+            if (!(retireAge > currentAge) || !(lifeExp > retireAge)) {
+                alert('Retirement age must be greater than current age, and life expectancy greater than retirement age.');
+                return;
+            }
+
+            const r = annualReturn / 100;
+            const monthlyR = r / 12;
+
+            // Accumulation phase: monthly compounding from currentAge to retireAge.
+            const points = [];  // { age, balance, phase }
+            let balance = currentSavings;
+            points.push({ age: currentAge, balance, phase: 'acc' });
+            for (let age = currentAge; age < retireAge; age++) {
+                for (let m = 0; m < 12; m++) {
+                    balance = balance * (1 + monthlyR) + monthlyContrib;
+                }
+                points.push({ age: age + 1, balance, phase: 'acc' });
+            }
+            const nestEgg = balance;
+
+            // Withdrawal phase: at start of each year, deduct withdrawal, then grow remainder.
+            let runOutAge = null;
+            for (let age = retireAge; age < lifeExp; age++) {
+                balance = balance - annualWithdrawal;
+                if (balance <= 0) {
+                    balance = 0;
+                    runOutAge = age + 1;
+                    points.push({ age: age + 1, balance: 0, phase: 'wd' });
+                    break;
+                }
+                balance = balance * (1 + r);
+                points.push({ age: age + 1, balance, phase: 'wd' });
+            }
+
+            document.getElementById('nestEggVal').textContent = fmt(nestEgg);
+
+            // Outcome message.
+            const outcomeBox = document.getElementById('outcomeBox');
+            if (runOutAge !== null) {
+                const yearsShort = lifeExp - runOutAge;
+                outcomeBox.className = 'outcome-box warn';
+                outcomeBox.textContent = 'Funds run out at age {age} — {years} years short of life expectancy.'
+                    .replace('{age}', runOutAge)
+                    .replace('{years}', yearsShort);
+            } else {
+                outcomeBox.className = 'outcome-box success';
+                outcomeBox.textContent = 'Funds last through life expectancy. Surplus at age {age}: {amount}.'
+                    .replace('{age}', lifeExp)
+                    .replace('{amount}', fmt(balance));
+            }
+
+            // Chart.
+            renderChart(points, currentAge, lifeExp, retireAge);
+
+            document.getElementById('result').style.display = 'block';
+        }
+
+        function renderChart(points, currentAge, lifeExp, retireAge) {
+            const svg = document.getElementById('balanceChart');
+            const W = 600, H = 220, padL = 40, padR = 10, padT = 10, padB = 26;
+            const innerW = W - padL - padR;
+            const innerH = H - padT - padB;
+            const ageRange = lifeExp - currentAge;
+            const maxBalance = Math.max(...points.map(p => p.balance), 1);
+
+            const x = age => padL + ((age - currentAge) / ageRange) * innerW;
+            const y = bal => padT + (1 - bal / maxBalance) * innerH;
+
+            // Split points by phase to draw two segments.
+            const accPts = points.filter(p => p.phase === 'acc');
+            const wdPts = points.filter(p => p.phase === 'wd');
+            // Bridge: include the last accumulation point as the first withdrawal point so the line is continuous.
+            if (accPts.length && wdPts.length) {
+                wdPts.unshift(accPts[accPts.length - 1]);
+            }
+
+            const toPath = pts => pts.map((p, i) => (i === 0 ? 'M' : 'L') + x(p.age).toFixed(1) + ',' + y(p.balance).toFixed(1)).join(' ');
+            const toAreaPath = pts => {
+                if (!pts.length) return '';
+                const top = pts.map((p, i) => (i === 0 ? 'M' : 'L') + x(p.age).toFixed(1) + ',' + y(p.balance).toFixed(1)).join(' ');
+                const right = ' L' + x(pts[pts.length - 1].age).toFixed(1) + ',' + (padT + innerH).toFixed(1);
+                const left = ' L' + x(pts[0].age).toFixed(1) + ',' + (padT + innerH).toFixed(1) + ' Z';
+                return top + right + left;
+            };
+
+            const xRetire = x(retireAge);
+            const yAxisTicks = 4;
+            let ticksHtml = '';
+            for (let i = 0; i <= yAxisTicks; i++) {
+                const v = (maxBalance * (yAxisTicks - i)) / yAxisTicks;
+                const yy = padT + (i / yAxisTicks) * innerH;
+                const label = v >= 1e6 ? (v / 1e6).toFixed(1) + 'M' : v >= 1e3 ? Math.round(v / 1e3) + 'K' : Math.round(v);
+                ticksHtml += '<line class="axis" x1="' + padL + '" y1="' + yy.toFixed(1) + '" x2="' + (W - padR) + '" y2="' + yy.toFixed(1) + '" opacity="0.3"/>';
+                ticksHtml += '<text x="' + (padL - 4) + '" y="' + (yy + 4).toFixed(1) + '" text-anchor="end">' + label + '</text>';
+            }
+
+            const xTicks = 5;
+            for (let i = 0; i <= xTicks; i++) {
+                const age = currentAge + Math.round((ageRange * i) / xTicks);
+                const xx = x(age);
+                ticksHtml += '<text x="' + xx.toFixed(1) + '" y="' + (H - 8) + '" text-anchor="middle">' + age + '</text>';
+            }
+
+            svg.innerHTML =
+                ticksHtml +
+                '<path class="area-acc" d="' + toAreaPath(accPts) + '"/>' +
+                '<path class="area-wd" d="' + toAreaPath(wdPts) + '"/>' +
+                '<line class="retire-line" x1="' + xRetire + '" y1="' + padT + '" x2="' + xRetire + '" y2="' + (padT + innerH) + '"/>' +
+                '<path class="accumulation" d="' + toPath(accPts) + '"/>' +
+                '<path class="withdrawal" d="' + toPath(wdPts) + '"/>';
+        }
+
+        function resetForm() {
+            document.getElementById('currentAge').value = '30';
+            document.getElementById('retireAge').value = '65';
+            document.getElementById('currentSavings').value = '50000';
+            document.getElementById('monthlyContrib').value = '500';
+            document.getElementById('annualReturn').value = '6';
+            document.getElementById('annualWithdrawal').value = '30000';
+            document.getElementById('lifeExp').value = '85';
+            document.getElementById('result').style.display = 'none';
+        }
+
+        async function shareResult() {
+            const nest = document.getElementById('nestEggVal').textContent;
+            if (nest === '—') return;
+            const text = 'My retirement nest egg: {value} —'.replace('{value}', nest) + ' ' + location.href;
+            if (navigator.share) {
+                try { await navigator.share({ title: 'Retirement Calculator', text }); return; }
+                catch (e) { if (e && e.name === 'AbortError') return; }
+            }
+            try {
+                await navigator.clipboard.writeText(text);
+                alert('Result copied to clipboard.');
+            } catch (e) { /* clipboard blocked — silent */ }
+        }
+    </script>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({google_ad_client:"ca-pub-6334819180242631",enable_page_level_ads:true});</script>
+    <script data-utilify-fav-toggle-script>(function(){var btn=document.querySelector(".fav-toggle-page");if(!btn)return;var m=location.pathname.match(/^\/[^\/]+\/([^\/]+)\/?$/);if(!m)return;var slug=m[1],K="utilify_favorites";function g(){return (localStorage.getItem(K)||"").split(",").filter(Boolean);}function s(a){localStorage.setItem(K,Array.from(new Set(a)).join(","));}function p(f){btn.textContent=f?"★":"☆";btn.classList.toggle("is-fav",f);btn.setAttribute("aria-label",f?btn.dataset.removeLabel:btn.dataset.addLabel);btn.setAttribute("aria-pressed",String(f));}p(g().indexOf(slug)>-1);btn.addEventListener("click",function(){var a=g(),n=a.indexOf(slug)>-1?a.filter(function(x){return x!==slug;}):a.concat([slug]);s(n);p(n.indexOf(slug)>-1);});})();</script>
+</body>
+
+</html>

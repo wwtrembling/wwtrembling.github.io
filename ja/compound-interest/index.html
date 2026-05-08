@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy-Report-Only" content="default-src 'self' https: data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https:; frame-src https:;">
+    <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+    <title>Compound Interest Calculator — Investment Growth - Utilify</title>
+    <meta name="description" content="Project savings or investment growth with compound interest and optional monthly contributions. See final balance, total contributions, and yearly breakdown.">
+    <link rel="canonical" href="https://utilifyapp.net/ja/compound-interest/">
+
+    <meta property="og:title" content="Compound Interest Calculator - Utilify">
+    <meta property="og:description" content="Project investment growth with compound interest and monthly contributions.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://utilifyapp.net/ja/compound-interest/">
+
+    <link rel="alternate" hreflang="en" href="https://utilifyapp.net/en/compound-interest/">
+    <link rel="alternate" hreflang="ko" href="https://utilifyapp.net/ko/compound-interest/">
+    <link rel="alternate" hreflang="vi" href="https://utilifyapp.net/vi/compound-interest/">
+    <link rel="alternate" hreflang="th" href="https://utilifyapp.net/th/compound-interest/">
+    <link rel="alternate" hreflang="de" href="https://utilifyapp.net/de/compound-interest/">
+    <link rel="alternate" hreflang="pt" href="https://utilifyapp.net/pt/compound-interest/">
+    <link rel="alternate" hreflang="id" href="https://utilifyapp.net/id/compound-interest/">
+    <link rel="alternate" hreflang="hi" href="https://utilifyapp.net/hi/compound-interest/">
+    <link rel="alternate" hreflang="ja" href="https://utilifyapp.net/ja/compound-interest/">
+    <link rel="alternate" hreflang="zh-Hans" href="https://utilifyapp.net/zh-cn/compound-interest/">
+    <link rel="alternate" hreflang="zh-Hant" href="https://utilifyapp.net/zh-tw/compound-interest/">
+    <link rel="alternate" hreflang="x-default" href="https://utilifyapp.net/en/compound-interest/">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Compound Interest Calculator",
+        "description": "Estimate future value with compound interest, configurable compounding frequency, and monthly contributions.",
+        "url": "https://utilifyapp.net/ja/compound-interest/",
+        "inLanguage": "ja",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Any",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+
+    <style>
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+        }
+        .result-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            text-align: center;
+        }
+        .result-card .label { font-size: 0.85rem; color: var(--text-secondary); }
+        .result-card .value { font-size: 1.5rem; font-weight: 700; color: var(--primary-color); margin-top: 4px; font-variant-numeric: tabular-nums; }
+        .result-card.headline .value { font-size: 2rem; }
+
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-variant-numeric: tabular-nums;
+            font-size: 0.92rem;
+            min-width: 420px;
+        }
+        .schedule-table th, .schedule-table td {
+            padding: 8px 10px;
+            border-bottom: 1px solid var(--border-color);
+            text-align: right;
+            white-space: nowrap;
+        }
+        .schedule-table th:first-child, .schedule-table td:first-child { text-align: left; }
+        .schedule-table th { background: var(--bg-secondary); font-weight: 600; }
+        .button-row { display: flex; gap: var(--spacing-sm); flex-wrap: wrap; }
+        .button-row .btn { min-width: 120px; }
+    </style>
+    <link rel="manifest" href="/manifest.json">
+    <script data-utilify-adsense-loader async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631" crossorigin="anonymous"></script>
+    <meta data-utilify-og property="og:image" content="https://utilifyapp.net/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Utilify">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://utilifyapp.net/assets/og-image.png">
+    <link data-utilify-favicon rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+</head>
+
+<body>
+    <a data-utilify-skip class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header"><div class="container"><div class="header-content"><a href="/ja/" class="site-logo">🛠️ Utilify</a></div></div></header>
+    <main id="main" class="main-content">
+        <div class="container-narrow">
+            <h1>📈 Compound Interest Calculator</h1>
+            <div class="security-badge" style="display:flex;align-items:center;justify-content:center;gap:8px;margin:10px 0;font-size:14px;color:var(--text-secondary);">
+                <span>🔒 Secure & Client-side</span>
+                <button id="pwaInstallBtn" class="btn btn-primary" style="display: none; padding: 4px 12px; font-size: 12px;">📲 Install App</button>
+                    <button data-utilify-fav-toggle class="fav-toggle-page" type="button" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
+            </div>
+
+            <p>Enter your starting principal, annual return, time horizon, compounding frequency, and optional monthly contributions to project the future value of an investment or savings account. Includes a year-by-year balance breakdown.</p>
+
+            <div class="card">
+                <div class="form-group">
+                    <label class="form-label" for="principal">Starting principal</label>
+                    <input type="number" id="principal" class="form-input" inputmode="decimal" min="0" step="any" placeholder="10000" value="10000">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="rate">Annual return (%)</label>
+                    <input type="number" id="rate" class="form-input" inputmode="decimal" min="0" step="0.01" placeholder="7" value="7">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="years">Time horizon (years)</label>
+                    <input type="number" id="years" class="form-input" inputmode="numeric" min="1" max="100" step="1" placeholder="20" value="20">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="frequency">Compounding frequency</label>
+                    <select id="frequency" class="form-input">
+                        <option value="1">Yearly</option>
+                        <option value="12" selected>Monthly</option>
+                        <option value="365">Daily</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="contrib">Monthly contribution</label>
+                    <input type="number" id="contrib" class="form-input" inputmode="decimal" min="0" step="any" placeholder="500" value="500">
+                </div>
+                <div class="button-row">
+                    <button class="btn btn-primary" type="button" onclick="calculate()">Calculate</button>
+                    <button class="btn" type="button" onclick="resetForm()">Reset</button>
+                </div>
+            </div>
+
+            <div id="result" style="display:none;" aria-live="polite">
+                <div class="result-grid">
+                    <div class="result-card headline">
+                        <div class="label">Final balance</div>
+                        <div class="value" id="finalVal">—</div>
+                    </div>
+                    <div class="result-card">
+                        <div class="label">Total contributions</div>
+                        <div class="value" id="totalContribVal">—</div>
+                    </div>
+                    <div class="result-card">
+                        <div class="label">Total interest earned</div>
+                        <div class="value" id="totalInterestVal">—</div>
+                    </div>
+                </div>
+
+                <h3>Year-by-year balance</h3>
+                <div class="table-responsive">
+                    <table class="schedule-table">
+                        <thead>
+                            <tr>
+                                <th>Year</th>
+                                <th>Balance</th>
+                                <th>Contributed</th>
+                                <th>Interest earned</th>
+                            </tr>
+                        </thead>
+                        <tbody id="yearBody"></tbody>
+                    </table>
+                </div>
+
+                <div class="button-row" style="margin-top: var(--spacing-md);">
+                    <button class="btn" type="button" onclick="shareResult()">Share result</button>
+                </div>
+            </div>
+
+            <div class="disclaimer">Estimate only — not financial advice. Real returns vary and are not guaranteed.</div>
+
+            <h2>How to use</h2>
+            <div class="howto-content"><ol><li>Enter your starting principal — the amount you have today.</li><li>Enter the expected annual return as a percent (historical S&amp;P 500 average is ~7% real, ~10% nominal).</li><li>Enter the time horizon in years.</li><li>Pick the compounding frequency: yearly, monthly, or daily. Most index funds compound continuously — monthly is a close approximation.</li><li>Optionally add a monthly contribution. Click <strong>Calculate</strong>.</li></ol><p><strong>Formula</strong>: FV = P(1 + r/m)<sup>m·t</sup> + C · ((1 + r/m)<sup>m·t</sup> − 1) / (r/m), where P is principal, r is the annual rate, m is compounding periods per year, t is years, and C is the periodic contribution converted to the compounding period.</p><p>Inflation, taxes, and fees are not modeled. A 7% nominal return at 3% inflation is roughly a 4% real return — the future balance will buy less than today's purchasing power suggests.</p></div>
+
+            <div class="related-tools-section">
+                <h3>Related Tools</h3>
+                <div class="related-buttons">
+                    <a href="/ja/loan-calculator/" class="related-btn">Loan Calculator</a><a
+                        href="/ja/retirement-calculator/" class="related-btn">Retirement Calculator</a><a
+                        href="/ja/date-calculator/" class="related-btn">Date Calculator</a><a
+                        href="/ja/unit-converter/" class="related-btn">Unit Converter</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="site-footer"><div class="container"><div class="footer-content"><p>&copy; 2025 Utilify. All rights reserved.</p>
+                <p data-legal-links style="font-size: 0.875rem; margin-top: 8px;"><a href="/ja/about/">About</a> · <a href="/ja/privacy/">Privacy</a> · <a href="/ja/terms/">Terms</a></p></div></div></footer>
+    <script src="/assets/js/common.js"></script>
+    <script>
+        const LOCALE = document.documentElement.lang || 'en';
+        const fmt = n => Number(n).toLocaleString(LOCALE, { maximumFractionDigits: 0 });
+
+        function calculate() {
+            const P = parseFloat(document.getElementById('principal').value) || 0;
+            const annualRate = parseFloat(document.getElementById('rate').value) || 0;
+            const years = parseFloat(document.getElementById('years').value);
+            const m = parseInt(document.getElementById('frequency').value, 10);
+            const monthlyC = parseFloat(document.getElementById('contrib').value) || 0;
+            if (!(years > 0) || P < 0 || monthlyC < 0 || annualRate < 0) {
+                alert('Please enter non-negative numbers and a positive time horizon.');
+                return;
+            }
+
+            // Convert monthly contribution to per-period contribution.
+            // Per-period contribution = monthlyC * 12 / m (so total annual contribution stays consistent).
+            const C = monthlyC * 12 / m;
+            const r = annualRate / 100;
+            const periodRate = r / m;
+
+            // Year-by-year iteration so we can build the breakdown table.
+            const rows = [];
+            let balance = P;
+            let totalContrib = P;
+            for (let y = 1; y <= years; y++) {
+                // Within this year, compound m times, adding C each period.
+                for (let p = 0; p < m; p++) {
+                    balance = balance * (1 + periodRate) + C;
+                    totalContrib += C;
+                }
+                rows.push({ year: y, balance, contributed: totalContrib });
+            }
+
+            const finalBalance = balance;
+            const totalInterest = finalBalance - totalContrib;
+
+            document.getElementById('finalVal').textContent = fmt(finalBalance);
+            document.getElementById('totalContribVal').textContent = fmt(totalContrib);
+            document.getElementById('totalInterestVal').textContent = fmt(totalInterest);
+
+            // Show up to 10 years; if longer, show first 5 + last 5.
+            const tbody = document.getElementById('yearBody');
+            tbody.innerHTML = '';
+            const showRows = rows.length <= 10
+                ? rows
+                : rows.slice(0, 5).concat([{ ellipsis: true }]).concat(rows.slice(-5));
+            for (const row of showRows) {
+                const tr = document.createElement('tr');
+                if (row.ellipsis) {
+                    tr.innerHTML = '<td colspan="4" style="text-align:center;color:var(--text-secondary);">…</td>';
+                } else {
+                    const interest = row.balance - row.contributed;
+                    tr.innerHTML =
+                        '<td>' + row.year + '</td>' +
+                        '<td>' + fmt(row.balance) + '</td>' +
+                        '<td>' + fmt(row.contributed) + '</td>' +
+                        '<td>' + fmt(interest) + '</td>';
+                }
+                tbody.appendChild(tr);
+            }
+
+            document.getElementById('result').style.display = 'block';
+        }
+
+        function resetForm() {
+            document.getElementById('principal').value = '10000';
+            document.getElementById('rate').value = '7';
+            document.getElementById('years').value = '20';
+            document.getElementById('frequency').value = '12';
+            document.getElementById('contrib').value = '500';
+            document.getElementById('result').style.display = 'none';
+        }
+
+        async function shareResult() {
+            const final = document.getElementById('finalVal').textContent;
+            if (final === '—') return;
+            const text = 'My investment will grow to {value} —'.replace('{value}', final) + ' ' + location.href;
+            if (navigator.share) {
+                try { await navigator.share({ title: 'Compound Interest Calculator', text }); return; }
+                catch (e) { if (e && e.name === 'AbortError') return; }
+            }
+            try {
+                await navigator.clipboard.writeText(text);
+                alert('Result copied to clipboard.');
+            } catch (e) { /* clipboard blocked — silent */ }
+        }
+    </script>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({google_ad_client:"ca-pub-6334819180242631",enable_page_level_ads:true});</script>
+    <script data-utilify-fav-toggle-script>(function(){var btn=document.querySelector(".fav-toggle-page");if(!btn)return;var m=location.pathname.match(/^\/[^\/]+\/([^\/]+)\/?$/);if(!m)return;var slug=m[1],K="utilify_favorites";function g(){return (localStorage.getItem(K)||"").split(",").filter(Boolean);}function s(a){localStorage.setItem(K,Array.from(new Set(a)).join(","));}function p(f){btn.textContent=f?"★":"☆";btn.classList.toggle("is-fav",f);btn.setAttribute("aria-label",f?btn.dataset.removeLabel:btn.dataset.addLabel);btn.setAttribute("aria-pressed",String(f));}p(g().indexOf(slug)>-1);btn.addEventListener("click",function(){var a=g(),n=a.indexOf(slug)>-1?a.filter(function(x){return x!==slug;}):a.concat([slug]);s(n);p(n.indexOf(slug)>-1);});})();</script>
+</body>
+
+</html>

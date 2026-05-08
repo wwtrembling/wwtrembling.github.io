@@ -211,6 +211,7 @@
 
             <div class="category-filter" role="group" aria-label="Filter tools by category">
                 <button type="button" data-cat="all" aria-pressed="true">전체</button>
+                <button type="button" class="fav-filter-chip" data-cat="favorites" aria-pressed="false">★ 즐겨찾기</button>
                 <button type="button" data-cat="ai" aria-pressed="false">AI</button>
                 <button type="button" data-cat="dev" aria-pressed="false">개발자</button>
                 <button type="button" data-cat="text" aria-pressed="false">텍스트</button>
@@ -219,237 +220,331 @@
                 <button type="button" data-cat="calc" aria-pressed="false">계산기</button>
             </div>
 
+            <div class="search-bar">
+                <input type="search" id="searchInput" class="form-input"
+                       placeholder="도구 검색…"
+                       aria-label="도구 검색…"
+                       autocomplete="off">
+            </div>
+
+            <div class="subcat-chips" data-parent-cat="calc" role="group" aria-label="하위 카테고리 필터" hidden><button type="button" class="subcat-chip" data-subcat="" aria-pressed="true">전체</button><button type="button" class="subcat-chip" data-subcat="finance" aria-pressed="false">금융</button><a href="/ko/finance/" class="hub-link" data-for-subcat="finance" hidden>→ 금융 허브</a><button type="button" class="subcat-chip" data-subcat="health" aria-pressed="false">건강</button><a href="/ko/health/" class="hub-link" data-for-subcat="health" hidden>→ 건강 허브</a></div>
+
+            <p id="emptyState" class="empty-state" hidden
+               data-msg-favorites="즐겨찾기가 없습니다. 도구 카드의 ☆를 눌러 추가하세요."
+               data-msg-search="검색 결과가 없습니다.">즐겨찾기가 없습니다. 도구 카드의 ☆를 눌러 추가하세요.</p>
+
             <div class="card-grid" id="toolGrid">
                 
-        <a href="/ko/image-watermark/" class="card" data-category="image">
+        <a href="/ko/image-watermark/" class="card" data-category="image" data-subcategory="" data-slug="image-watermark" data-keywords="watermark image overlay logo">
+          <button type="button" class="fav-toggle" data-fav="image-watermark" aria-label="즐겨찾기에 추가" data-add-label="즐겨찾기에 추가" data-remove-label="즐겨찾기에서 제거">☆</button>
           <div class="card-icon">🛡️</div>
           <h3 class="card-title">이미지 워터마크</h3>
           <p class="card-description">이미지에 워터마크를 추가하여 저작권을 보호하세요.</p>
         </a>
 
-        <a href="/ko/unit-converter/" class="card" data-category="convert">
+        <a href="/ko/unit-converter/" class="card" data-category="convert" data-subcategory="" data-slug="unit-converter" data-keywords="unit convert length weight volume temperature">
+          <button type="button" class="fav-toggle" data-fav="unit-converter" aria-label="즐겨찾기에 추가" data-add-label="즐겨찾기에 추가" data-remove-label="즐겨찾기에서 제거">☆</button>
           <div class="card-icon">📏</div>
           <h3 class="card-title">단위 변환기</h3>
           <p class="card-description">길이, 무게, 온도, 부피 등 다양한 단위를 간편하게 변환하세요.</p>
         </a>
 
-        <a href="/ko/image-converter/" class="card" data-category="image">
+        <a href="/ko/image-converter/" class="card" data-category="image" data-subcategory="" data-slug="image-converter" data-keywords="image png jpg webp avif convert">
+          <button type="button" class="fav-toggle" data-fav="image-converter" aria-label="즐겨찾기에 추가" data-add-label="즐겨찾기에 추가" data-remove-label="즐겨찾기에서 제거">☆</button>
           <div class="card-icon">🖼️</div>
           <h3 class="card-title">이미지 변환기</h3>
           <p class="card-description">이미지 크기를 조정하고 WebP, JPEG, PNG 형식으로 변환하세요.</p>
         </a>
 
-        <a href="/ko/bmi-calculator/" class="card" data-category="calc">
+        <a href="/ko/bmi-calculator/" class="card" data-category="calc" data-subcategory="" data-slug="bmi-calculator" data-keywords="bmi body mass weight health">
+          <button type="button" class="fav-toggle" data-fav="bmi-calculator" aria-label="즐겨찾기에 추가" data-add-label="즐겨찾기에 추가" data-remove-label="즐겨찾기에서 제거">☆</button>
           <div class="card-icon">⚖️</div>
           <h3 class="card-title">BMI 계산기</h3>
           <p class="card-description">BMI를 계산하세요.</p>
         </a>
 
-        <a href="/ko/date-calculator/" class="card" data-category="calc">
+        <a href="/ko/date-calculator/" class="card" data-category="calc" data-subcategory="" data-slug="date-calculator" data-keywords="date duration between days">
+          <button type="button" class="fav-toggle" data-fav="date-calculator" aria-label="즐겨찾기에 추가" data-add-label="즐겨찾기에 추가" data-remove-label="즐겨찾기에서 제거">☆</button>
           <div class="card-icon">📅</div>
           <h3 class="card-title">날짜 계산기</h3>
           <p class="card-description">D-Day 및 날짜 차이를 계산하세요.</p>
         </a>
 
-        <a href="/ko/text-utils/" class="card" data-category="text">
+        <a href="/ko/text-utils/" class="card" data-category="text" data-subcategory="" data-slug="text-utils" data-keywords="text case uppercase lowercase count">
+          <button type="button" class="fav-toggle" data-fav="text-utils" aria-label="즐겨찾기에 추가" data-add-label="즐겨찾기에 추가" data-remove-label="즐겨찾기에서 제거">☆</button>
           <div class="card-icon">📝</div>
           <h3 class="card-title">텍스트 유틸리티</h3>
           <p class="card-description">단어 수 세기, 문자 수 세기, 중복 제거, 대소문자 변환 등 다양한 텍스트 처리 기능을 제공합니다.</p>
         </a>
 
-        <a href="/ko/json-formatter/" class="card" data-category="dev">
+        <a href="/ko/json-formatter/" class="card" data-category="dev" data-subcategory="" data-slug="json-formatter" data-keywords="json format pretty minify validate">
+          <button type="button" class="fav-toggle" data-fav="json-formatter" aria-label="즐겨찾기에 추가" data-add-label="즐겨찾기에 추가" data-remove-label="즐겨찾기에서 제거">☆</button>
           <div class="card-icon">{ }</div>
           <h3 class="card-title">JSON 포매터</h3>
           <p class="card-description">JSON 데이터를 포맷팅하고 유효성을 검사하세요. 개발자를 위해 광고를 제거했습니다.</p>
         </a>
 
-        <a href="/ko/color-converter/" class="card" data-category="convert">
+        <a href="/ko/color-converter/" class="card" data-category="convert" data-subcategory="" data-slug="color-converter" data-keywords="color colour hex rgb hsl">
+          <button type="button" class="fav-toggle" data-fav="color-converter" aria-label="즐겨찾기에 추가" data-add-label="즐겨찾기에 추가" data-remove-label="즐겨찾기에서 제거">☆</button>
           <div class="card-icon">🎨</div>
           <h3 class="card-title">색상 변환기</h3>
           <p class="card-description">HEX, RGB, HSL 색상 형식 간 변환 및 실시간 미리보기.</p>
         </a>
 
-        <a href="/ko/timer/" class="card" data-category="calc">
+        <a href="/ko/timer/" class="card" data-category="calc" data-subcategory="" data-slug="timer" data-keywords="timer stopwatch countdown">
+          <button type="button" class="fav-toggle" data-fav="timer" aria-label="즐겨찾기에 추가" data-add-label="즐겨찾기에 추가" data-remove-label="즐겨찾기에서 제거">☆</button>
           <div class="card-icon">⏱️</div>
           <h3 class="card-title">타이머</h3>
           <p class="card-description">온라인 타이머와 포모도로 기법</p>
         </a>
 
-        <a href="/ko/base64-converter/" class="card" data-category="dev">
+        <a href="/ko/base64-converter/" class="card" data-category="dev" data-subcategory="" data-slug="base64-converter" data-keywords="base64 encode decode b64">
+          <button type="button" class="fav-toggle" data-fav="base64-converter" aria-label="즐겨찾기에 추가" data-add-label="즐겨찾기에 추가" data-remove-label="즐겨찾기에서 제거">☆</button>
           <div class="card-icon">🔤</div>
           <h3 class="card-title">Base64 인코더/디코더</h3>
           <p class="card-description">텍스트를 Base64로 인코딩하거나 디코딩하세요.</p>
         </a>
 
-        <a href="/ko/qr-generator/" class="card" data-category="image">
+        <a href="/ko/qr-generator/" class="card" data-category="image" data-subcategory="" data-slug="qr-generator" data-keywords="qr qrcode barcode">
+          <button type="button" class="fav-toggle" data-fav="qr-generator" aria-label="즐겨찾기에 추가" data-add-label="즐겨찾기에 추가" data-remove-label="즐겨찾기에서 제거">☆</button>
           <div class="card-icon">📱</div>
           <h3 class="card-title">QR 코드 생성기</h3>
           <p class="card-description">텍스트나 URL을 QR 코드로 변환하세요.</p>
         </a>
 
-        <a href="/ko/regex-tester/" class="card" data-category="dev">
+        <a href="/ko/regex-tester/" class="card" data-category="dev" data-subcategory="" data-slug="regex-tester" data-keywords="regex regular expression pattern match">
+          <button type="button" class="fav-toggle" data-fav="regex-tester" aria-label="즐겨찾기에 추가" data-add-label="즐겨찾기에 추가" data-remove-label="즐겨찾기에서 제거">☆</button>
           <div class="card-icon">🔍</div>
           <h3 class="card-title">정규식 테스터</h3>
           <p class="card-description">정규식 패턴을 테스트하고 매칭 결과를 실시간으로 확인하세요.</p>
         </a>
 
-        <a href="/ko/sql-formatter/" class="card" data-category="dev">
+        <a href="/ko/sql-formatter/" class="card" data-category="dev" data-subcategory="" data-slug="sql-formatter" data-keywords="sql format query database">
+          <button type="button" class="fav-toggle" data-fav="sql-formatter" aria-label="즐겨찾기에 추가" data-add-label="즐겨찾기에 추가" data-remove-label="즐겨찾기에서 제거">☆</button>
           <div class="card-icon">🗄️</div>
           <h3 class="card-title">SQL 포매터</h3>
           <p class="card-description">SQL 쿼리를 자동으로 정렬하고 포맷팅하세요. 개발자를 위해 광고를 제거했습니다.</p>
         </a>
 
-        <a href="/ko/lorem-ipsum/" class="card" data-category="text">
+        <a href="/ko/lorem-ipsum/" class="card" data-category="text" data-subcategory="" data-slug="lorem-ipsum" data-keywords="lorem ipsum placeholder dummy">
+          <button type="button" class="fav-toggle" data-fav="lorem-ipsum" aria-label="즐겨찾기에 추가" data-add-label="즐겨찾기에 추가" data-remove-label="즐겨찾기에서 제거">☆</button>
           <div class="card-icon">📋</div>
           <h3 class="card-title">Lorem Ipsum 생성기</h3>
           <p class="card-description">Lorem Ipsum 더미 텍스트를 생성하세요.</p>
         </a>
 
-        <a href="/ko/favicon-generator/" class="card" data-category="image">
+        <a href="/ko/favicon-generator/" class="card" data-category="image" data-subcategory="" data-slug="favicon-generator" data-keywords="favicon icon apple-touch">
+          <button type="button" class="fav-toggle" data-fav="favicon-generator" aria-label="즐겨찾기에 추가" data-add-label="즐겨찾기에 추가" data-remove-label="즐겨찾기에서 제거">☆</button>
           <div class="card-icon">🎯</div>
           <h3 class="card-title">파비콘 생성기</h3>
           <p class="card-description">이미지를 다양한 크기의 파비콘으로 변환하세요.</p>
         </a>
 
-        <a href="/ko/diff-checker/" class="card" data-category="text">
+        <a href="/ko/diff-checker/" class="card" data-category="text" data-subcategory="" data-slug="diff-checker" data-keywords="diff compare text difference">
+          <button type="button" class="fav-toggle" data-fav="diff-checker" aria-label="즐겨찾기에 추가" data-add-label="즐겨찾기에 추가" data-remove-label="즐겨찾기에서 제거">☆</button>
           <div class="card-icon">🔀</div>
           <h3 class="card-title">텍스트 비교기 (Diff Checker)</h3>
           <p class="card-description">두 텍스트의 차이점을 쉽고 빠르게 비교하세요. 변경된 부분을 색깔로 표시해줍니다.</p>
         </a>
 
-        <a href="/ko/password-generator/" class="card" data-category="calc">
+        <a href="/ko/password-generator/" class="card" data-category="calc" data-subcategory="" data-slug="password-generator" data-keywords="password random secure strong">
+          <button type="button" class="fav-toggle" data-fav="password-generator" aria-label="즐겨찾기에 추가" data-add-label="즐겨찾기에 추가" data-remove-label="즐겨찾기에서 제거">☆</button>
           <div class="card-icon">🔐</div>
           <h3 class="card-title">안전한 비밀번호 생성기</h3>
           <p class="card-description">강력하고 안전한 비밀번호를 생성하세요. 생성된 비밀번호는 서버로 전송되지 않습니다 (100% 클라이언트 처리).</p>
         </a>
 
-        <a href="/ko/thumbnail-downloader/" class="card" data-category="image">
+        <a href="/ko/thumbnail-downloader/" class="card" data-category="image" data-subcategory="" data-slug="thumbnail-downloader" data-keywords="thumbnail youtube download image">
+          <button type="button" class="fav-toggle" data-fav="thumbnail-downloader" aria-label="즐겨찾기에 추가" data-add-label="즐겨찾기에 추가" data-remove-label="즐겨찾기에서 제거">☆</button>
           <div class="card-icon">📺</div>
           <h3 class="card-title">유튜브 썸네일 다운로더</h3>
           <p class="card-description">유튜브 영상의 썸네일 이미지를 고화질(4K, HD)로 추출하고 다운로드하세요. 무료, 간편한 도구.</p>
         </a>
 
-        <a href="/ko/markdown-previewer/" class="card" data-category="text">
+        <a href="/ko/markdown-previewer/" class="card" data-category="text" data-subcategory="" data-slug="markdown-previewer" data-keywords="markdown md preview render">
+          <button type="button" class="fav-toggle" data-fav="markdown-previewer" aria-label="즐겨찾기에 추가" data-add-label="즐겨찾기에 추가" data-remove-label="즐겨찾기에서 제거">☆</button>
           <div class="card-icon">📝</div>
           <h3 class="card-title">마크다운 에디터 & 미리보기</h3>
           <p class="card-description">실시간 마크다운 미리보기 도구. 손쉽게 마크다운 문서를 작성하고 변환된 HTML 결과를 확인하세요.</p>
         </a>
 
-        <a href="/ko/reaction-test/" class="card" data-category="calc">
+        <a href="/ko/reaction-test/" class="card" data-category="calc" data-subcategory="" data-slug="reaction-test" data-keywords="reaction reflex speed">
+          <button type="button" class="fav-toggle" data-fav="reaction-test" aria-label="즐겨찾기에 추가" data-add-label="즐겨찾기에 추가" data-remove-label="즐겨찾기에서 제거">☆</button>
           <div class="card-icon">⚡</div>
           <h3 class="card-title">반응 속도 테스트</h3>
           <p class="card-description">당신의 반응 속도는 얼마입니까? 화면이 초록색으로 바뀔 때 최대한 빨리 클릭하세요!</p>
         </a>
 
-        <a href="/ko/jwt-decoder/" class="card" data-category="dev">
+        <a href="/ko/jwt-decoder/" class="card" data-category="dev" data-subcategory="" data-slug="jwt-decoder" data-keywords="jwt token auth jose decode">
+          <button type="button" class="fav-toggle" data-fav="jwt-decoder" aria-label="즐겨찾기에 추가" data-add-label="즐겨찾기에 추가" data-remove-label="즐겨찾기에서 제거">☆</button>
           <div class="card-icon">🪪</div>
           <h3 class="card-title">JWT 디코더</h3>
           <p class="card-description">JWT를 붙여넣어 헤더와 페이로드를 디코딩하세요. 토큰은 로컬에서만 처리되며 서버로 전송되지 않습니다.</p>
         </a>
 
-        <a href="/ko/hash-generator/" class="card" data-category="dev">
+        <a href="/ko/hash-generator/" class="card" data-category="dev" data-subcategory="" data-slug="hash-generator" data-keywords="hash md5 sha sha256 digest">
+          <button type="button" class="fav-toggle" data-fav="hash-generator" aria-label="즐겨찾기에 추가" data-add-label="즐겨찾기에 추가" data-remove-label="즐겨찾기에서 제거">☆</button>
           <div class="card-icon">🔑</div>
           <h3 class="card-title">해시 생성기</h3>
           <p class="card-description">텍스트를 입력하면 MD5와 SHA-1/256/384/512 다이제스트가 즉시 계산됩니다. 데이터는 외부로 전송되지 않습니다.</p>
         </a>
 
-        <a href="/ko/unix-timestamp/" class="card" data-category="convert">
+        <a href="/ko/unix-timestamp/" class="card" data-category="convert" data-subcategory="" data-slug="unix-timestamp" data-keywords="unix timestamp epoch time">
+          <button type="button" class="fav-toggle" data-fav="unix-timestamp" aria-label="즐겨찾기에 추가" data-add-label="즐겨찾기에 추가" data-remove-label="즐겨찾기에서 제거">☆</button>
           <div class="card-icon">⏲️</div>
           <h3 class="card-title">Unix 타임스탬프 변환기</h3>
           <p class="card-description">Unix 타임스탬프와 날짜를 변환합니다. 초/밀리초를 자동 감지하고 UTC와 로컬 시간을 함께 보여줍니다.</p>
         </a>
 
-        <a href="/ko/uuid-generator/" class="card" data-category="dev">
+        <a href="/ko/uuid-generator/" class="card" data-category="dev" data-subcategory="" data-slug="uuid-generator" data-keywords="uuid guid random identifier">
+          <button type="button" class="fav-toggle" data-fav="uuid-generator" aria-label="즐겨찾기에 추가" data-add-label="즐겨찾기에 추가" data-remove-label="즐겨찾기에서 제거">☆</button>
           <div class="card-icon">🆔</div>
           <h3 class="card-title">UUID 생성기</h3>
           <p class="card-description">암호학적으로 안전한 UUID를 로컬에서 생성합니다. v4(랜덤)가 가장 일반적이며, v1은 타임스탬프를 포함합니다. 하이픈/대소문자/중괄호 포맷 옵션을 제공합니다.</p>
         </a>
 
-        <a href="/ko/url-encoder/" class="card" data-category="dev">
+        <a href="/ko/url-encoder/" class="card" data-category="dev" data-subcategory="" data-slug="url-encoder" data-keywords="url encode decode percent escape">
+          <button type="button" class="fav-toggle" data-fav="url-encoder" aria-label="즐겨찾기에 추가" data-add-label="즐겨찾기에 추가" data-remove-label="즐겨찾기에서 제거">☆</button>
           <div class="card-icon">🔗</div>
           <h3 class="card-title">URL 인코더 / 디코더</h3>
           <p class="card-description">문자를 percent-encoded 형태(예: 공백 → %20)로 인코딩하거나 다시 디코딩하세요. 쿼리 값은 'Component', 예약 문자(:, /, ?)를 보존해야 한다면 'Full URL' 모드를 사용하세요.</p>
         </a>
 
-        <a href="/ko/token-counter/" class="card" data-category="ai">
+        <a href="/ko/token-counter/" class="card" data-category="ai" data-subcategory="" data-slug="token-counter" data-keywords="token gpt claude cost tiktoken">
+          <button type="button" class="fav-toggle" data-fav="token-counter" aria-label="즐겨찾기에 추가" data-add-label="즐겨찾기에 추가" data-remove-label="즐겨찾기에서 제거">☆</button>
           <div class="card-icon">🪙</div>
           <h3 class="card-title">AI 토큰 카운터 & 비용 계산기</h3>
           <p class="card-description">텍스트의 토큰 수를 추정하고 GPT-4o·Claude Opus 4.7·Gemini 2.5 등 모델별 API 비용을 표시합니다. 휴리스틱(영문 ≈4자/토큰, CJK ≈1.5자/토큰) 기반 — 정확한 토큰화는 제공자 API가 필요합니다.</p>
         </a>
 
-        <a href="/ko/mcp-config-generator/" class="card" data-category="ai">
+        <a href="/ko/mcp-config-generator/" class="card" data-category="ai" data-subcategory="" data-slug="mcp-config-generator" data-keywords="mcp claude desktop cursor config">
+          <button type="button" class="fav-toggle" data-fav="mcp-config-generator" aria-label="즐겨찾기에 추가" data-add-label="즐겨찾기에 추가" data-remove-label="즐겨찾기에서 제거">☆</button>
           <div class="card-icon">🔌</div>
           <h3 class="card-title">MCP 서버 설정 생성기</h3>
           <p class="card-description">Claude Desktop·Cursor·VS Code용 Model Context Protocol(MCP) 서버 설정을 생성합니다. transport·command·args·env 입력 → 클라이언트별 올바른 JSON 포맷과 설치 경로를 자동 출력.</p>
         </a>
 
-        <a href="/ko/ai-image-inspector/" class="card" data-category="ai">
+        <a href="/ko/ai-image-inspector/" class="card" data-category="ai" data-subcategory="" data-slug="ai-image-inspector" data-keywords="ai image metadata midjourney stable diffusion">
+          <button type="button" class="fav-toggle" data-fav="ai-image-inspector" aria-label="즐겨찾기에 추가" data-add-label="즐겨찾기에 추가" data-remove-label="즐겨찾기에서 제거">☆</button>
           <div class="card-icon">🔬</div>
           <h3 class="card-title">AI 이미지 메타데이터 검사기</h3>
           <p class="card-description">이미지를 드롭하거나 선택해 메타데이터를 검사합니다. PNG의 tEXt·iTXt 청크(Stable Diffusion이 프롬프트 저장), JPEG EXIF UserComment(Midjourney·DALL-E가 식별 정보 포함), C2PA Content Credentials 박스 감지. 파일은 브라우저를 벗어나지 않습니다.</p>
         </a>
 
-        <a href="/ko/chatgpt-to-blog/" class="card" data-category="ai">
+        <a href="/ko/chatgpt-to-blog/" class="card" data-category="ai" data-subcategory="" data-slug="chatgpt-to-blog" data-keywords="chatgpt blog markdown export">
+          <button type="button" class="fav-toggle" data-fav="chatgpt-to-blog" aria-label="즐겨찾기에 추가" data-add-label="즐겨찾기에 추가" data-remove-label="즐겨찾기에서 제거">☆</button>
           <div class="card-icon">📝</div>
           <h3 class="card-title">ChatGPT → 블로그 변환기</h3>
           <p class="card-description">ChatGPT(또는 Claude) 대화 — 텍스트 또는 JSON export — 를 붙여넣으면 사용자/AI 턴을 분리하고, 프롬프트를 선택적으로 제거하며, AI 응답을 블로그용 Markdown으로 정리합니다.</p>
         </a>
 
-        <a href="/ko/prompt-pii-scrubber/" class="card" data-category="ai">
+        <a href="/ko/prompt-pii-scrubber/" class="card" data-category="ai" data-subcategory="" data-slug="prompt-pii-scrubber" data-keywords="pii prompt mask redact privacy">
+          <button type="button" class="fav-toggle" data-fav="prompt-pii-scrubber" aria-label="즐겨찾기에 추가" data-add-label="즐겨찾기에 추가" data-remove-label="즐겨찾기에서 제거">☆</button>
           <div class="card-icon">🛡️</div>
           <h3 class="card-title">프롬프트 PII 마스킹</h3>
           <p class="card-description">ChatGPT·Claude·Gemini 등에 프롬프트를 붙여넣기 전 민감 정보(이메일·전화·주민번호·카드·API 키·IP·URL)를 자동 마스킹. 모든 처리는 브라우저에서 이루어집니다.</p>
         </a>
 
-        <a href="/ko/claude-md-generator/" class="card" data-category="ai">
+        <a href="/ko/claude-md-generator/" class="card" data-category="ai" data-subcategory="" data-slug="claude-md-generator" data-keywords="claude claude.md system prompt">
+          <button type="button" class="fav-toggle" data-fav="claude-md-generator" aria-label="즐겨찾기에 추가" data-add-label="즐겨찾기에 추가" data-remove-label="즐겨찾기에서 제거">☆</button>
           <div class="card-icon">📜</div>
           <h3 class="card-title">Claude.md 생성기</h3>
           <p class="card-description">간단한 폼으로 CLAUDE.md(또는 AI 에이전트 시스템 프롬프트)를 생성합니다. 프로젝트 역할·코딩 규칙·제약·명령어를 입력하고 Markdown으로 복사하거나 다운로드하세요.</p>
         </a>
 
-        <a href="/ko/image-editor/" class="card" data-category="image">
+        <a href="/ko/loan-calculator/" class="card" data-category="calc" data-subcategory="finance" data-slug="loan-calculator" data-keywords="loan mortgage amortization payment interest">
+          <button type="button" class="fav-toggle" data-fav="loan-calculator" aria-label="즐겨찾기에 추가" data-add-label="즐겨찾기에 추가" data-remove-label="즐겨찾기에서 제거">☆</button>
+          <div class="card-icon">💰</div>
+          <h3 class="card-title">대출 계산기</h3>
+          <p class="card-description">대출 원금·연 이자율·기간(년)을 입력하면 월 상환금, 총 상환액, 첫 12개월 분할상환표가 표시됩니다. 주택담보·자동차·신용 등 고정금리 대출 표준 공식을 사용합니다.</p>
+        </a>
+
+        <a href="/ko/compound-interest/" class="card" data-category="calc" data-subcategory="finance" data-slug="compound-interest" data-keywords="compound interest investment savings">
+          <button type="button" class="fav-toggle" data-fav="compound-interest" aria-label="즐겨찾기에 추가" data-add-label="즐겨찾기에 추가" data-remove-label="즐겨찾기에서 제거">☆</button>
+          <div class="card-icon">📈</div>
+          <h3 class="card-title">복리 계산기</h3>
+          <p class="card-description">초기 원금·연 수익률·기간·복리 빈도·월 적립을 입력하면 투자 또는 저축 계좌의 미래 가치를 계산합니다. 연도별 잔액 흐름도 함께 표시됩니다.</p>
+        </a>
+
+        <a href="/ko/retirement-calculator/" class="card" data-category="calc" data-subcategory="finance" data-slug="retirement-calculator" data-keywords="retirement 401k pension nest egg">
+          <button type="button" class="fav-toggle" data-fav="retirement-calculator" aria-label="즐겨찾기에 추가" data-add-label="즐겨찾기에 추가" data-remove-label="즐겨찾기에서 제거">☆</button>
+          <div class="card-icon">🏖️</div>
+          <h3 class="card-title">은퇴 계산기</h3>
+          <p class="card-description">현재 나이·목표 은퇴 나이·현재 자산·월 적립금·기대 수익률·은퇴 후 연 인출액·기대수명을 입력하면 누적 단계와 인출 단계를 시뮬레이션해 자금이 언제까지 버티는지 알려줍니다.</p>
+        </a>
+
+        <a href="/ko/calorie-calculator/" class="card" data-category="calc" data-subcategory="health" data-slug="calorie-calculator" data-keywords="calorie bmr tdee macro diet">
+          <button type="button" class="fav-toggle" data-fav="calorie-calculator" aria-label="즐겨찾기에 추가" data-add-label="즐겨찾기에 추가" data-remove-label="즐겨찾기에서 제거">☆</button>
+          <div class="card-icon">🔥</div>
+          <h3 class="card-title">칼로리·BMR 계산기</h3>
+          <p class="card-description">나이·성별·키·체중·활동 수준을 입력하면 기초대사량, 1일 총 소모 칼로리, 다이어트/유지/근증량 목표 칼로리를 계산합니다. 건강한 성인에게 가장 정확한 Mifflin-St Jeor 공식을 사용합니다.</p>
+        </a>
+
+        <a href="/ko/pregnancy-calculator/" class="card" data-category="calc" data-subcategory="health" data-slug="pregnancy-calculator" data-keywords="pregnancy due date lmp gestation trimester">
+          <button type="button" class="fav-toggle" data-fav="pregnancy-calculator" aria-label="즐겨찾기에 추가" data-add-label="즐겨찾기에 추가" data-remove-label="즐겨찾기에서 제거">☆</button>
+          <div class="card-icon">🤰</div>
+          <h3 class="card-title">임신 출산예정일 계산기</h3>
+          <p class="card-description">마지막 생리 시작일(LMP)과 평소 생리주기 길이를 입력하면 출산예정일, 현재 임신 주수와 일수, 삼분기, 남은 일수를 계산합니다. Naegele 공식과 생리주기 보정을 함께 적용합니다.</p>
+        </a>
+
+        <a href="/ko/body-fat-calculator/" class="card" data-category="calc" data-subcategory="health" data-slug="body-fat-calculator" data-keywords="body fat bfp navy composition">
+          <button type="button" class="fav-toggle" data-fav="body-fat-calculator" aria-label="즐겨찾기에 추가" data-add-label="즐겨찾기에 추가" data-remove-label="즐겨찾기에서 제거">☆</button>
+          <div class="card-icon">💪</div>
+          <h3 class="card-title">체지방률 계산기</h3>
+          <p class="card-description">키와 신체 둘레(목·허리, 여성은 엉덩이 추가)를 입력하면 미 해군 공식으로 체지방률을 추정합니다. 결과에는 피트니스 카테고리와 성별 권장 범위가 함께 표시됩니다.</p>
+        </a>
+
+        <a href="/ko/image-editor/" class="card" data-category="image" data-subcategory="" data-slug="image-editor" data-keywords="image crop rotate filter">
+          <button type="button" class="fav-toggle" data-fav="image-editor" aria-label="즐겨찾기에 추가" data-add-label="즐겨찾기에 추가" data-remove-label="즐겨찾기에서 제거">☆</button>
           <div class="card-icon">🎨</div>
           <h3 class="card-title">이미지 편집기</h3>
           <p class="card-description">이미지를 자르고, 회전하고, 필터를 적용하세요.</p>
         </a>
 
-        <a href="/ko/jpa-converter/" class="card" data-category="dev">
+        <a href="/ko/jpa-converter/" class="card" data-category="dev" data-subcategory="" data-slug="jpa-converter" data-keywords="jpa entity sql hibernate">
+          <button type="button" class="fav-toggle" data-fav="jpa-converter" aria-label="즐겨찾기에 추가" data-add-label="즐겨찾기에 추가" data-remove-label="즐겨찾기에서 제거">☆</button>
           <div class="card-icon">🗃️</div>
           <h3 class="card-title">DB to JPA 변환기</h3>
           <p class="card-description">SQL 스키마를 JPA Entity, DTO 클래스로 자동 변환합니다.</p>
         </a>
 
-        <a href="/ko/json-to-ts/" class="card" data-category="dev">
+        <a href="/ko/json-to-ts/" class="card" data-category="dev" data-subcategory="" data-slug="json-to-ts" data-keywords="json typescript interface dto">
+          <button type="button" class="fav-toggle" data-fav="json-to-ts" aria-label="즐겨찾기에 추가" data-add-label="즐겨찾기에 추가" data-remove-label="즐겨찾기에서 제거">☆</button>
           <div class="card-icon">🔁</div>
           <h3 class="card-title">JSON to TS/DTO</h3>
           <p class="card-description">JSON을 TypeScript Interface 및 NestJS DTO로 변환합니다.</p>
         </a>
 
-        <a href="/ko/excel-to-sql/" class="card" data-category="convert">
+        <a href="/ko/excel-to-sql/" class="card" data-category="convert" data-subcategory="" data-slug="excel-to-sql" data-keywords="excel sql insert csv">
+          <button type="button" class="fav-toggle" data-fav="excel-to-sql" aria-label="즐겨찾기에 추가" data-add-label="즐겨찾기에 추가" data-remove-label="즐겨찾기에서 제거">☆</button>
           <div class="card-icon">📊</div>
           <h3 class="card-title">Excel to SQL</h3>
           <p class="card-description">엑셀 데이터를 SQL INSERT 쿼리로 변환하는 도구.</p>
         </a>
 
-        <a href="/ko/json-to-excel/" class="card" data-category="convert">
+        <a href="/ko/json-to-excel/" class="card" data-category="convert" data-subcategory="" data-slug="json-to-excel" data-keywords="json excel xlsx spreadsheet">
+          <button type="button" class="fav-toggle" data-fav="json-to-excel" aria-label="즐겨찾기에 추가" data-add-label="즐겨찾기에 추가" data-remove-label="즐겨찾기에서 제거">☆</button>
           <div class="card-icon">📈</div>
           <h3 class="card-title">JSON to Excel 변환기</h3>
           <p class="card-description">JSON 데이터를 엑셀로 변환하고 다운로드하세요. (보안)</p>
         </a>
 
-        <a href="/ko/json-ld-generator/" class="card" data-category="dev">
+        <a href="/ko/json-ld-generator/" class="card" data-category="dev" data-subcategory="" data-slug="json-ld-generator" data-keywords="json-ld schema seo structured">
+          <button type="button" class="fav-toggle" data-fav="json-ld-generator" aria-label="즐겨찾기에 추가" data-add-label="즐겨찾기에 추가" data-remove-label="즐겨찾기에서 제거">☆</button>
           <div class="card-icon">🏷️</div>
           <h3 class="card-title">SEO JSON-LD 생성기</h3>
           <p class="card-description">구글/네이버 노출을 위한 구조화된 데이터(스키마)를 만드세요.</p>
         </a>
 
-        <a href="/ko/pdf-tools/" class="card" data-category="convert">
+        <a href="/ko/pdf-tools/" class="card" data-category="convert" data-subcategory="" data-slug="pdf-tools" data-keywords="pdf merge split">
+          <button type="button" class="fav-toggle" data-fav="pdf-tools" aria-label="즐겨찾기에 추가" data-add-label="즐겨찾기에 추가" data-remove-label="즐겨찾기에서 제거">☆</button>
           <div class="card-icon">📄</div>
           <h3 class="card-title">PDF 병합/분리</h3>
           <p class="card-description">서버 전송 없이 브라우저에서 안전하게 PDF를 합치고 나누세요.</p>
         </a>
 
-        <a href="/ko/text-to-diagram/" class="card" data-category="convert">
+        <a href="/ko/text-to-diagram/" class="card" data-category="convert" data-subcategory="" data-slug="text-to-diagram" data-keywords="diagram flowchart sequence mermaid">
+          <button type="button" class="fav-toggle" data-fav="text-to-diagram" aria-label="즐겨찾기에 추가" data-add-label="즐겨찾기에 추가" data-remove-label="즐겨찾기에서 제거">☆</button>
           <div class="card-icon">🧩</div>
           <h3 class="card-title">텍스트로 다이어그램 그리기</h3>
           <p class="card-description">텍스트만 입력하면 순서도, 시퀀스 다이어그램이 완성됩니다.</p>
@@ -485,20 +580,150 @@
 
     <script src="/assets/js/common.js"></script>
     <script>
-        // Category filter — pure DOM, no library.
+        // Combined filter (category + subcategory + favorites) + per-card star toggle.
         (function () {
-            const buttons = document.querySelectorAll('.category-filter button');
+            const FAV_KEY = 'utilify_favorites';
+            const getFavs = () => (localStorage.getItem(FAV_KEY) || '').split(',').filter(Boolean);
+            const setFavs = ids => localStorage.setItem(FAV_KEY, [...new Set(ids)].join(','));
+            const isFav = id => getFavs().includes(id);
+
+            const catButtons = document.querySelectorAll('.category-filter button');
             const cards = document.querySelectorAll('#toolGrid .card');
-            buttons.forEach(btn => {
+            const subcatGroups = document.querySelectorAll('.subcat-chips');
+            const emptyState = document.getElementById('emptyState');
+            const searchInput = document.getElementById('searchInput');
+
+            // Initialize ★ state on each card from localStorage.
+            cards.forEach(card => {
+                const slug = card.dataset.slug;
+                const star = card.querySelector('.fav-toggle');
+                if (!star || !slug) return;
+                const fav = isFav(slug);
+                star.textContent = fav ? '★' : '☆';
+                star.classList.toggle('is-fav', fav);
+                star.setAttribute('aria-label',
+                    fav ? star.dataset.removeLabel : star.dataset.addLabel);
+                star.setAttribute('aria-pressed', String(fav));
+            });
+
+            let activeCat = 'all';
+            let activeSubcat = '';   // '' = no subcategory filter
+            let activeSearch = '';
+
+            function matchSearch(card, q) {
+                if (!q) return true;
+                const t = (card.querySelector('.card-title')?.textContent || '').toLowerCase();
+                const d = (card.querySelector('.card-description')?.textContent || '').toLowerCase();
+                const k = (card.dataset.keywords || '').toLowerCase();
+                return t.includes(q) || d.includes(q) || k.includes(q);
+            }
+
+            function applyFilters() {
+                let visible = 0;
+                const q = activeSearch.toLowerCase().trim();
+                cards.forEach(card => {
+                    let match = true;
+                    if (activeCat === 'favorites') {
+                        match = isFav(card.dataset.slug);
+                    } else if (activeCat !== 'all') {
+                        match = card.dataset.category === activeCat;
+                        if (match && activeSubcat) {
+                            match = card.dataset.subcategory === activeSubcat;
+                        }
+                    }
+                    if (match) match = matchSearch(card, q);
+                    card.style.display = match ? '' : 'none';
+                    if (match) visible++;
+                });
+
+                // Show subcategory group only for the active main category.
+                // Hub-link inside the group: visible only when its sub-category
+                // is the active one (data-for-subcat === activeSubcat).
+                subcatGroups.forEach(group => {
+                    const showGroup = activeCat !== 'all' &&
+                        activeCat !== 'favorites' &&
+                        group.dataset.parentCat === activeCat;
+                    group.hidden = !showGroup;
+                    group.querySelectorAll('.hub-link').forEach(link => {
+                        link.hidden = !(showGroup && link.dataset.forSubcat === activeSubcat);
+                    });
+                });
+
+                // Empty state — applies to favorites-with-zero or search-with-zero.
+                if (emptyState) {
+                    const isSearchEmpty = q && visible === 0;
+                    const isFavEmpty = activeCat === 'favorites' && visible === 0 && !q;
+                    if (isSearchEmpty) {
+                        emptyState.textContent = emptyState.dataset.msgSearch;
+                        emptyState.hidden = false;
+                    } else if (isFavEmpty) {
+                        emptyState.textContent = emptyState.dataset.msgFavorites;
+                        emptyState.hidden = false;
+                    } else {
+                        emptyState.hidden = true;
+                    }
+                }
+            }
+
+            if (searchInput) {
+                searchInput.addEventListener('input', e => {
+                    activeSearch = e.target.value;
+                    applyFilters();
+                });
+            }
+
+            catButtons.forEach(btn => {
                 btn.addEventListener('click', () => {
-                    const cat = btn.dataset.cat;
-                    buttons.forEach(b => b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'));
-                    cards.forEach(card => {
-                        const match = cat === 'all' || card.dataset.category === cat;
-                        card.style.display = match ? '' : 'none';
+                    activeCat = btn.dataset.cat;
+                    activeSubcat = '';
+                    catButtons.forEach(b =>
+                        b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'));
+                    // Reset subcategory chips so the next visit to a category starts at "All".
+                    subcatGroups.forEach(group => {
+                        group.querySelectorAll('.subcat-chip').forEach(chip => {
+                            chip.setAttribute('aria-pressed',
+                                chip.dataset.subcat === '' ? 'true' : 'false');
+                        });
+                    });
+                    applyFilters();
+                });
+            });
+
+            subcatGroups.forEach(group => {
+                group.querySelectorAll('.subcat-chip').forEach(chip => {
+                    chip.addEventListener('click', () => {
+                        activeSubcat = chip.dataset.subcat;
+                        group.querySelectorAll('.subcat-chip').forEach(c =>
+                            c.setAttribute('aria-pressed', c === chip ? 'true' : 'false'));
+                        applyFilters();
                     });
                 });
             });
+
+            // ★ toggle on each card.
+            cards.forEach(card => {
+                const star = card.querySelector('.fav-toggle');
+                if (!star) return;
+                star.addEventListener('click', e => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const slug = star.dataset.fav;
+                    const favs = getFavs();
+                    const next = favs.includes(slug)
+                        ? favs.filter(x => x !== slug)
+                        : [...favs, slug];
+                    setFavs(next);
+                    const nowFav = next.includes(slug);
+                    star.textContent = nowFav ? '★' : '☆';
+                    star.classList.toggle('is-fav', nowFav);
+                    star.setAttribute('aria-label',
+                        nowFav ? star.dataset.removeLabel : star.dataset.addLabel);
+                    star.setAttribute('aria-pressed', String(nowFav));
+                    if (activeCat === 'favorites') applyFilters();
+                });
+            });
+
+            applyFilters();
         })();
     </script>
     <script>(adsbygoogle=window.adsbygoogle||[]).push({google_ad_client:"ca-pub-6334819180242631",enable_page_level_ads:true});</script>

@@ -90,10 +90,15 @@ h6 {
 
 h1 {
   font-size: 2.5rem;
+  color: var(--primary-color);
   background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  h1 {
+    -webkit-text-fill-color: transparent;
+  }
 }
 
 h2 {
@@ -661,22 +666,195 @@ a:hover {
   border: 0;
 }
 
-/* Skip-to-content link: hidden until focused, then jumps into view. */
+/* Skip-to-content link: visually hidden via the sr-only pattern (width 1px +
+   clip) so it never leaks into layout even on browsers that ignore negative
+   top offsets, then expanded back into a visible button on focus. */
 .skip-link {
   position: absolute;
-  top: -40px;
-  left: 8px;
-  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
   background: var(--primary-color);
   color: white;
-  padding: 8px 16px;
-  border-radius: var(--radius-md);
   text-decoration: none;
   font-weight: 600;
-  transition: top 0.15s;
+  border-radius: var(--radius-md);
+  z-index: 1000;
 }
-.skip-link:focus {
+/* Favorites star toggle (on tool cards in the index).
+   The card itself is an <a>, so the star button uses pointer-events to keep
+   its own click separate from navigation (handled in JS via stopPropagation). */
+.fav-toggle {
+  position: absolute;
   top: 8px;
+  right: 8px;
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: transparent;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  color: var(--text-tertiary);
+  border-radius: var(--radius-sm);
+  transition: color var(--transition-fast), background-color var(--transition-fast), transform var(--transition-fast);
+  z-index: 2;
+}
+.fav-toggle:hover { color: #f59e0b; background: rgba(245, 158, 11, 0.08); }
+.fav-toggle.is-fav { color: #f59e0b; }
+.fav-toggle:active { transform: scale(0.92); }
+
+/* Tool-page header star — sits in the security-badge row next to the install button. */
+.fav-toggle-page {
+  border: 1px solid var(--border-color);
+  background: var(--bg-primary);
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  color: var(--text-tertiary);
+  padding: 4px 10px;
+  border-radius: var(--radius-md);
+  transition: color var(--transition-fast), border-color var(--transition-fast);
+}
+.fav-toggle-page:hover { color: #f59e0b; border-color: #f59e0b; }
+.fav-toggle-page.is-fav { color: #f59e0b; border-color: #f59e0b; }
+
+/* Subcategory chips (shown when a main category with sub-categories is active). */
+.subcat-chips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--spacing-xs);
+  margin: calc(-1 * var(--spacing-md)) 0 var(--spacing-lg);
+}
+.subcat-chip {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+  padding: 4px 12px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  color: var(--text-secondary);
+  transition: all 0.15s;
+}
+.subcat-chip:hover { border-color: var(--primary-color); color: var(--primary-color); }
+.subcat-chip[aria-pressed="true"] {
+  background: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+}
+
+/* Empty state (e.g. when favorites filter has no matches). */
+.empty-state {
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  padding: var(--spacing-xl) var(--spacing-md);
+  margin: 0;
+}
+
+/* Tool-page disclaimer (calculators, financial / health / legal advice notes). */
+.disclaimer {
+  margin-top: var(--spacing-lg);
+  padding: var(--spacing-md);
+  background: var(--bg-secondary);
+  border-left: 3px solid var(--text-secondary);
+  border-radius: var(--radius-sm);
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+}
+
+/* Horizontal-scroll wrapper for wide tables on narrow viewports. */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-top: var(--spacing-md);
+}
+.table-responsive > table { margin-top: 0; }
+
+/* L3 — index page live search bar. */
+.search-bar {
+  max-width: 480px;
+  margin: 0 auto var(--spacing-lg);
+}
+.search-bar .form-input { width: 100%; }
+
+/* L2 — category hub pages: intro copy + tool grid + FAQ + hub-link from index. */
+.page-intro {
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: var(--spacing-xl);
+}
+.page-intro p { margin-bottom: var(--spacing-md); }
+.page-intro p:last-child { margin-bottom: 0; }
+
+.hub-tool-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+}
+.hub-card { padding: var(--spacing-lg); }
+
+.hub-faq { margin-bottom: var(--spacing-xl); }
+.hub-faq details {
+  padding: var(--spacing-md);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--spacing-sm);
+  background: var(--bg-primary);
+}
+.hub-faq details[open] { background: var(--bg-secondary); }
+.hub-faq summary {
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--text-primary);
+  list-style: none;
+}
+.hub-faq summary::-webkit-details-marker { display: none; }
+.hub-faq summary::before {
+  content: '▸';
+  display: inline-block;
+  margin-right: 6px;
+  color: var(--primary-color);
+  transition: transform 0.15s;
+}
+.hub-faq details[open] summary::before { transform: rotate(90deg); }
+.hub-faq details p { margin: var(--spacing-sm) 0 0; color: var(--text-secondary); }
+
+/* "→ Finance hub" link rendered next to the matching subcat chip on the index. */
+.hub-link {
+  font-size: 0.9rem;
+  color: var(--primary-color);
+  text-decoration: none;
+  align-self: center;
+  padding: 4px 8px;
+  border-radius: var(--radius-md);
+  transition: background-color var(--transition-fast);
+}
+.hub-link:hover {
+  background: rgba(99, 102, 241, 0.08);
+  text-decoration: underline;
+}
+
+.skip-link:focus {
+  position: fixed;
+  left: 8px;
+  top: 8px;
+  width: auto;
+  height: auto;
+  padding: 8px 16px;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
   outline: 3px solid white;
   outline-offset: 2px;
 }

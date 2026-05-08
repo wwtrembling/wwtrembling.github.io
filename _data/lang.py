@@ -15,6 +15,8 @@ COMMON = {
         "link_privacy": "Privacy",
         "link_terms": "Terms",
         "skip_link": "Skip to content",
+        "fav_add_aria": "Add to favorites",
+        "fav_remove_aria": "Remove from favorites",
     },
     "ko": {
         "brand": "🛠️ Utilify",
@@ -25,6 +27,8 @@ COMMON = {
         "link_privacy": "개인정보",
         "link_terms": "이용약관",
         "skip_link": "본문으로 건너뛰기",
+        "fav_add_aria": "즐겨찾기에 추가",
+        "fav_remove_aria": "즐겨찾기에서 제거",
     },
     "vi": {
         "brand": "🛠️ Utilify",
@@ -190,7 +194,19 @@ INDEX_PAGE = {
         "cat_convert": "Converters",
         "cat_calc": "Calculators",
         "cat_ai": "AI",
-        "github_label": "GitHub"
+        "github_label": "GitHub",
+        "favorites_label": "★ Favorites",
+        "favorites_empty": "No favorites yet. Click ☆ on any tool card to save it.",
+        "fav_add_aria": "Add to favorites",
+        "fav_remove_aria": "Remove from favorites",
+        "subcat_all": "All",
+        "subcat_finance": "Finance",
+        "subcat_health": "Health",
+        "subcat_filter_aria": "Subcategory filter",
+        "search_placeholder": "Search tools…",
+        "search_no_results": "No tools match your search.",
+        "hub_link_finance": "Finance hub",
+        "hub_link_health": "Health hub"
     },
     "ko": {
         "title": "무료 온라인 유틸리티 모음 - Utilify",
@@ -212,7 +228,19 @@ INDEX_PAGE = {
         "cat_convert": "변환기",
         "cat_calc": "계산기",
         "cat_ai": "AI",
-        "github_label": "GitHub"
+        "github_label": "GitHub",
+        "favorites_label": "★ 즐겨찾기",
+        "favorites_empty": "즐겨찾기가 없습니다. 도구 카드의 ☆를 눌러 추가하세요.",
+        "fav_add_aria": "즐겨찾기에 추가",
+        "fav_remove_aria": "즐겨찾기에서 제거",
+        "subcat_all": "전체",
+        "subcat_finance": "금융",
+        "subcat_health": "건강",
+        "subcat_filter_aria": "하위 카테고리 필터",
+        "search_placeholder": "도구 검색…",
+        "search_no_results": "검색 결과가 없습니다.",
+        "hub_link_finance": "금융 허브",
+        "hub_link_health": "건강 허브"
     },
     "vi": {
         "title": "Bộ tiện ích trực tuyến miễn phí - Utilify",
@@ -6563,5 +6591,874 @@ CHATGPT_TO_BLOG = {
         "related_token": "토큰 카운터",
         "related_pii": "프롬프트 PII 마스킹",
         "card_blurb": "ChatGPT 대화를 깔끔한 블로그용 Markdown으로 즉시 변환."
+    }
+}
+
+
+LOAN_CALCULATOR = {
+    "en": {
+        "title": "Loan Calculator",
+        "meta_title": "Loan Calculator — Monthly Payment, Interest, Amortization - Utilify",
+        "meta_desc": "Calculate monthly loan payments, total interest, and amortization schedule. Works for mortgages, auto loans, and personal loans. Runs entirely in your browser.",
+        "og_title": "Loan Calculator - Utilify",
+        "og_desc": "Calculate monthly payment, total interest, and amortization for any fixed-rate loan.",
+        "json_name": "Loan Calculator",
+        "json_desc": "Compute monthly payment, total interest, and amortization schedule for fixed-rate loans.",
+        "page_desc": "Enter the loan amount, annual interest rate, and term in years to see your monthly payment, total interest paid, and a 12-month amortization preview. Standard formula for fixed-rate loans — mortgages, auto, personal.",
+        "label_principal": "Loan amount",
+        "label_rate": "Annual interest rate (%)",
+        "label_term": "Term (years)",
+        "ph_principal": "100000",
+        "ph_rate": "4.5",
+        "ph_term": "30",
+        "btn_calculate": "Calculate",
+        "btn_reset": "Reset",
+        "btn_share": "Share result",
+        "share_text": "My monthly loan payment is {value} —",
+        "share_copied": "Result copied to clipboard.",
+        "res_monthly_label": "Monthly payment",
+        "res_total_label": "Total paid",
+        "res_interest_label": "Total interest",
+        "res_schedule_header": "First 12 months",
+        "th_month": "Month",
+        "th_payment": "Payment",
+        "th_principal_col": "Principal",
+        "th_interest_col": "Interest",
+        "th_balance": "Balance",
+        "alert_invalid": "Please enter positive numbers for amount and term.",
+        "disclaimer": "Estimate only — not financial advice. Consult a qualified professional for important decisions.",
+        "howto_header": "How to use",
+        "howto_html": (
+            "<ol>"
+            "<li>Enter the loan principal (the amount you borrow).</li>"
+            "<li>Enter the annual interest rate as a percent (e.g. 4.5 for 4.5%).</li>"
+            "<li>Enter the loan term in years.</li>"
+            "<li>Click <strong>Calculate</strong> — the monthly payment, total cost, and amortization preview appear instantly.</li>"
+            "</ol>"
+            "<p><strong>Formula</strong>: M = P · r(1+r)<sup>n</sup> / ((1+r)<sup>n</sup> − 1), where r is the monthly rate (annual rate / 12) and n is the number of months. For a zero-rate loan the monthly payment is simply principal / months.</p>"
+            "<p>Assumes a fixed rate, equal monthly payments, and no fees, taxes, or insurance. Real loans usually include origination fees, escrow, and PMI — your actual monthly cost may be higher.</p>"
+        ),
+        "related_header": "Related Tools",
+        "related_compound": "Compound Interest",
+        "related_retirement": "Retirement Calculator",
+        "related_date": "Date Calculator",
+        "related_unit": "Unit Converter",
+        "card_blurb": "Monthly payment, total interest, and 12-month amortization for any fixed-rate loan."
+    },
+    "ko": {
+        "title": "대출 계산기",
+        "meta_title": "대출 계산기 — 월 상환금, 이자, 분할상환표 - Utilify",
+        "meta_desc": "주택담보·자동차·신용대출의 월 상환금, 총 이자, 분할상환표를 즉시 계산. 모든 처리는 브라우저에서.",
+        "og_title": "대출 계산기 - Utilify",
+        "og_desc": "고정금리 대출의 월 상환금, 총 이자, 분할상환을 계산하세요.",
+        "json_name": "대출 계산기",
+        "json_desc": "고정금리 대출의 월 상환금, 총 이자, 분할상환표를 계산하는 도구.",
+        "page_desc": "대출 원금·연 이자율·기간(년)을 입력하면 월 상환금, 총 상환액, 첫 12개월 분할상환표가 표시됩니다. 주택담보·자동차·신용 등 고정금리 대출 표준 공식을 사용합니다.",
+        "label_principal": "대출 원금",
+        "label_rate": "연 이자율 (%)",
+        "label_term": "기간 (년)",
+        "ph_principal": "100000000",
+        "ph_rate": "4.5",
+        "ph_term": "30",
+        "btn_calculate": "계산",
+        "btn_reset": "초기화",
+        "btn_share": "결과 공유",
+        "share_text": "내 월 대출 상환금은 {value} —",
+        "share_copied": "결과가 클립보드에 복사되었습니다.",
+        "res_monthly_label": "월 상환금",
+        "res_total_label": "총 상환액",
+        "res_interest_label": "총 이자",
+        "res_schedule_header": "첫 12개월 분할상환",
+        "th_month": "월차",
+        "th_payment": "상환금",
+        "th_principal_col": "원금",
+        "th_interest_col": "이자",
+        "th_balance": "잔액",
+        "alert_invalid": "원금과 기간은 양수로 입력해 주세요.",
+        "disclaimer": "추정치 — 재정 자문이 아닙니다. 중대한 결정은 자격 있는 전문가와 상의하세요.",
+        "howto_header": "사용 방법",
+        "howto_html": (
+            "<ol>"
+            "<li>대출 원금(빌리는 금액)을 입력하세요.</li>"
+            "<li>연 이자율을 퍼센트로 입력하세요 (예: 4.5%는 <code>4.5</code>).</li>"
+            "<li>대출 기간을 연 단위로 입력하세요.</li>"
+            "<li><strong>계산</strong>을 누르면 월 상환금, 총 상환액, 분할상환표가 즉시 표시됩니다.</li>"
+            "</ol>"
+            "<p><strong>공식</strong>: M = P · r(1+r)<sup>n</sup> / ((1+r)<sup>n</sup> − 1). r은 월 이자율(연 이자율 / 12), n은 총 개월 수입니다. 무이자(0%) 대출은 원금 / 개월수로 계산합니다.</p>"
+            "<p>고정금리·원리금균등상환·수수료 없음을 가정합니다. 실제 대출은 인지세·중도상환수수료·보증료 등이 추가될 수 있어 실제 부담은 더 클 수 있습니다.</p>"
+        ),
+        "related_header": "관련 도구",
+        "related_compound": "복리 계산기",
+        "related_retirement": "은퇴 계산기",
+        "related_date": "날짜 계산기",
+        "related_unit": "단위 변환기",
+        "card_blurb": "고정금리 대출의 월 상환금·총 이자·12개월 분할상환표를 즉시 계산."
+    }
+}
+
+
+COMPOUND_INTEREST = {
+    "en": {
+        "title": "Compound Interest Calculator",
+        "meta_title": "Compound Interest Calculator — Investment Growth - Utilify",
+        "meta_desc": "Project savings or investment growth with compound interest and optional monthly contributions. See final balance, total contributions, and yearly breakdown.",
+        "og_title": "Compound Interest Calculator - Utilify",
+        "og_desc": "Project investment growth with compound interest and monthly contributions.",
+        "json_name": "Compound Interest Calculator",
+        "json_desc": "Estimate future value with compound interest, configurable compounding frequency, and monthly contributions.",
+        "page_desc": "Enter your starting principal, annual return, time horizon, compounding frequency, and optional monthly contributions to project the future value of an investment or savings account. Includes a year-by-year balance breakdown.",
+        "label_principal": "Starting principal",
+        "label_rate": "Annual return (%)",
+        "label_years": "Time horizon (years)",
+        "label_freq": "Compounding frequency",
+        "label_monthly_contrib": "Monthly contribution",
+        "ph_principal": "10000",
+        "ph_rate": "7",
+        "ph_years": "20",
+        "ph_monthly_contrib": "500",
+        "opt_freq_yearly": "Yearly",
+        "opt_freq_monthly": "Monthly",
+        "opt_freq_daily": "Daily",
+        "btn_calculate": "Calculate",
+        "btn_reset": "Reset",
+        "btn_share": "Share result",
+        "share_text": "My investment will grow to {value} —",
+        "share_copied": "Result copied to clipboard.",
+        "res_final_label": "Final balance",
+        "res_total_contrib_label": "Total contributions",
+        "res_total_interest_label": "Total interest earned",
+        "res_yearly_header": "Year-by-year balance",
+        "th_year": "Year",
+        "th_balance": "Balance",
+        "th_contributed": "Contributed",
+        "th_interest": "Interest earned",
+        "alert_invalid": "Please enter non-negative numbers and a positive time horizon.",
+        "disclaimer": "Estimate only — not financial advice. Real returns vary and are not guaranteed.",
+        "howto_header": "How to use",
+        "howto_html": (
+            "<ol>"
+            "<li>Enter your starting principal — the amount you have today.</li>"
+            "<li>Enter the expected annual return as a percent (historical S&amp;P 500 average is ~7% real, ~10% nominal).</li>"
+            "<li>Enter the time horizon in years.</li>"
+            "<li>Pick the compounding frequency: yearly, monthly, or daily. Most index funds compound continuously — monthly is a close approximation.</li>"
+            "<li>Optionally add a monthly contribution. Click <strong>Calculate</strong>.</li>"
+            "</ol>"
+            "<p><strong>Formula</strong>: FV = P(1 + r/m)<sup>m·t</sup> + C · ((1 + r/m)<sup>m·t</sup> − 1) / (r/m), where P is principal, r is the annual rate, m is compounding periods per year, t is years, and C is the periodic contribution converted to the compounding period.</p>"
+            "<p>Inflation, taxes, and fees are not modeled. A 7% nominal return at 3% inflation is roughly a 4% real return — the future balance will buy less than today's purchasing power suggests.</p>"
+        ),
+        "related_header": "Related Tools",
+        "related_loan": "Loan Calculator",
+        "related_retirement": "Retirement Calculator",
+        "related_date": "Date Calculator",
+        "related_unit": "Unit Converter",
+        "card_blurb": "Project investment growth with compound interest and monthly contributions."
+    },
+    "ko": {
+        "title": "복리 계산기",
+        "meta_title": "복리 계산기 — 투자 성장 시뮬레이션 - Utilify",
+        "meta_desc": "원금·연 수익률·기간·월 적립으로 복리 효과를 적용한 미래 잔액, 총 납입, 총 이자를 계산. 연도별 잔액 표 포함.",
+        "og_title": "복리 계산기 - Utilify",
+        "og_desc": "복리와 월 적립을 적용한 투자 성장을 시뮬레이션하세요.",
+        "json_name": "복리 계산기",
+        "json_desc": "원금·연 수익률·복리 빈도·월 적립을 입력하면 미래 가치를 계산하는 도구.",
+        "page_desc": "초기 원금·연 수익률·기간·복리 빈도·월 적립을 입력하면 투자 또는 저축 계좌의 미래 가치를 계산합니다. 연도별 잔액 흐름도 함께 표시됩니다.",
+        "label_principal": "초기 원금",
+        "label_rate": "연 수익률 (%)",
+        "label_years": "기간 (년)",
+        "label_freq": "복리 빈도",
+        "label_monthly_contrib": "월 적립금",
+        "ph_principal": "10000000",
+        "ph_rate": "7",
+        "ph_years": "20",
+        "ph_monthly_contrib": "500000",
+        "opt_freq_yearly": "연 1회",
+        "opt_freq_monthly": "월 복리",
+        "opt_freq_daily": "일 복리",
+        "btn_calculate": "계산",
+        "btn_reset": "초기화",
+        "btn_share": "결과 공유",
+        "share_text": "내 투자 미래 가치는 {value} —",
+        "share_copied": "결과가 클립보드에 복사되었습니다.",
+        "res_final_label": "최종 잔액",
+        "res_total_contrib_label": "총 납입금",
+        "res_total_interest_label": "총 이자 수익",
+        "res_yearly_header": "연도별 잔액",
+        "th_year": "연차",
+        "th_balance": "잔액",
+        "th_contributed": "납입 누적",
+        "th_interest": "이자 수익",
+        "alert_invalid": "원금과 적립금은 0 이상, 기간은 양수로 입력해 주세요.",
+        "disclaimer": "추정치 — 재정 자문이 아닙니다. 실제 수익은 변동하며 보장되지 않습니다.",
+        "howto_header": "사용 방법",
+        "howto_html": (
+            "<ol>"
+            "<li>현재 가지고 있는 초기 원금을 입력하세요.</li>"
+            "<li>예상 연 수익률을 퍼센트로 입력하세요 (S&amp;P 500 장기 평균은 명목 약 10%, 실질 약 7%).</li>"
+            "<li>투자 기간을 연 단위로 입력하세요.</li>"
+            "<li>복리 빈도를 선택합니다: 연 1회·월·일. 인덱스 펀드는 사실상 연속복리이므로 월 복리가 근사값입니다.</li>"
+            "<li>월 적립금을 입력 (없으면 0)하고 <strong>계산</strong>을 누르세요.</li>"
+            "</ol>"
+            "<p><strong>공식</strong>: FV = P(1 + r/m)<sup>m·t</sup> + C · ((1 + r/m)<sup>m·t</sup> − 1) / (r/m). P는 원금, r은 연 이자율, m은 연 복리 횟수, t는 년수, C는 정기 적립금입니다.</p>"
+            "<p>인플레이션·세금·수수료는 반영되지 않습니다. 명목 7%에 인플레이션 3%면 실질 수익률은 약 4% — 미래 잔액의 구매력은 보이는 숫자보다 작습니다.</p>"
+        ),
+        "related_header": "관련 도구",
+        "related_loan": "대출 계산기",
+        "related_retirement": "은퇴 계산기",
+        "related_date": "날짜 계산기",
+        "related_unit": "단위 변환기",
+        "card_blurb": "복리와 월 적립을 적용한 투자·저축의 미래 가치를 즉시 시뮬레이션."
+    }
+}
+
+
+RETIREMENT_CALCULATOR = {
+    "en": {
+        "title": "Retirement Calculator",
+        "meta_title": "Retirement Calculator — Will Your Savings Last? - Utilify",
+        "meta_desc": "Estimate retirement nest egg and how long it lasts. Inputs: current age, retirement age, savings, monthly contributions, return, withdrawal, life expectancy.",
+        "og_title": "Retirement Calculator - Utilify",
+        "og_desc": "Project retirement savings and check whether they last through life expectancy.",
+        "json_name": "Retirement Calculator",
+        "json_desc": "Two-phase retirement model: accumulation with monthly contributions, then withdrawal with annual income.",
+        "page_desc": "Enter your current age, target retirement age, current savings, monthly contributions, expected return, planned annual withdrawal, and life expectancy. The calculator runs an accumulation phase, then a withdrawal phase to show whether your nest egg lasts.",
+        "label_current_age": "Current age",
+        "label_retire_age": "Retirement age",
+        "label_current_savings": "Current savings",
+        "label_monthly_contrib": "Monthly contribution",
+        "label_annual_return": "Annual return (%)",
+        "label_annual_withdrawal": "Annual withdrawal in retirement",
+        "label_life_expectancy": "Life expectancy",
+        "ph_current_age": "30",
+        "ph_retire_age": "65",
+        "ph_current_savings": "50000",
+        "ph_monthly_contrib": "500",
+        "ph_annual_return": "6",
+        "ph_annual_withdrawal": "30000",
+        "ph_life_expectancy": "85",
+        "btn_calculate": "Calculate",
+        "btn_reset": "Reset",
+        "btn_share": "Share result",
+        "share_text": "My retirement nest egg: {value} —",
+        "share_copied": "Result copied to clipboard.",
+        "res_at_retirement_label": "Nest egg at retirement",
+        "res_outcome_header": "Outcome",
+        "outcome_lasts": "Funds last through life expectancy. Surplus at age {age}: {amount}.",
+        "outcome_runs_out": "Funds run out at age {age} — {years} years short of life expectancy.",
+        "res_chart_header": "Balance over time",
+        "alert_invalid": "Retirement age must be greater than current age, and life expectancy greater than retirement age.",
+        "disclaimer": "Estimate only — not financial advice. Consult a qualified retirement planner before making decisions.",
+        "howto_header": "How to use",
+        "howto_html": (
+            "<ol>"
+            "<li>Enter your <em>current age</em> and <em>target retirement age</em>.</li>"
+            "<li>Enter your current savings (the amount in retirement accounts today) and your monthly contribution until retirement.</li>"
+            "<li>Set an expected annual return (a common assumption is 6% real for a balanced portfolio).</li>"
+            "<li>Enter how much you plan to withdraw <em>per year</em> in retirement (about 4% of the nest egg is the classic guideline).</li>"
+            "<li>Enter your life expectancy. Click <strong>Calculate</strong> — the chart shows the balance trajectory.</li>"
+            "</ol>"
+            "<p><strong>Model</strong>: accumulation phase compounds monthly with your contributions until retirement age, then withdrawal phase deducts the annual withdrawal at the start of each year and grows the remainder by the annual return until the balance hits zero or life expectancy is reached.</p>"
+            "<p>Real retirement is messier: returns are sequence-sensitive (a bad first year can sink the plan), Social Security or pensions add income, and healthcare costs spike late. Treat this as a sanity check, not a plan.</p>"
+        ),
+        "related_header": "Related Tools",
+        "related_compound": "Compound Interest",
+        "related_loan": "Loan Calculator",
+        "related_date": "Date Calculator",
+        "related_bmi": "BMI Calculator",
+        "card_blurb": "Project retirement nest egg and check whether it lasts through life expectancy."
+    },
+    "ko": {
+        "title": "은퇴 계산기",
+        "meta_title": "은퇴 계산기 — 노후자금 충분한지 시뮬레이션 - Utilify",
+        "meta_desc": "현재 나이·은퇴 나이·자산·월 적립·수익률·연 인출·기대수명을 입력해 은퇴 시점 자산과 자금 유지 가능 나이를 시뮬레이션.",
+        "og_title": "은퇴 계산기 - Utilify",
+        "og_desc": "노후자금이 기대수명까지 버티는지 시뮬레이션하세요.",
+        "json_name": "은퇴 계산기",
+        "json_desc": "월 적립으로 누적하는 단계와 연 인출 단계를 모두 시뮬레이션하는 2단계 모델.",
+        "page_desc": "현재 나이·목표 은퇴 나이·현재 자산·월 적립금·기대 수익률·은퇴 후 연 인출액·기대수명을 입력하면 누적 단계와 인출 단계를 시뮬레이션해 자금이 언제까지 버티는지 알려줍니다.",
+        "label_current_age": "현재 나이",
+        "label_retire_age": "은퇴 나이",
+        "label_current_savings": "현재 자산",
+        "label_monthly_contrib": "월 적립금",
+        "label_annual_return": "연 수익률 (%)",
+        "label_annual_withdrawal": "은퇴 후 연 인출액",
+        "label_life_expectancy": "기대수명",
+        "ph_current_age": "30",
+        "ph_retire_age": "65",
+        "ph_current_savings": "50000000",
+        "ph_monthly_contrib": "500000",
+        "ph_annual_return": "6",
+        "ph_annual_withdrawal": "30000000",
+        "ph_life_expectancy": "85",
+        "btn_calculate": "계산",
+        "btn_reset": "초기화",
+        "btn_share": "결과 공유",
+        "share_text": "내 은퇴 시점 자산은 {value} —",
+        "share_copied": "결과가 클립보드에 복사되었습니다.",
+        "res_at_retirement_label": "은퇴 시점 자산",
+        "res_outcome_header": "결과",
+        "outcome_lasts": "기대수명까지 자금이 유지됩니다. {age}세 시점 잉여: {amount}.",
+        "outcome_runs_out": "{age}세에 자금이 소진됩니다 — 기대수명까지 {years}년 부족.",
+        "res_chart_header": "잔액 추이",
+        "alert_invalid": "은퇴 나이는 현재 나이보다, 기대수명은 은퇴 나이보다 커야 합니다.",
+        "disclaimer": "추정치 — 재정 자문이 아닙니다. 실제 은퇴 계획은 자격 있는 전문가와 상의하세요.",
+        "howto_header": "사용 방법",
+        "howto_html": (
+            "<ol>"
+            "<li><em>현재 나이</em>와 <em>목표 은퇴 나이</em>를 입력하세요.</li>"
+            "<li>오늘 보유한 노후자금과 은퇴까지의 월 적립금을 입력하세요.</li>"
+            "<li>예상 연 수익률을 입력하세요 (분산형 포트폴리오는 실질 6% 정도가 흔한 가정).</li>"
+            "<li>은퇴 후 매년 인출할 금액을 입력하세요 (자산의 4% 룰이 고전적 기준).</li>"
+            "<li>기대수명을 입력하고 <strong>계산</strong>을 누르세요. 잔액 추이가 그래프로 표시됩니다.</li>"
+            "</ol>"
+            "<p><strong>모델</strong>: 누적 단계는 은퇴까지 월 단위 복리로 적립금을 더하며, 인출 단계는 매년 초 연 인출액을 빼고 남은 잔액에 연 수익률을 곱합니다. 잔액이 0이 되거나 기대수명에 도달할 때까지 반복합니다.</p>"
+            "<p>실제 은퇴는 더 복잡합니다 — 초기 몇 년의 수익률 순서가 결과를 크게 좌우하고(시퀀스 리스크), 국민연금/퇴직연금 같은 소득이 더해지며, 노년 의료비가 급증할 수 있습니다. 검산용으로만 사용하세요.</p>"
+        ),
+        "related_header": "관련 도구",
+        "related_compound": "복리 계산기",
+        "related_loan": "대출 계산기",
+        "related_date": "날짜 계산기",
+        "related_bmi": "BMI 계산기",
+        "card_blurb": "노후자금이 기대수명까지 버티는지 누적·인출 2단계로 즉시 시뮬레이션."
+    }
+}
+
+
+CALORIE_CALCULATOR = {
+    "en": {
+        "title": "Calorie & BMR Calculator",
+        "meta_title": "Calorie Calculator — BMR + TDEE (Mifflin-St Jeor) - Utilify",
+        "meta_desc": "Calculate your basal metabolic rate (BMR) and total daily energy expenditure (TDEE) with the Mifflin-St Jeor formula. Get target calories for weight loss, maintenance, or muscle gain.",
+        "og_title": "Calorie & BMR Calculator - Utilify",
+        "og_desc": "BMR + TDEE + targets for cutting, maintenance, and bulking.",
+        "json_name": "Calorie & BMR Calculator",
+        "json_desc": "Mifflin-St Jeor BMR plus activity multiplier and goal-adjusted calorie targets.",
+        "page_desc": "Enter your age, sex, height, weight, and activity level to get your basal metabolic rate, total daily calorie burn, and recommended targets for weight loss, maintenance, or muscle gain. Uses the Mifflin-St Jeor equation, the most accurate formula for healthy adults.",
+        "label_age": "Age (years)",
+        "label_sex": "Sex",
+        "label_height": "Height (cm)",
+        "label_weight": "Weight (kg)",
+        "label_activity": "Activity level",
+        "ph_age": "30",
+        "ph_height": "170",
+        "ph_weight": "70",
+        "opt_male": "Male",
+        "opt_female": "Female",
+        "opt_sedentary": "Sedentary (little to no exercise)",
+        "opt_light": "Light (1–3 days / week)",
+        "opt_moderate": "Moderate (3–5 days / week)",
+        "opt_active": "Active (6–7 days / week)",
+        "opt_very_active": "Very active (twice daily / hard training)",
+        "btn_calculate": "Calculate",
+        "btn_reset": "Reset",
+        "btn_share": "Share result",
+        "share_text": "My daily calorie need: {value} kcal —",
+        "share_copied": "Result copied to clipboard.",
+        "res_bmr_label": "BMR (kcal/day)",
+        "res_tdee_label": "TDEE (kcal/day)",
+        "res_targets_header": "Daily calorie targets",
+        "target_loss": "Weight loss (−500)",
+        "target_maintain": "Maintenance",
+        "target_gain": "Muscle gain (+300)",
+        "alert_invalid": "Please enter a positive age, height, and weight.",
+        "disclaimer": "Estimate only — not medical advice. Talk to a registered dietitian or physician before changing your diet, especially if pregnant, nursing, or managing a condition.",
+        "howto_header": "How to use",
+        "howto_html": (
+            "<ol>"
+            "<li>Enter your age in years.</li>"
+            "<li>Pick your biological sex (the formula has different constants for male and female).</li>"
+            "<li>Enter your height in centimeters and weight in kilograms.</li>"
+            "<li>Pick the activity level that best matches a typical week. Most desk workers are sedentary or light even with weekend exercise.</li>"
+            "<li>Click <strong>Calculate</strong> — BMR, TDEE, and three goal-adjusted targets appear.</li>"
+            "</ol>"
+            "<p><strong>Formula (Mifflin-St Jeor)</strong>: Male BMR = 10·W + 6.25·H − 5·A + 5; Female BMR = 10·W + 6.25·H − 5·A − 161. TDEE = BMR × activity factor (sedentary 1.2, light 1.375, moderate 1.55, active 1.725, very active 1.9).</p>"
+            "<p>BMR is what your body burns at complete rest — heart, brain, breathing. TDEE includes movement and exercise. The 500 kcal/day deficit is a classic 1 lb/week weight-loss target; +300 supports lean muscle gain when paired with strength training.</p>"
+        ),
+        "related_header": "Related Tools",
+        "related_bmi": "BMI Calculator",
+        "related_body_fat": "Body Fat Calculator",
+        "related_unit": "Unit Converter",
+        "related_date": "Date Calculator",
+        "card_blurb": "BMR + TDEE + cut/maintain/bulk calorie targets (Mifflin-St Jeor)."
+    },
+    "ko": {
+        "title": "칼로리·BMR 계산기",
+        "meta_title": "칼로리 계산기 — BMR·TDEE 자동 계산 (Mifflin-St Jeor) - Utilify",
+        "meta_desc": "기초대사량(BMR)과 1일 총 소모 칼로리(TDEE)를 Mifflin-St Jeor 공식으로 계산. 다이어트·유지·근증량 목표 칼로리 함께 제공.",
+        "og_title": "칼로리·BMR 계산기 - Utilify",
+        "og_desc": "기초대사량과 1일 활동 칼로리, 목표별 권장 섭취량까지 한번에.",
+        "json_name": "칼로리·BMR 계산기",
+        "json_desc": "Mifflin-St Jeor 공식 기반 기초대사량 + 활동계수 + 목표별 권장 섭취량.",
+        "page_desc": "나이·성별·키·체중·활동 수준을 입력하면 기초대사량, 1일 총 소모 칼로리, 다이어트/유지/근증량 목표 칼로리를 계산합니다. 건강한 성인에게 가장 정확한 Mifflin-St Jeor 공식을 사용합니다.",
+        "label_age": "나이 (년)",
+        "label_sex": "성별",
+        "label_height": "키 (cm)",
+        "label_weight": "체중 (kg)",
+        "label_activity": "활동 수준",
+        "ph_age": "30",
+        "ph_height": "170",
+        "ph_weight": "70",
+        "opt_male": "남성",
+        "opt_female": "여성",
+        "opt_sedentary": "거의 활동 없음 (운동 안 함)",
+        "opt_light": "가벼운 활동 (주 1–3회)",
+        "opt_moderate": "보통 활동 (주 3–5회)",
+        "opt_active": "활발한 활동 (주 6–7회)",
+        "opt_very_active": "매우 활발 (하루 2회 또는 강도 높은 훈련)",
+        "btn_calculate": "계산",
+        "btn_reset": "초기화",
+        "btn_share": "결과 공유",
+        "share_text": "내 1일 권장 칼로리: {value} kcal —",
+        "share_copied": "결과가 클립보드에 복사되었습니다.",
+        "res_bmr_label": "기초대사량 (kcal/일)",
+        "res_tdee_label": "1일 총 소모 (kcal/일)",
+        "res_targets_header": "목표별 1일 칼로리",
+        "target_loss": "감량 (−500)",
+        "target_maintain": "유지",
+        "target_gain": "근증량 (+300)",
+        "alert_invalid": "나이·키·체중은 양수로 입력해 주세요.",
+        "disclaimer": "추정치 — 의료 자문이 아닙니다. 임신·수유·질환 관리 중이라면 식단 변경 전 의료진 또는 임상영양사와 상의하세요.",
+        "howto_header": "사용 방법",
+        "howto_html": (
+            "<ol>"
+            "<li>나이를 년 단위로 입력하세요.</li>"
+            "<li>생물학적 성별을 선택하세요 (공식 상수가 남녀에 따라 다름).</li>"
+            "<li>키(cm)와 체중(kg)을 입력하세요.</li>"
+            "<li>일주일 평균에 가까운 활동 수준을 선택하세요. 사무직은 주말 운동을 해도 보통 \"거의 없음\" 또는 \"가벼움\"에 해당합니다.</li>"
+            "<li><strong>계산</strong>을 누르면 BMR, TDEE, 그리고 목표 칼로리 3가지가 표시됩니다.</li>"
+            "</ol>"
+            "<p><strong>공식 (Mifflin-St Jeor)</strong>: 남성 BMR = 10·W + 6.25·H − 5·A + 5; 여성 BMR = 10·W + 6.25·H − 5·A − 161. TDEE = BMR × 활동계수 (거의 없음 1.2, 가벼움 1.375, 보통 1.55, 활발 1.725, 매우 활발 1.9).</p>"
+            "<p>BMR은 완전 휴식 상태에서 소모되는 칼로리(심장·뇌·호흡)이고, TDEE는 활동까지 포함한 총 소모량입니다. −500 kcal/일은 주당 약 0.45 kg 감량 목표, +300은 근력 운동과 함께 근육 증가 지원에 적합합니다.</p>"
+        ),
+        "related_header": "관련 도구",
+        "related_bmi": "BMI 계산기",
+        "related_body_fat": "체지방 계산기",
+        "related_unit": "단위 변환기",
+        "related_date": "날짜 계산기",
+        "card_blurb": "Mifflin-St Jeor 공식으로 BMR·TDEE·목표별(감량/유지/증량) 칼로리 즉시 계산."
+    }
+}
+
+
+PREGNANCY_CALCULATOR = {
+    "en": {
+        "title": "Pregnancy Due Date Calculator",
+        "meta_title": "Pregnancy Calculator — Due Date, Week, Trimester - Utilify",
+        "meta_desc": "Calculate your due date, current pregnancy week, and trimester from your last menstrual period (LMP). Naegele's rule with cycle-length adjustment.",
+        "og_title": "Pregnancy Due Date Calculator - Utilify",
+        "og_desc": "Due date, current week, trimester, and days remaining.",
+        "json_name": "Pregnancy Calculator",
+        "json_desc": "Estimate due date and current pregnancy week from last menstrual period.",
+        "page_desc": "Enter the first day of your last menstrual period (LMP) and your typical cycle length. The calculator returns the estimated due date, your current pregnancy week and day, the trimester, and how many days remain until delivery. Naegele's rule plus a cycle-length adjustment.",
+        "label_lmp": "First day of last menstrual period",
+        "label_cycle": "Average cycle length (days)",
+        "ph_cycle": "28",
+        "btn_calculate": "Calculate",
+        "btn_reset": "Reset",
+        "btn_share": "Share result",
+        "share_text": "My estimated due date: {value} —",
+        "share_copied": "Result copied to clipboard.",
+        "res_due_label": "Estimated due date",
+        "res_week_label": "Current week",
+        "res_trimester_label": "Trimester",
+        "res_remaining_label": "Days remaining",
+        "trimester_1": "First trimester",
+        "trimester_2": "Second trimester",
+        "trimester_3": "Third trimester",
+        "week_format": "Week {week} day {day}",
+        "alert_invalid": "Enter a valid LMP date and a cycle length between 21 and 45 days.",
+        "alert_future": "LMP cannot be in the future.",
+        "disclaimer": "Estimate only — not medical advice. Only ~5% of babies arrive on the predicted due date. An ultrasound dating scan is more accurate, especially if cycles are irregular.",
+        "howto_header": "How to use",
+        "howto_html": (
+            "<ol>"
+            "<li>Pick the first day of your last menstrual period (LMP). This is day 1 of the cycle that resulted in pregnancy.</li>"
+            "<li>Enter your typical cycle length. The default is 28 days; adjust if yours is consistently shorter or longer.</li>"
+            "<li>Click <strong>Calculate</strong>. You'll see the estimated due date, your current pregnancy week, the trimester, and days remaining.</li>"
+            "</ol>"
+            "<p><strong>Formula (Naegele's rule)</strong>: due date = LMP + 280 days, then adjusted by (cycle length − 28) days to account for variations in ovulation timing. Pregnancy is dated from LMP (not conception), so week 1 starts before you actually conceived. Trimesters: 1st (weeks 1–13), 2nd (14–27), 3rd (28–40+).</p>"
+            "<p>If your cycles are irregular or you don't know your LMP, an ultrasound dating scan in the first trimester is the most accurate method.</p>"
+        ),
+        "related_header": "Related Tools",
+        "related_date": "Date Calculator",
+        "related_bmi": "BMI Calculator",
+        "related_calorie": "Calorie Calculator",
+        "related_unit": "Unit Converter",
+        "card_blurb": "Due date + current pregnancy week + trimester from your LMP. Cycle-length adjustable."
+    },
+    "ko": {
+        "title": "임신 출산예정일 계산기",
+        "meta_title": "임신 계산기 — 출산예정일·주수·삼분기 - Utilify",
+        "meta_desc": "마지막 생리일(LMP)로 출산예정일, 현재 임신 주수와 일수, 삼분기를 계산. Naegele 공식 + 생리주기 보정.",
+        "og_title": "임신 출산예정일 계산기 - Utilify",
+        "og_desc": "출산예정일·현재 주수·삼분기·남은 일수를 한번에.",
+        "json_name": "임신 출산예정일 계산기",
+        "json_desc": "마지막 생리일로부터 출산예정일과 현재 임신 주수를 추정.",
+        "page_desc": "마지막 생리 시작일(LMP)과 평소 생리주기 길이를 입력하면 출산예정일, 현재 임신 주수와 일수, 삼분기, 남은 일수를 계산합니다. Naegele 공식과 생리주기 보정을 함께 적용합니다.",
+        "label_lmp": "마지막 생리 시작일",
+        "label_cycle": "평소 생리주기 (일)",
+        "ph_cycle": "28",
+        "btn_calculate": "계산",
+        "btn_reset": "초기화",
+        "btn_share": "결과 공유",
+        "share_text": "내 출산예정일: {value} —",
+        "share_copied": "결과가 클립보드에 복사되었습니다.",
+        "res_due_label": "출산예정일",
+        "res_week_label": "현재 주수",
+        "res_trimester_label": "삼분기",
+        "res_remaining_label": "남은 일수",
+        "trimester_1": "1삼분기",
+        "trimester_2": "2삼분기",
+        "trimester_3": "3삼분기",
+        "week_format": "{week}주 {day}일",
+        "alert_invalid": "유효한 마지막 생리일과 21~45일 사이의 주기를 입력해 주세요.",
+        "alert_future": "마지막 생리일은 미래일 수 없습니다.",
+        "disclaimer": "추정치 — 의료 자문이 아닙니다. 출산예정일에 정확히 출산하는 비율은 약 5%입니다. 생리주기가 불규칙하거나 LMP가 불확실하면 초음파 검사가 더 정확합니다.",
+        "howto_header": "사용 방법",
+        "howto_html": (
+            "<ol>"
+            "<li>마지막 생리가 시작된 첫날(LMP)을 선택하세요. 임신이 일어난 그 주기의 1일입니다.</li>"
+            "<li>평소 생리주기 길이를 입력하세요. 기본값 28일이며, 일관되게 다르면 조정하세요.</li>"
+            "<li><strong>계산</strong>을 누르면 출산예정일, 현재 주수, 삼분기, 남은 일수가 표시됩니다.</li>"
+            "</ol>"
+            "<p><strong>공식 (Naegele 법칙)</strong>: 출산예정일 = LMP + 280일, 이후 (생리주기 − 28)일만큼 조정해 배란 시점 차이를 반영합니다. 임신 주수는 수정일이 아니라 LMP 기준이므로 1주차는 실제 임신 전부터 시작됩니다. 삼분기 구분: 1삼분기(1~13주), 2삼분기(14~27주), 3삼분기(28주 이후).</p>"
+            "<p>생리주기가 불규칙하거나 LMP가 명확하지 않다면 1삼분기 초음파 검사가 가장 정확한 방법입니다.</p>"
+        ),
+        "related_header": "관련 도구",
+        "related_date": "날짜 계산기",
+        "related_bmi": "BMI 계산기",
+        "related_calorie": "칼로리 계산기",
+        "related_unit": "단위 변환기",
+        "card_blurb": "마지막 생리일(LMP)로 출산예정일·현재 주수·삼분기를 즉시 계산. 생리주기 보정 가능."
+    }
+}
+
+
+BODY_FAT_CALCULATOR = {
+    "en": {
+        "title": "Body Fat Percentage Calculator",
+        "meta_title": "Body Fat Calculator — US Navy Method - Utilify",
+        "meta_desc": "Estimate body fat percentage with the US Navy circumference method. Inputs: height, neck, waist (and hip for women). Includes category and recommended range.",
+        "og_title": "Body Fat Calculator - Utilify",
+        "og_desc": "US Navy method body fat percentage with category and recommended range.",
+        "json_name": "Body Fat Calculator",
+        "json_desc": "US Navy circumference-based body fat estimate plus fitness category.",
+        "page_desc": "Enter your height and circumference measurements (neck, waist, and hip for women) to estimate body fat percentage with the US Navy method. The result includes a fitness-category label and the typical recommended range for your sex.",
+        "label_sex": "Sex",
+        "label_height": "Height (cm)",
+        "label_neck": "Neck circumference (cm)",
+        "label_waist": "Waist circumference (cm)",
+        "label_hip": "Hip circumference (cm)",
+        "ph_height": "170",
+        "ph_neck": "37",
+        "ph_waist": "85",
+        "ph_hip": "95",
+        "opt_male": "Male",
+        "opt_female": "Female",
+        "btn_calculate": "Calculate",
+        "btn_reset": "Reset",
+        "btn_share": "Share result",
+        "share_text": "My body fat: {value}% —",
+        "share_copied": "Result copied to clipboard.",
+        "res_bfp_label": "Body fat",
+        "res_category_label": "Category",
+        "res_range_label": "Recommended range",
+        "cat_essential": "Essential fat",
+        "cat_athletes": "Athletes",
+        "cat_fitness": "Fitness",
+        "cat_average": "Average",
+        "cat_obese": "Obese",
+        "alert_invalid": "All measurements must be positive. For females, hip is required.",
+        "alert_negative_log": "Waist and neck values are inconsistent — please re-measure.",
+        "disclaimer": "Estimate only — not medical advice. Skinfold calipers, DEXA scans, or hydrostatic weighing are more accurate. Use this as a quick check, not a diagnosis.",
+        "howto_header": "How to use",
+        "howto_html": (
+            "<ol>"
+            "<li>Pick your biological sex.</li>"
+            "<li>Measure neck circumference at the narrowest point, just below the larynx.</li>"
+            "<li>Measure waist circumference at the navel for men, at the narrowest point for women. Relax — don't suck in.</li>"
+            "<li>For women, also measure hip circumference at the widest point.</li>"
+            "<li>Enter your height in centimeters. Click <strong>Calculate</strong>.</li>"
+            "</ol>"
+            "<p><strong>Formula (US Navy)</strong>: Male BFP = 86.010·log<sub>10</sub>(waist − neck) − 70.041·log<sub>10</sub>(height) + 36.76. Female BFP = 163.205·log<sub>10</sub>(waist + hip − neck) − 97.684·log<sub>10</sub>(height) − 78.387.</p>"
+            "<p>The Navy method has ±3% accuracy versus hydrostatic weighing for typical body shapes — better than BMI for body composition but worse than DEXA. Take measurements first thing in the morning for consistency.</p>"
+        ),
+        "related_header": "Related Tools",
+        "related_bmi": "BMI Calculator",
+        "related_calorie": "Calorie Calculator",
+        "related_unit": "Unit Converter",
+        "related_date": "Date Calculator",
+        "card_blurb": "US Navy method body fat % from height + neck + waist + hip measurements."
+    },
+    "ko": {
+        "title": "체지방률 계산기",
+        "meta_title": "체지방률 계산기 — 미 해군 둘레 측정법 - Utilify",
+        "meta_desc": "키·목·허리 둘레(여성은 엉덩이까지)로 체지방률을 미 해군 공식으로 추정. 카테고리·권장 범위 함께 표시.",
+        "og_title": "체지방률 계산기 - Utilify",
+        "og_desc": "미 해군 둘레 측정법으로 체지방률·카테고리·권장 범위까지.",
+        "json_name": "체지방률 계산기",
+        "json_desc": "미 해군 둘레 측정 공식으로 체지방률을 추정하고 카테고리를 표시.",
+        "page_desc": "키와 신체 둘레(목·허리, 여성은 엉덩이 추가)를 입력하면 미 해군 공식으로 체지방률을 추정합니다. 결과에는 피트니스 카테고리와 성별 권장 범위가 함께 표시됩니다.",
+        "label_sex": "성별",
+        "label_height": "키 (cm)",
+        "label_neck": "목 둘레 (cm)",
+        "label_waist": "허리 둘레 (cm)",
+        "label_hip": "엉덩이 둘레 (cm)",
+        "ph_height": "170",
+        "ph_neck": "37",
+        "ph_waist": "85",
+        "ph_hip": "95",
+        "opt_male": "남성",
+        "opt_female": "여성",
+        "btn_calculate": "계산",
+        "btn_reset": "초기화",
+        "btn_share": "결과 공유",
+        "share_text": "내 체지방률: {value}% —",
+        "share_copied": "결과가 클립보드에 복사되었습니다.",
+        "res_bfp_label": "체지방률",
+        "res_category_label": "카테고리",
+        "res_range_label": "권장 범위",
+        "cat_essential": "필수 지방",
+        "cat_athletes": "운동선수",
+        "cat_fitness": "피트니스",
+        "cat_average": "보통",
+        "cat_obese": "비만",
+        "alert_invalid": "모든 측정값은 양수여야 합니다. 여성은 엉덩이 둘레가 필수입니다.",
+        "alert_negative_log": "허리와 목 측정값이 일관되지 않습니다 — 다시 측정해 주세요.",
+        "disclaimer": "추정치 — 의료 자문이 아닙니다. 캘리퍼, DEXA 스캔, 수중 측정이 더 정확합니다. 빠른 점검용으로만 사용하세요.",
+        "howto_header": "사용 방법",
+        "howto_html": (
+            "<ol>"
+            "<li>생물학적 성별을 선택하세요.</li>"
+            "<li>목 둘레는 후두 바로 아래 가장 좁은 부위에서 측정하세요.</li>"
+            "<li>허리 둘레는 남성은 배꼽 위치, 여성은 가장 잘록한 부분에서 측정합니다. 숨을 참거나 배를 집어넣지 마세요.</li>"
+            "<li>여성은 엉덩이의 가장 넓은 둘레도 측정합니다.</li>"
+            "<li>키(cm)를 입력하고 <strong>계산</strong>을 누르세요.</li>"
+            "</ol>"
+            "<p><strong>공식 (미 해군)</strong>: 남성 BFP = 86.010·log<sub>10</sub>(허리 − 목) − 70.041·log<sub>10</sub>(키) + 36.76. 여성 BFP = 163.205·log<sub>10</sub>(허리 + 엉덩이 − 목) − 97.684·log<sub>10</sub>(키) − 78.387.</p>"
+            "<p>해군 공식은 평균 체형에 대해 수중 측정 대비 ±3% 정확도 — BMI보다 체구성 평가에 낫지만 DEXA보다는 부정확합니다. 일관된 결과를 위해 아침 첫 측정을 권장합니다.</p>"
+        ),
+        "related_header": "관련 도구",
+        "related_bmi": "BMI 계산기",
+        "related_calorie": "칼로리 계산기",
+        "related_unit": "단위 변환기",
+        "related_date": "날짜 계산기",
+        "card_blurb": "미 해군 둘레 측정법으로 체지방률을 즉시 추정 (키·목·허리 + 엉덩이)."
+    }
+}
+
+
+FINANCE_HUB = {
+    "en": {
+        "title": "Finance Calculators",
+        "meta_title": "Finance Calculators — Loan, Compound Interest, Retirement - Utilify",
+        "meta_desc": "Free finance calculators that run entirely in your browser. Loan payments, compound interest projections, retirement nest-egg simulations. No signup, no upload.",
+        "og_title": "Finance Calculators - Utilify",
+        "og_desc": "Loan, compound interest, and retirement calculators — all client-side.",
+        "json_name": "Finance Calculators",
+        "json_desc": "Curated finance calculators for loans, savings, and retirement planning.",
+        "h1": "Finance Calculators",
+        "intro_html": (
+            "<p>Money decisions reward curiosity. Whether you're shopping for a mortgage, "
+            "deciding how much to save each month, or stress-testing a retirement plan, a "
+            "good calculator turns a vague worry into a concrete number you can act on.</p>"
+            "<p>The tools below cover the three financial questions most people return to "
+            "again and again: <strong>What will this loan actually cost me?</strong> "
+            "<strong>How much could my savings grow if I leave them alone?</strong> "
+            "<strong>Will I run out of money in retirement?</strong> Every calculator runs "
+            "in your browser — your inputs never leave the page, no account is required, "
+            "and the formulas are documented on each page so you can verify the math.</p>"
+            "<p>Treat these as decision-support tools, not advice. Real loans include fees "
+            "and escrow; real returns are not constant; real retirement is messier than any "
+            "smooth projection. Use the numbers as a sanity check, then talk to a qualified "
+            "professional before locking in a major decision.</p>"
+        ),
+        "tools_header": "Tools in this category",
+        "faq_header": "Frequently asked questions",
+        "faq_html": (
+            "<details><summary>Are these calculators a substitute for financial advice?</summary>"
+            "<p>No. They use standard formulas and reasonable defaults, but they don't know your "
+            "tax situation, debt mix, employer benefits, or risk tolerance. Use the output as a "
+            "starting point for a conversation with a registered advisor or CPA.</p></details>"
+            "<details><summary>Why does the calculated loan payment differ from my mortgage statement?</summary>"
+            "<p>Lenders typically bundle property tax, homeowners insurance, PMI, and HOA fees "
+            "into the monthly payment via escrow. The loan calculator only computes principal + "
+            "interest. Add ~20–30% on top for a realistic all-in housing cost in most US markets.</p></details>"
+            "<details><summary>What return rate should I assume for compound interest?</summary>"
+            "<p>The S&amp;P 500 has averaged about 10% nominal / 7% real over the last century, "
+            "but past performance is not a guarantee. For long-horizon planning, 6–7% real is a "
+            "common conservative assumption; for short horizons, treat market exposure as risky.</p></details>"
+            "<details><summary>Can I trust these for retirement planning?</summary>"
+            "<p>Use them as a sanity check, not a plan. The retirement calculator assumes a "
+            "constant return rate, which masks <em>sequence-of-returns risk</em> — a bad first "
+            "few years of retirement can sink an otherwise viable plan. A Monte Carlo simulator "
+            "or a flat-fee planner is better for high-stakes decisions.</p></details>"
+        ),
+        "related_header": "Other calculators",
+        "related_other_hub": "Health Calculators",
+        "related_bmi": "BMI Calculator",
+        "related_date": "Date Calculator",
+        "related_unit": "Unit Converter",
+        "card_blurb": "Loan, compound interest, and retirement calculators — all client-side."
+    },
+    "ko": {
+        "title": "금융 계산기 모음",
+        "meta_title": "금융 계산기 — 대출·복리·은퇴 시뮬레이션 - Utilify",
+        "meta_desc": "브라우저에서 모두 실행되는 무료 금융 계산기. 대출 월 상환, 복리 투자 성장, 은퇴자금 시뮬레이션. 가입·업로드 없음.",
+        "og_title": "금융 계산기 - Utilify",
+        "og_desc": "대출·복리·은퇴 계산기 — 모두 클라이언트 사이드.",
+        "json_name": "금융 계산기 모음",
+        "json_desc": "대출·저축·은퇴 계획을 위한 금융 계산기 큐레이션.",
+        "h1": "금융 계산기",
+        "intro_html": (
+            "<p>돈에 관한 결정은 \"막연한 걱정\"을 \"행동 가능한 숫자\"로 바꿀 때 가장 좋습니다. "
+            "주택담보대출을 알아보거나, 매달 얼마 저축해야 할지 고민하거나, 은퇴자금이 충분한지 "
+            "검산할 때 — 좋은 계산기는 그 결정을 구체화해 줍니다.</p>"
+            "<p>아래 도구들은 사람들이 가장 자주 마주치는 세 가지 질문을 다룹니다: "
+            "<strong>이 대출은 실제로 얼마를 부담하는가?</strong> "
+            "<strong>지금 저축하면 시간이 흘러 얼마가 되는가?</strong> "
+            "<strong>은퇴 후 자금이 기대수명까지 버틸까?</strong> 모든 계산은 브라우저에서만 "
+            "이루어지며 — 입력 데이터가 서버로 전송되지 않습니다. 가입 불필요, 사용된 공식은 "
+            "각 페이지에 명시되어 있어 직접 검증할 수 있습니다.</p>"
+            "<p>의사결정 보조 도구로 쓰세요 — 자문이 아닙니다. 실제 대출에는 수수료·보증료가 "
+            "추가되고, 실제 수익률은 일정하지 않으며, 실제 은퇴는 어떤 부드러운 시뮬레이션보다 "
+            "복잡합니다. 결과를 검산용으로 사용한 뒤, 중대한 결정 전에는 자격 있는 전문가와 "
+            "상의하세요.</p>"
+        ),
+        "tools_header": "이 카테고리의 도구",
+        "faq_header": "자주 묻는 질문",
+        "faq_html": (
+            "<details><summary>이 계산기들이 재정 자문을 대체할 수 있나요?</summary>"
+            "<p>아니요. 표준 공식과 합리적인 기본값을 사용하지만, 사용자의 세금 상황·부채 "
+            "구성·복리후생·위험 감수도를 알 수 없습니다. 결과는 자격 있는 재무 자문가 또는 "
+            "세무사와의 대화 시작점으로 활용하세요.</p></details>"
+            "<details><summary>계산된 대출 상환금이 실제 명세서와 다른 이유는?</summary>"
+            "<p>금융기관은 재산세·주택보험·PMI·관리비 등을 월 상환금에 포함시켜 에스크로 형태로 "
+            "처리하는 경우가 많습니다. 본 계산기는 원리금만 계산합니다. 한국 시장에서는 인지세·"
+            "근저당설정비·보증료·중도상환수수료를 추가로 고려해야 실제 부담에 가깝습니다.</p></details>"
+            "<details><summary>복리 계산에 어떤 수익률을 가정해야 하나요?</summary>"
+            "<p>S&amp;P 500 100년 평균은 명목 약 10%, 실질 약 7%입니다. 과거 수익률이 미래를 "
+            "보장하지는 않습니다. 장기 계획에는 실질 6~7%가 보수적 기준이며, 단기 자금은 시장 "
+            "노출을 위험하게 봐야 합니다.</p></details>"
+            "<details><summary>은퇴 계획에 사용해도 되나요?</summary>"
+            "<p>검산용으로만 사용하세요. 은퇴 계산기는 일정한 수익률을 가정하므로 <em>시퀀스 "
+            "리스크</em>(은퇴 초기 몇 년의 수익률 순서가 결과에 미치는 큰 영향)를 반영하지 "
+            "못합니다. 중대한 결정에는 몬테카를로 시뮬레이터 또는 정액제 재무 자문가가 적합합니다."
+            "</p></details>"
+        ),
+        "related_header": "다른 계산기",
+        "related_other_hub": "건강 계산기",
+        "related_bmi": "BMI 계산기",
+        "related_date": "날짜 계산기",
+        "related_unit": "단위 변환기",
+        "card_blurb": "대출·복리·은퇴 계산기 — 모두 브라우저에서."
+    }
+}
+
+
+HEALTH_HUB = {
+    "en": {
+        "title": "Health Calculators",
+        "meta_title": "Health Calculators — Calorie, Pregnancy, Body Fat - Utilify",
+        "meta_desc": "Free health calculators that run entirely in your browser. BMR + TDEE, pregnancy due date, body fat percentage. No signup, no upload.",
+        "og_title": "Health Calculators - Utilify",
+        "og_desc": "Calorie, pregnancy, and body fat calculators — all client-side.",
+        "json_name": "Health Calculators",
+        "json_desc": "Curated health calculators for nutrition, pregnancy, and body composition.",
+        "h1": "Health Calculators",
+        "intro_html": (
+            "<p>Bodies don't come with a dashboard. The next-best thing is a small set of "
+            "calculators that translate measurements into context: how much you can eat without "
+            "gaining weight, when a baby is due, where your body composition sits relative to a "
+            "typical range. None of these replace a doctor — they help you ask better questions "
+            "the next time you see one.</p>"
+            "<p>The tools below address three of the most-searched health questions: "
+            "<strong>How many calories do I actually need?</strong> "
+            "<strong>When is my baby due, and what trimester am I in?</strong> "
+            "<strong>What's my body fat percentage?</strong> Each runs entirely in your browser, "
+            "uses widely-cited formulas (Mifflin-St Jeor, Naegele's rule, US Navy method), and "
+            "shows the math on each page so you can verify it.</p>"
+            "<p>Use these as quick checks. For pregnancy, an early ultrasound dating scan is more "
+            "accurate. For body fat, DEXA or hydrostatic weighing is the gold standard. For "
+            "nutrition, an RD can personalize beyond what any one-size-fits-all formula can "
+            "produce.</p>"
+        ),
+        "tools_header": "Tools in this category",
+        "faq_header": "Frequently asked questions",
+        "faq_html": (
+            "<details><summary>Which BMR formula is the most accurate?</summary>"
+            "<p>Mifflin-St Jeor (used here) outperforms the older Harris-Benedict and Katch-McArdle "
+            "for healthy adults across most studies. Margin of error is roughly ±10% — fine for "
+            "planning, less fine for clinical use.</p></details>"
+            "<details><summary>Is BMI alone enough to assess health?</summary>"
+            "<p>No. BMI doesn't distinguish muscle from fat, ignores fat distribution, and "
+            "performs poorly for athletes and the elderly. The body fat calculator (US Navy "
+            "method) is a better composition signal; combine with a waist-to-hip ratio for "
+            "cardiovascular risk.</p></details>"
+            "<details><summary>Why doesn't my pregnancy due date match my doctor's estimate?</summary>"
+            "<p>The calculator uses Naegele's rule (LMP + 280 days) with a cycle-length "
+            "adjustment. If your cycles are irregular or your LMP is uncertain, an early "
+            "ultrasound is more accurate and is what your doctor likely uses.</p></details>"
+            "<details><summary>Should I aim for the lowest body fat possible?</summary>"
+            "<p>No — there's a healthy range, not a minimum. Men below ~6% and women below ~14% "
+            "is essential-fat territory and not safe to maintain. Athletes optimize for performance, "
+            "not the lowest number.</p></details>"
+        ),
+        "related_header": "Other calculators",
+        "related_other_hub": "Finance Calculators",
+        "related_bmi": "BMI Calculator",
+        "related_date": "Date Calculator",
+        "related_unit": "Unit Converter",
+        "card_blurb": "Calorie, pregnancy, and body-fat calculators — all client-side."
+    },
+    "ko": {
+        "title": "건강 계산기 모음",
+        "meta_title": "건강 계산기 — 칼로리·임신·체지방 - Utilify",
+        "meta_desc": "브라우저에서 모두 실행되는 무료 건강 계산기. BMR·TDEE 칼로리, 임신 출산예정일, 체지방률. 가입·업로드 없음.",
+        "og_title": "건강 계산기 - Utilify",
+        "og_desc": "칼로리·임신·체지방 계산기 — 모두 클라이언트 사이드.",
+        "json_name": "건강 계산기 모음",
+        "json_desc": "영양·임신·체구성을 위한 건강 계산기 큐레이션.",
+        "h1": "건강 계산기",
+        "intro_html": (
+            "<p>몸에는 대시보드가 없습니다. 그래서 측정값을 맥락으로 바꿔 주는 작은 계산기들이 "
+            "유용합니다 — 체중을 유지하려면 얼마나 먹어도 되는지, 출산일이 언제인지, 체지방률이 "
+            "정상 범위 어디쯤인지. 의사를 대체하지는 않지만, 다음 진료에서 더 좋은 질문을 할 수 "
+            "있게 도와줍니다.</p>"
+            "<p>아래 도구들은 가장 많이 검색되는 세 가지 건강 질문을 다룹니다: "
+            "<strong>나에게 필요한 칼로리는 몇 kcal인가?</strong> "
+            "<strong>출산예정일은 언제이고 지금 몇 주차인가?</strong> "
+            "<strong>내 체지방률은 얼마인가?</strong> 모두 브라우저에서만 동작하며, 널리 인용되는 "
+            "공식(Mifflin-St Jeor, Naegele 법칙, 미 해군 둘레 측정법)을 사용하고, 각 페이지에 "
+            "계산 과정이 명시되어 있어 직접 검증할 수 있습니다.</p>"
+            "<p>빠른 점검용으로 사용하세요. 임신 주수는 1삼분기 초음파가 더 정확하고, 체지방률은 "
+            "DEXA·수중 측정이 표준이며, 영양은 임상영양사가 어떤 공식보다도 개인화된 조언을 줄 수 "
+            "있습니다.</p>"
+        ),
+        "tools_header": "이 카테고리의 도구",
+        "faq_header": "자주 묻는 질문",
+        "faq_html": (
+            "<details><summary>가장 정확한 BMR 공식은 무엇인가요?</summary>"
+            "<p>본 계산기에서 사용하는 Mifflin-St Jeor가 대부분 연구에서 Harris-Benedict, "
+            "Katch-McArdle보다 건강한 성인에게 더 정확합니다. 오차 범위는 약 ±10% — 계획용으로는 "
+            "충분하지만 임상 진단용으로는 부족합니다.</p></details>"
+            "<details><summary>BMI만으로 건강을 판단할 수 있나요?</summary>"
+            "<p>아닙니다. BMI는 근육과 지방을 구분하지 못하고 지방 분포를 무시하며, 운동선수와 "
+            "고령층에서 부정확합니다. 체지방 계산기(미 해군 공식)가 체구성 신호로 더 낫고, "
+            "허리-엉덩이 비율과 함께 보면 심혈관 위험 평가에 도움이 됩니다.</p></details>"
+            "<details><summary>출산예정일이 의사 진단과 다른 이유는?</summary>"
+            "<p>본 계산기는 Naegele 법칙(LMP + 280일)에 생리주기 보정을 적용합니다. 생리가 "
+            "불규칙하거나 LMP가 불확실하면 1삼분기 초음파가 더 정확하며, 의사는 보통 이 결과를 "
+            "기준으로 삼습니다.</p></details>"
+            "<details><summary>체지방률은 낮을수록 좋은 건가요?</summary>"
+            "<p>아닙니다 — 건강한 범위가 있고 최소치가 있는 게 아닙니다. 남성 약 6% 미만, 여성 "
+            "약 14% 미만은 필수 지방 영역으로 안전하게 유지할 수 없습니다. 운동선수도 최저 "
+            "수치가 아닌 경기력에 맞춰 조절합니다.</p></details>"
+        ),
+        "related_header": "다른 계산기",
+        "related_other_hub": "금융 계산기",
+        "related_bmi": "BMI 계산기",
+        "related_date": "날짜 계산기",
+        "related_unit": "단위 변환기",
+        "card_blurb": "칼로리·임신·체지방 계산기 — 모두 브라우저에서."
     }
 }

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy-Report-Only" content="default-src 'self' https: data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https:; frame-src https:;">
+    <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+    <title>칼로리 계산기 — BMR·TDEE 자동 계산 (Mifflin-St Jeor) - Utilify</title>
+    <meta name="description" content="기초대사량(BMR)과 1일 총 소모 칼로리(TDEE)를 Mifflin-St Jeor 공식으로 계산. 다이어트·유지·근증량 목표 칼로리 함께 제공.">
+    <link rel="canonical" href="https://utilifyapp.net/ko/calorie-calculator/">
+
+    <meta property="og:title" content="칼로리·BMR 계산기 - Utilify">
+    <meta property="og:description" content="기초대사량과 1일 활동 칼로리, 목표별 권장 섭취량까지 한번에.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://utilifyapp.net/ko/calorie-calculator/">
+
+    <link rel="alternate" hreflang="en" href="https://utilifyapp.net/en/calorie-calculator/">
+    <link rel="alternate" hreflang="ko" href="https://utilifyapp.net/ko/calorie-calculator/">
+    <link rel="alternate" hreflang="vi" href="https://utilifyapp.net/vi/calorie-calculator/">
+    <link rel="alternate" hreflang="th" href="https://utilifyapp.net/th/calorie-calculator/">
+    <link rel="alternate" hreflang="de" href="https://utilifyapp.net/de/calorie-calculator/">
+    <link rel="alternate" hreflang="pt" href="https://utilifyapp.net/pt/calorie-calculator/">
+    <link rel="alternate" hreflang="id" href="https://utilifyapp.net/id/calorie-calculator/">
+    <link rel="alternate" hreflang="hi" href="https://utilifyapp.net/hi/calorie-calculator/">
+    <link rel="alternate" hreflang="ja" href="https://utilifyapp.net/ja/calorie-calculator/">
+    <link rel="alternate" hreflang="zh-Hans" href="https://utilifyapp.net/zh-cn/calorie-calculator/">
+    <link rel="alternate" hreflang="zh-Hant" href="https://utilifyapp.net/zh-tw/calorie-calculator/">
+    <link rel="alternate" hreflang="x-default" href="https://utilifyapp.net/en/calorie-calculator/">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "칼로리·BMR 계산기",
+        "description": "Mifflin-St Jeor 공식 기반 기초대사량 + 활동계수 + 목표별 권장 섭취량.",
+        "url": "https://utilifyapp.net/ko/calorie-calculator/",
+        "inLanguage": "ko",
+        "applicationCategory": "HealthApplication",
+        "operatingSystem": "Any",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+
+    <style>
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-md);
+        }
+        @media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; } }
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+        }
+        .result-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            text-align: center;
+        }
+        .result-card .label { font-size: 0.85rem; color: var(--text-secondary); }
+        .result-card .value { font-size: 1.5rem; font-weight: 700; color: var(--primary-color); margin-top: 4px; font-variant-numeric: tabular-nums; }
+        .result-card.headline .value { font-size: 2rem; }
+        .button-row { display: flex; gap: var(--spacing-sm); flex-wrap: wrap; }
+        .button-row .btn { min-width: 120px; }
+    </style>
+    <link rel="manifest" href="/manifest.json">
+    <script data-utilify-adsense-loader async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631" crossorigin="anonymous"></script>
+    <meta data-utilify-og property="og:image" content="https://utilifyapp.net/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Utilify">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://utilifyapp.net/assets/og-image.png">
+    <link data-utilify-favicon rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+</head>
+
+<body>
+    <a data-utilify-skip class="skip-link" href="#main">본문으로 건너뛰기</a>
+    <header class="site-header"><div class="container"><div class="header-content"><a href="/ko/" class="site-logo">🛠️ Utilify</a></div></div></header>
+    <main id="main" class="main-content">
+        <div class="container-narrow">
+            <h1>🔥 칼로리·BMR 계산기</h1>
+            <div class="security-badge" style="display:flex;align-items:center;justify-content:center;gap:8px;margin:10px 0;font-size:14px;color:var(--text-secondary);">
+                <span>🔒 Secure & Client-side</span>
+                <button id="pwaInstallBtn" class="btn btn-primary" style="display: none; padding: 4px 12px; font-size: 12px;">📲 Install App</button>
+                    <button data-utilify-fav-toggle class="fav-toggle-page" type="button" aria-label="즐겨찾기에 추가" data-add-label="즐겨찾기에 추가" data-remove-label="즐겨찾기에서 제거">☆</button>
+            </div>
+
+            <p>나이·성별·키·체중·활동 수준을 입력하면 기초대사량, 1일 총 소모 칼로리, 다이어트/유지/근증량 목표 칼로리를 계산합니다. 건강한 성인에게 가장 정확한 Mifflin-St Jeor 공식을 사용합니다.</p>
+
+            <div class="card">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label" for="age">나이 (년)</label>
+                        <input type="number" id="age" class="form-input" inputmode="numeric" min="10" max="120" step="1" placeholder="30" value="30">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="sex">성별</label>
+                        <select id="sex" class="form-input">
+                            <option value="male" selected>남성</option>
+                            <option value="female">여성</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="height">키 (cm)</label>
+                        <input type="number" id="height" class="form-input" inputmode="decimal" min="80" max="250" step="0.1" placeholder="170" value="170">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="weight">체중 (kg)</label>
+                        <input type="number" id="weight" class="form-input" inputmode="decimal" min="20" max="350" step="0.1" placeholder="70" value="70">
+                    </div>
+                    <div class="form-group" style="grid-column: 1 / -1;">
+                        <label class="form-label" for="activity">활동 수준</label>
+                        <select id="activity" class="form-input">
+                            <option value="1.2">거의 활동 없음 (운동 안 함)</option>
+                            <option value="1.375" selected>가벼운 활동 (주 1–3회)</option>
+                            <option value="1.55">보통 활동 (주 3–5회)</option>
+                            <option value="1.725">활발한 활동 (주 6–7회)</option>
+                            <option value="1.9">매우 활발 (하루 2회 또는 강도 높은 훈련)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="button-row" style="margin-top: var(--spacing-md);">
+                    <button class="btn btn-primary" type="button" onclick="calculate()">계산</button>
+                    <button class="btn" type="button" onclick="resetForm()">초기화</button>
+                </div>
+            </div>
+
+            <div id="result" style="display:none;" aria-live="polite">
+                <div class="result-grid">
+                    <div class="result-card headline">
+                        <div class="label">기초대사량 (kcal/일)</div>
+                        <div class="value" id="bmrVal">—</div>
+                    </div>
+                    <div class="result-card">
+                        <div class="label">1일 총 소모 (kcal/일)</div>
+                        <div class="value" id="tdeeVal">—</div>
+                    </div>
+                </div>
+
+                <h3>목표별 1일 칼로리</h3>
+                <div class="result-grid">
+                    <div class="result-card">
+                        <div class="label">감량 (−500)</div>
+                        <div class="value" id="lossVal">—</div>
+                    </div>
+                    <div class="result-card">
+                        <div class="label">유지</div>
+                        <div class="value" id="maintainVal">—</div>
+                    </div>
+                    <div class="result-card">
+                        <div class="label">근증량 (+300)</div>
+                        <div class="value" id="gainVal">—</div>
+                    </div>
+                </div>
+
+                <div class="button-row" style="margin-top: var(--spacing-md);">
+                    <button class="btn" type="button" onclick="shareResult()">결과 공유</button>
+                </div>
+            </div>
+
+            <div class="disclaimer">추정치 — 의료 자문이 아닙니다. 임신·수유·질환 관리 중이라면 식단 변경 전 의료진 또는 임상영양사와 상의하세요.</div>
+
+            <h2>사용 방법</h2>
+            <div class="howto-content"><ol><li>나이를 년 단위로 입력하세요.</li><li>생물학적 성별을 선택하세요 (공식 상수가 남녀에 따라 다름).</li><li>키(cm)와 체중(kg)을 입력하세요.</li><li>일주일 평균에 가까운 활동 수준을 선택하세요. 사무직은 주말 운동을 해도 보통 "거의 없음" 또는 "가벼움"에 해당합니다.</li><li><strong>계산</strong>을 누르면 BMR, TDEE, 그리고 목표 칼로리 3가지가 표시됩니다.</li></ol><p><strong>공식 (Mifflin-St Jeor)</strong>: 남성 BMR = 10·W + 6.25·H − 5·A + 5; 여성 BMR = 10·W + 6.25·H − 5·A − 161. TDEE = BMR × 활동계수 (거의 없음 1.2, 가벼움 1.375, 보통 1.55, 활발 1.725, 매우 활발 1.9).</p><p>BMR은 완전 휴식 상태에서 소모되는 칼로리(심장·뇌·호흡)이고, TDEE는 활동까지 포함한 총 소모량입니다. −500 kcal/일은 주당 약 0.45 kg 감량 목표, +300은 근력 운동과 함께 근육 증가 지원에 적합합니다.</p></div>
+
+            <div class="related-tools-section">
+                <h3>관련 도구</h3>
+                <div class="related-buttons">
+                    <a href="/ko/bmi-calculator/" class="related-btn">BMI 계산기</a><a
+                        href="/ko/body-fat-calculator/" class="related-btn">체지방 계산기</a><a
+                        href="/ko/unit-converter/" class="related-btn">단위 변환기</a><a
+                        href="/ko/date-calculator/" class="related-btn">날짜 계산기</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="site-footer"><div class="container"><div class="footer-content"><p>&copy; 2025 Utilify. All rights reserved.</p>
+                <p data-legal-links style="font-size: 0.875rem; margin-top: 8px;"><a href="/ko/about/">소개</a> · <a href="/ko/privacy/">개인정보</a> · <a href="/ko/terms/">이용약관</a></p></div></div></footer>
+    <script src="/assets/js/common.js"></script>
+    <script>
+        const LOCALE = document.documentElement.lang || 'en';
+        const fmt = n => Number(n).toLocaleString(LOCALE, { maximumFractionDigits: 0 });
+
+        function calculate() {
+            const age = parseFloat(document.getElementById('age').value);
+            const sex = document.getElementById('sex').value;
+            const h = parseFloat(document.getElementById('height').value);
+            const w = parseFloat(document.getElementById('weight').value);
+            const act = parseFloat(document.getElementById('activity').value);
+            if (!(age > 0) || !(h > 0) || !(w > 0)) {
+                alert('나이·키·체중은 양수로 입력해 주세요.');
+                return;
+            }
+            // Mifflin-St Jeor
+            const bmr = sex === 'male'
+                ? 10 * w + 6.25 * h - 5 * age + 5
+                : 10 * w + 6.25 * h - 5 * age - 161;
+            const tdee = bmr * act;
+            document.getElementById('bmrVal').textContent = fmt(bmr);
+            document.getElementById('tdeeVal').textContent = fmt(tdee);
+            document.getElementById('lossVal').textContent = fmt(tdee - 500);
+            document.getElementById('maintainVal').textContent = fmt(tdee);
+            document.getElementById('gainVal').textContent = fmt(tdee + 300);
+            document.getElementById('result').style.display = 'block';
+        }
+
+        function resetForm() {
+            document.getElementById('age').value = '30';
+            document.getElementById('sex').value = 'male';
+            document.getElementById('height').value = '170';
+            document.getElementById('weight').value = '70';
+            document.getElementById('activity').value = '1.375';
+            document.getElementById('result').style.display = 'none';
+        }
+
+        async function shareResult() {
+            const tdee = document.getElementById('tdeeVal').textContent;
+            if (tdee === '—') return;
+            const text = '내 1일 권장 칼로리: {value} kcal —'.replace('{value}', tdee) + ' ' + location.href;
+            if (navigator.share) {
+                try { await navigator.share({ title: '칼로리·BMR 계산기', text }); return; }
+                catch (e) { if (e && e.name === 'AbortError') return; }
+            }
+            try {
+                await navigator.clipboard.writeText(text);
+                alert('결과가 클립보드에 복사되었습니다.');
+            } catch (e) { /* clipboard blocked — silent */ }
+        }
+    </script>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({google_ad_client:"ca-pub-6334819180242631",enable_page_level_ads:true});</script>
+    <script data-utilify-fav-toggle-script>(function(){var btn=document.querySelector(".fav-toggle-page");if(!btn)return;var m=location.pathname.match(/^\/[^\/]+\/([^\/]+)\/?$/);if(!m)return;var slug=m[1],K="utilify_favorites";function g(){return (localStorage.getItem(K)||"").split(",").filter(Boolean);}function s(a){localStorage.setItem(K,Array.from(new Set(a)).join(","));}function p(f){btn.textContent=f?"★":"☆";btn.classList.toggle("is-fav",f);btn.setAttribute("aria-label",f?btn.dataset.removeLabel:btn.dataset.addLabel);btn.setAttribute("aria-pressed",String(f));}p(g().indexOf(slug)>-1);btn.addEventListener("click",function(){var a=g(),n=a.indexOf(slug)>-1?a.filter(function(x){return x!==slug;}):a.concat([slug]);s(n);p(n.indexOf(slug)>-1);});})();</script>
+</body>
+
+</html>

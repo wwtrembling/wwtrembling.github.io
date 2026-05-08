@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy-Report-Only" content="default-src 'self' https: data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https:; frame-src https:;">
+    <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+    <title>체지방률 계산기 — 미 해군 둘레 측정법 - Utilify</title>
+    <meta name="description" content="키·목·허리 둘레(여성은 엉덩이까지)로 체지방률을 미 해군 공식으로 추정. 카테고리·권장 범위 함께 표시.">
+    <link rel="canonical" href="https://utilifyapp.net/ko/body-fat-calculator/">
+
+    <meta property="og:title" content="체지방률 계산기 - Utilify">
+    <meta property="og:description" content="미 해군 둘레 측정법으로 체지방률·카테고리·권장 범위까지.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://utilifyapp.net/ko/body-fat-calculator/">
+
+    <link rel="alternate" hreflang="en" href="https://utilifyapp.net/en/body-fat-calculator/">
+    <link rel="alternate" hreflang="ko" href="https://utilifyapp.net/ko/body-fat-calculator/">
+    <link rel="alternate" hreflang="vi" href="https://utilifyapp.net/vi/body-fat-calculator/">
+    <link rel="alternate" hreflang="th" href="https://utilifyapp.net/th/body-fat-calculator/">
+    <link rel="alternate" hreflang="de" href="https://utilifyapp.net/de/body-fat-calculator/">
+    <link rel="alternate" hreflang="pt" href="https://utilifyapp.net/pt/body-fat-calculator/">
+    <link rel="alternate" hreflang="id" href="https://utilifyapp.net/id/body-fat-calculator/">
+    <link rel="alternate" hreflang="hi" href="https://utilifyapp.net/hi/body-fat-calculator/">
+    <link rel="alternate" hreflang="ja" href="https://utilifyapp.net/ja/body-fat-calculator/">
+    <link rel="alternate" hreflang="zh-Hans" href="https://utilifyapp.net/zh-cn/body-fat-calculator/">
+    <link rel="alternate" hreflang="zh-Hant" href="https://utilifyapp.net/zh-tw/body-fat-calculator/">
+    <link rel="alternate" hreflang="x-default" href="https://utilifyapp.net/en/body-fat-calculator/">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "체지방률 계산기",
+        "description": "미 해군 둘레 측정 공식으로 체지방률을 추정하고 카테고리를 표시.",
+        "url": "https://utilifyapp.net/ko/body-fat-calculator/",
+        "inLanguage": "ko",
+        "applicationCategory": "HealthApplication",
+        "operatingSystem": "Any",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+
+    <style>
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-md);
+        }
+        @media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; } }
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+        }
+        .result-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            text-align: center;
+        }
+        .result-card .label { font-size: 0.85rem; color: var(--text-secondary); }
+        .result-card .value { font-size: 1.5rem; font-weight: 700; color: var(--primary-color); margin-top: 4px; font-variant-numeric: tabular-nums; }
+        .result-card.headline .value { font-size: 2rem; }
+        .button-row { display: flex; gap: var(--spacing-sm); flex-wrap: wrap; }
+        .button-row .btn { min-width: 120px; }
+        .hip-row.hidden { display: none; }
+    </style>
+    <link rel="manifest" href="/manifest.json">
+    <script data-utilify-adsense-loader async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631" crossorigin="anonymous"></script>
+    <meta data-utilify-og property="og:image" content="https://utilifyapp.net/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Utilify">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://utilifyapp.net/assets/og-image.png">
+    <link data-utilify-favicon rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+</head>
+
+<body>
+    <a data-utilify-skip class="skip-link" href="#main">본문으로 건너뛰기</a>
+    <header class="site-header"><div class="container"><div class="header-content"><a href="/ko/" class="site-logo">🛠️ Utilify</a></div></div></header>
+    <main id="main" class="main-content">
+        <div class="container-narrow">
+            <h1>💪 체지방률 계산기</h1>
+            <div class="security-badge" style="display:flex;align-items:center;justify-content:center;gap:8px;margin:10px 0;font-size:14px;color:var(--text-secondary);">
+                <span>🔒 Secure & Client-side</span>
+                <button id="pwaInstallBtn" class="btn btn-primary" style="display: none; padding: 4px 12px; font-size: 12px;">📲 Install App</button>
+                    <button data-utilify-fav-toggle class="fav-toggle-page" type="button" aria-label="즐겨찾기에 추가" data-add-label="즐겨찾기에 추가" data-remove-label="즐겨찾기에서 제거">☆</button>
+            </div>
+
+            <p>키와 신체 둘레(목·허리, 여성은 엉덩이 추가)를 입력하면 미 해군 공식으로 체지방률을 추정합니다. 결과에는 피트니스 카테고리와 성별 권장 범위가 함께 표시됩니다.</p>
+
+            <div class="card">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label" for="sex">성별</label>
+                        <select id="sex" class="form-input" onchange="toggleHip()">
+                            <option value="male" selected>남성</option>
+                            <option value="female">여성</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="height">키 (cm)</label>
+                        <input type="number" id="height" class="form-input" inputmode="decimal" min="80" max="250" step="0.1" placeholder="170" value="170">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="neck">목 둘레 (cm)</label>
+                        <input type="number" id="neck" class="form-input" inputmode="decimal" min="10" max="80" step="0.1" placeholder="37" value="37">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="waist">허리 둘레 (cm)</label>
+                        <input type="number" id="waist" class="form-input" inputmode="decimal" min="40" max="200" step="0.1" placeholder="85" value="85">
+                    </div>
+                    <div class="form-group hip-row hidden" id="hipGroup">
+                        <label class="form-label" for="hip">엉덩이 둘레 (cm)</label>
+                        <input type="number" id="hip" class="form-input" inputmode="decimal" min="40" max="200" step="0.1" placeholder="95" value="95">
+                    </div>
+                </div>
+                <div class="button-row" style="margin-top: var(--spacing-md);">
+                    <button class="btn btn-primary" type="button" onclick="calculate()">계산</button>
+                    <button class="btn" type="button" onclick="resetForm()">초기화</button>
+                </div>
+            </div>
+
+            <div id="result" style="display:none;" aria-live="polite">
+                <div class="result-grid">
+                    <div class="result-card headline">
+                        <div class="label">체지방률</div>
+                        <div class="value" id="bfpVal">—</div>
+                    </div>
+                    <div class="result-card">
+                        <div class="label">카테고리</div>
+                        <div class="value" id="categoryVal" style="font-size:1.2rem;">—</div>
+                    </div>
+                    <div class="result-card">
+                        <div class="label">권장 범위</div>
+                        <div class="value" id="rangeVal" style="font-size:1.2rem;">—</div>
+                    </div>
+                </div>
+
+                <div class="button-row" style="margin-top: var(--spacing-md);">
+                    <button class="btn" type="button" onclick="shareResult()">결과 공유</button>
+                </div>
+            </div>
+
+            <div class="disclaimer">추정치 — 의료 자문이 아닙니다. 캘리퍼, DEXA 스캔, 수중 측정이 더 정확합니다. 빠른 점검용으로만 사용하세요.</div>
+
+            <h2>사용 방법</h2>
+            <div class="howto-content"><ol><li>생물학적 성별을 선택하세요.</li><li>목 둘레는 후두 바로 아래 가장 좁은 부위에서 측정하세요.</li><li>허리 둘레는 남성은 배꼽 위치, 여성은 가장 잘록한 부분에서 측정합니다. 숨을 참거나 배를 집어넣지 마세요.</li><li>여성은 엉덩이의 가장 넓은 둘레도 측정합니다.</li><li>키(cm)를 입력하고 <strong>계산</strong>을 누르세요.</li></ol><p><strong>공식 (미 해군)</strong>: 남성 BFP = 86.010·log<sub>10</sub>(허리 − 목) − 70.041·log<sub>10</sub>(키) + 36.76. 여성 BFP = 163.205·log<sub>10</sub>(허리 + 엉덩이 − 목) − 97.684·log<sub>10</sub>(키) − 78.387.</p><p>해군 공식은 평균 체형에 대해 수중 측정 대비 ±3% 정확도 — BMI보다 체구성 평가에 낫지만 DEXA보다는 부정확합니다. 일관된 결과를 위해 아침 첫 측정을 권장합니다.</p></div>
+
+            <div class="related-tools-section">
+                <h3>관련 도구</h3>
+                <div class="related-buttons">
+                    <a href="/ko/bmi-calculator/" class="related-btn">BMI 계산기</a><a
+                        href="/ko/calorie-calculator/" class="related-btn">칼로리 계산기</a><a
+                        href="/ko/unit-converter/" class="related-btn">단위 변환기</a><a
+                        href="/ko/date-calculator/" class="related-btn">날짜 계산기</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="site-footer"><div class="container"><div class="footer-content"><p>&copy; 2025 Utilify. All rights reserved.</p>
+                <p data-legal-links style="font-size: 0.875rem; margin-top: 8px;"><a href="/ko/about/">소개</a> · <a href="/ko/privacy/">개인정보</a> · <a href="/ko/terms/">이용약관</a></p></div></div></footer>
+    <script src="/assets/js/common.js"></script>
+    <script>
+        const LOCALE = document.documentElement.lang || 'en';
+
+        function toggleHip() {
+            const sex = document.getElementById('sex').value;
+            document.getElementById('hipGroup').classList.toggle('hidden', sex !== 'female');
+        }
+
+        function classifyMale(p) {
+            if (p < 6) return { cat: '필수 지방', range: '8–19%' };
+            if (p < 14) return { cat: '운동선수', range: '8–19%' };
+            if (p < 18) return { cat: '피트니스', range: '8–19%' };
+            if (p < 25) return { cat: '보통', range: '8–19%' };
+            return { cat: '비만', range: '8–19%' };
+        }
+        function classifyFemale(p) {
+            if (p < 14) return { cat: '필수 지방', range: '21–32%' };
+            if (p < 21) return { cat: '운동선수', range: '21–32%' };
+            if (p < 25) return { cat: '피트니스', range: '21–32%' };
+            if (p < 32) return { cat: '보통', range: '21–32%' };
+            return { cat: '비만', range: '21–32%' };
+        }
+
+        function calculate() {
+            const sex = document.getElementById('sex').value;
+            const h = parseFloat(document.getElementById('height').value);
+            const neck = parseFloat(document.getElementById('neck').value);
+            const waist = parseFloat(document.getElementById('waist').value);
+            const hip = parseFloat(document.getElementById('hip').value);
+            if (!(h > 0) || !(neck > 0) || !(waist > 0) || (sex === 'female' && !(hip > 0))) {
+                alert('모든 측정값은 양수여야 합니다. 여성은 엉덩이 둘레가 필수입니다.');
+                return;
+            }
+            let bfp;
+            if (sex === 'male') {
+                const inner = waist - neck;
+                if (inner <= 0) { alert('허리와 목 측정값이 일관되지 않습니다 — 다시 측정해 주세요.'); return; }
+                bfp = 86.010 * Math.log10(inner) - 70.041 * Math.log10(h) + 36.76;
+            } else {
+                const inner = waist + hip - neck;
+                if (inner <= 0) { alert('허리와 목 측정값이 일관되지 않습니다 — 다시 측정해 주세요.'); return; }
+                bfp = 163.205 * Math.log10(inner) - 97.684 * Math.log10(h) - 78.387;
+            }
+            bfp = Math.max(0, Math.min(70, bfp));
+            const c = sex === 'male' ? classifyMale(bfp) : classifyFemale(bfp);
+
+            document.getElementById('bfpVal').textContent = bfp.toFixed(1) + '%';
+            document.getElementById('categoryVal').textContent = c.cat;
+            document.getElementById('rangeVal').textContent = c.range;
+            document.getElementById('result').style.display = 'block';
+        }
+
+        function resetForm() {
+            document.getElementById('sex').value = 'male';
+            document.getElementById('height').value = '170';
+            document.getElementById('neck').value = '37';
+            document.getElementById('waist').value = '85';
+            document.getElementById('hip').value = '95';
+            toggleHip();
+            document.getElementById('result').style.display = 'none';
+        }
+
+        async function shareResult() {
+            const bfp = document.getElementById('bfpVal').textContent;
+            if (bfp === '—') return;
+            const num = bfp.replace('%', '');
+            const text = '내 체지방률: {value}% —'.replace('{value}', num) + ' ' + location.href;
+            if (navigator.share) {
+                try { await navigator.share({ title: '체지방률 계산기', text }); return; }
+                catch (e) { if (e && e.name === 'AbortError') return; }
+            }
+            try {
+                await navigator.clipboard.writeText(text);
+                alert('결과가 클립보드에 복사되었습니다.');
+            } catch (e) { /* clipboard blocked — silent */ }
+        }
+
+        // Initialize hip row visibility on load.
+        toggleHip();
+    </script>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({google_ad_client:"ca-pub-6334819180242631",enable_page_level_ads:true});</script>
+    <script data-utilify-fav-toggle-script>(function(){var btn=document.querySelector(".fav-toggle-page");if(!btn)return;var m=location.pathname.match(/^\/[^\/]+\/([^\/]+)\/?$/);if(!m)return;var slug=m[1],K="utilify_favorites";function g(){return (localStorage.getItem(K)||"").split(",").filter(Boolean);}function s(a){localStorage.setItem(K,Array.from(new Set(a)).join(","));}function p(f){btn.textContent=f?"★":"☆";btn.classList.toggle("is-fav",f);btn.setAttribute("aria-label",f?btn.dataset.removeLabel:btn.dataset.addLabel);btn.setAttribute("aria-pressed",String(f));}p(g().indexOf(slug)>-1);btn.addEventListener("click",function(){var a=g(),n=a.indexOf(slug)>-1?a.filter(function(x){return x!==slug;}):a.concat([slug]);s(n);p(n.indexOf(slug)>-1);});})();</script>
+</body>
+
+</html>

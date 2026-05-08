@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy-Report-Only" content="default-src 'self' https: data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https:; frame-src https:;">
+    <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+    <title>복리 계산기 — 투자 성장 시뮬레이션 - Utilify</title>
+    <meta name="description" content="원금·연 수익률·기간·월 적립으로 복리 효과를 적용한 미래 잔액, 총 납입, 총 이자를 계산. 연도별 잔액 표 포함.">
+    <link rel="canonical" href="https://utilifyapp.net/ko/compound-interest/">
+
+    <meta property="og:title" content="복리 계산기 - Utilify">
+    <meta property="og:description" content="복리와 월 적립을 적용한 투자 성장을 시뮬레이션하세요.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://utilifyapp.net/ko/compound-interest/">
+
+    <link rel="alternate" hreflang="en" href="https://utilifyapp.net/en/compound-interest/">
+    <link rel="alternate" hreflang="ko" href="https://utilifyapp.net/ko/compound-interest/">
+    <link rel="alternate" hreflang="vi" href="https://utilifyapp.net/vi/compound-interest/">
+    <link rel="alternate" hreflang="th" href="https://utilifyapp.net/th/compound-interest/">
+    <link rel="alternate" hreflang="de" href="https://utilifyapp.net/de/compound-interest/">
+    <link rel="alternate" hreflang="pt" href="https://utilifyapp.net/pt/compound-interest/">
+    <link rel="alternate" hreflang="id" href="https://utilifyapp.net/id/compound-interest/">
+    <link rel="alternate" hreflang="hi" href="https://utilifyapp.net/hi/compound-interest/">
+    <link rel="alternate" hreflang="ja" href="https://utilifyapp.net/ja/compound-interest/">
+    <link rel="alternate" hreflang="zh-Hans" href="https://utilifyapp.net/zh-cn/compound-interest/">
+    <link rel="alternate" hreflang="zh-Hant" href="https://utilifyapp.net/zh-tw/compound-interest/">
+    <link rel="alternate" hreflang="x-default" href="https://utilifyapp.net/en/compound-interest/">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "복리 계산기",
+        "description": "원금·연 수익률·복리 빈도·월 적립을 입력하면 미래 가치를 계산하는 도구.",
+        "url": "https://utilifyapp.net/ko/compound-interest/",
+        "inLanguage": "ko",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Any",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+
+    <style>
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+        }
+        .result-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            text-align: center;
+        }
+        .result-card .label { font-size: 0.85rem; color: var(--text-secondary); }
+        .result-card .value { font-size: 1.5rem; font-weight: 700; color: var(--primary-color); margin-top: 4px; font-variant-numeric: tabular-nums; }
+        .result-card.headline .value { font-size: 2rem; }
+
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-variant-numeric: tabular-nums;
+            font-size: 0.92rem;
+            min-width: 420px;
+        }
+        .schedule-table th, .schedule-table td {
+            padding: 8px 10px;
+            border-bottom: 1px solid var(--border-color);
+            text-align: right;
+            white-space: nowrap;
+        }
+        .schedule-table th:first-child, .schedule-table td:first-child { text-align: left; }
+        .schedule-table th { background: var(--bg-secondary); font-weight: 600; }
+        .button-row { display: flex; gap: var(--spacing-sm); flex-wrap: wrap; }
+        .button-row .btn { min-width: 120px; }
+    </style>
+    <link rel="manifest" href="/manifest.json">
+    <script data-utilify-adsense-loader async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631" crossorigin="anonymous"></script>
+    <meta data-utilify-og property="og:image" content="https://utilifyapp.net/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Utilify">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://utilifyapp.net/assets/og-image.png">
+    <link data-utilify-favicon rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+</head>
+
+<body>
+    <a data-utilify-skip class="skip-link" href="#main">본문으로 건너뛰기</a>
+    <header class="site-header"><div class="container"><div class="header-content"><a href="/ko/" class="site-logo">🛠️ Utilify</a></div></div></header>
+    <main id="main" class="main-content">
+        <div class="container-narrow">
+            <h1>📈 복리 계산기</h1>
+            <div class="security-badge" style="display:flex;align-items:center;justify-content:center;gap:8px;margin:10px 0;font-size:14px;color:var(--text-secondary);">
+                <span>🔒 Secure & Client-side</span>
+                <button id="pwaInstallBtn" class="btn btn-primary" style="display: none; padding: 4px 12px; font-size: 12px;">📲 Install App</button>
+                    <button data-utilify-fav-toggle class="fav-toggle-page" type="button" aria-label="즐겨찾기에 추가" data-add-label="즐겨찾기에 추가" data-remove-label="즐겨찾기에서 제거">☆</button>
+            </div>
+
+            <p>초기 원금·연 수익률·기간·복리 빈도·월 적립을 입력하면 투자 또는 저축 계좌의 미래 가치를 계산합니다. 연도별 잔액 흐름도 함께 표시됩니다.</p>
+
+            <div class="card">
+                <div class="form-group">
+                    <label class="form-label" for="principal">초기 원금</label>
+                    <input type="number" id="principal" class="form-input" inputmode="decimal" min="0" step="any" placeholder="10000000" value="10000000">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="rate">연 수익률 (%)</label>
+                    <input type="number" id="rate" class="form-input" inputmode="decimal" min="0" step="0.01" placeholder="7" value="7">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="years">기간 (년)</label>
+                    <input type="number" id="years" class="form-input" inputmode="numeric" min="1" max="100" step="1" placeholder="20" value="20">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="frequency">복리 빈도</label>
+                    <select id="frequency" class="form-input">
+                        <option value="1">연 1회</option>
+                        <option value="12" selected>월 복리</option>
+                        <option value="365">일 복리</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="contrib">월 적립금</label>
+                    <input type="number" id="contrib" class="form-input" inputmode="decimal" min="0" step="any" placeholder="500000" value="500000">
+                </div>
+                <div class="button-row">
+                    <button class="btn btn-primary" type="button" onclick="calculate()">계산</button>
+                    <button class="btn" type="button" onclick="resetForm()">초기화</button>
+                </div>
+            </div>
+
+            <div id="result" style="display:none;" aria-live="polite">
+                <div class="result-grid">
+                    <div class="result-card headline">
+                        <div class="label">최종 잔액</div>
+                        <div class="value" id="finalVal">—</div>
+                    </div>
+                    <div class="result-card">
+                        <div class="label">총 납입금</div>
+                        <div class="value" id="totalContribVal">—</div>
+                    </div>
+                    <div class="result-card">
+                        <div class="label">총 이자 수익</div>
+                        <div class="value" id="totalInterestVal">—</div>
+                    </div>
+                </div>
+
+                <h3>연도별 잔액</h3>
+                <div class="table-responsive">
+                    <table class="schedule-table">
+                        <thead>
+                            <tr>
+                                <th>연차</th>
+                                <th>잔액</th>
+                                <th>납입 누적</th>
+                                <th>이자 수익</th>
+                            </tr>
+                        </thead>
+                        <tbody id="yearBody"></tbody>
+                    </table>
+                </div>
+
+                <div class="button-row" style="margin-top: var(--spacing-md);">
+                    <button class="btn" type="button" onclick="shareResult()">결과 공유</button>
+                </div>
+            </div>
+
+            <div class="disclaimer">추정치 — 재정 자문이 아닙니다. 실제 수익은 변동하며 보장되지 않습니다.</div>
+
+            <h2>사용 방법</h2>
+            <div class="howto-content"><ol><li>현재 가지고 있는 초기 원금을 입력하세요.</li><li>예상 연 수익률을 퍼센트로 입력하세요 (S&amp;P 500 장기 평균은 명목 약 10%, 실질 약 7%).</li><li>투자 기간을 연 단위로 입력하세요.</li><li>복리 빈도를 선택합니다: 연 1회·월·일. 인덱스 펀드는 사실상 연속복리이므로 월 복리가 근사값입니다.</li><li>월 적립금을 입력 (없으면 0)하고 <strong>계산</strong>을 누르세요.</li></ol><p><strong>공식</strong>: FV = P(1 + r/m)<sup>m·t</sup> + C · ((1 + r/m)<sup>m·t</sup> − 1) / (r/m). P는 원금, r은 연 이자율, m은 연 복리 횟수, t는 년수, C는 정기 적립금입니다.</p><p>인플레이션·세금·수수료는 반영되지 않습니다. 명목 7%에 인플레이션 3%면 실질 수익률은 약 4% — 미래 잔액의 구매력은 보이는 숫자보다 작습니다.</p></div>
+
+            <div class="related-tools-section">
+                <h3>관련 도구</h3>
+                <div class="related-buttons">
+                    <a href="/ko/loan-calculator/" class="related-btn">대출 계산기</a><a
+                        href="/ko/retirement-calculator/" class="related-btn">은퇴 계산기</a><a
+                        href="/ko/date-calculator/" class="related-btn">날짜 계산기</a><a
+                        href="/ko/unit-converter/" class="related-btn">단위 변환기</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="site-footer"><div class="container"><div class="footer-content"><p>&copy; 2025 Utilify. All rights reserved.</p>
+                <p data-legal-links style="font-size: 0.875rem; margin-top: 8px;"><a href="/ko/about/">소개</a> · <a href="/ko/privacy/">개인정보</a> · <a href="/ko/terms/">이용약관</a></p></div></div></footer>
+    <script src="/assets/js/common.js"></script>
+    <script>
+        const LOCALE = document.documentElement.lang || 'en';
+        const fmt = n => Number(n).toLocaleString(LOCALE, { maximumFractionDigits: 0 });
+
+        function calculate() {
+            const P = parseFloat(document.getElementById('principal').value) || 0;
+            const annualRate = parseFloat(document.getElementById('rate').value) || 0;
+            const years = parseFloat(document.getElementById('years').value);
+            const m = parseInt(document.getElementById('frequency').value, 10);
+            const monthlyC = parseFloat(document.getElementById('contrib').value) || 0;
+            if (!(years > 0) || P < 0 || monthlyC < 0 || annualRate < 0) {
+                alert('원금과 적립금은 0 이상, 기간은 양수로 입력해 주세요.');
+                return;
+            }
+
+            // Convert monthly contribution to per-period contribution.
+            // Per-period contribution = monthlyC * 12 / m (so total annual contribution stays consistent).
+            const C = monthlyC * 12 / m;
+            const r = annualRate / 100;
+            const periodRate = r / m;
+
+            // Year-by-year iteration so we can build the breakdown table.
+            const rows = [];
+            let balance = P;
+            let totalContrib = P;
+            for (let y = 1; y <= years; y++) {
+                // Within this year, compound m times, adding C each period.
+                for (let p = 0; p < m; p++) {
+                    balance = balance * (1 + periodRate) + C;
+                    totalContrib += C;
+                }
+                rows.push({ year: y, balance, contributed: totalContrib });
+            }
+
+            const finalBalance = balance;
+            const totalInterest = finalBalance - totalContrib;
+
+            document.getElementById('finalVal').textContent = fmt(finalBalance);
+            document.getElementById('totalContribVal').textContent = fmt(totalContrib);
+            document.getElementById('totalInterestVal').textContent = fmt(totalInterest);
+
+            // Show up to 10 years; if longer, show first 5 + last 5.
+            const tbody = document.getElementById('yearBody');
+            tbody.innerHTML = '';
+            const showRows = rows.length <= 10
+                ? rows
+                : rows.slice(0, 5).concat([{ ellipsis: true }]).concat(rows.slice(-5));
+            for (const row of showRows) {
+                const tr = document.createElement('tr');
+                if (row.ellipsis) {
+                    tr.innerHTML = '<td colspan="4" style="text-align:center;color:var(--text-secondary);">…</td>';
+                } else {
+                    const interest = row.balance - row.contributed;
+                    tr.innerHTML =
+                        '<td>' + row.year + '</td>' +
+                        '<td>' + fmt(row.balance) + '</td>' +
+                        '<td>' + fmt(row.contributed) + '</td>' +
+                        '<td>' + fmt(interest) + '</td>';
+                }
+                tbody.appendChild(tr);
+            }
+
+            document.getElementById('result').style.display = 'block';
+        }
+
+        function resetForm() {
+            document.getElementById('principal').value = '10000000';
+            document.getElementById('rate').value = '7';
+            document.getElementById('years').value = '20';
+            document.getElementById('frequency').value = '12';
+            document.getElementById('contrib').value = '500000';
+            document.getElementById('result').style.display = 'none';
+        }
+
+        async function shareResult() {
+            const final = document.getElementById('finalVal').textContent;
+            if (final === '—') return;
+            const text = '내 투자 미래 가치는 {value} —'.replace('{value}', final) + ' ' + location.href;
+            if (navigator.share) {
+                try { await navigator.share({ title: '복리 계산기', text }); return; }
+                catch (e) { if (e && e.name === 'AbortError') return; }
+            }
+            try {
+                await navigator.clipboard.writeText(text);
+                alert('결과가 클립보드에 복사되었습니다.');
+            } catch (e) { /* clipboard blocked — silent */ }
+        }
+    </script>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({google_ad_client:"ca-pub-6334819180242631",enable_page_level_ads:true});</script>
+    <script data-utilify-fav-toggle-script>(function(){var btn=document.querySelector(".fav-toggle-page");if(!btn)return;var m=location.pathname.match(/^\/[^\/]+\/([^\/]+)\/?$/);if(!m)return;var slug=m[1],K="utilify_favorites";function g(){return (localStorage.getItem(K)||"").split(",").filter(Boolean);}function s(a){localStorage.setItem(K,Array.from(new Set(a)).join(","));}function p(f){btn.textContent=f?"★":"☆";btn.classList.toggle("is-fav",f);btn.setAttribute("aria-label",f?btn.dataset.removeLabel:btn.dataset.addLabel);btn.setAttribute("aria-pressed",String(f));}p(g().indexOf(slug)>-1);btn.addEventListener("click",function(){var a=g(),n=a.indexOf(slug)>-1?a.filter(function(x){return x!==slug;}):a.concat([slug]);s(n);p(n.indexOf(slug)>-1);});})();</script>
+</body>
+
+</html>
