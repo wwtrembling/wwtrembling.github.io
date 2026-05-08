@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="{{ lang_code }}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy-Report-Only" content="default-src 'self' https: data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https:; frame-src https:;">
+    <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+    <title>{{ meta_title }}</title>
+    <meta name="description" content="{{ meta_desc }}">
+    <link rel="canonical" href="https://utilifyapp.net/{{ lang_code }}/water-intake/">
+
+    <meta property="og:title" content="{{ og_title }}">
+    <meta property="og:description" content="{{ og_desc }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://utilifyapp.net/{{ lang_code }}/water-intake/">
+
+    {{ alternate_links }}
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "{{ json_name }}",
+        "description": "{{ json_desc }}",
+        "url": "https://utilifyapp.net/{{ lang_code }}/water-intake/",
+        "inLanguage": "{{ lang_code }}",
+        "applicationCategory": "HealthApplication",
+        "operatingSystem": "Any",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+    <style>
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: var(--spacing-md);
+        }
+        @media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; } }
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+        }
+        .stat-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            text-align: center;
+        }
+        .stat-card .label { font-size: 0.85rem; color: var(--text-secondary); }
+        .stat-card .value { font-size: 1.5rem; font-weight: 700; color: var(--primary-color); margin-top: 4px; font-variant-numeric: tabular-nums; }
+        .stat-card.headline .value { font-size: 2rem; }
+        .button-row { display: flex; gap: var(--spacing-sm); flex-wrap: wrap; }
+        .button-row .btn { min-width: 120px; }
+    </style>
+    <link rel="manifest" href="/manifest.json">
+</head>
+
+<body>
+    <header class="site-header"><div class="container"><div class="header-content"><a href="/{{ lang_code }}/" class="site-logo">{{ brand }}</a></div></div></header>
+    <main class="main-content">
+        <div class="container-narrow">
+            <h1>💧 {{ title }}</h1>
+            <div class="security-badge" style="display:flex;align-items:center;justify-content:center;gap:8px;margin:10px 0;font-size:14px;color:var(--text-secondary);">
+                <span>{{ secure_badge }}</span>
+                <button id="pwaInstallBtn" class="btn btn-primary" style="display: none; padding: 4px 12px; font-size: 12px;">{{ install_app }}</button>
+            </div>
+
+            <p>{{ page_desc }}</p>
+
+            <div class="card">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label" for="weight">{{ label_weight }}</label>
+                        <input type="number" id="weight" class="form-input" inputmode="decimal" min="20" max="350" step="0.5" placeholder="{{ ph_weight }}" value="{{ ph_weight }}">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="activity">{{ label_activity }}</label>
+                        <select id="activity" class="form-input">
+                            <option value="0">{{ opt_act_low }}</option>
+                            <option value="350" selected>{{ opt_act_mid }}</option>
+                            <option value="500">{{ opt_act_high }}</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="climate">{{ label_climate }}</label>
+                        <select id="climate" class="form-input">
+                            <option value="0" selected>{{ opt_clim_normal }}</option>
+                            <option value="500">{{ opt_clim_hot }}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="button-row" style="margin-top: var(--spacing-md);">
+                    <button class="btn btn-primary" type="button" onclick="calculate()">{{ btn_calculate }}</button>
+                    <button class="btn" type="button" onclick="resetForm()">{{ btn_reset }}</button>
+                </div>
+            </div>
+
+            <div id="result" style="display:none;" aria-live="polite">
+                <div class="stat-grid">
+                    <div class="stat-card headline">
+                        <div class="label">{{ res_ml_label }}</div>
+                        <div class="value" id="mlVal">—</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="label">{{ res_l_label }}</div>
+                        <div class="value" id="lVal">—</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="label">{{ res_glasses_label }}</div>
+                        <div class="value" id="glassesVal">—</div>
+                    </div>
+                </div>
+                <div class="button-row">
+                    <button class="btn" type="button" onclick="shareResult()">{{ btn_share }}</button>
+                </div>
+            </div>
+
+            <div class="disclaimer">{{ disclaimer }}</div>
+
+            <h2>{{ howto_header }}</h2>
+            <div class="howto-content">{{ howto_html }}</div>
+
+            <div class="related-tools-section">
+                <h3>{{ related_header }}</h3>
+                <div class="related-buttons">
+                    <a href="/{{ lang_code }}/calorie-calculator/" class="related-btn">{{ related_calorie }}</a><a
+                        href="/{{ lang_code }}/bmi-calculator/" class="related-btn">{{ related_bmi }}</a><a
+                        href="/{{ lang_code }}/body-fat-calculator/" class="related-btn">{{ related_body_fat }}</a><a
+                        href="/{{ lang_code }}/unit-converter/" class="related-btn">{{ related_unit }}</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="site-footer"><div class="container"><div class="footer-content"><p>{{ footer }}</p></div></div></footer>
+    <script src="/assets/js/common.js"></script>
+    <script>
+        const LOCALE = document.documentElement.lang || 'en';
+
+        function calculate() {
+            const w = parseFloat(document.getElementById('weight').value);
+            const act = parseFloat(document.getElementById('activity').value) || 0;
+            const clim = parseFloat(document.getElementById('climate').value) || 0;
+            if (!(w > 0)) { alert('{{ alert_invalid }}'); return; }
+            const ml = Math.round(w * 33 + act + clim);
+            const liters = (ml / 1000).toFixed(1);
+            const glasses = Math.round(ml / 250);
+            document.getElementById('mlVal').textContent = ml.toLocaleString(LOCALE) + ' ml';
+            document.getElementById('lVal').textContent = liters + ' L';
+            document.getElementById('glassesVal').textContent = glasses;
+            document.getElementById('result').style.display = 'block';
+        }
+
+        function resetForm() {
+            document.getElementById('weight').value = '{{ ph_weight }}';
+            document.getElementById('activity').value = '350';
+            document.getElementById('climate').value = '0';
+            document.getElementById('result').style.display = 'none';
+        }
+
+        async function shareResult() {
+            const v = document.getElementById('mlVal').textContent;
+            if (v === '—') return;
+            const text = '{{ share_text }}'.replace('{value}', v) + ' ' + location.href;
+            if (navigator.share) {
+                try { await navigator.share({ title: '{{ title }}', text }); return; }
+                catch (e) { if (e && e.name === 'AbortError') return; }
+            }
+            try {
+                await navigator.clipboard.writeText(text);
+                alert('{{ share_copied }}');
+            } catch (e) { /* clipboard blocked */ }
+        }
+    </script>
+</body>
+
+</html>

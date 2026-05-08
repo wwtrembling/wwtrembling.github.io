@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="{{ lang_code }}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy-Report-Only" content="default-src 'self' https: data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https:; frame-src https:;">
+    <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+    <title>{{ meta_title }}</title>
+    <meta name="description" content="{{ meta_desc }}">
+    <link rel="canonical" href="https://utilifyapp.net/{{ lang_code }}/sleep-calculator/">
+
+    <meta property="og:title" content="{{ og_title }}">
+    <meta property="og:description" content="{{ og_desc }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://utilifyapp.net/{{ lang_code }}/sleep-calculator/">
+
+    {{ alternate_links }}
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "{{ json_name }}",
+        "description": "{{ json_desc }}",
+        "url": "https://utilifyapp.net/{{ lang_code }}/sleep-calculator/",
+        "inLanguage": "{{ lang_code }}",
+        "applicationCategory": "HealthApplication",
+        "operatingSystem": "Any",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+    <style>
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-md);
+        }
+        @media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; } }
+        .time-list { display: grid; gap: var(--spacing-sm); margin: var(--spacing-md) 0; }
+        .time-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .time-card .time { font-size: 1.5rem; font-weight: 700; color: var(--primary-color); font-variant-numeric: tabular-nums; }
+        .time-card .meta { font-size: 0.85rem; color: var(--text-secondary); }
+        .button-row { display: flex; gap: var(--spacing-sm); flex-wrap: wrap; }
+        .button-row .btn { min-width: 120px; }
+    </style>
+    <link rel="manifest" href="/manifest.json">
+</head>
+
+<body>
+    <header class="site-header"><div class="container"><div class="header-content"><a href="/{{ lang_code }}/" class="site-logo">{{ brand }}</a></div></div></header>
+    <main class="main-content">
+        <div class="container-narrow">
+            <h1>🌙 {{ title }}</h1>
+            <div class="security-badge" style="display:flex;align-items:center;justify-content:center;gap:8px;margin:10px 0;font-size:14px;color:var(--text-secondary);">
+                <span>{{ secure_badge }}</span>
+                <button id="pwaInstallBtn" class="btn btn-primary" style="display: none; padding: 4px 12px; font-size: 12px;">{{ install_app }}</button>
+            </div>
+
+            <p>{{ page_desc }}</p>
+
+            <div class="card">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label" for="mode">{{ label_mode }}</label>
+                        <select id="mode" class="form-input">
+                            <option value="wake" selected>{{ opt_wake }}</option>
+                            <option value="sleep">{{ opt_sleep }}</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="time">{{ label_time }}</label>
+                        <input type="time" id="time" class="form-input" value="07:00">
+                    </div>
+                </div>
+                <div class="button-row" style="margin-top: var(--spacing-md);">
+                    <button class="btn btn-primary" type="button" onclick="calculate()">{{ btn_calculate }}</button>
+                    <button class="btn" type="button" onclick="resetForm()">{{ btn_reset }}</button>
+                </div>
+            </div>
+
+            <div id="result" style="display:none;" aria-live="polite">
+                <h3 id="resultHeader"></h3>
+                <div class="time-list" id="timeList"></div>
+                <div class="button-row">
+                    <button class="btn" type="button" onclick="shareResult()">{{ btn_share }}</button>
+                </div>
+            </div>
+
+            <div class="disclaimer">{{ disclaimer }}</div>
+
+            <h2>{{ howto_header }}</h2>
+            <div class="howto-content">{{ howto_html }}</div>
+
+            <div class="related-tools-section">
+                <h3>{{ related_header }}</h3>
+                <div class="related-buttons">
+                    <a href="/{{ lang_code }}/calorie-calculator/" class="related-btn">{{ related_calorie }}</a><a
+                        href="/{{ lang_code }}/bmi-calculator/" class="related-btn">{{ related_bmi }}</a><a
+                        href="/{{ lang_code }}/timer/" class="related-btn">{{ related_timer }}</a><a
+                        href="/{{ lang_code }}/date-calculator/" class="related-btn">{{ related_date }}</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="site-footer"><div class="container"><div class="footer-content"><p>{{ footer }}</p></div></div></footer>
+    <script src="/assets/js/common.js"></script>
+    <script>
+        const LOCALE = document.documentElement.lang || 'en';
+        const SLEEP_LATENCY = 14;
+        const CYCLE_MIN = 90;
+
+        function fmtTime(d) {
+            return d.toLocaleTimeString(LOCALE, { hour: '2-digit', minute: '2-digit', hour12: false });
+        }
+
+        function calculate() {
+            const mode = document.getElementById('mode').value;
+            const t = document.getElementById('time').value;
+            if (!t) { alert('{{ alert_invalid }}'); return; }
+            const [h, m] = t.split(':').map(Number);
+            const base = new Date();
+            base.setHours(h, m, 0, 0);
+
+            const list = document.getElementById('timeList');
+            list.innerHTML = '';
+            // 4 to 6 cycles, sorted with the most-recommended (5–6 cycles) first.
+            const cycles = [6, 5, 4];
+            cycles.forEach(c => {
+                const totalMin = SLEEP_LATENCY + c * CYCLE_MIN;
+                const offsetMs = totalMin * 60_000 * (mode === 'wake' ? -1 : 1);
+                const result = new Date(base.getTime() + offsetMs);
+                const hours = (c * CYCLE_MIN) / 60;
+                const card = document.createElement('div');
+                card.className = 'time-card';
+                const left = document.createElement('div');
+                const meta = document.createElement('div');
+                meta.className = 'meta';
+                meta.textContent = '{{ cycle_label }}'
+                    .replace('{cycles}', c)
+                    .replace('{hours}', hours);
+                left.appendChild(meta);
+                const time = document.createElement('div');
+                time.className = 'time';
+                time.textContent = fmtTime(result);
+                card.appendChild(left);
+                card.appendChild(time);
+                list.appendChild(card);
+            });
+
+            const header = document.getElementById('resultHeader');
+            header.textContent = mode === 'wake' ? '{{ res_header_wake }}' : '{{ res_header_sleep }}';
+            document.getElementById('result').style.display = 'block';
+        }
+
+        function resetForm() {
+            document.getElementById('mode').value = 'wake';
+            document.getElementById('time').value = '07:00';
+            document.getElementById('result').style.display = 'none';
+        }
+
+        async function shareResult() {
+            const list = document.getElementById('timeList');
+            if (!list.children.length) return;
+            const summary = [...list.children]
+                .map(c => c.querySelector('.time').textContent)
+                .join(', ');
+            const text = '{{ share_text }}'.replace('{value}', summary) + ' ' + location.href;
+            if (navigator.share) {
+                try { await navigator.share({ title: '{{ title }}', text }); return; }
+                catch (e) { if (e && e.name === 'AbortError') return; }
+            }
+            try {
+                await navigator.clipboard.writeText(text);
+                alert('{{ share_copied }}');
+            } catch (e) { /* clipboard blocked */ }
+        }
+    </script>
+</body>
+
+</html>

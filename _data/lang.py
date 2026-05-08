@@ -8036,3 +8036,271 @@ DISCOUNT_CALCULATOR = {
         "card_blurb": "최종 가격·절약 금액·중복 할인 실질 합산율까지 즉시 계산."
     }
 }
+
+
+SLEEP_CALCULATOR = {
+    "en": {
+        "title": "Sleep Cycle Calculator",
+        "meta_title": "Sleep Calculator — When to Sleep / Wake Up - Utilify",
+        "meta_desc": "Plan sleep around 90-minute REM cycles. Pick a wake time to see when to fall asleep, or a bedtime to see optimal wake times. 14 minutes added for falling asleep.",
+        "og_title": "Sleep Cycle Calculator - Utilify",
+        "og_desc": "Plan sleep around 90-minute REM cycles for refreshed wake-ups.",
+        "json_name": "Sleep Cycle Calculator",
+        "json_desc": "Suggest bedtimes or wake times aligned with 90-minute REM cycles.",
+        "page_desc": "Plan your sleep around 90-minute REM cycles. Enter a wake time to see when to fall asleep for 4–6 cycles, or enter a bedtime to see good wake times. The calculator adds 14 minutes for falling asleep so the suggested times match real-world sleep onset.",
+        "label_mode": "Plan",
+        "label_time": "Time",
+        "opt_wake": "I want to wake up at…",
+        "opt_sleep": "I'm going to bed at…",
+        "btn_calculate": "Show times",
+        "btn_reset": "Reset",
+        "btn_share": "Share result",
+        "share_text": "Sleep planner: {value} —",
+        "share_copied": "Copied to clipboard.",
+        "res_header_wake": "Try falling asleep at one of these times:",
+        "res_header_sleep": "You should aim to wake up at one of these times:",
+        "cycle_label": "{cycles} cycles · {hours}h sleep",
+        "alert_invalid": "Please pick a valid time.",
+        "disclaimer": "Adds 14 minutes for sleep latency (the time it typically takes to fall asleep). Your real cycle length may be 80–100 minutes — adjust if you wake up groggy at 90.",
+        "howto_header": "How to use",
+        "howto_html": (
+            "<ol>"
+            "<li>Pick whether you're starting from a target wake time or a bedtime.</li>"
+            "<li>Enter the time in 24-hour format. The calculator adds a 14-minute fall-asleep buffer and computes 4 to 6 full 90-minute cycles.</li>"
+            "<li>Aim for one of the suggested times. Waking up at the end of a cycle (light sleep) usually feels less groggy than waking mid-cycle.</li>"
+            "</ol>"
+            "<p>Adults need <strong>5–6 cycles</strong> (7.5–9 hours) on average. 4 cycles (6 hours) is a survival minimum, not a target. Sleep latency varies — if you typically fall asleep in 5 minutes or 30+ minutes, mentally adjust the buffer.</p>"
+        ),
+        "related_header": "Related Tools",
+        "related_calorie": "Calorie Calculator",
+        "related_bmi": "BMI Calculator",
+        "related_timer": "Timer",
+        "related_date": "Date Calculator",
+        "card_blurb": "When to sleep / wake up around 90-minute REM cycles."
+    },
+    "ko": {
+        "title": "수면 사이클 계산기",
+        "meta_title": "수면 계산기 — 잠들 시간·일어날 시간 - Utilify",
+        "meta_desc": "90분 REM 사이클 기준 수면 계획. 기상 시간을 입력해 잠들 시간을, 취침 시간을 입력해 최적 기상 시간을 확인. 잠드는 시간 14분 자동 반영.",
+        "og_title": "수면 사이클 계산기 - Utilify",
+        "og_desc": "90분 REM 사이클에 맞춰 상쾌하게 일어나는 시간을 계획.",
+        "json_name": "수면 사이클 계산기",
+        "json_desc": "90분 REM 사이클에 정렬된 취침 또는 기상 시간 추천기.",
+        "page_desc": "90분 REM 사이클에 맞춰 수면을 계획하세요. 기상 시간을 입력하면 4~6 사이클을 위한 잠들 시간을, 취침 시간을 입력하면 좋은 기상 시간을 알려줍니다. 잠드는 데 걸리는 시간 14분이 자동 반영됩니다.",
+        "label_mode": "방식",
+        "label_time": "시간",
+        "opt_wake": "이 시간에 일어나고 싶어요",
+        "opt_sleep": "이 시간에 잠들 거예요",
+        "btn_calculate": "시간 보기",
+        "btn_reset": "초기화",
+        "btn_share": "결과 공유",
+        "share_text": "수면 플래너: {value} —",
+        "share_copied": "클립보드에 복사되었습니다.",
+        "res_header_wake": "이 시간 중 한 시점에 잠들어 보세요:",
+        "res_header_sleep": "이 시간 중 한 시점에 일어나는 게 좋습니다:",
+        "cycle_label": "{cycles}사이클 · 수면 {hours}시간",
+        "alert_invalid": "유효한 시간을 입력해 주세요.",
+        "disclaimer": "잠드는 데 걸리는 시간 14분(수면 잠복기)을 더합니다. 실제 사이클 길이는 80~100분으로 사람마다 다릅니다 — 90분 기준으로 멍한 상태로 깬다면 조정하세요.",
+        "howto_header": "사용 방법",
+        "howto_html": (
+            "<ol>"
+            "<li>목표 기상 시간 기준인지, 취침 시간 기준인지 선택하세요.</li>"
+            "<li>시간을 24시간 형식으로 입력하세요. 14분의 수면 잠복기 버퍼가 더해지고, 4~6개의 완전한 90분 사이클을 계산합니다.</li>"
+            "<li>제안된 시간 중 하나를 목표로 삼으세요. 사이클 끝(얕은 수면)에 일어나는 것이 사이클 중간에 깨는 것보다 덜 멍합니다.</li>"
+            "</ol>"
+            "<p>성인은 평균 <strong>5~6 사이클</strong>(7.5~9시간)이 필요합니다. 4 사이클(6시간)은 생존 최소치이지 목표가 아닙니다. 수면 잠복기는 개인차가 크니 5분 만에 잠들거나 30분 이상 걸리면 마음속으로 보정하세요.</p>"
+        ),
+        "related_header": "관련 도구",
+        "related_calorie": "칼로리 계산기",
+        "related_bmi": "BMI 계산기",
+        "related_timer": "타이머",
+        "related_date": "날짜 계산기",
+        "card_blurb": "90분 REM 사이클 기준 잠들 시간·일어날 시간 추천."
+    }
+}
+
+
+READING_TIME = {
+    "en": {
+        "title": "Reading Time Estimator",
+        "meta_title": "Reading Time Calculator — Words to Minutes - Utilify",
+        "meta_desc": "Estimate reading time from a word count or pasted text. Configurable WPM (default 250). Useful for blog posts, podcasts, video scripts, and pacing.",
+        "og_title": "Reading Time Estimator - Utilify",
+        "og_desc": "Words → minutes with adjustable reading speed.",
+        "json_name": "Reading Time Estimator",
+        "json_desc": "Convert word count or pasted text into estimated reading time at a chosen WPM.",
+        "page_desc": "Paste text or enter a word count to estimate how long it'll take to read at your chosen speed. Default 250 WPM is a typical adult silent-reading pace; pick 150 for spoken/podcast pacing or 300+ for skimming.",
+        "label_text": "Text or word count",
+        "label_wpm": "Reading speed (WPM)",
+        "ph_text": "Paste your article, blog post, or speech…",
+        "ph_wpm": "250",
+        "btn_calculate": "Estimate",
+        "btn_reset": "Reset",
+        "btn_share": "Share result",
+        "share_text": "Reading time: {value} —",
+        "share_copied": "Copied to clipboard.",
+        "res_words_label": "Words",
+        "res_chars_label": "Characters",
+        "res_time_label": "Reading time",
+        "res_speak_label": "Spoken time",
+        "alert_invalid": "Enter text or a positive word count, and a positive WPM.",
+        "howto_header": "How to use",
+        "howto_html": (
+            "<ol>"
+            "<li>Paste the text you want to estimate. The calculator counts words automatically (whitespace-split, ignoring extra spacing).</li>"
+            "<li>Adjust the words-per-minute (WPM) speed. Common targets:"
+            "<ul>"
+            "<li><strong>150 WPM</strong> — comfortable spoken / podcast pace</li>"
+            "<li><strong>250 WPM</strong> — average silent reading (default)</li>"
+            "<li><strong>400 WPM</strong> — skimming / fast reading</li>"
+            "</ul></li>"
+            "<li>Click <strong>Estimate</strong>. Both reading time and a separate spoken-time estimate (at 150 WPM) are shown.</li>"
+            "</ol>"
+            "<p>Most blog platforms use 200–250 WPM. For audio scripts (podcasts, voiceovers, talks), use 130–160 WPM — slow enough to be clearly understood out loud.</p>"
+        ),
+        "related_header": "Related Tools",
+        "related_text_utils": "Text Utilities",
+        "related_md": "Markdown Previewer",
+        "related_token": "Token Counter",
+        "related_timer": "Timer",
+        "card_blurb": "Words → reading & spoken-time estimates with adjustable WPM."
+    },
+    "ko": {
+        "title": "읽기 시간 계산기",
+        "meta_title": "읽기 시간 계산기 — 단어 수에서 분으로 - Utilify",
+        "meta_desc": "텍스트나 단어 수로 읽기 시간 추정. 분당 단어 수(WPM) 조절 가능 (기본 250). 블로그·팟캐스트 대본·발표 등 페이싱에 유용.",
+        "og_title": "읽기 시간 계산기 - Utilify",
+        "og_desc": "단어를 분으로 — 읽기 속도 조정 가능.",
+        "json_name": "읽기 시간 계산기",
+        "json_desc": "단어 수 또는 텍스트를 사용자 지정 WPM으로 읽기 시간으로 변환.",
+        "page_desc": "텍스트를 붙여넣거나 단어 수를 입력해 원하는 속도로 읽는 데 걸리는 시간을 추정합니다. 기본값 250 WPM은 성인 묵독 평균이며, 팟캐스트는 150, 빠른 훑어 읽기는 300 이상을 사용하세요.",
+        "label_text": "텍스트 또는 단어 수",
+        "label_wpm": "읽기 속도 (WPM)",
+        "ph_text": "기사·블로그·연설 원고를 붙여넣으세요…",
+        "ph_wpm": "250",
+        "btn_calculate": "계산",
+        "btn_reset": "초기화",
+        "btn_share": "결과 공유",
+        "share_text": "읽기 시간: {value} —",
+        "share_copied": "클립보드에 복사되었습니다.",
+        "res_words_label": "단어",
+        "res_chars_label": "글자",
+        "res_time_label": "읽기 시간",
+        "res_speak_label": "낭독 시간",
+        "alert_invalid": "텍스트나 양수 단어 수, 그리고 양수 WPM을 입력해 주세요.",
+        "howto_header": "사용 방법",
+        "howto_html": (
+            "<ol>"
+            "<li>추정할 텍스트를 붙여넣으세요. 단어는 공백 기준으로 자동 계산됩니다.</li>"
+            "<li>분당 단어 수(WPM)를 조정하세요. 흔한 기준:"
+            "<ul>"
+            "<li><strong>150 WPM</strong> — 편안한 낭독·팟캐스트 속도</li>"
+            "<li><strong>250 WPM</strong> — 묵독 평균 (기본값)</li>"
+            "<li><strong>400 WPM</strong> — 훑어 읽기·속독</li>"
+            "</ul></li>"
+            "<li><strong>계산</strong>을 누르면 읽기 시간과 별도로 낭독 시간(150 WPM 기준)이 함께 표시됩니다.</li>"
+            "</ol>"
+            "<p>대부분의 블로그 플랫폼은 200~250 WPM을 가정합니다. 오디오 대본(팟캐스트·내레이션·발표)은 130~160 WPM — 입으로 또렷하게 전달되는 속도를 사용하세요.</p>"
+        ),
+        "related_header": "관련 도구",
+        "related_text_utils": "텍스트 유틸리티",
+        "related_md": "Markdown 프리뷰어",
+        "related_token": "토큰 카운터",
+        "related_timer": "타이머",
+        "card_blurb": "단어를 분으로 — WPM 조정 가능한 읽기·낭독 시간 추정."
+    }
+}
+
+
+WATER_INTAKE = {
+    "en": {
+        "title": "Water Intake Calculator",
+        "meta_title": "Water Intake Calculator — Daily Hydration Target - Utilify",
+        "meta_desc": "Estimate daily water needs from body weight, with adjustments for activity and climate. Returns ml, liters, and equivalent 250 ml glasses.",
+        "og_title": "Water Intake Calculator - Utilify",
+        "og_desc": "Daily hydration target with activity & climate adjustments.",
+        "json_name": "Water Intake Calculator",
+        "json_desc": "Estimate daily water target from weight + activity + climate.",
+        "page_desc": "Estimate daily water intake from body weight, with bumps for exercise and hot climates. The result is shown in milliliters, liters, and 250 ml glasses. Baseline is 33 ml per kg of body weight — typical for moderately active adults.",
+        "label_weight": "Weight (kg)",
+        "label_activity": "Activity level",
+        "label_climate": "Climate",
+        "ph_weight": "70",
+        "opt_act_low": "Sedentary",
+        "opt_act_mid": "Moderate exercise",
+        "opt_act_high": "Heavy exercise",
+        "opt_clim_normal": "Temperate",
+        "opt_clim_hot": "Hot / humid",
+        "btn_calculate": "Calculate",
+        "btn_reset": "Reset",
+        "btn_share": "Share result",
+        "share_text": "Daily water target: {value} —",
+        "share_copied": "Copied to clipboard.",
+        "res_ml_label": "Daily target",
+        "res_l_label": "In liters",
+        "res_glasses_label": "Glasses (250 ml)",
+        "alert_invalid": "Enter a positive weight in kilograms.",
+        "disclaimer": "Estimate only. Real needs vary by sex, body composition, sweat rate, kidney function, and altitude. Drink to thirst; pale-yellow urine is the best practical indicator.",
+        "howto_header": "How to use",
+        "howto_html": (
+            "<ol>"
+            "<li>Enter your body weight in kilograms.</li>"
+            "<li>Pick activity level and climate. Heavy exercise adds 500 ml; hot climates add another 500 ml.</li>"
+            "<li>Click <strong>Calculate</strong> — the daily target appears in ml, liters, and 250 ml glasses.</li>"
+            "</ol>"
+            "<p><strong>Formula</strong>: 33 ml × weight(kg), plus 350 ml for moderate exercise / 500 ml for heavy, plus 500 ml for hot climates. Caffeinated drinks count toward intake (not as much as water but most of the volume); alcohol is a net negative for hydration.</p>"
+            "<p>This estimate covers <em>total fluid</em> — food contributes about 20% of daily water (more if you eat lots of fruit, soup, or vegetables). Drinking ~1.5–2.5 L of water-equivalent fluids on top of food usually covers it.</p>"
+        ),
+        "related_header": "Related Tools",
+        "related_calorie": "Calorie Calculator",
+        "related_bmi": "BMI Calculator",
+        "related_body_fat": "Body Fat Calculator",
+        "related_unit": "Unit Converter",
+        "card_blurb": "Daily water target from weight + activity + climate."
+    },
+    "ko": {
+        "title": "물 섭취량 계산기",
+        "meta_title": "물 섭취량 계산기 — 1일 권장 수분량 - Utilify",
+        "meta_desc": "체중·활동 수준·기후로 1일 물 권장량 추정. ml·리터·250ml 컵 단위로 표시.",
+        "og_title": "물 섭취량 계산기 - Utilify",
+        "og_desc": "활동·기후 보정 포함 1일 수분 목표.",
+        "json_name": "물 섭취량 계산기",
+        "json_desc": "체중·활동·기후 기반 1일 물 목표량 추정.",
+        "page_desc": "체중을 기준으로 1일 물 섭취량을 추정하고 운동량과 기후에 따라 보정합니다. 결과는 ml·리터·250ml 컵 수로 표시됩니다. 기본 공식은 체중(kg)당 33ml — 보통 활동량의 성인에게 적용되는 기준입니다.",
+        "label_weight": "체중 (kg)",
+        "label_activity": "활동 수준",
+        "label_climate": "기후",
+        "ph_weight": "70",
+        "opt_act_low": "거의 활동 없음",
+        "opt_act_mid": "보통 운동",
+        "opt_act_high": "강도 높은 운동",
+        "opt_clim_normal": "온대",
+        "opt_clim_hot": "더위·습기",
+        "btn_calculate": "계산",
+        "btn_reset": "초기화",
+        "btn_share": "결과 공유",
+        "share_text": "1일 물 목표량: {value} —",
+        "share_copied": "클립보드에 복사되었습니다.",
+        "res_ml_label": "1일 목표",
+        "res_l_label": "리터",
+        "res_glasses_label": "컵 (250ml)",
+        "alert_invalid": "체중을 양수(kg)로 입력해 주세요.",
+        "disclaimer": "추정치입니다. 실제 필요량은 성별·체구성·발한율·신장 기능·고도에 따라 다릅니다. 갈증을 기준으로 마시고, 옅은 노란빛 소변이 가장 실용적인 지표입니다.",
+        "howto_header": "사용 방법",
+        "howto_html": (
+            "<ol>"
+            "<li>체중을 kg 단위로 입력하세요.</li>"
+            "<li>활동 수준과 기후를 선택하세요. 강도 높은 운동은 500ml, 더운 기후는 추가 500ml가 더해집니다.</li>"
+            "<li><strong>계산</strong>을 누르면 1일 목표가 ml·리터·250ml 컵 단위로 표시됩니다.</li>"
+            "</ol>"
+            "<p><strong>공식</strong>: 33ml × 체중(kg), 보통 운동 +350ml, 강도 높은 운동 +500ml, 더운 기후 +500ml. 카페인 음료도 수분 섭취에 포함되지만(물보다는 효율 낮음), 알코올은 탈수를 유발해 도움이 되지 않습니다.</p>"
+            "<p>이 추정값은 <em>전체 수분</em> 기준입니다 — 음식이 1일 수분의 약 20%를 제공합니다(과일·국·채소 위주면 더 많이). 보통 식사 외에 1.5~2.5L 정도의 수분을 더 섭취하면 충분합니다.</p>"
+        ),
+        "related_header": "관련 도구",
+        "related_calorie": "칼로리 계산기",
+        "related_bmi": "BMI 계산기",
+        "related_body_fat": "체지방 계산기",
+        "related_unit": "단위 변환기",
+        "card_blurb": "체중·활동·기후 기반 1일 물 권장량 자동 계산."
+    }
+}
