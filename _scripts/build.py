@@ -829,6 +829,9 @@ def build_conversion_pages():
             for key, value in data.items():
                 content = content.replace(f'{{{{ {key} }}}}', str(value))
 
+            # Inject 2-level breadcrumb (Home > pair title) post-substitution.
+            content = inject_pair_breadcrumb(content, slug, lang, data)
+
             output_dir = os.path.join(BASE_DIR, lang, 'convert', slug)
             os.makedirs(output_dir, exist_ok=True)
             with open(os.path.join(output_dir, 'index.html'), 'w', encoding='utf-8') as f:
@@ -1081,6 +1084,48 @@ def inject_tool_breadcrumb(html, slug, lang, data):
         html, count=1,
     )
     # Insert ld+json block before </head>.
+    html = html.replace('</head>', ld_block + '</head>', 1)
+    return html
+
+
+def inject_pair_breadcrumb(html, slug, lang, data):
+    """2-level breadcrumb (Home > <pair title>) for conversion pair pages.
+    No middle level — /<lang>/convert/ has no hub page yet, so anchoring the
+    middle to a non-existent URL would break the JSON-LD schema. Idempotent
+    via marker `data-utilify-breadcrumb` (shared with the tool variant)."""
+    if 'data-utilify-breadcrumb' in html:
+        return html
+
+    import json as _json_bc
+
+    home = data.get('breadcrumb_home') or 'Home'
+    title = data.get('h1_text') or slug
+
+    nav = (
+        '<nav data-utilify-breadcrumb class="breadcrumb" aria-label="Breadcrumb">'
+        f'<ol><li><a href="/{lang}/">{home}</a></li>'
+        f'<li aria-current="page">{title}</li></ol></nav>'
+    )
+
+    schema = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": home,
+             "item": f"https://utilifyapp.net/{lang}/"},
+            {"@type": "ListItem", "position": 2, "name": title,
+             "item": f"https://utilifyapp.net/{lang}/convert/{slug}/"},
+        ],
+    }
+    ld_block = ('    <script type="application/ld+json">'
+                + _json_bc.dumps(schema, ensure_ascii=False)
+                + '</script>\n')
+
+    html = _re_ad.sub(
+        r'(\s*)(<h1[\s>])',
+        r'\1' + nav + r'\1' + r'\2',
+        html, count=1,
+    )
     html = html.replace('</head>', ld_block + '</head>', 1)
     return html
 
