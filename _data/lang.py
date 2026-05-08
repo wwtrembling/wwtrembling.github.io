@@ -17,6 +17,8 @@ COMMON = {
         "skip_link": "Skip to content",
         "fav_add_aria": "Add to favorites",
         "fav_remove_aria": "Remove from favorites",
+        "theme_toggle_aria": "Toggle dark mode",
+        "breadcrumb_home": "Home",
     },
     "ko": {
         "brand": "🛠️ Utilify",
@@ -29,6 +31,8 @@ COMMON = {
         "skip_link": "본문으로 건너뛰기",
         "fav_add_aria": "즐겨찾기에 추가",
         "fav_remove_aria": "즐겨찾기에서 제거",
+        "theme_toggle_aria": "다크 모드 전환",
+        "breadcrumb_home": "홈",
     },
     "vi": {
         "brand": "🛠️ Utilify",
@@ -7460,5 +7464,1007 @@ HEALTH_HUB = {
         "related_date": "날짜 계산기",
         "related_unit": "단위 변환기",
         "card_blurb": "칼로리·임신·체지방 계산기 — 모두 브라우저에서."
+    }
+}
+
+
+RAG_CHUNKER = {
+    "en": {
+        "title": "RAG Text Chunker",
+        "meta_title": "RAG Text Chunker — Sliding Window Chunks for Embeddings - Utilify",
+        "meta_desc": "Split text into overlapping chunks for RAG / embedding pipelines. Configurable size and overlap, character or token-estimate mode. Runs entirely in your browser.",
+        "og_title": "RAG Text Chunker - Utilify",
+        "og_desc": "Split text into chunks with overlap for embedding-based retrieval pipelines.",
+        "json_name": "RAG Text Chunker",
+        "json_desc": "Sliding-window text chunker for retrieval-augmented generation pipelines.",
+        "page_desc": "Paste a long document and split it into overlapping chunks for embedding-based retrieval. Pick chunks-by-characters for predictable size or chunks-by-token-estimate for closer alignment with embedding model limits. All processing happens in your browser.",
+        "label_text": "Source text",
+        "label_size": "Chunk size",
+        "label_overlap": "Overlap",
+        "label_mode": "Unit",
+        "ph_text": "Paste the document you want to chunk…",
+        "ph_size": "512",
+        "ph_overlap": "50",
+        "opt_chars": "Characters",
+        "opt_tokens": "Tokens (estimated)",
+        "btn_chunk": "Chunk",
+        "btn_reset": "Reset",
+        "btn_copy_all": "Copy all (JSON)",
+        "btn_share": "Share result",
+        "share_text": "I split a {value}-character document into chunks —",
+        "share_copied": "Copied to clipboard.",
+        "copied_one": "Chunk copied.",
+        "res_count_label": "Chunks",
+        "res_total_label": "Source size",
+        "res_avg_label": "Avg chunk size",
+        "chunk_label": "Chunk",
+        "alert_invalid": "Enter source text and a chunk size larger than overlap.",
+        "disclaimer": "Token mode is an approximate (~4 chars/token English, ~1.5 chars/token CJK). For exact tokenization, use the embedding model's tokenizer.",
+        "howto_header": "How to use",
+        "howto_html": (
+            "<ol>"
+            "<li>Paste your source document.</li>"
+            "<li>Pick chunk size and overlap. Common starting points: 512 chunk / 50 overlap (chars), or 256 / 32 (tokens).</li>"
+            "<li>Choose <em>characters</em> for predictable byte-size or <em>tokens</em> to align with embedding model context limits.</li>"
+            "<li>Click <strong>Chunk</strong>. Each chunk is numbered with byte length; click any chunk to copy it, or use <strong>Copy all (JSON)</strong> to grab the whole array.</li>"
+            "</ol>"
+            "<p><strong>Why overlap?</strong> Overlap preserves context across chunk boundaries — a sentence split mid-thought won't lose its anchor. Common ratio: overlap = 10–20% of chunk size.</p>"
+            "<p>Splitting strategy is plain sliding window; no semantic boundary detection. For prose, that's usually fine. For code or structured documents, consider a parser-aware splitter.</p>"
+        ),
+        "related_header": "Related Tools",
+        "related_token": "Token Counter",
+        "related_pii": "Prompt PII Scrubber",
+        "related_chatgpt": "ChatGPT to Blog",
+        "related_md": "Markdown Previewer",
+        "card_blurb": "Sliding-window text chunker for embeddings & RAG pipelines."
+    },
+    "ko": {
+        "title": "RAG 텍스트 청크 분할기",
+        "meta_title": "RAG 청크 분할기 — 임베딩용 슬라이딩 윈도우 분할 - Utilify",
+        "meta_desc": "RAG·임베딩 파이프라인을 위한 텍스트를 겹침 가능한 청크로 분할. 크기·겹침 설정 가능, 문자/토큰 모드 지원. 모든 처리는 브라우저에서.",
+        "og_title": "RAG 텍스트 청크 분할기 - Utilify",
+        "og_desc": "임베딩 기반 검색 파이프라인용 텍스트를 겹침 청크로 분할.",
+        "json_name": "RAG 텍스트 청크 분할기",
+        "json_desc": "검색 증강 생성(RAG) 파이프라인을 위한 슬라이딩 윈도우 텍스트 분할기.",
+        "page_desc": "긴 문서를 임베딩 기반 검색용 겹침 청크로 분할합니다. 일정한 크기를 위해 문자 모드를, 임베딩 모델 컨텍스트 한계에 맞추려면 토큰 모드를 선택하세요. 모든 처리는 브라우저에서 이루어집니다.",
+        "label_text": "원본 텍스트",
+        "label_size": "청크 크기",
+        "label_overlap": "겹침 크기",
+        "label_mode": "단위",
+        "ph_text": "분할할 문서를 붙여넣으세요…",
+        "ph_size": "512",
+        "ph_overlap": "50",
+        "opt_chars": "문자",
+        "opt_tokens": "토큰 (추정)",
+        "btn_chunk": "분할",
+        "btn_reset": "초기화",
+        "btn_copy_all": "전체 복사 (JSON)",
+        "btn_share": "결과 공유",
+        "share_text": "{value}자 문서를 청크로 분할했습니다 —",
+        "share_copied": "클립보드에 복사되었습니다.",
+        "copied_one": "청크가 복사되었습니다.",
+        "res_count_label": "청크 수",
+        "res_total_label": "원본 크기",
+        "res_avg_label": "평균 청크 크기",
+        "chunk_label": "청크",
+        "alert_invalid": "원본 텍스트와 겹침보다 큰 청크 크기를 입력하세요.",
+        "disclaimer": "토큰 모드는 근사치입니다(영문 약 4자/토큰, 한·중·일 약 1.5자/토큰). 정확한 토큰화는 사용하시는 임베딩 모델의 토크나이저를 이용하세요.",
+        "howto_header": "사용 방법",
+        "howto_html": (
+            "<ol>"
+            "<li>원본 문서를 붙여넣으세요.</li>"
+            "<li>청크 크기와 겹침을 입력하세요. 흔한 시작값: 문자 모드 512/50, 토큰 모드 256/32.</li>"
+            "<li>일정한 바이트 크기를 원하면 <em>문자</em>, 임베딩 모델 컨텍스트 한계에 맞추려면 <em>토큰</em>을 선택하세요.</li>"
+            "<li><strong>분할</strong>을 누르면 청크가 번호와 길이로 표시됩니다. 각 청크 클릭으로 개별 복사, <strong>전체 복사 (JSON)</strong>로 배열 전체를 복사할 수 있습니다.</li>"
+            "</ol>"
+            "<p><strong>왜 겹침이 필요한가?</strong> 청크 경계에서 문맥이 끊기는 것을 방지합니다 — 한 문장이 두 청크에 걸치더라도 양쪽에서 일부 맥락이 유지됩니다. 일반적으로 청크 크기의 10~20%를 겹침으로 설정합니다.</p>"
+            "<p>분할 방식은 단순 슬라이딩 윈도우입니다 — 의미 단위 인식은 하지 않습니다. 일반 산문에는 충분하지만 코드·구조 문서에는 파서 기반 분할기를 권장합니다.</p>"
+        ),
+        "related_header": "관련 도구",
+        "related_token": "토큰 카운터",
+        "related_pii": "프롬프트 PII 마스킹",
+        "related_chatgpt": "ChatGPT 블로그 변환",
+        "related_md": "Markdown 프리뷰어",
+        "card_blurb": "임베딩·RAG 파이프라인을 위한 슬라이딩 윈도우 텍스트 청크 분할기."
+    }
+}
+
+
+FEW_SHOT_FORMATTER = {
+    "en": {
+        "title": "Few-Shot Prompt Formatter",
+        "meta_title": "Few-Shot Prompt Formatter — Markdown / XML / OpenAI JSON - Utilify",
+        "meta_desc": "Format input/output examples as a few-shot prompt. Output as Markdown, Anthropic XML tags, OpenAI messages JSON, or plain text. Runs in your browser.",
+        "og_title": "Few-Shot Prompt Formatter - Utilify",
+        "og_desc": "Format examples as a clean few-shot prompt for ChatGPT, Claude, or your own pipeline.",
+        "json_name": "Few-Shot Prompt Formatter",
+        "json_desc": "Convert input/output example pairs into a formatted few-shot prompt.",
+        "page_desc": "Add a system instruction and a list of input → output examples. The tool emits a clean few-shot prompt in Markdown, Anthropic-style XML tags, OpenAI messages JSON, or plain text — ready to paste into ChatGPT, Claude, or a script.",
+        "label_system": "System instruction (optional)",
+        "label_input": "Input",
+        "label_output": "Output",
+        "label_format": "Output format",
+        "ph_system": "You are a helpful assistant. Answer questions concisely.",
+        "ph_input": "User message",
+        "ph_output": "Expected reply",
+        "opt_md": "Markdown",
+        "opt_xml": "Anthropic XML tags",
+        "opt_json": "OpenAI messages JSON",
+        "opt_plain": "Plain text",
+        "btn_add_pair": "+ Add example",
+        "btn_remove_pair": "Remove",
+        "btn_format": "Format",
+        "btn_reset": "Reset",
+        "btn_copy": "Copy",
+        "btn_share": "Share result",
+        "share_text": "I built a few-shot prompt with {value} examples —",
+        "share_copied": "Result copied to clipboard.",
+        "copied": "Copied.",
+        "res_label": "Formatted prompt",
+        "alert_no_pairs": "Add at least one input/output example.",
+        "disclaimer": "The tool reformats your text — it does not call any AI provider. Review the output before sending to a paid API.",
+        "howto_header": "How to use",
+        "howto_html": (
+            "<ol>"
+            "<li>(Optional) Paste a system instruction that defines the task or persona.</li>"
+            "<li>Click <strong>+ Add example</strong> to add input/output pairs. 3–5 examples is typical for few-shot.</li>"
+            "<li>Pick the output format:"
+            "<ul>"
+            "<li><strong>Markdown</strong> — readable, good for chat UIs.</li>"
+            "<li><strong>XML tags</strong> — Anthropic recommends <code>&lt;example&gt;</code> tags around each pair for Claude.</li>"
+            "<li><strong>OpenAI messages JSON</strong> — array of <code>{role, content}</code> objects, ready for the Chat Completions API.</li>"
+            "<li><strong>Plain</strong> — minimal, no markup.</li>"
+            "</ul></li>"
+            "<li>Click <strong>Format</strong> and copy the result.</li>"
+            "</ol>"
+            "<p>For Claude / Anthropic, XML tags consistently improve adherence to the example structure. For ChatGPT, Markdown or messages JSON usually works best. The OpenAI format alternates user/assistant turns for each pair, which the API treats as conversation history.</p>"
+        ),
+        "related_header": "Related Tools",
+        "related_token": "Token Counter",
+        "related_pii": "Prompt PII Scrubber",
+        "related_chatgpt": "ChatGPT to Blog",
+        "related_claude": "Claude.md Generator",
+        "card_blurb": "Format input/output examples as a few-shot prompt — Markdown, XML, or OpenAI JSON."
+    },
+    "ko": {
+        "title": "Few-Shot 프롬프트 포매터",
+        "meta_title": "Few-Shot 프롬프트 포매터 — Markdown·XML·OpenAI JSON - Utilify",
+        "meta_desc": "입력/출력 예시를 Few-shot 프롬프트로 포맷. Markdown, Anthropic XML 태그, OpenAI messages JSON, 일반 텍스트로 출력. 모든 처리는 브라우저에서.",
+        "og_title": "Few-Shot 프롬프트 포매터 - Utilify",
+        "og_desc": "ChatGPT·Claude·자체 파이프라인용 Few-shot 프롬프트를 깔끔하게 정리.",
+        "json_name": "Few-Shot 프롬프트 포매터",
+        "json_desc": "입력/출력 예시 쌍을 Few-shot 프롬프트 형식으로 변환합니다.",
+        "page_desc": "시스템 지시와 입력→출력 예시 목록을 입력하면, Markdown, Anthropic XML 태그, OpenAI messages JSON, 또는 일반 텍스트 형식의 깔끔한 Few-shot 프롬프트로 변환합니다 — ChatGPT·Claude·스크립트에 바로 붙여넣을 수 있습니다.",
+        "label_system": "시스템 지시 (선택)",
+        "label_input": "입력",
+        "label_output": "출력",
+        "label_format": "출력 형식",
+        "ph_system": "친절하고 간결하게 답하는 어시스턴트입니다.",
+        "ph_input": "사용자 메시지",
+        "ph_output": "기대하는 답변",
+        "opt_md": "Markdown",
+        "opt_xml": "Anthropic XML 태그",
+        "opt_json": "OpenAI messages JSON",
+        "opt_plain": "일반 텍스트",
+        "btn_add_pair": "+ 예시 추가",
+        "btn_remove_pair": "삭제",
+        "btn_format": "포맷",
+        "btn_reset": "초기화",
+        "btn_copy": "복사",
+        "btn_share": "결과 공유",
+        "share_text": "{value}개 예시로 Few-shot 프롬프트를 만들었습니다 —",
+        "share_copied": "결과가 클립보드에 복사되었습니다.",
+        "copied": "복사되었습니다.",
+        "res_label": "포맷된 프롬프트",
+        "alert_no_pairs": "최소 1개의 입력/출력 예시를 추가해 주세요.",
+        "disclaimer": "이 도구는 텍스트를 재구성할 뿐, AI 제공자에 호출하지 않습니다. 유료 API에 보내기 전 결과를 반드시 검토하세요.",
+        "howto_header": "사용 방법",
+        "howto_html": (
+            "<ol>"
+            "<li>(선택) 작업이나 페르소나를 정의하는 시스템 지시를 입력하세요.</li>"
+            "<li><strong>+ 예시 추가</strong>를 눌러 입력/출력 쌍을 추가합니다. Few-shot은 보통 3~5개가 적당합니다.</li>"
+            "<li>출력 형식을 선택하세요:"
+            "<ul>"
+            "<li><strong>Markdown</strong> — 가독성이 좋고 채팅 UI에 어울립니다.</li>"
+            "<li><strong>XML 태그</strong> — Anthropic은 Claude에 사용 시 각 예시를 <code>&lt;example&gt;</code> 태그로 감싸기를 권장합니다.</li>"
+            "<li><strong>OpenAI messages JSON</strong> — <code>{role, content}</code> 배열, Chat Completions API에 그대로 전달 가능.</li>"
+            "<li><strong>일반 텍스트</strong> — 마크업 없이 단순 형식.</li>"
+            "</ul></li>"
+            "<li><strong>포맷</strong> 후 결과를 복사하세요.</li>"
+            "</ol>"
+            "<p>Claude·Anthropic에는 XML 태그가 예시 구조 인식률을 일관되게 높입니다. ChatGPT에는 Markdown 또는 messages JSON이 일반적으로 더 잘 작동합니다. OpenAI 형식은 각 예시 쌍을 user/assistant 메시지로 번갈아 배열해 API가 대화 이력으로 처리하게 합니다.</p>"
+        ),
+        "related_header": "관련 도구",
+        "related_token": "토큰 카운터",
+        "related_pii": "프롬프트 PII 마스킹",
+        "related_chatgpt": "ChatGPT 블로그 변환",
+        "related_claude": "Claude.md 생성기",
+        "card_blurb": "입력/출력 예시를 Few-shot 프롬프트로 — Markdown·XML·OpenAI JSON."
+    }
+}
+
+
+JSON_SCHEMA_VALIDATOR = {
+    "en": {
+        "title": "JSON Schema Validator",
+        "meta_title": "JSON Schema Validator — Validate JSON Against a Schema - Utilify",
+        "meta_desc": "Validate JSON data against a JSON Schema in your browser. Supports type, properties, required, items, enum, format, pattern, min/max. No upload, no signup.",
+        "og_title": "JSON Schema Validator - Utilify",
+        "og_desc": "Validate JSON against a schema. Errors include the JSONPath of every failure.",
+        "json_name": "JSON Schema Validator",
+        "json_desc": "Client-side JSON Schema validator covering core JSON Schema 2020-12 keywords.",
+        "page_desc": "Paste your JSON data and a JSON Schema. The validator checks type, required, properties, items, enum, format, pattern, and min/max constraints, and reports each failure with the JSONPath where it occurred. All processing in your browser.",
+        "label_data": "JSON data",
+        "label_schema": "JSON Schema",
+        "ph_data": "{\n  \"name\": \"Alice\",\n  \"age\": 30\n}",
+        "ph_schema": "{\n  \"type\": \"object\",\n  \"required\": [\"name\"],\n  \"properties\": {\n    \"name\": {\"type\": \"string\"}\n  }\n}",
+        "btn_validate": "Validate",
+        "btn_reset": "Reset",
+        "btn_load_sample": "Load sample",
+        "btn_share": "Share result",
+        "share_text": "JSON validation: {value} —",
+        "share_copied": "Result copied to clipboard.",
+        "res_valid": "✓ Valid against schema.",
+        "res_invalid_header": "✗ Validation errors",
+        "res_error_count": "{count} error(s) at:",
+        "alert_data_invalid": "Data is not valid JSON: ",
+        "alert_schema_invalid": "Schema is not valid JSON: ",
+        "disclaimer": "Implements a useful subset of JSON Schema 2020-12 (type, properties, required, items, enum, const, format, pattern, min/max for strings/numbers/arrays). Advanced keywords like $ref, allOf/anyOf/oneOf, dependentSchemas, and prefixItems are not supported — for those, use a server-side validator like ajv.",
+        "howto_header": "How to use",
+        "howto_html": (
+            "<ol>"
+            "<li>Paste your JSON data into the left panel.</li>"
+            "<li>Paste the JSON Schema you want to validate against into the right panel. Click <strong>Load sample</strong> for a worked example.</li>"
+            "<li>Click <strong>Validate</strong>. If the data passes, you see a green check. Otherwise each error is listed with the JSONPath where it occurred (e.g., <code>$.user.email</code>).</li>"
+            "</ol>"
+            "<p><strong>Supported keywords</strong>: <code>type</code> (string, number, integer, boolean, object, array, null), <code>properties</code>, <code>required</code>, <code>additionalProperties: false</code>, <code>items</code>, <code>enum</code>, <code>const</code>, <code>minimum</code>/<code>maximum</code>/<code>exclusiveMinimum</code>/<code>exclusiveMaximum</code>/<code>multipleOf</code>, <code>minLength</code>/<code>maxLength</code>/<code>pattern</code>, <code>minItems</code>/<code>maxItems</code>, and <code>format</code> (email, uri, url, date, date-time, uuid).</p>"
+            "<p><strong>Not supported</strong>: <code>$ref</code>, <code>allOf</code>/<code>anyOf</code>/<code>oneOf</code>/<code>not</code>, <code>dependentSchemas</code>, <code>prefixItems</code>, <code>contains</code>, <code>if</code>/<code>then</code>/<code>else</code>. For those, use ajv or a server-side validator.</p>"
+        ),
+        "related_header": "Related Tools",
+        "related_json": "JSON Formatter",
+        "related_json_ts": "JSON to TS/DTO",
+        "related_jwt": "JWT Decoder",
+        "related_token": "Token Counter",
+        "card_blurb": "Validate JSON against a schema — type, required, items, enum, format, pattern."
+    },
+    "ko": {
+        "title": "JSON Schema 검증기",
+        "meta_title": "JSON Schema 검증기 — JSON 데이터를 스키마와 대조 - Utilify",
+        "meta_desc": "JSON 데이터를 JSON Schema로 검증. type, properties, required, items, enum, format, pattern, min/max 지원. 모든 처리는 브라우저에서.",
+        "og_title": "JSON Schema 검증기 - Utilify",
+        "og_desc": "JSON을 스키마로 검증 — 모든 오류에 JSONPath 위치 표시.",
+        "json_name": "JSON Schema 검증기",
+        "json_desc": "JSON Schema 2020-12 핵심 키워드를 다루는 클라이언트 사이드 검증기.",
+        "page_desc": "JSON 데이터와 JSON Schema를 붙여넣으면 type·required·properties·items·enum·format·pattern·min/max 제약을 모두 검사하고, 실패 위치를 JSONPath로 표시합니다. 모든 처리는 브라우저에서 이루어집니다.",
+        "label_data": "JSON 데이터",
+        "label_schema": "JSON Schema",
+        "ph_data": "{\n  \"name\": \"Alice\",\n  \"age\": 30\n}",
+        "ph_schema": "{\n  \"type\": \"object\",\n  \"required\": [\"name\"],\n  \"properties\": {\n    \"name\": {\"type\": \"string\"}\n  }\n}",
+        "btn_validate": "검증",
+        "btn_reset": "초기화",
+        "btn_load_sample": "예시 불러오기",
+        "btn_share": "결과 공유",
+        "share_text": "JSON 검증 결과: {value} —",
+        "share_copied": "결과가 클립보드에 복사되었습니다.",
+        "res_valid": "✓ 스키마와 일치합니다.",
+        "res_invalid_header": "✗ 검증 오류",
+        "res_error_count": "{count}개 오류:",
+        "alert_data_invalid": "데이터가 유효한 JSON이 아닙니다: ",
+        "alert_schema_invalid": "스키마가 유효한 JSON이 아닙니다: ",
+        "disclaimer": "JSON Schema 2020-12의 유용한 일부를 구현합니다(type, properties, required, items, enum, const, format, pattern, 문자열/숫자/배열의 min/max). $ref, allOf/anyOf/oneOf, dependentSchemas, prefixItems 등 고급 키워드는 지원하지 않습니다 — 필요 시 ajv 같은 서버 사이드 검증기를 사용하세요.",
+        "howto_header": "사용 방법",
+        "howto_html": (
+            "<ol>"
+            "<li>JSON 데이터를 왼쪽 패널에 붙여넣으세요.</li>"
+            "<li>검증할 JSON Schema를 오른쪽 패널에 붙여넣으세요. <strong>예시 불러오기</strong>로 작동 예제를 확인할 수 있습니다.</li>"
+            "<li><strong>검증</strong>을 누르세요. 통과하면 초록 체크가, 실패하면 각 오류의 JSONPath 위치(<code>$.user.email</code> 등)가 함께 표시됩니다.</li>"
+            "</ol>"
+            "<p><strong>지원 키워드</strong>: <code>type</code>(string, number, integer, boolean, object, array, null), <code>properties</code>, <code>required</code>, <code>additionalProperties: false</code>, <code>items</code>, <code>enum</code>, <code>const</code>, <code>minimum</code>/<code>maximum</code>/<code>exclusiveMinimum</code>/<code>exclusiveMaximum</code>/<code>multipleOf</code>, <code>minLength</code>/<code>maxLength</code>/<code>pattern</code>, <code>minItems</code>/<code>maxItems</code>, <code>format</code>(email, uri, url, date, date-time, uuid).</p>"
+            "<p><strong>미지원</strong>: <code>$ref</code>, <code>allOf</code>/<code>anyOf</code>/<code>oneOf</code>/<code>not</code>, <code>dependentSchemas</code>, <code>prefixItems</code>, <code>contains</code>, <code>if</code>/<code>then</code>/<code>else</code>. 필요 시 ajv 또는 서버 사이드 검증기를 권장합니다.</p>"
+        ),
+        "related_header": "관련 도구",
+        "related_json": "JSON 포매터",
+        "related_json_ts": "JSON to TS/DTO",
+        "related_jwt": "JWT 디코더",
+        "related_token": "토큰 카운터",
+        "card_blurb": "JSON을 Schema로 검증 — type·required·items·enum·format·pattern."
+    }
+}
+
+
+TIP_CALCULATOR = {
+    "en": {
+        "title": "Tip Calculator",
+        "meta_title": "Tip Calculator — Bill Split with Custom Tip - Utilify",
+        "meta_desc": "Calculate the tip and split the bill. Pick a quick tip percentage (10/15/18/20/25) or enter a custom amount, and divide across any number of people.",
+        "og_title": "Tip Calculator - Utilify",
+        "og_desc": "Tip + total + per-person split, with quick tip-percentage buttons.",
+        "json_name": "Tip Calculator",
+        "json_desc": "Compute tip amount, total bill, and per-person split for any meal.",
+        "page_desc": "Enter the bill, pick a tip percentage (or type a custom one), and the calculator splits the total across however many people are paying. Quick buttons for 10/15/18/20/25%. Runs entirely in your browser.",
+        "label_bill": "Bill amount",
+        "label_tip": "Tip (%)",
+        "label_people": "People",
+        "ph_bill": "100",
+        "ph_tip": "18",
+        "ph_people": "2",
+        "btn_calculate": "Calculate",
+        "btn_reset": "Reset",
+        "btn_share": "Share result",
+        "share_text": "Total per person: {value} —",
+        "share_copied": "Copied to clipboard.",
+        "res_tip_label": "Tip",
+        "res_total_label": "Total",
+        "res_per_person_label": "Per person",
+        "alert_invalid": "Bill, tip, and people must be positive numbers.",
+        "howto_header": "How to use",
+        "howto_html": (
+            "<ol>"
+            "<li>Enter the pre-tip bill amount.</li>"
+            "<li>Pick a quick tip percentage or type a custom one.</li>"
+            "<li>Enter how many people are splitting the bill.</li>"
+            "<li>Click <strong>Calculate</strong> — tip, total, and per-person amount appear.</li>"
+            "</ol>"
+            "<p>US convention is 18–20% for table service, 15% for buffets/delivery, 10% or rounding-up for fast counter service. Many countries either include service in the bill or don't tip at all — check local custom.</p>"
+        ),
+        "related_header": "Related Tools",
+        "related_pct": "Percentage Calculator",
+        "related_discount": "Discount Calculator",
+        "related_unit": "Unit Converter",
+        "related_date": "Date Calculator",
+        "card_blurb": "Tip + total + per-person split with quick 10/15/18/20/25% buttons."
+    },
+    "ko": {
+        "title": "팁 계산기",
+        "meta_title": "팁 계산기 — 식당 더치페이 자동 계산 - Utilify",
+        "meta_desc": "식당 계산서의 팁과 인당 분담액을 계산. 10/15/18/20/25% 빠른 선택 또는 직접 입력. 인원수로 나누기 자동.",
+        "og_title": "팁 계산기 - Utilify",
+        "og_desc": "팁·총액·인당 분담액을 빠른 팁% 버튼으로.",
+        "json_name": "팁 계산기",
+        "json_desc": "식사 비용의 팁과 더치페이 인당 금액을 계산하는 도구.",
+        "page_desc": "계산서 금액과 팁 비율(빠른 선택 또는 직접 입력)을 입력하면, 인원수에 따라 분담액까지 함께 계산됩니다. 미국 등 팁 문화권 여행 시 유용. 모든 처리는 브라우저에서.",
+        "label_bill": "계산서 금액",
+        "label_tip": "팁 (%)",
+        "label_people": "인원수",
+        "ph_bill": "100",
+        "ph_tip": "18",
+        "ph_people": "2",
+        "btn_calculate": "계산",
+        "btn_reset": "초기화",
+        "btn_share": "결과 공유",
+        "share_text": "인당 부담액: {value} —",
+        "share_copied": "클립보드에 복사되었습니다.",
+        "res_tip_label": "팁",
+        "res_total_label": "총액",
+        "res_per_person_label": "인당",
+        "alert_invalid": "계산서·팁·인원수는 모두 양수로 입력해 주세요.",
+        "howto_header": "사용 방법",
+        "howto_html": (
+            "<ol>"
+            "<li>팁 적용 전 계산서 금액을 입력하세요.</li>"
+            "<li>팁 비율을 빠른 버튼으로 선택하거나 직접 입력하세요.</li>"
+            "<li>분담할 인원수를 입력하세요.</li>"
+            "<li><strong>계산</strong>을 누르면 팁·총액·인당 분담액이 표시됩니다.</li>"
+            "</ol>"
+            "<p>미국 기준 식당 서비스는 18~20%, 뷔페·배달은 15%, 카운터 서비스는 10% 또는 올림이 일반적입니다. 한국·일본 등은 팁을 받지 않는 경우가 많고, 유럽은 서비스료가 계산서에 포함되어 있어 추가 팁이 필수가 아닙니다.</p>"
+        ),
+        "related_header": "관련 도구",
+        "related_pct": "퍼센트 계산기",
+        "related_discount": "할인 계산기",
+        "related_unit": "단위 변환기",
+        "related_date": "날짜 계산기",
+        "card_blurb": "팁·총액·인당 분담액을 빠른 팁% 버튼으로 즉시 계산."
+    }
+}
+
+
+PERCENTAGE_CALCULATOR = {
+    "en": {
+        "title": "Percentage Calculator",
+        "meta_title": "Percentage Calculator — % of, % is, % Change - Utilify",
+        "meta_desc": "Three percentage modes in one: what is X% of Y, X is what percent of Y, and percent change from X to Y. No formulas to remember.",
+        "og_title": "Percentage Calculator - Utilify",
+        "og_desc": "All three percentage operations in one tool.",
+        "json_name": "Percentage Calculator",
+        "json_desc": "Switchable percentage operations: % of, % is, % change.",
+        "page_desc": "Three common percentage operations in one place: <em>what is X% of Y</em>, <em>X is what percent of Y</em>, and <em>percent change from X to Y</em>. Switch modes from the dropdown — the input labels update so you don't have to remember the formula.",
+        "label_mode": "Mode",
+        "label_a": "A",
+        "label_b": "B",
+        "ph_a": "20",
+        "ph_b": "150",
+        "opt_of": "What is A% of B?",
+        "opt_is": "A is what percent of B?",
+        "opt_change": "Percent change from A to B",
+        "btn_calculate": "Calculate",
+        "btn_reset": "Reset",
+        "btn_share": "Share result",
+        "share_text": "Result: {value} —",
+        "share_copied": "Copied to clipboard.",
+        "res_label": "Result",
+        "alert_invalid": "Enter valid numbers in both fields.",
+        "alert_div_zero": "B cannot be zero in this mode.",
+        "howto_header": "How to use",
+        "howto_html": (
+            "<ol>"
+            "<li>Pick the mode that matches your question:"
+            "<ul>"
+            "<li><strong>What is A% of B?</strong> — e.g., \"20% of 150\" → 30</li>"
+            "<li><strong>A is what percent of B?</strong> — e.g., \"30 is what % of 150\" → 20%</li>"
+            "<li><strong>Percent change from A to B</strong> — e.g., \"100 → 125\" → +25%</li>"
+            "</ul></li>"
+            "<li>Enter the two numbers and click <strong>Calculate</strong>.</li>"
+            "</ol>"
+            "<p>Percent change uses the formula <code>(B − A) / A × 100</code>. A drop from 100 to 75 is −25%; rising back from 75 to 100 is +33% — gains and losses are not symmetric.</p>"
+        ),
+        "related_header": "Related Tools",
+        "related_tip": "Tip Calculator",
+        "related_discount": "Discount Calculator",
+        "related_unit": "Unit Converter",
+        "related_date": "Date Calculator",
+        "card_blurb": "Three percentage modes — % of, % is, % change."
+    },
+    "ko": {
+        "title": "퍼센트 계산기",
+        "meta_title": "퍼센트 계산기 — A의 B%, A는 B의 몇%, 변화율 - Utilify",
+        "meta_desc": "퍼센트 계산 3가지 모드를 한 곳에서: A의 B%, A는 B의 몇%인지, A에서 B로 변화율. 공식을 외우지 않아도 됨.",
+        "og_title": "퍼센트 계산기 - Utilify",
+        "og_desc": "퍼센트 계산 3가지를 한 도구에서.",
+        "json_name": "퍼센트 계산기",
+        "json_desc": "퍼센트 of / 퍼센트 is / 변화율 — 모드 전환식 계산기.",
+        "page_desc": "흔히 마주치는 퍼센트 계산 3가지를 한 곳에서: <em>B의 A%는?</em>, <em>A는 B의 몇 %인가?</em>, <em>A에서 B로 변화율</em>. 모드를 선택하면 입력 라벨이 자동으로 바뀝니다 — 공식을 외우지 않아도 됩니다.",
+        "label_mode": "모드",
+        "label_a": "A",
+        "label_b": "B",
+        "ph_a": "20",
+        "ph_b": "150",
+        "opt_of": "B의 A%는?",
+        "opt_is": "A는 B의 몇 %인가?",
+        "opt_change": "A에서 B로 변화율",
+        "btn_calculate": "계산",
+        "btn_reset": "초기화",
+        "btn_share": "결과 공유",
+        "share_text": "결과: {value} —",
+        "share_copied": "클립보드에 복사되었습니다.",
+        "res_label": "결과",
+        "alert_invalid": "두 숫자 모두 유효한 값을 입력해 주세요.",
+        "alert_div_zero": "이 모드에서 B는 0이 될 수 없습니다.",
+        "howto_header": "사용 방법",
+        "howto_html": (
+            "<ol>"
+            "<li>질문에 맞는 모드를 선택하세요:"
+            "<ul>"
+            "<li><strong>B의 A%는?</strong> — 예: \"150의 20%\" → 30</li>"
+            "<li><strong>A는 B의 몇 %인가?</strong> — 예: \"30은 150의 몇 %\" → 20%</li>"
+            "<li><strong>A에서 B로 변화율</strong> — 예: \"100 → 125\" → +25%</li>"
+            "</ul></li>"
+            "<li>두 숫자를 입력하고 <strong>계산</strong>을 누르세요.</li>"
+            "</ol>"
+            "<p>변화율 공식은 <code>(B − A) / A × 100</code>입니다. 100에서 75로 줄어들면 −25%이고, 다시 75에서 100으로 회복하면 +33% — 상승과 하락은 대칭이 아닙니다.</p>"
+        ),
+        "related_header": "관련 도구",
+        "related_tip": "팁 계산기",
+        "related_discount": "할인 계산기",
+        "related_unit": "단위 변환기",
+        "related_date": "날짜 계산기",
+        "card_blurb": "B의 A%·A는 B의 몇 %·변화율 — 3가지 모드 한 곳에서."
+    }
+}
+
+
+DISCOUNT_CALCULATOR = {
+    "en": {
+        "title": "Discount Calculator",
+        "meta_title": "Discount Calculator — Final Price + Savings - Utilify",
+        "meta_desc": "Apply a percent discount to a price. Returns the final price and the amount saved. Optional second markdown for stacked sales.",
+        "og_title": "Discount Calculator - Utilify",
+        "og_desc": "Final price + savings amount, with optional second discount.",
+        "json_name": "Discount Calculator",
+        "json_desc": "Compute final price after percent discount, with optional stacked second discount.",
+        "page_desc": "Enter an original price and a discount percent — the calculator returns the final price and the dollar (or won) amount you save. Optional second discount for stacked sales (e.g., \"30% off, then extra 20% at checkout\").",
+        "label_price": "Original price",
+        "label_discount1": "Discount (%)",
+        "label_discount2": "Second discount (%) — optional",
+        "ph_price": "100",
+        "ph_discount1": "30",
+        "ph_discount2": "0",
+        "btn_calculate": "Calculate",
+        "btn_reset": "Reset",
+        "btn_share": "Share result",
+        "share_text": "Final price: {value} —",
+        "share_copied": "Copied to clipboard.",
+        "res_final_label": "Final price",
+        "res_saved_label": "You save",
+        "res_effective_label": "Effective discount",
+        "alert_invalid": "Enter a positive price and discount percentages between 0 and 100.",
+        "howto_header": "How to use",
+        "howto_html": (
+            "<ol>"
+            "<li>Enter the original (full) price.</li>"
+            "<li>Enter the first discount percent.</li>"
+            "<li>Optional: enter a second discount that applies <em>after</em> the first (typical \"extra X% at checkout\").</li>"
+            "<li>Click <strong>Calculate</strong>. Final price + savings + effective combined discount appear.</li>"
+            "</ol>"
+            "<p><strong>Stacked discounts don't add.</strong> A 30% then 20% discount is not 50% — it's 1 − (0.7 × 0.8) = 44%. The effective discount field shows the combined rate.</p>"
+        ),
+        "related_header": "Related Tools",
+        "related_tip": "Tip Calculator",
+        "related_pct": "Percentage Calculator",
+        "related_loan": "Loan Calculator",
+        "related_unit": "Unit Converter",
+        "card_blurb": "Final price + savings + stacked-discount effective rate."
+    },
+    "ko": {
+        "title": "할인 계산기",
+        "meta_title": "할인 계산기 — 할인가·절약 금액 - Utilify",
+        "meta_desc": "정가에 할인율을 적용해 최종 가격과 절약 금액을 계산. 추가 할인(중복할인)까지 합산 가능.",
+        "og_title": "할인 계산기 - Utilify",
+        "og_desc": "최종가·절약 금액·중복 할인 합산 효과까지.",
+        "json_name": "할인 계산기",
+        "json_desc": "정가에 할인율을 적용한 최종 가격과 중복 할인 합산 계산기.",
+        "page_desc": "정가와 할인율을 입력하면 최종 가격과 절약 금액을 계산합니다. 추가 할인(\"30% 할인 + 결제 시 추가 20%\" 등)도 지원하며, 단순 합이 아닌 실제 합산 할인율을 보여줍니다.",
+        "label_price": "정가",
+        "label_discount1": "할인율 (%)",
+        "label_discount2": "추가 할인율 (%) — 선택",
+        "ph_price": "100000",
+        "ph_discount1": "30",
+        "ph_discount2": "0",
+        "btn_calculate": "계산",
+        "btn_reset": "초기화",
+        "btn_share": "결과 공유",
+        "share_text": "최종 가격: {value} —",
+        "share_copied": "클립보드에 복사되었습니다.",
+        "res_final_label": "최종 가격",
+        "res_saved_label": "절약 금액",
+        "res_effective_label": "실질 할인율",
+        "alert_invalid": "정가는 양수, 할인율은 0~100 사이로 입력해 주세요.",
+        "howto_header": "사용 방법",
+        "howto_html": (
+            "<ol>"
+            "<li>할인 적용 전 정가를 입력하세요.</li>"
+            "<li>첫 번째 할인율을 입력하세요.</li>"
+            "<li>선택: 첫 할인 후 적용되는 추가 할인율(\"결제 시 추가 X%\" 등)을 입력하세요.</li>"
+            "<li><strong>계산</strong>을 누르면 최종 가격·절약 금액·실질 합산 할인율이 표시됩니다.</li>"
+            "</ol>"
+            "<p><strong>중복 할인은 단순 합이 아닙니다.</strong> 30% 할인 후 20% 추가 할인은 50%가 아닌 1 − (0.7 × 0.8) = 44%입니다. \"실질 할인율\" 필드에서 합산값을 확인하세요.</p>"
+        ),
+        "related_header": "관련 도구",
+        "related_tip": "팁 계산기",
+        "related_pct": "퍼센트 계산기",
+        "related_loan": "대출 계산기",
+        "related_unit": "단위 변환기",
+        "card_blurb": "최종 가격·절약 금액·중복 할인 실질 합산율까지 즉시 계산."
+    }
+}
+
+
+SLEEP_CALCULATOR = {
+    "en": {
+        "title": "Sleep Cycle Calculator",
+        "meta_title": "Sleep Calculator — When to Sleep / Wake Up - Utilify",
+        "meta_desc": "Plan sleep around 90-minute REM cycles. Pick a wake time to see when to fall asleep, or a bedtime to see optimal wake times. 14 minutes added for falling asleep.",
+        "og_title": "Sleep Cycle Calculator - Utilify",
+        "og_desc": "Plan sleep around 90-minute REM cycles for refreshed wake-ups.",
+        "json_name": "Sleep Cycle Calculator",
+        "json_desc": "Suggest bedtimes or wake times aligned with 90-minute REM cycles.",
+        "page_desc": "Plan your sleep around 90-minute REM cycles. Enter a wake time to see when to fall asleep for 4–6 cycles, or enter a bedtime to see good wake times. The calculator adds 14 minutes for falling asleep so the suggested times match real-world sleep onset.",
+        "label_mode": "Plan",
+        "label_time": "Time",
+        "opt_wake": "I want to wake up at…",
+        "opt_sleep": "I'm going to bed at…",
+        "btn_calculate": "Show times",
+        "btn_reset": "Reset",
+        "btn_share": "Share result",
+        "share_text": "Sleep planner: {value} —",
+        "share_copied": "Copied to clipboard.",
+        "res_header_wake": "Try falling asleep at one of these times:",
+        "res_header_sleep": "You should aim to wake up at one of these times:",
+        "cycle_label": "{cycles} cycles · {hours}h sleep",
+        "alert_invalid": "Please pick a valid time.",
+        "disclaimer": "Adds 14 minutes for sleep latency (the time it typically takes to fall asleep). Your real cycle length may be 80–100 minutes — adjust if you wake up groggy at 90.",
+        "howto_header": "How to use",
+        "howto_html": (
+            "<ol>"
+            "<li>Pick whether you're starting from a target wake time or a bedtime.</li>"
+            "<li>Enter the time in 24-hour format. The calculator adds a 14-minute fall-asleep buffer and computes 4 to 6 full 90-minute cycles.</li>"
+            "<li>Aim for one of the suggested times. Waking up at the end of a cycle (light sleep) usually feels less groggy than waking mid-cycle.</li>"
+            "</ol>"
+            "<p>Adults need <strong>5–6 cycles</strong> (7.5–9 hours) on average. 4 cycles (6 hours) is a survival minimum, not a target. Sleep latency varies — if you typically fall asleep in 5 minutes or 30+ minutes, mentally adjust the buffer.</p>"
+        ),
+        "related_header": "Related Tools",
+        "related_calorie": "Calorie Calculator",
+        "related_bmi": "BMI Calculator",
+        "related_timer": "Timer",
+        "related_date": "Date Calculator",
+        "card_blurb": "When to sleep / wake up around 90-minute REM cycles."
+    },
+    "ko": {
+        "title": "수면 사이클 계산기",
+        "meta_title": "수면 계산기 — 잠들 시간·일어날 시간 - Utilify",
+        "meta_desc": "90분 REM 사이클 기준 수면 계획. 기상 시간을 입력해 잠들 시간을, 취침 시간을 입력해 최적 기상 시간을 확인. 잠드는 시간 14분 자동 반영.",
+        "og_title": "수면 사이클 계산기 - Utilify",
+        "og_desc": "90분 REM 사이클에 맞춰 상쾌하게 일어나는 시간을 계획.",
+        "json_name": "수면 사이클 계산기",
+        "json_desc": "90분 REM 사이클에 정렬된 취침 또는 기상 시간 추천기.",
+        "page_desc": "90분 REM 사이클에 맞춰 수면을 계획하세요. 기상 시간을 입력하면 4~6 사이클을 위한 잠들 시간을, 취침 시간을 입력하면 좋은 기상 시간을 알려줍니다. 잠드는 데 걸리는 시간 14분이 자동 반영됩니다.",
+        "label_mode": "방식",
+        "label_time": "시간",
+        "opt_wake": "이 시간에 일어나고 싶어요",
+        "opt_sleep": "이 시간에 잠들 거예요",
+        "btn_calculate": "시간 보기",
+        "btn_reset": "초기화",
+        "btn_share": "결과 공유",
+        "share_text": "수면 플래너: {value} —",
+        "share_copied": "클립보드에 복사되었습니다.",
+        "res_header_wake": "이 시간 중 한 시점에 잠들어 보세요:",
+        "res_header_sleep": "이 시간 중 한 시점에 일어나는 게 좋습니다:",
+        "cycle_label": "{cycles}사이클 · 수면 {hours}시간",
+        "alert_invalid": "유효한 시간을 입력해 주세요.",
+        "disclaimer": "잠드는 데 걸리는 시간 14분(수면 잠복기)을 더합니다. 실제 사이클 길이는 80~100분으로 사람마다 다릅니다 — 90분 기준으로 멍한 상태로 깬다면 조정하세요.",
+        "howto_header": "사용 방법",
+        "howto_html": (
+            "<ol>"
+            "<li>목표 기상 시간 기준인지, 취침 시간 기준인지 선택하세요.</li>"
+            "<li>시간을 24시간 형식으로 입력하세요. 14분의 수면 잠복기 버퍼가 더해지고, 4~6개의 완전한 90분 사이클을 계산합니다.</li>"
+            "<li>제안된 시간 중 하나를 목표로 삼으세요. 사이클 끝(얕은 수면)에 일어나는 것이 사이클 중간에 깨는 것보다 덜 멍합니다.</li>"
+            "</ol>"
+            "<p>성인은 평균 <strong>5~6 사이클</strong>(7.5~9시간)이 필요합니다. 4 사이클(6시간)은 생존 최소치이지 목표가 아닙니다. 수면 잠복기는 개인차가 크니 5분 만에 잠들거나 30분 이상 걸리면 마음속으로 보정하세요.</p>"
+        ),
+        "related_header": "관련 도구",
+        "related_calorie": "칼로리 계산기",
+        "related_bmi": "BMI 계산기",
+        "related_timer": "타이머",
+        "related_date": "날짜 계산기",
+        "card_blurb": "90분 REM 사이클 기준 잠들 시간·일어날 시간 추천."
+    }
+}
+
+
+READING_TIME = {
+    "en": {
+        "title": "Reading Time Estimator",
+        "meta_title": "Reading Time Calculator — Words to Minutes - Utilify",
+        "meta_desc": "Estimate reading time from a word count or pasted text. Configurable WPM (default 250). Useful for blog posts, podcasts, video scripts, and pacing.",
+        "og_title": "Reading Time Estimator - Utilify",
+        "og_desc": "Words → minutes with adjustable reading speed.",
+        "json_name": "Reading Time Estimator",
+        "json_desc": "Convert word count or pasted text into estimated reading time at a chosen WPM.",
+        "page_desc": "Paste text or enter a word count to estimate how long it'll take to read at your chosen speed. Default 250 WPM is a typical adult silent-reading pace; pick 150 for spoken/podcast pacing or 300+ for skimming.",
+        "label_text": "Text or word count",
+        "label_wpm": "Reading speed (WPM)",
+        "ph_text": "Paste your article, blog post, or speech…",
+        "ph_wpm": "250",
+        "btn_calculate": "Estimate",
+        "btn_reset": "Reset",
+        "btn_share": "Share result",
+        "share_text": "Reading time: {value} —",
+        "share_copied": "Copied to clipboard.",
+        "res_words_label": "Words",
+        "res_chars_label": "Characters",
+        "res_time_label": "Reading time",
+        "res_speak_label": "Spoken time",
+        "alert_invalid": "Enter text or a positive word count, and a positive WPM.",
+        "howto_header": "How to use",
+        "howto_html": (
+            "<ol>"
+            "<li>Paste the text you want to estimate. The calculator counts words automatically (whitespace-split, ignoring extra spacing).</li>"
+            "<li>Adjust the words-per-minute (WPM) speed. Common targets:"
+            "<ul>"
+            "<li><strong>150 WPM</strong> — comfortable spoken / podcast pace</li>"
+            "<li><strong>250 WPM</strong> — average silent reading (default)</li>"
+            "<li><strong>400 WPM</strong> — skimming / fast reading</li>"
+            "</ul></li>"
+            "<li>Click <strong>Estimate</strong>. Both reading time and a separate spoken-time estimate (at 150 WPM) are shown.</li>"
+            "</ol>"
+            "<p>Most blog platforms use 200–250 WPM. For audio scripts (podcasts, voiceovers, talks), use 130–160 WPM — slow enough to be clearly understood out loud.</p>"
+        ),
+        "related_header": "Related Tools",
+        "related_text_utils": "Text Utilities",
+        "related_md": "Markdown Previewer",
+        "related_token": "Token Counter",
+        "related_timer": "Timer",
+        "card_blurb": "Words → reading & spoken-time estimates with adjustable WPM."
+    },
+    "ko": {
+        "title": "읽기 시간 계산기",
+        "meta_title": "읽기 시간 계산기 — 단어 수에서 분으로 - Utilify",
+        "meta_desc": "텍스트나 단어 수로 읽기 시간 추정. 분당 단어 수(WPM) 조절 가능 (기본 250). 블로그·팟캐스트 대본·발표 등 페이싱에 유용.",
+        "og_title": "읽기 시간 계산기 - Utilify",
+        "og_desc": "단어를 분으로 — 읽기 속도 조정 가능.",
+        "json_name": "읽기 시간 계산기",
+        "json_desc": "단어 수 또는 텍스트를 사용자 지정 WPM으로 읽기 시간으로 변환.",
+        "page_desc": "텍스트를 붙여넣거나 단어 수를 입력해 원하는 속도로 읽는 데 걸리는 시간을 추정합니다. 기본값 250 WPM은 성인 묵독 평균이며, 팟캐스트는 150, 빠른 훑어 읽기는 300 이상을 사용하세요.",
+        "label_text": "텍스트 또는 단어 수",
+        "label_wpm": "읽기 속도 (WPM)",
+        "ph_text": "기사·블로그·연설 원고를 붙여넣으세요…",
+        "ph_wpm": "250",
+        "btn_calculate": "계산",
+        "btn_reset": "초기화",
+        "btn_share": "결과 공유",
+        "share_text": "읽기 시간: {value} —",
+        "share_copied": "클립보드에 복사되었습니다.",
+        "res_words_label": "단어",
+        "res_chars_label": "글자",
+        "res_time_label": "읽기 시간",
+        "res_speak_label": "낭독 시간",
+        "alert_invalid": "텍스트나 양수 단어 수, 그리고 양수 WPM을 입력해 주세요.",
+        "howto_header": "사용 방법",
+        "howto_html": (
+            "<ol>"
+            "<li>추정할 텍스트를 붙여넣으세요. 단어는 공백 기준으로 자동 계산됩니다.</li>"
+            "<li>분당 단어 수(WPM)를 조정하세요. 흔한 기준:"
+            "<ul>"
+            "<li><strong>150 WPM</strong> — 편안한 낭독·팟캐스트 속도</li>"
+            "<li><strong>250 WPM</strong> — 묵독 평균 (기본값)</li>"
+            "<li><strong>400 WPM</strong> — 훑어 읽기·속독</li>"
+            "</ul></li>"
+            "<li><strong>계산</strong>을 누르면 읽기 시간과 별도로 낭독 시간(150 WPM 기준)이 함께 표시됩니다.</li>"
+            "</ol>"
+            "<p>대부분의 블로그 플랫폼은 200~250 WPM을 가정합니다. 오디오 대본(팟캐스트·내레이션·발표)은 130~160 WPM — 입으로 또렷하게 전달되는 속도를 사용하세요.</p>"
+        ),
+        "related_header": "관련 도구",
+        "related_text_utils": "텍스트 유틸리티",
+        "related_md": "Markdown 프리뷰어",
+        "related_token": "토큰 카운터",
+        "related_timer": "타이머",
+        "card_blurb": "단어를 분으로 — WPM 조정 가능한 읽기·낭독 시간 추정."
+    }
+}
+
+
+WATER_INTAKE = {
+    "en": {
+        "title": "Water Intake Calculator",
+        "meta_title": "Water Intake Calculator — Daily Hydration Target - Utilify",
+        "meta_desc": "Estimate daily water needs from body weight, with adjustments for activity and climate. Returns ml, liters, and equivalent 250 ml glasses.",
+        "og_title": "Water Intake Calculator - Utilify",
+        "og_desc": "Daily hydration target with activity & climate adjustments.",
+        "json_name": "Water Intake Calculator",
+        "json_desc": "Estimate daily water target from weight + activity + climate.",
+        "page_desc": "Estimate daily water intake from body weight, with bumps for exercise and hot climates. The result is shown in milliliters, liters, and 250 ml glasses. Baseline is 33 ml per kg of body weight — typical for moderately active adults.",
+        "label_weight": "Weight (kg)",
+        "label_activity": "Activity level",
+        "label_climate": "Climate",
+        "ph_weight": "70",
+        "opt_act_low": "Sedentary",
+        "opt_act_mid": "Moderate exercise",
+        "opt_act_high": "Heavy exercise",
+        "opt_clim_normal": "Temperate",
+        "opt_clim_hot": "Hot / humid",
+        "btn_calculate": "Calculate",
+        "btn_reset": "Reset",
+        "btn_share": "Share result",
+        "share_text": "Daily water target: {value} —",
+        "share_copied": "Copied to clipboard.",
+        "res_ml_label": "Daily target",
+        "res_l_label": "In liters",
+        "res_glasses_label": "Glasses (250 ml)",
+        "alert_invalid": "Enter a positive weight in kilograms.",
+        "disclaimer": "Estimate only. Real needs vary by sex, body composition, sweat rate, kidney function, and altitude. Drink to thirst; pale-yellow urine is the best practical indicator.",
+        "howto_header": "How to use",
+        "howto_html": (
+            "<ol>"
+            "<li>Enter your body weight in kilograms.</li>"
+            "<li>Pick activity level and climate. Heavy exercise adds 500 ml; hot climates add another 500 ml.</li>"
+            "<li>Click <strong>Calculate</strong> — the daily target appears in ml, liters, and 250 ml glasses.</li>"
+            "</ol>"
+            "<p><strong>Formula</strong>: 33 ml × weight(kg), plus 350 ml for moderate exercise / 500 ml for heavy, plus 500 ml for hot climates. Caffeinated drinks count toward intake (not as much as water but most of the volume); alcohol is a net negative for hydration.</p>"
+            "<p>This estimate covers <em>total fluid</em> — food contributes about 20% of daily water (more if you eat lots of fruit, soup, or vegetables). Drinking ~1.5–2.5 L of water-equivalent fluids on top of food usually covers it.</p>"
+        ),
+        "related_header": "Related Tools",
+        "related_calorie": "Calorie Calculator",
+        "related_bmi": "BMI Calculator",
+        "related_body_fat": "Body Fat Calculator",
+        "related_unit": "Unit Converter",
+        "card_blurb": "Daily water target from weight + activity + climate."
+    },
+    "ko": {
+        "title": "물 섭취량 계산기",
+        "meta_title": "물 섭취량 계산기 — 1일 권장 수분량 - Utilify",
+        "meta_desc": "체중·활동 수준·기후로 1일 물 권장량 추정. ml·리터·250ml 컵 단위로 표시.",
+        "og_title": "물 섭취량 계산기 - Utilify",
+        "og_desc": "활동·기후 보정 포함 1일 수분 목표.",
+        "json_name": "물 섭취량 계산기",
+        "json_desc": "체중·활동·기후 기반 1일 물 목표량 추정.",
+        "page_desc": "체중을 기준으로 1일 물 섭취량을 추정하고 운동량과 기후에 따라 보정합니다. 결과는 ml·리터·250ml 컵 수로 표시됩니다. 기본 공식은 체중(kg)당 33ml — 보통 활동량의 성인에게 적용되는 기준입니다.",
+        "label_weight": "체중 (kg)",
+        "label_activity": "활동 수준",
+        "label_climate": "기후",
+        "ph_weight": "70",
+        "opt_act_low": "거의 활동 없음",
+        "opt_act_mid": "보통 운동",
+        "opt_act_high": "강도 높은 운동",
+        "opt_clim_normal": "온대",
+        "opt_clim_hot": "더위·습기",
+        "btn_calculate": "계산",
+        "btn_reset": "초기화",
+        "btn_share": "결과 공유",
+        "share_text": "1일 물 목표량: {value} —",
+        "share_copied": "클립보드에 복사되었습니다.",
+        "res_ml_label": "1일 목표",
+        "res_l_label": "리터",
+        "res_glasses_label": "컵 (250ml)",
+        "alert_invalid": "체중을 양수(kg)로 입력해 주세요.",
+        "disclaimer": "추정치입니다. 실제 필요량은 성별·체구성·발한율·신장 기능·고도에 따라 다릅니다. 갈증을 기준으로 마시고, 옅은 노란빛 소변이 가장 실용적인 지표입니다.",
+        "howto_header": "사용 방법",
+        "howto_html": (
+            "<ol>"
+            "<li>체중을 kg 단위로 입력하세요.</li>"
+            "<li>활동 수준과 기후를 선택하세요. 강도 높은 운동은 500ml, 더운 기후는 추가 500ml가 더해집니다.</li>"
+            "<li><strong>계산</strong>을 누르면 1일 목표가 ml·리터·250ml 컵 단위로 표시됩니다.</li>"
+            "</ol>"
+            "<p><strong>공식</strong>: 33ml × 체중(kg), 보통 운동 +350ml, 강도 높은 운동 +500ml, 더운 기후 +500ml. 카페인 음료도 수분 섭취에 포함되지만(물보다는 효율 낮음), 알코올은 탈수를 유발해 도움이 되지 않습니다.</p>"
+            "<p>이 추정값은 <em>전체 수분</em> 기준입니다 — 음식이 1일 수분의 약 20%를 제공합니다(과일·국·채소 위주면 더 많이). 보통 식사 외에 1.5~2.5L 정도의 수분을 더 섭취하면 충분합니다.</p>"
+        ),
+        "related_header": "관련 도구",
+        "related_calorie": "칼로리 계산기",
+        "related_bmi": "BMI 계산기",
+        "related_body_fat": "체지방 계산기",
+        "related_unit": "단위 변환기",
+        "card_blurb": "체중·활동·기후 기반 1일 물 권장량 자동 계산."
+    }
+}
+
+
+FILE_SIZE_CONVERTER = {
+    "en": {
+        "title": "File Size Converter",
+        "meta_title": "File Size Converter — Bytes / KB / MB / GB / TB - Utilify",
+        "meta_desc": "Convert between bytes, kilobytes, megabytes, gigabytes, terabytes, and petabytes. Switch between decimal (KB = 1000) and binary (KiB = 1024) units.",
+        "og_title": "File Size Converter - Utilify",
+        "og_desc": "Bytes ↔ KB / MB / GB / TB / PB with decimal or binary units.",
+        "json_name": "File Size Converter",
+        "json_desc": "Convert between digital storage units in decimal or binary base.",
+        "page_desc": "Convert between bytes, kilobytes, megabytes, gigabytes, terabytes, and petabytes. Pick decimal (1 KB = 1000 B — what hard drives advertise) or binary (1 KiB = 1024 B — what your OS shows).",
+        "label_value": "Value",
+        "label_from": "From",
+        "label_to": "To",
+        "label_system": "Unit system",
+        "ph_value": "1024",
+        "opt_decimal": "Decimal (1 KB = 1000 B)",
+        "opt_binary": "Binary (1 KiB = 1024 B)",
+        "btn_convert": "Convert",
+        "btn_swap": "Swap",
+        "btn_reset": "Reset",
+        "btn_share": "Share result",
+        "share_text": "{value} —",
+        "share_copied": "Copied to clipboard.",
+        "res_label": "Result",
+        "alert_invalid": "Enter a non-negative number.",
+        "howto_header": "How to use",
+        "howto_html": (
+            "<ol>"
+            "<li>Type the number you want to convert.</li>"
+            "<li>Pick the source and target units.</li>"
+            "<li>Pick the unit system. Drive manufacturers and most networking specs use <strong>decimal</strong> (1 KB = 1000 B). Operating systems (Windows, Linux, macOS in older versions) and RAM specs use <strong>binary</strong> (1 KiB = 1024 B).</li>"
+            "</ol>"
+            "<p>The naming convention <em>KiB / MiB / GiB</em> exists specifically to disambiguate binary from decimal. \"KB\" without the <em>i</em> usually means decimal but is sometimes used loosely. When in doubt, decimal is the formal SI standard.</p>"
+        ),
+        "related_header": "Related Tools",
+        "related_unit": "Unit Converter",
+        "related_base64": "Base64 Converter",
+        "related_token": "Token Counter",
+        "related_pct": "Percentage Calculator",
+        "card_blurb": "B ↔ KB / MB / GB / TB / PB with decimal or binary units."
+    },
+    "ko": {
+        "title": "파일 크기 변환기",
+        "meta_title": "파일 크기 변환기 — Bytes·KB·MB·GB·TB - Utilify",
+        "meta_desc": "바이트·킬로바이트·메가바이트·기가바이트·테라바이트·페타바이트 상호 변환. 십진법(1KB=1000B)과 이진법(1KiB=1024B) 모두 지원.",
+        "og_title": "파일 크기 변환기 - Utilify",
+        "og_desc": "B ↔ KB / MB / GB / TB / PB — 십진/이진법 단위 지원.",
+        "json_name": "파일 크기 변환기",
+        "json_desc": "십진법·이진법 디지털 저장 단위 상호 변환기.",
+        "page_desc": "바이트·KB·MB·GB·TB·PB 단위를 자유롭게 변환합니다. 하드드라이브 광고에 쓰는 십진법(1KB = 1000B)과 OS가 표시하는 이진법(1KiB = 1024B) 중 선택할 수 있습니다.",
+        "label_value": "값",
+        "label_from": "원본",
+        "label_to": "변환",
+        "label_system": "단위 체계",
+        "ph_value": "1024",
+        "opt_decimal": "십진법 (1KB = 1000B)",
+        "opt_binary": "이진법 (1KiB = 1024B)",
+        "btn_convert": "변환",
+        "btn_swap": "양방향 전환",
+        "btn_reset": "초기화",
+        "btn_share": "결과 공유",
+        "share_text": "{value} —",
+        "share_copied": "클립보드에 복사되었습니다.",
+        "res_label": "결과",
+        "alert_invalid": "0 이상의 숫자를 입력해 주세요.",
+        "howto_header": "사용 방법",
+        "howto_html": (
+            "<ol>"
+            "<li>변환할 숫자를 입력하세요.</li>"
+            "<li>원본 단위와 변환할 단위를 선택하세요.</li>"
+            "<li>단위 체계를 선택합니다. 하드드라이브 제조사와 네트워크 스펙은 <strong>십진법</strong>(1KB = 1000B), 운영체제(Windows·Linux·옛 macOS)와 RAM 스펙은 <strong>이진법</strong>(1KiB = 1024B)을 사용합니다.</li>"
+            "</ol>"
+            "<p><em>KiB·MiB·GiB</em> 표기는 이진법임을 명확히 구분하기 위한 IEC 표준입니다. \"KB\"는 보통 십진법이지만 느슨하게 이진법으로도 쓰입니다 — 정확한 사양에는 십진법이 SI 공식 표준입니다.</p>"
+        ),
+        "related_header": "관련 도구",
+        "related_unit": "단위 변환기",
+        "related_base64": "Base64 변환기",
+        "related_token": "토큰 카운터",
+        "related_pct": "퍼센트 계산기",
+        "card_blurb": "B ↔ KB·MB·GB·TB·PB — 십진/이진법 모두 지원."
+    }
+}
+
+
+AGE_CALCULATOR = {
+    "en": {
+        "title": "Age Calculator",
+        "meta_title": "Age Calculator — Years, Months, Days, Next Birthday - Utilify",
+        "meta_desc": "Calculate exact age from a birth date. Returns years, months, days, total days alive, and how many days until the next birthday.",
+        "og_title": "Age Calculator - Utilify",
+        "og_desc": "Exact age in years/months/days plus next-birthday countdown.",
+        "json_name": "Age Calculator",
+        "json_desc": "Compute age and next-birthday distance from a date of birth.",
+        "page_desc": "Pick a birth date and get exact age — years, months, and days — plus total days alive and how many days until the next birthday. Handy for visa forms, school cutoffs, and \"how old will I be in 2030\" curiosity.",
+        "label_dob": "Date of birth",
+        "label_target": "Calculate as of",
+        "btn_calculate": "Calculate",
+        "btn_reset": "Reset",
+        "btn_share": "Share result",
+        "share_text": "Age: {value} —",
+        "share_copied": "Copied to clipboard.",
+        "res_age_label": "Age",
+        "res_total_days_label": "Days alive",
+        "res_next_birthday_label": "Next birthday in",
+        "res_age_format": "{years} y, {months} mo, {days} d",
+        "res_days_format": "{days} days",
+        "alert_invalid": "Pick a valid birth date that's not in the future of the target date.",
+        "howto_header": "How to use",
+        "howto_html": (
+            "<ol>"
+            "<li>Pick your date of birth.</li>"
+            "<li>Optional: change the target date (default is today). Useful for \"How old will I be on July 4, 2030?\" questions.</li>"
+            "<li>Click <strong>Calculate</strong>. Age in years / months / days, total days alive, and days until the next birthday all show up.</li>"
+            "</ol>"
+            "<p>The calculator handles month-end edge cases — a baby born on Jan 31 turns one month old on Feb 28 (or 29 in leap years), not Feb 31. Years are full Gregorian years; leap days are counted toward the day total.</p>"
+        ),
+        "related_header": "Related Tools",
+        "related_date": "Date Calculator",
+        "related_pregnancy": "Pregnancy Calculator",
+        "related_unix": "Unix Timestamp",
+        "related_bmi": "BMI Calculator",
+        "card_blurb": "Years / months / days alive + next-birthday countdown from any DOB."
+    },
+    "ko": {
+        "title": "만 나이 계산기",
+        "meta_title": "만 나이 계산기 — 년·개월·일·다음 생일까지 - Utilify",
+        "meta_desc": "생년월일로 만 나이(년·개월·일)·살아온 총 일수·다음 생일까지 일수를 계산. 비자 서류·학년 기준일·기념일 계산에 유용.",
+        "og_title": "만 나이 계산기 - Utilify",
+        "og_desc": "정확한 만 나이와 다음 생일까지 일수.",
+        "json_name": "만 나이 계산기",
+        "json_desc": "생년월일로 만 나이와 다음 생일까지 거리 계산.",
+        "page_desc": "생년월일을 입력하면 만 나이(년·개월·일), 살아온 총 일수, 다음 생일까지 남은 일수를 계산합니다. 비자 서류, 학년 기준일, \"2030년에 몇 살일까?\" 같은 질문에 유용합니다.",
+        "label_dob": "생년월일",
+        "label_target": "기준 날짜",
+        "btn_calculate": "계산",
+        "btn_reset": "초기화",
+        "btn_share": "결과 공유",
+        "share_text": "나이: {value} —",
+        "share_copied": "클립보드에 복사되었습니다.",
+        "res_age_label": "만 나이",
+        "res_total_days_label": "살아온 일수",
+        "res_next_birthday_label": "다음 생일까지",
+        "res_age_format": "{years}년 {months}개월 {days}일",
+        "res_days_format": "{days}일",
+        "alert_invalid": "기준 날짜보다 이후가 아닌 유효한 생년월일을 입력해 주세요.",
+        "howto_header": "사용 방법",
+        "howto_html": (
+            "<ol>"
+            "<li>생년월일을 선택하세요.</li>"
+            "<li>선택: 기준 날짜를 변경할 수 있습니다 (기본값은 오늘). \"2030년 7월 4일에 몇 살일까?\" 같은 질문에 유용합니다.</li>"
+            "<li><strong>계산</strong>을 누르면 만 나이(년·개월·일), 살아온 총 일수, 다음 생일까지의 일수가 표시됩니다.</li>"
+            "</ol>"
+            "<p>월말 경계 케이스를 처리합니다 — 1월 31일생 아기는 2월 28일(윤년이면 29일)에 1개월이 되며, 2월 31일이 아닙니다. 년수는 그레고리력 기준 완전 1년이며, 윤일도 살아온 일수에 포함됩니다.</p>"
+        ),
+        "related_header": "관련 도구",
+        "related_date": "날짜 계산기",
+        "related_pregnancy": "임신 계산기",
+        "related_unix": "Unix 타임스탬프",
+        "related_bmi": "BMI 계산기",
+        "card_blurb": "생년월일에서 만 나이·살아온 일수·다음 생일까지 즉시 계산."
     }
 }

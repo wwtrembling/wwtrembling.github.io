@@ -163,6 +163,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <script data-utilify-theme-init>(function(){try{var s=localStorage.getItem("utilify_theme");var t=(s==="dark"||s==="light")?s:(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
 </head>
 
 <body>
@@ -172,7 +173,7 @@
             <div class="header-content">
                 <a href="/ko/" class="site-logo">
                     🛠️ Utilify
-                </a>
+                </a><button data-utilify-theme-toggle id="themeToggle" class="theme-toggle" aria-label="다크 모드 전환" type="button">🌙</button>
             </div>
         </div>
     </header>
@@ -494,6 +495,83 @@
           <p class="card-description">키와 신체 둘레(목·허리, 여성은 엉덩이 추가)를 입력하면 미 해군 공식으로 체지방률을 추정합니다. 결과에는 피트니스 카테고리와 성별 권장 범위가 함께 표시됩니다.</p>
         </a>
 
+        <a href="/ko/rag-chunker/" class="card" data-category="ai" data-subcategory="" data-slug="rag-chunker" data-keywords="rag chunk split embedding vector overlap">
+          <button type="button" class="fav-toggle" data-fav="rag-chunker" aria-label="즐겨찾기에 추가" data-add-label="즐겨찾기에 추가" data-remove-label="즐겨찾기에서 제거">☆</button>
+          <div class="card-icon">✂️</div>
+          <h3 class="card-title">RAG 텍스트 청크 분할기</h3>
+          <p class="card-description">긴 문서를 임베딩 기반 검색용 겹침 청크로 분할합니다. 일정한 크기를 위해 문자 모드를, 임베딩 모델 컨텍스트 한계에 맞추려면 토큰 모드를 선택하세요. 모든 처리는 브라우저에서 이루어집니다.</p>
+        </a>
+
+        <a href="/ko/few-shot-formatter/" class="card" data-category="ai" data-subcategory="" data-slug="few-shot-formatter" data-keywords="few-shot prompt examples template formatter">
+          <button type="button" class="fav-toggle" data-fav="few-shot-formatter" aria-label="즐겨찾기에 추가" data-add-label="즐겨찾기에 추가" data-remove-label="즐겨찾기에서 제거">☆</button>
+          <div class="card-icon">🎯</div>
+          <h3 class="card-title">Few-Shot 프롬프트 포매터</h3>
+          <p class="card-description">시스템 지시와 입력→출력 예시 목록을 입력하면, Markdown, Anthropic XML 태그, OpenAI messages JSON, 또는 일반 텍스트 형식의 깔끔한 Few-shot 프롬프트로 변환합니다 — ChatGPT·Claude·스크립트에 바로 붙여넣을 수 있습니다.</p>
+        </a>
+
+        <a href="/ko/json-schema-validator/" class="card" data-category="dev" data-subcategory="" data-slug="json-schema-validator" data-keywords="json schema validate ajv schema jsonpath">
+          <button type="button" class="fav-toggle" data-fav="json-schema-validator" aria-label="즐겨찾기에 추가" data-add-label="즐겨찾기에 추가" data-remove-label="즐겨찾기에서 제거">☆</button>
+          <div class="card-icon">🛡️</div>
+          <h3 class="card-title">JSON Schema 검증기</h3>
+          <p class="card-description">JSON 데이터와 JSON Schema를 붙여넣으면 type·required·properties·items·enum·format·pattern·min/max 제약을 모두 검사하고, 실패 위치를 JSONPath로 표시합니다. 모든 처리는 브라우저에서 이루어집니다.</p>
+        </a>
+
+        <a href="/ko/tip-calculator/" class="card" data-category="calc" data-subcategory="" data-slug="tip-calculator" data-keywords="tip gratuity split bill restaurant">
+          <button type="button" class="fav-toggle" data-fav="tip-calculator" aria-label="즐겨찾기에 추가" data-add-label="즐겨찾기에 추가" data-remove-label="즐겨찾기에서 제거">☆</button>
+          <div class="card-icon">💵</div>
+          <h3 class="card-title">팁 계산기</h3>
+          <p class="card-description">계산서 금액과 팁 비율(빠른 선택 또는 직접 입력)을 입력하면, 인원수에 따라 분담액까지 함께 계산됩니다. 미국 등 팁 문화권 여행 시 유용. 모든 처리는 브라우저에서.</p>
+        </a>
+
+        <a href="/ko/percentage-calculator/" class="card" data-category="calc" data-subcategory="" data-slug="percentage-calculator" data-keywords="percent percentage change increase decrease">
+          <button type="button" class="fav-toggle" data-fav="percentage-calculator" aria-label="즐겨찾기에 추가" data-add-label="즐겨찾기에 추가" data-remove-label="즐겨찾기에서 제거">☆</button>
+          <div class="card-icon">％</div>
+          <h3 class="card-title">퍼센트 계산기</h3>
+          <p class="card-description">흔히 마주치는 퍼센트 계산 3가지를 한 곳에서: <em>B의 A%는?</em>, <em>A는 B의 몇 %인가?</em>, <em>A에서 B로 변화율</em>. 모드를 선택하면 입력 라벨이 자동으로 바뀝니다 — 공식을 외우지 않아도 됩니다.</p>
+        </a>
+
+        <a href="/ko/discount-calculator/" class="card" data-category="calc" data-subcategory="" data-slug="discount-calculator" data-keywords="discount sale price markdown savings">
+          <button type="button" class="fav-toggle" data-fav="discount-calculator" aria-label="즐겨찾기에 추가" data-add-label="즐겨찾기에 추가" data-remove-label="즐겨찾기에서 제거">☆</button>
+          <div class="card-icon">🏷️</div>
+          <h3 class="card-title">할인 계산기</h3>
+          <p class="card-description">정가와 할인율을 입력하면 최종 가격과 절약 금액을 계산합니다. 추가 할인("30% 할인 + 결제 시 추가 20%" 등)도 지원하며, 단순 합이 아닌 실제 합산 할인율을 보여줍니다.</p>
+        </a>
+
+        <a href="/ko/sleep-calculator/" class="card" data-category="calc" data-subcategory="" data-slug="sleep-calculator" data-keywords="sleep bedtime wake rem cycle">
+          <button type="button" class="fav-toggle" data-fav="sleep-calculator" aria-label="즐겨찾기에 추가" data-add-label="즐겨찾기에 추가" data-remove-label="즐겨찾기에서 제거">☆</button>
+          <div class="card-icon">🌙</div>
+          <h3 class="card-title">수면 사이클 계산기</h3>
+          <p class="card-description">90분 REM 사이클에 맞춰 수면을 계획하세요. 기상 시간을 입력하면 4~6 사이클을 위한 잠들 시간을, 취침 시간을 입력하면 좋은 기상 시간을 알려줍니다. 잠드는 데 걸리는 시간 14분이 자동 반영됩니다.</p>
+        </a>
+
+        <a href="/ko/reading-time/" class="card" data-category="text" data-subcategory="" data-slug="reading-time" data-keywords="reading wpm words minutes speech">
+          <button type="button" class="fav-toggle" data-fav="reading-time" aria-label="즐겨찾기에 추가" data-add-label="즐겨찾기에 추가" data-remove-label="즐겨찾기에서 제거">☆</button>
+          <div class="card-icon">📖</div>
+          <h3 class="card-title">읽기 시간 계산기</h3>
+          <p class="card-description">텍스트를 붙여넣거나 단어 수를 입력해 원하는 속도로 읽는 데 걸리는 시간을 추정합니다. 기본값 250 WPM은 성인 묵독 평균이며, 팟캐스트는 150, 빠른 훑어 읽기는 300 이상을 사용하세요.</p>
+        </a>
+
+        <a href="/ko/water-intake/" class="card" data-category="calc" data-subcategory="" data-slug="water-intake" data-keywords="water hydration drink intake daily">
+          <button type="button" class="fav-toggle" data-fav="water-intake" aria-label="즐겨찾기에 추가" data-add-label="즐겨찾기에 추가" data-remove-label="즐겨찾기에서 제거">☆</button>
+          <div class="card-icon">💧</div>
+          <h3 class="card-title">물 섭취량 계산기</h3>
+          <p class="card-description">체중을 기준으로 1일 물 섭취량을 추정하고 운동량과 기후에 따라 보정합니다. 결과는 ml·리터·250ml 컵 수로 표시됩니다. 기본 공식은 체중(kg)당 33ml — 보통 활동량의 성인에게 적용되는 기준입니다.</p>
+        </a>
+
+        <a href="/ko/file-size-converter/" class="card" data-category="convert" data-subcategory="" data-slug="file-size-converter" data-keywords="file size bytes kb mb gb tb kib mib">
+          <button type="button" class="fav-toggle" data-fav="file-size-converter" aria-label="즐겨찾기에 추가" data-add-label="즐겨찾기에 추가" data-remove-label="즐겨찾기에서 제거">☆</button>
+          <div class="card-icon">💾</div>
+          <h3 class="card-title">파일 크기 변환기</h3>
+          <p class="card-description">바이트·KB·MB·GB·TB·PB 단위를 자유롭게 변환합니다. 하드드라이브 광고에 쓰는 십진법(1KB = 1000B)과 OS가 표시하는 이진법(1KiB = 1024B) 중 선택할 수 있습니다.</p>
+        </a>
+
+        <a href="/ko/age-calculator/" class="card" data-category="calc" data-subcategory="" data-slug="age-calculator" data-keywords="age dob birthday years old birthdate">
+          <button type="button" class="fav-toggle" data-fav="age-calculator" aria-label="즐겨찾기에 추가" data-add-label="즐겨찾기에 추가" data-remove-label="즐겨찾기에서 제거">☆</button>
+          <div class="card-icon">🎂</div>
+          <h3 class="card-title">만 나이 계산기</h3>
+          <p class="card-description">생년월일을 입력하면 만 나이(년·개월·일), 살아온 총 일수, 다음 생일까지 남은 일수를 계산합니다. 비자 서류, 학년 기준일, "2030년에 몇 살일까?" 같은 질문에 유용합니다.</p>
+        </a>
+
         <a href="/ko/image-editor/" class="card" data-category="image" data-subcategory="" data-slug="image-editor" data-keywords="image crop rotate filter">
           <button type="button" class="fav-toggle" data-fav="image-editor" aria-label="즐겨찾기에 추가" data-add-label="즐겨찾기에 추가" data-remove-label="즐겨찾기에서 제거">☆</button>
           <div class="card-icon">🎨</div>
@@ -727,6 +805,7 @@
         })();
     </script>
     <script>(adsbygoogle=window.adsbygoogle||[]).push({google_ad_client:"ca-pub-6334819180242631",enable_page_level_ads:true});</script>
+    <script data-utilify-theme-toggle-script>(function(){var b=document.getElementById("themeToggle");if(!b)return;function p(){var t=document.documentElement.getAttribute("data-theme")||"light";b.textContent=t==="dark"?"☀️":"🌙";b.setAttribute("aria-pressed",String(t==="dark"));}p();b.addEventListener("click",function(){var c=document.documentElement.getAttribute("data-theme")||"light";var n=c==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",n);try{localStorage.setItem("utilify_theme",n);}catch(e){}p();});})();</script>
 </body>
 
 </html>

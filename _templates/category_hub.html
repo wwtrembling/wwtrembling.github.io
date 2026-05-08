@@ -32,6 +32,8 @@
         "inLanguage": "{{ lang_code }}"
     }
     </script>
+    <script type="application/ld+json">{{ breadcrumb_schema }}</script>
+    <script type="application/ld+json">{{ faq_schema }}</script>
     <link rel="manifest" href="/manifest.json">
 </head>
 
@@ -39,6 +41,12 @@
     <header class="site-header"><div class="container"><div class="header-content"><a href="/{{ lang_code }}/" class="site-logo">{{ brand }}</a></div></div></header>
     <main class="main-content">
         <div class="container-narrow">
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+                <ol>
+                    <li><a href="/{{ lang_code }}/">{{ breadcrumb_home }}</a></li>
+                    <li aria-current="page">{{ h1 }}</li>
+                </ol>
+            </nav>
             <h1>{{ hub_icon }} {{ h1 }}</h1>
 
             <div class="page-intro">{{ intro_html }}</div>

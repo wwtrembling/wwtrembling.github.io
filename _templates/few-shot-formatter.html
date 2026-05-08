@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="{{ lang_code }}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy-Report-Only" content="default-src 'self' https: data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https:; frame-src https:;">
+    <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+    <title>{{ meta_title }}</title>
+    <meta name="description" content="{{ meta_desc }}">
+    <link rel="canonical" href="https://utilifyapp.net/{{ lang_code }}/few-shot-formatter/">
+
+    <meta property="og:title" content="{{ og_title }}">
+    <meta property="og:description" content="{{ og_desc }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://utilifyapp.net/{{ lang_code }}/few-shot-formatter/">
+
+    {{ alternate_links }}
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "{{ json_name }}",
+        "description": "{{ json_desc }}",
+        "url": "https://utilifyapp.net/{{ lang_code }}/few-shot-formatter/",
+        "inLanguage": "{{ lang_code }}",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Any",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+
+    <style>
+        .pair-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr auto;
+            gap: var(--spacing-sm);
+            align-items: start;
+            margin-bottom: var(--spacing-sm);
+        }
+        @media (max-width: 600px) { .pair-row { grid-template-columns: 1fr; } }
+        .pair-row textarea {
+            min-height: 70px;
+            font-family: var(--font-mono);
+            font-size: 0.92rem;
+        }
+        .pair-row .remove-btn {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            color: var(--text-secondary);
+            cursor: pointer;
+            padding: 4px 10px;
+            align-self: stretch;
+            transition: color var(--transition-fast), border-color var(--transition-fast);
+        }
+        .pair-row .remove-btn:hover { color: #c62828; border-color: #c62828; }
+        .pair-index {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            grid-column: 1 / -1;
+            margin-bottom: -2px;
+        }
+        .button-row { display: flex; gap: var(--spacing-sm); flex-wrap: wrap; }
+        .button-row .btn { min-width: 120px; }
+        .output-block {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            font-family: var(--font-mono);
+            font-size: 0.88rem;
+            white-space: pre-wrap;
+            word-break: break-word;
+            line-height: 1.5;
+            max-height: 30em;
+            overflow: auto;
+            margin: var(--spacing-md) 0;
+        }
+    </style>
+    <link rel="manifest" href="/manifest.json">
+</head>
+
+<body>
+    <header class="site-header"><div class="container"><div class="header-content"><a href="/{{ lang_code }}/" class="site-logo">{{ brand }}</a></div></div></header>
+    <main class="main-content">
+        <div class="container-narrow">
+            <h1>🎯 {{ title }}</h1>
+            <div class="security-badge" style="display:flex;align-items:center;justify-content:center;gap:8px;margin:10px 0;font-size:14px;color:var(--text-secondary);">
+                <span>{{ secure_badge }}</span>
+                <button id="pwaInstallBtn" class="btn btn-primary" style="display: none; padding: 4px 12px; font-size: 12px;">{{ install_app }}</button>
+            </div>
+
+            <p>{{ page_desc }}</p>
+
+            <div class="card">
+                <div class="form-group">
+                    <label class="form-label" for="systemInput">{{ label_system }}</label>
+                    <textarea id="systemInput" class="form-input" rows="2" placeholder="{{ ph_system }}" style="font-family: var(--font-mono);"></textarea>
+                </div>
+
+                <div id="pairList"></div>
+
+                <div class="button-row" style="margin-top: var(--spacing-md);">
+                    <button class="btn" type="button" onclick="addPair()">{{ btn_add_pair }}</button>
+                </div>
+
+                <div class="form-group" style="margin-top: var(--spacing-lg);">
+                    <label class="form-label" for="formatSelect">{{ label_format }}</label>
+                    <select id="formatSelect" class="form-input">
+                        <option value="md" selected>{{ opt_md }}</option>
+                        <option value="xml">{{ opt_xml }}</option>
+                        <option value="json">{{ opt_json }}</option>
+                        <option value="plain">{{ opt_plain }}</option>
+                    </select>
+                </div>
+
+                <div class="button-row">
+                    <button class="btn btn-primary" type="button" onclick="format()">{{ btn_format }}</button>
+                    <button class="btn" type="button" onclick="resetForm()">{{ btn_reset }}</button>
+                </div>
+            </div>
+
+            <div id="result" style="display:none;" aria-live="polite">
+                <h3>{{ res_label }}</h3>
+                <pre class="output-block" id="outputBlock"></pre>
+                <div class="button-row">
+                    <button class="btn" type="button" onclick="copyResult()">{{ btn_copy }}</button>
+                    <button class="btn" type="button" onclick="shareResult()">{{ btn_share }}</button>
+                </div>
+            </div>
+
+            <div class="disclaimer">{{ disclaimer }}</div>
+
+            <h2>{{ howto_header }}</h2>
+            <div class="howto-content">{{ howto_html }}</div>
+
+            <div class="related-tools-section">
+                <h3>{{ related_header }}</h3>
+                <div class="related-buttons">
+                    <a href="/{{ lang_code }}/token-counter/" class="related-btn">{{ related_token }}</a><a
+                        href="/{{ lang_code }}/prompt-pii-scrubber/" class="related-btn">{{ related_pii }}</a><a
+                        href="/{{ lang_code }}/chatgpt-to-blog/" class="related-btn">{{ related_chatgpt }}</a><a
+                        href="/{{ lang_code }}/claude-md-generator/" class="related-btn">{{ related_claude }}</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="site-footer"><div class="container"><div class="footer-content"><p>{{ footer }}</p></div></div></footer>
+    <script src="/assets/js/common.js"></script>
+    <script>
+        const PH_INPUT = '{{ ph_input }}';
+        const PH_OUTPUT = '{{ ph_output }}';
+        const REMOVE_LABEL = '{{ btn_remove_pair }}';
+        const list = document.getElementById('pairList');
+
+        function addPair(input, output) {
+            const idx = list.children.length;
+            const wrap = document.createElement('div');
+            wrap.className = 'pair-row';
+            wrap.innerHTML =
+                '<div class="pair-index">#' + (idx + 1) + '</div>' +
+                '<textarea class="form-input pair-input" placeholder="' + PH_INPUT + '"></textarea>' +
+                '<textarea class="form-input pair-output" placeholder="' + PH_OUTPUT + '"></textarea>' +
+                '<button type="button" class="remove-btn">' + REMOVE_LABEL + '</button>';
+            wrap.querySelector('.remove-btn').addEventListener('click', () => {
+                wrap.remove();
+                renumber();
+            });
+            if (input) wrap.querySelector('.pair-input').value = input;
+            if (output) wrap.querySelector('.pair-output').value = output;
+            list.appendChild(wrap);
+        }
+
+        function renumber() {
+            [...list.children].forEach((row, i) => {
+                row.querySelector('.pair-index').textContent = '#' + (i + 1);
+            });
+        }
+
+        function collectPairs() {
+            return [...list.querySelectorAll('.pair-row')]
+                .map(r => ({
+                    input: r.querySelector('.pair-input').value.trim(),
+                    output: r.querySelector('.pair-output').value.trim(),
+                }))
+                .filter(p => p.input || p.output);
+        }
+
+        function format() {
+            const system = document.getElementById('systemInput').value.trim();
+            const pairs = collectPairs();
+            if (!pairs.length) {
+                alert('{{ alert_no_pairs }}');
+                return;
+            }
+            const fmt = document.getElementById('formatSelect').value;
+            const out = render(system, pairs, fmt);
+            document.getElementById('outputBlock').textContent = out;
+            document.getElementById('result').style.display = 'block';
+        }
+
+        function render(system, pairs, fmt) {
+            if (fmt === 'json') {
+                const arr = [];
+                if (system) arr.push({ role: 'system', content: system });
+                pairs.forEach(p => {
+                    arr.push({ role: 'user', content: p.input });
+                    arr.push({ role: 'assistant', content: p.output });
+                });
+                return JSON.stringify(arr, null, 2);
+            }
+            if (fmt === 'xml') {
+                const parts = [];
+                if (system) parts.push('<system>\n' + system + '\n</system>');
+                parts.push('<examples>');
+                pairs.forEach(p => {
+                    parts.push('  <example>');
+                    parts.push('    <input>' + p.input + '</input>');
+                    parts.push('    <output>' + p.output + '</output>');
+                    parts.push('  </example>');
+                });
+                parts.push('</examples>');
+                return parts.join('\n');
+            }
+            if (fmt === 'plain') {
+                const parts = [];
+                if (system) parts.push(system, '');
+                pairs.forEach(p => {
+                    parts.push('Input: ' + p.input);
+                    parts.push('Output: ' + p.output);
+                    parts.push('');
+                });
+                return parts.join('\n').trimEnd();
+            }
+            // markdown (default)
+            const parts = [];
+            if (system) parts.push('## System', '', system, '');
+            parts.push('## Examples', '');
+            pairs.forEach((p, i) => {
+                parts.push('**Example ' + (i + 1) + ':**');
+                parts.push('Input: ' + p.input);
+                parts.push('Output: ' + p.output);
+                parts.push('');
+            });
+            return parts.join('\n').trimEnd();
+        }
+
+        async function copyResult() {
+            const text = document.getElementById('outputBlock').textContent;
+            if (!text) return;
+            try {
+                await navigator.clipboard.writeText(text);
+                alert('{{ copied }}');
+            } catch (e) { /* clipboard blocked */ }
+        }
+
+        async function shareResult() {
+            const pairs = collectPairs();
+            if (!pairs.length) return;
+            const text = '{{ share_text }}'.replace('{value}', pairs.length) + ' ' + location.href;
+            if (navigator.share) {
+                try { await navigator.share({ title: '{{ title }}', text }); return; }
+                catch (e) { if (e && e.name === 'AbortError') return; }
+            }
+            try {
+                await navigator.clipboard.writeText(text);
+                alert('{{ share_copied }}');
+            } catch (e) { /* clipboard blocked */ }
+        }
+
+        function resetForm() {
+            document.getElementById('systemInput').value = '';
+            list.innerHTML = '';
+            addPair();
+            addPair();
+            document.getElementById('formatSelect').value = 'md';
+            document.getElementById('result').style.display = 'none';
+        }
+
+        // Seed with two empty pairs.
+        addPair();
+        addPair();
+    </script>
+</body>
+
+</html>

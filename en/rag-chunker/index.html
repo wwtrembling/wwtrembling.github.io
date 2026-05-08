@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy-Report-Only" content="default-src 'self' https: data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https:; frame-src https:;">
+    <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+    <title>RAG Text Chunker — Sliding Window Chunks for Embeddings - Utilify</title>
+    <meta name="description" content="Split text into overlapping chunks for RAG / embedding pipelines. Configurable size and overlap, character or token-estimate mode. Runs entirely in your browser.">
+    <link rel="canonical" href="https://utilifyapp.net/en/rag-chunker/">
+
+    <meta property="og:title" content="RAG Text Chunker - Utilify">
+    <meta property="og:description" content="Split text into chunks with overlap for embedding-based retrieval pipelines.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://utilifyapp.net/en/rag-chunker/">
+
+    <link rel="alternate" hreflang="en" href="https://utilifyapp.net/en/rag-chunker/">
+    <link rel="alternate" hreflang="ko" href="https://utilifyapp.net/ko/rag-chunker/">
+    <link rel="alternate" hreflang="vi" href="https://utilifyapp.net/vi/rag-chunker/">
+    <link rel="alternate" hreflang="th" href="https://utilifyapp.net/th/rag-chunker/">
+    <link rel="alternate" hreflang="de" href="https://utilifyapp.net/de/rag-chunker/">
+    <link rel="alternate" hreflang="pt" href="https://utilifyapp.net/pt/rag-chunker/">
+    <link rel="alternate" hreflang="id" href="https://utilifyapp.net/id/rag-chunker/">
+    <link rel="alternate" hreflang="hi" href="https://utilifyapp.net/hi/rag-chunker/">
+    <link rel="alternate" hreflang="ja" href="https://utilifyapp.net/ja/rag-chunker/">
+    <link rel="alternate" hreflang="zh-Hans" href="https://utilifyapp.net/zh-cn/rag-chunker/">
+    <link rel="alternate" hreflang="zh-Hant" href="https://utilifyapp.net/zh-tw/rag-chunker/">
+    <link rel="alternate" hreflang="x-default" href="https://utilifyapp.net/en/rag-chunker/">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "RAG Text Chunker",
+        "description": "Sliding-window text chunker for retrieval-augmented generation pipelines.",
+        "url": "https://utilifyapp.net/en/rag-chunker/",
+        "inLanguage": "en",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Any",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+
+    <style>
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: var(--spacing-md);
+        }
+        @media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; } }
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+        }
+        .stat-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            text-align: center;
+        }
+        .stat-card .label { font-size: 0.85rem; color: var(--text-secondary); }
+        .stat-card .value { font-size: 1.4rem; font-weight: 700; color: var(--primary-color); margin-top: 4px; font-variant-numeric: tabular-nums; }
+
+        .chunk-list { display: grid; gap: var(--spacing-sm); margin-top: var(--spacing-md); }
+        .chunk-item {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            cursor: pointer;
+            transition: border-color var(--transition-fast);
+        }
+        .chunk-item:hover { border-color: var(--primary-color); }
+        .chunk-item .chunk-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+        }
+        .chunk-item .chunk-title { font-weight: 600; color: var(--primary-color); }
+        .chunk-item pre {
+            margin: 0;
+            white-space: pre-wrap;
+            word-break: break-word;
+            font-family: var(--font-mono);
+            font-size: 0.88rem;
+            line-height: 1.5;
+            max-height: 8em;
+            overflow: hidden;
+        }
+        .button-row { display: flex; gap: var(--spacing-sm); flex-wrap: wrap; }
+        .button-row .btn { min-width: 120px; }
+    </style>
+    <link rel="manifest" href="/manifest.json">
+    <script data-utilify-adsense-loader async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631" crossorigin="anonymous"></script>
+    <meta data-utilify-og property="og:image" content="https://utilifyapp.net/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Utilify">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://utilifyapp.net/assets/og-image.png">
+    <link data-utilify-favicon rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <script data-utilify-theme-init>(function(){try{var s=localStorage.getItem("utilify_theme");var t=(s==="dark"||s==="light")?s:(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
+</head>
+
+<body>
+    <a data-utilify-skip class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header"><div class="container"><div class="header-content"><a href="/en/" class="site-logo">🛠️ Utilify</a><button data-utilify-theme-toggle id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode" type="button">🌙</button></div></div></header>
+    <main id="main" class="main-content">
+        <div class="container-narrow">
+            <h1>✂️ RAG Text Chunker</h1>
+            <div class="security-badge" style="display:flex;align-items:center;justify-content:center;gap:8px;margin:10px 0;font-size:14px;color:var(--text-secondary);">
+                <span>🔒 Secure & Client-side</span>
+                <button id="pwaInstallBtn" class="btn btn-primary" style="display: none; padding: 4px 12px; font-size: 12px;">📲 Install App</button>
+                    <button data-utilify-fav-toggle class="fav-toggle-page" type="button" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
+            </div>
+
+            <p>Paste a long document and split it into overlapping chunks for embedding-based retrieval. Pick chunks-by-characters for predictable size or chunks-by-token-estimate for closer alignment with embedding model limits. All processing happens in your browser.</p>
+
+            <div class="card">
+                <div class="form-group">
+                    <label class="form-label" for="textInput">Source text</label>
+                    <textarea id="textInput" class="form-input" rows="10" placeholder="Paste the document you want to chunk…" style="font-family: var(--font-mono); min-height: 220px;"></textarea>
+                </div>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label" for="size">Chunk size</label>
+                        <input type="number" id="size" class="form-input" inputmode="numeric" min="20" max="20000" step="1" placeholder="512" value="512">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="overlap">Overlap</label>
+                        <input type="number" id="overlap" class="form-input" inputmode="numeric" min="0" max="5000" step="1" placeholder="50" value="50">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="mode">Unit</label>
+                        <select id="mode" class="form-input">
+                            <option value="chars" selected>Characters</option>
+                            <option value="tokens">Tokens (estimated)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="button-row" style="margin-top: var(--spacing-md);">
+                    <button class="btn btn-primary" type="button" onclick="run()">Chunk</button>
+                    <button class="btn" type="button" onclick="resetForm()">Reset</button>
+                </div>
+            </div>
+
+            <div id="result" style="display:none;" aria-live="polite">
+                <div class="stat-grid">
+                    <div class="stat-card">
+                        <div class="label">Chunks</div>
+                        <div class="value" id="countVal">—</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="label">Source size</div>
+                        <div class="value" id="totalVal">—</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="label">Avg chunk size</div>
+                        <div class="value" id="avgVal">—</div>
+                    </div>
+                </div>
+
+                <div class="button-row">
+                    <button class="btn" type="button" onclick="copyAll()">Copy all (JSON)</button>
+                    <button class="btn" type="button" onclick="shareResult()">Share result</button>
+                </div>
+
+                <div class="chunk-list" id="chunkList"></div>
+            </div>
+
+            <div class="disclaimer">Token mode is an approximate (~4 chars/token English, ~1.5 chars/token CJK). For exact tokenization, use the embedding model's tokenizer.</div>
+
+            <h2>How to use</h2>
+            <div class="howto-content"><ol><li>Paste your source document.</li><li>Pick chunk size and overlap. Common starting points: 512 chunk / 50 overlap (chars), or 256 / 32 (tokens).</li><li>Choose <em>characters</em> for predictable byte-size or <em>tokens</em> to align with embedding model context limits.</li><li>Click <strong>Chunk</strong>. Each chunk is numbered with byte length; click any chunk to copy it, or use <strong>Copy all (JSON)</strong> to grab the whole array.</li></ol><p><strong>Why overlap?</strong> Overlap preserves context across chunk boundaries — a sentence split mid-thought won't lose its anchor. Common ratio: overlap = 10–20% of chunk size.</p><p>Splitting strategy is plain sliding window; no semantic boundary detection. For prose, that's usually fine. For code or structured documents, consider a parser-aware splitter.</p></div>
+
+            <div class="related-tools-section">
+                <h3>Related Tools</h3>
+                <div class="related-buttons">
+                    <a href="/en/token-counter/" class="related-btn">Token Counter</a><a
+                        href="/en/prompt-pii-scrubber/" class="related-btn">Prompt PII Scrubber</a><a
+                        href="/en/chatgpt-to-blog/" class="related-btn">ChatGPT to Blog</a><a
+                        href="/en/markdown-previewer/" class="related-btn">Markdown Previewer</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="site-footer"><div class="container"><div class="footer-content"><p>&copy; 2025 Utilify. All rights reserved.</p>
+                <p data-legal-links style="font-size: 0.875rem; margin-top: 8px;"><a href="/en/about/">About</a> · <a href="/en/privacy/">Privacy</a> · <a href="/en/terms/">Terms</a></p></div></div></footer>
+    <script src="/assets/js/common.js"></script>
+    <script>
+        const LOCALE = document.documentElement.lang || 'en';
+        let currentChunks = [];
+
+        function estimateTokens(text) {
+            if (!text) return 0;
+            const cjk = (text.match(/[　-鿿가-힣぀-ヿ]/g) || []).length;
+            const ratio = cjk / Math.max(text.length, 1);
+            const charsPerToken = 4 - 2.5 * ratio;
+            return Math.ceil(text.length / Math.max(charsPerToken, 1.2));
+        }
+
+        function tokenStep(charsPerToken) {
+            // Approximate chars-per-token globally for the input. Used to convert
+            // the user's "tokens" chunk size into a character-window for slicing.
+            return charsPerToken;
+        }
+
+        function chunk(text, size, overlap, mode) {
+            const t = text;
+            if (!t.length || size <= overlap) return [];
+
+            // In token mode we slice by characters but scale the size so the
+            // result roughly matches the user-stated token count.
+            let charSize = size;
+            let charOverlap = overlap;
+            if (mode === 'tokens') {
+                const cjk = (t.match(/[　-鿿가-힣぀-ヿ]/g) || []).length;
+                const ratio = cjk / Math.max(t.length, 1);
+                const charsPerToken = 4 - 2.5 * ratio;
+                charSize = Math.max(1, Math.round(size * charsPerToken));
+                charOverlap = Math.max(0, Math.round(overlap * charsPerToken));
+                if (charSize <= charOverlap) return [];
+            }
+
+            const out = [];
+            let i = 0;
+            while (i < t.length) {
+                const end = Math.min(i + charSize, t.length);
+                out.push(t.slice(i, end));
+                if (end === t.length) break;
+                i += (charSize - charOverlap);
+            }
+            return out;
+        }
+
+        function run() {
+            const text = document.getElementById('textInput').value;
+            const size = parseInt(document.getElementById('size').value, 10);
+            const overlap = parseInt(document.getElementById('overlap').value, 10);
+            const mode = document.getElementById('mode').value;
+            if (!text.trim() || !(size > 0) || size <= overlap) {
+                alert('Enter source text and a chunk size larger than overlap.');
+                return;
+            }
+            const chunks = chunk(text, size, overlap, mode);
+            currentChunks = chunks;
+
+            const total = text.length;
+            const avg = chunks.length
+                ? Math.round(chunks.reduce((s, c) => s + c.length, 0) / chunks.length)
+                : 0;
+            document.getElementById('countVal').textContent = chunks.length.toLocaleString(LOCALE);
+            document.getElementById('totalVal').textContent = total.toLocaleString(LOCALE);
+            document.getElementById('avgVal').textContent = avg.toLocaleString(LOCALE);
+
+            const list = document.getElementById('chunkList');
+            list.innerHTML = '';
+            const unit = mode === 'tokens' ? '~tok' : 'ch';
+            chunks.forEach((c, i) => {
+                const item = document.createElement('div');
+                item.className = 'chunk-item';
+                item.title = 'Chunk copied.';
+                const tokenLen = mode === 'tokens' ? estimateTokens(c) : c.length;
+                const header = document.createElement('div');
+                header.className = 'chunk-header';
+                const title = document.createElement('span');
+                title.className = 'chunk-title';
+                title.textContent = 'Chunk #' + (i + 1);
+                const len = document.createElement('span');
+                len.textContent = c.length + ' ch · ' + estimateTokens(c) + ' ~tok';
+                header.appendChild(title);
+                header.appendChild(len);
+                const pre = document.createElement('pre');
+                pre.textContent = c;
+                item.appendChild(header);
+                item.appendChild(pre);
+                item.addEventListener('click', async () => {
+                    try {
+                        await navigator.clipboard.writeText(c);
+                        const old = title.textContent;
+                        title.textContent = '✓ ' + old;
+                        setTimeout(() => { title.textContent = old; }, 1200);
+                    } catch (e) { /* clipboard blocked */ }
+                });
+                list.appendChild(item);
+            });
+
+            document.getElementById('result').style.display = 'block';
+        }
+
+        async function copyAll() {
+            if (!currentChunks.length) return;
+            try {
+                await navigator.clipboard.writeText(JSON.stringify(currentChunks, null, 2));
+                alert('Copied to clipboard.');
+            } catch (e) { /* clipboard blocked */ }
+        }
+
+        function resetForm() {
+            document.getElementById('textInput').value = '';
+            document.getElementById('size').value = '512';
+            document.getElementById('overlap').value = '50';
+            document.getElementById('mode').value = 'chars';
+            document.getElementById('result').style.display = 'none';
+            currentChunks = [];
+        }
+
+        async function shareResult() {
+            if (!currentChunks.length) return;
+            const sourceLen = document.getElementById('textInput').value.length;
+            const text = 'I split a {value}-character document into chunks —'.replace('{value}', sourceLen.toLocaleString(LOCALE)) + ' ' + location.href;
+            if (navigator.share) {
+                try { await navigator.share({ title: 'RAG Text Chunker', text }); return; }
+                catch (e) { if (e && e.name === 'AbortError') return; }
+            }
+            try {
+                await navigator.clipboard.writeText(text);
+                alert('Copied to clipboard.');
+            } catch (e) { /* clipboard blocked */ }
+        }
+    </script>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({google_ad_client:"ca-pub-6334819180242631",enable_page_level_ads:true});</script>
+    <script data-utilify-theme-toggle-script>(function(){var b=document.getElementById("themeToggle");if(!b)return;function p(){var t=document.documentElement.getAttribute("data-theme")||"light";b.textContent=t==="dark"?"☀️":"🌙";b.setAttribute("aria-pressed",String(t==="dark"));}p();b.addEventListener("click",function(){var c=document.documentElement.getAttribute("data-theme")||"light";var n=c==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",n);try{localStorage.setItem("utilify_theme",n);}catch(e){}p();});})();</script>
+    <script data-utilify-fav-toggle-script>(function(){var btn=document.querySelector(".fav-toggle-page");if(!btn)return;var m=location.pathname.match(/^\/[^\/]+\/([^\/]+)\/?$/);if(!m)return;var slug=m[1],K="utilify_favorites";function g(){return (localStorage.getItem(K)||"").split(",").filter(Boolean);}function s(a){localStorage.setItem(K,Array.from(new Set(a)).join(","));}function p(f){btn.textContent=f?"★":"☆";btn.classList.toggle("is-fav",f);btn.setAttribute("aria-label",f?btn.dataset.removeLabel:btn.dataset.addLabel);btn.setAttribute("aria-pressed",String(f));}p(g().indexOf(slug)>-1);btn.addEventListener("click",function(){var a=g(),n=a.indexOf(slug)>-1?a.filter(function(x){return x!==slug;}):a.concat([slug]);s(n);p(n.indexOf(slug)>-1);});})();</script>
+</body>
+
+</html>

@@ -50,6 +50,51 @@
   --transition-slow: 350ms ease;
 }
 
+/* Dark mode — applied when <html data-theme="dark">. The init script in
+   inject_monetization() sets this attribute before paint based on
+   localStorage 'utilify_theme', falling back to prefers-color-scheme.
+   Brand colors (primary/secondary/accent) are kept identical — they read
+   well on both backgrounds. */
+[data-theme="dark"] {
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --bg-tertiary: #334155;
+  --text-primary: #f1f5f9;
+  --text-secondary: #cbd5e1;
+  --text-tertiary: #94a3b8;
+  --border-color: #334155;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.55);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.6);
+}
+[data-theme="dark"] .site-header {
+  background-color: rgba(15, 23, 42, 0.9);
+}
+[data-theme="dark"] .verdict.valid { background: rgba(76, 175, 80, 0.15); color: #81c784; border-color: #4caf50; }
+[data-theme="dark"] .verdict.invalid { background: rgba(239, 83, 80, 0.15); color: #ef9a9a; border-color: #ef5350; }
+[data-theme="dark"] .outcome-box.success { border-left-color: #4caf50; }
+[data-theme="dark"] .outcome-box.warn { border-left-color: #ef5350; }
+[data-theme="dark"] .balance-chart .withdrawal { stroke: #ef5350; }
+[data-theme="dark"] .balance-chart .area-wd { fill: #ef5350; fill-opacity: 0.10; }
+
+/* Theme toggle button (rendered in the site header by inject_monetization). */
+.theme-toggle {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 6px 10px;
+  font-size: 1.05rem;
+  cursor: pointer;
+  color: var(--text-primary);
+  transition: border-color var(--transition-fast), background-color var(--transition-fast);
+  line-height: 1;
+}
+.theme-toggle:hover {
+  border-color: var(--primary-color);
+  background-color: rgba(99, 102, 241, 0.08);
+}
+
 /* ============================================
    Reset & Base Styles
    ============================================ */
@@ -829,6 +874,39 @@ a:hover {
 }
 .hub-faq details[open] summary::before { transform: rotate(90deg); }
 .hub-faq details p { margin: var(--spacing-sm) 0 0; color: var(--text-secondary); }
+
+/* Hub-page breadcrumb: Home > Finance. */
+.breadcrumb {
+  margin-bottom: var(--spacing-md);
+}
+.breadcrumb ol {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: var(--spacing-xs);
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+.breadcrumb li::after {
+  content: '›';
+  margin-left: var(--spacing-xs);
+  color: var(--text-tertiary);
+}
+.breadcrumb li:last-child::after { content: ''; }
+.breadcrumb a {
+  color: var(--text-secondary);
+  text-decoration: none;
+}
+.breadcrumb a:hover {
+  color: var(--primary-color);
+  text-decoration: underline;
+}
+.breadcrumb [aria-current="page"] {
+  color: var(--text-primary);
+  font-weight: 500;
+}
 
 /* "→ Finance hub" link rendered next to the matching subcat chip on the index. */
 .hub-link {

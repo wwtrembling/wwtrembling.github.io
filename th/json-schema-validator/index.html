@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy-Report-Only" content="default-src 'self' https: data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https:; frame-src https:;">
+    <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+    <title>JSON Schema Validator — Validate JSON Against a Schema - Utilify</title>
+    <meta name="description" content="Validate JSON data against a JSON Schema in your browser. Supports type, properties, required, items, enum, format, pattern, min/max. No upload, no signup.">
+    <link rel="canonical" href="https://utilifyapp.net/th/json-schema-validator/">
+
+    <meta property="og:title" content="JSON Schema Validator - Utilify">
+    <meta property="og:description" content="Validate JSON against a schema. Errors include the JSONPath of every failure.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://utilifyapp.net/th/json-schema-validator/">
+
+    <link rel="alternate" hreflang="en" href="https://utilifyapp.net/en/json-schema-validator/">
+    <link rel="alternate" hreflang="ko" href="https://utilifyapp.net/ko/json-schema-validator/">
+    <link rel="alternate" hreflang="vi" href="https://utilifyapp.net/vi/json-schema-validator/">
+    <link rel="alternate" hreflang="th" href="https://utilifyapp.net/th/json-schema-validator/">
+    <link rel="alternate" hreflang="de" href="https://utilifyapp.net/de/json-schema-validator/">
+    <link rel="alternate" hreflang="pt" href="https://utilifyapp.net/pt/json-schema-validator/">
+    <link rel="alternate" hreflang="id" href="https://utilifyapp.net/id/json-schema-validator/">
+    <link rel="alternate" hreflang="hi" href="https://utilifyapp.net/hi/json-schema-validator/">
+    <link rel="alternate" hreflang="ja" href="https://utilifyapp.net/ja/json-schema-validator/">
+    <link rel="alternate" hreflang="zh-Hans" href="https://utilifyapp.net/zh-cn/json-schema-validator/">
+    <link rel="alternate" hreflang="zh-Hant" href="https://utilifyapp.net/zh-tw/json-schema-validator/">
+    <link rel="alternate" hreflang="x-default" href="https://utilifyapp.net/en/json-schema-validator/">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "JSON Schema Validator",
+        "description": "Client-side JSON Schema validator covering core JSON Schema 2020-12 keywords.",
+        "url": "https://utilifyapp.net/th/json-schema-validator/",
+        "inLanguage": "th",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Any",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+
+    <style>
+        .pane-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-md);
+        }
+        @media (max-width: 720px) { .pane-grid { grid-template-columns: 1fr; } }
+        .pane-grid textarea {
+            font-family: var(--font-mono);
+            font-size: 0.92rem;
+            min-height: 280px;
+        }
+        .button-row { display: flex; gap: var(--spacing-sm); flex-wrap: wrap; }
+        .button-row .btn { min-width: 120px; }
+        .verdict {
+            padding: var(--spacing-md);
+            border-radius: var(--radius-md);
+            margin: var(--spacing-md) 0;
+            font-weight: 600;
+        }
+        .verdict.valid { background: rgba(46, 125, 50, 0.10); color: #2e7d32; border: 1px solid #2e7d32; }
+        .verdict.invalid { background: rgba(198, 40, 40, 0.06); color: #c62828; border: 1px solid #c62828; font-weight: 700; }
+        .err-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 var(--spacing-md);
+        }
+        .err-list li {
+            padding: 8px 12px;
+            border-left: 3px solid #c62828;
+            background: var(--bg-secondary);
+            margin-bottom: 6px;
+            font-family: var(--font-mono);
+            font-size: 0.88rem;
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+        }
+        .err-list .path { color: var(--primary-color); font-weight: 600; }
+    </style>
+    <link rel="manifest" href="/manifest.json">
+    <script data-utilify-adsense-loader async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631" crossorigin="anonymous"></script>
+    <meta data-utilify-og property="og:image" content="https://utilifyapp.net/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Utilify">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://utilifyapp.net/assets/og-image.png">
+    <link data-utilify-favicon rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <script data-utilify-theme-init>(function(){try{var s=localStorage.getItem("utilify_theme");var t=(s==="dark"||s==="light")?s:(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
+</head>
+
+<body>
+    <a data-utilify-skip class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header"><div class="container"><div class="header-content"><a href="/th/" class="site-logo">🛠️ Utilify</a><button data-utilify-theme-toggle id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode" type="button">🌙</button></div></div></header>
+    <main id="main" class="main-content">
+        <div class="container-narrow">
+            <h1>🛡️ JSON Schema Validator</h1>
+            <div class="security-badge" style="display:flex;align-items:center;justify-content:center;gap:8px;margin:10px 0;font-size:14px;color:var(--text-secondary);">
+                <span>🔒 Secure & Client-side</span>
+                <button id="pwaInstallBtn" class="btn btn-primary" style="display: none; padding: 4px 12px; font-size: 12px;">📲 Install App</button>
+                    <button data-utilify-fav-toggle class="fav-toggle-page" type="button" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
+            </div>
+
+            <p>Paste your JSON data and a JSON Schema. The validator checks type, required, properties, items, enum, format, pattern, and min/max constraints, and reports each failure with the JSONPath where it occurred. All processing in your browser.</p>
+
+            <div class="card">
+                <div class="pane-grid">
+                    <div class="form-group">
+                        <label class="form-label" for="dataInput">JSON data</label>
+                        <textarea id="dataInput" class="form-input" placeholder="{
+  "name": "Alice",
+  "age": 30
+}"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="schemaInput">JSON Schema</label>
+                        <textarea id="schemaInput" class="form-input" placeholder="{
+  "type": "object",
+  "required": ["name"],
+  "properties": {
+    "name": {"type": "string"}
+  }
+}"></textarea>
+                    </div>
+                </div>
+                <div class="button-row" style="margin-top: var(--spacing-md);">
+                    <button class="btn btn-primary" type="button" onclick="run()">Validate</button>
+                    <button class="btn" type="button" onclick="loadSample()">Load sample</button>
+                    <button class="btn" type="button" onclick="resetForm()">Reset</button>
+                </div>
+            </div>
+
+            <div id="result" style="display:none;" aria-live="polite">
+                <div id="verdict" class="verdict"></div>
+                <ul id="errList" class="err-list"></ul>
+                <div class="button-row">
+                    <button class="btn" type="button" onclick="shareResult()">Share result</button>
+                </div>
+            </div>
+
+            <div class="disclaimer">Implements a useful subset of JSON Schema 2020-12 (type, properties, required, items, enum, const, format, pattern, min/max for strings/numbers/arrays). Advanced keywords like $ref, allOf/anyOf/oneOf, dependentSchemas, and prefixItems are not supported — for those, use a server-side validator like ajv.</div>
+
+            <h2>How to use</h2>
+            <div class="howto-content"><ol><li>Paste your JSON data into the left panel.</li><li>Paste the JSON Schema you want to validate against into the right panel. Click <strong>Load sample</strong> for a worked example.</li><li>Click <strong>Validate</strong>. If the data passes, you see a green check. Otherwise each error is listed with the JSONPath where it occurred (e.g., <code>$.user.email</code>).</li></ol><p><strong>Supported keywords</strong>: <code>type</code> (string, number, integer, boolean, object, array, null), <code>properties</code>, <code>required</code>, <code>additionalProperties: false</code>, <code>items</code>, <code>enum</code>, <code>const</code>, <code>minimum</code>/<code>maximum</code>/<code>exclusiveMinimum</code>/<code>exclusiveMaximum</code>/<code>multipleOf</code>, <code>minLength</code>/<code>maxLength</code>/<code>pattern</code>, <code>minItems</code>/<code>maxItems</code>, and <code>format</code> (email, uri, url, date, date-time, uuid).</p><p><strong>Not supported</strong>: <code>$ref</code>, <code>allOf</code>/<code>anyOf</code>/<code>oneOf</code>/<code>not</code>, <code>dependentSchemas</code>, <code>prefixItems</code>, <code>contains</code>, <code>if</code>/<code>then</code>/<code>else</code>. For those, use ajv or a server-side validator.</p></div>
+
+            <div class="related-tools-section">
+                <h3>Related Tools</h3>
+                <div class="related-buttons">
+                    <a href="/th/json-formatter/" class="related-btn">JSON Formatter</a><a
+                        href="/th/json-to-ts/" class="related-btn">JSON to TS/DTO</a><a
+                        href="/th/jwt-decoder/" class="related-btn">JWT Decoder</a><a
+                        href="/th/token-counter/" class="related-btn">Token Counter</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="site-footer"><div class="container"><div class="footer-content"><p>&copy; 2025 Utilify. All rights reserved.</p>
+                <p data-legal-links style="font-size: 0.875rem; margin-top: 8px;"><a href="/th/about/">About</a> · <a href="/th/privacy/">Privacy</a> · <a href="/th/terms/">Terms</a></p></div></div></footer>
+    <script src="/assets/js/common.js"></script>
+    <script>
+        // --- Validator ---
+        function jsonTypeName(v) {
+            if (v === null) return 'null';
+            if (Array.isArray(v)) return 'array';
+            if (typeof v === 'number') return Number.isInteger(v) ? 'integer' : 'number';
+            return typeof v;
+        }
+
+        function matchesType(data, t) {
+            if (t === 'integer') return typeof data === 'number' && Number.isInteger(data);
+            if (t === 'number') return typeof data === 'number';
+            if (t === 'string') return typeof data === 'string';
+            if (t === 'boolean') return typeof data === 'boolean';
+            if (t === 'null') return data === null;
+            if (t === 'array') return Array.isArray(data);
+            if (t === 'object') return data !== null && typeof data === 'object' && !Array.isArray(data);
+            return false;
+        }
+
+        function deepEqual(a, b) {
+            if (a === b) return true;
+            if (typeof a !== typeof b) return false;
+            if (a && b && typeof a === 'object') {
+                if (Array.isArray(a) !== Array.isArray(b)) return false;
+                const ka = Object.keys(a), kb = Object.keys(b);
+                if (ka.length !== kb.length) return false;
+                return ka.every(k => deepEqual(a[k], b[k]));
+            }
+            return false;
+        }
+
+        function checkFormat(s, fmt) {
+            if (fmt === 'email') return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s) ? null : 'invalid email';
+            if (fmt === 'uri' || fmt === 'url') {
+                try { new URL(s); return null; } catch (e) { return 'invalid uri'; }
+            }
+            if (fmt === 'date') return /^\d{4}-\d{2}-\d{2}$/.test(s) ? null : 'invalid date (YYYY-MM-DD)';
+            if (fmt === 'date-time') return !isNaN(Date.parse(s)) ? null : 'invalid date-time';
+            if (fmt === 'uuid') return /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(s) ? null : 'invalid uuid';
+            return null;
+        }
+
+        function validate(data, schema, path) {
+            const errors = [];
+            if (!schema || typeof schema !== 'object') return errors;
+            path = path || '$';
+
+            if (schema.type) {
+                const types = Array.isArray(schema.type) ? schema.type : [schema.type];
+                if (!types.some(t => matchesType(data, t))) {
+                    errors.push({ path, msg: 'expected ' + types.join(' | ') + ', got ' + jsonTypeName(data) });
+                    return errors;
+                }
+            }
+
+            if ('const' in schema && !deepEqual(schema.const, data)) {
+                errors.push({ path, msg: 'must equal ' + JSON.stringify(schema.const) });
+            }
+            if (Array.isArray(schema.enum) && !schema.enum.some(v => deepEqual(v, data))) {
+                errors.push({ path, msg: 'not in enum' });
+            }
+
+            if (typeof data === 'string') {
+                if (schema.minLength != null && data.length < schema.minLength)
+                    errors.push({ path, msg: 'length ' + data.length + ' < minLength ' + schema.minLength });
+                if (schema.maxLength != null && data.length > schema.maxLength)
+                    errors.push({ path, msg: 'length ' + data.length + ' > maxLength ' + schema.maxLength });
+                if (schema.pattern) {
+                    try {
+                        if (!new RegExp(schema.pattern).test(data))
+                            errors.push({ path, msg: 'does not match pattern ' + schema.pattern });
+                    } catch (e) {
+                        errors.push({ path, msg: 'invalid pattern in schema: ' + schema.pattern });
+                    }
+                }
+                if (schema.format) {
+                    const fe = checkFormat(data, schema.format);
+                    if (fe) errors.push({ path, msg: fe });
+                }
+            }
+
+            if (typeof data === 'number') {
+                if (schema.minimum != null && data < schema.minimum)
+                    errors.push({ path, msg: data + ' < minimum ' + schema.minimum });
+                if (schema.maximum != null && data > schema.maximum)
+                    errors.push({ path, msg: data + ' > maximum ' + schema.maximum });
+                if (schema.exclusiveMinimum != null && data <= schema.exclusiveMinimum)
+                    errors.push({ path, msg: data + ' <= exclusiveMinimum ' + schema.exclusiveMinimum });
+                if (schema.exclusiveMaximum != null && data >= schema.exclusiveMaximum)
+                    errors.push({ path, msg: data + ' >= exclusiveMaximum ' + schema.exclusiveMaximum });
+                if (schema.multipleOf != null && Math.abs(data % schema.multipleOf) > 1e-12)
+                    errors.push({ path, msg: 'not multiple of ' + schema.multipleOf });
+            }
+
+            if (data !== null && typeof data === 'object' && !Array.isArray(data)) {
+                if (Array.isArray(schema.required)) {
+                    schema.required.forEach(k => {
+                        if (!Object.prototype.hasOwnProperty.call(data, k))
+                            errors.push({ path, msg: "missing required property '" + k + "'" });
+                    });
+                }
+                if (schema.properties && typeof schema.properties === 'object') {
+                    for (const key of Object.keys(schema.properties)) {
+                        if (Object.prototype.hasOwnProperty.call(data, key)) {
+                            errors.push(...validate(data[key], schema.properties[key], path + '.' + key));
+                        }
+                    }
+                }
+                if (schema.additionalProperties === false && schema.properties) {
+                    const allowed = new Set(Object.keys(schema.properties));
+                    for (const key of Object.keys(data)) {
+                        if (!allowed.has(key))
+                            errors.push({ path, msg: "additional property '" + key + "' not allowed" });
+                    }
+                }
+            }
+
+            if (Array.isArray(data)) {
+                if (schema.minItems != null && data.length < schema.minItems)
+                    errors.push({ path, msg: 'length ' + data.length + ' < minItems ' + schema.minItems });
+                if (schema.maxItems != null && data.length > schema.maxItems)
+                    errors.push({ path, msg: 'length ' + data.length + ' > maxItems ' + schema.maxItems });
+                if (schema.items && typeof schema.items === 'object') {
+                    data.forEach((item, i) => {
+                        errors.push(...validate(item, schema.items, path + '[' + i + ']'));
+                    });
+                }
+            }
+
+            return errors;
+        }
+
+        function run() {
+            const dataStr = document.getElementById('dataInput').value;
+            const schemaStr = document.getElementById('schemaInput').value;
+            let data, schema;
+            try { data = JSON.parse(dataStr); }
+            catch (e) { alert('Data is not valid JSON: ' + e.message); return; }
+            try { schema = JSON.parse(schemaStr); }
+            catch (e) { alert('Schema is not valid JSON: ' + e.message); return; }
+
+            const errors = validate(data, schema);
+            const verdict = document.getElementById('verdict');
+            const errList = document.getElementById('errList');
+            errList.innerHTML = '';
+            if (errors.length === 0) {
+                verdict.className = 'verdict valid';
+                verdict.textContent = '✓ Valid against schema.';
+            } else {
+                verdict.className = 'verdict invalid';
+                verdict.textContent = '✗ Validation errors — '
+                    + '{count} error(s) at:'.replace('{count}', errors.length);
+                errors.forEach(e => {
+                    const li = document.createElement('li');
+                    const path = document.createElement('span');
+                    path.className = 'path';
+                    path.textContent = e.path;
+                    li.appendChild(path);
+                    li.appendChild(document.createTextNode('  ' + e.msg));
+                    errList.appendChild(li);
+                });
+            }
+            document.getElementById('result').style.display = 'block';
+        }
+
+        function loadSample() {
+            document.getElementById('dataInput').value = JSON.stringify({
+                name: 'Alice',
+                age: 30,
+                email: 'alice@example.com',
+                roles: ['admin', 'editor']
+            }, null, 2);
+            document.getElementById('schemaInput').value = JSON.stringify({
+                type: 'object',
+                required: ['name', 'age'],
+                additionalProperties: false,
+                properties: {
+                    name: { type: 'string', minLength: 1 },
+                    age: { type: 'integer', minimum: 0, maximum: 150 },
+                    email: { type: 'string', format: 'email' },
+                    roles: { type: 'array', items: { type: 'string', enum: ['admin', 'editor', 'viewer'] }, minItems: 1 }
+                }
+            }, null, 2);
+        }
+
+        function resetForm() {
+            document.getElementById('dataInput').value = '';
+            document.getElementById('schemaInput').value = '';
+            document.getElementById('result').style.display = 'none';
+        }
+
+        async function shareResult() {
+            const verdict = document.getElementById('verdict').textContent;
+            if (!verdict) return;
+            const text = 'JSON validation: {value} —'.replace('{value}', verdict) + ' ' + location.href;
+            if (navigator.share) {
+                try { await navigator.share({ title: 'JSON Schema Validator', text }); return; }
+                catch (e) { if (e && e.name === 'AbortError') return; }
+            }
+            try {
+                await navigator.clipboard.writeText(text);
+                alert('Result copied to clipboard.');
+            } catch (e) { /* clipboard blocked */ }
+        }
+    </script>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({google_ad_client:"ca-pub-6334819180242631",enable_page_level_ads:true});</script>
+    <script data-utilify-theme-toggle-script>(function(){var b=document.getElementById("themeToggle");if(!b)return;function p(){var t=document.documentElement.getAttribute("data-theme")||"light";b.textContent=t==="dark"?"☀️":"🌙";b.setAttribute("aria-pressed",String(t==="dark"));}p();b.addEventListener("click",function(){var c=document.documentElement.getAttribute("data-theme")||"light";var n=c==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",n);try{localStorage.setItem("utilify_theme",n);}catch(e){}p();});})();</script>
+    <script data-utilify-fav-toggle-script>(function(){var btn=document.querySelector(".fav-toggle-page");if(!btn)return;var m=location.pathname.match(/^\/[^\/]+\/([^\/]+)\/?$/);if(!m)return;var slug=m[1],K="utilify_favorites";function g(){return (localStorage.getItem(K)||"").split(",").filter(Boolean);}function s(a){localStorage.setItem(K,Array.from(new Set(a)).join(","));}function p(f){btn.textContent=f?"★":"☆";btn.classList.toggle("is-fav",f);btn.setAttribute("aria-label",f?btn.dataset.removeLabel:btn.dataset.addLabel);btn.setAttribute("aria-pressed",String(f));}p(g().indexOf(slug)>-1);btn.addEventListener("click",function(){var a=g(),n=a.indexOf(slug)>-1?a.filter(function(x){return x!==slug;}):a.concat([slug]);s(n);p(n.indexOf(slug)>-1);});})();</script>
+</body>
+
+</html>

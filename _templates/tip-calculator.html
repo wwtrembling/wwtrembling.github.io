@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="{{ lang_code }}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy-Report-Only" content="default-src 'self' https: data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https:; frame-src https:;">
+    <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+    <title>{{ meta_title }}</title>
+    <meta name="description" content="{{ meta_desc }}">
+    <link rel="canonical" href="https://utilifyapp.net/{{ lang_code }}/tip-calculator/">
+
+    <meta property="og:title" content="{{ og_title }}">
+    <meta property="og:description" content="{{ og_desc }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://utilifyapp.net/{{ lang_code }}/tip-calculator/">
+
+    {{ alternate_links }}
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "{{ json_name }}",
+        "description": "{{ json_desc }}",
+        "url": "https://utilifyapp.net/{{ lang_code }}/tip-calculator/",
+        "inLanguage": "{{ lang_code }}",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Any",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+
+    <style>
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: var(--spacing-md);
+        }
+        @media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; } }
+        .quick-tips {
+            display: flex;
+            gap: var(--spacing-xs);
+            flex-wrap: wrap;
+            margin-bottom: var(--spacing-sm);
+        }
+        .quick-tips button {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-full);
+            padding: 4px 12px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            color: var(--text-secondary);
+            transition: all 0.15s;
+        }
+        .quick-tips button:hover { border-color: var(--primary-color); color: var(--primary-color); }
+        .quick-tips button[aria-pressed="true"] {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+        }
+        .result-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            text-align: center;
+        }
+        .result-card .label { font-size: 0.85rem; color: var(--text-secondary); }
+        .result-card .value { font-size: 1.5rem; font-weight: 700; color: var(--primary-color); margin-top: 4px; font-variant-numeric: tabular-nums; }
+        .result-card.headline .value { font-size: 2rem; }
+        .button-row { display: flex; gap: var(--spacing-sm); flex-wrap: wrap; }
+        .button-row .btn { min-width: 120px; }
+    </style>
+    <link rel="manifest" href="/manifest.json">
+</head>
+
+<body>
+    <header class="site-header"><div class="container"><div class="header-content"><a href="/{{ lang_code }}/" class="site-logo">{{ brand }}</a></div></div></header>
+    <main class="main-content">
+        <div class="container-narrow">
+            <h1>💵 {{ title }}</h1>
+            <div class="security-badge" style="display:flex;align-items:center;justify-content:center;gap:8px;margin:10px 0;font-size:14px;color:var(--text-secondary);">
+                <span>{{ secure_badge }}</span>
+                <button id="pwaInstallBtn" class="btn btn-primary" style="display: none; padding: 4px 12px; font-size: 12px;">{{ install_app }}</button>
+            </div>
+
+            <p>{{ page_desc }}</p>
+
+            <div class="card">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label" for="bill">{{ label_bill }}</label>
+                        <input type="number" id="bill" class="form-input" inputmode="decimal" min="0" step="any" placeholder="{{ ph_bill }}" value="{{ ph_bill }}">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="tip">{{ label_tip }}</label>
+                        <div class="quick-tips" role="group">
+                            <button type="button" data-tip="10">10</button>
+                            <button type="button" data-tip="15">15</button>
+                            <button type="button" data-tip="18" aria-pressed="true">18</button>
+                            <button type="button" data-tip="20">20</button>
+                            <button type="button" data-tip="25">25</button>
+                        </div>
+                        <input type="number" id="tip" class="form-input" inputmode="decimal" min="0" max="100" step="0.5" placeholder="{{ ph_tip }}" value="{{ ph_tip }}">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="people">{{ label_people }}</label>
+                        <input type="number" id="people" class="form-input" inputmode="numeric" min="1" max="100" step="1" placeholder="{{ ph_people }}" value="{{ ph_people }}">
+                    </div>
+                </div>
+                <div class="button-row" style="margin-top: var(--spacing-md);">
+                    <button class="btn btn-primary" type="button" onclick="calculate()">{{ btn_calculate }}</button>
+                    <button class="btn" type="button" onclick="resetForm()">{{ btn_reset }}</button>
+                </div>
+            </div>
+
+            <div id="result" style="display:none;" aria-live="polite">
+                <div class="result-grid">
+                    <div class="result-card headline">
+                        <div class="label">{{ res_per_person_label }}</div>
+                        <div class="value" id="perPersonVal">—</div>
+                    </div>
+                    <div class="result-card">
+                        <div class="label">{{ res_total_label }}</div>
+                        <div class="value" id="totalVal">—</div>
+                    </div>
+                    <div class="result-card">
+                        <div class="label">{{ res_tip_label }}</div>
+                        <div class="value" id="tipVal">—</div>
+                    </div>
+                </div>
+                <div class="button-row">
+                    <button class="btn" type="button" onclick="shareResult()">{{ btn_share }}</button>
+                </div>
+            </div>
+
+            <h2>{{ howto_header }}</h2>
+            <div class="howto-content">{{ howto_html }}</div>
+
+            <div class="related-tools-section">
+                <h3>{{ related_header }}</h3>
+                <div class="related-buttons">
+                    <a href="/{{ lang_code }}/percentage-calculator/" class="related-btn">{{ related_pct }}</a><a
+                        href="/{{ lang_code }}/discount-calculator/" class="related-btn">{{ related_discount }}</a><a
+                        href="/{{ lang_code }}/unit-converter/" class="related-btn">{{ related_unit }}</a><a
+                        href="/{{ lang_code }}/date-calculator/" class="related-btn">{{ related_date }}</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="site-footer"><div class="container"><div class="footer-content"><p>{{ footer }}</p></div></div></footer>
+    <script src="/assets/js/common.js"></script>
+    <script>
+        const LOCALE = document.documentElement.lang || 'en';
+        const fmt2 = n => Number(n).toLocaleString(LOCALE, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+        const tipInput = document.getElementById('tip');
+        const quickButtons = document.querySelectorAll('.quick-tips button');
+        quickButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                tipInput.value = btn.dataset.tip;
+                quickButtons.forEach(b => b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'));
+            });
+        });
+        tipInput.addEventListener('input', () => {
+            quickButtons.forEach(b => b.setAttribute('aria-pressed',
+                b.dataset.tip === tipInput.value ? 'true' : 'false'));
+        });
+
+        function calculate() {
+            const bill = parseFloat(document.getElementById('bill').value);
+            const tip = parseFloat(tipInput.value);
+            const people = parseInt(document.getElementById('people').value, 10);
+            if (!(bill > 0) || !(tip >= 0) || !(people > 0)) {
+                alert('{{ alert_invalid }}');
+                return;
+            }
+            const tipAmount = bill * tip / 100;
+            const total = bill + tipAmount;
+            const perPerson = total / people;
+            document.getElementById('tipVal').textContent = fmt2(tipAmount);
+            document.getElementById('totalVal').textContent = fmt2(total);
+            document.getElementById('perPersonVal').textContent = fmt2(perPerson);
+            document.getElementById('result').style.display = 'block';
+        }
+
+        function resetForm() {
+            document.getElementById('bill').value = '{{ ph_bill }}';
+            tipInput.value = '{{ ph_tip }}';
+            document.getElementById('people').value = '{{ ph_people }}';
+            quickButtons.forEach(b => b.setAttribute('aria-pressed', b.dataset.tip === '{{ ph_tip }}' ? 'true' : 'false'));
+            document.getElementById('result').style.display = 'none';
+        }
+
+        async function shareResult() {
+            const v = document.getElementById('perPersonVal').textContent;
+            if (v === '—') return;
+            const text = '{{ share_text }}'.replace('{value}', v) + ' ' + location.href;
+            if (navigator.share) {
+                try { await navigator.share({ title: '{{ title }}', text }); return; }
+                catch (e) { if (e && e.name === 'AbortError') return; }
+            }
+            try {
+                await navigator.clipboard.writeText(text);
+                alert('{{ share_copied }}');
+            } catch (e) { /* clipboard blocked */ }
+        }
+    </script>
+</body>
+
+</html>

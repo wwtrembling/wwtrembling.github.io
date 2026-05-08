@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy-Report-Only" content="default-src 'self' https: data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https:; frame-src https:;">
+    <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+    <title>Age Calculator — Years, Months, Days, Next Birthday - Utilify</title>
+    <meta name="description" content="Calculate exact age from a birth date. Returns years, months, days, total days alive, and how many days until the next birthday.">
+    <link rel="canonical" href="https://utilifyapp.net/ja/age-calculator/">
+
+    <meta property="og:title" content="Age Calculator - Utilify">
+    <meta property="og:description" content="Exact age in years/months/days plus next-birthday countdown.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://utilifyapp.net/ja/age-calculator/">
+
+    <link rel="alternate" hreflang="en" href="https://utilifyapp.net/en/age-calculator/">
+    <link rel="alternate" hreflang="ko" href="https://utilifyapp.net/ko/age-calculator/">
+    <link rel="alternate" hreflang="vi" href="https://utilifyapp.net/vi/age-calculator/">
+    <link rel="alternate" hreflang="th" href="https://utilifyapp.net/th/age-calculator/">
+    <link rel="alternate" hreflang="de" href="https://utilifyapp.net/de/age-calculator/">
+    <link rel="alternate" hreflang="pt" href="https://utilifyapp.net/pt/age-calculator/">
+    <link rel="alternate" hreflang="id" href="https://utilifyapp.net/id/age-calculator/">
+    <link rel="alternate" hreflang="hi" href="https://utilifyapp.net/hi/age-calculator/">
+    <link rel="alternate" hreflang="ja" href="https://utilifyapp.net/ja/age-calculator/">
+    <link rel="alternate" hreflang="zh-Hans" href="https://utilifyapp.net/zh-cn/age-calculator/">
+    <link rel="alternate" hreflang="zh-Hant" href="https://utilifyapp.net/zh-tw/age-calculator/">
+    <link rel="alternate" hreflang="x-default" href="https://utilifyapp.net/en/age-calculator/">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Age Calculator",
+        "description": "Compute age and next-birthday distance from a date of birth.",
+        "url": "https://utilifyapp.net/ja/age-calculator/",
+        "inLanguage": "ja",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Any",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+    <style>
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-md);
+        }
+        @media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; } }
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+        }
+        .stat-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            text-align: center;
+        }
+        .stat-card .label { font-size: 0.85rem; color: var(--text-secondary); }
+        .stat-card .value { font-size: 1.4rem; font-weight: 700; color: var(--primary-color); margin-top: 4px; font-variant-numeric: tabular-nums; }
+        .stat-card.headline .value { font-size: 1.8rem; }
+        .button-row { display: flex; gap: var(--spacing-sm); flex-wrap: wrap; }
+        .button-row .btn { min-width: 120px; }
+    </style>
+    <link rel="manifest" href="/manifest.json">
+    <script data-utilify-adsense-loader async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631" crossorigin="anonymous"></script>
+    <meta data-utilify-og property="og:image" content="https://utilifyapp.net/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Utilify">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://utilifyapp.net/assets/og-image.png">
+    <link data-utilify-favicon rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <script data-utilify-theme-init>(function(){try{var s=localStorage.getItem("utilify_theme");var t=(s==="dark"||s==="light")?s:(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
+</head>
+
+<body>
+    <a data-utilify-skip class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header"><div class="container"><div class="header-content"><a href="/ja/" class="site-logo">🛠️ Utilify</a><button data-utilify-theme-toggle id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode" type="button">🌙</button></div></div></header>
+    <main id="main" class="main-content">
+        <div class="container-narrow">
+            <h1>🎂 Age Calculator</h1>
+            <div class="security-badge" style="display:flex;align-items:center;justify-content:center;gap:8px;margin:10px 0;font-size:14px;color:var(--text-secondary);">
+                <span>🔒 Secure & Client-side</span>
+                <button id="pwaInstallBtn" class="btn btn-primary" style="display: none; padding: 4px 12px; font-size: 12px;">📲 Install App</button>
+                    <button data-utilify-fav-toggle class="fav-toggle-page" type="button" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
+            </div>
+
+            <p>Pick a birth date and get exact age — years, months, and days — plus total days alive and how many days until the next birthday. Handy for visa forms, school cutoffs, and "how old will I be in 2030" curiosity.</p>
+
+            <div class="card">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label" for="dob">Date of birth</label>
+                        <input type="date" id="dob" class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="target">Calculate as of</label>
+                        <input type="date" id="target" class="form-input">
+                    </div>
+                </div>
+                <div class="button-row" style="margin-top: var(--spacing-md);">
+                    <button class="btn btn-primary" type="button" onclick="calculate()">Calculate</button>
+                    <button class="btn" type="button" onclick="resetForm()">Reset</button>
+                </div>
+            </div>
+
+            <div id="result" style="display:none;" aria-live="polite">
+                <div class="stat-grid">
+                    <div class="stat-card headline">
+                        <div class="label">Age</div>
+                        <div class="value" id="ageVal">—</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="label">Days alive</div>
+                        <div class="value" id="totalDaysVal">—</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="label">Next birthday in</div>
+                        <div class="value" id="nextBdayVal">—</div>
+                    </div>
+                </div>
+                <div class="button-row">
+                    <button class="btn" type="button" onclick="shareResult()">Share result</button>
+                </div>
+            </div>
+
+            <h2>How to use</h2>
+            <div class="howto-content"><ol><li>Pick your date of birth.</li><li>Optional: change the target date (default is today). Useful for "How old will I be on July 4, 2030?" questions.</li><li>Click <strong>Calculate</strong>. Age in years / months / days, total days alive, and days until the next birthday all show up.</li></ol><p>The calculator handles month-end edge cases — a baby born on Jan 31 turns one month old on Feb 28 (or 29 in leap years), not Feb 31. Years are full Gregorian years; leap days are counted toward the day total.</p></div>
+
+            <div class="related-tools-section">
+                <h3>Related Tools</h3>
+                <div class="related-buttons">
+                    <a href="/ja/date-calculator/" class="related-btn">Date Calculator</a><a
+                        href="/ja/pregnancy-calculator/" class="related-btn">Pregnancy Calculator</a><a
+                        href="/ja/unix-timestamp/" class="related-btn">Unix Timestamp</a><a
+                        href="/ja/bmi-calculator/" class="related-btn">BMI Calculator</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="site-footer"><div class="container"><div class="footer-content"><p>&copy; 2025 Utilify. All rights reserved.</p>
+                <p data-legal-links style="font-size: 0.875rem; margin-top: 8px;"><a href="/ja/about/">About</a> · <a href="/ja/privacy/">Privacy</a> · <a href="/ja/terms/">Terms</a></p></div></div></footer>
+    <script src="/assets/js/common.js"></script>
+    <script>
+        const LOCALE = document.documentElement.lang || 'en';
+        const DAY_MS = 86400000;
+
+        // Initialize target as today.
+        (function () {
+            const t = new Date();
+            t.setHours(0, 0, 0, 0);
+            const iso = t.toISOString().slice(0, 10);
+            document.getElementById('target').value = iso;
+        })();
+
+        function diffYMD(from, to) {
+            // Year/month/day breakdown that handles month-end edge cases.
+            let years = to.getFullYear() - from.getFullYear();
+            let months = to.getMonth() - from.getMonth();
+            let days = to.getDate() - from.getDate();
+            if (days < 0) {
+                months -= 1;
+                // Days in previous month relative to `to`.
+                const prevMonth = new Date(to.getFullYear(), to.getMonth(), 0);
+                days += prevMonth.getDate();
+            }
+            if (months < 0) {
+                years -= 1;
+                months += 12;
+            }
+            return { years, months, days };
+        }
+
+        function calculate() {
+            const dobStr = document.getElementById('dob').value;
+            const targetStr = document.getElementById('target').value;
+            if (!dobStr || !targetStr) { alert('Pick a valid birth date that's not in the future of the target date.'); return; }
+            const dob = new Date(dobStr + 'T00:00:00');
+            const target = new Date(targetStr + 'T00:00:00');
+            if (dob > target) { alert('Pick a valid birth date that's not in the future of the target date.'); return; }
+
+            const { years, months, days } = diffYMD(dob, target);
+            const totalDays = Math.floor((target - dob) / DAY_MS);
+
+            // Next birthday from target date.
+            const next = new Date(target.getFullYear(), dob.getMonth(), dob.getDate());
+            if (next < target || next.getTime() === target.getTime()) {
+                next.setFullYear(next.getFullYear() + 1);
+            }
+            const daysToBday = Math.ceil((next - target) / DAY_MS);
+
+            document.getElementById('ageVal').textContent = '{years} y, {months} mo, {days} d'
+                .replace('{years}', years)
+                .replace('{months}', months)
+                .replace('{days}', days);
+            document.getElementById('totalDaysVal').textContent = totalDays.toLocaleString(LOCALE);
+            document.getElementById('nextBdayVal').textContent = '{days} days'
+                .replace('{days}', daysToBday.toLocaleString(LOCALE));
+            document.getElementById('result').style.display = 'block';
+        }
+
+        function resetForm() {
+            document.getElementById('dob').value = '';
+            const t = new Date();
+            t.setHours(0, 0, 0, 0);
+            document.getElementById('target').value = t.toISOString().slice(0, 10);
+            document.getElementById('result').style.display = 'none';
+        }
+
+        async function shareResult() {
+            const v = document.getElementById('ageVal').textContent;
+            if (v === '—') return;
+            const text = 'Age: {value} —'.replace('{value}', v) + ' ' + location.href;
+            if (navigator.share) {
+                try { await navigator.share({ title: 'Age Calculator', text }); return; }
+                catch (e) { if (e && e.name === 'AbortError') return; }
+            }
+            try {
+                await navigator.clipboard.writeText(text);
+                alert('Copied to clipboard.');
+            } catch (e) { /* clipboard blocked */ }
+        }
+    </script>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({google_ad_client:"ca-pub-6334819180242631",enable_page_level_ads:true});</script>
+    <script data-utilify-theme-toggle-script>(function(){var b=document.getElementById("themeToggle");if(!b)return;function p(){var t=document.documentElement.getAttribute("data-theme")||"light";b.textContent=t==="dark"?"☀️":"🌙";b.setAttribute("aria-pressed",String(t==="dark"));}p();b.addEventListener("click",function(){var c=document.documentElement.getAttribute("data-theme")||"light";var n=c==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",n);try{localStorage.setItem("utilify_theme",n);}catch(e){}p();});})();</script>
+    <script data-utilify-fav-toggle-script>(function(){var btn=document.querySelector(".fav-toggle-page");if(!btn)return;var m=location.pathname.match(/^\/[^\/]+\/([^\/]+)\/?$/);if(!m)return;var slug=m[1],K="utilify_favorites";function g(){return (localStorage.getItem(K)||"").split(",").filter(Boolean);}function s(a){localStorage.setItem(K,Array.from(new Set(a)).join(","));}function p(f){btn.textContent=f?"★":"☆";btn.classList.toggle("is-fav",f);btn.setAttribute("aria-label",f?btn.dataset.removeLabel:btn.dataset.addLabel);btn.setAttribute("aria-pressed",String(f));}p(g().indexOf(slug)>-1);btn.addEventListener("click",function(){var a=g(),n=a.indexOf(slug)>-1?a.filter(function(x){return x!==slug;}):a.concat([slug]);s(n);p(n.indexOf(slug)>-1);});})();</script>
+</body>
+
+</html>

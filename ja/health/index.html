@@ -43,6 +43,62 @@
         "inLanguage": "ja"
     }
     </script>
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://utilifyapp.net/ja/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Health Calculators",
+      "item": "https://utilifyapp.net/ja/health/"
+    }
+  ]
+}</script>
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Which BMR formula is the most accurate?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Mifflin-St Jeor (used here) outperforms the older Harris-Benedict and Katch-McArdle for healthy adults across most studies. Margin of error is roughly ±10% — fine for planning, less fine for clinical use."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is BMI alone enough to assess health?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. BMI doesn't distinguish muscle from fat, ignores fat distribution, and performs poorly for athletes and the elderly. The body fat calculator (US Navy method) is a better composition signal; combine with a waist-to-hip ratio for cardiovascular risk."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why doesn't my pregnancy due date match my doctor's estimate?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The calculator uses Naegele's rule (LMP + 280 days) with a cycle-length adjustment. If your cycles are irregular or your LMP is uncertain, an early ultrasound is more accurate and is what your doctor likely uses."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I aim for the lowest body fat possible?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No — there's a healthy range, not a minimum. Men below ~6% and women below ~14% is essential-fat territory and not safe to maintain. Athletes optimize for performance, not the lowest number."
+      }
+    }
+  ]
+}</script>
     <link rel="manifest" href="/manifest.json">
     <script data-utilify-adsense-loader async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631" crossorigin="anonymous"></script>
     <meta data-utilify-og property="og:image" content="https://utilifyapp.net/assets/og-image.png">
@@ -55,13 +111,20 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <script data-utilify-theme-init>(function(){try{var s=localStorage.getItem("utilify_theme");var t=(s==="dark"||s==="light")?s:(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
 </head>
 
 <body>
     <a data-utilify-skip class="skip-link" href="#main">Skip to content</a>
-    <header class="site-header"><div class="container"><div class="header-content"><a href="/ja/" class="site-logo">🛠️ Utilify</a></div></div></header>
+    <header class="site-header"><div class="container"><div class="header-content"><a href="/ja/" class="site-logo">🛠️ Utilify</a><button data-utilify-theme-toggle id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode" type="button">🌙</button></div></div></header>
     <main id="main" class="main-content">
         <div class="container-narrow">
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+                <ol>
+                    <li><a href="/ja/">Home</a></li>
+                    <li aria-current="page">Health Calculators</li>
+                </ol>
+            </nav>
             <h1>🩺 Health Calculators</h1>
 
             <div class="page-intro"><p>Bodies don't come with a dashboard. The next-best thing is a small set of calculators that translate measurements into context: how much you can eat without gaining weight, when a baby is due, where your body composition sits relative to a typical range. None of these replace a doctor — they help you ask better questions the next time you see one.</p><p>The tools below address three of the most-searched health questions: <strong>How many calories do I actually need?</strong> <strong>When is my baby due, and what trimester am I in?</strong> <strong>What's my body fat percentage?</strong> Each runs entirely in your browser, uses widely-cited formulas (Mifflin-St Jeor, Naegele's rule, US Navy method), and shows the math on each page so you can verify it.</p><p>Use these as quick checks. For pregnancy, an early ultrasound dating scan is more accurate. For body fat, DEXA or hydrostatic weighing is the gold standard. For nutrition, an RD can personalize beyond what any one-size-fits-all formula can produce.</p></div>
@@ -91,6 +154,7 @@
                 <p data-legal-links style="font-size: 0.875rem; margin-top: 8px;"><a href="/ja/about/">About</a> · <a href="/ja/privacy/">Privacy</a> · <a href="/ja/terms/">Terms</a></p></div></div></footer>
     <script src="/assets/js/common.js"></script>
     <script>(adsbygoogle=window.adsbygoogle||[]).push({google_ad_client:"ca-pub-6334819180242631",enable_page_level_ads:true});</script>
+    <script data-utilify-theme-toggle-script>(function(){var b=document.getElementById("themeToggle");if(!b)return;function p(){var t=document.documentElement.getAttribute("data-theme")||"light";b.textContent=t==="dark"?"☀️":"🌙";b.setAttribute("aria-pressed",String(t==="dark"));}p();b.addEventListener("click",function(){var c=document.documentElement.getAttribute("data-theme")||"light";var n=c==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",n);try{localStorage.setItem("utilify_theme",n);}catch(e){}p();});})();</script>
     <script data-utilify-fav-toggle-script>(function(){var btn=document.querySelector(".fav-toggle-page");if(!btn)return;var m=location.pathname.match(/^\/[^\/]+\/([^\/]+)\/?$/);if(!m)return;var slug=m[1],K="utilify_favorites";function g(){return (localStorage.getItem(K)||"").split(",").filter(Boolean);}function s(a){localStorage.setItem(K,Array.from(new Set(a)).join(","));}function p(f){btn.textContent=f?"★":"☆";btn.classList.toggle("is-fav",f);btn.setAttribute("aria-label",f?btn.dataset.removeLabel:btn.dataset.addLabel);btn.setAttribute("aria-pressed",String(f));}p(g().indexOf(slug)>-1);btn.addEventListener("click",function(){var a=g(),n=a.indexOf(slug)>-1?a.filter(function(x){return x!==slug;}):a.concat([slug]);s(n);p(n.indexOf(slug)>-1);});})();</script>
 </body>
 

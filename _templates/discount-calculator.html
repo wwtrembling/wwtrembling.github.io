@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="{{ lang_code }}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy-Report-Only" content="default-src 'self' https: data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https:; frame-src https:;">
+    <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+    <title>{{ meta_title }}</title>
+    <meta name="description" content="{{ meta_desc }}">
+    <link rel="canonical" href="https://utilifyapp.net/{{ lang_code }}/discount-calculator/">
+
+    <meta property="og:title" content="{{ og_title }}">
+    <meta property="og:description" content="{{ og_desc }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://utilifyapp.net/{{ lang_code }}/discount-calculator/">
+
+    {{ alternate_links }}
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "{{ json_name }}",
+        "description": "{{ json_desc }}",
+        "url": "https://utilifyapp.net/{{ lang_code }}/discount-calculator/",
+        "inLanguage": "{{ lang_code }}",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Any",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+
+    <style>
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-md);
+        }
+        @media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; } }
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+        }
+        .result-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            text-align: center;
+        }
+        .result-card .label { font-size: 0.85rem; color: var(--text-secondary); }
+        .result-card .value { font-size: 1.5rem; font-weight: 700; color: var(--primary-color); margin-top: 4px; font-variant-numeric: tabular-nums; }
+        .result-card.headline .value { font-size: 2rem; }
+        .button-row { display: flex; gap: var(--spacing-sm); flex-wrap: wrap; }
+        .button-row .btn { min-width: 120px; }
+    </style>
+    <link rel="manifest" href="/manifest.json">
+</head>
+
+<body>
+    <header class="site-header"><div class="container"><div class="header-content"><a href="/{{ lang_code }}/" class="site-logo">{{ brand }}</a></div></div></header>
+    <main class="main-content">
+        <div class="container-narrow">
+            <h1>🏷️ {{ title }}</h1>
+            <div class="security-badge" style="display:flex;align-items:center;justify-content:center;gap:8px;margin:10px 0;font-size:14px;color:var(--text-secondary);">
+                <span>{{ secure_badge }}</span>
+                <button id="pwaInstallBtn" class="btn btn-primary" style="display: none; padding: 4px 12px; font-size: 12px;">{{ install_app }}</button>
+            </div>
+
+            <p>{{ page_desc }}</p>
+
+            <div class="card">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label" for="price">{{ label_price }}</label>
+                        <input type="number" id="price" class="form-input" inputmode="decimal" min="0" step="any" placeholder="{{ ph_price }}" value="{{ ph_price }}">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="discount1">{{ label_discount1 }}</label>
+                        <input type="number" id="discount1" class="form-input" inputmode="decimal" min="0" max="100" step="0.5" placeholder="{{ ph_discount1 }}" value="{{ ph_discount1 }}">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="discount2">{{ label_discount2 }}</label>
+                        <input type="number" id="discount2" class="form-input" inputmode="decimal" min="0" max="100" step="0.5" placeholder="{{ ph_discount2 }}" value="{{ ph_discount2 }}">
+                    </div>
+                </div>
+                <div class="button-row" style="margin-top: var(--spacing-md);">
+                    <button class="btn btn-primary" type="button" onclick="calculate()">{{ btn_calculate }}</button>
+                    <button class="btn" type="button" onclick="resetForm()">{{ btn_reset }}</button>
+                </div>
+            </div>
+
+            <div id="result" style="display:none;" aria-live="polite">
+                <div class="result-grid">
+                    <div class="result-card headline">
+                        <div class="label">{{ res_final_label }}</div>
+                        <div class="value" id="finalVal">—</div>
+                    </div>
+                    <div class="result-card">
+                        <div class="label">{{ res_saved_label }}</div>
+                        <div class="value" id="savedVal">—</div>
+                    </div>
+                    <div class="result-card">
+                        <div class="label">{{ res_effective_label }}</div>
+                        <div class="value" id="effectiveVal">—</div>
+                    </div>
+                </div>
+                <div class="button-row">
+                    <button class="btn" type="button" onclick="shareResult()">{{ btn_share }}</button>
+                </div>
+            </div>
+
+            <h2>{{ howto_header }}</h2>
+            <div class="howto-content">{{ howto_html }}</div>
+
+            <div class="related-tools-section">
+                <h3>{{ related_header }}</h3>
+                <div class="related-buttons">
+                    <a href="/{{ lang_code }}/tip-calculator/" class="related-btn">{{ related_tip }}</a><a
+                        href="/{{ lang_code }}/percentage-calculator/" class="related-btn">{{ related_pct }}</a><a
+                        href="/{{ lang_code }}/loan-calculator/" class="related-btn">{{ related_loan }}</a><a
+                        href="/{{ lang_code }}/unit-converter/" class="related-btn">{{ related_unit }}</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="site-footer"><div class="container"><div class="footer-content"><p>{{ footer }}</p></div></div></footer>
+    <script src="/assets/js/common.js"></script>
+    <script>
+        const LOCALE = document.documentElement.lang || 'en';
+        const fmt = n => Number(n).toLocaleString(LOCALE, { maximumFractionDigits: 2 });
+
+        function calculate() {
+            const price = parseFloat(document.getElementById('price').value);
+            const d1 = parseFloat(document.getElementById('discount1').value) || 0;
+            const d2 = parseFloat(document.getElementById('discount2').value) || 0;
+            if (!(price >= 0) || !(d1 >= 0 && d1 <= 100) || !(d2 >= 0 && d2 <= 100)) {
+                alert('{{ alert_invalid }}');
+                return;
+            }
+            const after1 = price * (1 - d1 / 100);
+            const finalPrice = after1 * (1 - d2 / 100);
+            const saved = price - finalPrice;
+            const effectiveRate = price > 0 ? (saved / price) * 100 : 0;
+            document.getElementById('finalVal').textContent = fmt(finalPrice);
+            document.getElementById('savedVal').textContent = fmt(saved);
+            document.getElementById('effectiveVal').textContent = effectiveRate.toFixed(1) + ' %';
+            document.getElementById('result').style.display = 'block';
+        }
+
+        function resetForm() {
+            document.getElementById('price').value = '{{ ph_price }}';
+            document.getElementById('discount1').value = '{{ ph_discount1 }}';
+            document.getElementById('discount2').value = '{{ ph_discount2 }}';
+            document.getElementById('result').style.display = 'none';
+        }
+
+        async function shareResult() {
+            const v = document.getElementById('finalVal').textContent;
+            if (v === '—') return;
+            const text = '{{ share_text }}'.replace('{value}', v) + ' ' + location.href;
+            if (navigator.share) {
+                try { await navigator.share({ title: '{{ title }}', text }); return; }
+                catch (e) { if (e && e.name === 'AbortError') return; }
+            }
+            try {
+                await navigator.clipboard.writeText(text);
+                alert('{{ share_copied }}');
+            } catch (e) { /* clipboard blocked */ }
+        }
+    </script>
+</body>
+
+</html>
