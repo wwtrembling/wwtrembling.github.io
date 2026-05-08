@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="hi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy-Report-Only" content="default-src 'self' https: data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https:; frame-src https:;">
+    <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+    <title>Tip Calculator — Bill Split with Custom Tip - Utilify</title>
+    <meta name="description" content="Calculate the tip and split the bill. Pick a quick tip percentage (10/15/18/20/25) or enter a custom amount, and divide across any number of people.">
+    <link rel="canonical" href="https://utilifyapp.net/hi/tip-calculator/">
+
+    <meta property="og:title" content="Tip Calculator - Utilify">
+    <meta property="og:description" content="Tip + total + per-person split, with quick tip-percentage buttons.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://utilifyapp.net/hi/tip-calculator/">
+
+    <link rel="alternate" hreflang="en" href="https://utilifyapp.net/en/tip-calculator/">
+    <link rel="alternate" hreflang="ko" href="https://utilifyapp.net/ko/tip-calculator/">
+    <link rel="alternate" hreflang="vi" href="https://utilifyapp.net/vi/tip-calculator/">
+    <link rel="alternate" hreflang="th" href="https://utilifyapp.net/th/tip-calculator/">
+    <link rel="alternate" hreflang="de" href="https://utilifyapp.net/de/tip-calculator/">
+    <link rel="alternate" hreflang="pt" href="https://utilifyapp.net/pt/tip-calculator/">
+    <link rel="alternate" hreflang="id" href="https://utilifyapp.net/id/tip-calculator/">
+    <link rel="alternate" hreflang="hi" href="https://utilifyapp.net/hi/tip-calculator/">
+    <link rel="alternate" hreflang="ja" href="https://utilifyapp.net/ja/tip-calculator/">
+    <link rel="alternate" hreflang="zh-Hans" href="https://utilifyapp.net/zh-cn/tip-calculator/">
+    <link rel="alternate" hreflang="zh-Hant" href="https://utilifyapp.net/zh-tw/tip-calculator/">
+    <link rel="alternate" hreflang="x-default" href="https://utilifyapp.net/en/tip-calculator/">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Tip Calculator",
+        "description": "Compute tip amount, total bill, and per-person split for any meal.",
+        "url": "https://utilifyapp.net/hi/tip-calculator/",
+        "inLanguage": "hi",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Any",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+
+    <style>
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: var(--spacing-md);
+        }
+        @media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; } }
+        .quick-tips {
+            display: flex;
+            gap: var(--spacing-xs);
+            flex-wrap: wrap;
+            margin-bottom: var(--spacing-sm);
+        }
+        .quick-tips button {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-full);
+            padding: 4px 12px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            color: var(--text-secondary);
+            transition: all 0.15s;
+        }
+        .quick-tips button:hover { border-color: var(--primary-color); color: var(--primary-color); }
+        .quick-tips button[aria-pressed="true"] {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+        }
+        .result-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            text-align: center;
+        }
+        .result-card .label { font-size: 0.85rem; color: var(--text-secondary); }
+        .result-card .value { font-size: 1.5rem; font-weight: 700; color: var(--primary-color); margin-top: 4px; font-variant-numeric: tabular-nums; }
+        .result-card.headline .value { font-size: 2rem; }
+        .button-row { display: flex; gap: var(--spacing-sm); flex-wrap: wrap; }
+        .button-row .btn { min-width: 120px; }
+    </style>
+    <link rel="manifest" href="/manifest.json">
+    <script data-utilify-adsense-loader async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631" crossorigin="anonymous"></script>
+    <meta data-utilify-og property="og:image" content="https://utilifyapp.net/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Utilify">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://utilifyapp.net/assets/og-image.png">
+    <link data-utilify-favicon rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <script data-utilify-theme-init>(function(){try{var s=localStorage.getItem("utilify_theme");var t=(s==="dark"||s==="light")?s:(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
+</head>
+
+<body>
+    <a data-utilify-skip class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header"><div class="container"><div class="header-content"><a href="/hi/" class="site-logo">Utilify</a><button data-utilify-theme-toggle id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode" type="button">🌙</button></div></div></header>
+    <main id="main" class="main-content">
+        <div class="container-narrow">
+            <h1>💵 Tip Calculator</h1>
+            <div class="security-badge" style="display:flex;align-items:center;justify-content:center;gap:8px;margin:10px 0;font-size:14px;color:var(--text-secondary);">
+                <span>🔒 सुरक्षित और क्लाइंट-साइड</span>
+                <button id="pwaInstallBtn" class="btn btn-primary" style="display: none; padding: 4px 12px; font-size: 12px;">📲 ऐप इंस्टॉल करें</button>
+                    <button data-utilify-fav-toggle class="fav-toggle-page" type="button" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
+            </div>
+
+            <p>Enter the bill, pick a tip percentage (or type a custom one), and the calculator splits the total across however many people are paying. Quick buttons for 10/15/18/20/25%. Runs entirely in your browser.</p>
+
+            <div class="card">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label" for="bill">Bill amount</label>
+                        <input type="number" id="bill" class="form-input" inputmode="decimal" min="0" step="any" placeholder="100" value="100">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="tip">Tip (%)</label>
+                        <div class="quick-tips" role="group">
+                            <button type="button" data-tip="10">10</button>
+                            <button type="button" data-tip="15">15</button>
+                            <button type="button" data-tip="18" aria-pressed="true">18</button>
+                            <button type="button" data-tip="20">20</button>
+                            <button type="button" data-tip="25">25</button>
+                        </div>
+                        <input type="number" id="tip" class="form-input" inputmode="decimal" min="0" max="100" step="0.5" placeholder="18" value="18">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="people">People</label>
+                        <input type="number" id="people" class="form-input" inputmode="numeric" min="1" max="100" step="1" placeholder="2" value="2">
+                    </div>
+                </div>
+                <div class="button-row" style="margin-top: var(--spacing-md);">
+                    <button class="btn btn-primary" type="button" onclick="calculate()">Calculate</button>
+                    <button class="btn" type="button" onclick="resetForm()">Reset</button>
+                </div>
+            </div>
+
+            <div id="result" style="display:none;" aria-live="polite">
+                <div class="result-grid">
+                    <div class="result-card headline">
+                        <div class="label">Per person</div>
+                        <div class="value" id="perPersonVal">—</div>
+                    </div>
+                    <div class="result-card">
+                        <div class="label">Total</div>
+                        <div class="value" id="totalVal">—</div>
+                    </div>
+                    <div class="result-card">
+                        <div class="label">Tip</div>
+                        <div class="value" id="tipVal">—</div>
+                    </div>
+                </div>
+                <div class="button-row">
+                    <button class="btn" type="button" onclick="shareResult()">Share result</button>
+                </div>
+            </div>
+
+            <h2>How to use</h2>
+            <div class="howto-content"><ol><li>Enter the pre-tip bill amount.</li><li>Pick a quick tip percentage or type a custom one.</li><li>Enter how many people are splitting the bill.</li><li>Click <strong>Calculate</strong> — tip, total, and per-person amount appear.</li></ol><p>US convention is 18–20% for table service, 15% for buffets/delivery, 10% or rounding-up for fast counter service. Many countries either include service in the bill or don't tip at all — check local custom.</p></div>
+
+            <div class="related-tools-section">
+                <h3>Related Tools</h3>
+                <div class="related-buttons">
+                    <a href="/hi/percentage-calculator/" class="related-btn">Percentage Calculator</a><a
+                        href="/hi/discount-calculator/" class="related-btn">Discount Calculator</a><a
+                        href="/hi/unit-converter/" class="related-btn">Unit Converter</a><a
+                        href="/hi/date-calculator/" class="related-btn">Date Calculator</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="site-footer"><div class="container"><div class="footer-content"><p></p>
+                <p data-legal-links style="font-size: 0.875rem; margin-top: 8px;"><a href="/hi/about/">About</a> · <a href="/hi/privacy/">Privacy</a> · <a href="/hi/terms/">Terms</a></p></div></div></footer>
+    <script src="/assets/js/common.js"></script>
+    <script>
+        const LOCALE = document.documentElement.lang || 'en';
+        const fmt2 = n => Number(n).toLocaleString(LOCALE, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+        const tipInput = document.getElementById('tip');
+        const quickButtons = document.querySelectorAll('.quick-tips button');
+        quickButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                tipInput.value = btn.dataset.tip;
+                quickButtons.forEach(b => b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'));
+            });
+        });
+        tipInput.addEventListener('input', () => {
+            quickButtons.forEach(b => b.setAttribute('aria-pressed',
+                b.dataset.tip === tipInput.value ? 'true' : 'false'));
+        });
+
+        function calculate() {
+            const bill = parseFloat(document.getElementById('bill').value);
+            const tip = parseFloat(tipInput.value);
+            const people = parseInt(document.getElementById('people').value, 10);
+            if (!(bill > 0) || !(tip >= 0) || !(people > 0)) {
+                alert('Bill, tip, and people must be positive numbers.');
+                return;
+            }
+            const tipAmount = bill * tip / 100;
+            const total = bill + tipAmount;
+            const perPerson = total / people;
+            document.getElementById('tipVal').textContent = fmt2(tipAmount);
+            document.getElementById('totalVal').textContent = fmt2(total);
+            document.getElementById('perPersonVal').textContent = fmt2(perPerson);
+            document.getElementById('result').style.display = 'block';
+        }
+
+        function resetForm() {
+            document.getElementById('bill').value = '100';
+            tipInput.value = '18';
+            document.getElementById('people').value = '2';
+            quickButtons.forEach(b => b.setAttribute('aria-pressed', b.dataset.tip === '18' ? 'true' : 'false'));
+            document.getElementById('result').style.display = 'none';
+        }
+
+        async function shareResult() {
+            const v = document.getElementById('perPersonVal').textContent;
+            if (v === '—') return;
+            const text = 'Total per person: {value} —'.replace('{value}', v) + ' ' + location.href;
+            if (navigator.share) {
+                try { await navigator.share({ title: 'Tip Calculator', text }); return; }
+                catch (e) { if (e && e.name === 'AbortError') return; }
+            }
+            try {
+                await navigator.clipboard.writeText(text);
+                alert('Copied to clipboard.');
+            } catch (e) { /* clipboard blocked */ }
+        }
+    </script>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({google_ad_client:"ca-pub-6334819180242631",enable_page_level_ads:true});</script>
+    <script data-utilify-theme-toggle-script>(function(){var b=document.getElementById("themeToggle");if(!b)return;function p(){var t=document.documentElement.getAttribute("data-theme")||"light";b.textContent=t==="dark"?"☀️":"🌙";b.setAttribute("aria-pressed",String(t==="dark"));}p();b.addEventListener("click",function(){var c=document.documentElement.getAttribute("data-theme")||"light";var n=c==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",n);try{localStorage.setItem("utilify_theme",n);}catch(e){}p();});})();</script>
+    <script data-utilify-fav-toggle-script>(function(){var btn=document.querySelector(".fav-toggle-page");if(!btn)return;var m=location.pathname.match(/^\/[^\/]+\/([^\/]+)\/?$/);if(!m)return;var slug=m[1],K="utilify_favorites";function g(){return (localStorage.getItem(K)||"").split(",").filter(Boolean);}function s(a){localStorage.setItem(K,Array.from(new Set(a)).join(","));}function p(f){btn.textContent=f?"★":"☆";btn.classList.toggle("is-fav",f);btn.setAttribute("aria-label",f?btn.dataset.removeLabel:btn.dataset.addLabel);btn.setAttribute("aria-pressed",String(f));}p(g().indexOf(slug)>-1);btn.addEventListener("click",function(){var a=g(),n=a.indexOf(slug)>-1?a.filter(function(x){return x!==slug;}):a.concat([slug]);s(n);p(n.indexOf(slug)>-1);});})();</script>
+</body>
+
+</html>

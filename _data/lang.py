@@ -7768,3 +7768,269 @@ JSON_SCHEMA_VALIDATOR = {
         "card_blurb": "JSON을 Schema로 검증 — type·required·items·enum·format·pattern."
     }
 }
+
+
+TIP_CALCULATOR = {
+    "en": {
+        "title": "Tip Calculator",
+        "meta_title": "Tip Calculator — Bill Split with Custom Tip - Utilify",
+        "meta_desc": "Calculate the tip and split the bill. Pick a quick tip percentage (10/15/18/20/25) or enter a custom amount, and divide across any number of people.",
+        "og_title": "Tip Calculator - Utilify",
+        "og_desc": "Tip + total + per-person split, with quick tip-percentage buttons.",
+        "json_name": "Tip Calculator",
+        "json_desc": "Compute tip amount, total bill, and per-person split for any meal.",
+        "page_desc": "Enter the bill, pick a tip percentage (or type a custom one), and the calculator splits the total across however many people are paying. Quick buttons for 10/15/18/20/25%. Runs entirely in your browser.",
+        "label_bill": "Bill amount",
+        "label_tip": "Tip (%)",
+        "label_people": "People",
+        "ph_bill": "100",
+        "ph_tip": "18",
+        "ph_people": "2",
+        "btn_calculate": "Calculate",
+        "btn_reset": "Reset",
+        "btn_share": "Share result",
+        "share_text": "Total per person: {value} —",
+        "share_copied": "Copied to clipboard.",
+        "res_tip_label": "Tip",
+        "res_total_label": "Total",
+        "res_per_person_label": "Per person",
+        "alert_invalid": "Bill, tip, and people must be positive numbers.",
+        "howto_header": "How to use",
+        "howto_html": (
+            "<ol>"
+            "<li>Enter the pre-tip bill amount.</li>"
+            "<li>Pick a quick tip percentage or type a custom one.</li>"
+            "<li>Enter how many people are splitting the bill.</li>"
+            "<li>Click <strong>Calculate</strong> — tip, total, and per-person amount appear.</li>"
+            "</ol>"
+            "<p>US convention is 18–20% for table service, 15% for buffets/delivery, 10% or rounding-up for fast counter service. Many countries either include service in the bill or don't tip at all — check local custom.</p>"
+        ),
+        "related_header": "Related Tools",
+        "related_pct": "Percentage Calculator",
+        "related_discount": "Discount Calculator",
+        "related_unit": "Unit Converter",
+        "related_date": "Date Calculator",
+        "card_blurb": "Tip + total + per-person split with quick 10/15/18/20/25% buttons."
+    },
+    "ko": {
+        "title": "팁 계산기",
+        "meta_title": "팁 계산기 — 식당 더치페이 자동 계산 - Utilify",
+        "meta_desc": "식당 계산서의 팁과 인당 분담액을 계산. 10/15/18/20/25% 빠른 선택 또는 직접 입력. 인원수로 나누기 자동.",
+        "og_title": "팁 계산기 - Utilify",
+        "og_desc": "팁·총액·인당 분담액을 빠른 팁% 버튼으로.",
+        "json_name": "팁 계산기",
+        "json_desc": "식사 비용의 팁과 더치페이 인당 금액을 계산하는 도구.",
+        "page_desc": "계산서 금액과 팁 비율(빠른 선택 또는 직접 입력)을 입력하면, 인원수에 따라 분담액까지 함께 계산됩니다. 미국 등 팁 문화권 여행 시 유용. 모든 처리는 브라우저에서.",
+        "label_bill": "계산서 금액",
+        "label_tip": "팁 (%)",
+        "label_people": "인원수",
+        "ph_bill": "100",
+        "ph_tip": "18",
+        "ph_people": "2",
+        "btn_calculate": "계산",
+        "btn_reset": "초기화",
+        "btn_share": "결과 공유",
+        "share_text": "인당 부담액: {value} —",
+        "share_copied": "클립보드에 복사되었습니다.",
+        "res_tip_label": "팁",
+        "res_total_label": "총액",
+        "res_per_person_label": "인당",
+        "alert_invalid": "계산서·팁·인원수는 모두 양수로 입력해 주세요.",
+        "howto_header": "사용 방법",
+        "howto_html": (
+            "<ol>"
+            "<li>팁 적용 전 계산서 금액을 입력하세요.</li>"
+            "<li>팁 비율을 빠른 버튼으로 선택하거나 직접 입력하세요.</li>"
+            "<li>분담할 인원수를 입력하세요.</li>"
+            "<li><strong>계산</strong>을 누르면 팁·총액·인당 분담액이 표시됩니다.</li>"
+            "</ol>"
+            "<p>미국 기준 식당 서비스는 18~20%, 뷔페·배달은 15%, 카운터 서비스는 10% 또는 올림이 일반적입니다. 한국·일본 등은 팁을 받지 않는 경우가 많고, 유럽은 서비스료가 계산서에 포함되어 있어 추가 팁이 필수가 아닙니다.</p>"
+        ),
+        "related_header": "관련 도구",
+        "related_pct": "퍼센트 계산기",
+        "related_discount": "할인 계산기",
+        "related_unit": "단위 변환기",
+        "related_date": "날짜 계산기",
+        "card_blurb": "팁·총액·인당 분담액을 빠른 팁% 버튼으로 즉시 계산."
+    }
+}
+
+
+PERCENTAGE_CALCULATOR = {
+    "en": {
+        "title": "Percentage Calculator",
+        "meta_title": "Percentage Calculator — % of, % is, % Change - Utilify",
+        "meta_desc": "Three percentage modes in one: what is X% of Y, X is what percent of Y, and percent change from X to Y. No formulas to remember.",
+        "og_title": "Percentage Calculator - Utilify",
+        "og_desc": "All three percentage operations in one tool.",
+        "json_name": "Percentage Calculator",
+        "json_desc": "Switchable percentage operations: % of, % is, % change.",
+        "page_desc": "Three common percentage operations in one place: <em>what is X% of Y</em>, <em>X is what percent of Y</em>, and <em>percent change from X to Y</em>. Switch modes from the dropdown — the input labels update so you don't have to remember the formula.",
+        "label_mode": "Mode",
+        "label_a": "A",
+        "label_b": "B",
+        "ph_a": "20",
+        "ph_b": "150",
+        "opt_of": "What is A% of B?",
+        "opt_is": "A is what percent of B?",
+        "opt_change": "Percent change from A to B",
+        "btn_calculate": "Calculate",
+        "btn_reset": "Reset",
+        "btn_share": "Share result",
+        "share_text": "Result: {value} —",
+        "share_copied": "Copied to clipboard.",
+        "res_label": "Result",
+        "alert_invalid": "Enter valid numbers in both fields.",
+        "alert_div_zero": "B cannot be zero in this mode.",
+        "howto_header": "How to use",
+        "howto_html": (
+            "<ol>"
+            "<li>Pick the mode that matches your question:"
+            "<ul>"
+            "<li><strong>What is A% of B?</strong> — e.g., \"20% of 150\" → 30</li>"
+            "<li><strong>A is what percent of B?</strong> — e.g., \"30 is what % of 150\" → 20%</li>"
+            "<li><strong>Percent change from A to B</strong> — e.g., \"100 → 125\" → +25%</li>"
+            "</ul></li>"
+            "<li>Enter the two numbers and click <strong>Calculate</strong>.</li>"
+            "</ol>"
+            "<p>Percent change uses the formula <code>(B − A) / A × 100</code>. A drop from 100 to 75 is −25%; rising back from 75 to 100 is +33% — gains and losses are not symmetric.</p>"
+        ),
+        "related_header": "Related Tools",
+        "related_tip": "Tip Calculator",
+        "related_discount": "Discount Calculator",
+        "related_unit": "Unit Converter",
+        "related_date": "Date Calculator",
+        "card_blurb": "Three percentage modes — % of, % is, % change."
+    },
+    "ko": {
+        "title": "퍼센트 계산기",
+        "meta_title": "퍼센트 계산기 — A의 B%, A는 B의 몇%, 변화율 - Utilify",
+        "meta_desc": "퍼센트 계산 3가지 모드를 한 곳에서: A의 B%, A는 B의 몇%인지, A에서 B로 변화율. 공식을 외우지 않아도 됨.",
+        "og_title": "퍼센트 계산기 - Utilify",
+        "og_desc": "퍼센트 계산 3가지를 한 도구에서.",
+        "json_name": "퍼센트 계산기",
+        "json_desc": "퍼센트 of / 퍼센트 is / 변화율 — 모드 전환식 계산기.",
+        "page_desc": "흔히 마주치는 퍼센트 계산 3가지를 한 곳에서: <em>B의 A%는?</em>, <em>A는 B의 몇 %인가?</em>, <em>A에서 B로 변화율</em>. 모드를 선택하면 입력 라벨이 자동으로 바뀝니다 — 공식을 외우지 않아도 됩니다.",
+        "label_mode": "모드",
+        "label_a": "A",
+        "label_b": "B",
+        "ph_a": "20",
+        "ph_b": "150",
+        "opt_of": "B의 A%는?",
+        "opt_is": "A는 B의 몇 %인가?",
+        "opt_change": "A에서 B로 변화율",
+        "btn_calculate": "계산",
+        "btn_reset": "초기화",
+        "btn_share": "결과 공유",
+        "share_text": "결과: {value} —",
+        "share_copied": "클립보드에 복사되었습니다.",
+        "res_label": "결과",
+        "alert_invalid": "두 숫자 모두 유효한 값을 입력해 주세요.",
+        "alert_div_zero": "이 모드에서 B는 0이 될 수 없습니다.",
+        "howto_header": "사용 방법",
+        "howto_html": (
+            "<ol>"
+            "<li>질문에 맞는 모드를 선택하세요:"
+            "<ul>"
+            "<li><strong>B의 A%는?</strong> — 예: \"150의 20%\" → 30</li>"
+            "<li><strong>A는 B의 몇 %인가?</strong> — 예: \"30은 150의 몇 %\" → 20%</li>"
+            "<li><strong>A에서 B로 변화율</strong> — 예: \"100 → 125\" → +25%</li>"
+            "</ul></li>"
+            "<li>두 숫자를 입력하고 <strong>계산</strong>을 누르세요.</li>"
+            "</ol>"
+            "<p>변화율 공식은 <code>(B − A) / A × 100</code>입니다. 100에서 75로 줄어들면 −25%이고, 다시 75에서 100으로 회복하면 +33% — 상승과 하락은 대칭이 아닙니다.</p>"
+        ),
+        "related_header": "관련 도구",
+        "related_tip": "팁 계산기",
+        "related_discount": "할인 계산기",
+        "related_unit": "단위 변환기",
+        "related_date": "날짜 계산기",
+        "card_blurb": "B의 A%·A는 B의 몇 %·변화율 — 3가지 모드 한 곳에서."
+    }
+}
+
+
+DISCOUNT_CALCULATOR = {
+    "en": {
+        "title": "Discount Calculator",
+        "meta_title": "Discount Calculator — Final Price + Savings - Utilify",
+        "meta_desc": "Apply a percent discount to a price. Returns the final price and the amount saved. Optional second markdown for stacked sales.",
+        "og_title": "Discount Calculator - Utilify",
+        "og_desc": "Final price + savings amount, with optional second discount.",
+        "json_name": "Discount Calculator",
+        "json_desc": "Compute final price after percent discount, with optional stacked second discount.",
+        "page_desc": "Enter an original price and a discount percent — the calculator returns the final price and the dollar (or won) amount you save. Optional second discount for stacked sales (e.g., \"30% off, then extra 20% at checkout\").",
+        "label_price": "Original price",
+        "label_discount1": "Discount (%)",
+        "label_discount2": "Second discount (%) — optional",
+        "ph_price": "100",
+        "ph_discount1": "30",
+        "ph_discount2": "0",
+        "btn_calculate": "Calculate",
+        "btn_reset": "Reset",
+        "btn_share": "Share result",
+        "share_text": "Final price: {value} —",
+        "share_copied": "Copied to clipboard.",
+        "res_final_label": "Final price",
+        "res_saved_label": "You save",
+        "res_effective_label": "Effective discount",
+        "alert_invalid": "Enter a positive price and discount percentages between 0 and 100.",
+        "howto_header": "How to use",
+        "howto_html": (
+            "<ol>"
+            "<li>Enter the original (full) price.</li>"
+            "<li>Enter the first discount percent.</li>"
+            "<li>Optional: enter a second discount that applies <em>after</em> the first (typical \"extra X% at checkout\").</li>"
+            "<li>Click <strong>Calculate</strong>. Final price + savings + effective combined discount appear.</li>"
+            "</ol>"
+            "<p><strong>Stacked discounts don't add.</strong> A 30% then 20% discount is not 50% — it's 1 − (0.7 × 0.8) = 44%. The effective discount field shows the combined rate.</p>"
+        ),
+        "related_header": "Related Tools",
+        "related_tip": "Tip Calculator",
+        "related_pct": "Percentage Calculator",
+        "related_loan": "Loan Calculator",
+        "related_unit": "Unit Converter",
+        "card_blurb": "Final price + savings + stacked-discount effective rate."
+    },
+    "ko": {
+        "title": "할인 계산기",
+        "meta_title": "할인 계산기 — 할인가·절약 금액 - Utilify",
+        "meta_desc": "정가에 할인율을 적용해 최종 가격과 절약 금액을 계산. 추가 할인(중복할인)까지 합산 가능.",
+        "og_title": "할인 계산기 - Utilify",
+        "og_desc": "최종가·절약 금액·중복 할인 합산 효과까지.",
+        "json_name": "할인 계산기",
+        "json_desc": "정가에 할인율을 적용한 최종 가격과 중복 할인 합산 계산기.",
+        "page_desc": "정가와 할인율을 입력하면 최종 가격과 절약 금액을 계산합니다. 추가 할인(\"30% 할인 + 결제 시 추가 20%\" 등)도 지원하며, 단순 합이 아닌 실제 합산 할인율을 보여줍니다.",
+        "label_price": "정가",
+        "label_discount1": "할인율 (%)",
+        "label_discount2": "추가 할인율 (%) — 선택",
+        "ph_price": "100000",
+        "ph_discount1": "30",
+        "ph_discount2": "0",
+        "btn_calculate": "계산",
+        "btn_reset": "초기화",
+        "btn_share": "결과 공유",
+        "share_text": "최종 가격: {value} —",
+        "share_copied": "클립보드에 복사되었습니다.",
+        "res_final_label": "최종 가격",
+        "res_saved_label": "절약 금액",
+        "res_effective_label": "실질 할인율",
+        "alert_invalid": "정가는 양수, 할인율은 0~100 사이로 입력해 주세요.",
+        "howto_header": "사용 방법",
+        "howto_html": (
+            "<ol>"
+            "<li>할인 적용 전 정가를 입력하세요.</li>"
+            "<li>첫 번째 할인율을 입력하세요.</li>"
+            "<li>선택: 첫 할인 후 적용되는 추가 할인율(\"결제 시 추가 X%\" 등)을 입력하세요.</li>"
+            "<li><strong>계산</strong>을 누르면 최종 가격·절약 금액·실질 합산 할인율이 표시됩니다.</li>"
+            "</ol>"
+            "<p><strong>중복 할인은 단순 합이 아닙니다.</strong> 30% 할인 후 20% 추가 할인은 50%가 아닌 1 − (0.7 × 0.8) = 44%입니다. \"실질 할인율\" 필드에서 합산값을 확인하세요.</p>"
+        ),
+        "related_header": "관련 도구",
+        "related_tip": "팁 계산기",
+        "related_pct": "퍼센트 계산기",
+        "related_loan": "대출 계산기",
+        "related_unit": "단위 변환기",
+        "card_blurb": "최종 가격·절약 금액·중복 할인 실질 합산율까지 즉시 계산."
+    }
+}
