@@ -1014,6 +1014,77 @@ def build_alt_links(tool_path):
     return '\n    '.join(alt)
 
 
+def inject_tool_breadcrumb(html, slug, lang, data):
+    """Insert a visible breadcrumb nav before the first <h1> + a BreadcrumbList
+    JSON-LD before </head>. 3-level (Home > Sub-cat > Tool) when the tool's
+    sub-category has a hub page; 2-level (Home > Tool) otherwise.
+
+    Mirrors the pattern already used on category hub pages so visual + schema
+    treatment stays consistent across the site. Idempotent via marker
+    `data-utilify-breadcrumb`."""
+    if 'data-utilify-breadcrumb' in html:
+        return html
+
+    import json as _json_bc
+
+    home = data.get('breadcrumb_home') or 'Home'
+    title = data.get('title') or slug
+
+    # Sub-category hub anchor — only when a hub page exists for the sub-cat.
+    sub_slug = TOOL_SUBCATEGORIES.get(slug)
+    sub_label = None
+    if sub_slug in HUB_PAGES:
+        idx_lang = INDEX_PAGE.get(lang, {})
+        idx_en = INDEX_PAGE.get('en', {})
+        sub_label = (idx_lang.get(f'subcat_{sub_slug}')
+                     or idx_en.get(f'subcat_{sub_slug}')
+                     or sub_slug.title())
+
+    # Visible nav.
+    items = [f'<li><a href="/{lang}/">{home}</a></li>']
+    if sub_label:
+        items.append(f'<li><a href="/{lang}/{sub_slug}/">{sub_label}</a></li>')
+    items.append(f'<li aria-current="page">{title}</li>')
+    nav = (
+        '<nav data-utilify-breadcrumb class="breadcrumb" aria-label="Breadcrumb">'
+        '<ol>' + ''.join(items) + '</ol></nav>'
+    )
+
+    # JSON-LD BreadcrumbList.
+    schema_items = [{
+        "@type": "ListItem", "position": 1, "name": home,
+        "item": f"https://utilifyapp.net/{lang}/",
+    }]
+    if sub_label:
+        schema_items.append({
+            "@type": "ListItem", "position": 2, "name": sub_label,
+            "item": f"https://utilifyapp.net/{lang}/{sub_slug}/",
+        })
+    schema_items.append({
+        "@type": "ListItem", "position": len(schema_items) + 1, "name": title,
+        "item": f"https://utilifyapp.net/{lang}/{slug}/",
+    })
+    schema = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": schema_items,
+    }
+    ld_block = ('    <script type="application/ld+json">'
+                + _json_bc.dumps(schema, ensure_ascii=False)
+                + '</script>\n')
+
+    # Insert visible nav immediately before the first <h1>. Indentation is
+    # tuned so the rendered markup stays readable in Inspect Source.
+    html = _re_ad.sub(
+        r'(\s*)(<h1[\s>])',
+        r'\1' + nav + r'\1' + r'\2',
+        html, count=1,
+    )
+    # Insert ld+json block before </head>.
+    html = html.replace('</head>', ld_block + '</head>', 1)
+    return html
+
+
 def build_tool(tool_name, tool_data, template_file):
     print(f"Building {tool_name}...")
     template = load_template(template_file)
@@ -1035,6 +1106,10 @@ def build_tool(tool_name, tool_data, template_file):
         content = template
         for key, value in data.items():
             content = content.replace(f'{{{{ {key} }}}}', str(value))
+
+        # Inject breadcrumb (visible nav before <h1> + BreadcrumbList JSON-LD).
+        # Done post-substitution so all language strings are already resolved.
+        content = inject_tool_breadcrumb(content, tool_name, lang, data)
             
         # Write to file
         output_dir = os.path.join(BASE_DIR, lang, tool_name)
