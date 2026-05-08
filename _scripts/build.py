@@ -218,26 +218,35 @@ def inject_monetization(html):
         html = html.replace('</head>', theme_init + '</head>', 1)
 
     # 9g. Inject the theme-toggle button next to the site logo + the click
-    #     handler before </body>. The button uses {{ theme_toggle_aria }}
-    #     for its aria-label; the placeholder resolves at template-fill time
-    #     for `{{ lang_code }}` templates and is replaced inline for prebuilt
-    #     pages with their resolved language string.
+    #     handler before </body>. Two aria-labels are passed via data
+    #     attributes (`data-aria-to-dark`, `data-aria-to-light`) so the
+    #     handler can swap the SR-visible label as the theme changes —
+    #     prevents the SR from always announcing the same direction.
     if 'data-utilify-theme-toggle' not in html:
         is_template = '{{ lang_code }}' in html
         if is_template:
-            aria_label = '{{ theme_toggle_aria }}'
+            aria_to_dark = '{{ theme_to_dark_aria }}'
+            aria_to_light = '{{ theme_to_light_aria }}'
         else:
             # Detect language from <html lang="..."> for prebuilt pages.
             lang_match = _re_ad.search(r'<html[^>]+lang="([^"]+)"', html)
             lang_code = lang_match.group(1) if lang_match else 'en'
             common_en = COMMON.get('en', {})
             common_lang = COMMON.get(lang_code, {})
-            aria_label = (common_lang.get('theme_toggle_aria')
-                          or common_en.get('theme_toggle_aria')
-                          or 'Toggle dark mode')
+            aria_to_dark = (common_lang.get('theme_to_dark_aria')
+                            or common_en.get('theme_to_dark_aria')
+                            or 'Switch to dark mode')
+            aria_to_light = (common_lang.get('theme_to_light_aria')
+                             or common_en.get('theme_to_light_aria')
+                             or 'Switch to light mode')
+        # Initial aria-label assumes light theme; the script corrects it on init
+        # if localStorage / prefers-color-scheme already picked dark.
         toggle_btn = (
             f'<button data-utilify-theme-toggle id="themeToggle" '
-            f'class="theme-toggle" aria-label="{aria_label}" type="button">🌙</button>'
+            f'class="theme-toggle" type="button" '
+            f'aria-label="{aria_to_dark}" '
+            f'data-aria-to-dark="{aria_to_dark}" '
+            f'data-aria-to-light="{aria_to_light}">🌙</button>'
         )
         # Insert immediately after the logo's closing </a> tag.
         html = _re_ad.sub(
@@ -251,7 +260,8 @@ def inject_monetization(html):
             'var b=document.getElementById("themeToggle");if(!b)return;'
             'function p(){var t=document.documentElement.getAttribute("data-theme")||"light";'
             'b.textContent=t==="dark"?"☀️":"🌙";'
-            'b.setAttribute("aria-pressed",String(t==="dark"));}'
+            'b.setAttribute("aria-pressed",String(t==="dark"));'
+            'b.setAttribute("aria-label",t==="dark"?b.dataset.ariaToLight:b.dataset.ariaToDark);}'
             'p();b.addEventListener("click",function(){'
             'var c=document.documentElement.getAttribute("data-theme")||"light";'
             'var n=c==="dark"?"light":"dark";'
