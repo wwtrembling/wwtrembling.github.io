@@ -8304,3 +8304,167 @@ WATER_INTAKE = {
         "card_blurb": "체중·활동·기후 기반 1일 물 권장량 자동 계산."
     }
 }
+
+
+FILE_SIZE_CONVERTER = {
+    "en": {
+        "title": "File Size Converter",
+        "meta_title": "File Size Converter — Bytes / KB / MB / GB / TB - Utilify",
+        "meta_desc": "Convert between bytes, kilobytes, megabytes, gigabytes, terabytes, and petabytes. Switch between decimal (KB = 1000) and binary (KiB = 1024) units.",
+        "og_title": "File Size Converter - Utilify",
+        "og_desc": "Bytes ↔ KB / MB / GB / TB / PB with decimal or binary units.",
+        "json_name": "File Size Converter",
+        "json_desc": "Convert between digital storage units in decimal or binary base.",
+        "page_desc": "Convert between bytes, kilobytes, megabytes, gigabytes, terabytes, and petabytes. Pick decimal (1 KB = 1000 B — what hard drives advertise) or binary (1 KiB = 1024 B — what your OS shows).",
+        "label_value": "Value",
+        "label_from": "From",
+        "label_to": "To",
+        "label_system": "Unit system",
+        "ph_value": "1024",
+        "opt_decimal": "Decimal (1 KB = 1000 B)",
+        "opt_binary": "Binary (1 KiB = 1024 B)",
+        "btn_convert": "Convert",
+        "btn_swap": "Swap",
+        "btn_reset": "Reset",
+        "btn_share": "Share result",
+        "share_text": "{value} —",
+        "share_copied": "Copied to clipboard.",
+        "res_label": "Result",
+        "alert_invalid": "Enter a non-negative number.",
+        "howto_header": "How to use",
+        "howto_html": (
+            "<ol>"
+            "<li>Type the number you want to convert.</li>"
+            "<li>Pick the source and target units.</li>"
+            "<li>Pick the unit system. Drive manufacturers and most networking specs use <strong>decimal</strong> (1 KB = 1000 B). Operating systems (Windows, Linux, macOS in older versions) and RAM specs use <strong>binary</strong> (1 KiB = 1024 B).</li>"
+            "</ol>"
+            "<p>The naming convention <em>KiB / MiB / GiB</em> exists specifically to disambiguate binary from decimal. \"KB\" without the <em>i</em> usually means decimal but is sometimes used loosely. When in doubt, decimal is the formal SI standard.</p>"
+        ),
+        "related_header": "Related Tools",
+        "related_unit": "Unit Converter",
+        "related_base64": "Base64 Converter",
+        "related_token": "Token Counter",
+        "related_pct": "Percentage Calculator",
+        "card_blurb": "B ↔ KB / MB / GB / TB / PB with decimal or binary units."
+    },
+    "ko": {
+        "title": "파일 크기 변환기",
+        "meta_title": "파일 크기 변환기 — Bytes·KB·MB·GB·TB - Utilify",
+        "meta_desc": "바이트·킬로바이트·메가바이트·기가바이트·테라바이트·페타바이트 상호 변환. 십진법(1KB=1000B)과 이진법(1KiB=1024B) 모두 지원.",
+        "og_title": "파일 크기 변환기 - Utilify",
+        "og_desc": "B ↔ KB / MB / GB / TB / PB — 십진/이진법 단위 지원.",
+        "json_name": "파일 크기 변환기",
+        "json_desc": "십진법·이진법 디지털 저장 단위 상호 변환기.",
+        "page_desc": "바이트·KB·MB·GB·TB·PB 단위를 자유롭게 변환합니다. 하드드라이브 광고에 쓰는 십진법(1KB = 1000B)과 OS가 표시하는 이진법(1KiB = 1024B) 중 선택할 수 있습니다.",
+        "label_value": "값",
+        "label_from": "원본",
+        "label_to": "변환",
+        "label_system": "단위 체계",
+        "ph_value": "1024",
+        "opt_decimal": "십진법 (1KB = 1000B)",
+        "opt_binary": "이진법 (1KiB = 1024B)",
+        "btn_convert": "변환",
+        "btn_swap": "양방향 전환",
+        "btn_reset": "초기화",
+        "btn_share": "결과 공유",
+        "share_text": "{value} —",
+        "share_copied": "클립보드에 복사되었습니다.",
+        "res_label": "결과",
+        "alert_invalid": "0 이상의 숫자를 입력해 주세요.",
+        "howto_header": "사용 방법",
+        "howto_html": (
+            "<ol>"
+            "<li>변환할 숫자를 입력하세요.</li>"
+            "<li>원본 단위와 변환할 단위를 선택하세요.</li>"
+            "<li>단위 체계를 선택합니다. 하드드라이브 제조사와 네트워크 스펙은 <strong>십진법</strong>(1KB = 1000B), 운영체제(Windows·Linux·옛 macOS)와 RAM 스펙은 <strong>이진법</strong>(1KiB = 1024B)을 사용합니다.</li>"
+            "</ol>"
+            "<p><em>KiB·MiB·GiB</em> 표기는 이진법임을 명확히 구분하기 위한 IEC 표준입니다. \"KB\"는 보통 십진법이지만 느슨하게 이진법으로도 쓰입니다 — 정확한 사양에는 십진법이 SI 공식 표준입니다.</p>"
+        ),
+        "related_header": "관련 도구",
+        "related_unit": "단위 변환기",
+        "related_base64": "Base64 변환기",
+        "related_token": "토큰 카운터",
+        "related_pct": "퍼센트 계산기",
+        "card_blurb": "B ↔ KB·MB·GB·TB·PB — 십진/이진법 모두 지원."
+    }
+}
+
+
+AGE_CALCULATOR = {
+    "en": {
+        "title": "Age Calculator",
+        "meta_title": "Age Calculator — Years, Months, Days, Next Birthday - Utilify",
+        "meta_desc": "Calculate exact age from a birth date. Returns years, months, days, total days alive, and how many days until the next birthday.",
+        "og_title": "Age Calculator - Utilify",
+        "og_desc": "Exact age in years/months/days plus next-birthday countdown.",
+        "json_name": "Age Calculator",
+        "json_desc": "Compute age and next-birthday distance from a date of birth.",
+        "page_desc": "Pick a birth date and get exact age — years, months, and days — plus total days alive and how many days until the next birthday. Handy for visa forms, school cutoffs, and \"how old will I be in 2030\" curiosity.",
+        "label_dob": "Date of birth",
+        "label_target": "Calculate as of",
+        "btn_calculate": "Calculate",
+        "btn_reset": "Reset",
+        "btn_share": "Share result",
+        "share_text": "Age: {value} —",
+        "share_copied": "Copied to clipboard.",
+        "res_age_label": "Age",
+        "res_total_days_label": "Days alive",
+        "res_next_birthday_label": "Next birthday in",
+        "res_age_format": "{years} y, {months} mo, {days} d",
+        "res_days_format": "{days} days",
+        "alert_invalid": "Pick a valid birth date that's not in the future of the target date.",
+        "howto_header": "How to use",
+        "howto_html": (
+            "<ol>"
+            "<li>Pick your date of birth.</li>"
+            "<li>Optional: change the target date (default is today). Useful for \"How old will I be on July 4, 2030?\" questions.</li>"
+            "<li>Click <strong>Calculate</strong>. Age in years / months / days, total days alive, and days until the next birthday all show up.</li>"
+            "</ol>"
+            "<p>The calculator handles month-end edge cases — a baby born on Jan 31 turns one month old on Feb 28 (or 29 in leap years), not Feb 31. Years are full Gregorian years; leap days are counted toward the day total.</p>"
+        ),
+        "related_header": "Related Tools",
+        "related_date": "Date Calculator",
+        "related_pregnancy": "Pregnancy Calculator",
+        "related_unix": "Unix Timestamp",
+        "related_bmi": "BMI Calculator",
+        "card_blurb": "Years / months / days alive + next-birthday countdown from any DOB."
+    },
+    "ko": {
+        "title": "만 나이 계산기",
+        "meta_title": "만 나이 계산기 — 년·개월·일·다음 생일까지 - Utilify",
+        "meta_desc": "생년월일로 만 나이(년·개월·일)·살아온 총 일수·다음 생일까지 일수를 계산. 비자 서류·학년 기준일·기념일 계산에 유용.",
+        "og_title": "만 나이 계산기 - Utilify",
+        "og_desc": "정확한 만 나이와 다음 생일까지 일수.",
+        "json_name": "만 나이 계산기",
+        "json_desc": "생년월일로 만 나이와 다음 생일까지 거리 계산.",
+        "page_desc": "생년월일을 입력하면 만 나이(년·개월·일), 살아온 총 일수, 다음 생일까지 남은 일수를 계산합니다. 비자 서류, 학년 기준일, \"2030년에 몇 살일까?\" 같은 질문에 유용합니다.",
+        "label_dob": "생년월일",
+        "label_target": "기준 날짜",
+        "btn_calculate": "계산",
+        "btn_reset": "초기화",
+        "btn_share": "결과 공유",
+        "share_text": "나이: {value} —",
+        "share_copied": "클립보드에 복사되었습니다.",
+        "res_age_label": "만 나이",
+        "res_total_days_label": "살아온 일수",
+        "res_next_birthday_label": "다음 생일까지",
+        "res_age_format": "{years}년 {months}개월 {days}일",
+        "res_days_format": "{days}일",
+        "alert_invalid": "기준 날짜보다 이후가 아닌 유효한 생년월일을 입력해 주세요.",
+        "howto_header": "사용 방법",
+        "howto_html": (
+            "<ol>"
+            "<li>생년월일을 선택하세요.</li>"
+            "<li>선택: 기준 날짜를 변경할 수 있습니다 (기본값은 오늘). \"2030년 7월 4일에 몇 살일까?\" 같은 질문에 유용합니다.</li>"
+            "<li><strong>계산</strong>을 누르면 만 나이(년·개월·일), 살아온 총 일수, 다음 생일까지의 일수가 표시됩니다.</li>"
+            "</ol>"
+            "<p>월말 경계 케이스를 처리합니다 — 1월 31일생 아기는 2월 28일(윤년이면 29일)에 1개월이 되며, 2월 31일이 아닙니다. 년수는 그레고리력 기준 완전 1년이며, 윤일도 살아온 일수에 포함됩니다.</p>"
+        ),
+        "related_header": "관련 도구",
+        "related_date": "날짜 계산기",
+        "related_pregnancy": "임신 계산기",
+        "related_unix": "Unix 타임스탬프",
+        "related_bmi": "BMI 계산기",
+        "card_blurb": "생년월일에서 만 나이·살아온 일수·다음 생일까지 즉시 계산."
+    }
+}
