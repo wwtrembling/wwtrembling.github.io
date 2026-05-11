@@ -857,6 +857,19 @@ a:hover {
 }
 .search-input-wrap:focus-within .search-shortcut { display: none; }
 
+/* Highlight for matched substrings inside card title / description while the
+   search bar is active. Brand-tinted background, no underline, no shape
+   change — preserves card hover/focus interactions. */
+mark.search-mark {
+  background: rgba(99, 102, 241, 0.18);
+  color: inherit;
+  border-radius: 2px;
+  padding: 0 1px;
+}
+[data-theme="dark"] mark.search-mark {
+  background: rgba(129, 140, 248, 0.28);
+}
+
 /* L2 — category hub pages: intro copy + tool grid + FAQ + hub-link from index. */
 .page-intro {
   color: var(--text-secondary);

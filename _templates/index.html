@@ -262,10 +262,50 @@
             let activeSubcat = '';   // '' = no subcategory filter
             let activeSearch = '';
 
+            function escapeHtml(s) {
+                return s.replace(/[&<>"']/g, c => ({
+                    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+                }[c]));
+            }
+
+            // Cache original text on each card so we can restore it when the
+            // search clears. textContent strips HTML, so this is safe even if
+            // the build accidentally introduced markup in title/desc later.
+            cards.forEach(card => {
+                const tEl = card.querySelector('.card-title');
+                const dEl = card.querySelector('.card-description');
+                if (tEl) tEl.dataset.original = tEl.textContent;
+                if (dEl) dEl.dataset.original = dEl.textContent;
+            });
+
+            function highlightText(el, q) {
+                if (!el) return;
+                const orig = el.dataset.original || el.textContent;
+                if (!q) {
+                    if (el.textContent !== orig) el.textContent = orig;
+                    return;
+                }
+                const lower = orig.toLowerCase();
+                let out = '';
+                let i = 0;
+                while (i < orig.length) {
+                    const idx = lower.indexOf(q, i);
+                    if (idx === -1) { out += escapeHtml(orig.slice(i)); break; }
+                    if (idx > i) out += escapeHtml(orig.slice(i, idx));
+                    out += '<mark class="search-mark">'
+                        + escapeHtml(orig.slice(idx, idx + q.length))
+                        + '</mark>';
+                    i = idx + q.length;
+                }
+                el.innerHTML = out;
+            }
+
             function matchSearch(card, q) {
                 if (!q) return true;
-                const t = (card.querySelector('.card-title')?.textContent || '').toLowerCase();
-                const d = (card.querySelector('.card-description')?.textContent || '').toLowerCase();
+                const t = (card.querySelector('.card-title')?.dataset.original
+                           || card.querySelector('.card-title')?.textContent || '').toLowerCase();
+                const d = (card.querySelector('.card-description')?.dataset.original
+                           || card.querySelector('.card-description')?.textContent || '').toLowerCase();
                 const k = (card.dataset.keywords || '').toLowerCase();
                 return t.includes(q) || d.includes(q) || k.includes(q);
             }
@@ -286,6 +326,10 @@
                     if (match) match = matchSearch(card, q);
                     card.style.display = match ? '' : 'none';
                     if (match) visible++;
+                    // Apply/clear highlight regardless of visibility — cheap and
+                    // keeps state consistent when filters flip.
+                    highlightText(card.querySelector('.card-title'), q);
+                    highlightText(card.querySelector('.card-description'), q);
                 });
 
                 // Show subcategory group only for the active main category.
