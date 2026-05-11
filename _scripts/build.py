@@ -863,6 +863,15 @@ def build_static_page(slug, page_data, root_404=False):
         for key, value in data.items():
             content = content.replace(f'{{{{ {key} }}}}', str(value))
 
+        # 2-level breadcrumb (Home > <page h1>). inject_tool_breadcrumb reads
+        # `data['title']` — static pages use `page_h1` instead, so pass it
+        # through under the expected key.
+        bc_data = {
+            'breadcrumb_home': data.get('breadcrumb_home'),
+            'title': data.get('page_h1') or slug,
+        }
+        content = inject_tool_breadcrumb(content, slug, lang, bc_data)
+
         output_dir = os.path.join(BASE_DIR, lang, slug)
         os.makedirs(output_dir, exist_ok=True)
         with open(os.path.join(output_dir, 'index.html'), 'w', encoding='utf-8') as f:
@@ -879,6 +888,11 @@ def build_static_page(slug, page_data, root_404=False):
         content = template
         for key, value in data.items():
             content = content.replace(f'{{{{ {key} }}}}', str(value))
+        bc_data = {
+            'breadcrumb_home': data.get('breadcrumb_home'),
+            'title': data.get('page_h1') or slug,
+        }
+        content = inject_tool_breadcrumb(content, slug, 'en', bc_data)
         with open(os.path.join(BASE_DIR, '404.html'), 'w', encoding='utf-8') as f:
             f.write(content)
         print(f"  Generated /404.html")
