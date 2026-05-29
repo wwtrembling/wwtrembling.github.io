@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy-Report-Only" content="default-src 'self' https: data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https:; frame-src https:;">
     <meta name="google-adsense-account" content="ca-pub-6334819180242631">
-    <title>MCP Server Config Generator (Claude Desktop / Cursor / VS Code) - Utilify</title>
-    <meta name="description" content="Generate MCP server config JSON for Claude Desktop, Cursor, and VS Code. Pick transport, command, args, env in the right format for each client.">
+    <title>MCPサーバー設定ジェネレーター (Claude Desktop / Cursor / VS Code) - Utilify</title>
+    <meta name="description" content="Claude Desktop・Cursor・VS Code用のMCPサーバー設定JSONをフォームで生成します。トランスポート・コマンド・引数・環境変数を入力するだけ。">
     <link rel="canonical" href="https://utilifyapp.net/ja/mcp-config-generator/">
 
-    <meta property="og:title" content="MCP Server Config Generator (Claude Desktop / Cursor / VS Code) - Utilify">
-    <meta property="og:description" content="Generate MCP server config JSON for Claude Desktop, Cursor, and VS Code. Pick transport, command, args, env in the right format for each client.">
+    <meta property="og:title" content="MCPサーバー設定ジェネレーター (Claude Desktop / Cursor / VS Code) - Utilify">
+    <meta property="og:description" content="Claude Desktop・Cursor・VS Code用のMCPサーバー設定JSONをフォームで生成します。トランスポート・コマンド・引数・環境変数を入力するだけ。">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://utilifyapp.net/ja/mcp-config-generator/">
 
@@ -37,8 +37,8 @@
     {
         "@context": "https://schema.org",
         "@type": "WebApplication",
-        "name": "MCP Config Generator",
-        "description": "Form-based generator for Model Context Protocol server configurations.",
+        "name": "MCP設定ジェネレーター",
+        "description": "Model Context Protocolサーバー設定をフォーム入力で生成するツール。",
         "url": "https://utilifyapp.net/ja/mcp-config-generator/",
         "inLanguage": "ja",
         "applicationCategory": "UtilitiesApplication",
@@ -88,7 +88,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <script data-utilify-theme-init>(function(){try{var s=localStorage.getItem("utilify_theme");var t=(s==="dark"||s==="light")?s:(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
-    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://utilifyapp.net/ja/"}, {"@type": "ListItem", "position": 2, "name": "MCP Server Config Generator", "item": "https://utilifyapp.net/ja/mcp-config-generator/"}]}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://utilifyapp.net/ja/"}, {"@type": "ListItem", "position": 2, "name": "MCPサーバー設定ジェネレーター", "item": "https://utilifyapp.net/ja/mcp-config-generator/"}]}</script>
 </head>
 
 <body>
@@ -96,16 +96,16 @@
     <header class="site-header"><div class="container"><div class="header-content"><a href="/ja/" class="site-logo">🛠️ Utilify</a><button data-utilify-theme-toggle id="themeToggle" class="theme-toggle" type="button" aria-label="Switch to dark mode" data-aria-to-dark="Switch to dark mode" data-aria-to-light="Switch to light mode">🌙</button></div></div></header>
     <main id="main" class="main-content">
         <div class="container-narrow">
-            <nav data-utilify-breadcrumb class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/ja/">Home</a></li><li aria-current="page">MCP Server Config Generator</li></ol></nav>
-            <h1>🔌 MCP Server Config Generator</h1>
+            <nav data-utilify-breadcrumb class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/ja/">Home</a></li><li aria-current="page">MCPサーバー設定ジェネレーター</li></ol></nav>
+            <h1>🔌 MCPサーバー設定ジェネレーター</h1>
             <div class="security-badge" style="display:flex;align-items:center;justify-content:center;gap:8px;margin:10px 0;font-size:14px;color:var(--text-secondary);">
                 <span>🔒 Secure & Client-side</span>
             </div>
 
-            <p>Generate Model Context Protocol (MCP) server configuration for Claude Desktop, Cursor, or VS Code. Pick transport, command, args, and env vars — the tool emits the correct JSON shape for each client and shows the config file path.</p>
+            <p>Claude Desktop・Cursor・VS Code向けのModel Context Protocol（MCP）サーバー設定を生成します。トランスポート・コマンド・引数・環境変数を入力すると、各クライアントに対応した正しいJSONと設定ファイルのパスを出力します。</p>
 
-            <div class="target-row" role="radiogroup" aria-label="Target client">
-                <strong>Target client:</strong>
+            <div class="target-row" role="radiogroup" aria-label="対象クライアント">
+                <strong>対象クライアント:</strong>
                 <label><input type="radio" name="target" value="claude-desktop" checked> Claude Desktop</label>
                 <label><input type="radio" name="target" value="cursor"> Cursor</label>
                 <label><input type="radio" name="target" value="vscode"> VS Code</label>
@@ -113,11 +113,11 @@
 
             <div class="mcp-form">
                 <div>
-                    <label for="serverName">Server name</label>
+                    <label for="serverName">サーバー名</label>
                     <input id="serverName" class="form-input" type="text" value="my-server" placeholder="filesystem">
                 </div>
                 <div>
-                    <label for="transport">Transport</label>
+                    <label for="transport">トランスポート</label>
                     <select id="transport" class="form-input">
                         <option value="stdio">stdio</option>
                         <option value="http">streamable-http</option>
@@ -125,40 +125,40 @@
                     </select>
                 </div>
                 <div id="cmdGroup">
-                    <label for="command">Command</label>
+                    <label for="command">コマンド</label>
                     <input id="command" class="form-input" type="text" placeholder="npx">
-                    <label for="args" style="margin-top: 8px; display:block;">Args (one per line)</label>
+                    <label for="args" style="margin-top: 8px; display:block;">引数 (1行に1つ)</label>
                     <textarea id="args" class="form-input" rows="3" placeholder="-y&#10;@modelcontextprotocol/server-filesystem&#10;/path/to/dir"></textarea>
                 </div>
                 <div id="urlGroup" hidden>
-                    <label for="serverUrl">Server URL</label>
+                    <label for="serverUrl">サーバーURL</label>
                     <input id="serverUrl" class="form-input" type="text" placeholder="https://example.com/mcp">
                 </div>
                 <div>
-                    <label for="env">Environment vars (KEY=value, one per line)</label>
+                    <label for="env">環境変数 (KEY=value、1行に1つ)</label>
                     <textarea id="env" class="form-input" rows="3" placeholder="API_KEY=xxx&#10;DEBUG=1"></textarea>
                 </div>
             </div>
 
             <div class="btn-group" style="margin-top: var(--spacing-md);">
-                <button class="btn btn-primary" id="generateBtn">Generate</button>
-                <button class="btn btn-secondary" id="copyBtn">Copy</button>
-                <button class="btn btn-secondary" id="clearBtn">Clear</button>
+                <button class="btn btn-primary" id="generateBtn">生成</button>
+                <button class="btn btn-secondary" id="copyBtn">コピー</button>
+                <button class="btn btn-secondary" id="clearBtn">クリア</button>
             </div>
 
-            <h2>Config JSON</h2>
-            <p>Install path: <span id="installPath" class="install-path"></span></p>
+            <h2>設定JSON</h2>
+            <p>インストールパス: <span id="installPath" class="install-path"></span></p>
             <pre id="output" class="preview-box" aria-live="polite"></pre>
 
-            <h2>How to use</h2>
-            <div class="howto-content"><ol><li>Pick the client (Claude Desktop, Cursor, or VS Code).</li><li>Set the server name (used as the dictionary key).</li><li>Pick transport: <code>stdio</code> for local processes (most common), <code>streamable-http</code> or <code>sse</code> for remote servers.</li><li>For stdio: enter the command and args; for HTTP/SSE: enter the URL.</li><li>Optionally add environment variables.</li><li>Click <strong>Generate</strong>; copy the JSON into the config file at the path shown.</li></ol><p><strong>Where the config goes</strong>:<br><code>Claude Desktop</code> — macOS: <code>~/Library/Application Support/Claude/claude_desktop_config.json</code>; Windows: <code>%APPDATA%\Claude\claude_desktop_config.json</code><br><code>Cursor</code> — global: <code>~/.cursor/mcp.json</code>; per-project: <code>.cursor/mcp.json</code><br><code>VS Code</code> — workspace: <code>.vscode/mcp.json</code> (or User Settings → MCP Servers)</p></div>
+            <h2>使い方</h2>
+            <div class="howto-content"><ol><li>クライアント（Claude Desktop・Cursor・VS Code）を選びます。</li><li>サーバー名（辞書のキーとして使用）を入力します。</li><li>トランスポートを選択: <code>stdio</code>はローカルプロセス（最も一般的）、<code>streamable-http</code>・<code>sse</code>はリモートサーバー向け。</li><li>stdioの場合: コマンドと引数を入力 / HTTP・SSEの場合: URLを入力。</li><li>必要に応じて環境変数を追加。</li><li><strong>生成</strong>後、表示されたパスの設定ファイルにJSONをコピーします。</li></ol><p><strong>設定ファイルの場所</strong>:<br><code>Claude Desktop</code> — macOS: <code>~/Library/Application Support/Claude/claude_desktop_config.json</code>; Windows: <code>%APPDATA%\Claude\claude_desktop_config.json</code><br><code>Cursor</code> — グローバル: <code>~/.cursor/mcp.json</code>; プロジェクト別: <code>.cursor/mcp.json</code><br><code>VS Code</code> — ワークスペース: <code>.vscode/mcp.json</code> (またはユーザー設定 → MCP Servers)</p></div>
 
             <div class="related-tools-section">
-                <h3>Related Tools</h3>
+                <h3>関連ツール</h3>
                 <div class="related-buttons">
-                    <a href="/ja/claude-md-generator/" class="related-btn">Claude.md Generator</a><a
-                        href="/ja/json-formatter/" class="related-btn">JSON Formatter</a><a
-                        href="/ja/prompt-pii-scrubber/" class="related-btn">Prompt PII Scrubber</a>
+                    <a href="/ja/claude-md-generator/" class="related-btn">Claude.mdジェネレーター</a><a
+                        href="/ja/json-formatter/" class="related-btn">JSONフォーマッター</a><a
+                        href="/ja/prompt-pii-scrubber/" class="related-btn">プロンプトPIIスクラバー</a>
                 </div>
             </div>
         </div>
@@ -240,7 +240,7 @@
         document.getElementById('generateBtn').addEventListener('click', generate);
         document.getElementById('copyBtn').addEventListener('click', () => {
             if (out.textContent) Utils.copyToClipboard(out.textContent);
-            else Utils.showToast('Click Generate first.');
+            else Utils.showToast('先に生成をクリックしてください。');
         });
         document.getElementById('clearBtn').addEventListener('click', () => {
             ['serverName','command','args','serverUrl','env'].forEach(id => document.getElementById(id).value = '');
@@ -254,8 +254,8 @@
     </script>
     <script>(adsbygoogle=window.adsbygoogle||[]).push({google_ad_client:"ca-pub-6334819180242631",enable_page_level_ads:true});</script>
     <script data-utilify-sw>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){});});}</script>
-    <script data-utilify-theme-toggle-script>(function(){var b=document.getElementById("themeToggle");if(!b)return;function p(){var t=document.documentElement.getAttribute("data-theme")||"light";b.textContent=t==="dark"?"☀️":"🌙";b.setAttribute("aria-pressed",String(t==="dark"));b.setAttribute("aria-label",t==="dark"?b.dataset.ariaToLight:b.dataset.ariaToDark);}p();b.addEventListener("click",function(){var c=document.documentElement.getAttribute("data-theme")||"light";var n=c==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",n);try{localStorage.setItem("utilify_theme",n);}catch(e){}p();});})();</script>
-    <script data-utilify-fav-toggle-script>(function(){var btn=document.querySelector(".fav-toggle-page");if(!btn)return;var m=location.pathname.match(/^\/[^\/]+\/([^\/]+)\/?$/);if(!m)return;var slug=m[1],K="utilify_favorites";function g(){return (localStorage.getItem(K)||"").split(",").filter(Boolean);}function s(a){localStorage.setItem(K,Array.from(new Set(a)).join(","));}function p(f){btn.textContent=f?"★":"☆";btn.classList.toggle("is-fav",f);btn.setAttribute("aria-label",f?btn.dataset.removeLabel:btn.dataset.addLabel);btn.setAttribute("aria-pressed",String(f));}p(g().indexOf(slug)>-1);btn.addEventListener("click",function(){var a=g(),n=a.indexOf(slug)>-1?a.filter(function(x){return x!==slug;}):a.concat([slug]);s(n);p(n.indexOf(slug)>-1);});})();</script>
+    <script data-utilify-theme-toggle-script>(function(){var b=document.getElementById("themeToggle");if(!b)return;function p(){var t=document.documentElement.getAttribute("data-theme")||"light";b.textContent=t==="dark"?"☀️":"🌙";b.setAttribute("aria-pressed",String(t==="dark"));b.setAttribute("aria-label",t==="dark"?b.dataset.ariaToLight:b.dataset.ariaToDark);}p();b.addEventListener("click",function(){var c=document.documentElement.getAttribute("data-theme")||"light";var n=c==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",n);try{localStorage.setItem("utilify_theme",n);}catch(e){}p();if(typeof gtag==="function"){gtag("event","theme_toggle",{next_theme:n});}});})();</script>
+    <script data-utilify-fav-toggle-script>(function(){var btn=document.querySelector(".fav-toggle-page");if(!btn)return;var m=location.pathname.match(/^\/[^\/]+\/([^\/]+)\/?$/);if(!m)return;var slug=m[1],K="utilify_favorites";function g(){return (localStorage.getItem(K)||"").split(",").filter(Boolean);}function s(a){localStorage.setItem(K,Array.from(new Set(a)).join(","));}function p(f){btn.textContent=f?"★":"☆";btn.classList.toggle("is-fav",f);btn.setAttribute("aria-label",f?btn.dataset.removeLabel:btn.dataset.addLabel);btn.setAttribute("aria-pressed",String(f));}p(g().indexOf(slug)>-1);btn.addEventListener("click",function(){var a=g(),n=a.indexOf(slug)>-1?a.filter(function(x){return x!==slug;}):a.concat([slug]);s(n);var f=n.indexOf(slug)>-1;p(f);if(typeof gtag==="function"){gtag("event","tool_favorite",{tool_slug:slug,action:f?"add":"remove"});}});})();</script>
 </body>
 
 </html>

@@ -226,6 +226,14 @@
         <div class="container">
             <div class="footer-content">
                 <p>{{ footer }}</p>
+                <div class="fav-data-controls" style="margin-top:12px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap;">
+                    <button type="button" id="favExportBtn" class="btn" style="padding:4px 12px;font-size:13px;"
+                            data-msg-empty="{{ favorites_export_empty }}">{{ favorites_export }}</button>
+                    <button type="button" id="favImportBtn" class="btn" style="padding:4px 12px;font-size:13px;"
+                            data-msg-success="{{ favorites_import_success }}"
+                            data-msg-error="{{ favorites_import_error }}">{{ favorites_import }}</button>
+                    <input type="file" id="favImportInput" accept="application/json,.json" hidden>
+                </div>
             </div>
         </div>
     </footer>
@@ -370,6 +378,13 @@
                     searchDebounce = setTimeout(() => {
                         activeSearch = e.target.value;
                         applyFilters();
+                        // GA4: log that search was used (query text is NOT sent,
+                        // only its length). Fire only for queries of 2+ chars to
+                        // skip incidental single keystrokes.
+                        const len = activeSearch.trim().length;
+                        if (len >= 2 && typeof gtag === 'function') {
+                            gtag('event', 'search_used', { query_length: len });
+                        }
                     }, 120);
                     if (shortcut) shortcut.style.display = e.target.value ? 'none' : '';
                 });
@@ -397,6 +412,9 @@
                 btn.addEventListener('click', () => {
                     activeCat = btn.dataset.cat;
                     activeSubcat = '';
+                    if (typeof gtag === 'function') {
+                        gtag('event', 'category_filter', { category: activeCat });
+                    }
                     catButtons.forEach(b =>
                         b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'));
                     // Reset subcategory chips so the next visit to a category starts at "All".
@@ -440,6 +458,10 @@
                     star.setAttribute('aria-label',
                         nowFav ? star.dataset.removeLabel : star.dataset.addLabel);
                     star.setAttribute('aria-pressed', String(nowFav));
+                    if (typeof gtag === 'function') {
+                        gtag('event', 'tool_favorite',
+                            { tool_slug: slug, action: nowFav ? 'add' : 'remove' });
+                    }
                     if (activeCat === 'favorites') applyFilters();
                 });
             });

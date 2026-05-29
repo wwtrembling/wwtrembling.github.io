@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy-Report-Only" content="default-src 'self' https: data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https:; frame-src https:;">
     <meta name="google-adsense-account" content="ca-pub-6334819180242631">
-    <title>Compound Interest Calculator — Investment Growth - Utilify</title>
-    <meta name="description" content="Project savings or investment growth with compound interest and optional monthly contributions. See final balance, total contributions, and yearly breakdown.">
+    <title>複利計算機 — 投資成長シミュレーション - Utilify</title>
+    <meta name="description" content="元金・年利・期間・月々の積立で複利効果を適用した将来残高・総積立・総利息を計算。年別残高表付き。">
     <link rel="canonical" href="https://utilifyapp.net/ja/compound-interest/">
 
-    <meta property="og:title" content="Compound Interest Calculator - Utilify">
-    <meta property="og:description" content="Project investment growth with compound interest and monthly contributions.">
+    <meta property="og:title" content="複利計算機 - Utilify">
+    <meta property="og:description" content="複利と月々の積立で投資成長をシミュレーションします。">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://utilifyapp.net/ja/compound-interest/">
 
@@ -37,8 +37,8 @@
     {
         "@context": "https://schema.org",
         "@type": "WebApplication",
-        "name": "Compound Interest Calculator",
-        "description": "Estimate future value with compound interest, configurable compounding frequency, and monthly contributions.",
+        "name": "複利計算機",
+        "description": "元金・年利・複利頻度・月々の積立を入力して将来価値を計算するツール。",
         "url": "https://utilifyapp.net/ja/compound-interest/",
         "inLanguage": "ja",
         "applicationCategory": "FinanceApplication",
@@ -99,7 +99,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <script data-utilify-theme-init>(function(){try{var s=localStorage.getItem("utilify_theme");var t=(s==="dark"||s==="light")?s:(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
-    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://utilifyapp.net/ja/"}, {"@type": "ListItem", "position": 2, "name": "Finance", "item": "https://utilifyapp.net/ja/finance/"}, {"@type": "ListItem", "position": 3, "name": "Compound Interest Calculator", "item": "https://utilifyapp.net/ja/compound-interest/"}]}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://utilifyapp.net/ja/"}, {"@type": "ListItem", "position": 2, "name": "Finance", "item": "https://utilifyapp.net/ja/finance/"}, {"@type": "ListItem", "position": 3, "name": "複利計算機", "item": "https://utilifyapp.net/ja/compound-interest/"}]}</script>
 </head>
 
 <body>
@@ -107,72 +107,72 @@
     <header class="site-header"><div class="container"><div class="header-content"><a href="/ja/" class="site-logo">🛠️ Utilify</a><button data-utilify-theme-toggle id="themeToggle" class="theme-toggle" type="button" aria-label="Switch to dark mode" data-aria-to-dark="Switch to dark mode" data-aria-to-light="Switch to light mode">🌙</button></div></div></header>
     <main id="main" class="main-content">
         <div class="container-narrow">
-            <nav data-utilify-breadcrumb class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/ja/">Home</a></li><li><a href="/ja/finance/">Finance</a></li><li aria-current="page">Compound Interest Calculator</li></ol></nav>
-            <h1>📈 Compound Interest Calculator</h1>
+            <nav data-utilify-breadcrumb class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/ja/">Home</a></li><li><a href="/ja/finance/?src=breadcrumb">Finance</a></li><li aria-current="page">複利計算機</li></ol></nav>
+            <h1>📈 複利計算機</h1>
             <div class="security-badge" style="display:flex;align-items:center;justify-content:center;gap:8px;margin:10px 0;font-size:14px;color:var(--text-secondary);">
                 <span>🔒 Secure & Client-side</span>
                 <button id="pwaInstallBtn" class="btn btn-primary" style="display: none; padding: 4px 12px; font-size: 12px;">📲 Install App</button>
                     <button data-utilify-fav-toggle class="fav-toggle-page" type="button" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
             </div>
 
-            <p>Enter your starting principal, annual return, time horizon, compounding frequency, and optional monthly contributions to project the future value of an investment or savings account. Includes a year-by-year balance breakdown.</p>
+            <p>初期元金・年利・期間・複利頻度・月々の積立を入力すると、投資や貯蓄口座の将来価値を計算します。年別残高推移も表示されます。</p>
 
             <div class="card">
                 <div class="form-group">
-                    <label class="form-label" for="principal">Starting principal</label>
+                    <label class="form-label" for="principal">初期元金</label>
                     <input type="number" id="principal" class="form-input" inputmode="decimal" min="0" step="any" placeholder="10000" value="10000">
                 </div>
                 <div class="form-group">
-                    <label class="form-label" for="rate">Annual return (%)</label>
+                    <label class="form-label" for="rate">年利率 (%)</label>
                     <input type="number" id="rate" class="form-input" inputmode="decimal" min="0" step="0.01" placeholder="7" value="7">
                 </div>
                 <div class="form-group">
-                    <label class="form-label" for="years">Time horizon (years)</label>
+                    <label class="form-label" for="years">期間（年）</label>
                     <input type="number" id="years" class="form-input" inputmode="numeric" min="1" max="100" step="1" placeholder="20" value="20">
                 </div>
                 <div class="form-group">
-                    <label class="form-label" for="frequency">Compounding frequency</label>
+                    <label class="form-label" for="frequency">複利頻度</label>
                     <select id="frequency" class="form-input">
-                        <option value="1">Yearly</option>
-                        <option value="12" selected>Monthly</option>
-                        <option value="365">Daily</option>
+                        <option value="1">年1回</option>
+                        <option value="12" selected>月複利</option>
+                        <option value="365">日複利</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label class="form-label" for="contrib">Monthly contribution</label>
+                    <label class="form-label" for="contrib">月々の積立額</label>
                     <input type="number" id="contrib" class="form-input" inputmode="decimal" min="0" step="any" placeholder="500" value="500">
                 </div>
                 <div class="button-row">
-                    <button class="btn btn-primary" type="button" onclick="calculate()">Calculate</button>
-                    <button class="btn" type="button" onclick="resetForm()">Reset</button>
+                    <button class="btn btn-primary" type="button" onclick="calculate()">計算</button>
+                    <button class="btn" type="button" onclick="resetForm()">リセット</button>
                 </div>
             </div>
 
             <div id="result" style="display:none;" aria-live="polite">
                 <div class="result-grid">
                     <div class="result-card headline">
-                        <div class="label">Final balance</div>
+                        <div class="label">最終残高</div>
                         <div class="value" id="finalVal">—</div>
                     </div>
                     <div class="result-card">
-                        <div class="label">Total contributions</div>
+                        <div class="label">総積立額</div>
                         <div class="value" id="totalContribVal">—</div>
                     </div>
                     <div class="result-card">
-                        <div class="label">Total interest earned</div>
+                        <div class="label">総利息収益</div>
                         <div class="value" id="totalInterestVal">—</div>
                     </div>
                 </div>
 
-                <h3>Year-by-year balance</h3>
+                <h3>年別残高</h3>
                 <div class="table-responsive">
                     <table class="schedule-table">
                         <thead>
                             <tr>
-                                <th>Year</th>
-                                <th>Balance</th>
-                                <th>Contributed</th>
-                                <th>Interest earned</th>
+                                <th>年</th>
+                                <th>残高</th>
+                                <th>積立累計</th>
+                                <th>利息収益</th>
                             </tr>
                         </thead>
                         <tbody id="yearBody"></tbody>
@@ -180,22 +180,22 @@
                 </div>
 
                 <div class="button-row" style="margin-top: var(--spacing-md);">
-                    <button class="btn" type="button" onclick="shareResult()">Share result</button>
+                    <button class="btn" type="button" onclick="shareResult()">結果を共有</button>
                 </div>
             </div>
 
-            <div class="disclaimer">Estimate only — not financial advice. Real returns vary and are not guaranteed.</div>
+            <div class="disclaimer">推定値のみ — 金融アドバイスではありません。実際のリターンは変動し、保証されません。</div>
 
-            <h2>How to use</h2>
-            <div class="howto-content"><ol><li>Enter your starting principal — the amount you have today.</li><li>Enter the expected annual return as a percent (historical S&amp;P 500 average is ~7% real, ~10% nominal).</li><li>Enter the time horizon in years.</li><li>Pick the compounding frequency: yearly, monthly, or daily. Most index funds compound continuously — monthly is a close approximation.</li><li>Optionally add a monthly contribution. Click <strong>Calculate</strong>.</li></ol><p><strong>Formula</strong>: FV = P(1 + r/m)<sup>m·t</sup> + C · ((1 + r/m)<sup>m·t</sup> − 1) / (r/m), where P is principal, r is the annual rate, m is compounding periods per year, t is years, and C is the periodic contribution converted to the compounding period.</p><p>Inflation, taxes, and fees are not modeled. A 7% nominal return at 3% inflation is roughly a 4% real return — the future balance will buy less than today's purchasing power suggests.</p></div>
+            <h2>使い方</h2>
+            <div class="howto-content"><ol><li>現在持っている初期元金を入力します。</li><li>期待する年利率をパーセントで入力します（S&amp;P 500の長期平均は名目約10%、実質約7%）。</li><li>投資期間を年単位で入力します。</li><li>複利頻度を選びます: 年1回・月・日。インデックスファンドは実質連続複利のため月複利が近似値です。</li><li>月々の積立額を入力（なければ0）して<strong>計算</strong>をクリックします。</li></ol><p><strong>計算式</strong>: FV = P(1 + r/m)<sup>m·t</sup> + C · ((1 + r/m)<sup>m·t</sup> − 1) / (r/m)。Pは元金、rは年利率、mは年間複利回数、tは年数、Cは定期積立額です。</p><p>インフレ・税金・手数料は考慮されていません。名目7%でインフレ3%であれば実質利回りは約4% — 将来残高の購買力は表示される数値より低くなります。</p></div>
 
             <div class="related-tools-section">
-                <h3>Related Tools</h3>
+                <h3>関連ツール</h3>
                 <div class="related-buttons">
-                    <a href="/ja/loan-calculator/" class="related-btn">Loan Calculator</a><a
-                        href="/ja/retirement-calculator/" class="related-btn">Retirement Calculator</a><a
-                        href="/ja/date-calculator/" class="related-btn">Date Calculator</a><a
-                        href="/ja/unit-converter/" class="related-btn">Unit Converter</a>
+                    <a href="/ja/loan-calculator/" class="related-btn">ローン計算機</a><a
+                        href="/ja/retirement-calculator/" class="related-btn">老後資金計算機</a><a
+                        href="/ja/date-calculator/" class="related-btn">日付計算機</a><a
+                        href="/ja/unit-converter/" class="related-btn">単位変換</a>
                 </div>
             </div>
         </div>
@@ -214,7 +214,7 @@
             const m = parseInt(document.getElementById('frequency').value, 10);
             const monthlyC = parseFloat(document.getElementById('contrib').value) || 0;
             if (!(years > 0) || P < 0 || monthlyC < 0 || annualRate < 0) {
-                alert('Please enter non-negative numbers and a positive time horizon.');
+                alert('元金・積立額は0以上、期間は正の数で入力してください。');
                 return;
             }
 
@@ -280,21 +280,21 @@
         async function shareResult() {
             const final = document.getElementById('finalVal').textContent;
             if (final === '—') return;
-            const text = 'My investment will grow to {value} —'.replace('{value}', final) + ' ' + location.href;
+            const text = '投資の将来価値は {value} —'.replace('{value}', final) + ' ' + location.href;
             if (navigator.share) {
-                try { await navigator.share({ title: 'Compound Interest Calculator', text }); return; }
+                try { await navigator.share({ title: '複利計算機', text }); return; }
                 catch (e) { if (e && e.name === 'AbortError') return; }
             }
             try {
                 await navigator.clipboard.writeText(text);
-                alert('Result copied to clipboard.');
+                alert('結果をクリップボードにコピーしました。');
             } catch (e) { /* clipboard blocked — silent */ }
         }
     </script>
     <script>(adsbygoogle=window.adsbygoogle||[]).push({google_ad_client:"ca-pub-6334819180242631",enable_page_level_ads:true});</script>
     <script data-utilify-sw>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){});});}</script>
-    <script data-utilify-theme-toggle-script>(function(){var b=document.getElementById("themeToggle");if(!b)return;function p(){var t=document.documentElement.getAttribute("data-theme")||"light";b.textContent=t==="dark"?"☀️":"🌙";b.setAttribute("aria-pressed",String(t==="dark"));b.setAttribute("aria-label",t==="dark"?b.dataset.ariaToLight:b.dataset.ariaToDark);}p();b.addEventListener("click",function(){var c=document.documentElement.getAttribute("data-theme")||"light";var n=c==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",n);try{localStorage.setItem("utilify_theme",n);}catch(e){}p();});})();</script>
-    <script data-utilify-fav-toggle-script>(function(){var btn=document.querySelector(".fav-toggle-page");if(!btn)return;var m=location.pathname.match(/^\/[^\/]+\/([^\/]+)\/?$/);if(!m)return;var slug=m[1],K="utilify_favorites";function g(){return (localStorage.getItem(K)||"").split(",").filter(Boolean);}function s(a){localStorage.setItem(K,Array.from(new Set(a)).join(","));}function p(f){btn.textContent=f?"★":"☆";btn.classList.toggle("is-fav",f);btn.setAttribute("aria-label",f?btn.dataset.removeLabel:btn.dataset.addLabel);btn.setAttribute("aria-pressed",String(f));}p(g().indexOf(slug)>-1);btn.addEventListener("click",function(){var a=g(),n=a.indexOf(slug)>-1?a.filter(function(x){return x!==slug;}):a.concat([slug]);s(n);p(n.indexOf(slug)>-1);});})();</script>
+    <script data-utilify-theme-toggle-script>(function(){var b=document.getElementById("themeToggle");if(!b)return;function p(){var t=document.documentElement.getAttribute("data-theme")||"light";b.textContent=t==="dark"?"☀️":"🌙";b.setAttribute("aria-pressed",String(t==="dark"));b.setAttribute("aria-label",t==="dark"?b.dataset.ariaToLight:b.dataset.ariaToDark);}p();b.addEventListener("click",function(){var c=document.documentElement.getAttribute("data-theme")||"light";var n=c==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",n);try{localStorage.setItem("utilify_theme",n);}catch(e){}p();if(typeof gtag==="function"){gtag("event","theme_toggle",{next_theme:n});}});})();</script>
+    <script data-utilify-fav-toggle-script>(function(){var btn=document.querySelector(".fav-toggle-page");if(!btn)return;var m=location.pathname.match(/^\/[^\/]+\/([^\/]+)\/?$/);if(!m)return;var slug=m[1],K="utilify_favorites";function g(){return (localStorage.getItem(K)||"").split(",").filter(Boolean);}function s(a){localStorage.setItem(K,Array.from(new Set(a)).join(","));}function p(f){btn.textContent=f?"★":"☆";btn.classList.toggle("is-fav",f);btn.setAttribute("aria-label",f?btn.dataset.removeLabel:btn.dataset.addLabel);btn.setAttribute("aria-pressed",String(f));}p(g().indexOf(slug)>-1);btn.addEventListener("click",function(){var a=g(),n=a.indexOf(slug)>-1?a.filter(function(x){return x!==slug;}):a.concat([slug]);s(n);var f=n.indexOf(slug)>-1;p(f);if(typeof gtag==="function"){gtag("event","tool_favorite",{tool_slug:slug,action:f?"add":"remove"});}});})();</script>
 </body>
 
 </html>

@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy-Report-Only" content="default-src 'self' https: data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https:; frame-src https:;">
     <meta name="google-adsense-account" content="ca-pub-6334819180242631">
-    <title>UUID Generator (v4 / v1) - Utilify</title>
-    <meta name="description" content="Generate RFC 4122 UUIDs (v4 random and v1 time-based) in your browser. Bulk generate 1, 10, or 100 at a time.">
+    <title>UUID生成 (v4 / v1) - Utilify</title>
+    <meta name="description" content="RFC 4122 UUID（v4ランダム・v1時刻ベース）をブラウザで生成します。1・10・100件の一括生成に対応。">
     <link rel="canonical" href="https://utilifyapp.net/ja/uuid-generator/">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="UUID Generator (v4 / v1) - Utilify">
-    <meta property="og:description" content="Generate RFC 4122 UUIDs (v4 random and v1 time-based) in your browser. Bulk generate 1, 10, or 100 at a time.">
+    <meta property="og:title" content="UUID生成 (v4 / v1) - Utilify">
+    <meta property="og:description" content="RFC 4122 UUID（v4ランダム・v1時刻ベース）をブラウザで生成します。1・10・100件の一括生成に対応。">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://utilifyapp.net/ja/uuid-generator/">
 
@@ -42,8 +42,8 @@
     {
         "@context": "https://schema.org",
         "@type": "WebApplication",
-        "name": "UUID Generator",
-        "description": "Client-side UUID generator supporting v4 (random) and v1 (time-based) variants.",
+        "name": "UUID生成",
+        "description": "v4（ランダム）とv1（時刻ベース）をサポートするクライアントサイドUUID生成ツール。",
         "url": "https://utilifyapp.net/ja/uuid-generator/",
         "inLanguage": "ja",
         "applicationCategory": "UtilitiesApplication",
@@ -97,7 +97,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <script data-utilify-theme-init>(function(){try{var s=localStorage.getItem("utilify_theme");var t=(s==="dark"||s==="light")?s:(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
-    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://utilifyapp.net/ja/"}, {"@type": "ListItem", "position": 2, "name": "UUID Generator", "item": "https://utilifyapp.net/ja/uuid-generator/"}]}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://utilifyapp.net/ja/"}, {"@type": "ListItem", "position": 2, "name": "UUID生成", "item": "https://utilifyapp.net/ja/uuid-generator/"}]}</script>
 </head>
 
 <body>
@@ -109,8 +109,8 @@
     </header>
     <main id="main" class="main-content">
         <div class="container-narrow">
-            <nav data-utilify-breadcrumb class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/ja/">Home</a></li><li aria-current="page">UUID Generator</li></ol></nav>
-            <h1>🆔 UUID Generator</h1>
+            <nav data-utilify-breadcrumb class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/ja/">Home</a></li><li aria-current="page">UUID生成</li></ol></nav>
+            <h1>🆔 UUID生成</h1>
             <div class="security-badge"
                 style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
                 <span title="Processed securely in client-side">🔒 Secure & Client-side</span>
@@ -119,49 +119,49 @@
                     <button data-utilify-fav-toggle class="fav-toggle-page" type="button" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
             </div>
 
-            <p>Generate cryptographically random UUIDs locally. v4 (random) is the most common choice; v1 embeds a timestamp. Format options for hyphens, casing, and braces.</p>
+            <p>暗号学的に安全なUUIDをローカルで生成します。v4（ランダム）が最も一般的です。v1はタイムスタンプを埋め込みます。ハイフン・大文字・波括弧のフォーマットオプションあり。</p>
 
             <div class="uuid-options">
-                <label>Count
+                <label>件数
                     <select id="countSel" class="form-input" style="width:auto;">
                         <option value="1">1</option>
                         <option value="10">10</option>
                         <option value="100">100</option>
                     </select>
                 </label>
-                <label>Version
+                <label>バージョン
                     <select id="versionSel" class="form-input" style="width:auto;">
                         <option value="4">v4 (random)</option>
                         <option value="1">v1 (time-based)</option>
                         <option value="nil">Nil UUID</option>
                     </select>
                 </label>
-                <label><input type="checkbox" id="optUpper"> Uppercase</label>
-                <label><input type="checkbox" id="optBraces"> Wrap in braces</label>
-                <label><input type="checkbox" id="optNoHyphen"> No hyphens</label>
+                <label><input type="checkbox" id="optUpper"> 大文字</label>
+                <label><input type="checkbox" id="optBraces"> 波括弧を付ける</label>
+                <label><input type="checkbox" id="optNoHyphen"> ハイフンなし</label>
             </div>
 
             <div class="btn-group" style="margin: var(--spacing-md) 0;">
-                <button class="btn btn-primary" id="generateBtn">Generate</button>
-                <button class="btn btn-secondary" id="copyBtn">Copy</button>
-                <button class="btn btn-secondary" id="clearBtn">Clear</button>
+                <button class="btn btn-primary" id="generateBtn">生成</button>
+                <button class="btn btn-secondary" id="copyBtn">コピー</button>
+                <button class="btn btn-secondary" id="clearBtn">クリア</button>
             </div>
 
             <pre id="uuidOutput" class="uuid-output" aria-live="polite"></pre>
 
             
-            <h2>How to use</h2>
-            <div class="howto-content"><ol><li>Choose how many UUIDs to generate (1, 10, or 100) and which version.</li><li>Click <strong>Generate</strong> — UUIDs appear in the output box.</li><li>Use the format toggles for uppercase, brace-wrapping (<code>{...}</code>), or hyphen-stripped output.</li><li>Generation uses <code>crypto.randomUUID()</code> when available, falling back to <code>crypto.getRandomValues()</code> with the v4 bit pattern applied.</li></ol><p><strong>v4 vs v1:</strong> v4 is purely random (122 bits of entropy, collision probability essentially zero). v1 embeds a timestamp + clock-seq + node ID, making UUIDs roughly time-ordered — useful for database indexes that benefit from temporal locality. The Nil UUID (<code>00000000-0000-0000-0000-000000000000</code>) is a placeholder value.</p></div>
+            <h2>使い方</h2>
+            <div class="howto-content"><ol><li>生成する件数(1・10・100)とバージョンを選びます。</li><li><strong>生成</strong>をクリックすると出力欄にUUIDが表示されます。</li><li>大文字・波括弧(<code>{...}</code>)・ハイフンなしなどのフォーマットオプションが使えます。</li><li>生成には<code>crypto.randomUUID()</code>が利用可能な場合はそれを使い、そうでなければ<code>crypto.getRandomValues()</code>でv4ビットパターンを適用します。</li></ol><p><strong>v4とv1の違い:</strong> v4は純粋なランダム（エントロピー122ビット、衝突確率は実質ゼロ）。v1はタイムスタンプ＋クロックシーケンス＋ノードIDを埋め込み、時刻順に近いUUIDを生成します — 時間的局所性が有利なデータベースインデックスに有用です。Nil UUID (<code>00000000-0000-0000-0000-000000000000</code>)はプレースホルダー値です。</p></div>
 
-            <h2>Examples</h2>
-            <div class="examples-content"><p><strong>Default v4 (lowercase, hyphenated):</strong></p><pre><code>f47ac10b-58cc-4372-a567-0e02b2c3d479</code></pre><p><strong>v4 with braces, uppercase:</strong></p><pre><code>{F47AC10B-58CC-4372-A567-0E02B2C3D479}</code></pre><p><strong>v1 (time-based):</strong></p><pre><code>3aaa8c0e-9b87-11ee-8c90-0242ac120002</code></pre></div>
+            <h2>例</h2>
+            <div class="examples-content"><p><strong>デフォルトv4 (小文字、ハイフンあり):</strong></p><pre><code>f47ac10b-58cc-4372-a567-0e02b2c3d479</code></pre><p><strong>v4 + 波括弧 + 大文字:</strong></p><pre><code>{F47AC10B-58CC-4372-A567-0E02B2C3D479}</code></pre><p><strong>v1 (時刻ベース):</strong></p><pre><code>3aaa8c0e-9b87-11ee-8c90-0242ac120002</code></pre></div>
 
             <div class="related-tools-section">
-                <h3>Related Tools</h3>
+                <h3>関連ツール</h3>
                 <div class="related-buttons">
-                    <a href="/ja/hash-generator/" class="related-btn">Hash Generator</a><a
-                        href="/ja/password-generator/" class="related-btn">Password Generator</a><a
-                        href="/ja/jwt-decoder/" class="related-btn">JWT Decoder</a>
+                    <a href="/ja/hash-generator/" class="related-btn">ハッシュ生成</a><a
+                        href="/ja/password-generator/" class="related-btn">パスワード生成</a><a
+                        href="/ja/jwt-decoder/" class="related-btn">JWTデコーダー</a>
                 </div>
             </div>
         </div>
@@ -244,7 +244,7 @@
         document.getElementById('generateBtn').addEventListener('click', generate);
         document.getElementById('copyBtn').addEventListener('click', () => {
             if (out.textContent) Utils.copyToClipboard(out.textContent);
-            else Utils.showToast('Nothing to copy.');
+            else Utils.showToast('コピーする内容がありません。');
         });
         document.getElementById('clearBtn').addEventListener('click', () => { out.textContent = ''; });
 
@@ -253,8 +253,8 @@
     </script>
     <script>(adsbygoogle=window.adsbygoogle||[]).push({google_ad_client:"ca-pub-6334819180242631",enable_page_level_ads:true});</script>
     <script data-utilify-sw>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){});});}</script>
-    <script data-utilify-theme-toggle-script>(function(){var b=document.getElementById("themeToggle");if(!b)return;function p(){var t=document.documentElement.getAttribute("data-theme")||"light";b.textContent=t==="dark"?"☀️":"🌙";b.setAttribute("aria-pressed",String(t==="dark"));b.setAttribute("aria-label",t==="dark"?b.dataset.ariaToLight:b.dataset.ariaToDark);}p();b.addEventListener("click",function(){var c=document.documentElement.getAttribute("data-theme")||"light";var n=c==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",n);try{localStorage.setItem("utilify_theme",n);}catch(e){}p();});})();</script>
-    <script data-utilify-fav-toggle-script>(function(){var btn=document.querySelector(".fav-toggle-page");if(!btn)return;var m=location.pathname.match(/^\/[^\/]+\/([^\/]+)\/?$/);if(!m)return;var slug=m[1],K="utilify_favorites";function g(){return (localStorage.getItem(K)||"").split(",").filter(Boolean);}function s(a){localStorage.setItem(K,Array.from(new Set(a)).join(","));}function p(f){btn.textContent=f?"★":"☆";btn.classList.toggle("is-fav",f);btn.setAttribute("aria-label",f?btn.dataset.removeLabel:btn.dataset.addLabel);btn.setAttribute("aria-pressed",String(f));}p(g().indexOf(slug)>-1);btn.addEventListener("click",function(){var a=g(),n=a.indexOf(slug)>-1?a.filter(function(x){return x!==slug;}):a.concat([slug]);s(n);p(n.indexOf(slug)>-1);});})();</script>
+    <script data-utilify-theme-toggle-script>(function(){var b=document.getElementById("themeToggle");if(!b)return;function p(){var t=document.documentElement.getAttribute("data-theme")||"light";b.textContent=t==="dark"?"☀️":"🌙";b.setAttribute("aria-pressed",String(t==="dark"));b.setAttribute("aria-label",t==="dark"?b.dataset.ariaToLight:b.dataset.ariaToDark);}p();b.addEventListener("click",function(){var c=document.documentElement.getAttribute("data-theme")||"light";var n=c==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",n);try{localStorage.setItem("utilify_theme",n);}catch(e){}p();if(typeof gtag==="function"){gtag("event","theme_toggle",{next_theme:n});}});})();</script>
+    <script data-utilify-fav-toggle-script>(function(){var btn=document.querySelector(".fav-toggle-page");if(!btn)return;var m=location.pathname.match(/^\/[^\/]+\/([^\/]+)\/?$/);if(!m)return;var slug=m[1],K="utilify_favorites";function g(){return (localStorage.getItem(K)||"").split(",").filter(Boolean);}function s(a){localStorage.setItem(K,Array.from(new Set(a)).join(","));}function p(f){btn.textContent=f?"★":"☆";btn.classList.toggle("is-fav",f);btn.setAttribute("aria-label",f?btn.dataset.removeLabel:btn.dataset.addLabel);btn.setAttribute("aria-pressed",String(f));}p(g().indexOf(slug)>-1);btn.addEventListener("click",function(){var a=g(),n=a.indexOf(slug)>-1?a.filter(function(x){return x!==slug;}):a.concat([slug]);s(n);var f=n.indexOf(slug)>-1;p(f);if(typeof gtag==="function"){gtag("event","tool_favorite",{tool_slug:slug,action:f?"add":"remove"});}});})();</script>
 </body>
 
 </html>

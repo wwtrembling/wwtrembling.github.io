@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy-Report-Only" content="default-src 'self' https: data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https:; frame-src https:;">
     <meta name="google-adsense-account" content="ca-pub-6334819180242631">
-    <title>Claude.md / System Prompt Generator - Utilify</title>
-    <meta name="description" content="Generate a CLAUDE.md project file from a simple form. Define role, conventions, constraints, and commands; download as Markdown.">
+    <title>Claude.md / システムプロンプトジェネレーター - Utilify</title>
+    <meta name="description" content="シンプルなフォームからCLAUDE.mdプロジェクトファイルを生成します。役割・規約・制約・コマンドを入力してMarkdownでダウンロード。">
     <link rel="canonical" href="https://utilifyapp.net/ja/claude-md-generator/">
 
-    <meta property="og:title" content="Claude.md / System Prompt Generator - Utilify">
-    <meta property="og:description" content="Generate a CLAUDE.md project file from a simple form. Define role, conventions, constraints, and commands; download as Markdown.">
+    <meta property="og:title" content="Claude.md / システムプロンプトジェネレーター - Utilify">
+    <meta property="og:description" content="シンプルなフォームからCLAUDE.mdプロジェクトファイルを生成します。役割・規約・制約・コマンドを入力してMarkdownでダウンロード。">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://utilifyapp.net/ja/claude-md-generator/">
 
@@ -37,8 +37,8 @@
     {
         "@context": "https://schema.org",
         "@type": "WebApplication",
-        "name": "Claude.md Generator",
-        "description": "Form-based generator for Anthropic CLAUDE.md project context files.",
+        "name": "Claude.mdジェネレーター",
+        "description": "Anthropic CLAUDE.mdプロジェクトコンテキストファイルをフォーム入力で生成するツール。",
         "url": "https://utilifyapp.net/ja/claude-md-generator/",
         "inLanguage": "ja",
         "applicationCategory": "UtilitiesApplication",
@@ -79,7 +79,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <script data-utilify-theme-init>(function(){try{var s=localStorage.getItem("utilify_theme");var t=(s==="dark"||s==="light")?s:(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
-    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://utilifyapp.net/ja/"}, {"@type": "ListItem", "position": 2, "name": "Claude.md Generator", "item": "https://utilifyapp.net/ja/claude-md-generator/"}]}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://utilifyapp.net/ja/"}, {"@type": "ListItem", "position": 2, "name": "Claude.mdジェネレーター", "item": "https://utilifyapp.net/ja/claude-md-generator/"}]}</script>
 </head>
 
 <body>
@@ -87,36 +87,36 @@
     <header class="site-header"><div class="container"><div class="header-content"><a href="/ja/" class="site-logo">🛠️ Utilify</a><button data-utilify-theme-toggle id="themeToggle" class="theme-toggle" type="button" aria-label="Switch to dark mode" data-aria-to-dark="Switch to dark mode" data-aria-to-light="Switch to light mode">🌙</button></div></div></header>
     <main id="main" class="main-content">
         <div class="container-narrow">
-            <nav data-utilify-breadcrumb class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/ja/">Home</a></li><li aria-current="page">Claude.md Generator</li></ol></nav>
-            <h1>📜 Claude.md Generator</h1>
+            <nav data-utilify-breadcrumb class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/ja/">Home</a></li><li aria-current="page">Claude.mdジェネレーター</li></ol></nav>
+            <h1>📜 Claude.mdジェネレーター</h1>
             <div class="security-badge" style="display:flex;align-items:center;justify-content:center;gap:8px;margin:10px 0;font-size:14px;color:var(--text-secondary);">
                 <span>🔒 Secure & Client-side</span>
             </div>
 
-            <p>Generate a CLAUDE.md (or any AI agent system prompt) from a simple form. Specify the project role, coding conventions, constraints, and commands; copy or download the resulting Markdown.</p>
+            <p>シンプルなフォームからCLAUDE.md（またはAIエージェントのシステムプロンプト）を生成します。プロジェクトの役割・コーディング規約・制約・コマンドを入力して、Markdownとしてコピーまたはダウンロードできます。</p>
 
             <div class="form-grid">
                 <div>
-                    <label for="projectName">Project name</label>
+                    <label for="projectName">プロジェクト名</label>
                     <input id="projectName" class="form-input" type="text" placeholder="my-app">
                 </div>
                 <div>
-                    <label for="role">Role / persona</label>
-                    <textarea id="role" class="form-input" rows="2" placeholder="You are a senior backend engineer working on a Python web service."></textarea>
+                    <label for="role">役割 / ペルソナ</label>
+                    <textarea id="role" class="form-input" rows="2" placeholder="Pythonウェブサービスを担当するシニアバックエンドエンジニアです。"></textarea>
                 </div>
                 <div>
-                    <label for="conventions">Conventions (one per line)</label>
-                    <textarea id="conventions" class="form-input" rows="4" placeholder="Use 4-space indentation
-Follow PEP 8
-Write type hints on all public functions"></textarea>
+                    <label for="conventions">規約 (1行に1つ)</label>
+                    <textarea id="conventions" class="form-input" rows="4" placeholder="4スペースインデントを使用
+PEP 8に準拠
+すべての公開関数に型ヒントを記述"></textarea>
                 </div>
                 <div>
-                    <label for="constraints">Constraints (one per line)</label>
-                    <textarea id="constraints" class="form-input" rows="4" placeholder="Never modify migrations without explicit approval
-Do not touch the legacy auth module"></textarea>
+                    <label for="constraints">制約 (1行に1つ)</label>
+                    <textarea id="constraints" class="form-input" rows="4" placeholder="明示的な承認なしにマイグレーションを変更しない
+レガシー認証モジュールには触れない"></textarea>
                 </div>
                 <div>
-                    <label for="commands">Common commands</label>
+                    <label for="commands">よく使うコマンド</label>
                     <textarea id="commands" class="form-input" rows="4" placeholder="make test
 ruff check .
 python manage.py runserver"></textarea>
@@ -124,24 +124,24 @@ python manage.py runserver"></textarea>
             </div>
 
             <div class="btn-group" style="margin-top: var(--spacing-md);">
-                <button class="btn btn-primary" id="generateBtn">Generate</button>
-                <button class="btn btn-secondary" id="copyBtn">Copy</button>
-                <button class="btn btn-secondary" id="downloadBtn">Download .md</button>
-                <button class="btn btn-secondary" id="clearBtn">Clear</button>
+                <button class="btn btn-primary" id="generateBtn">生成</button>
+                <button class="btn btn-secondary" id="copyBtn">コピー</button>
+                <button class="btn btn-secondary" id="downloadBtn">.mdをダウンロード</button>
+                <button class="btn btn-secondary" id="clearBtn">クリア</button>
             </div>
 
-            <h2>Generated CLAUDE.md</h2>
+            <h2>生成されたCLAUDE.md</h2>
             <pre id="output" class="preview-box" aria-live="polite"></pre>
 
-            <h2>How to use</h2>
-            <div class="howto-content"><ol><li>Fill in your project name and role description.</li><li>List conventions one per line — they become a bulleted list in the output.</li><li>List constraints one per line — also bulleted.</li><li>Add the common commands you run (test, lint, dev server) — wrapped in a <code>```bash</code> block.</li><li>Click <strong>Generate</strong>, review, then <strong>Download .md</strong> to save as <code>CLAUDE.md</code> at your repo root.</li></ol><p>The same file works as a system prompt for Cursor (<code>.cursorrules</code>), Aider, and any other agent that reads project-level context. For Cursor, just rename the downloaded file.</p></div>
+            <h2>使い方</h2>
+            <div class="howto-content"><ol><li>プロジェクト名と役割の説明を入力します。</li><li>規約は1行に1つ — 出力ではbulletリストになります。</li><li>制約も1行に1つ。</li><li>よく使うコマンド（テスト・lint・開発サーバーなど）を入力 — <code>```bash</code>ブロックで囲まれます。</li><li><strong>生成</strong>をクリックして確認後、<strong>.mdをダウンロード</strong>でリポジトリルートの<code>CLAUDE.md</code>として保存できます。</li></ol><p>同じファイルはCursor(<code>.cursorrules</code>)・Aiderなど他のエージェントのシステムプロンプトとしても使えます。Cursorではダウンロードしたファイルの名前を変更するだけです。</p></div>
 
             <div class="related-tools-section">
-                <h3>Related Tools</h3>
+                <h3>関連ツール</h3>
                 <div class="related-buttons">
-                    <a href="/ja/mcp-config-generator/" class="related-btn">MCP Config Generator</a><a
-                        href="/ja/prompt-pii-scrubber/" class="related-btn">Prompt PII Scrubber</a><a
-                        href="/ja/token-counter/" class="related-btn">Token Counter</a>
+                    <a href="/ja/mcp-config-generator/" class="related-btn">MCP設定ジェネレーター</a><a
+                        href="/ja/prompt-pii-scrubber/" class="related-btn">プロンプトPIIスクラバー</a><a
+                        href="/ja/token-counter/" class="related-btn">トークンカウンター</a>
                 </div>
             </div>
         </div>
@@ -164,11 +164,11 @@ python manage.py runserver"></textarea>
             const cmds = document.getElementById('commands').value.trim();
 
             let md = '# ' + proj + ' — CLAUDE.md\n\n';
-            md += '> This file is loaded automatically by Claude Code when you open the project.\n\n';
-            if (role) md += '## Role\n\n' + role + '\n\n';
-            if (conv) md += '## Conventions\n\n' + bullets(conv) + '\n\n';
-            if (cons) md += '## Constraints\n\n' + bullets(cons) + '\n\n';
-            if (cmds) md += '## Common commands\n\n```bash\n' + cmds + '\n```\n\n';
+            md += '> このファイルはClaude Codeがプロジェクトを開くと自動的に読み込まれます。\n\n';
+            if (role) md += '## 役割\n\n' + role + '\n\n';
+            if (conv) md += '## 規約\n\n' + bullets(conv) + '\n\n';
+            if (cons) md += '## 制約\n\n' + bullets(cons) + '\n\n';
+            if (cmds) md += '## よく使うコマンド\n\n```bash\n' + cmds + '\n```\n\n';
             out.textContent = md.trimEnd();
         }
 
@@ -184,7 +184,7 @@ python manage.py runserver"></textarea>
         document.getElementById('generateBtn').addEventListener('click', generate);
         document.getElementById('copyBtn').addEventListener('click', () => {
             if (out.textContent) Utils.copyToClipboard(out.textContent);
-            else Utils.showToast('Click Generate first.');
+            else Utils.showToast('先に生成をクリックしてください。');
         });
         document.getElementById('downloadBtn').addEventListener('click', () => {
             if (!out.textContent) { generate(); }
@@ -197,8 +197,8 @@ python manage.py runserver"></textarea>
     </script>
     <script>(adsbygoogle=window.adsbygoogle||[]).push({google_ad_client:"ca-pub-6334819180242631",enable_page_level_ads:true});</script>
     <script data-utilify-sw>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){});});}</script>
-    <script data-utilify-theme-toggle-script>(function(){var b=document.getElementById("themeToggle");if(!b)return;function p(){var t=document.documentElement.getAttribute("data-theme")||"light";b.textContent=t==="dark"?"☀️":"🌙";b.setAttribute("aria-pressed",String(t==="dark"));b.setAttribute("aria-label",t==="dark"?b.dataset.ariaToLight:b.dataset.ariaToDark);}p();b.addEventListener("click",function(){var c=document.documentElement.getAttribute("data-theme")||"light";var n=c==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",n);try{localStorage.setItem("utilify_theme",n);}catch(e){}p();});})();</script>
-    <script data-utilify-fav-toggle-script>(function(){var btn=document.querySelector(".fav-toggle-page");if(!btn)return;var m=location.pathname.match(/^\/[^\/]+\/([^\/]+)\/?$/);if(!m)return;var slug=m[1],K="utilify_favorites";function g(){return (localStorage.getItem(K)||"").split(",").filter(Boolean);}function s(a){localStorage.setItem(K,Array.from(new Set(a)).join(","));}function p(f){btn.textContent=f?"★":"☆";btn.classList.toggle("is-fav",f);btn.setAttribute("aria-label",f?btn.dataset.removeLabel:btn.dataset.addLabel);btn.setAttribute("aria-pressed",String(f));}p(g().indexOf(slug)>-1);btn.addEventListener("click",function(){var a=g(),n=a.indexOf(slug)>-1?a.filter(function(x){return x!==slug;}):a.concat([slug]);s(n);p(n.indexOf(slug)>-1);});})();</script>
+    <script data-utilify-theme-toggle-script>(function(){var b=document.getElementById("themeToggle");if(!b)return;function p(){var t=document.documentElement.getAttribute("data-theme")||"light";b.textContent=t==="dark"?"☀️":"🌙";b.setAttribute("aria-pressed",String(t==="dark"));b.setAttribute("aria-label",t==="dark"?b.dataset.ariaToLight:b.dataset.ariaToDark);}p();b.addEventListener("click",function(){var c=document.documentElement.getAttribute("data-theme")||"light";var n=c==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",n);try{localStorage.setItem("utilify_theme",n);}catch(e){}p();if(typeof gtag==="function"){gtag("event","theme_toggle",{next_theme:n});}});})();</script>
+    <script data-utilify-fav-toggle-script>(function(){var btn=document.querySelector(".fav-toggle-page");if(!btn)return;var m=location.pathname.match(/^\/[^\/]+\/([^\/]+)\/?$/);if(!m)return;var slug=m[1],K="utilify_favorites";function g(){return (localStorage.getItem(K)||"").split(",").filter(Boolean);}function s(a){localStorage.setItem(K,Array.from(new Set(a)).join(","));}function p(f){btn.textContent=f?"★":"☆";btn.classList.toggle("is-fav",f);btn.setAttribute("aria-label",f?btn.dataset.removeLabel:btn.dataset.addLabel);btn.setAttribute("aria-pressed",String(f));}p(g().indexOf(slug)>-1);btn.addEventListener("click",function(){var a=g(),n=a.indexOf(slug)>-1?a.filter(function(x){return x!==slug;}):a.concat([slug]);s(n);var f=n.indexOf(slug)>-1;p(f);if(typeof gtag==="function"){gtag("event","tool_favorite",{tool_slug:slug,action:f?"add":"remove"});}});})();</script>
 </body>
 
 </html>

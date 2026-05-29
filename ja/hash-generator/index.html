@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy-Report-Only" content="default-src 'self' https: data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https:; frame-src https:;">
     <meta name="google-adsense-account" content="ca-pub-6334819180242631">
-    <title>Hash Generator (MD5, SHA-1, SHA-256, SHA-384, SHA-512) - Utilify</title>
-    <meta name="description" content="Generate MD5, SHA-1, SHA-256, SHA-384, and SHA-512 hashes of any text — entirely in your browser.">
+    <title>ハッシュ生成 (MD5, SHA-1, SHA-256, SHA-384, SHA-512) - Utilify</title>
+    <meta name="description" content="任意のテキストからMD5・SHA-1・SHA-256・SHA-384・SHA-512ハッシュをブラウザで即生成します。">
     <link rel="canonical" href="https://utilifyapp.net/ja/hash-generator/">
 
-    <meta property="og:title" content="Hash Generator (MD5, SHA-1, SHA-256, SHA-384, SHA-512) - Utilify">
-    <meta property="og:description" content="Generate MD5, SHA-1, SHA-256, SHA-384, and SHA-512 hashes of any text — entirely in your browser.">
+    <meta property="og:title" content="ハッシュ生成 (MD5, SHA-1, SHA-256, SHA-384, SHA-512) - Utilify">
+    <meta property="og:description" content="任意のテキストからMD5・SHA-1・SHA-256・SHA-384・SHA-512ハッシュをブラウザで即生成します。">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://utilifyapp.net/ja/hash-generator/">
 
@@ -37,8 +37,8 @@
     {
         "@context": "https://schema.org",
         "@type": "WebApplication",
-        "name": "Hash Generator",
-        "description": "Compute MD5 and SHA-family hashes from text input, all client-side.",
+        "name": "ハッシュ生成",
+        "description": "テキスト入力からMD5とSHAファミリーハッシュをクライアントサイドで計算します。",
         "url": "https://utilifyapp.net/ja/hash-generator/",
         "inLanguage": "ja",
         "applicationCategory": "UtilitiesApplication",
@@ -87,7 +87,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <script data-utilify-theme-init>(function(){try{var s=localStorage.getItem("utilify_theme");var t=(s==="dark"||s==="light")?s:(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
-    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://utilifyapp.net/ja/"}, {"@type": "ListItem", "position": 2, "name": "Hash Generator", "item": "https://utilifyapp.net/ja/hash-generator/"}]}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://utilifyapp.net/ja/"}, {"@type": "ListItem", "position": 2, "name": "ハッシュ生成", "item": "https://utilifyapp.net/ja/hash-generator/"}]}</script>
 </head>
 
 <body>
@@ -99,8 +99,8 @@
     </header>
     <main id="main" class="main-content">
         <div class="container-narrow">
-            <nav data-utilify-breadcrumb class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/ja/">Home</a></li><li aria-current="page">Hash Generator</li></ol></nav>
-            <h1>🔑 Hash Generator</h1>
+            <nav data-utilify-breadcrumb class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/ja/">Home</a></li><li aria-current="page">ハッシュ生成</li></ol></nav>
+            <h1>🔑 ハッシュ生成</h1>
             <div class="security-badge"
                 style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
                 <span title="Processed securely in client-side">🔒 Secure & Client-side</span>
@@ -108,60 +108,60 @@
                     style="display: none; padding: 4px 12px; font-size: 12px;">📲 Install App</button>
                     <button data-utilify-fav-toggle class="fav-toggle-page" type="button" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
             </div>
-            <p>Type any text to instantly compute MD5 and SHA-1/256/384/512 digests. Nothing is uploaded — all hashing runs locally.</p>
+            <p>テキストを入力するとMD5・SHA-1/256/384/512ダイジェストを即座に計算します。データはアップロードされません — すべてローカルで処理されます。</p>
 
-            <label class="form-label">Text</label>
+            <label class="form-label">テキスト</label>
             <textarea id="hashInput" class="form-input" style="min-height: 120px;"
-                placeholder="Type text to hash..."></textarea>
+                placeholder="ハッシュするテキストを入力..."></textarea>
 
             <div class="btn-group" style="margin: var(--spacing-md) 0;">
-                <button class="btn btn-secondary" id="clearBtn">Clear</button>
+                <button class="btn btn-secondary" id="clearBtn">クリア</button>
             </div>
 
             <div id="hashes" style="background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: var(--spacing-lg); margin-top: var(--spacing-md);">
                 <div class="hash-row">
                     <span class="hash-name">MD5</span>
                     <span class="hash-value" id="md5"></span>
-                    <button class="btn btn-secondary" data-target="md5">Copy</button>
+                    <button class="btn btn-secondary" data-target="md5">コピー</button>
                 </div>
                 <div class="hash-row">
                     <span class="hash-name">SHA-1</span>
                     <span class="hash-value" id="sha1"></span>
-                    <button class="btn btn-secondary" data-target="sha1">Copy</button>
+                    <button class="btn btn-secondary" data-target="sha1">コピー</button>
                 </div>
                 <div class="hash-row">
                     <span class="hash-name">SHA-256</span>
                     <span class="hash-value" id="sha256"></span>
-                    <button class="btn btn-secondary" data-target="sha256">Copy</button>
+                    <button class="btn btn-secondary" data-target="sha256">コピー</button>
                 </div>
                 <div class="hash-row">
                     <span class="hash-name">SHA-384</span>
                     <span class="hash-value" id="sha384"></span>
-                    <button class="btn btn-secondary" data-target="sha384">Copy</button>
+                    <button class="btn btn-secondary" data-target="sha384">コピー</button>
                 </div>
                 <div class="hash-row">
                     <span class="hash-name">SHA-512</span>
                     <span class="hash-value" id="sha512"></span>
-                    <button class="btn btn-secondary" data-target="sha512">Copy</button>
+                    <button class="btn btn-secondary" data-target="sha512">コピー</button>
                 </div>
             </div>
 
             
-            <h2>How to use</h2>
-            <div class="howto-content"><ol><li>Type or paste text into the input area.</li><li>MD5 and SHA-1/256/384/512 digests are computed live as you type.</li><li>Click <strong>Copy</strong> next to any digest to copy it.</li><li>SHA family uses the browser's built-in <code>crypto.subtle.digest()</code>; MD5 is implemented inline since the Web Crypto API does not include it.</li></ol><p><strong>Security note:</strong> MD5 and SHA-1 are <em>broken</em> for cryptographic use (collisions exist). Use them only for non-security integrity checks. For passwords, use a slow KDF like bcrypt, scrypt, or argon2 on the server, never plain hashes.</p></div>
+            <h2>使い方</h2>
+            <div class="howto-content"><ol><li>テキストを入力または貼り付けます。</li><li>MD5とSHA-1/256/384/512ダイジェストが入力に合わせてリアルタイムで計算されます。</li><li>各ダイジェスト横の<strong>コピー</strong>ボタンでコピーできます。</li><li>SHAファミリーはブラウザ内蔵の<code>crypto.subtle.digest()</code>を使用し、Web Crypto APIに含まれないMD5のみインラインで実装されています。</li></ol><p><strong>セキュリティ注意</strong>: MD5とSHA-1は衝突が発見されており、暗号学的用途には<em>不適切</em>です。セキュリティに無関係な整合性チェックにのみ使用してください。パスワードには必ずサーバー側でbcrypt・scrypt・argon2などのKDFを使用してください。</p></div>
 
-            <h2>Examples</h2>
-            <div class="examples-content"><p><strong>"abc" digests:</strong></p><pre><code>MD5    : 900150983cd24fb0d6963f7d28e17f72
+            <h2>例</h2>
+            <div class="examples-content"><p><strong>"abc" ダイジェスト:</strong></p><pre><code>MD5    : 900150983cd24fb0d6963f7d28e17f72
 SHA-1  : a9993e364706816aba3e25717850c26c9cd0d89d
-SHA-256: ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad</code></pre><p><strong>Empty string:</strong></p><pre><code>MD5    : d41d8cd98f00b204e9800998ecf8427e
+SHA-256: ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad</code></pre><p><strong>空文字列:</strong></p><pre><code>MD5    : d41d8cd98f00b204e9800998ecf8427e
 SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855</code></pre></div>
 
             <div class="related-tools-section">
-                <h3>Related Tools</h3>
+                <h3>関連ツール</h3>
                 <div class="related-buttons">
-                    <a href="/ja/password-generator/" class="related-btn">Password Generator</a><a
-                        href="/ja/base64-converter/" class="related-btn">Base64 Converter</a><a
-                        href="/ja/jwt-decoder/" class="related-btn">JWT Decoder</a>
+                    <a href="/ja/password-generator/" class="related-btn">パスワード生成</a><a
+                        href="/ja/base64-converter/" class="related-btn">Base64変換</a><a
+                        href="/ja/jwt-decoder/" class="related-btn">JWTデコーダー</a>
                 </div>
             </div>
         </div>
@@ -250,14 +250,14 @@ SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855</code>
             btn.addEventListener('click', () => {
                 const v = document.getElementById(btn.dataset.target).textContent;
                 if (v) Utils.copyToClipboard(v);
-                else Utils.showToast('Nothing to copy.');
+                else Utils.showToast('コピーする内容がありません。');
             });
         });
     </script>
     <script>(adsbygoogle=window.adsbygoogle||[]).push({google_ad_client:"ca-pub-6334819180242631",enable_page_level_ads:true});</script>
     <script data-utilify-sw>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){});});}</script>
-    <script data-utilify-theme-toggle-script>(function(){var b=document.getElementById("themeToggle");if(!b)return;function p(){var t=document.documentElement.getAttribute("data-theme")||"light";b.textContent=t==="dark"?"☀️":"🌙";b.setAttribute("aria-pressed",String(t==="dark"));b.setAttribute("aria-label",t==="dark"?b.dataset.ariaToLight:b.dataset.ariaToDark);}p();b.addEventListener("click",function(){var c=document.documentElement.getAttribute("data-theme")||"light";var n=c==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",n);try{localStorage.setItem("utilify_theme",n);}catch(e){}p();});})();</script>
-    <script data-utilify-fav-toggle-script>(function(){var btn=document.querySelector(".fav-toggle-page");if(!btn)return;var m=location.pathname.match(/^\/[^\/]+\/([^\/]+)\/?$/);if(!m)return;var slug=m[1],K="utilify_favorites";function g(){return (localStorage.getItem(K)||"").split(",").filter(Boolean);}function s(a){localStorage.setItem(K,Array.from(new Set(a)).join(","));}function p(f){btn.textContent=f?"★":"☆";btn.classList.toggle("is-fav",f);btn.setAttribute("aria-label",f?btn.dataset.removeLabel:btn.dataset.addLabel);btn.setAttribute("aria-pressed",String(f));}p(g().indexOf(slug)>-1);btn.addEventListener("click",function(){var a=g(),n=a.indexOf(slug)>-1?a.filter(function(x){return x!==slug;}):a.concat([slug]);s(n);p(n.indexOf(slug)>-1);});})();</script>
+    <script data-utilify-theme-toggle-script>(function(){var b=document.getElementById("themeToggle");if(!b)return;function p(){var t=document.documentElement.getAttribute("data-theme")||"light";b.textContent=t==="dark"?"☀️":"🌙";b.setAttribute("aria-pressed",String(t==="dark"));b.setAttribute("aria-label",t==="dark"?b.dataset.ariaToLight:b.dataset.ariaToDark);}p();b.addEventListener("click",function(){var c=document.documentElement.getAttribute("data-theme")||"light";var n=c==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",n);try{localStorage.setItem("utilify_theme",n);}catch(e){}p();if(typeof gtag==="function"){gtag("event","theme_toggle",{next_theme:n});}});})();</script>
+    <script data-utilify-fav-toggle-script>(function(){var btn=document.querySelector(".fav-toggle-page");if(!btn)return;var m=location.pathname.match(/^\/[^\/]+\/([^\/]+)\/?$/);if(!m)return;var slug=m[1],K="utilify_favorites";function g(){return (localStorage.getItem(K)||"").split(",").filter(Boolean);}function s(a){localStorage.setItem(K,Array.from(new Set(a)).join(","));}function p(f){btn.textContent=f?"★":"☆";btn.classList.toggle("is-fav",f);btn.setAttribute("aria-label",f?btn.dataset.removeLabel:btn.dataset.addLabel);btn.setAttribute("aria-pressed",String(f));}p(g().indexOf(slug)>-1);btn.addEventListener("click",function(){var a=g(),n=a.indexOf(slug)>-1?a.filter(function(x){return x!==slug;}):a.concat([slug]);s(n);var f=n.indexOf(slug)>-1;p(f);if(typeof gtag==="function"){gtag("event","tool_favorite",{tool_slug:slug,action:f?"add":"remove"});}});})();</script>
 </body>
 
 </html>

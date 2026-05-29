@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy-Report-Only" content="default-src 'self' https: data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https:; frame-src https:;">
     <meta name="google-adsense-account" content="ca-pub-6334819180242631">
-    <title>GPT / Claude / Gemini Token Counter & Cost Calculator - Utilify</title>
-    <meta name="description" content="Estimate token count and per-model API cost (GPT-4o, Claude Opus, Gemini 2.5) for any text. Free, no signup, runs entirely in your browser.">
+    <title>GPT / Claude / Gemini トークンカウンター & コスト計算機 - Utilify</title>
+    <meta name="description" content="任意のテキストのトークン数とモデル別APIコスト（GPT-4o・Claude Opus・Gemini 2.5）を推定します。無料、登録不要、ブラウザで動作。">
     <link rel="canonical" href="https://utilifyapp.net/ja/token-counter/">
 
-    <meta property="og:title" content="GPT / Claude / Gemini Token Counter & Cost Calculator - Utilify">
-    <meta property="og:description" content="Estimate token count and per-model API cost (GPT-4o, Claude Opus, Gemini 2.5) for any text. Free, no signup, runs entirely in your browser.">
+    <meta property="og:title" content="GPT / Claude / Gemini トークンカウンター & コスト計算機 - Utilify">
+    <meta property="og:description" content="任意のテキストのトークン数とモデル別APIコスト（GPT-4o・Claude Opus・Gemini 2.5）を推定します。無料、登録不要、ブラウザで動作。">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://utilifyapp.net/ja/token-counter/">
 
@@ -37,8 +37,8 @@
     {
         "@context": "https://schema.org",
         "@type": "WebApplication",
-        "name": "AI Token Counter",
-        "description": "Estimate tokens and per-model API cost for OpenAI, Anthropic, and Google models.",
+        "name": "AIトークンカウンター",
+        "description": "OpenAI・Anthropic・GoogleモデルのトークンとAPIコストを推定します。",
         "url": "https://utilifyapp.net/ja/token-counter/",
         "inLanguage": "ja",
         "applicationCategory": "UtilitiesApplication",
@@ -102,7 +102,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <script data-utilify-theme-init>(function(){try{var s=localStorage.getItem("utilify_theme");var t=(s==="dark"||s==="light")?s:(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
-    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://utilifyapp.net/ja/"}, {"@type": "ListItem", "position": 2, "name": "AI Token Counter & Cost Calculator", "item": "https://utilifyapp.net/ja/token-counter/"}]}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://utilifyapp.net/ja/"}, {"@type": "ListItem", "position": 2, "name": "AIトークンカウンター & コスト計算機", "item": "https://utilifyapp.net/ja/token-counter/"}]}</script>
 </head>
 
 <body>
@@ -110,66 +110,66 @@
     <header class="site-header"><div class="container"><div class="header-content"><a href="/ja/" class="site-logo">🛠️ Utilify</a><button data-utilify-theme-toggle id="themeToggle" class="theme-toggle" type="button" aria-label="Switch to dark mode" data-aria-to-dark="Switch to dark mode" data-aria-to-light="Switch to light mode">🌙</button></div></div></header>
     <main id="main" class="main-content">
         <div class="container-narrow">
-            <nav data-utilify-breadcrumb class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/ja/">Home</a></li><li aria-current="page">AI Token Counter & Cost Calculator</li></ol></nav>
-            <h1>🪙 AI Token Counter & Cost Calculator</h1>
+            <nav data-utilify-breadcrumb class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/ja/">Home</a></li><li aria-current="page">AIトークンカウンター & コスト計算機</li></ol></nav>
+            <h1>🪙 AIトークンカウンター & コスト計算機</h1>
             <div class="security-badge" style="display:flex;align-items:center;justify-content:center;gap:8px;margin:10px 0;font-size:14px;color:var(--text-secondary);">
                 <span>🔒 Secure & Client-side</span>
             </div>
 
-            <p>Estimate the token count of any text and the per-model API cost across GPT-4o, Claude Opus 4.7, Gemini 2.5, and more. Heuristic count (≈4 chars/token English, ≈1.5 chars/token CJK) — exact tokenization needs the provider API.</p>
+            <p>テキストのトークン数とGPT-4o・Claude Opus 4.7・Gemini 2.5などのモデル別APIコストを推定します。ヒューリスティック計算（英語≈4文字/トークン、CJK≈1.5文字/トークン）— 正確なトークン化にはプロバイダーAPIが必要です。</p>
 
-            <label class="form-label" for="textInput">Text</label>
-            <textarea id="textInput" class="form-input" style="min-height:200px;font-family:var(--font-mono);" placeholder="Paste your prompt or document here..."></textarea>
+            <label class="form-label" for="textInput">テキスト</label>
+            <textarea id="textInput" class="form-input" style="min-height:200px;font-family:var(--font-mono);" placeholder="プロンプトまたはドキュメントをここに貼り付けてください..."></textarea>
 
             <div class="stats-grid">
                 <div class="stat-card">
-                    <div class="label">Characters</div>
+                    <div class="label">文字数</div>
                     <div class="value" id="chars" aria-live="polite">0</div>
                 </div>
                 <div class="stat-card">
-                    <div class="label">Words</div>
+                    <div class="label">単語数</div>
                     <div class="value" id="words" aria-live="polite">0</div>
                 </div>
                 <div class="stat-card">
-                    <div class="label">Est. tokens</div>
+                    <div class="label">推定トークン</div>
                     <div class="value" id="tokens" aria-live="polite">0</div>
                 </div>
                 <div class="stat-card">
-                    <div class="label">Lines</div>
+                    <div class="label">行数</div>
                     <div class="value" id="lines" aria-live="polite">0</div>
                 </div>
             </div>
 
             <div class="out-tokens-row">
-                <label for="outTokens">Estimated output tokens:</label>
+                <label for="outTokens">推定出力トークン数:</label>
                 <input id="outTokens" class="form-input" type="number" min="0" value="500">
-                <span style="color: var(--text-secondary); font-size: 0.85rem;">(used for output cost column)</span>
+                <span style="color: var(--text-secondary); font-size: 0.85rem;">(出力コスト計算に使用)</span>
             </div>
 
-            <h2>Cost per model</h2>
+            <h2>モデル別コスト</h2>
             <table class="cost-table">
                 <thead>
                     <tr>
-                        <th>Model</th>
-                        <th>Input $/1M</th>
-                        <th>Output $/1M</th>
-                        <th>Input cost</th>
-                        <th>Output cost</th>
-                        <th>Total</th>
+                        <th>モデル</th>
+                        <th>入力 $/1M</th>
+                        <th>出力 $/1M</th>
+                        <th>入力コスト</th>
+                        <th>出力コスト</th>
+                        <th>合計</th>
                     </tr>
                 </thead>
                 <tbody id="costBody"></tbody>
             </table>
 
-            <h2>How to use</h2>
-            <div class="howto-content"><ol><li>Paste the prompt, document, or transcript you want to estimate.</li><li>The character/word/token/line counts update live.</li><li>Adjust the <strong>estimated output tokens</strong> if you expect a long response (default 500).</li><li>The cost table shows input cost, output cost, and total per popular model.</li></ol><p><strong>Token counting accuracy</strong>: this tool uses a fast character-based heuristic that detects CJK characters (Korean, Japanese, Chinese) and adjusts the chars-per-token ratio. Real BPE tokenization (cl100k_base, o200k_base, etc.) requires the provider API or a 1-3MB vocabulary download. For cost estimation purposes the heuristic is typically within ±10% of the exact count.</p><p><strong>Pricing</strong>: based on publicly listed per-million-token prices as of 2026-05. Always check the provider's pricing page before billing-critical decisions.</p></div>
+            <h2>使い方</h2>
+            <div class="howto-content"><ol><li>コストを推定したいプロンプト・ドキュメント・トランスクリプトを貼り付けます。</li><li>文字数・単語数・トークン数・行数がリアルタイムで更新されます。</li><li>長い応答が予想される場合は<strong>推定出力トークン数</strong>を調整してください（デフォルト500）。</li><li>コスト表に主要モデルごとの入力・出力・合計コストが表示されます。</li></ol><p><strong>トークン計算の精度</strong>: CJK文字（日本語・韓国語・中国語）を検出して文字/トークン比率を調整する高速なヒューリスティックを使用しています。正確なBPEトークン化（cl100k_base・o200k_baseなど）にはプロバイダーAPIまたは1〜3MBの語彙ダウンロードが必要です。コスト推定目的には通常±10%以内の精度があります。</p><p><strong>価格</strong>: 2026年5月時点の公開済み100万トークンあたりの価格に基づきます。請求に関わる重要な判断をする前は必ずプロバイダーの公式価格ページを確認してください。</p></div>
 
             <div class="related-tools-section">
-                <h3>Related Tools</h3>
+                <h3>関連ツール</h3>
                 <div class="related-buttons">
-                    <a href="/ja/prompt-pii-scrubber/" class="related-btn">Prompt PII Scrubber</a><a
-                        href="/ja/claude-md-generator/" class="related-btn">Claude.md Generator</a><a
-                        href="/ja/mcp-config-generator/" class="related-btn">MCP Config Generator</a>
+                    <a href="/ja/prompt-pii-scrubber/" class="related-btn">プロンプトPIIスクラバー</a><a
+                        href="/ja/claude-md-generator/" class="related-btn">Claude.mdジェネレーター</a><a
+                        href="/ja/mcp-config-generator/" class="related-btn">MCP設定ジェネレーター</a>
                 </div>
             </div>
         </div>
@@ -245,8 +245,8 @@
     </script>
     <script>(adsbygoogle=window.adsbygoogle||[]).push({google_ad_client:"ca-pub-6334819180242631",enable_page_level_ads:true});</script>
     <script data-utilify-sw>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){});});}</script>
-    <script data-utilify-theme-toggle-script>(function(){var b=document.getElementById("themeToggle");if(!b)return;function p(){var t=document.documentElement.getAttribute("data-theme")||"light";b.textContent=t==="dark"?"☀️":"🌙";b.setAttribute("aria-pressed",String(t==="dark"));b.setAttribute("aria-label",t==="dark"?b.dataset.ariaToLight:b.dataset.ariaToDark);}p();b.addEventListener("click",function(){var c=document.documentElement.getAttribute("data-theme")||"light";var n=c==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",n);try{localStorage.setItem("utilify_theme",n);}catch(e){}p();});})();</script>
-    <script data-utilify-fav-toggle-script>(function(){var btn=document.querySelector(".fav-toggle-page");if(!btn)return;var m=location.pathname.match(/^\/[^\/]+\/([^\/]+)\/?$/);if(!m)return;var slug=m[1],K="utilify_favorites";function g(){return (localStorage.getItem(K)||"").split(",").filter(Boolean);}function s(a){localStorage.setItem(K,Array.from(new Set(a)).join(","));}function p(f){btn.textContent=f?"★":"☆";btn.classList.toggle("is-fav",f);btn.setAttribute("aria-label",f?btn.dataset.removeLabel:btn.dataset.addLabel);btn.setAttribute("aria-pressed",String(f));}p(g().indexOf(slug)>-1);btn.addEventListener("click",function(){var a=g(),n=a.indexOf(slug)>-1?a.filter(function(x){return x!==slug;}):a.concat([slug]);s(n);p(n.indexOf(slug)>-1);});})();</script>
+    <script data-utilify-theme-toggle-script>(function(){var b=document.getElementById("themeToggle");if(!b)return;function p(){var t=document.documentElement.getAttribute("data-theme")||"light";b.textContent=t==="dark"?"☀️":"🌙";b.setAttribute("aria-pressed",String(t==="dark"));b.setAttribute("aria-label",t==="dark"?b.dataset.ariaToLight:b.dataset.ariaToDark);}p();b.addEventListener("click",function(){var c=document.documentElement.getAttribute("data-theme")||"light";var n=c==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",n);try{localStorage.setItem("utilify_theme",n);}catch(e){}p();if(typeof gtag==="function"){gtag("event","theme_toggle",{next_theme:n});}});})();</script>
+    <script data-utilify-fav-toggle-script>(function(){var btn=document.querySelector(".fav-toggle-page");if(!btn)return;var m=location.pathname.match(/^\/[^\/]+\/([^\/]+)\/?$/);if(!m)return;var slug=m[1],K="utilify_favorites";function g(){return (localStorage.getItem(K)||"").split(",").filter(Boolean);}function s(a){localStorage.setItem(K,Array.from(new Set(a)).join(","));}function p(f){btn.textContent=f?"★":"☆";btn.classList.toggle("is-fav",f);btn.setAttribute("aria-label",f?btn.dataset.removeLabel:btn.dataset.addLabel);btn.setAttribute("aria-pressed",String(f));}p(g().indexOf(slug)>-1);btn.addEventListener("click",function(){var a=g(),n=a.indexOf(slug)>-1?a.filter(function(x){return x!==slug;}):a.concat([slug]);s(n);var f=n.indexOf(slug)>-1;p(f);if(typeof gtag==="function"){gtag("event","tool_favorite",{tool_slug:slug,action:f?"add":"remove"});}});})();</script>
 </body>
 
 </html>

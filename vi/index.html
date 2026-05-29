@@ -234,7 +234,7 @@
                 </div>
             </div>
 
-            <div class="subcat-chips" data-parent-cat="calc" role="group" aria-label="Subcategory filter" hidden><button type="button" class="subcat-chip" data-subcat="" aria-pressed="true">All</button><button type="button" class="subcat-chip" data-subcat="finance" aria-pressed="false">Finance</button><a href="/vi/finance/" class="hub-link" data-for-subcat="finance" hidden>→ Finance hub</a><button type="button" class="subcat-chip" data-subcat="health" aria-pressed="false">Health</button><a href="/vi/health/" class="hub-link" data-for-subcat="health" hidden>→ Health hub</a></div>
+            <div class="subcat-chips" data-parent-cat="calc" role="group" aria-label="Subcategory filter" hidden><button type="button" class="subcat-chip" data-subcat="" aria-pressed="true">All</button><button type="button" class="subcat-chip" data-subcat="finance" aria-pressed="false">Finance</button><a href="/vi/finance/?src=chip" class="hub-link" data-for-subcat="finance" hidden>→ Finance hub</a><button type="button" class="subcat-chip" data-subcat="health" aria-pressed="false">Health</button><a href="/vi/health/?src=chip" class="hub-link" data-for-subcat="health" hidden>→ Health hub</a></div>
 
             <p id="emptyState" class="empty-state" hidden
                data-msg-favorites="No favorites yet. Click ☆ on any tool card to save it."
@@ -658,6 +658,14 @@
             <div class="footer-content">
                 <p>&copy; 2025 Utilify. All rights reserved.</p>
                 <p data-legal-links style="font-size: 0.875rem; margin-top: 8px;"><a href="/vi/about/">About</a> · <a href="/vi/privacy/">Privacy</a> · <a href="/vi/terms/">Terms</a></p>
+                <div class="fav-data-controls" style="margin-top:12px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap;">
+                    <button type="button" id="favExportBtn" class="btn" style="padding:4px 12px;font-size:13px;"
+                            data-msg-empty="No favorites to export yet.">⬇ Export favorites</button>
+                    <button type="button" id="favImportBtn" class="btn" style="padding:4px 12px;font-size:13px;"
+                            data-msg-success="Favorites imported"
+                            data-msg-error="Couldn't read that file.">⬆ Import favorites</button>
+                    <input type="file" id="favImportInput" accept="application/json,.json" hidden>
+                </div>
             </div>
         </div>
     </footer>
@@ -802,6 +810,13 @@
                     searchDebounce = setTimeout(() => {
                         activeSearch = e.target.value;
                         applyFilters();
+                        // GA4: log that search was used (query text is NOT sent,
+                        // only its length). Fire only for queries of 2+ chars to
+                        // skip incidental single keystrokes.
+                        const len = activeSearch.trim().length;
+                        if (len >= 2 && typeof gtag === 'function') {
+                            gtag('event', 'search_used', { query_length: len });
+                        }
                     }, 120);
                     if (shortcut) shortcut.style.display = e.target.value ? 'none' : '';
                 });
@@ -829,6 +844,9 @@
                 btn.addEventListener('click', () => {
                     activeCat = btn.dataset.cat;
                     activeSubcat = '';
+                    if (typeof gtag === 'function') {
+                        gtag('event', 'category_filter', { category: activeCat });
+                    }
                     catButtons.forEach(b =>
                         b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'));
                     // Reset subcategory chips so the next visit to a category starts at "All".
@@ -872,6 +890,10 @@
                     star.setAttribute('aria-label',
                         nowFav ? star.dataset.removeLabel : star.dataset.addLabel);
                     star.setAttribute('aria-pressed', String(nowFav));
+                    if (typeof gtag === 'function') {
+                        gtag('event', 'tool_favorite',
+                            { tool_slug: slug, action: nowFav ? 'add' : 'remove' });
+                    }
                     if (activeCat === 'favorites') applyFilters();
                 });
             });
@@ -881,7 +903,7 @@
     </script>
     <script>(adsbygoogle=window.adsbygoogle||[]).push({google_ad_client:"ca-pub-6334819180242631",enable_page_level_ads:true});</script>
     <script data-utilify-sw>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){});});}</script>
-    <script data-utilify-theme-toggle-script>(function(){var b=document.getElementById("themeToggle");if(!b)return;function p(){var t=document.documentElement.getAttribute("data-theme")||"light";b.textContent=t==="dark"?"☀️":"🌙";b.setAttribute("aria-pressed",String(t==="dark"));b.setAttribute("aria-label",t==="dark"?b.dataset.ariaToLight:b.dataset.ariaToDark);}p();b.addEventListener("click",function(){var c=document.documentElement.getAttribute("data-theme")||"light";var n=c==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",n);try{localStorage.setItem("utilify_theme",n);}catch(e){}p();});})();</script>
+    <script data-utilify-theme-toggle-script>(function(){var b=document.getElementById("themeToggle");if(!b)return;function p(){var t=document.documentElement.getAttribute("data-theme")||"light";b.textContent=t==="dark"?"☀️":"🌙";b.setAttribute("aria-pressed",String(t==="dark"));b.setAttribute("aria-label",t==="dark"?b.dataset.ariaToLight:b.dataset.ariaToDark);}p();b.addEventListener("click",function(){var c=document.documentElement.getAttribute("data-theme")||"light";var n=c==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",n);try{localStorage.setItem("utilify_theme",n);}catch(e){}p();if(typeof gtag==="function"){gtag("event","theme_toggle",{next_theme:n});}});})();</script>
 </body>
 
 </html>

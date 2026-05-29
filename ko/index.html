@@ -234,7 +234,7 @@
                 </div>
             </div>
 
-            <div class="subcat-chips" data-parent-cat="calc" role="group" aria-label="하위 카테고리 필터" hidden><button type="button" class="subcat-chip" data-subcat="" aria-pressed="true">전체</button><button type="button" class="subcat-chip" data-subcat="finance" aria-pressed="false">금융</button><a href="/ko/finance/" class="hub-link" data-for-subcat="finance" hidden>→ 금융 허브</a><button type="button" class="subcat-chip" data-subcat="health" aria-pressed="false">건강</button><a href="/ko/health/" class="hub-link" data-for-subcat="health" hidden>→ 건강 허브</a></div>
+            <div class="subcat-chips" data-parent-cat="calc" role="group" aria-label="하위 카테고리 필터" hidden><button type="button" class="subcat-chip" data-subcat="" aria-pressed="true">전체</button><button type="button" class="subcat-chip" data-subcat="finance" aria-pressed="false">금융</button><a href="/ko/finance/?src=chip" class="hub-link" data-for-subcat="finance" hidden>→ 금융 허브</a><button type="button" class="subcat-chip" data-subcat="health" aria-pressed="false">건강</button><a href="/ko/health/?src=chip" class="hub-link" data-for-subcat="health" hidden>→ 건강 허브</a></div>
 
             <p id="emptyState" class="empty-state" hidden
                data-msg-favorites="즐겨찾기가 없습니다. 도구 카드의 ☆를 눌러 추가하세요."
@@ -658,6 +658,14 @@
             <div class="footer-content">
                 <p>&copy; 2025 Utilify. All rights reserved.</p>
                 <p data-legal-links style="font-size: 0.875rem; margin-top: 8px;"><a href="/ko/about/">소개</a> · <a href="/ko/privacy/">개인정보</a> · <a href="/ko/terms/">이용약관</a></p>
+                <div class="fav-data-controls" style="margin-top:12px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap;">
+                    <button type="button" id="favExportBtn" class="btn" style="padding:4px 12px;font-size:13px;"
+                            data-msg-empty="내보낼 즐겨찾기가 없습니다.">⬇ 즐겨찾기 내보내기</button>
+                    <button type="button" id="favImportBtn" class="btn" style="padding:4px 12px;font-size:13px;"
+                            data-msg-success="즐겨찾기를 가져왔습니다"
+                            data-msg-error="파일을 읽을 수 없습니다.">⬆ 즐겨찾기 가져오기</button>
+                    <input type="file" id="favImportInput" accept="application/json,.json" hidden>
+                </div>
             </div>
         </div>
     </footer>
@@ -802,6 +810,13 @@
                     searchDebounce = setTimeout(() => {
                         activeSearch = e.target.value;
                         applyFilters();
+                        // GA4: log that search was used (query text is NOT sent,
+                        // only its length). Fire only for queries of 2+ chars to
+                        // skip incidental single keystrokes.
+                        const len = activeSearch.trim().length;
+                        if (len >= 2 && typeof gtag === 'function') {
+                            gtag('event', 'search_used', { query_length: len });
+                        }
                     }, 120);
                     if (shortcut) shortcut.style.display = e.target.value ? 'none' : '';
                 });
@@ -829,6 +844,9 @@
                 btn.addEventListener('click', () => {
                     activeCat = btn.dataset.cat;
                     activeSubcat = '';
+                    if (typeof gtag === 'function') {
+                        gtag('event', 'category_filter', { category: activeCat });
+                    }
                     catButtons.forEach(b =>
                         b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'));
                     // Reset subcategory chips so the next visit to a category starts at "All".
@@ -872,6 +890,10 @@
                     star.setAttribute('aria-label',
                         nowFav ? star.dataset.removeLabel : star.dataset.addLabel);
                     star.setAttribute('aria-pressed', String(nowFav));
+                    if (typeof gtag === 'function') {
+                        gtag('event', 'tool_favorite',
+                            { tool_slug: slug, action: nowFav ? 'add' : 'remove' });
+                    }
                     if (activeCat === 'favorites') applyFilters();
                 });
             });
@@ -881,7 +903,7 @@
     </script>
     <script>(adsbygoogle=window.adsbygoogle||[]).push({google_ad_client:"ca-pub-6334819180242631",enable_page_level_ads:true});</script>
     <script data-utilify-sw>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){});});}</script>
-    <script data-utilify-theme-toggle-script>(function(){var b=document.getElementById("themeToggle");if(!b)return;function p(){var t=document.documentElement.getAttribute("data-theme")||"light";b.textContent=t==="dark"?"☀️":"🌙";b.setAttribute("aria-pressed",String(t==="dark"));b.setAttribute("aria-label",t==="dark"?b.dataset.ariaToLight:b.dataset.ariaToDark);}p();b.addEventListener("click",function(){var c=document.documentElement.getAttribute("data-theme")||"light";var n=c==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",n);try{localStorage.setItem("utilify_theme",n);}catch(e){}p();});})();</script>
+    <script data-utilify-theme-toggle-script>(function(){var b=document.getElementById("themeToggle");if(!b)return;function p(){var t=document.documentElement.getAttribute("data-theme")||"light";b.textContent=t==="dark"?"☀️":"🌙";b.setAttribute("aria-pressed",String(t==="dark"));b.setAttribute("aria-label",t==="dark"?b.dataset.ariaToLight:b.dataset.ariaToDark);}p();b.addEventListener("click",function(){var c=document.documentElement.getAttribute("data-theme")||"light";var n=c==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",n);try{localStorage.setItem("utilify_theme",n);}catch(e){}p();if(typeof gtag==="function"){gtag("event","theme_toggle",{next_theme:n});}});})();</script>
 </body>
 
 </html>

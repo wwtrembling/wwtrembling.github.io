@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy-Report-Only" content="default-src 'self' https: data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https:; frame-src https:;">
     <meta name="google-adsense-account" content="ca-pub-6334819180242631">
-    <title>AI Image Inspector — Detect Stable Diffusion / Midjourney / DALL-E - Utilify</title>
-    <meta name="description" content="Inspect PNG and JPEG metadata to find AI generation parameters (Stable Diffusion prompts, EXIF UserComment, C2PA Content Credentials). Local file processing only.">
+    <title>AI画像インスペクター — Stable Diffusion / Midjourney / DALL-E検出 - Utilify</title>
+    <meta name="description" content="PNGおよびJPEGのメタデータを検査してAI生成パラメーター（Stable Diffusionプロンプト・EXIF UserComment・C2PA Content Credentials）を検出します。ファイルはブラウザ内でのみ処理。">
     <link rel="canonical" href="https://utilifyapp.net/ja/ai-image-inspector/">
 
-    <meta property="og:title" content="AI Image Inspector — Detect Stable Diffusion / Midjourney / DALL-E - Utilify">
-    <meta property="og:description" content="Inspect PNG and JPEG metadata to find AI generation parameters (Stable Diffusion prompts, EXIF UserComment, C2PA Content Credentials). Local file processing only.">
+    <meta property="og:title" content="AI画像インスペクター — Stable Diffusion / Midjourney / DALL-E検出 - Utilify">
+    <meta property="og:description" content="PNGおよびJPEGのメタデータを検査してAI生成パラメーター（Stable Diffusionプロンプト・EXIF UserComment・C2PA Content Credentials）を検出します。ファイルはブラウザ内でのみ処理。">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://utilifyapp.net/ja/ai-image-inspector/">
 
@@ -37,8 +37,8 @@
     {
         "@context": "https://schema.org",
         "@type": "WebApplication",
-        "name": "AI Image Inspector",
-        "description": "Reads PNG tEXt/iTXt chunks, JPEG EXIF, and C2PA boxes to surface AI-image fingerprints.",
+        "name": "AI画像インスペクター",
+        "description": "PNG tEXt/iTXtチャンク、JPEG EXIF、C2PAボックスを読み込みAI画像の痕跡を表示します。",
         "url": "https://utilifyapp.net/ja/ai-image-inspector/",
         "inLanguage": "ja",
         "applicationCategory": "UtilitiesApplication",
@@ -102,7 +102,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <script data-utilify-theme-init>(function(){try{var s=localStorage.getItem("utilify_theme");var t=(s==="dark"||s==="light")?s:(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
-    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://utilifyapp.net/ja/"}, {"@type": "ListItem", "position": 2, "name": "AI Image Metadata Inspector", "item": "https://utilifyapp.net/ja/ai-image-inspector/"}]}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://utilifyapp.net/ja/"}, {"@type": "ListItem", "position": 2, "name": "AI画像メタデータインスペクター", "item": "https://utilifyapp.net/ja/ai-image-inspector/"}]}</script>
 </head>
 
 <body>
@@ -110,16 +110,16 @@
     <header class="site-header"><div class="container"><div class="header-content"><a href="/ja/" class="site-logo">🛠️ Utilify</a><button data-utilify-theme-toggle id="themeToggle" class="theme-toggle" type="button" aria-label="Switch to dark mode" data-aria-to-dark="Switch to dark mode" data-aria-to-light="Switch to light mode">🌙</button></div></div></header>
     <main id="main" class="main-content">
         <div class="container-narrow">
-            <nav data-utilify-breadcrumb class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/ja/">Home</a></li><li aria-current="page">AI Image Metadata Inspector</li></ol></nav>
-            <h1>🔬 AI Image Metadata Inspector</h1>
+            <nav data-utilify-breadcrumb class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/ja/">Home</a></li><li aria-current="page">AI画像メタデータインスペクター</li></ol></nav>
+            <h1>🔬 AI画像メタデータインスペクター</h1>
             <div class="security-badge" style="display:flex;align-items:center;justify-content:center;gap:8px;margin:10px 0;font-size:14px;color:var(--text-secondary);">
                 <span>🔒 Secure & Client-side</span>
             </div>
 
-            <p>Drop or pick an image to inspect its embedded metadata. The tool reads PNG tEXt/iTXt chunks (Stable Diffusion stores prompts there), JPEG EXIF UserComment (Midjourney/DALL-E often embed details), and detects C2PA Content Credentials boxes. Files never leave your browser.</p>
+            <p>画像をドロップまたは選択してメタデータを検査します。PNG tEXt/iTXtチャンク（Stable Diffusionのプロンプト保存先）、JPEG EXIF UserComment（Midjourney/DALL-Eが識別情報を埋め込む）、C2PA Content Credentialsボックスを検出します。ファイルはブラウザ外に出ません。</p>
 
-            <div class="drop-zone" id="dropZone" tabindex="0" role="button" aria-label="Drop a PNG/JPEG/WebP here, or click to choose">
-                <div>📁 Drop a PNG/JPEG/WebP here, or click to choose</div>
+            <div class="drop-zone" id="dropZone" tabindex="0" role="button" aria-label="PNG/JPEG/WebPをドロップ、またはクリックして選択">
+                <div>📁 PNG/JPEG/WebPをドロップ、またはクリックして選択</div>
                 <input type="file" id="fileInput" accept="image/png,image/jpeg,image/webp" hidden>
                 <img id="preview" alt="" hidden>
             </div>
@@ -128,28 +128,28 @@
 
             <div id="results" hidden>
                 <div class="meta-section" id="sdSection" hidden>
-                    <h3>Stable Diffusion / generation parameters</h3>
+                    <h3>Stable Diffusion / 生成パラメーター</h3>
                     <pre id="sdContent"></pre>
                 </div>
                 <div class="meta-section" id="exifSection" hidden>
-                    <h3>EXIF / metadata text</h3>
+                    <h3>EXIF / メタデータテキスト</h3>
                     <pre id="exifContent"></pre>
                 </div>
                 <div class="meta-section" id="rawSection" hidden>
-                    <h3>Raw metadata</h3>
+                    <h3>生のメタデータ</h3>
                     <pre id="rawContent"></pre>
                 </div>
             </div>
 
-            <h2>How to use</h2>
-            <div class="howto-content"><ol><li>Drag-drop or pick a PNG/JPEG/WebP image.</li><li>The tool reads PNG ancillary chunks and JPEG APP1 (EXIF) segments locally.</li><li>If a Stable Diffusion <code>parameters</code> chunk is found, the prompt and settings appear in the first section.</li><li>If EXIF UserComment contains identifying text (e.g., "Midjourney", "Generated by ..."), it shows in the second section.</li><li>C2PA / Content Credentials boxes are flagged when present.</li></ol><p><strong>What this <em>cannot</em> tell you</strong>: whether an image is AI-generated when metadata has been stripped (most social platforms strip metadata on upload). A "no metadata" verdict is not a clean bill of health — many genuinely AI-generated images have no embedded fingerprint after re-saving.</p></div>
+            <h2>使い方</h2>
+            <div class="howto-content"><ol><li>PNG/JPEG/WebP画像をドラッグ＆ドロップまたは選択します。</li><li>PNGの補助チャンクとJPEGのAPP1（EXIF）セグメントをローカルで読み込みます。</li><li>Stable Diffusionの<code>parameters</code>チャンクが見つかった場合、プロンプトと設定が最初のセクションに表示されます。</li><li>EXIF UserCommentに識別テキスト（"Midjourney"・"Generated by ..."）があれば2番目のセクションに表示されます。</li><li>C2PA / Content Credentialsボックスが存在する場合はフラグが立ちます。</li></ol><p><strong>このツールが<em>わからないこと</em></strong>: メタデータが削除されたAI画像（ほとんどのSNSはアップロード時にメタデータを削除します）。「メタデータなし」という結果は「AI生成でない」ことを保証するものではありません。</p></div>
 
             <div class="related-tools-section">
-                <h3>Related Tools</h3>
+                <h3>関連ツール</h3>
                 <div class="related-buttons">
-                    <a href="/ja/image-converter/" class="related-btn">Image Converter</a><a
-                        href="/ja/image-watermark/" class="related-btn">Image Watermark</a><a
-                        href="/ja/token-counter/" class="related-btn">Token Counter</a>
+                    <a href="/ja/image-converter/" class="related-btn">画像変換</a><a
+                        href="/ja/image-watermark/" class="related-btn">画像透かし</a><a
+                        href="/ja/token-counter/" class="related-btn">トークンカウンター</a>
                 </div>
             </div>
         </div>
@@ -213,11 +213,11 @@
             if (findings.raw) setSection('rawSection', 'rawContent', findings.raw);
 
             if (aiSignals.length) {
-                showVerdict('ai', '🤖 AI generation signatures detected' + ' (' + aiSignals.join(', ') + ')');
+                showVerdict('ai', '🤖 AI生成シグネチャを検出しました' + ' (' + aiSignals.join(', ') + ')');
             } else if (findings.sd === null && findings.exif === null && findings.raw === null) {
-                showVerdict('clean', '✅ No metadata found (likely stripped or never embedded)');
+                showVerdict('clean', '✅ メタデータなし（削除済みまたは最初から存在しない）');
             } else {
-                showVerdict('unknown', '🔍 Metadata present but no clear AI signature');
+                showVerdict('unknown', '🔍 メタデータはあるが、明確なAIシグネチャなし');
             }
         }
 
@@ -280,8 +280,8 @@
     </script>
     <script>(adsbygoogle=window.adsbygoogle||[]).push({google_ad_client:"ca-pub-6334819180242631",enable_page_level_ads:true});</script>
     <script data-utilify-sw>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){});});}</script>
-    <script data-utilify-theme-toggle-script>(function(){var b=document.getElementById("themeToggle");if(!b)return;function p(){var t=document.documentElement.getAttribute("data-theme")||"light";b.textContent=t==="dark"?"☀️":"🌙";b.setAttribute("aria-pressed",String(t==="dark"));b.setAttribute("aria-label",t==="dark"?b.dataset.ariaToLight:b.dataset.ariaToDark);}p();b.addEventListener("click",function(){var c=document.documentElement.getAttribute("data-theme")||"light";var n=c==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",n);try{localStorage.setItem("utilify_theme",n);}catch(e){}p();});})();</script>
-    <script data-utilify-fav-toggle-script>(function(){var btn=document.querySelector(".fav-toggle-page");if(!btn)return;var m=location.pathname.match(/^\/[^\/]+\/([^\/]+)\/?$/);if(!m)return;var slug=m[1],K="utilify_favorites";function g(){return (localStorage.getItem(K)||"").split(",").filter(Boolean);}function s(a){localStorage.setItem(K,Array.from(new Set(a)).join(","));}function p(f){btn.textContent=f?"★":"☆";btn.classList.toggle("is-fav",f);btn.setAttribute("aria-label",f?btn.dataset.removeLabel:btn.dataset.addLabel);btn.setAttribute("aria-pressed",String(f));}p(g().indexOf(slug)>-1);btn.addEventListener("click",function(){var a=g(),n=a.indexOf(slug)>-1?a.filter(function(x){return x!==slug;}):a.concat([slug]);s(n);p(n.indexOf(slug)>-1);});})();</script>
+    <script data-utilify-theme-toggle-script>(function(){var b=document.getElementById("themeToggle");if(!b)return;function p(){var t=document.documentElement.getAttribute("data-theme")||"light";b.textContent=t==="dark"?"☀️":"🌙";b.setAttribute("aria-pressed",String(t==="dark"));b.setAttribute("aria-label",t==="dark"?b.dataset.ariaToLight:b.dataset.ariaToDark);}p();b.addEventListener("click",function(){var c=document.documentElement.getAttribute("data-theme")||"light";var n=c==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",n);try{localStorage.setItem("utilify_theme",n);}catch(e){}p();if(typeof gtag==="function"){gtag("event","theme_toggle",{next_theme:n});}});})();</script>
+    <script data-utilify-fav-toggle-script>(function(){var btn=document.querySelector(".fav-toggle-page");if(!btn)return;var m=location.pathname.match(/^\/[^\/]+\/([^\/]+)\/?$/);if(!m)return;var slug=m[1],K="utilify_favorites";function g(){return (localStorage.getItem(K)||"").split(",").filter(Boolean);}function s(a){localStorage.setItem(K,Array.from(new Set(a)).join(","));}function p(f){btn.textContent=f?"★":"☆";btn.classList.toggle("is-fav",f);btn.setAttribute("aria-label",f?btn.dataset.removeLabel:btn.dataset.addLabel);btn.setAttribute("aria-pressed",String(f));}p(g().indexOf(slug)>-1);btn.addEventListener("click",function(){var a=g(),n=a.indexOf(slug)>-1?a.filter(function(x){return x!==slug;}):a.concat([slug]);s(n);var f=n.indexOf(slug)>-1;p(f);if(typeof gtag==="function"){gtag("event","tool_favorite",{tool_slug:slug,action:f?"add":"remove"});}});})();</script>
 </body>
 
 </html>

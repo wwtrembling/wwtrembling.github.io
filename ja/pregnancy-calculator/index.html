@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy-Report-Only" content="default-src 'self' https: data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https:; frame-src https:;">
     <meta name="google-adsense-account" content="ca-pub-6334819180242631">
-    <title>Pregnancy Calculator — Due Date, Week, Trimester - Utilify</title>
-    <meta name="description" content="Calculate your due date, current pregnancy week, and trimester from your last menstrual period (LMP). Naegele's rule with cycle-length adjustment.">
+    <title>妊娠計算機 — 出産予定日・週数・トリメスター - Utilify</title>
+    <meta name="description" content="最終月経日（LMP）から出産予定日・現在の妊娠週数・トリメスターを計算します。ネーゲレ公式＋生理周期補正。">
     <link rel="canonical" href="https://utilifyapp.net/ja/pregnancy-calculator/">
 
-    <meta property="og:title" content="Pregnancy Due Date Calculator - Utilify">
-    <meta property="og:description" content="Due date, current week, trimester, and days remaining.">
+    <meta property="og:title" content="妊娠出産予定日計算機 - Utilify">
+    <meta property="og:description" content="出産予定日・現在の週数・トリメスター・残り日数を一括表示。">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://utilifyapp.net/ja/pregnancy-calculator/">
 
@@ -37,8 +37,8 @@
     {
         "@context": "https://schema.org",
         "@type": "WebApplication",
-        "name": "Pregnancy Calculator",
-        "description": "Estimate due date and current pregnancy week from last menstrual period.",
+        "name": "妊娠出産予定日計算機",
+        "description": "最終月経日から出産予定日と現在の妊娠週数を推定します。",
         "url": "https://utilifyapp.net/ja/pregnancy-calculator/",
         "inLanguage": "ja",
         "applicationCategory": "HealthApplication",
@@ -102,7 +102,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <script data-utilify-theme-init>(function(){try{var s=localStorage.getItem("utilify_theme");var t=(s==="dark"||s==="light")?s:(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
-    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://utilifyapp.net/ja/"}, {"@type": "ListItem", "position": 2, "name": "Health", "item": "https://utilifyapp.net/ja/health/"}, {"@type": "ListItem", "position": 3, "name": "Pregnancy Due Date Calculator", "item": "https://utilifyapp.net/ja/pregnancy-calculator/"}]}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://utilifyapp.net/ja/"}, {"@type": "ListItem", "position": 2, "name": "Health", "item": "https://utilifyapp.net/ja/health/"}, {"@type": "ListItem", "position": 3, "name": "妊娠出産予定日計算機", "item": "https://utilifyapp.net/ja/pregnancy-calculator/"}]}</script>
 </head>
 
 <body>
@@ -110,49 +110,49 @@
     <header class="site-header"><div class="container"><div class="header-content"><a href="/ja/" class="site-logo">🛠️ Utilify</a><button data-utilify-theme-toggle id="themeToggle" class="theme-toggle" type="button" aria-label="Switch to dark mode" data-aria-to-dark="Switch to dark mode" data-aria-to-light="Switch to light mode">🌙</button></div></div></header>
     <main id="main" class="main-content">
         <div class="container-narrow">
-            <nav data-utilify-breadcrumb class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/ja/">Home</a></li><li><a href="/ja/health/">Health</a></li><li aria-current="page">Pregnancy Due Date Calculator</li></ol></nav>
-            <h1>🤰 Pregnancy Due Date Calculator</h1>
+            <nav data-utilify-breadcrumb class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/ja/">Home</a></li><li><a href="/ja/health/?src=breadcrumb">Health</a></li><li aria-current="page">妊娠出産予定日計算機</li></ol></nav>
+            <h1>🤰 妊娠出産予定日計算機</h1>
             <div class="security-badge" style="display:flex;align-items:center;justify-content:center;gap:8px;margin:10px 0;font-size:14px;color:var(--text-secondary);">
                 <span>🔒 Secure & Client-side</span>
                 <button id="pwaInstallBtn" class="btn btn-primary" style="display: none; padding: 4px 12px; font-size: 12px;">📲 Install App</button>
                     <button data-utilify-fav-toggle class="fav-toggle-page" type="button" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
             </div>
 
-            <p>Enter the first day of your last menstrual period (LMP) and your typical cycle length. The calculator returns the estimated due date, your current pregnancy week and day, the trimester, and how many days remain until delivery. Naegele's rule plus a cycle-length adjustment.</p>
+            <p>最終月経開始日（LMP）と通常の生理周期を入力すると、出産予定日・現在の妊娠週数・トリメスター・残り日数を計算します。ネーゲレ公式と生理周期補正を適用しています。</p>
 
             <div class="card">
                 <div class="form-grid">
                     <div class="form-group">
-                        <label class="form-label" for="lmp">First day of last menstrual period</label>
+                        <label class="form-label" for="lmp">最終月経開始日</label>
                         <input type="date" id="lmp" class="form-input">
                     </div>
                     <div class="form-group">
-                        <label class="form-label" for="cycle">Average cycle length (days)</label>
+                        <label class="form-label" for="cycle">平均生理周期（日）</label>
                         <input type="number" id="cycle" class="form-input" inputmode="numeric" min="21" max="45" step="1" placeholder="28" value="28">
                     </div>
                 </div>
                 <div class="button-row" style="margin-top: var(--spacing-md);">
-                    <button class="btn btn-primary" type="button" onclick="calculate()">Calculate</button>
-                    <button class="btn" type="button" onclick="resetForm()">Reset</button>
+                    <button class="btn btn-primary" type="button" onclick="calculate()">計算</button>
+                    <button class="btn" type="button" onclick="resetForm()">リセット</button>
                 </div>
             </div>
 
             <div id="result" style="display:none;" aria-live="polite">
                 <div class="result-grid">
                     <div class="result-card headline">
-                        <div class="label">Estimated due date</div>
+                        <div class="label">推定出産予定日</div>
                         <div class="value" id="dueVal">—</div>
                     </div>
                     <div class="result-card">
-                        <div class="label">Current week</div>
+                        <div class="label">現在の週数</div>
                         <div class="value" id="weekVal">—</div>
                     </div>
                     <div class="result-card">
-                        <div class="label">Trimester</div>
+                        <div class="label">トリメスター</div>
                         <div class="value" id="trimesterVal">—</div>
                     </div>
                     <div class="result-card">
-                        <div class="label">Days remaining</div>
+                        <div class="label">残り日数</div>
                         <div class="value" id="remainingVal">—</div>
                     </div>
                 </div>
@@ -162,22 +162,22 @@
                 </div>
 
                 <div class="button-row" style="margin-top: var(--spacing-md);">
-                    <button class="btn" type="button" onclick="shareResult()">Share result</button>
+                    <button class="btn" type="button" onclick="shareResult()">結果を共有</button>
                 </div>
             </div>
 
-            <div class="disclaimer">Estimate only — not medical advice. Only ~5% of babies arrive on the predicted due date. An ultrasound dating scan is more accurate, especially if cycles are irregular.</div>
+            <div class="disclaimer">推定値のみ — 医療上のアドバイスではありません。出産予定日通りに生まれる赤ちゃんは約5%程度です。生理周期が不規則な場合や最終月経日が不明な場合は、超音波検査の方が正確です。</div>
 
-            <h2>How to use</h2>
-            <div class="howto-content"><ol><li>Pick the first day of your last menstrual period (LMP). This is day 1 of the cycle that resulted in pregnancy.</li><li>Enter your typical cycle length. The default is 28 days; adjust if yours is consistently shorter or longer.</li><li>Click <strong>Calculate</strong>. You'll see the estimated due date, your current pregnancy week, the trimester, and days remaining.</li></ol><p><strong>Formula (Naegele's rule)</strong>: due date = LMP + 280 days, then adjusted by (cycle length − 28) days to account for variations in ovulation timing. Pregnancy is dated from LMP (not conception), so week 1 starts before you actually conceived. Trimesters: 1st (weeks 1–13), 2nd (14–27), 3rd (28–40+).</p><p>If your cycles are irregular or you don't know your LMP, an ultrasound dating scan in the first trimester is the most accurate method.</p></div>
+            <h2>使い方</h2>
+            <div class="howto-content"><ol><li>最終月経の開始日（LMP）を選択します。これは妊娠が成立した周期の第1日目です。</li><li>通常の生理周期を入力します。デフォルトは28日で、一定してずれる場合は調整してください。</li><li><strong>計算</strong>をクリックすると出産予定日・現在の週数・トリメスター・残り日数が表示されます。</li></ol><p><strong>計算式（ネーゲレ法則）</strong>: 出産予定日 = LMP + 280日、その後（生理周期 − 28）日を加減して排卵タイミングのずれを補正します。妊娠週数は受精日ではなくLMPを基準とするため、第1週は実際の妊娠前から始まります。トリメスター区分: 第1（1〜13週）、第2（14〜27週）、第3（28週以降）。</p><p>生理周期が不規則または最終月経日が不明な場合は、第1トリメスターの超音波検査が最も正確な方法です。</p></div>
 
             <div class="related-tools-section">
-                <h3>Related Tools</h3>
+                <h3>関連ツール</h3>
                 <div class="related-buttons">
-                    <a href="/ja/date-calculator/" class="related-btn">Date Calculator</a><a
-                        href="/ja/bmi-calculator/" class="related-btn">BMI Calculator</a><a
-                        href="/ja/calorie-calculator/" class="related-btn">Calorie Calculator</a><a
-                        href="/ja/unit-converter/" class="related-btn">Unit Converter</a>
+                    <a href="/ja/date-calculator/" class="related-btn">日付計算機</a><a
+                        href="/ja/bmi-calculator/" class="related-btn">BMI計算機</a><a
+                        href="/ja/calorie-calculator/" class="related-btn">カロリー計算機</a><a
+                        href="/ja/unit-converter/" class="related-btn">単位変換</a>
                 </div>
             </div>
         </div>
@@ -193,13 +193,13 @@
             const lmpStr = document.getElementById('lmp').value;
             const cycle = parseInt(document.getElementById('cycle').value, 10);
             if (!lmpStr || !(cycle >= 21 && cycle <= 45)) {
-                alert('Enter a valid LMP date and a cycle length between 21 and 45 days.');
+                alert('有効な最終月経日と21〜45日の生理周期を入力してください。');
                 return;
             }
             const lmp = new Date(lmpStr + 'T00:00:00');
             const today = new Date();
             today.setHours(0, 0, 0, 0);
-            if (lmp > today) { alert('LMP cannot be in the future.'); return; }
+            if (lmp > today) { alert('最終月経日は未来の日付にはできません。'); return; }
 
             // Naegele's rule + cycle adjustment.
             const due = new Date(lmp.getTime() + (280 + (cycle - 28)) * DAY_MS);
@@ -209,13 +209,13 @@
             const remaining = Math.max(0, Math.floor((due - today) / DAY_MS));
 
             let tri;
-            if (week < 14) tri = 'First trimester';
-            else if (week < 28) tri = 'Second trimester';
-            else tri = 'Third trimester';
+            if (week < 14) tri = '第1トリメスター';
+            else if (week < 28) tri = '第2トリメスター';
+            else tri = '第3トリメスター';
 
             const dueText = due.toLocaleDateString(LOCALE, { year: 'numeric', month: 'long', day: 'numeric' });
             document.getElementById('dueVal').textContent = dueText;
-            document.getElementById('weekVal').textContent = 'Week {week} day {day}'
+            document.getElementById('weekVal').textContent = '{week}週{day}日'
                 .replace('{week}', week)
                 .replace('{day}', day);
             document.getElementById('trimesterVal').textContent = tri;
@@ -237,21 +237,21 @@
         async function shareResult() {
             const due = document.getElementById('dueVal').textContent;
             if (due === '—') return;
-            const text = 'My estimated due date: {value} —'.replace('{value}', due) + ' ' + location.href;
+            const text = '推定出産予定日: {value} —'.replace('{value}', due) + ' ' + location.href;
             if (navigator.share) {
-                try { await navigator.share({ title: 'Pregnancy Due Date Calculator', text }); return; }
+                try { await navigator.share({ title: '妊娠出産予定日計算機', text }); return; }
                 catch (e) { if (e && e.name === 'AbortError') return; }
             }
             try {
                 await navigator.clipboard.writeText(text);
-                alert('Result copied to clipboard.');
+                alert('結果をクリップボードにコピーしました。');
             } catch (e) { /* clipboard blocked — silent */ }
         }
     </script>
     <script>(adsbygoogle=window.adsbygoogle||[]).push({google_ad_client:"ca-pub-6334819180242631",enable_page_level_ads:true});</script>
     <script data-utilify-sw>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){});});}</script>
-    <script data-utilify-theme-toggle-script>(function(){var b=document.getElementById("themeToggle");if(!b)return;function p(){var t=document.documentElement.getAttribute("data-theme")||"light";b.textContent=t==="dark"?"☀️":"🌙";b.setAttribute("aria-pressed",String(t==="dark"));b.setAttribute("aria-label",t==="dark"?b.dataset.ariaToLight:b.dataset.ariaToDark);}p();b.addEventListener("click",function(){var c=document.documentElement.getAttribute("data-theme")||"light";var n=c==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",n);try{localStorage.setItem("utilify_theme",n);}catch(e){}p();});})();</script>
-    <script data-utilify-fav-toggle-script>(function(){var btn=document.querySelector(".fav-toggle-page");if(!btn)return;var m=location.pathname.match(/^\/[^\/]+\/([^\/]+)\/?$/);if(!m)return;var slug=m[1],K="utilify_favorites";function g(){return (localStorage.getItem(K)||"").split(",").filter(Boolean);}function s(a){localStorage.setItem(K,Array.from(new Set(a)).join(","));}function p(f){btn.textContent=f?"★":"☆";btn.classList.toggle("is-fav",f);btn.setAttribute("aria-label",f?btn.dataset.removeLabel:btn.dataset.addLabel);btn.setAttribute("aria-pressed",String(f));}p(g().indexOf(slug)>-1);btn.addEventListener("click",function(){var a=g(),n=a.indexOf(slug)>-1?a.filter(function(x){return x!==slug;}):a.concat([slug]);s(n);p(n.indexOf(slug)>-1);});})();</script>
+    <script data-utilify-theme-toggle-script>(function(){var b=document.getElementById("themeToggle");if(!b)return;function p(){var t=document.documentElement.getAttribute("data-theme")||"light";b.textContent=t==="dark"?"☀️":"🌙";b.setAttribute("aria-pressed",String(t==="dark"));b.setAttribute("aria-label",t==="dark"?b.dataset.ariaToLight:b.dataset.ariaToDark);}p();b.addEventListener("click",function(){var c=document.documentElement.getAttribute("data-theme")||"light";var n=c==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",n);try{localStorage.setItem("utilify_theme",n);}catch(e){}p();if(typeof gtag==="function"){gtag("event","theme_toggle",{next_theme:n});}});})();</script>
+    <script data-utilify-fav-toggle-script>(function(){var btn=document.querySelector(".fav-toggle-page");if(!btn)return;var m=location.pathname.match(/^\/[^\/]+\/([^\/]+)\/?$/);if(!m)return;var slug=m[1],K="utilify_favorites";function g(){return (localStorage.getItem(K)||"").split(",").filter(Boolean);}function s(a){localStorage.setItem(K,Array.from(new Set(a)).join(","));}function p(f){btn.textContent=f?"★":"☆";btn.classList.toggle("is-fav",f);btn.setAttribute("aria-label",f?btn.dataset.removeLabel:btn.dataset.addLabel);btn.setAttribute("aria-pressed",String(f));}p(g().indexOf(slug)>-1);btn.addEventListener("click",function(){var a=g(),n=a.indexOf(slug)>-1?a.filter(function(x){return x!==slug;}):a.concat([slug]);s(n);var f=n.indexOf(slug)>-1;p(f);if(typeof gtag==="function"){gtag("event","tool_favorite",{tool_slug:slug,action:f?"add":"remove"});}});})();</script>
 </body>
 
 </html>

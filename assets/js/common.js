@@ -150,22 +150,162 @@ const Utils = {
 };
 
 /**
- * Analytics Helper (gated on window.GA_MEASUREMENT_ID being defined)
+ * Analytics Helper
+ *
+ * Thin wrapper over GA4's gtag(). All calls are no-ops when gtag is absent
+ * (e.g. AdSense/GA blocked, or running offline), so callers never need to
+ * guard. Consent Mode v2 defaults (set in the GA4 <head> block) still apply —
+ * without a CMP these events arrive as modeled/cookieless pings.
  */
 const Analytics = {
-  trackEvent(category, action, label) {
-    if (typeof gtag !== 'undefined') {
-      gtag('event', action, {
-        event_category: category,
-        event_label: label
-      });
+  // Fire a GA4 custom event. `params` is an optional object of event params.
+  track(name, params) {
+    if (typeof gtag === 'function') {
+      gtag('event', name, params || {});
     }
   },
 
+  // Tool slug from the URL path (/<lang>/<slug>/...). '' on the index / root.
+  toolSlug() {
+    const m = window.location.pathname.match(/^\/[^/]+\/([^/]+)\/?/);
+    return m ? m[1] : '';
+  },
+
+  // Back-compat shim for older call sites.
+  trackEvent(category, action, label) {
+    this.track(action, { event_category: category, event_label: label });
+  },
+
   trackPageView(path) {
-    if (typeof gtag !== 'undefined' && typeof window.GA_MEASUREMENT_ID === 'string') {
-      gtag('config', window.GA_MEASUREMENT_ID, {
-        page_path: path
+    if (typeof gtag === 'function' && typeof window.GA_MEASUREMENT_ID === 'string') {
+      gtag('config', window.GA_MEASUREMENT_ID, { page_path: path });
+    }
+  }
+};
+
+/**
+ * Delegated tool-interaction tracking.
+ *
+ * Tool pages are generated from ~50 per-tool templates, each with its own
+ * inline primary-action handler (calculate / convert / format / decode ...)
+ * and a shared shareResult(). Rather than touch every template, we listen for
+ * clicks at the document level and map them to GA4 events by convention:
+ *   - any <button class="btn-primary"> with an onclick (except the PWA install
+ *     button) => `tool_calculate`
+ *   - any button whose onclick calls shareResult() => `tool_share`
+ * Best-effort by design; missing an exotic tool is acceptable for analytics.
+ */
+document.addEventListener('click', (e) => {
+  const btn = e.target.closest && e.target.closest('button');
+  if (!btn) return;
+  const slug = Analytics.toolSlug();
+  if (!slug) return; // index / hub pages have their own instrumentation
+  const onclick = btn.getAttribute('onclick') || '';
+  if (/shareResult\s*\(/.test(onclick)) {
+    Analytics.track('tool_share', {
+      tool_slug: slug,
+      method: (typeof navigator !== 'undefined' && navigator.share) ? 'share' : 'copy'
+    });
+  } else if (btn.classList.contains('btn-primary') && btn.id !== 'pwaInstallBtn' && onclick) {
+    Analytics.track('tool_calculate', { tool_slug: slug });
+  }
+});
+
+/**
+ * Favorites Export / Import
+ *
+ * Favorites live in localStorage (`utilify_favorites`, comma-joined slugs),
+ * which is per-device. This lets a user move them between devices: Export
+ * downloads a small JSON snapshot (favorites + current theme); Import reads
+ * such a file and merges the favorites (union) into this device, optionally
+ * adopting the saved theme. Wired up by element id, so the controls can live
+ * on the index, the About page, or a future settings page.
+ */
+const FavoritesData = {
+  FAV_KEY: 'utilify_favorites',
+  THEME_KEY: 'utilify_theme',
+
+  getFavs() {
+    return (localStorage.getItem(this.FAV_KEY) || '').split(',').filter(Boolean);
+  },
+
+  exportFile() {
+    const favs = this.getFavs();
+    const payload = {
+      app: 'utilify',
+      type: 'favorites-export',
+      version: 1,
+      exported_at: new Date().toISOString(),
+      favorites: favs,
+      theme: localStorage.getItem(this.THEME_KEY) || null
+    };
+    const date = new Date().toISOString().slice(0, 10);
+    Utils.downloadFile(
+      JSON.stringify(payload, null, 2),
+      'utilify-favorites-' + date + '.json',
+      'application/json'
+    );
+    return favs.length;
+  },
+
+  // Parse + validate an export payload. Returns the merge result or throws.
+  applyImport(text) {
+    const data = JSON.parse(text);
+    const incoming = Array.isArray(data) ? data : data.favorites;
+    if (!Array.isArray(incoming)) {
+      throw new Error('No favorites array in file');
+    }
+    // Keep only plausible slugs and merge as a union with what's here.
+    const clean = incoming.filter(s => typeof s === 'string' && /^[a-z0-9-]+$/.test(s));
+    const merged = [...new Set([...this.getFavs(), ...clean])];
+    localStorage.setItem(this.FAV_KEY, merged.join(','));
+    // Adopt a saved theme if the snapshot carried one.
+    const theme = data && data.theme;
+    if (theme === 'dark' || theme === 'light') {
+      localStorage.setItem(this.THEME_KEY, theme);
+      document.documentElement.setAttribute('data-theme', theme);
+    }
+    return { added: clean.length, total: merged.length };
+  },
+
+  // Wire the export button, import button, and hidden file input by id.
+  init() {
+    const exportBtn = document.getElementById('favExportBtn');
+    const importBtn = document.getElementById('favImportBtn');
+    const fileInput = document.getElementById('favImportInput');
+    if (exportBtn) {
+      exportBtn.addEventListener('click', () => {
+        const count = this.exportFile();
+        if (count === 0 && exportBtn.dataset.msgEmpty) {
+          Utils.showToast(exportBtn.dataset.msgEmpty);
+        }
+        Analytics.track('favorites_export', { count: count });
+      });
+    }
+    if (importBtn && fileInput) {
+      importBtn.addEventListener('click', () => fileInput.click());
+      fileInput.addEventListener('change', () => {
+        const file = fileInput.files && fileInput.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = () => {
+          try {
+            const res = this.applyImport(String(reader.result));
+            Utils.showToast(
+              (importBtn.dataset.msgSuccess || 'Favorites imported') + ' (' + res.added + ')'
+            );
+            Analytics.track('favorites_import', { added: res.added, total: res.total });
+            // Reload so the index re-renders star states from localStorage.
+            setTimeout(() => window.location.reload(), 700);
+          } catch (e) {
+            Utils.showToast(importBtn.dataset.msgError || 'Could not read that file');
+          }
+        };
+        reader.onerror = () => {
+          Utils.showToast(importBtn.dataset.msgError || 'Could not read that file');
+        };
+        reader.readAsText(file);
+        fileInput.value = ''; // allow re-importing the same file
       });
     }
   }
@@ -175,6 +315,7 @@ const Analytics = {
  * Initialize on DOM ready
  */
 document.addEventListener('DOMContentLoaded', () => {
+  FavoritesData.init();
   // Render language switcher if container exists
   LanguageSwitcher.renderSwitcher('languageSwitcher');
 

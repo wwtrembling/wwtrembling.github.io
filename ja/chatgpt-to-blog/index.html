@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy-Report-Only" content="default-src 'self' https: data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https:; frame-src https:;">
     <meta name="google-adsense-account" content="ca-pub-6334819180242631">
-    <title>ChatGPT Conversation to Blog Post Markdown - Utilify</title>
-    <meta name="description" content="Paste a ChatGPT conversation and get clean Markdown ready for your blog. Strips prompts, merges assistant turns, and formats for publishing.">
+    <title>ChatGPT会話をブログ記事Markdownに変換 - Utilify</title>
+    <meta name="description" content="ChatGPTの会話を貼り付けると、ブログ掲載用のクリーンなMarkdownに変換します。プロンプト削除・アシスタントターンの統合・公開フォーマットに対応。">
     <link rel="canonical" href="https://utilifyapp.net/ja/chatgpt-to-blog/">
 
-    <meta property="og:title" content="ChatGPT Conversation to Blog Post Markdown - Utilify">
-    <meta property="og:description" content="Paste a ChatGPT conversation and get clean Markdown ready for your blog. Strips prompts, merges assistant turns, and formats for publishing.">
+    <meta property="og:title" content="ChatGPT会話をブログ記事Markdownに変換 - Utilify">
+    <meta property="og:description" content="ChatGPTの会話を貼り付けると、ブログ掲載用のクリーンなMarkdownに変換します。プロンプト削除・アシスタントターンの統合・公開フォーマットに対応。">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://utilifyapp.net/ja/chatgpt-to-blog/">
 
@@ -37,8 +37,8 @@
     {
         "@context": "https://schema.org",
         "@type": "WebApplication",
-        "name": "ChatGPT to Blog",
-        "description": "Convert a pasted ChatGPT conversation into clean blog-ready Markdown.",
+        "name": "ChatGPTブログ変換",
+        "description": "貼り付けたChatGPT会話をブログ用クリーンなMarkdownに変換します。",
         "url": "https://utilifyapp.net/ja/chatgpt-to-blog/",
         "inLanguage": "ja",
         "applicationCategory": "UtilitiesApplication",
@@ -80,7 +80,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <script data-utilify-theme-init>(function(){try{var s=localStorage.getItem("utilify_theme");var t=(s==="dark"||s==="light")?s:(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
-    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://utilifyapp.net/ja/"}, {"@type": "ListItem", "position": 2, "name": "ChatGPT → Blog Post Converter", "item": "https://utilifyapp.net/ja/chatgpt-to-blog/"}]}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://utilifyapp.net/ja/"}, {"@type": "ListItem", "position": 2, "name": "ChatGPT → ブログ記事変換", "item": "https://utilifyapp.net/ja/chatgpt-to-blog/"}]}</script>
 </head>
 
 <body>
@@ -88,25 +88,25 @@
     <header class="site-header"><div class="container"><div class="header-content"><a href="/ja/" class="site-logo">🛠️ Utilify</a><button data-utilify-theme-toggle id="themeToggle" class="theme-toggle" type="button" aria-label="Switch to dark mode" data-aria-to-dark="Switch to dark mode" data-aria-to-light="Switch to light mode">🌙</button></div></div></header>
     <main id="main" class="main-content">
         <div class="container-narrow">
-            <nav data-utilify-breadcrumb class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/ja/">Home</a></li><li aria-current="page">ChatGPT → Blog Post Converter</li></ol></nav>
-            <h1>📝 ChatGPT → Blog Post Converter</h1>
+            <nav data-utilify-breadcrumb class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/ja/">Home</a></li><li aria-current="page">ChatGPT → ブログ記事変換</li></ol></nav>
+            <h1>📝 ChatGPT → ブログ記事変換</h1>
             <div class="security-badge" style="display:flex;align-items:center;justify-content:center;gap:8px;margin:10px 0;font-size:14px;color:var(--text-secondary);">
                 <span>🔒 Secure & Client-side</span>
             </div>
 
-            <p>Paste a ChatGPT (or Claude) conversation — text or exported JSON — and the tool splits it into user/assistant turns, optionally strips your prompts, and formats the assistant responses as clean Markdown ready for your blog.</p>
+            <p>ChatGPT（またはClaude）の会話 — テキストまたはJSONエクスポート — を貼り付けると、ユーザー/AIのターンを分離し、プロンプトを選択的に削除して、AI応答をブログ用Markdownに整形します。</p>
 
             <div class="options-row">
-                <label><input type="checkbox" id="optStripPrompts" checked> Strip user prompts (assistant only)</label>
-                <label><input type="checkbox" id="optMergeAssistant" checked> Merge assistant turns into one post</label>
-                <label><input type="checkbox" id="optAddTitle"> Add H1 title</label>
-                <label>Title: <input type="text" id="postTitle" placeholder="My Conversation"></label>
+                <label><input type="checkbox" id="optStripPrompts" checked> ユーザープロンプトを削除（AIの返答のみ）</label>
+                <label><input type="checkbox" id="optMergeAssistant" checked> AIのターンを1つの記事にまとめる</label>
+                <label><input type="checkbox" id="optAddTitle"> H1タイトルを追加</label>
+                <label>タイトル: <input type="text" id="postTitle" placeholder="My Conversation"></label>
             </div>
 
             <div class="conv-grid">
                 <div>
-                    <label class="form-label" for="inputEl">ChatGPT conversation (text or JSON)</label>
-                    <textarea id="inputEl" class="form-input" style="min-height:340px;font-family:var(--font-mono);" placeholder="Paste the conversation here. Both 'You said: ...' / 'ChatGPT said: ...' format and the JSON export are accepted."></textarea>
+                    <label class="form-label" for="inputEl">ChatGPT会話（テキストまたはJSON）</label>
+                    <textarea id="inputEl" class="form-input" style="min-height:340px;font-family:var(--font-mono);" placeholder="ここに会話を貼り付けてください。'You said: ...' / 'ChatGPT said: ...'形式とJSONエクスポートの両方に対応しています。"></textarea>
                 </div>
                 <div>
                     <label class="form-label" for="outputEl">Markdown</label>
@@ -115,21 +115,21 @@
             </div>
 
             <div class="btn-group" style="margin-top: var(--spacing-md);">
-                <button class="btn btn-primary" id="convertBtn">Convert</button>
-                <button class="btn btn-secondary" id="copyBtn">Copy</button>
-                <button class="btn btn-secondary" id="downloadBtn">Download .md</button>
-                <button class="btn btn-secondary" id="clearBtn">Clear</button>
+                <button class="btn btn-primary" id="convertBtn">変換</button>
+                <button class="btn btn-secondary" id="copyBtn">コピー</button>
+                <button class="btn btn-secondary" id="downloadBtn">.mdをダウンロード</button>
+                <button class="btn btn-secondary" id="clearBtn">クリア</button>
             </div>
 
-            <h2>How to use</h2>
-            <div class="howto-content"><ol><li>In ChatGPT, click the share icon → Copy or Share. You can also export your data and use the JSON file.</li><li>Paste the conversation into the left panel.</li><li>Toggle the options: <em>Strip user prompts</em> drops your questions; <em>Merge assistant turns</em> joins all answers into one continuous post; <em>Add H1 title</em> prepends a heading.</li><li>Click <strong>Convert</strong>; review the Markdown on the right.</li><li><strong>Download .md</strong> to save the post locally.</li></ol><p><strong>What's parsed</strong>: text format with "You said:" / "ChatGPT said:" labels (also "User:" / "Assistant:" / Korean "사용자" / "어시스턴트"); the JSON export shape with <code>mapping</code> nodes; and a generic <code>{messages: [{role, content}]}</code> shape. If no role markers are detected the entire input is treated as a single assistant message.</p></div>
+            <h2>使い方</h2>
+            <div class="howto-content"><ol><li>ChatGPTで共有アイコン → コピーまたは共有。またはデータエクスポートでJSONファイルを取得します。</li><li>左パネルに会話を貼り付けます。</li><li>オプションを選択: <em>ユーザープロンプトを削除</em>で質問を除き、<em>AIターンを統合</em>ですべての回答を1つの記事にまとめ、<em>H1タイトルを追加</em>でヘッディングを先頭に付けます。</li><li><strong>変換</strong>後、右のMarkdownを確認します。</li><li><strong>.mdをダウンロード</strong>でローカル保存できます。</li></ol><p><strong>対応フォーマット</strong>: "You said:" / "ChatGPT said:"ラベルのテキスト（"User:" / "Assistant:"、韓国語の"사용자" / "어시스턴트"も認識）; <code>mapping</code>ノードを持つJSONエクスポート; <code>{messages: [{role, content}]}</code>の汎用形式。役割マーカーが検出されない場合は入力全体を1つのAI応答として処理します。</p></div>
 
             <div class="related-tools-section">
-                <h3>Related Tools</h3>
+                <h3>関連ツール</h3>
                 <div class="related-buttons">
-                    <a href="/ja/markdown-previewer/" class="related-btn">Markdown Previewer</a><a
-                        href="/ja/token-counter/" class="related-btn">Token Counter</a><a
-                        href="/ja/prompt-pii-scrubber/" class="related-btn">Prompt PII Scrubber</a>
+                    <a href="/ja/markdown-previewer/" class="related-btn">Markdownプレビュー</a><a
+                        href="/ja/token-counter/" class="related-btn">トークンカウンター</a><a
+                        href="/ja/prompt-pii-scrubber/" class="related-btn">プロンプトPIIスクラバー</a>
                 </div>
             </div>
         </div>
@@ -243,7 +243,7 @@
         document.getElementById('convertBtn').addEventListener('click', convert);
         document.getElementById('copyBtn').addEventListener('click', () => {
             if (outputEl.value) Utils.copyToClipboard(outputEl.value);
-            else Utils.showToast('Click Convert first.');
+            else Utils.showToast('先に変換をクリックしてください。');
         });
         document.getElementById('downloadBtn').addEventListener('click', () => {
             if (!outputEl.value) convert();
@@ -256,8 +256,8 @@
     </script>
     <script>(adsbygoogle=window.adsbygoogle||[]).push({google_ad_client:"ca-pub-6334819180242631",enable_page_level_ads:true});</script>
     <script data-utilify-sw>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){});});}</script>
-    <script data-utilify-theme-toggle-script>(function(){var b=document.getElementById("themeToggle");if(!b)return;function p(){var t=document.documentElement.getAttribute("data-theme")||"light";b.textContent=t==="dark"?"☀️":"🌙";b.setAttribute("aria-pressed",String(t==="dark"));b.setAttribute("aria-label",t==="dark"?b.dataset.ariaToLight:b.dataset.ariaToDark);}p();b.addEventListener("click",function(){var c=document.documentElement.getAttribute("data-theme")||"light";var n=c==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",n);try{localStorage.setItem("utilify_theme",n);}catch(e){}p();});})();</script>
-    <script data-utilify-fav-toggle-script>(function(){var btn=document.querySelector(".fav-toggle-page");if(!btn)return;var m=location.pathname.match(/^\/[^\/]+\/([^\/]+)\/?$/);if(!m)return;var slug=m[1],K="utilify_favorites";function g(){return (localStorage.getItem(K)||"").split(",").filter(Boolean);}function s(a){localStorage.setItem(K,Array.from(new Set(a)).join(","));}function p(f){btn.textContent=f?"★":"☆";btn.classList.toggle("is-fav",f);btn.setAttribute("aria-label",f?btn.dataset.removeLabel:btn.dataset.addLabel);btn.setAttribute("aria-pressed",String(f));}p(g().indexOf(slug)>-1);btn.addEventListener("click",function(){var a=g(),n=a.indexOf(slug)>-1?a.filter(function(x){return x!==slug;}):a.concat([slug]);s(n);p(n.indexOf(slug)>-1);});})();</script>
+    <script data-utilify-theme-toggle-script>(function(){var b=document.getElementById("themeToggle");if(!b)return;function p(){var t=document.documentElement.getAttribute("data-theme")||"light";b.textContent=t==="dark"?"☀️":"🌙";b.setAttribute("aria-pressed",String(t==="dark"));b.setAttribute("aria-label",t==="dark"?b.dataset.ariaToLight:b.dataset.ariaToDark);}p();b.addEventListener("click",function(){var c=document.documentElement.getAttribute("data-theme")||"light";var n=c==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",n);try{localStorage.setItem("utilify_theme",n);}catch(e){}p();if(typeof gtag==="function"){gtag("event","theme_toggle",{next_theme:n});}});})();</script>
+    <script data-utilify-fav-toggle-script>(function(){var btn=document.querySelector(".fav-toggle-page");if(!btn)return;var m=location.pathname.match(/^\/[^\/]+\/([^\/]+)\/?$/);if(!m)return;var slug=m[1],K="utilify_favorites";function g(){return (localStorage.getItem(K)||"").split(",").filter(Boolean);}function s(a){localStorage.setItem(K,Array.from(new Set(a)).join(","));}function p(f){btn.textContent=f?"★":"☆";btn.classList.toggle("is-fav",f);btn.setAttribute("aria-label",f?btn.dataset.removeLabel:btn.dataset.addLabel);btn.setAttribute("aria-pressed",String(f));}p(g().indexOf(slug)>-1);btn.addEventListener("click",function(){var a=g(),n=a.indexOf(slug)>-1?a.filter(function(x){return x!==slug;}):a.concat([slug]);s(n);var f=n.indexOf(slug)>-1;p(f);if(typeof gtag==="function"){gtag("event","tool_favorite",{tool_slug:slug,action:f?"add":"remove"});}});})();</script>
 </body>
 
 </html>

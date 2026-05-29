@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy-Report-Only" content="default-src 'self' https: data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https:; frame-src https:;">
     <meta name="google-adsense-account" content="ca-pub-6334819180242631">
-    <title>Loan Calculator — Monthly Payment, Interest, Amortization - Utilify</title>
-    <meta name="description" content="Calculate monthly loan payments, total interest, and amortization schedule. Works for mortgages, auto loans, and personal loans. Runs entirely in your browser.">
+    <title>ローン計算機 — 月々の返済額・利息・返済スケジュール - Utilify</title>
+    <meta name="description" content="月々のローン返済額、総利息、返済スケジュールを計算します。住宅ローン・自動車ローン・個人ローンに対応。すべてブラウザで動作。">
     <link rel="canonical" href="https://utilifyapp.net/ja/loan-calculator/">
 
-    <meta property="og:title" content="Loan Calculator - Utilify">
-    <meta property="og:description" content="Calculate monthly payment, total interest, and amortization for any fixed-rate loan.">
+    <meta property="og:title" content="ローン計算機 - Utilify">
+    <meta property="og:description" content="固定金利ローンの月々の返済額・総利息・返済スケジュールを計算します。">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://utilifyapp.net/ja/loan-calculator/">
 
@@ -37,8 +37,8 @@
     {
         "@context": "https://schema.org",
         "@type": "WebApplication",
-        "name": "Loan Calculator",
-        "description": "Compute monthly payment, total interest, and amortization schedule for fixed-rate loans.",
+        "name": "ローン計算機",
+        "description": "固定金利ローンの月々の返済額・総利息・返済スケジュールを計算するツール。",
         "url": "https://utilifyapp.net/ja/loan-calculator/",
         "inLanguage": "ja",
         "applicationCategory": "FinanceApplication",
@@ -99,7 +99,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <script data-utilify-theme-init>(function(){try{var s=localStorage.getItem("utilify_theme");var t=(s==="dark"||s==="light")?s:(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
-    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://utilifyapp.net/ja/"}, {"@type": "ListItem", "position": 2, "name": "Finance", "item": "https://utilifyapp.net/ja/finance/"}, {"@type": "ListItem", "position": 3, "name": "Loan Calculator", "item": "https://utilifyapp.net/ja/loan-calculator/"}]}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://utilifyapp.net/ja/"}, {"@type": "ListItem", "position": 2, "name": "Finance", "item": "https://utilifyapp.net/ja/finance/"}, {"@type": "ListItem", "position": 3, "name": "ローン計算機", "item": "https://utilifyapp.net/ja/loan-calculator/"}]}</script>
 </head>
 
 <body>
@@ -107,61 +107,61 @@
     <header class="site-header"><div class="container"><div class="header-content"><a href="/ja/" class="site-logo">🛠️ Utilify</a><button data-utilify-theme-toggle id="themeToggle" class="theme-toggle" type="button" aria-label="Switch to dark mode" data-aria-to-dark="Switch to dark mode" data-aria-to-light="Switch to light mode">🌙</button></div></div></header>
     <main id="main" class="main-content">
         <div class="container-narrow">
-            <nav data-utilify-breadcrumb class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/ja/">Home</a></li><li><a href="/ja/finance/">Finance</a></li><li aria-current="page">Loan Calculator</li></ol></nav>
-            <h1>💰 Loan Calculator</h1>
+            <nav data-utilify-breadcrumb class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/ja/">Home</a></li><li><a href="/ja/finance/?src=breadcrumb">Finance</a></li><li aria-current="page">ローン計算機</li></ol></nav>
+            <h1>💰 ローン計算機</h1>
             <div class="security-badge" style="display:flex;align-items:center;justify-content:center;gap:8px;margin:10px 0;font-size:14px;color:var(--text-secondary);">
                 <span>🔒 Secure & Client-side</span>
                 <button id="pwaInstallBtn" class="btn btn-primary" style="display: none; padding: 4px 12px; font-size: 12px;">📲 Install App</button>
                     <button data-utilify-fav-toggle class="fav-toggle-page" type="button" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
             </div>
 
-            <p>Enter the loan amount, annual interest rate, and term in years to see your monthly payment, total interest paid, and a 12-month amortization preview. Standard formula for fixed-rate loans — mortgages, auto, personal.</p>
+            <p>借入額・年利・返済期間（年）を入力すると、月々の返済額・総返済額・最初の12か月の返済スケジュールが表示されます。住宅・自動車・個人ローンの固定金利標準計算式を使用。</p>
 
             <div class="card">
                 <div class="form-group">
-                    <label class="form-label" for="principal">Loan amount</label>
+                    <label class="form-label" for="principal">借入額</label>
                     <input type="number" id="principal" class="form-input" inputmode="decimal" min="1" step="any" placeholder="100000" value="100000">
                 </div>
                 <div class="form-group">
-                    <label class="form-label" for="rate">Annual interest rate (%)</label>
+                    <label class="form-label" for="rate">年利率 (%)</label>
                     <input type="number" id="rate" class="form-input" inputmode="decimal" min="0" step="0.01" placeholder="4.5" value="4.5">
                 </div>
                 <div class="form-group">
-                    <label class="form-label" for="term">Term (years)</label>
+                    <label class="form-label" for="term">返済期間（年）</label>
                     <input type="number" id="term" class="form-input" inputmode="numeric" min="1" max="50" step="1" placeholder="30" value="30">
                 </div>
                 <div class="button-row">
-                    <button class="btn btn-primary" type="button" onclick="calculate()">Calculate</button>
-                    <button class="btn" type="button" onclick="resetForm()">Reset</button>
+                    <button class="btn btn-primary" type="button" onclick="calculate()">計算</button>
+                    <button class="btn" type="button" onclick="resetForm()">リセット</button>
                 </div>
             </div>
 
             <div id="result" style="display:none;" aria-live="polite">
                 <div class="result-grid">
                     <div class="result-card headline">
-                        <div class="label">Monthly payment</div>
+                        <div class="label">月々の返済額</div>
                         <div class="value" id="monthlyVal">—</div>
                     </div>
                     <div class="result-card">
-                        <div class="label">Total paid</div>
+                        <div class="label">総返済額</div>
                         <div class="value" id="totalVal">—</div>
                     </div>
                     <div class="result-card">
-                        <div class="label">Total interest</div>
+                        <div class="label">総利息</div>
                         <div class="value" id="interestVal">—</div>
                     </div>
                 </div>
 
-                <h3>First 12 months</h3>
+                <h3>最初の12か月</h3>
                 <div class="table-responsive">
                     <table class="schedule-table">
                         <thead>
                             <tr>
-                                <th>Month</th>
-                                <th>Payment</th>
-                                <th>Principal</th>
-                                <th>Interest</th>
-                                <th>Balance</th>
+                                <th>月</th>
+                                <th>返済額</th>
+                                <th>元金</th>
+                                <th>利息</th>
+                                <th>残高</th>
                             </tr>
                         </thead>
                         <tbody id="scheduleBody"></tbody>
@@ -169,22 +169,22 @@
                 </div>
 
                 <div class="button-row" style="margin-top: var(--spacing-md);">
-                    <button class="btn" type="button" onclick="shareResult()">Share result</button>
+                    <button class="btn" type="button" onclick="shareResult()">結果を共有</button>
                 </div>
             </div>
 
-            <div class="disclaimer">Estimate only — not financial advice. Consult a qualified professional for important decisions.</div>
+            <div class="disclaimer">推定値のみ — 金融アドバイスではありません。重要な判断の前には資格を持つ専門家にご相談ください。</div>
 
-            <h2>How to use</h2>
-            <div class="howto-content"><ol><li>Enter the loan principal (the amount you borrow).</li><li>Enter the annual interest rate as a percent (e.g. 4.5 for 4.5%).</li><li>Enter the loan term in years.</li><li>Click <strong>Calculate</strong> — the monthly payment, total cost, and amortization preview appear instantly.</li></ol><p><strong>Formula</strong>: M = P · r(1+r)<sup>n</sup> / ((1+r)<sup>n</sup> − 1), where r is the monthly rate (annual rate / 12) and n is the number of months. For a zero-rate loan the monthly payment is simply principal / months.</p><p>Assumes a fixed rate, equal monthly payments, and no fees, taxes, or insurance. Real loans usually include origination fees, escrow, and PMI — your actual monthly cost may be higher.</p></div>
+            <h2>使い方</h2>
+            <div class="howto-content"><ol><li>ローンの元金（借りる金額）を入力します。</li><li>年利率をパーセントで入力します（例: 4.5%は<code>4.5</code>）。</li><li>返済期間を年単位で入力します。</li><li><strong>計算</strong>をクリックすると月々の返済額・総返済額・返済スケジュールが即座に表示されます。</li></ol><p><strong>計算式</strong>: M = P · r(1+r)<sup>n</sup> / ((1+r)<sup>n</sup> − 1)。rは月利（年利 / 12）、nは返済回数（月数）。金利0%の場合は元金 / 月数で計算します。</p><p>固定金利・均等月払い・手数料なしを前提としています。実際のローンは手数料・保証料などが加わる場合があり、実際の負担はより大きくなることがあります。</p></div>
 
             <div class="related-tools-section">
-                <h3>Related Tools</h3>
+                <h3>関連ツール</h3>
                 <div class="related-buttons">
-                    <a href="/ja/compound-interest/" class="related-btn">Compound Interest</a><a
-                        href="/ja/retirement-calculator/" class="related-btn">Retirement Calculator</a><a
-                        href="/ja/date-calculator/" class="related-btn">Date Calculator</a><a
-                        href="/ja/unit-converter/" class="related-btn">Unit Converter</a>
+                    <a href="/ja/compound-interest/" class="related-btn">複利計算機</a><a
+                        href="/ja/retirement-calculator/" class="related-btn">老後資金計算機</a><a
+                        href="/ja/date-calculator/" class="related-btn">日付計算機</a><a
+                        href="/ja/unit-converter/" class="related-btn">単位変換</a>
                 </div>
             </div>
         </div>
@@ -201,7 +201,7 @@
             const annualRate = parseFloat(document.getElementById('rate').value);
             const years = parseFloat(document.getElementById('term').value);
             if (!(P > 0) || !(years > 0) || !(annualRate >= 0)) {
-                alert('Please enter positive numbers for amount and term.');
+                alert('借入額と返済期間は正の数で入力してください。');
                 return;
             }
             const n = Math.round(years * 12);
@@ -252,21 +252,21 @@
         async function shareResult() {
             const monthly = document.getElementById('monthlyVal').textContent;
             if (monthly === '—') return;
-            const text = 'My monthly loan payment is {value} —'.replace('{value}', monthly) + ' ' + location.href;
+            const text = '月々のローン返済額は {value} —'.replace('{value}', monthly) + ' ' + location.href;
             if (navigator.share) {
-                try { await navigator.share({ title: 'Loan Calculator', text }); return; }
+                try { await navigator.share({ title: 'ローン計算機', text }); return; }
                 catch (e) { if (e && e.name === 'AbortError') return; }
             }
             try {
                 await navigator.clipboard.writeText(text);
-                alert('Result copied to clipboard.');
+                alert('結果をクリップボードにコピーしました。');
             } catch (e) { /* clipboard blocked — silent */ }
         }
     </script>
     <script>(adsbygoogle=window.adsbygoogle||[]).push({google_ad_client:"ca-pub-6334819180242631",enable_page_level_ads:true});</script>
     <script data-utilify-sw>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){});});}</script>
-    <script data-utilify-theme-toggle-script>(function(){var b=document.getElementById("themeToggle");if(!b)return;function p(){var t=document.documentElement.getAttribute("data-theme")||"light";b.textContent=t==="dark"?"☀️":"🌙";b.setAttribute("aria-pressed",String(t==="dark"));b.setAttribute("aria-label",t==="dark"?b.dataset.ariaToLight:b.dataset.ariaToDark);}p();b.addEventListener("click",function(){var c=document.documentElement.getAttribute("data-theme")||"light";var n=c==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",n);try{localStorage.setItem("utilify_theme",n);}catch(e){}p();});})();</script>
-    <script data-utilify-fav-toggle-script>(function(){var btn=document.querySelector(".fav-toggle-page");if(!btn)return;var m=location.pathname.match(/^\/[^\/]+\/([^\/]+)\/?$/);if(!m)return;var slug=m[1],K="utilify_favorites";function g(){return (localStorage.getItem(K)||"").split(",").filter(Boolean);}function s(a){localStorage.setItem(K,Array.from(new Set(a)).join(","));}function p(f){btn.textContent=f?"★":"☆";btn.classList.toggle("is-fav",f);btn.setAttribute("aria-label",f?btn.dataset.removeLabel:btn.dataset.addLabel);btn.setAttribute("aria-pressed",String(f));}p(g().indexOf(slug)>-1);btn.addEventListener("click",function(){var a=g(),n=a.indexOf(slug)>-1?a.filter(function(x){return x!==slug;}):a.concat([slug]);s(n);p(n.indexOf(slug)>-1);});})();</script>
+    <script data-utilify-theme-toggle-script>(function(){var b=document.getElementById("themeToggle");if(!b)return;function p(){var t=document.documentElement.getAttribute("data-theme")||"light";b.textContent=t==="dark"?"☀️":"🌙";b.setAttribute("aria-pressed",String(t==="dark"));b.setAttribute("aria-label",t==="dark"?b.dataset.ariaToLight:b.dataset.ariaToDark);}p();b.addEventListener("click",function(){var c=document.documentElement.getAttribute("data-theme")||"light";var n=c==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",n);try{localStorage.setItem("utilify_theme",n);}catch(e){}p();if(typeof gtag==="function"){gtag("event","theme_toggle",{next_theme:n});}});})();</script>
+    <script data-utilify-fav-toggle-script>(function(){var btn=document.querySelector(".fav-toggle-page");if(!btn)return;var m=location.pathname.match(/^\/[^\/]+\/([^\/]+)\/?$/);if(!m)return;var slug=m[1],K="utilify_favorites";function g(){return (localStorage.getItem(K)||"").split(",").filter(Boolean);}function s(a){localStorage.setItem(K,Array.from(new Set(a)).join(","));}function p(f){btn.textContent=f?"★":"☆";btn.classList.toggle("is-fav",f);btn.setAttribute("aria-label",f?btn.dataset.removeLabel:btn.dataset.addLabel);btn.setAttribute("aria-pressed",String(f));}p(g().indexOf(slug)>-1);btn.addEventListener("click",function(){var a=g(),n=a.indexOf(slug)>-1?a.filter(function(x){return x!==slug;}):a.concat([slug]);s(n);var f=n.indexOf(slug)>-1;p(f);if(typeof gtag==="function"){gtag("event","tool_favorite",{tool_slug:slug,action:f?"add":"remove"});}});})();</script>
 </body>
 
 </html>

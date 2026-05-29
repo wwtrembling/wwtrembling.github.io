@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy-Report-Only" content="default-src 'self' https: data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https:; frame-src https:;">
     <meta name="google-adsense-account" content="ca-pub-6334819180242631">
-    <title>JWT Decoder & Inspector - Utilify</title>
-    <meta name="description" content="Decode and inspect JSON Web Tokens (JWT) in your browser. Header, payload, and expiry checked locally — your token never leaves the page.">
+    <title>JWTデコーダー & インスペクター - Utilify</title>
+    <meta name="description" content="JSON Web Token（JWT）をブラウザでデコード・検査します。ヘッダー、ペイロード、有効期限をローカルで確認 — トークンはページ外に送信されません。">
     <link rel="canonical" href="https://utilifyapp.net/ja/jwt-decoder/">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="JWT Decoder & Inspector - Utilify">
-    <meta property="og:description" content="Decode and inspect JSON Web Tokens (JWT) in your browser. Header, payload, and expiry checked locally — your token never leaves the page.">
+    <meta property="og:title" content="JWTデコーダー & インスペクター - Utilify">
+    <meta property="og:description" content="JSON Web Token（JWT）をブラウザでデコード・検査します。ヘッダー、ペイロード、有効期限をローカルで確認 — トークンはページ外に送信されません。">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://utilifyapp.net/ja/jwt-decoder/">
 
@@ -42,8 +42,8 @@
     {
         "@context": "https://schema.org",
         "@type": "WebApplication",
-        "name": "JWT Decoder",
-        "description": "Client-side JWT decoder that displays the header and payload and verifies expiry.",
+        "name": "JWTデコーダー",
+        "description": "ブラウザで動作するJWTデコーダー。ヘッダーとペイロードを表示し、有効期限を確認します。",
         "url": "https://utilifyapp.net/ja/jwt-decoder/",
         "inLanguage": "ja",
         "applicationCategory": "UtilitiesApplication",
@@ -127,7 +127,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <script data-utilify-theme-init>(function(){try{var s=localStorage.getItem("utilify_theme");var t=(s==="dark"||s==="light")?s:(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
-    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://utilifyapp.net/ja/"}, {"@type": "ListItem", "position": 2, "name": "JWT Decoder", "item": "https://utilifyapp.net/ja/jwt-decoder/"}]}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://utilifyapp.net/ja/"}, {"@type": "ListItem", "position": 2, "name": "JWTデコーダー", "item": "https://utilifyapp.net/ja/jwt-decoder/"}]}</script>
 </head>
 
 <body>
@@ -139,8 +139,8 @@
     </header>
     <main id="main" class="main-content">
         <div class="container-narrow">
-            <nav data-utilify-breadcrumb class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/ja/">Home</a></li><li aria-current="page">JWT Decoder</li></ol></nav>
-            <h1>🪪 JWT Decoder</h1>
+            <nav data-utilify-breadcrumb class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/ja/">Home</a></li><li aria-current="page">JWTデコーダー</li></ol></nav>
+            <h1>🪪 JWTデコーダー</h1>
             <div class="security-badge"
                 style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
                 <span title="Processed securely in client-side">🔒 Secure & Client-side</span>
@@ -149,15 +149,15 @@
                     <button data-utilify-fav-toggle class="fav-toggle-page" type="button" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
             </div>
 
-            <p>Paste a JWT to decode its header and payload. Tokens are processed locally and never sent to a server.</p>
+            <p>JWTを貼り付けてヘッダーとペイロードをデコードします。トークンはローカルでのみ処理され、サーバーには送信されません。</p>
 
             <label class="form-label">JWT</label>
             <textarea id="jwtInput" class="form-input" style="min-height: 140px; font-family: var(--font-mono);"
                 placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0..."></textarea>
 
             <div class="btn-group" style="margin: var(--spacing-md) 0;">
-                <button class="btn btn-primary" id="decodeBtn">Decode</button>
-                <button class="btn btn-secondary" id="clearBtn">Clear</button>
+                <button class="btn btn-primary" id="decodeBtn">デコード</button>
+                <button class="btn btn-secondary" id="clearBtn">クリア</button>
             </div>
 
             <div id="jwtStatus" style="display: none;" aria-live="polite"></div>
@@ -174,29 +174,29 @@
             </div>
 
             <div class="jwt-output" style="margin-top: var(--spacing-lg);">
-                <span class="field-label">Signature (raw)</span>
+                <span class="field-label">Signature (生)</span>
                 <pre id="signatureOut" aria-live="polite"></pre>
                 <p style="font-size: 0.875rem; color: var(--text-secondary); margin-top: var(--spacing-sm);">
-                    Signature verification requires the issuer's secret/public key and is not performed here.
+                    署名の検証には発行者の秘密鍵または公開鍵が必要なため、ここでは行いません。
                 </p>
             </div>
 
             
-            <h2>How to use</h2>
-            <div class="howto-content"><ol><li>Paste a JWT (three Base64URL segments separated by dots) into the input.</li><li>Click <strong>Decode</strong> to view the header and payload as JSON.</li><li>If the payload contains an <code>exp</code> claim, the page checks expiry against your local clock and shows valid / expired status.</li><li>Signature verification requires the issuer's secret or public key and is NOT performed here — this tool inspects the contents only.</li></ol><p>JWTs are <em>not encrypted</em>. Anyone with the token can read its contents. Treat the payload as public information unless it's wrapped in JWE.</p></div>
+            <h2>使い方</h2>
+            <div class="howto-content"><ol><li>JWT（ドット区切りのBase64URL 3セグメント）を入力欄に貼り付けます。</li><li><strong>デコード</strong>をクリックするとHeaderとPayloadがJSONで表示されます。</li><li>ペイロードに<code>exp</code>クレームがある場合、ローカルの時刻と比較して有効／期限切れを表示します。</li><li>署名の検証には発行者の秘密鍵または公開鍵が必要なため、ここでは行いません — 内容の検査専用です。</li></ol><p>JWTは<em>暗号化されていません</em>。トークンを持つ誰でも内容を読めるため、JWEで包まない限りペイロードは公開情報として扱ってください。</p></div>
 
-            <h2>Examples</h2>
-            <div class="examples-content"><p><strong>Sample token:</strong></p><pre><code>eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.
+            <h2>例</h2>
+            <div class="examples-content"><p><strong>サンプルトークン:</strong></p><pre><code>eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.
 eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkFkYSJ9.
-TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ</code></pre><p><strong>Decoded:</strong></p><pre><code>Header:  {"alg":"HS256","typ":"JWT"}
+TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ</code></pre><p><strong>デコード結果:</strong></p><pre><code>Header:  {"alg":"HS256","typ":"JWT"}
 Payload: {"sub":"1234567890","name":"Ada"}</code></pre></div>
 
             <div class="related-tools-section">
-                <h3>Related Tools</h3>
+                <h3>関連ツール</h3>
                 <div class="related-buttons">
-                    <a href="/ja/base64-converter/" class="related-btn">Base64 Converter</a><a
-                        href="/ja/json-formatter/" class="related-btn">JSON Formatter</a><a
-                        href="/ja/hash-generator/" class="related-btn">Hash Generator</a>
+                    <a href="/ja/base64-converter/" class="related-btn">Base64変換</a><a
+                        href="/ja/json-formatter/" class="related-btn">JSONフォーマッター</a><a
+                        href="/ja/hash-generator/" class="related-btn">ハッシュ生成</a>
                 </div>
             </div>
         </div>
@@ -238,13 +238,13 @@ Payload: {"sub":"1234567890","name":"Ada"}</code></pre></div>
             statusEl.style.display = 'none';
 
             if (!token) {
-                showStatus('invalid', 'Paste a JWT to decode.');
+                showStatus('invalid', 'デコードするJWTを入力してください。');
                 return;
             }
 
             const parts = token.split('.');
             if (parts.length !== 3) {
-                showStatus('invalid', 'Not a valid JWT — expected three dot-separated segments.');
+                showStatus('invalid', '有効なJWT形式ではありません。ドット区切りの3つのセグメントが必要です。');
                 return;
             }
 
@@ -259,16 +259,16 @@ Payload: {"sub":"1234567890","name":"Ada"}</code></pre></div>
                 if (typeof payload.exp === 'number') {
                     if (payload.exp < nowSec) {
                         const expDate = new Date(payload.exp * 1000).toISOString();
-                        showStatus('invalid', 'Token expired at ' + expDate);
+                        showStatus('invalid', 'トークンの有効期限が切れています。期限: ' + expDate);
                         return;
                     }
                     const remain = payload.exp - nowSec;
-                    showStatus('valid', 'Valid token. Expires in ' + ' (' + remain + 's)');
+                    showStatus('valid', '有効なトークンです。有効期限まで ' + ' (' + remain + 's)');
                     return;
                 }
-                showStatus('warn', 'Decoded successfully. No 'exp' claim — expiry not checked.');
+                showStatus('warn', 'デコード成功。'exp' クレームがないため、有効期限は確認されませんでした。');
             } catch (e) {
-                showStatus('invalid', 'Decode error: ' + e.message);
+                showStatus('invalid', 'デコードエラー: ' + e.message);
             }
         }
 
@@ -283,8 +283,8 @@ Payload: {"sub":"1234567890","name":"Ada"}</code></pre></div>
     </script>
     <script>(adsbygoogle=window.adsbygoogle||[]).push({google_ad_client:"ca-pub-6334819180242631",enable_page_level_ads:true});</script>
     <script data-utilify-sw>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){});});}</script>
-    <script data-utilify-theme-toggle-script>(function(){var b=document.getElementById("themeToggle");if(!b)return;function p(){var t=document.documentElement.getAttribute("data-theme")||"light";b.textContent=t==="dark"?"☀️":"🌙";b.setAttribute("aria-pressed",String(t==="dark"));b.setAttribute("aria-label",t==="dark"?b.dataset.ariaToLight:b.dataset.ariaToDark);}p();b.addEventListener("click",function(){var c=document.documentElement.getAttribute("data-theme")||"light";var n=c==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",n);try{localStorage.setItem("utilify_theme",n);}catch(e){}p();});})();</script>
-    <script data-utilify-fav-toggle-script>(function(){var btn=document.querySelector(".fav-toggle-page");if(!btn)return;var m=location.pathname.match(/^\/[^\/]+\/([^\/]+)\/?$/);if(!m)return;var slug=m[1],K="utilify_favorites";function g(){return (localStorage.getItem(K)||"").split(",").filter(Boolean);}function s(a){localStorage.setItem(K,Array.from(new Set(a)).join(","));}function p(f){btn.textContent=f?"★":"☆";btn.classList.toggle("is-fav",f);btn.setAttribute("aria-label",f?btn.dataset.removeLabel:btn.dataset.addLabel);btn.setAttribute("aria-pressed",String(f));}p(g().indexOf(slug)>-1);btn.addEventListener("click",function(){var a=g(),n=a.indexOf(slug)>-1?a.filter(function(x){return x!==slug;}):a.concat([slug]);s(n);p(n.indexOf(slug)>-1);});})();</script>
+    <script data-utilify-theme-toggle-script>(function(){var b=document.getElementById("themeToggle");if(!b)return;function p(){var t=document.documentElement.getAttribute("data-theme")||"light";b.textContent=t==="dark"?"☀️":"🌙";b.setAttribute("aria-pressed",String(t==="dark"));b.setAttribute("aria-label",t==="dark"?b.dataset.ariaToLight:b.dataset.ariaToDark);}p();b.addEventListener("click",function(){var c=document.documentElement.getAttribute("data-theme")||"light";var n=c==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",n);try{localStorage.setItem("utilify_theme",n);}catch(e){}p();if(typeof gtag==="function"){gtag("event","theme_toggle",{next_theme:n});}});})();</script>
+    <script data-utilify-fav-toggle-script>(function(){var btn=document.querySelector(".fav-toggle-page");if(!btn)return;var m=location.pathname.match(/^\/[^\/]+\/([^\/]+)\/?$/);if(!m)return;var slug=m[1],K="utilify_favorites";function g(){return (localStorage.getItem(K)||"").split(",").filter(Boolean);}function s(a){localStorage.setItem(K,Array.from(new Set(a)).join(","));}function p(f){btn.textContent=f?"★":"☆";btn.classList.toggle("is-fav",f);btn.setAttribute("aria-label",f?btn.dataset.removeLabel:btn.dataset.addLabel);btn.setAttribute("aria-pressed",String(f));}p(g().indexOf(slug)>-1);btn.addEventListener("click",function(){var a=g(),n=a.indexOf(slug)>-1?a.filter(function(x){return x!==slug;}):a.concat([slug]);s(n);var f=n.indexOf(slug)>-1;p(f);if(typeof gtag==="function"){gtag("event","tool_favorite",{tool_slug:slug,action:f?"add":"remove"});}});})();</script>
 </body>
 
 </html>

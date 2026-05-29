@@ -205,10 +205,10 @@
             <h2 class="text-center mb-4">Featured Tools</h2>
             <div class="featured-grid">
           <a href="/ja/json-formatter/" class="featured-card"><div class="card-icon">{ }</div><h3 class="card-title">JSONフォーマッター</h3><p class="card-description">JSONデータの整形、検証、圧縮を行います。開発者向けの広告なしツール。</p></a>
-          <a href="/ja/jwt-decoder/" class="featured-card"><div class="card-icon">🪪</div><h3 class="card-title">JWT Decoder</h3><p class="card-description">Paste a JWT to decode its header and payload. Tokens are processed locally and never sent to a server.</p></a>
-          <a href="/ja/uuid-generator/" class="featured-card"><div class="card-icon">🆔</div><h3 class="card-title">UUID Generator</h3><p class="card-description">Generate cryptographically random UUIDs locally. v4 (random) is the most common choice; v1 embeds a timestamp. Format options for hyphens, casing, and braces.</p></a>
+          <a href="/ja/jwt-decoder/" class="featured-card"><div class="card-icon">🪪</div><h3 class="card-title">JWTデコーダー</h3><p class="card-description">JWTを貼り付けてヘッダーとペイロードをデコードします。トークンはローカルでのみ処理され、サーバーには送信されません。</p></a>
+          <a href="/ja/uuid-generator/" class="featured-card"><div class="card-icon">🆔</div><h3 class="card-title">UUID生成</h3><p class="card-description">暗号学的に安全なUUIDをローカルで生成します。v4（ランダム）が最も一般的です。v1はタイムスタンプを埋め込みます。ハイフン・大文字・波括弧のフォーマットオプションあり。</p></a>
           <a href="/ja/base64-converter/" class="featured-card"><div class="card-icon">🔤</div><h3 class="card-title">Base64エンコーダー/デコーダー</h3><p class="card-description">テキストをBase64にエンコードまたはデコードします。</p></a>
-          <a href="/ja/hash-generator/" class="featured-card"><div class="card-icon">🔑</div><h3 class="card-title">Hash Generator</h3><p class="card-description">Type any text to instantly compute MD5 and SHA-1/256/384/512 digests. Nothing is uploaded — all hashing runs locally.</p></a>
+          <a href="/ja/hash-generator/" class="featured-card"><div class="card-icon">🔑</div><h3 class="card-title">ハッシュ生成</h3><p class="card-description">テキストを入力するとMD5・SHA-1/256/384/512ダイジェストを即座に計算します。データはアップロードされません — すべてローカルで処理されます。</p></a>
             </div>
 
             <h2 class="text-center mb-4">利用可能なツール</h2>
@@ -234,7 +234,7 @@
                 </div>
             </div>
 
-            <div class="subcat-chips" data-parent-cat="calc" role="group" aria-label="Subcategory filter" hidden><button type="button" class="subcat-chip" data-subcat="" aria-pressed="true">All</button><button type="button" class="subcat-chip" data-subcat="finance" aria-pressed="false">Finance</button><a href="/ja/finance/" class="hub-link" data-for-subcat="finance" hidden>→ Finance hub</a><button type="button" class="subcat-chip" data-subcat="health" aria-pressed="false">Health</button><a href="/ja/health/" class="hub-link" data-for-subcat="health" hidden>→ Health hub</a></div>
+            <div class="subcat-chips" data-parent-cat="calc" role="group" aria-label="Subcategory filter" hidden><button type="button" class="subcat-chip" data-subcat="" aria-pressed="true">All</button><button type="button" class="subcat-chip" data-subcat="finance" aria-pressed="false">Finance</button><a href="/ja/finance/?src=chip" class="hub-link" data-for-subcat="finance" hidden>→ Finance hub</a><button type="button" class="subcat-chip" data-subcat="health" aria-pressed="false">Health</button><a href="/ja/health/?src=chip" class="hub-link" data-for-subcat="health" hidden>→ Health hub</a></div>
 
             <p id="emptyState" class="empty-state" hidden
                data-msg-favorites="No favorites yet. Click ☆ on any tool card to save it."
@@ -385,99 +385,99 @@
         <a href="/ja/jwt-decoder/" class="card" data-category="dev" data-subcategory="" data-slug="jwt-decoder" data-keywords="jwt token auth jose decode">
           <button type="button" class="fav-toggle" data-fav="jwt-decoder" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">🪪</div>
-          <h3 class="card-title">JWT Decoder</h3>
-          <p class="card-description">Paste a JWT to decode its header and payload. Tokens are processed locally and never sent to a server.</p>
+          <h3 class="card-title">JWTデコーダー</h3>
+          <p class="card-description">JWTを貼り付けてヘッダーとペイロードをデコードします。トークンはローカルでのみ処理され、サーバーには送信されません。</p>
         </a>
 
         <a href="/ja/hash-generator/" class="card" data-category="dev" data-subcategory="" data-slug="hash-generator" data-keywords="hash md5 sha sha256 digest">
           <button type="button" class="fav-toggle" data-fav="hash-generator" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">🔑</div>
-          <h3 class="card-title">Hash Generator</h3>
-          <p class="card-description">Type any text to instantly compute MD5 and SHA-1/256/384/512 digests. Nothing is uploaded — all hashing runs locally.</p>
+          <h3 class="card-title">ハッシュ生成</h3>
+          <p class="card-description">テキストを入力するとMD5・SHA-1/256/384/512ダイジェストを即座に計算します。データはアップロードされません — すべてローカルで処理されます。</p>
         </a>
 
         <a href="/ja/unix-timestamp/" class="card" data-category="convert" data-subcategory="" data-slug="unix-timestamp" data-keywords="unix timestamp epoch time">
           <button type="button" class="fav-toggle" data-fav="unix-timestamp" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">⏲️</div>
-          <h3 class="card-title">Unix Timestamp Converter</h3>
-          <p class="card-description">Convert between Unix timestamps and dates. Auto-detects seconds vs. milliseconds and shows both UTC and your local time zone.</p>
+          <h3 class="card-title">Unixタイムスタンプ変換</h3>
+          <p class="card-description">Unixタイムスタンプと日付を相互変換します。秒・ミリ秒を自動判別し、UTCとローカルタイムゾーンを両方表示します。</p>
         </a>
 
         <a href="/ja/uuid-generator/" class="card" data-category="dev" data-subcategory="" data-slug="uuid-generator" data-keywords="uuid guid random identifier">
           <button type="button" class="fav-toggle" data-fav="uuid-generator" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">🆔</div>
-          <h3 class="card-title">UUID Generator</h3>
-          <p class="card-description">Generate cryptographically random UUIDs locally. v4 (random) is the most common choice; v1 embeds a timestamp. Format options for hyphens, casing, and braces.</p>
+          <h3 class="card-title">UUID生成</h3>
+          <p class="card-description">暗号学的に安全なUUIDをローカルで生成します。v4（ランダム）が最も一般的です。v1はタイムスタンプを埋め込みます。ハイフン・大文字・波括弧のフォーマットオプションあり。</p>
         </a>
 
         <a href="/ja/url-encoder/" class="card" data-category="dev" data-subcategory="" data-slug="url-encoder" data-keywords="url encode decode percent escape">
           <button type="button" class="fav-toggle" data-fav="url-encoder" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">🔗</div>
-          <h3 class="card-title">URL Encoder / Decoder</h3>
-          <p class="card-description">Encode characters into percent-encoded form (e.g. space → %20) or decode them back. Use 'Component' for query values; use 'Full URL' to preserve reserved characters like : / ?.</p>
+          <h3 class="card-title">URLエンコード / デコード</h3>
+          <p class="card-description">文字をパーセントエンコード形式（例: スペース → %20）にエンコード、またはデコードします。クエリ値には「Component」、コロン / ？などの予約文字を保持する場合は「Full URL」モードを使用してください。</p>
         </a>
 
         <a href="/ja/token-counter/" class="card" data-category="ai" data-subcategory="" data-slug="token-counter" data-keywords="token gpt claude cost tiktoken">
           <button type="button" class="fav-toggle" data-fav="token-counter" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">🪙</div>
-          <h3 class="card-title">AI Token Counter & Cost Calculator</h3>
-          <p class="card-description">Estimate the token count of any text and the per-model API cost across GPT-4o, Claude Opus 4.7, Gemini 2.5, and more. Heuristic count (≈4 chars/token English, ≈1.5 chars/token CJK) — exact tokenization needs the provider API.</p>
+          <h3 class="card-title">AIトークンカウンター & コスト計算機</h3>
+          <p class="card-description">テキストのトークン数とGPT-4o・Claude Opus 4.7・Gemini 2.5などのモデル別APIコストを推定します。ヒューリスティック計算（英語≈4文字/トークン、CJK≈1.5文字/トークン）— 正確なトークン化にはプロバイダーAPIが必要です。</p>
         </a>
 
         <a href="/ja/mcp-config-generator/" class="card" data-category="ai" data-subcategory="" data-slug="mcp-config-generator" data-keywords="mcp claude desktop cursor config">
           <button type="button" class="fav-toggle" data-fav="mcp-config-generator" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">🔌</div>
-          <h3 class="card-title">MCP Server Config Generator</h3>
-          <p class="card-description">Generate Model Context Protocol (MCP) server configuration for Claude Desktop, Cursor, or VS Code. Pick transport, command, args, and env vars — the tool emits the correct JSON shape for each client and shows the config file path.</p>
+          <h3 class="card-title">MCPサーバー設定ジェネレーター</h3>
+          <p class="card-description">Claude Desktop・Cursor・VS Code向けのModel Context Protocol（MCP）サーバー設定を生成します。トランスポート・コマンド・引数・環境変数を入力すると、各クライアントに対応した正しいJSONと設定ファイルのパスを出力します。</p>
         </a>
 
         <a href="/ja/ai-image-inspector/" class="card" data-category="ai" data-subcategory="" data-slug="ai-image-inspector" data-keywords="ai image metadata midjourney stable diffusion">
           <button type="button" class="fav-toggle" data-fav="ai-image-inspector" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">🔬</div>
-          <h3 class="card-title">AI Image Metadata Inspector</h3>
-          <p class="card-description">Drop or pick an image to inspect its embedded metadata. The tool reads PNG tEXt/iTXt chunks (Stable Diffusion stores prompts there), JPEG EXIF UserComment (Midjourney/DALL-E often embed details), and detects C2PA Content Credentials boxes. Files never leave your browser.</p>
+          <h3 class="card-title">AI画像メタデータインスペクター</h3>
+          <p class="card-description">画像をドロップまたは選択してメタデータを検査します。PNG tEXt/iTXtチャンク（Stable Diffusionのプロンプト保存先）、JPEG EXIF UserComment（Midjourney/DALL-Eが識別情報を埋め込む）、C2PA Content Credentialsボックスを検出します。ファイルはブラウザ外に出ません。</p>
         </a>
 
         <a href="/ja/chatgpt-to-blog/" class="card" data-category="ai" data-subcategory="" data-slug="chatgpt-to-blog" data-keywords="chatgpt blog markdown export">
           <button type="button" class="fav-toggle" data-fav="chatgpt-to-blog" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">📝</div>
-          <h3 class="card-title">ChatGPT → Blog Post Converter</h3>
-          <p class="card-description">Paste a ChatGPT (or Claude) conversation — text or exported JSON — and the tool splits it into user/assistant turns, optionally strips your prompts, and formats the assistant responses as clean Markdown ready for your blog.</p>
+          <h3 class="card-title">ChatGPT → ブログ記事変換</h3>
+          <p class="card-description">ChatGPT（またはClaude）の会話 — テキストまたはJSONエクスポート — を貼り付けると、ユーザー/AIのターンを分離し、プロンプトを選択的に削除して、AI応答をブログ用Markdownに整形します。</p>
         </a>
 
         <a href="/ja/prompt-pii-scrubber/" class="card" data-category="ai" data-subcategory="" data-slug="prompt-pii-scrubber" data-keywords="pii prompt mask redact privacy">
           <button type="button" class="fav-toggle" data-fav="prompt-pii-scrubber" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">🛡️</div>
-          <h3 class="card-title">Prompt PII Scrubber</h3>
-          <p class="card-description">Mask sensitive data (emails, phones, SSNs, credit cards, API keys, IPs, URLs) before pasting prompts into ChatGPT, Claude, or any AI service. Runs entirely in your browser — your text never leaves the page.</p>
+          <h3 class="card-title">プロンプトPIIスクラバー</h3>
+          <p class="card-description">ChatGPT・Claude・Geminiなどにプロンプトを貼り付ける前に、機密情報（メール・電話番号・SSN・クレジットカード・APIキー・IPアドレス・URL）をマスクします。すべてブラウザ内で処理されます。</p>
         </a>
 
         <a href="/ja/claude-md-generator/" class="card" data-category="ai" data-subcategory="" data-slug="claude-md-generator" data-keywords="claude claude.md system prompt">
           <button type="button" class="fav-toggle" data-fav="claude-md-generator" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">📜</div>
-          <h3 class="card-title">Claude.md Generator</h3>
-          <p class="card-description">Generate a CLAUDE.md (or any AI agent system prompt) from a simple form. Specify the project role, coding conventions, constraints, and commands; copy or download the resulting Markdown.</p>
+          <h3 class="card-title">Claude.mdジェネレーター</h3>
+          <p class="card-description">シンプルなフォームからCLAUDE.md（またはAIエージェントのシステムプロンプト）を生成します。プロジェクトの役割・コーディング規約・制約・コマンドを入力して、Markdownとしてコピーまたはダウンロードできます。</p>
         </a>
 
         <a href="/ja/loan-calculator/" class="card" data-category="calc" data-subcategory="finance" data-slug="loan-calculator" data-keywords="loan mortgage amortization payment interest">
           <button type="button" class="fav-toggle" data-fav="loan-calculator" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">💰</div>
-          <h3 class="card-title">Loan Calculator</h3>
-          <p class="card-description">Enter the loan amount, annual interest rate, and term in years to see your monthly payment, total interest paid, and a 12-month amortization preview. Standard formula for fixed-rate loans — mortgages, auto, personal.</p>
+          <h3 class="card-title">ローン計算機</h3>
+          <p class="card-description">借入額・年利・返済期間（年）を入力すると、月々の返済額・総返済額・最初の12か月の返済スケジュールが表示されます。住宅・自動車・個人ローンの固定金利標準計算式を使用。</p>
         </a>
 
         <a href="/ja/compound-interest/" class="card" data-category="calc" data-subcategory="finance" data-slug="compound-interest" data-keywords="compound interest investment savings">
           <button type="button" class="fav-toggle" data-fav="compound-interest" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">📈</div>
-          <h3 class="card-title">Compound Interest Calculator</h3>
-          <p class="card-description">Enter your starting principal, annual return, time horizon, compounding frequency, and optional monthly contributions to project the future value of an investment or savings account. Includes a year-by-year balance breakdown.</p>
+          <h3 class="card-title">複利計算機</h3>
+          <p class="card-description">初期元金・年利・期間・複利頻度・月々の積立を入力すると、投資や貯蓄口座の将来価値を計算します。年別残高推移も表示されます。</p>
         </a>
 
         <a href="/ja/retirement-calculator/" class="card" data-category="calc" data-subcategory="finance" data-slug="retirement-calculator" data-keywords="retirement 401k pension nest egg">
           <button type="button" class="fav-toggle" data-fav="retirement-calculator" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">🏖️</div>
-          <h3 class="card-title">Retirement Calculator</h3>
-          <p class="card-description">Enter your current age, target retirement age, current savings, monthly contributions, expected return, planned annual withdrawal, and life expectancy. The calculator runs an accumulation phase, then a withdrawal phase to show whether your nest egg lasts.</p>
+          <h3 class="card-title">老後資金計算機</h3>
+          <p class="card-description">現在の年齢・目標退職年齢・現在の貯蓄・月々の積立額・期待利回り・年間引き出し計画額・平均余命を入力すると、蓄積フェーズと引き出しフェーズをシミュレーションし、資金がいつまで持つかを表示します。</p>
         </a>
 
         <a href="/ja/calorie-calculator/" class="card" data-category="calc" data-subcategory="health" data-slug="calorie-calculator" data-keywords="calorie bmr tdee macro diet">
@@ -490,8 +490,8 @@
         <a href="/ja/pregnancy-calculator/" class="card" data-category="calc" data-subcategory="health" data-slug="pregnancy-calculator" data-keywords="pregnancy due date lmp gestation trimester">
           <button type="button" class="fav-toggle" data-fav="pregnancy-calculator" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">🤰</div>
-          <h3 class="card-title">Pregnancy Due Date Calculator</h3>
-          <p class="card-description">Enter the first day of your last menstrual period (LMP) and your typical cycle length. The calculator returns the estimated due date, your current pregnancy week and day, the trimester, and how many days remain until delivery. Naegele's rule plus a cycle-length adjustment.</p>
+          <h3 class="card-title">妊娠出産予定日計算機</h3>
+          <p class="card-description">最終月経開始日（LMP）と通常の生理周期を入力すると、出産予定日・現在の妊娠週数・トリメスター・残り日数を計算します。ネーゲレ公式と生理周期補正を適用しています。</p>
         </a>
 
         <a href="/ja/body-fat-calculator/" class="card" data-category="calc" data-subcategory="health" data-slug="body-fat-calculator" data-keywords="body fat bfp navy composition">
@@ -504,22 +504,22 @@
         <a href="/ja/rag-chunker/" class="card" data-category="ai" data-subcategory="" data-slug="rag-chunker" data-keywords="rag chunk split embedding vector overlap">
           <button type="button" class="fav-toggle" data-fav="rag-chunker" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">✂️</div>
-          <h3 class="card-title">RAG Text Chunker</h3>
-          <p class="card-description">Paste a long document and split it into overlapping chunks for embedding-based retrieval. Pick chunks-by-characters for predictable size or chunks-by-token-estimate for closer alignment with embedding model limits. All processing happens in your browser.</p>
+          <h3 class="card-title">RAGテキストチャンカー</h3>
+          <p class="card-description">長いドキュメントを埋め込みベースの検索用に重複チャンクへ分割します。一定のサイズが必要な場合は文字モード、埋め込みモデルのコンテキスト制限に合わせるにはトークンモードを選択してください。すべてブラウザ内で処理されます。</p>
         </a>
 
         <a href="/ja/few-shot-formatter/" class="card" data-category="ai" data-subcategory="" data-slug="few-shot-formatter" data-keywords="few-shot prompt examples template formatter">
           <button type="button" class="fav-toggle" data-fav="few-shot-formatter" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">🎯</div>
-          <h3 class="card-title">Few-Shot Prompt Formatter</h3>
-          <p class="card-description">Add a system instruction and a list of input → output examples. The tool emits a clean few-shot prompt in Markdown, Anthropic-style XML tags, OpenAI messages JSON, or plain text — ready to paste into ChatGPT, Claude, or a script.</p>
+          <h3 class="card-title">Few-Shotプロンプトフォーマッター</h3>
+          <p class="card-description">システム指示と入力→出力の例リストを追加すると、Markdown・Anthropicスタイルのタグ・OpenAI messages JSON・プレーンテキスト形式のFew-shotプロンプトを生成します — ChatGPT・Claude・スクリプトにそのまま貼り付けられます。</p>
         </a>
 
         <a href="/ja/json-schema-validator/" class="card" data-category="dev" data-subcategory="" data-slug="json-schema-validator" data-keywords="json schema validate ajv schema jsonpath">
           <button type="button" class="fav-toggle" data-fav="json-schema-validator" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">🛡️</div>
-          <h3 class="card-title">JSON Schema Validator</h3>
-          <p class="card-description">Paste your JSON data and a JSON Schema. The validator checks type, required, properties, items, enum, format, pattern, and min/max constraints, and reports each failure with the JSONPath where it occurred. All processing in your browser.</p>
+          <h3 class="card-title">JSONスキーマバリデーター</h3>
+          <p class="card-description">JSONデータとJSONスキーマを貼り付けると、type・required・properties・items・enum・format・pattern・min/max制約をすべて検証し、各エラーが発生したJSONPathとともに報告します。すべてブラウザ内で処理されます。</p>
         </a>
 
         <a href="/ja/tip-calculator/" class="card" data-category="calc" data-subcategory="" data-slug="tip-calculator" data-keywords="tip gratuity split bill restaurant">
@@ -658,6 +658,14 @@
             <div class="footer-content">
                 <p>&copy; 2025 Utilify. All rights reserved.</p>
                 <p data-legal-links style="font-size: 0.875rem; margin-top: 8px;"><a href="/ja/about/">About</a> · <a href="/ja/privacy/">Privacy</a> · <a href="/ja/terms/">Terms</a></p>
+                <div class="fav-data-controls" style="margin-top:12px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap;">
+                    <button type="button" id="favExportBtn" class="btn" style="padding:4px 12px;font-size:13px;"
+                            data-msg-empty="エクスポートするお気に入りがありません。">⬇ お気に入りをエクスポート</button>
+                    <button type="button" id="favImportBtn" class="btn" style="padding:4px 12px;font-size:13px;"
+                            data-msg-success="お気に入りをインポートしました"
+                            data-msg-error="ファイルを読み込めませんでした。">⬆ お気に入りをインポート</button>
+                    <input type="file" id="favImportInput" accept="application/json,.json" hidden>
+                </div>
             </div>
         </div>
     </footer>
@@ -802,6 +810,13 @@
                     searchDebounce = setTimeout(() => {
                         activeSearch = e.target.value;
                         applyFilters();
+                        // GA4: log that search was used (query text is NOT sent,
+                        // only its length). Fire only for queries of 2+ chars to
+                        // skip incidental single keystrokes.
+                        const len = activeSearch.trim().length;
+                        if (len >= 2 && typeof gtag === 'function') {
+                            gtag('event', 'search_used', { query_length: len });
+                        }
                     }, 120);
                     if (shortcut) shortcut.style.display = e.target.value ? 'none' : '';
                 });
@@ -829,6 +844,9 @@
                 btn.addEventListener('click', () => {
                     activeCat = btn.dataset.cat;
                     activeSubcat = '';
+                    if (typeof gtag === 'function') {
+                        gtag('event', 'category_filter', { category: activeCat });
+                    }
                     catButtons.forEach(b =>
                         b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'));
                     // Reset subcategory chips so the next visit to a category starts at "All".
@@ -872,6 +890,10 @@
                     star.setAttribute('aria-label',
                         nowFav ? star.dataset.removeLabel : star.dataset.addLabel);
                     star.setAttribute('aria-pressed', String(nowFav));
+                    if (typeof gtag === 'function') {
+                        gtag('event', 'tool_favorite',
+                            { tool_slug: slug, action: nowFav ? 'add' : 'remove' });
+                    }
                     if (activeCat === 'favorites') applyFilters();
                 });
             });
@@ -881,7 +903,7 @@
     </script>
     <script>(adsbygoogle=window.adsbygoogle||[]).push({google_ad_client:"ca-pub-6334819180242631",enable_page_level_ads:true});</script>
     <script data-utilify-sw>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){});});}</script>
-    <script data-utilify-theme-toggle-script>(function(){var b=document.getElementById("themeToggle");if(!b)return;function p(){var t=document.documentElement.getAttribute("data-theme")||"light";b.textContent=t==="dark"?"☀️":"🌙";b.setAttribute("aria-pressed",String(t==="dark"));b.setAttribute("aria-label",t==="dark"?b.dataset.ariaToLight:b.dataset.ariaToDark);}p();b.addEventListener("click",function(){var c=document.documentElement.getAttribute("data-theme")||"light";var n=c==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",n);try{localStorage.setItem("utilify_theme",n);}catch(e){}p();});})();</script>
+    <script data-utilify-theme-toggle-script>(function(){var b=document.getElementById("themeToggle");if(!b)return;function p(){var t=document.documentElement.getAttribute("data-theme")||"light";b.textContent=t==="dark"?"☀️":"🌙";b.setAttribute("aria-pressed",String(t==="dark"));b.setAttribute("aria-label",t==="dark"?b.dataset.ariaToLight:b.dataset.ariaToDark);}p();b.addEventListener("click",function(){var c=document.documentElement.getAttribute("data-theme")||"light";var n=c==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",n);try{localStorage.setItem("utilify_theme",n);}catch(e){}p();if(typeof gtag==="function"){gtag("event","theme_toggle",{next_theme:n});}});})();</script>
 </body>
 
 </html>

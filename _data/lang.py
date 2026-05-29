@@ -214,7 +214,12 @@ INDEX_PAGE = {
         "search_placeholder": "Search tools…",
         "search_no_results": "No tools match your search.",
         "hub_link_finance": "Finance hub",
-        "hub_link_health": "Health hub"
+        "hub_link_health": "Health hub",
+        "favorites_export": "⬇ Export favorites",
+        "favorites_import": "⬆ Import favorites",
+        "favorites_export_empty": "No favorites to export yet.",
+        "favorites_import_success": "Favorites imported",
+        "favorites_import_error": "Couldn't read that file."
     },
     "ko": {
         "title": "무료 온라인 유틸리티 모음 - Utilify",
@@ -248,7 +253,12 @@ INDEX_PAGE = {
         "search_placeholder": "도구 검색…",
         "search_no_results": "검색 결과가 없습니다.",
         "hub_link_finance": "금융 허브",
-        "hub_link_health": "건강 허브"
+        "hub_link_health": "건강 허브",
+        "favorites_export": "⬇ 즐겨찾기 내보내기",
+        "favorites_import": "⬆ 즐겨찾기 가져오기",
+        "favorites_export_empty": "내보낼 즐겨찾기가 없습니다.",
+        "favorites_import_success": "즐겨찾기를 가져왔습니다",
+        "favorites_import_error": "파일을 읽을 수 없습니다."
     },
     "vi": {
         "title": "Bộ tiện ích trực tuyến miễn phí - Utilify",
@@ -304,7 +314,12 @@ INDEX_PAGE = {
         "hero_title": "🛠️ Utilify",
         "hero_desc": "日常業務のための無料オンラインユーティリティ。インストール不要。",
         "h2_tools": "利用可能なツール",
-        "h2_lang": "言語を選択"
+        "h2_lang": "言語を選択",
+        "favorites_export": "⬇ お気に入りをエクスポート",
+        "favorites_import": "⬆ お気に入りをインポート",
+        "favorites_export_empty": "エクスポートするお気に入りがありません。",
+        "favorites_import_success": "お気に入りをインポートしました",
+        "favorites_import_error": "ファイルを読み込めませんでした。"
     },
     "zh-cn": {
         "title": "免费在线工具箱 - Utilify",
@@ -5666,6 +5681,36 @@ JWT_DECODER = {
         "howto_html": '<ol><li>JWT(점으로 구분된 Base64URL 3개)를 입력 창에 붙여넣으세요.</li><li><strong>Decode</strong>를 눌러 header와 payload를 JSON으로 확인합니다.</li><li>payload에 <code>exp</code> 클레임이 있으면 로컬 시각과 비교해 유효/만료 여부를 표시합니다.</li><li>서명 검증은 발급자의 비밀키/공개키가 필요하므로 여기서는 수행하지 않습니다 — 내용 검사 전용입니다.</li></ol><p>JWT는 <em>암호화된 것이 아닙니다</em>. 토큰을 가진 누구나 내용을 읽을 수 있으므로 JWE로 감싸지 않은 이상 payload는 공개 정보로 취급해야 합니다.</p>',
         "examples_header": "예시",
         "examples_html": '<p><strong>샘플 토큰:</strong></p><pre><code>eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.\neyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkFkYSJ9.\nTJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ</code></pre><p><strong>디코딩 결과:</strong></p><pre><code>Header:  {"alg":"HS256","typ":"JWT"}\nPayload: {"sub":"1234567890","name":"Ada"}</code></pre>'
+    },
+    "ja": {
+        "title": "JWTデコーダー",
+        "meta_title": "JWTデコーダー & インスペクター - Utilify",
+        "meta_desc": "JSON Web Token（JWT）をブラウザでデコード・検査します。ヘッダー、ペイロード、有効期限をローカルで確認 — トークンはページ外に送信されません。",
+        "json_name": "JWTデコーダー",
+        "json_desc": "ブラウザで動作するJWTデコーダー。ヘッダーとペイロードを表示し、有効期限を確認します。",
+        "page_desc": "JWTを貼り付けてヘッダーとペイロードをデコードします。トークンはローカルでのみ処理され、サーバーには送信されません。",
+        "label_input": "JWT",
+        "ph_input": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0...",
+        "btn_decode": "デコード",
+        "btn_clear": "クリア",
+        "label_header": "Header",
+        "label_payload": "Payload",
+        "label_signature": "Signature (生)",
+        "signature_note": "署名の検証には発行者の秘密鍵または公開鍵が必要なため、ここでは行いません。",
+        "alert_empty": "デコードするJWTを入力してください。",
+        "alert_format": "有効なJWT形式ではありません。ドット区切りの3つのセグメントが必要です。",
+        "alert_decode_error": "デコードエラー: ",
+        "alert_valid": "有効なトークンです。有効期限まで ",
+        "alert_expired": "トークンの有効期限が切れています。期限: ",
+        "alert_no_exp": "デコード成功。'exp' クレームがないため、有効期限は確認されませんでした。",
+        "related_header": "関連ツール",
+        "related_base64": "Base64変換",
+        "related_json": "JSONフォーマッター",
+        "related_hash": "ハッシュ生成",
+        "howto_header": "使い方",
+        "howto_html": '<ol><li>JWT（ドット区切りのBase64URL 3セグメント）を入力欄に貼り付けます。</li><li><strong>デコード</strong>をクリックするとHeaderとPayloadがJSONで表示されます。</li><li>ペイロードに<code>exp</code>クレームがある場合、ローカルの時刻と比較して有効／期限切れを表示します。</li><li>署名の検証には発行者の秘密鍵または公開鍵が必要なため、ここでは行いません — 内容の検査専用です。</li></ol><p>JWTは<em>暗号化されていません</em>。トークンを持つ誰でも内容を読めるため、JWEで包まない限りペイロードは公開情報として扱ってください。</p>',
+        "examples_header": "例",
+        "examples_html": '<p><strong>サンプルトークン:</strong></p><pre><code>eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.\neyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkFkYSJ9.\nTJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ</code></pre><p><strong>デコード結果:</strong></p><pre><code>Header:  {"alg":"HS256","typ":"JWT"}\nPayload: {"sub":"1234567890","name":"Ada"}</code></pre>'
     }
 }
 
@@ -5712,6 +5757,27 @@ HASH_GENERATOR = {
         "howto_html": '<ol><li>텍스트를 입력하거나 붙여넣으세요.</li><li>MD5와 SHA-1/256/384/512 다이제스트가 입력하는 즉시 계산됩니다.</li><li>각 다이제스트 옆 <strong>Copy</strong> 버튼으로 복사할 수 있습니다.</li><li>SHA 계열은 브라우저 내장 <code>crypto.subtle.digest()</code>를 사용하며, Web Crypto API에 없는 MD5만 인라인 구현되어 있습니다.</li></ol><p><strong>보안 주의:</strong> MD5와 SHA-1은 충돌이 발견되어 암호학적 용도로 <em>부적합</em>합니다. 보안과 무관한 무결성 검사에만 사용하세요. 비밀번호는 항상 bcrypt·scrypt·argon2 같은 KDF를 서버에서 사용해야 합니다.</p>',
         "examples_header": "예시",
         "examples_html": '<p><strong>"abc" 다이제스트:</strong></p><pre><code>MD5    : 900150983cd24fb0d6963f7d28e17f72\nSHA-1  : a9993e364706816aba3e25717850c26c9cd0d89d\nSHA-256: ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad</code></pre><p><strong>빈 문자열:</strong></p><pre><code>MD5    : d41d8cd98f00b204e9800998ecf8427e\nSHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855</code></pre>'
+    },
+    "ja": {
+        "title": "ハッシュ生成",
+        "meta_title": "ハッシュ生成 (MD5, SHA-1, SHA-256, SHA-384, SHA-512) - Utilify",
+        "meta_desc": "任意のテキストからMD5・SHA-1・SHA-256・SHA-384・SHA-512ハッシュをブラウザで即生成します。",
+        "json_name": "ハッシュ生成",
+        "json_desc": "テキスト入力からMD5とSHAファミリーハッシュをクライアントサイドで計算します。",
+        "page_desc": "テキストを入力するとMD5・SHA-1/256/384/512ダイジェストを即座に計算します。データはアップロードされません — すべてローカルで処理されます。",
+        "label_input": "テキスト",
+        "ph_input": "ハッシュするテキストを入力...",
+        "btn_copy": "コピー",
+        "btn_clear": "クリア",
+        "alert_copy_empty": "コピーする内容がありません。",
+        "related_header": "関連ツール",
+        "related_pw": "パスワード生成",
+        "related_base64": "Base64変換",
+        "related_jwt": "JWTデコーダー",
+        "howto_header": "使い方",
+        "howto_html": '<ol><li>テキストを入力または貼り付けます。</li><li>MD5とSHA-1/256/384/512ダイジェストが入力に合わせてリアルタイムで計算されます。</li><li>各ダイジェスト横の<strong>コピー</strong>ボタンでコピーできます。</li><li>SHAファミリーはブラウザ内蔵の<code>crypto.subtle.digest()</code>を使用し、Web Crypto APIに含まれないMD5のみインラインで実装されています。</li></ol><p><strong>セキュリティ注意</strong>: MD5とSHA-1は衝突が発見されており、暗号学的用途には<em>不適切</em>です。セキュリティに無関係な整合性チェックにのみ使用してください。パスワードには必ずサーバー側でbcrypt・scrypt・argon2などのKDFを使用してください。</p>',
+        "examples_header": "例",
+        "examples_html": '<p><strong>"abc" ダイジェスト:</strong></p><pre><code>MD5    : 900150983cd24fb0d6963f7d28e17f72\nSHA-1  : a9993e364706816aba3e25717850c26c9cd0d89d\nSHA-256: ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad</code></pre><p><strong>空文字列:</strong></p><pre><code>MD5    : d41d8cd98f00b204e9800998ecf8427e\nSHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855</code></pre>'
     }
 }
 
@@ -5774,6 +5840,35 @@ UNIX_TIMESTAMP = {
         "howto_html": '<ol><li>상단에 현재 Unix 시간이 실시간 표시됩니다 — <strong>Use Now</strong>로 변환기에 입력할 수 있습니다.</li><li>타임스탬프를 날짜로: 숫자를 붙여넣고 <strong>Convert</strong>를 누르세요. 초(10자리)와 밀리초(13자리)가 자동 감지됩니다.</li><li>날짜를 타임스탬프로: ISO 8601(<code>2024-01-15T12:00:00Z</code>) 또는 <code>2024-01-15</code> 형식을 입력하고 <strong>Convert</strong>를 누르세요.</li><li>UTC와 로컬 타임존이 함께 표시되어 시간대 계산이 불필요합니다.</li></ol><p>Unix time은 1970-01-01 UTC 이후의 초를 세며 윤초는 무시합니다. 32-bit signed는 2038년에 오버플로하지만 대부분의 현대 시스템은 64-bit이므로 영향이 없습니다.</p>',
         "examples_header": "예시",
         "examples_html": '<p><strong>타임스탬프 → 날짜:</strong></p><pre><code>1700000000      → 2023-11-14T22:13:20Z (UTC)\n1700000000000   → 2023-11-14T22:13:20.000Z\n0               → 1970-01-01T00:00:00Z (Unix epoch)</code></pre><p><strong>날짜 → 타임스탬프:</strong></p><pre><code>2024-01-15T12:00:00Z → 1705320000  (초)\n                     → 1705320000000 (밀리초)</code></pre>'
+    },
+    "ja": {
+        "title": "Unixタイムスタンプ変換",
+        "meta_title": "Unixタイムスタンプ ↔ 日付変換 - Utilify",
+        "meta_desc": "Unixタイムスタンプ（秒またはミリ秒）とISO 8601日付を相互変換します。現在時刻のリアルタイム表示付き。",
+        "json_name": "Unixタイムスタンプ変換",
+        "json_desc": "Unixタイムスタンプと人が読める日付の双方向変換。",
+        "page_desc": "Unixタイムスタンプと日付を相互変換します。秒・ミリ秒を自動判別し、UTCとローカルタイムゾーンを両方表示します。",
+        "label_now": "現在のUnix時刻 (UTC)",
+        "label_ts_input": "Unixタイムスタンプ → 日付",
+        "ph_ts_input": "例: 1700000000 または 1700000000000",
+        "btn_convert_ts": "変換",
+        "btn_use_now": "現在時刻",
+        "label_local": "ローカル",
+        "label_date_input": "日付 → Unixタイムスタンプ",
+        "ph_date_input": "例: 2024-01-15T12:00:00Z または 2024-01-15",
+        "btn_convert_date": "変換",
+        "label_seconds": "秒",
+        "label_ms": "ミリ秒",
+        "alert_invalid_ts": "無効なタイムスタンプです。",
+        "alert_invalid_date": "無効な日付文字列です。",
+        "related_header": "関連ツール",
+        "related_date": "日付計算機",
+        "related_timer": "タイマー",
+        "related_jwt": "JWTデコーダー",
+        "howto_header": "使い方",
+        "howto_html": '<ol><li>現在のUnix時刻が上部にリアルタイム表示されます — <strong>現在時刻</strong>をクリックすると変換欄に入力できます。</li><li>タイムスタンプを日付に変換するには: 数値を貼り付けて<strong>変換</strong>をクリック。秒(10桁)とミリ秒(13桁)は自動判別されます。</li><li>日付をタイムスタンプに変換するには: ISO 8601(<code>2024-01-15T12:00:00Z</code>)または<code>2024-01-15</code>を入力して<strong>変換</strong>をクリック。</li><li>UTCとローカルタイムゾーンが両方表示されるため、時差計算は不要です。</li></ol><p>Unix時刻は1970-01-01 UTC以降の秒数をカウントし、うるう秒は無視します。32ビット符号付きは2038年にオーバーフローしますが、最新のシステムは64ビットのため影響ありません。</p>',
+        "examples_header": "例",
+        "examples_html": '<p><strong>タイムスタンプ → 日付:</strong></p><pre><code>1700000000      → 2023-11-14T22:13:20Z (UTC)\n1700000000000   → 2023-11-14T22:13:20.000Z\n0               → 1970-01-01T00:00:00Z (Unix epoch)</code></pre><p><strong>日付 → タイムスタンプ:</strong></p><pre><code>2024-01-15T12:00:00Z → 1705320000  (秒)\n                     → 1705320000000 (ミリ秒)</code></pre>'
     }
 }
 
@@ -5830,6 +5925,32 @@ UUID_GENERATOR = {
         "howto_html": '<ol><li>생성할 개수(1/10/100)와 버전을 선택하세요.</li><li><strong>Generate</strong>를 누르면 출력 박스에 UUID가 표시됩니다.</li><li>대문자, 중괄호 감싸기(<code>{...}</code>), 하이픈 제거 등의 포맷 옵션이 있습니다.</li><li><code>crypto.randomUUID()</code>가 가능하면 사용하고, 그렇지 않으면 <code>crypto.getRandomValues()</code>로 v4 비트 패턴을 적용합니다.</li></ol><p><strong>v4와 v1 차이:</strong> v4는 순수 랜덤(엔트로피 122 bit, 충돌 확률 사실상 0). v1은 타임스탬프+clock-seq+노드 ID를 포함해 시간순 정렬에 가깝습니다 — 시간적 지역성으로 이득을 보는 데이터베이스 인덱스에 유용합니다. Nil UUID (<code>00000000-0000-0000-0000-000000000000</code>)는 placeholder 값입니다.</p>',
         "examples_header": "예시",
         "examples_html": '<p><strong>기본 v4 (소문자, 하이픈):</strong></p><pre><code>f47ac10b-58cc-4372-a567-0e02b2c3d479</code></pre><p><strong>v4 + 중괄호 + 대문자:</strong></p><pre><code>{F47AC10B-58CC-4372-A567-0E02B2C3D479}</code></pre><p><strong>v1 (시간 기반):</strong></p><pre><code>3aaa8c0e-9b87-11ee-8c90-0242ac120002</code></pre>'
+    },
+    "ja": {
+        "title": "UUID生成",
+        "meta_title": "UUID生成 (v4 / v1) - Utilify",
+        "meta_desc": "RFC 4122 UUID（v4ランダム・v1時刻ベース）をブラウザで生成します。1・10・100件の一括生成に対応。",
+        "json_name": "UUID生成",
+        "json_desc": "v4（ランダム）とv1（時刻ベース）をサポートするクライアントサイドUUID生成ツール。",
+        "page_desc": "暗号学的に安全なUUIDをローカルで生成します。v4（ランダム）が最も一般的です。v1はタイムスタンプを埋め込みます。ハイフン・大文字・波括弧のフォーマットオプションあり。",
+        "label_count": "件数",
+        "label_version": "バージョン",
+        "option_nil": "Nil UUID",
+        "option_upper": "大文字",
+        "option_braces": "波括弧を付ける",
+        "option_nohyphen": "ハイフンなし",
+        "btn_generate": "生成",
+        "btn_copy": "コピー",
+        "btn_clear": "クリア",
+        "alert_copy_empty": "コピーする内容がありません。",
+        "related_header": "関連ツール",
+        "related_hash": "ハッシュ生成",
+        "related_pw": "パスワード生成",
+        "related_jwt": "JWTデコーダー",
+        "howto_header": "使い方",
+        "howto_html": '<ol><li>生成する件数(1・10・100)とバージョンを選びます。</li><li><strong>生成</strong>をクリックすると出力欄にUUIDが表示されます。</li><li>大文字・波括弧(<code>{...}</code>)・ハイフンなしなどのフォーマットオプションが使えます。</li><li>生成には<code>crypto.randomUUID()</code>が利用可能な場合はそれを使い、そうでなければ<code>crypto.getRandomValues()</code>でv4ビットパターンを適用します。</li></ol><p><strong>v4とv1の違い:</strong> v4は純粋なランダム（エントロピー122ビット、衝突確率は実質ゼロ）。v1はタイムスタンプ＋クロックシーケンス＋ノードIDを埋め込み、時刻順に近いUUIDを生成します — 時間的局所性が有利なデータベースインデックスに有用です。Nil UUID (<code>00000000-0000-0000-0000-000000000000</code>)はプレースホルダー値です。</p>',
+        "examples_header": "例",
+        "examples_html": '<p><strong>デフォルトv4 (小文字、ハイフンあり):</strong></p><pre><code>f47ac10b-58cc-4372-a567-0e02b2c3d479</code></pre><p><strong>v4 + 波括弧 + 大文字:</strong></p><pre><code>{F47AC10B-58CC-4372-A567-0E02B2C3D479}</code></pre><p><strong>v1 (時刻ベース):</strong></p><pre><code>3aaa8c0e-9b87-11ee-8c90-0242ac120002</code></pre>'
     }
 }
 
@@ -5892,6 +6013,35 @@ URL_ENCODER = {
         "howto_html": '<ol><li>URL 또는 텍스트를 입력 패널에 붙여넣으세요.</li><li>쿼리 값이나 경로 세그먼트 인코딩에는 <strong>Component</strong> 모드 — <code>:/?&amp;=</code> 같은 예약 문자를 이스케이프합니다.</li><li>완성된 URL 전체를 인코딩할 때는 <strong>Full URL</strong> 모드 — <code>:/?&amp;=</code>를 보존해 URL 형식을 유지합니다.</li><li><strong>Encode</strong>/<strong>Decode</strong>를 누르고, <strong>Swap</strong>으로 입력과 출력을 뒤집을 수 있습니다.</li></ol><p><strong>Component vs Full:</strong> Component(<code>encodeURIComponent</code>)는 URL 안에 들어가는 <em>조각</em>(쿼리 값, 경로 세그먼트, fragment)에 사용합니다. Full(<code>encodeURI</code>)은 <code>?</code>와 <code>&amp;</code>를 구분자로 유지해야 하는 <em>전체 URL</em>을 인코딩할 때만 사용하세요.</p>',
         "examples_header": "예시",
         "examples_html": '<p><strong>Component 인코딩 (검색 쿼리 등):</strong></p><pre><code>"hello world" → hello%20world\n"a&b=c"       → a%26b%3Dc\n"안녕"         → %EC%95%88%EB%85%95</code></pre><p><strong>Full URL 인코딩:</strong></p><pre><code>"https://x.com/?q=hello world"\n→ https://x.com/?q=hello%20world</code></pre>'
+    },
+    "ja": {
+        "title": "URLエンコード / デコード",
+        "meta_title": "URLエンコーダー & デコーダー (パーセントエンコーディング) - Utilify",
+        "meta_desc": "URLおよびクエリパラメーターをRFC 3986パーセントエンコーディングでエンコード・デコードします。コンポーネントと完全URLモードの切り替えに対応。",
+        "json_name": "URLエンコード / デコード",
+        "json_desc": "URLパーセントエンコーディングの双方向変換。コンポーネントモードと完全URLモードをサポート。",
+        "page_desc": "文字をパーセントエンコード形式（例: スペース → %20）にエンコード、またはデコードします。クエリ値には「Component」、コロン / ？などの予約文字を保持する場合は「Full URL」モードを使用してください。",
+        "mode_component": "Component (encodeURIComponent)",
+        "mode_full": "Full URL (encodeURI)",
+        "label_input": "入力",
+        "label_output": "出力",
+        "ph_input": "https://example.com/?q=hello world",
+        "btn_encode": "エンコード",
+        "btn_decode": "デコード",
+        "btn_swap": "入れ替え",
+        "btn_copy": "コピー",
+        "btn_clear": "クリア",
+        "alert_encode_error": "エンコードエラー: ",
+        "alert_decode_error": "デコードエラー: ",
+        "alert_copy_empty": "コピーする内容がありません。",
+        "related_header": "関連ツール",
+        "related_base64": "Base64変換",
+        "related_json": "JSONフォーマッター",
+        "related_jwt": "JWTデコーダー",
+        "howto_header": "使い方",
+        "howto_html": '<ol><li>URLまたはテキストを入力パネルに貼り付けます。</li><li>クエリ値やパスセグメントのエンコードには<strong>Component</strong>モード — <code>:/?&amp;=</code>などの予約文字をエスケープします。</li><li>URL全体をエンコードする場合は<strong>Full URL</strong>モード — <code>:/?&amp;=</code>を保持してURL形式を維持します。</li><li><strong>エンコード</strong>または<strong>デコード</strong>をクリック、<strong>入れ替え</strong>で入出力を反転できます。</li></ol><p><strong>ComponentとFullの違い:</strong> Component(<code>encodeURIComponent</code>)はURLの一部(クエリ値、パスセグメント、フラグメント)に使います。Full(<code>encodeURI</code>)は<code>?</code>と<code>&amp;</code>を区切り文字として保持する必要がある<em>URL全体</em>のエンコードのみに使用してください。</p>',
+        "examples_header": "例",
+        "examples_html": '<p><strong>Componentエンコーディング (検索クエリ等):</strong></p><pre><code>"hello world" → hello%20world\n"a&b=c"       → a%26b%3Dc\n"안녕"         → %EC%95%88%EB%85%95</code></pre><p><strong>Full URLエンコーディング:</strong></p><pre><code>"https://x.com/?q=hello world"\n→ https://x.com/?q=hello%20world</code></pre>'
     }
 }
 
@@ -5933,6 +6083,25 @@ ABOUT = {
             "별도의 트래커를 운영하지 않으며 사용자 데이터를 판매하지 않습니다.</p>"
             "<h2>연락처</h2>"
             "<p>질문, 버그 제보, 제안: <a href=\"mailto:contact@utilifyapp.net\">contact@utilifyapp.net</a></p>"
+        ),
+    },
+    "ja": {
+        "meta_title": "Utilifyについて - 無料オンライン開発者・日常ツール",
+        "meta_desc": "Utilifyは開発者と一般ユーザー向けの無料クライアントサイドユーティリティコレクションです。登録不要、アップロード不要 — すべてブラウザで動作します。",
+        "page_h1": "Utilifyについて",
+        "page_body_html": (
+            "<p>Utilifyは開発者と一般ユーザー向けの無料オンラインユーティリティコレクションです。"
+            "すべてのツールはブラウザ内でのみ動作し、入力内容がデバイスの外に出ることはありません。</p>"
+            "<h2>なぜクライアントサイドなのか</h2>"
+            "<p>多くのオンラインツールはデータをサーバーにアップロードします。Utilifyは異なります。"
+            "JSON・Base64・ハッシュ・JWT・画像変換・PDFはすべてJavaScriptでローカル処理されます。"
+            "より高速でプライバシーに配慮しており、ページがキャッシュされればオフラインでも動作します。</p>"
+            "<h2>なぜ無料なのか</h2>"
+            "<p>Utilifyは<a href=\"https://adsense.google.com/\" rel=\"nofollow noopener\">Google AdSense</a>による"
+            "ディスプレイ広告で運営されています。"
+            "独自のトラッカーは使用せず、ユーザーデータを販売することもありません。</p>"
+            "<h2>お問い合わせ</h2>"
+            "<p>ご質問、バグ報告、ご提案: <a href=\"mailto:contact@utilifyapp.net\">contact@utilifyapp.net</a></p>"
         ),
     }
 }
@@ -6112,6 +6281,23 @@ NOT_FOUND = {
             "</ul>"
             "<p><a href=\"/ko/\">← 홈으로</a></p>"
         ),
+    },
+    "ja": {
+        "meta_title": "ページが見つかりません - Utilify",
+        "meta_desc": "お探しのページが見つかりませんでした。",
+        "page_h1": "404 — ページが見つかりません",
+        "page_body_html": (
+            "<p>申し訳ありません。そのページは見つかりませんでした。移動したか、存在しない可能性があります。</p>"
+            "<h2>人気ツール</h2>"
+            "<ul>"
+            "<li><a href=\"/ja/json-formatter/\">JSONフォーマッター</a></li>"
+            "<li><a href=\"/ja/base64-converter/\">Base64変換</a></li>"
+            "<li><a href=\"/ja/unit-converter/\">単位変換</a></li>"
+            "<li><a href=\"/ja/jwt-decoder/\">JWTデコーダー</a></li>"
+            "<li><a href=\"/ja/uuid-generator/\">UUID生成</a></li>"
+            "</ul>"
+            "<p><a href=\"/ja/\">← ホームに戻る</a></p>"
+        ),
     }
 }
 
@@ -6197,6 +6383,46 @@ PROMPT_PII_SCRUBBER = {
         "related_claude": "Claude.md 생성기",
         "related_mcp": "MCP 설정 생성기",
         "card_blurb": "이메일·전화·카드·API 키를 자동 마스킹 후 ChatGPT/Claude에 안전하게 붙여넣기."
+    },
+    "ja": {
+        "title": "プロンプトPIIスクラバー",
+        "meta_title": "プロンプトPIIスクラバー — ChatGPT/Claudeに安全に貼り付け - Utilify",
+        "meta_desc": "ChatGPT・Claude・GeminiにテキストをペーストするPIIをマスクします。メール・電話・SSN・クレカ・APIキー・IPアドレスに対応。ブラウザ内で処理。",
+        "json_name": "プロンプトPIIスクラバー",
+        "json_desc": "AIチャットボット向けテキストのPIIを正規表現でマスクするクライアントサイドツール。",
+        "page_desc": "ChatGPT・Claude・Geminiなどにプロンプトを貼り付ける前に、機密情報（メール・電話番号・SSN・クレジットカード・APIキー・IPアドレス・URL）をマスクします。すべてブラウザ内で処理されます。",
+        "label_input": "元のテキスト",
+        "label_output": "スクラブ済みテキスト",
+        "ph_input": "PIIを含むテキストを貼り付けてください（メール・電話番号など）...",
+        "btn_scrub": "スクラブ",
+        "btn_copy": "コピー",
+        "btn_clear": "クリア",
+        "summary_label": "マスクされた項目:",
+        "opt_email": "メール",
+        "opt_phone": "電話番号",
+        "opt_ssn": "SSN / マイナンバー",
+        "opt_card": "クレジットカード",
+        "opt_apikey": "APIキー",
+        "opt_ip": "IPアドレス",
+        "opt_url": "URL",
+        "alert_no_pii": "PIIは検出されませんでした。",
+        "alert_copy_empty": "コピーする内容がありません。",
+        "howto_header": "使い方",
+        "howto_html": (
+            "<ol>"
+            "<li>AIサービスに送りたいプロンプトまたはドキュメントを貼り付けます。</li>"
+            "<li>マスクするカテゴリーを選択します（デフォルト: すべてオン）。</li>"
+            "<li><strong>スクラブ</strong>をクリックすると、右パネルに<code>[EMAIL]</code>・<code>[PHONE]</code>などのプレースホルダーに置換された結果が表示されます。</li>"
+            "<li>スクラブ済みテキストをコピーしてChatGPT・Claude・Geminiなどに貼り付けます。</li>"
+            "</ol>"
+            "<p><strong>検出される項目</strong>: 標準的なメールアドレス、国際形式の電話番号、米国SSNと韓国住民登録番号、Luhnアルゴリズムで検証されたクレジットカード番号、既知のプレフィックス(<code>sk-</code>、<code>pk-</code>、<code>AKIA</code>、<code>AIza</code>、<code>github_pat_</code>、<code>xoxb-</code>)のAPIキー、IPv4アドレス、HTTP(S)のURL。</p>"
+            "<p>限界: 自由形式の住所・氏名・独自IDは検出<em>されません</em>。送信前に必ず結果を確認してください。</p>"
+        ),
+        "related_header": "関連ツール",
+        "related_token": "トークンカウンター",
+        "related_claude": "Claude.mdジェネレーター",
+        "related_mcp": "MCP設定ジェネレーター",
+        "card_blurb": "メール・電話・クレカ・APIキーをマスクしてChatGPT/Claudeに安全に貼り付け。"
     }
 }
 
@@ -6289,6 +6515,50 @@ CLAUDE_MD_GEN = {
         "related_pii": "프롬프트 PII 마스킹",
         "related_token": "토큰 카운터",
         "card_blurb": "역할·규칙·제약·명령어 폼 입력 → CLAUDE.md 즉시 생성."
+    },
+    "ja": {
+        "title": "Claude.mdジェネレーター",
+        "meta_title": "Claude.md / システムプロンプトジェネレーター - Utilify",
+        "meta_desc": "シンプルなフォームからCLAUDE.mdプロジェクトファイルを生成します。役割・規約・制約・コマンドを入力してMarkdownでダウンロード。",
+        "json_name": "Claude.mdジェネレーター",
+        "json_desc": "Anthropic CLAUDE.mdプロジェクトコンテキストファイルをフォーム入力で生成するツール。",
+        "page_desc": "シンプルなフォームからCLAUDE.md（またはAIエージェントのシステムプロンプト）を生成します。プロジェクトの役割・コーディング規約・制約・コマンドを入力して、Markdownとしてコピーまたはダウンロードできます。",
+        "label_project": "プロジェクト名",
+        "label_role": "役割 / ペルソナ",
+        "ph_role": "Pythonウェブサービスを担当するシニアバックエンドエンジニアです。",
+        "label_conventions": "規約 (1行に1つ)",
+        "ph_conventions": "4スペースインデントを使用\nPEP 8に準拠\nすべての公開関数に型ヒントを記述",
+        "label_constraints": "制約 (1行に1つ)",
+        "ph_constraints": "明示的な承認なしにマイグレーションを変更しない\nレガシー認証モジュールには触れない",
+        "label_commands": "よく使うコマンド",
+        "ph_commands": "make test\nruff check .\npython manage.py runserver",
+        "btn_generate": "生成",
+        "btn_copy": "コピー",
+        "btn_download": ".mdをダウンロード",
+        "btn_clear": "クリア",
+        "output_label": "生成されたCLAUDE.md",
+        "note_intro": "このファイルはClaude Codeがプロジェクトを開くと自動的に読み込まれます。",
+        "section_role": "役割",
+        "section_conventions": "規約",
+        "section_constraints": "制約",
+        "section_commands": "よく使うコマンド",
+        "alert_copy_empty": "先に生成をクリックしてください。",
+        "howto_header": "使い方",
+        "howto_html": (
+            "<ol>"
+            "<li>プロジェクト名と役割の説明を入力します。</li>"
+            "<li>規約は1行に1つ — 出力ではbulletリストになります。</li>"
+            "<li>制約も1行に1つ。</li>"
+            "<li>よく使うコマンド（テスト・lint・開発サーバーなど）を入力 — <code>```bash</code>ブロックで囲まれます。</li>"
+            "<li><strong>生成</strong>をクリックして確認後、<strong>.mdをダウンロード</strong>でリポジトリルートの<code>CLAUDE.md</code>として保存できます。</li>"
+            "</ol>"
+            "<p>同じファイルはCursor(<code>.cursorrules</code>)・Aiderなど他のエージェントのシステムプロンプトとしても使えます。Cursorではダウンロードしたファイルの名前を変更するだけです。</p>"
+        ),
+        "related_header": "関連ツール",
+        "related_mcp": "MCP設定ジェネレーター",
+        "related_pii": "プロンプトPIIスクラバー",
+        "related_token": "トークンカウンター",
+        "card_blurb": "役割・規約・制約・コマンドをフォーム入力 → CLAUDE.mdを即生成。"
     }
 }
 
@@ -6375,6 +6645,47 @@ MCP_CONFIG_GEN = {
         "related_json": "JSON 포매터",
         "related_pii": "프롬프트 PII 마스킹",
         "card_blurb": "Claude Desktop·Cursor·VS Code용 MCP 서버 JSON을 즉시 생성."
+    },
+    "ja": {
+        "title": "MCPサーバー設定ジェネレーター",
+        "meta_title": "MCPサーバー設定ジェネレーター (Claude Desktop / Cursor / VS Code) - Utilify",
+        "meta_desc": "Claude Desktop・Cursor・VS Code用のMCPサーバー設定JSONをフォームで生成します。トランスポート・コマンド・引数・環境変数を入力するだけ。",
+        "json_name": "MCP設定ジェネレーター",
+        "json_desc": "Model Context Protocolサーバー設定をフォーム入力で生成するツール。",
+        "page_desc": "Claude Desktop・Cursor・VS Code向けのModel Context Protocol（MCP）サーバー設定を生成します。トランスポート・コマンド・引数・環境変数を入力すると、各クライアントに対応した正しいJSONと設定ファイルのパスを出力します。",
+        "label_target": "対象クライアント",
+        "label_name": "サーバー名",
+        "label_transport": "トランスポート",
+        "label_command": "コマンド",
+        "label_args": "引数 (1行に1つ)",
+        "label_url": "サーバーURL",
+        "label_env": "環境変数 (KEY=value、1行に1つ)",
+        "btn_generate": "生成",
+        "btn_copy": "コピー",
+        "btn_clear": "クリア",
+        "output_label": "設定JSON",
+        "install_label": "インストールパス:",
+        "alert_copy_empty": "先に生成をクリックしてください。",
+        "howto_header": "使い方",
+        "howto_html": (
+            "<ol>"
+            "<li>クライアント（Claude Desktop・Cursor・VS Code）を選びます。</li>"
+            "<li>サーバー名（辞書のキーとして使用）を入力します。</li>"
+            "<li>トランスポートを選択: <code>stdio</code>はローカルプロセス（最も一般的）、<code>streamable-http</code>・<code>sse</code>はリモートサーバー向け。</li>"
+            "<li>stdioの場合: コマンドと引数を入力 / HTTP・SSEの場合: URLを入力。</li>"
+            "<li>必要に応じて環境変数を追加。</li>"
+            "<li><strong>生成</strong>後、表示されたパスの設定ファイルにJSONをコピーします。</li>"
+            "</ol>"
+            "<p><strong>設定ファイルの場所</strong>:<br>"
+            "<code>Claude Desktop</code> — macOS: <code>~/Library/Application Support/Claude/claude_desktop_config.json</code>; Windows: <code>%APPDATA%\\Claude\\claude_desktop_config.json</code><br>"
+            "<code>Cursor</code> — グローバル: <code>~/.cursor/mcp.json</code>; プロジェクト別: <code>.cursor/mcp.json</code><br>"
+            "<code>VS Code</code> — ワークスペース: <code>.vscode/mcp.json</code> (またはユーザー設定 → MCP Servers)</p>"
+        ),
+        "related_header": "関連ツール",
+        "related_claude": "Claude.mdジェネレーター",
+        "related_json": "JSONフォーマッター",
+        "related_pii": "プロンプトPIIスクラバー",
+        "card_blurb": "Claude Desktop・Cursor・VS Code用のMCPサーバーJSONを即生成。"
     }
 }
 
@@ -6457,6 +6768,45 @@ TOKEN_COUNTER = {
         "related_claude": "Claude.md 생성기",
         "related_mcp": "MCP 설정 생성기",
         "card_blurb": "텍스트의 토큰 수와 모델별 API 비용을 즉시 추정 (GPT/Claude/Gemini)."
+    },
+    "ja": {
+        "title": "AIトークンカウンター & コスト計算機",
+        "meta_title": "GPT / Claude / Gemini トークンカウンター & コスト計算機 - Utilify",
+        "meta_desc": "任意のテキストのトークン数とモデル別APIコスト（GPT-4o・Claude Opus・Gemini 2.5）を推定します。無料、登録不要、ブラウザで動作。",
+        "json_name": "AIトークンカウンター",
+        "json_desc": "OpenAI・Anthropic・GoogleモデルのトークンとAPIコストを推定します。",
+        "page_desc": "テキストのトークン数とGPT-4o・Claude Opus 4.7・Gemini 2.5などのモデル別APIコストを推定します。ヒューリスティック計算（英語≈4文字/トークン、CJK≈1.5文字/トークン）— 正確なトークン化にはプロバイダーAPIが必要です。",
+        "label_input": "テキスト",
+        "ph_input": "プロンプトまたはドキュメントをここに貼り付けてください...",
+        "stat_chars": "文字数",
+        "stat_words": "単語数",
+        "stat_tokens": "推定トークン",
+        "stat_lines": "行数",
+        "label_out_tokens": "推定出力トークン数",
+        "note_estimate": "(出力コスト計算に使用)",
+        "cost_table_title": "モデル別コスト",
+        "col_model": "モデル",
+        "col_input_price": "入力 $/1M",
+        "col_output_price": "出力 $/1M",
+        "col_input_cost": "入力コスト",
+        "col_output_cost": "出力コスト",
+        "col_total": "合計",
+        "howto_header": "使い方",
+        "howto_html": (
+            "<ol>"
+            "<li>コストを推定したいプロンプト・ドキュメント・トランスクリプトを貼り付けます。</li>"
+            "<li>文字数・単語数・トークン数・行数がリアルタイムで更新されます。</li>"
+            "<li>長い応答が予想される場合は<strong>推定出力トークン数</strong>を調整してください（デフォルト500）。</li>"
+            "<li>コスト表に主要モデルごとの入力・出力・合計コストが表示されます。</li>"
+            "</ol>"
+            "<p><strong>トークン計算の精度</strong>: CJK文字（日本語・韓国語・中国語）を検出して文字/トークン比率を調整する高速なヒューリスティックを使用しています。正確なBPEトークン化（cl100k_base・o200k_baseなど）にはプロバイダーAPIまたは1〜3MBの語彙ダウンロードが必要です。コスト推定目的には通常±10%以内の精度があります。</p>"
+            "<p><strong>価格</strong>: 2026年5月時点の公開済み100万トークンあたりの価格に基づきます。請求に関わる重要な判断をする前は必ずプロバイダーの公式価格ページを確認してください。</p>"
+        ),
+        "related_header": "関連ツール",
+        "related_pii": "プロンプトPIIスクラバー",
+        "related_claude": "Claude.mdジェネレーター",
+        "related_mcp": "MCP設定ジェネレーター",
+        "card_blurb": "テキストのトークン数とモデル別APIコストを即推定（GPT/Claude/Gemini）。"
     }
 }
 
@@ -6523,6 +6873,37 @@ AI_IMAGE_INSPECTOR = {
         "related_watermark": "이미지 워터마크",
         "related_token": "토큰 카운터",
         "card_blurb": "PNG·JPEG에서 Stable Diffusion·Midjourney 메타데이터 감지. 파일은 로컬 처리."
+    },
+    "ja": {
+        "title": "AI画像メタデータインスペクター",
+        "meta_title": "AI画像インスペクター — Stable Diffusion / Midjourney / DALL-E検出 - Utilify",
+        "meta_desc": "PNGおよびJPEGのメタデータを検査してAI生成パラメーター（Stable Diffusionプロンプト・EXIF UserComment・C2PA Content Credentials）を検出します。ファイルはブラウザ内でのみ処理。",
+        "json_name": "AI画像インスペクター",
+        "json_desc": "PNG tEXt/iTXtチャンク、JPEG EXIF、C2PAボックスを読み込みAI画像の痕跡を表示します。",
+        "page_desc": "画像をドロップまたは選択してメタデータを検査します。PNG tEXt/iTXtチャンク（Stable Diffusionのプロンプト保存先）、JPEG EXIF UserComment（Midjourney/DALL-Eが識別情報を埋め込む）、C2PA Content Credentialsボックスを検出します。ファイルはブラウザ外に出ません。",
+        "ph_drop": "PNG/JPEG/WebPをドロップ、またはクリックして選択",
+        "section_sd": "Stable Diffusion / 生成パラメーター",
+        "section_exif": "EXIF / メタデータテキスト",
+        "section_raw": "生のメタデータ",
+        "verdict_ai": "🤖 AI生成シグネチャを検出しました",
+        "verdict_unknown": "🔍 メタデータはあるが、明確なAIシグネチャなし",
+        "verdict_clean": "✅ メタデータなし（削除済みまたは最初から存在しない）",
+        "howto_header": "使い方",
+        "howto_html": (
+            "<ol>"
+            "<li>PNG/JPEG/WebP画像をドラッグ＆ドロップまたは選択します。</li>"
+            "<li>PNGの補助チャンクとJPEGのAPP1（EXIF）セグメントをローカルで読み込みます。</li>"
+            "<li>Stable Diffusionの<code>parameters</code>チャンクが見つかった場合、プロンプトと設定が最初のセクションに表示されます。</li>"
+            "<li>EXIF UserCommentに識別テキスト（\"Midjourney\"・\"Generated by ...\"）があれば2番目のセクションに表示されます。</li>"
+            "<li>C2PA / Content Credentialsボックスが存在する場合はフラグが立ちます。</li>"
+            "</ol>"
+            "<p><strong>このツールが<em>わからないこと</em></strong>: メタデータが削除されたAI画像（ほとんどのSNSはアップロード時にメタデータを削除します）。「メタデータなし」という結果は「AI生成でない」ことを保証するものではありません。</p>"
+        ),
+        "related_header": "関連ツール",
+        "related_imgconv": "画像変換",
+        "related_watermark": "画像透かし",
+        "related_token": "トークンカウンター",
+        "card_blurb": "PNG/JPEGのStable Diffusion・Midjourneyメタデータを検出。ファイルはローカル処理。"
     }
 }
 
@@ -6599,6 +6980,42 @@ CHATGPT_TO_BLOG = {
         "related_token": "토큰 카운터",
         "related_pii": "프롬프트 PII 마스킹",
         "card_blurb": "ChatGPT 대화를 깔끔한 블로그용 Markdown으로 즉시 변환."
+    },
+    "ja": {
+        "title": "ChatGPT → ブログ記事変換",
+        "meta_title": "ChatGPT会話をブログ記事Markdownに変換 - Utilify",
+        "meta_desc": "ChatGPTの会話を貼り付けると、ブログ掲載用のクリーンなMarkdownに変換します。プロンプト削除・アシスタントターンの統合・公開フォーマットに対応。",
+        "json_name": "ChatGPTブログ変換",
+        "json_desc": "貼り付けたChatGPT会話をブログ用クリーンなMarkdownに変換します。",
+        "page_desc": "ChatGPT（またはClaude）の会話 — テキストまたはJSONエクスポート — を貼り付けると、ユーザー/AIのターンを分離し、プロンプトを選択的に削除して、AI応答をブログ用Markdownに整形します。",
+        "label_input": "ChatGPT会話（テキストまたはJSON）",
+        "label_output": "Markdown",
+        "ph_input": "ここに会話を貼り付けてください。'You said: ...' / 'ChatGPT said: ...'形式とJSONエクスポートの両方に対応しています。",
+        "opt_strip_prompts": "ユーザープロンプトを削除（AIの返答のみ）",
+        "opt_merge": "AIのターンを1つの記事にまとめる",
+        "opt_add_title": "H1タイトルを追加",
+        "label_title": "タイトル",
+        "btn_convert": "変換",
+        "btn_copy": "コピー",
+        "btn_download": ".mdをダウンロード",
+        "btn_clear": "クリア",
+        "alert_copy_empty": "先に変換をクリックしてください。",
+        "howto_header": "使い方",
+        "howto_html": (
+            "<ol>"
+            "<li>ChatGPTで共有アイコン → コピーまたは共有。またはデータエクスポートでJSONファイルを取得します。</li>"
+            "<li>左パネルに会話を貼り付けます。</li>"
+            "<li>オプションを選択: <em>ユーザープロンプトを削除</em>で質問を除き、<em>AIターンを統合</em>ですべての回答を1つの記事にまとめ、<em>H1タイトルを追加</em>でヘッディングを先頭に付けます。</li>"
+            "<li><strong>変換</strong>後、右のMarkdownを確認します。</li>"
+            "<li><strong>.mdをダウンロード</strong>でローカル保存できます。</li>"
+            "</ol>"
+            "<p><strong>対応フォーマット</strong>: \"You said:\" / \"ChatGPT said:\"ラベルのテキスト（\"User:\" / \"Assistant:\"、韓国語の\"사용자\" / \"어시스턴트\"も認識）; <code>mapping</code>ノードを持つJSONエクスポート; <code>{messages: [{role, content}]}</code>の汎用形式。役割マーカーが検出されない場合は入力全体を1つのAI応答として処理します。</p>"
+        ),
+        "related_header": "関連ツール",
+        "related_md": "Markdownプレビュー",
+        "related_token": "トークンカウンター",
+        "related_pii": "プロンプトPIIスクラバー",
+        "card_blurb": "ChatGPTの会話をブログ用クリーンなMarkdownに即変換。"
     }
 }
 
@@ -6701,6 +7118,55 @@ LOAN_CALCULATOR = {
         "related_date": "날짜 계산기",
         "related_unit": "단위 변환기",
         "card_blurb": "고정금리 대출의 월 상환금·총 이자·12개월 분할상환표를 즉시 계산."
+    },
+    "ja": {
+        "title": "ローン計算機",
+        "meta_title": "ローン計算機 — 月々の返済額・利息・返済スケジュール - Utilify",
+        "meta_desc": "月々のローン返済額、総利息、返済スケジュールを計算します。住宅ローン・自動車ローン・個人ローンに対応。すべてブラウザで動作。",
+        "og_title": "ローン計算機 - Utilify",
+        "og_desc": "固定金利ローンの月々の返済額・総利息・返済スケジュールを計算します。",
+        "json_name": "ローン計算機",
+        "json_desc": "固定金利ローンの月々の返済額・総利息・返済スケジュールを計算するツール。",
+        "page_desc": "借入額・年利・返済期間（年）を入力すると、月々の返済額・総返済額・最初の12か月の返済スケジュールが表示されます。住宅・自動車・個人ローンの固定金利標準計算式を使用。",
+        "label_principal": "借入額",
+        "label_rate": "年利率 (%)",
+        "label_term": "返済期間（年）",
+        "ph_principal": "100000",
+        "ph_rate": "4.5",
+        "ph_term": "30",
+        "btn_calculate": "計算",
+        "btn_reset": "リセット",
+        "btn_share": "結果を共有",
+        "share_text": "月々のローン返済額は {value} —",
+        "share_copied": "結果をクリップボードにコピーしました。",
+        "res_monthly_label": "月々の返済額",
+        "res_total_label": "総返済額",
+        "res_interest_label": "総利息",
+        "res_schedule_header": "最初の12か月",
+        "th_month": "月",
+        "th_payment": "返済額",
+        "th_principal_col": "元金",
+        "th_interest_col": "利息",
+        "th_balance": "残高",
+        "alert_invalid": "借入額と返済期間は正の数で入力してください。",
+        "disclaimer": "推定値のみ — 金融アドバイスではありません。重要な判断の前には資格を持つ専門家にご相談ください。",
+        "howto_header": "使い方",
+        "howto_html": (
+            "<ol>"
+            "<li>ローンの元金（借りる金額）を入力します。</li>"
+            "<li>年利率をパーセントで入力します（例: 4.5%は<code>4.5</code>）。</li>"
+            "<li>返済期間を年単位で入力します。</li>"
+            "<li><strong>計算</strong>をクリックすると月々の返済額・総返済額・返済スケジュールが即座に表示されます。</li>"
+            "</ol>"
+            "<p><strong>計算式</strong>: M = P · r(1+r)<sup>n</sup> / ((1+r)<sup>n</sup> − 1)。rは月利（年利 / 12）、nは返済回数（月数）。金利0%の場合は元金 / 月数で計算します。</p>"
+            "<p>固定金利・均等月払い・手数料なしを前提としています。実際のローンは手数料・保証料などが加わる場合があり、実際の負担はより大きくなることがあります。</p>"
+        ),
+        "related_header": "関連ツール",
+        "related_compound": "複利計算機",
+        "related_retirement": "老後資金計算機",
+        "related_date": "日付計算機",
+        "related_unit": "単位変換",
+        "card_blurb": "固定金利ローンの月々の返済額・総利息・12か月の返済スケジュールを即計算。"
     }
 }
 
@@ -6815,6 +7281,61 @@ COMPOUND_INTEREST = {
         "related_date": "날짜 계산기",
         "related_unit": "단위 변환기",
         "card_blurb": "복리와 월 적립을 적용한 투자·저축의 미래 가치를 즉시 시뮬레이션."
+    },
+    "ja": {
+        "title": "複利計算機",
+        "meta_title": "複利計算機 — 投資成長シミュレーション - Utilify",
+        "meta_desc": "元金・年利・期間・月々の積立で複利効果を適用した将来残高・総積立・総利息を計算。年別残高表付き。",
+        "og_title": "複利計算機 - Utilify",
+        "og_desc": "複利と月々の積立で投資成長をシミュレーションします。",
+        "json_name": "複利計算機",
+        "json_desc": "元金・年利・複利頻度・月々の積立を入力して将来価値を計算するツール。",
+        "page_desc": "初期元金・年利・期間・複利頻度・月々の積立を入力すると、投資や貯蓄口座の将来価値を計算します。年別残高推移も表示されます。",
+        "label_principal": "初期元金",
+        "label_rate": "年利率 (%)",
+        "label_years": "期間（年）",
+        "label_freq": "複利頻度",
+        "label_monthly_contrib": "月々の積立額",
+        "ph_principal": "10000",
+        "ph_rate": "7",
+        "ph_years": "20",
+        "ph_monthly_contrib": "500",
+        "opt_freq_yearly": "年1回",
+        "opt_freq_monthly": "月複利",
+        "opt_freq_daily": "日複利",
+        "btn_calculate": "計算",
+        "btn_reset": "リセット",
+        "btn_share": "結果を共有",
+        "share_text": "投資の将来価値は {value} —",
+        "share_copied": "結果をクリップボードにコピーしました。",
+        "res_final_label": "最終残高",
+        "res_total_contrib_label": "総積立額",
+        "res_total_interest_label": "総利息収益",
+        "res_yearly_header": "年別残高",
+        "th_year": "年",
+        "th_balance": "残高",
+        "th_contributed": "積立累計",
+        "th_interest": "利息収益",
+        "alert_invalid": "元金・積立額は0以上、期間は正の数で入力してください。",
+        "disclaimer": "推定値のみ — 金融アドバイスではありません。実際のリターンは変動し、保証されません。",
+        "howto_header": "使い方",
+        "howto_html": (
+            "<ol>"
+            "<li>現在持っている初期元金を入力します。</li>"
+            "<li>期待する年利率をパーセントで入力します（S&amp;P 500の長期平均は名目約10%、実質約7%）。</li>"
+            "<li>投資期間を年単位で入力します。</li>"
+            "<li>複利頻度を選びます: 年1回・月・日。インデックスファンドは実質連続複利のため月複利が近似値です。</li>"
+            "<li>月々の積立額を入力（なければ0）して<strong>計算</strong>をクリックします。</li>"
+            "</ol>"
+            "<p><strong>計算式</strong>: FV = P(1 + r/m)<sup>m·t</sup> + C · ((1 + r/m)<sup>m·t</sup> − 1) / (r/m)。Pは元金、rは年利率、mは年間複利回数、tは年数、Cは定期積立額です。</p>"
+            "<p>インフレ・税金・手数料は考慮されていません。名目7%でインフレ3%であれば実質利回りは約4% — 将来残高の購買力は表示される数値より低くなります。</p>"
+        ),
+        "related_header": "関連ツール",
+        "related_loan": "ローン計算機",
+        "related_retirement": "老後資金計算機",
+        "related_date": "日付計算機",
+        "related_unit": "単位変換",
+        "card_blurb": "複利と月々の積立で投資・貯蓄の将来価値を即シミュレーション。"
     }
 }
 
@@ -6927,6 +7448,60 @@ RETIREMENT_CALCULATOR = {
         "related_date": "날짜 계산기",
         "related_bmi": "BMI 계산기",
         "card_blurb": "노후자금이 기대수명까지 버티는지 누적·인출 2단계로 즉시 시뮬레이션."
+    },
+    "ja": {
+        "title": "老後資金計算機",
+        "meta_title": "老後資金計算機 — 貯蓄は老後まで持つか？ - Utilify",
+        "meta_desc": "老後の貯蓄額と資金が尽きるまでの期間を推定します。現在の年齢・退職年齢・貯蓄・月々の積立・利回り・引き出し額・平均余命を入力。",
+        "og_title": "老後資金計算機 - Utilify",
+        "og_desc": "老後資金が平均余命まで持つかシミュレーションします。",
+        "json_name": "老後資金計算機",
+        "json_desc": "月々の積立による蓄積フェーズと年間引き出しフェーズの2段階モデル。",
+        "page_desc": "現在の年齢・目標退職年齢・現在の貯蓄・月々の積立額・期待利回り・年間引き出し計画額・平均余命を入力すると、蓄積フェーズと引き出しフェーズをシミュレーションし、資金がいつまで持つかを表示します。",
+        "label_current_age": "現在の年齢",
+        "label_retire_age": "退職年齢",
+        "label_current_savings": "現在の貯蓄額",
+        "label_monthly_contrib": "月々の積立額",
+        "label_annual_return": "年利率 (%)",
+        "label_annual_withdrawal": "老後の年間引き出し額",
+        "label_life_expectancy": "平均余命",
+        "ph_current_age": "30",
+        "ph_retire_age": "65",
+        "ph_current_savings": "50000",
+        "ph_monthly_contrib": "500",
+        "ph_annual_return": "6",
+        "ph_annual_withdrawal": "30000",
+        "ph_life_expectancy": "85",
+        "btn_calculate": "計算",
+        "btn_reset": "リセット",
+        "btn_share": "結果を共有",
+        "share_text": "老後資金の巣卵: {value} —",
+        "share_copied": "結果をクリップボードにコピーしました。",
+        "res_at_retirement_label": "退職時の資産額",
+        "res_outcome_header": "結果",
+        "outcome_lasts": "資金は平均余命まで持続します。{age}歳時点の余剰: {amount}。",
+        "outcome_runs_out": "{age}歳で資金が尽きます — 平均余命まであと{years}年不足。",
+        "res_chart_header": "残高の推移",
+        "alert_invalid": "退職年齢は現在の年齢より、平均余命は退職年齢より大きくなければなりません。",
+        "disclaimer": "推定値のみ — 金融アドバイスではありません。実際の退職計画には資格を持つ専門家にご相談ください。",
+        "howto_header": "使い方",
+        "howto_html": (
+            "<ol>"
+            "<li><em>現在の年齢</em>と<em>目標退職年齢</em>を入力します。</li>"
+            "<li>現在の老後貯蓄額と退職までの月々の積立額を入力します。</li>"
+            "<li>期待年利率を入力します（バランス型ポートフォリオでは実質6%が一般的な仮定）。</li>"
+            "<li>老後に毎年引き出す金額を入力します（資産の4%ルールが古典的な目安）。</li>"
+            "<li>平均余命を入力して<strong>計算</strong>をクリックします。残高推移がグラフで表示されます。</li>"
+            "</ol>"
+            "<p><strong>モデル</strong>: 蓄積フェーズは退職まで月単位の複利で積立金を加算し、引き出しフェーズは毎年初に年間引き出し額を差し引き、残高に年利率を適用します。残高がゼロになるか平均余命に達するまで繰り返します。</p>"
+            "<p>実際の退職はより複雑です — 初期数年のリターン順序が結果に大きく影響し（シーケンスリスク）、年金収入が加わり、晩年の医療費が急増する可能性があります。あくまで目安として使用してください。</p>"
+        ),
+        "related_header": "関連ツール",
+        "related_compound": "複利計算機",
+        "related_loan": "ローン計算機",
+        "related_date": "日付計算機",
+        "related_bmi": "BMI計算機",
+        "card_blurb": "老後資金が平均余命まで持つか、蓄積・引き出しの2段階で即シミュレーション。"
     }
 }
 
@@ -7193,6 +7768,51 @@ PREGNANCY_CALCULATOR = {
         "related_calorie": "칼로리 계산기",
         "related_unit": "단위 변환기",
         "card_blurb": "마지막 생리일(LMP)로 출산예정일·현재 주수·삼분기를 즉시 계산. 생리주기 보정 가능."
+    },
+    "ja": {
+        "title": "妊娠出産予定日計算機",
+        "meta_title": "妊娠計算機 — 出産予定日・週数・トリメスター - Utilify",
+        "meta_desc": "最終月経日（LMP）から出産予定日・現在の妊娠週数・トリメスターを計算します。ネーゲレ公式＋生理周期補正。",
+        "og_title": "妊娠出産予定日計算機 - Utilify",
+        "og_desc": "出産予定日・現在の週数・トリメスター・残り日数を一括表示。",
+        "json_name": "妊娠出産予定日計算機",
+        "json_desc": "最終月経日から出産予定日と現在の妊娠週数を推定します。",
+        "page_desc": "最終月経開始日（LMP）と通常の生理周期を入力すると、出産予定日・現在の妊娠週数・トリメスター・残り日数を計算します。ネーゲレ公式と生理周期補正を適用しています。",
+        "label_lmp": "最終月経開始日",
+        "label_cycle": "平均生理周期（日）",
+        "ph_cycle": "28",
+        "btn_calculate": "計算",
+        "btn_reset": "リセット",
+        "btn_share": "結果を共有",
+        "share_text": "推定出産予定日: {value} —",
+        "share_copied": "結果をクリップボードにコピーしました。",
+        "res_due_label": "推定出産予定日",
+        "res_week_label": "現在の週数",
+        "res_trimester_label": "トリメスター",
+        "res_remaining_label": "残り日数",
+        "trimester_1": "第1トリメスター",
+        "trimester_2": "第2トリメスター",
+        "trimester_3": "第3トリメスター",
+        "week_format": "{week}週{day}日",
+        "alert_invalid": "有効な最終月経日と21〜45日の生理周期を入力してください。",
+        "alert_future": "最終月経日は未来の日付にはできません。",
+        "disclaimer": "推定値のみ — 医療上のアドバイスではありません。出産予定日通りに生まれる赤ちゃんは約5%程度です。生理周期が不規則な場合や最終月経日が不明な場合は、超音波検査の方が正確です。",
+        "howto_header": "使い方",
+        "howto_html": (
+            "<ol>"
+            "<li>最終月経の開始日（LMP）を選択します。これは妊娠が成立した周期の第1日目です。</li>"
+            "<li>通常の生理周期を入力します。デフォルトは28日で、一定してずれる場合は調整してください。</li>"
+            "<li><strong>計算</strong>をクリックすると出産予定日・現在の週数・トリメスター・残り日数が表示されます。</li>"
+            "</ol>"
+            "<p><strong>計算式（ネーゲレ法則）</strong>: 出産予定日 = LMP + 280日、その後（生理周期 − 28）日を加減して排卵タイミングのずれを補正します。妊娠週数は受精日ではなくLMPを基準とするため、第1週は実際の妊娠前から始まります。トリメスター区分: 第1（1〜13週）、第2（14〜27週）、第3（28週以降）。</p>"
+            "<p>生理周期が不規則または最終月経日が不明な場合は、第1トリメスターの超音波検査が最も正確な方法です。</p>"
+        ),
+        "related_header": "関連ツール",
+        "related_date": "日付計算機",
+        "related_bmi": "BMI計算機",
+        "related_calorie": "カロリー計算機",
+        "related_unit": "単位変換",
+        "card_blurb": "最終月経日（LMP）から出産予定日・現在の週数・トリメスターを即計算。生理周期補正対応。"
     }
 }
 
@@ -7470,6 +8090,56 @@ FINANCE_HUB = {
         "related_date": "날짜 계산기",
         "related_unit": "단위 변환기",
         "card_blurb": "대출·복리·은퇴 계산기 — 모두 브라우저에서."
+    },
+    "ja": {
+        "title": "金融計算機",
+        "meta_title": "金融計算機 — ローン・複利・老後資金 - Utilify",
+        "meta_desc": "ブラウザで完全動作する無料の金融計算機。ローン返済額・複利による投資成長・老後資金シミュレーション。登録不要、アップロード不要。",
+        "og_title": "金融計算機 - Utilify",
+        "og_desc": "ローン・複利・老後資金計算機 — すべてクライアントサイド。",
+        "json_name": "金融計算機",
+        "json_desc": "ローン・貯蓄・老後計画向けの金融計算機コレクション。",
+        "h1": "金融計算機",
+        "intro_html": (
+            "<p>お金の決断は「漠然とした不安」を「行動できる具体的な数字」に変えるとうまくいきます。"
+            "住宅ローンを検討したり、毎月いくら貯めるか考えたり、老後資金が十分か確かめたりするとき、"
+            "良い計算機はその決断を明確にしてくれます。</p>"
+            "<p>以下のツールは多くの人が繰り返し直面する3つの財務的な質問を扱います: "
+            "<strong>このローンは実際にいくらかかるのか？</strong> "
+            "<strong>今貯蓄すると時間が経てばどのくらいになるのか？</strong> "
+            "<strong>老後資金は平均余命まで持つのか？</strong> すべての計算はブラウザ内で行われ、"
+            "入力データはページ外に送信されません。登録不要、使用された計算式は各ページに明記されており直接検証できます。</p>"
+            "<p>意思決定のサポートツールとして使用してください — アドバイスではありません。"
+            "実際のローンには手数料や諸費用が加わり、実際のリターンは一定ではなく、実際の老後は"
+            "どんなスムーズなシミュレーションよりも複雑です。数字を目安として使用した後、重要な"
+            "決断の前には資格を持つ専門家にご相談ください。</p>"
+        ),
+        "tools_header": "このカテゴリーのツール",
+        "faq_header": "よくある質問",
+        "faq_html": (
+            "<details><summary>これらの計算機は金融アドバイスの代わりになりますか？</summary>"
+            "<p>なりません。標準的な計算式と合理的なデフォルト値を使用していますが、あなたの税務状況・"
+            "債務構成・福利厚生・リスク許容度はわかりません。結果は登録ファイナンシャルアドバイザーや"
+            "CPAとの会話の出発点として活用してください。</p></details>"
+            "<details><summary>計算されたローン返済額が実際の明細書と異なる理由は？</summary>"
+            "<p>金融機関は固定資産税・住宅保険・PMI・管理費などをエスクロー経由で月払いに含める場合が"
+            "多いです。このローン計算機は元金＋利息のみを計算します。実際の住宅費用には20〜30%程度"
+            "加算した金額を目安にしてください。</p></details>"
+            "<details><summary>複利計算にどの利率を仮定すべきですか？</summary>"
+            "<p>S&amp;P 500の過去100年の平均は名目約10%・実質約7%ですが、過去の実績は将来を保証しません。"
+            "長期計画では実質6〜7%が保守的な一般的仮定です。短期資金には市場リスクがあります。</p></details>"
+            "<details><summary>老後計画にこれらを使っても大丈夫ですか？</summary>"
+            "<p>目安として使用してください。老後資金計算機は一定の利回りを仮定するため、<em>リターン順序"
+            "リスク</em>（退職後最初の数年の悪い利回りが計画全体を狂わせる）が反映されていません。"
+            "重要な決断にはモンテカルロシミュレーターまたは定額制のファイナンシャルプランナーの方が"
+            "適しています。</p></details>"
+        ),
+        "related_header": "他の計算機",
+        "related_other_hub": "健康計算機",
+        "related_bmi": "BMI計算機",
+        "related_date": "日付計算機",
+        "related_unit": "単位変換",
+        "card_blurb": "ローン・複利・老後資金計算機 — すべてクライアントサイド。"
     }
 }
 
@@ -7579,6 +8249,57 @@ HEALTH_HUB = {
         "related_date": "날짜 계산기",
         "related_unit": "단위 변환기",
         "card_blurb": "칼로리·임신·체지방 계산기 — 모두 브라우저에서."
+    },
+    "ja": {
+        "title": "健康計算機",
+        "meta_title": "健康計算機 — カロリー・妊娠・体脂肪率 - Utilify",
+        "meta_desc": "ブラウザで完全動作する無料の健康計算機。BMR＋TDEE・妊娠出産予定日・体脂肪率。登録不要、アップロード不要。",
+        "og_title": "健康計算機 - Utilify",
+        "og_desc": "カロリー・妊娠・体脂肪計算機 — すべてクライアントサイド。",
+        "json_name": "健康計算機",
+        "json_desc": "栄養・妊娠・体組成のための健康計算機コレクション。",
+        "h1": "健康計算機",
+        "intro_html": (
+            "<p>身体にはダッシュボードがありません。測定値を文脈に変えてくれる小さな計算機セットが"
+            "次善の策です。体重を維持しながらどれだけ食べられるか、赤ちゃんの出産予定日はいつか、"
+            "体組成が標準的な範囲のどこに位置するか。これらは医師の代わりにはなりませんが、次の"
+            "診察でより良い質問をするための助けになります。</p>"
+            "<p>以下のツールは最もよく検索される3つの健康上の質問を扱います: "
+            "<strong>実際に必要なカロリーはどのくらいか？</strong> "
+            "<strong>出産予定日はいつで、現在何週目か？</strong> "
+            "<strong>体脂肪率はいくらか？</strong> いずれもブラウザ内で動作し、"
+            "広く引用される計算式（Mifflin-St Jeor・ネーゲレ法則・米海軍法）を使用して、"
+            "各ページに計算過程が明記されているので直接検証できます。</p>"
+            "<p>簡易チェックとして使用してください。妊娠週数は第1トリメスターの超音波検査の方が"
+            "正確です。体脂肪率はDEXAや水中体重測定が標準です。栄養については管理栄養士が"
+            "どんな一般式よりも個人に合ったアドバイスができます。</p>"
+        ),
+        "tools_header": "このカテゴリーのツール",
+        "faq_header": "よくある質問",
+        "faq_html": (
+            "<details><summary>最も正確なBMR計算式はどれですか？</summary>"
+            "<p>ここで使用しているMifflin-St Jeorは、ほとんどの研究で健康な成人に対して古いHarris-Benedict"
+            "やKatch-McArdleより優れています。誤差範囲は約±10% — 計画用には十分ですが、臨床診断用には"
+            "不十分です。</p></details>"
+            "<details><summary>BMIだけで健康を判断できますか？</summary>"
+            "<p>できません。BMIは筋肉と脂肪を区別せず、脂肪分布を無視し、アスリートや高齢者では"
+            "不正確です。体脂肪計算機（米海軍法）の方が体組成の指標として優れており、ウエスト・"
+            "ヒップ比と組み合わせると心血管リスク評価に役立ちます。</p></details>"
+            "<details><summary>出産予定日が医師の推定と異なる理由は？</summary>"
+            "<p>この計算機はネーゲレ法則（LMP + 280日）に生理周期補正を適用しています。生理周期が"
+            "不規則またはLMPが不確かな場合は、第1トリメスターの超音波検査の方が正確で、医師も通常"
+            "それを基準にします。</p></details>"
+            "<details><summary>体脂肪率は低ければ低いほど良いですか？</summary>"
+            "<p>いいえ — 健康な範囲があり、最小値ではありません。男性で約6%未満、女性で約14%未満は"
+            "必須脂肪の領域で安全に維持できません。アスリートも最低値ではなくパフォーマンスに合わせて"
+            "調整します。</p></details>"
+        ),
+        "related_header": "他の計算機",
+        "related_other_hub": "金融計算機",
+        "related_bmi": "BMI計算機",
+        "related_date": "日付計算機",
+        "related_unit": "単位変換",
+        "card_blurb": "カロリー・妊娠・体脂肪計算機 — すべてクライアントサイド。"
     }
 }
 
@@ -7681,6 +8402,55 @@ RAG_CHUNKER = {
         "related_chatgpt": "ChatGPT 블로그 변환",
         "related_md": "Markdown 프리뷰어",
         "card_blurb": "임베딩·RAG 파이프라인을 위한 슬라이딩 윈도우 텍스트 청크 분할기."
+    },
+    "ja": {
+        "title": "RAGテキストチャンカー",
+        "meta_title": "RAGテキストチャンカー — 埋め込み用スライディングウィンドウ分割 - Utilify",
+        "meta_desc": "RAG・埋め込みパイプライン用にテキストを重複チャンクに分割します。サイズ・重複設定可能、文字/トークンモード対応。すべてブラウザで処理。",
+        "og_title": "RAGテキストチャンカー - Utilify",
+        "og_desc": "埋め込みベースの検索パイプライン用に重複チャンクでテキストを分割します。",
+        "json_name": "RAGテキストチャンカー",
+        "json_desc": "検索拡張生成（RAG）パイプライン向けのスライディングウィンドウ式テキスト分割ツール。",
+        "page_desc": "長いドキュメントを埋め込みベースの検索用に重複チャンクへ分割します。一定のサイズが必要な場合は文字モード、埋め込みモデルのコンテキスト制限に合わせるにはトークンモードを選択してください。すべてブラウザ内で処理されます。",
+        "label_text": "元のテキスト",
+        "label_size": "チャンクサイズ",
+        "label_overlap": "重複サイズ",
+        "label_mode": "単位",
+        "ph_text": "分割するドキュメントを貼り付けてください…",
+        "ph_size": "512",
+        "ph_overlap": "50",
+        "opt_chars": "文字",
+        "opt_tokens": "トークン（推定）",
+        "btn_chunk": "分割",
+        "btn_reset": "リセット",
+        "btn_copy_all": "すべてコピー (JSON)",
+        "btn_share": "結果を共有",
+        "share_text": "{value}文字のドキュメントをチャンクに分割しました —",
+        "share_copied": "クリップボードにコピーしました。",
+        "copied_one": "チャンクをコピーしました。",
+        "res_count_label": "チャンク数",
+        "res_total_label": "元のサイズ",
+        "res_avg_label": "平均チャンクサイズ",
+        "chunk_label": "チャンク",
+        "alert_invalid": "元のテキストと、重複サイズより大きいチャンクサイズを入力してください。",
+        "disclaimer": "トークンモードは近似値です（英語約4文字/トークン、CJK約1.5文字/トークン）。正確なトークン化には使用する埋め込みモデルのトークナイザーを利用してください。",
+        "howto_header": "使い方",
+        "howto_html": (
+            "<ol>"
+            "<li>元のドキュメントを貼り付けます。</li>"
+            "<li>チャンクサイズと重複を入力します。よくある開始値: 文字モード512/50、トークンモード256/32。</li>"
+            "<li>一定のバイトサイズが必要な場合は<em>文字</em>、埋め込みモデルのコンテキスト制限に合わせるには<em>トークン</em>を選択します。</li>"
+            "<li><strong>分割</strong>をクリックするとチャンクが番号とサイズとともに表示されます。各チャンクをクリックして個別コピー、または<strong>すべてコピー（JSON）</strong>で配列全体を取得できます。</li>"
+            "</ol>"
+            "<p><strong>なぜ重複が必要か？</strong> チャンク境界でのコンテキスト断絶を防ぎます — 途中で切れた文でもアンカーを失いません。一般的な比率: 重複 = チャンクサイズの10〜20%。</p>"
+            "<p>分割方式は単純なスライディングウィンドウで、意味的な境界検出は行いません。一般的な文章では通常問題ありません。コードや構造文書にはパーサーベースの分割ツールを検討してください。</p>"
+        ),
+        "related_header": "関連ツール",
+        "related_token": "トークンカウンター",
+        "related_pii": "プロンプトPIIスクラバー",
+        "related_chatgpt": "ChatGPTブログ変換",
+        "related_md": "Markdownプレビュー",
+        "card_blurb": "埋め込み・RAGパイプライン向けのスライディングウィンドウ式テキスト分割。"
     }
 }
 
@@ -7795,6 +8565,61 @@ FEW_SHOT_FORMATTER = {
         "related_chatgpt": "ChatGPT 블로그 변환",
         "related_claude": "Claude.md 생성기",
         "card_blurb": "입력/출력 예시를 Few-shot 프롬프트로 — Markdown·XML·OpenAI JSON."
+    },
+    "ja": {
+        "title": "Few-Shotプロンプトフォーマッター",
+        "meta_title": "Few-Shotプロンプトフォーマッター — Markdown / XML / OpenAI JSON - Utilify",
+        "meta_desc": "入力/出力例をFew-shotプロンプトとしてフォーマットします。Markdown・Anthropic XMLタグ・OpenAI messages JSON・プレーンテキスト出力に対応。ブラウザで動作。",
+        "og_title": "Few-Shotプロンプトフォーマッター - Utilify",
+        "og_desc": "ChatGPT・Claude・自分のパイプライン向けにFew-shotプロンプトをきれいに整形します。",
+        "json_name": "Few-Shotプロンプトフォーマッター",
+        "json_desc": "入力/出力の例ペアをFew-shotプロンプト形式に変換するツール。",
+        "page_desc": "システム指示と入力→出力の例リストを追加すると、Markdown・Anthropicスタイルのタグ・OpenAI messages JSON・プレーンテキスト形式のFew-shotプロンプトを生成します — ChatGPT・Claude・スクリプトにそのまま貼り付けられます。",
+        "label_system": "システム指示（任意）",
+        "label_input": "入力",
+        "label_output": "出力",
+        "label_format": "出力形式",
+        "ph_system": "親切で簡潔に答えるアシスタントです。",
+        "ph_input": "ユーザーメッセージ",
+        "ph_output": "期待する返答",
+        "opt_md": "Markdown",
+        "opt_xml": "Anthropic XMLタグ",
+        "opt_json": "OpenAI messages JSON",
+        "opt_plain": "プレーンテキスト",
+        "btn_add_pair": "+ 例を追加",
+        "btn_remove_pair": "削除",
+        "btn_format": "フォーマット",
+        "btn_reset": "リセット",
+        "btn_copy": "コピー",
+        "btn_share": "結果を共有",
+        "share_text": "{value}件の例でFew-shotプロンプトを作成しました —",
+        "share_copied": "結果をクリップボードにコピーしました。",
+        "copied": "コピーしました。",
+        "res_label": "フォーマットされたプロンプト",
+        "alert_no_pairs": "最低1組の入力/出力例を追加してください。",
+        "disclaimer": "このツールはテキストを再フォーマットするだけで、AIプロバイダーには接続しません。有料APIに送信する前に結果を必ず確認してください。",
+        "howto_header": "使い方",
+        "howto_html": (
+            "<ol>"
+            "<li>（任意）タスクやペルソナを定義するシステム指示を入力します。</li>"
+            "<li><strong>+ 例を追加</strong>をクリックして入力/出力ペアを追加します。Few-shotには通常3〜5例が適切です。</li>"
+            "<li>出力形式を選択してください:"
+            "<ul>"
+            "<li><strong>Markdown</strong> — 読みやすく、チャットUIに向いています。</li>"
+            "<li><strong>XMLタグ</strong> — AnthropicはClaude向けに各ペアを<code>&lt;example&gt;</code>タグで囲むことを推奨しています。</li>"
+            "<li><strong>OpenAI messages JSON</strong> — <code>{role, content}</code>オブジェクトの配列で、Chat Completions APIにそのまま渡せます。</li>"
+            "<li><strong>プレーン</strong> — マークアップなしのシンプルな形式。</li>"
+            "</ul></li>"
+            "<li><strong>フォーマット</strong>をクリックして結果をコピーします。</li>"
+            "</ol>"
+            "<p>Claude/AnthropicにはXMLタグが例の構造遵守を一貫して改善します。ChatGPTにはMarkdownまたはmessages JSONが通常最適です。OpenAI形式は各ペアをuser/assistantターンで交互に配置し、APIが会話履歴として処理します。</p>"
+        ),
+        "related_header": "関連ツール",
+        "related_token": "トークンカウンター",
+        "related_pii": "プロンプトPIIスクラバー",
+        "related_chatgpt": "ChatGPTブログ変換",
+        "related_claude": "Claude.mdジェネレーター",
+        "card_blurb": "入力/出力例をFew-shotプロンプトに — Markdown・XML・OpenAI JSON。"
     }
 }
 
@@ -7883,6 +8708,48 @@ JSON_SCHEMA_VALIDATOR = {
         "related_jwt": "JWT 디코더",
         "related_token": "토큰 카운터",
         "card_blurb": "JSON을 Schema로 검증 — type·required·items·enum·format·pattern."
+    },
+    "ja": {
+        "title": "JSONスキーマバリデーター",
+        "meta_title": "JSONスキーマバリデーター — JSONをスキーマで検証 - Utilify",
+        "meta_desc": "JSONデータをJSONスキーマに対してブラウザ内で検証します。type・properties・required・items・enum・format・pattern・min/maxをサポート。アップロード不要。",
+        "og_title": "JSONスキーマバリデーター - Utilify",
+        "og_desc": "JSONをスキーマで検証 — すべてのエラーにJSONPathの位置を表示。",
+        "json_name": "JSONスキーマバリデーター",
+        "json_desc": "JSON Schema 2020-12のコアキーワードを扱うクライアントサイドバリデーター。",
+        "page_desc": "JSONデータとJSONスキーマを貼り付けると、type・required・properties・items・enum・format・pattern・min/max制約をすべて検証し、各エラーが発生したJSONPathとともに報告します。すべてブラウザ内で処理されます。",
+        "label_data": "JSONデータ",
+        "label_schema": "JSONスキーマ",
+        "ph_data": "{\n  \"name\": \"Alice\",\n  \"age\": 30\n}",
+        "ph_schema": "{\n  \"type\": \"object\",\n  \"required\": [\"name\"],\n  \"properties\": {\n    \"name\": {\"type\": \"string\"}\n  }\n}",
+        "btn_validate": "検証",
+        "btn_reset": "リセット",
+        "btn_load_sample": "サンプルを読み込む",
+        "btn_share": "結果を共有",
+        "share_text": "JSON検証結果: {value} —",
+        "share_copied": "結果をクリップボードにコピーしました。",
+        "res_valid": "✓ スキーマに準拠しています。",
+        "res_invalid_header": "✗ 検証エラー",
+        "res_error_count": "{count}件のエラー:",
+        "alert_data_invalid": "データが有効なJSONではありません: ",
+        "alert_schema_invalid": "スキーマが有効なJSONではありません: ",
+        "disclaimer": "JSON Schema 2020-12の有用なサブセットを実装しています（type、properties、required、items、enum、const、format、pattern、文字列/数値/配列のmin/max）。$ref・allOf/anyOf/oneOf・dependentSchemas・prefixItemsなどの高度なキーワードはサポートされていません — それらにはajvなどのサーバーサイドバリデーターを使用してください。",
+        "howto_header": "使い方",
+        "howto_html": (
+            "<ol>"
+            "<li>JSONデータを左パネルに貼り付けます。</li>"
+            "<li>検証したいJSONスキーマを右パネルに貼り付けます。<strong>サンプルを読み込む</strong>で動作例を確認できます。</li>"
+            "<li><strong>検証</strong>をクリックします。合格すると緑のチェックが、失敗すると各エラーのJSONPathの位置（例: <code>$.user.email</code>）が表示されます。</li>"
+            "</ol>"
+            "<p><strong>サポートされているキーワード</strong>: <code>type</code>（string・number・integer・boolean・object・array・null）、<code>properties</code>、<code>required</code>、<code>additionalProperties: false</code>、<code>items</code>、<code>enum</code>、<code>const</code>、<code>minimum</code>/<code>maximum</code>/<code>exclusiveMinimum</code>/<code>exclusiveMaximum</code>/<code>multipleOf</code>、<code>minLength</code>/<code>maxLength</code>/<code>pattern</code>、<code>minItems</code>/<code>maxItems</code>、<code>format</code>（email・uri・url・date・date-time・uuid）。</p>"
+            "<p><strong>非サポート</strong>: <code>$ref</code>、<code>allOf</code>/<code>anyOf</code>/<code>oneOf</code>/<code>not</code>、<code>dependentSchemas</code>、<code>prefixItems</code>、<code>contains</code>、<code>if</code>/<code>then</code>/<code>else</code>。これらにはajvまたはサーバーサイドバリデーターを推奨します。</p>"
+        ),
+        "related_header": "関連ツール",
+        "related_json": "JSONフォーマッター",
+        "related_json_ts": "JSON to TS/DTO",
+        "related_jwt": "JWTデコーダー",
+        "related_token": "トークンカウンター",
+        "card_blurb": "JSONをスキーマで検証 — type・required・items・enum・format・pattern。"
     }
 }
 

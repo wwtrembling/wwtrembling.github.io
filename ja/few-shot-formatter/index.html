@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy-Report-Only" content="default-src 'self' https: data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https:; frame-src https:;">
     <meta name="google-adsense-account" content="ca-pub-6334819180242631">
-    <title>Few-Shot Prompt Formatter — Markdown / XML / OpenAI JSON - Utilify</title>
-    <meta name="description" content="Format input/output examples as a few-shot prompt. Output as Markdown, Anthropic XML tags, OpenAI messages JSON, or plain text. Runs in your browser.">
+    <title>Few-Shotプロンプトフォーマッター — Markdown / XML / OpenAI JSON - Utilify</title>
+    <meta name="description" content="入力/出力例をFew-shotプロンプトとしてフォーマットします。Markdown・Anthropic XMLタグ・OpenAI messages JSON・プレーンテキスト出力に対応。ブラウザで動作。">
     <link rel="canonical" href="https://utilifyapp.net/ja/few-shot-formatter/">
 
-    <meta property="og:title" content="Few-Shot Prompt Formatter - Utilify">
-    <meta property="og:description" content="Format examples as a clean few-shot prompt for ChatGPT, Claude, or your own pipeline.">
+    <meta property="og:title" content="Few-Shotプロンプトフォーマッター - Utilify">
+    <meta property="og:description" content="ChatGPT・Claude・自分のパイプライン向けにFew-shotプロンプトをきれいに整形します。">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://utilifyapp.net/ja/few-shot-formatter/">
 
@@ -37,8 +37,8 @@
     {
         "@context": "https://schema.org",
         "@type": "WebApplication",
-        "name": "Few-Shot Prompt Formatter",
-        "description": "Convert input/output example pairs into a formatted few-shot prompt.",
+        "name": "Few-Shotプロンプトフォーマッター",
+        "description": "入力/出力の例ペアをFew-shotプロンプト形式に変換するツール。",
         "url": "https://utilifyapp.net/ja/few-shot-formatter/",
         "inLanguage": "ja",
         "applicationCategory": "DeveloperApplication",
@@ -111,7 +111,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <script data-utilify-theme-init>(function(){try{var s=localStorage.getItem("utilify_theme");var t=(s==="dark"||s==="light")?s:(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
-    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://utilifyapp.net/ja/"}, {"@type": "ListItem", "position": 2, "name": "Few-Shot Prompt Formatter", "item": "https://utilifyapp.net/ja/few-shot-formatter/"}]}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://utilifyapp.net/ja/"}, {"@type": "ListItem", "position": 2, "name": "Few-Shotプロンプトフォーマッター", "item": "https://utilifyapp.net/ja/few-shot-formatter/"}]}</script>
 </head>
 
 <body>
@@ -119,65 +119,65 @@
     <header class="site-header"><div class="container"><div class="header-content"><a href="/ja/" class="site-logo">🛠️ Utilify</a><button data-utilify-theme-toggle id="themeToggle" class="theme-toggle" type="button" aria-label="Switch to dark mode" data-aria-to-dark="Switch to dark mode" data-aria-to-light="Switch to light mode">🌙</button></div></div></header>
     <main id="main" class="main-content">
         <div class="container-narrow">
-            <nav data-utilify-breadcrumb class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/ja/">Home</a></li><li aria-current="page">Few-Shot Prompt Formatter</li></ol></nav>
-            <h1>🎯 Few-Shot Prompt Formatter</h1>
+            <nav data-utilify-breadcrumb class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/ja/">Home</a></li><li aria-current="page">Few-Shotプロンプトフォーマッター</li></ol></nav>
+            <h1>🎯 Few-Shotプロンプトフォーマッター</h1>
             <div class="security-badge" style="display:flex;align-items:center;justify-content:center;gap:8px;margin:10px 0;font-size:14px;color:var(--text-secondary);">
                 <span>🔒 Secure & Client-side</span>
                 <button id="pwaInstallBtn" class="btn btn-primary" style="display: none; padding: 4px 12px; font-size: 12px;">📲 Install App</button>
                     <button data-utilify-fav-toggle class="fav-toggle-page" type="button" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
             </div>
 
-            <p>Add a system instruction and a list of input → output examples. The tool emits a clean few-shot prompt in Markdown, Anthropic-style XML tags, OpenAI messages JSON, or plain text — ready to paste into ChatGPT, Claude, or a script.</p>
+            <p>システム指示と入力→出力の例リストを追加すると、Markdown・Anthropicスタイルのタグ・OpenAI messages JSON・プレーンテキスト形式のFew-shotプロンプトを生成します — ChatGPT・Claude・スクリプトにそのまま貼り付けられます。</p>
 
             <div class="card">
                 <div class="form-group">
-                    <label class="form-label" for="systemInput">System instruction (optional)</label>
-                    <textarea id="systemInput" class="form-input" rows="2" placeholder="You are a helpful assistant. Answer questions concisely." style="font-family: var(--font-mono);"></textarea>
+                    <label class="form-label" for="systemInput">システム指示（任意）</label>
+                    <textarea id="systemInput" class="form-input" rows="2" placeholder="親切で簡潔に答えるアシスタントです。" style="font-family: var(--font-mono);"></textarea>
                 </div>
 
                 <div id="pairList"></div>
 
                 <div class="button-row" style="margin-top: var(--spacing-md);">
-                    <button class="btn" type="button" onclick="addPair()">+ Add example</button>
+                    <button class="btn" type="button" onclick="addPair()">+ 例を追加</button>
                 </div>
 
                 <div class="form-group" style="margin-top: var(--spacing-lg);">
-                    <label class="form-label" for="formatSelect">Output format</label>
+                    <label class="form-label" for="formatSelect">出力形式</label>
                     <select id="formatSelect" class="form-input">
                         <option value="md" selected>Markdown</option>
-                        <option value="xml">Anthropic XML tags</option>
+                        <option value="xml">Anthropic XMLタグ</option>
                         <option value="json">OpenAI messages JSON</option>
-                        <option value="plain">Plain text</option>
+                        <option value="plain">プレーンテキスト</option>
                     </select>
                 </div>
 
                 <div class="button-row">
-                    <button class="btn btn-primary" type="button" onclick="format()">Format</button>
-                    <button class="btn" type="button" onclick="resetForm()">Reset</button>
+                    <button class="btn btn-primary" type="button" onclick="format()">フォーマット</button>
+                    <button class="btn" type="button" onclick="resetForm()">リセット</button>
                 </div>
             </div>
 
             <div id="result" style="display:none;" aria-live="polite">
-                <h3>Formatted prompt</h3>
+                <h3>フォーマットされたプロンプト</h3>
                 <pre class="output-block" id="outputBlock"></pre>
                 <div class="button-row">
-                    <button class="btn" type="button" onclick="copyResult()">Copy</button>
-                    <button class="btn" type="button" onclick="shareResult()">Share result</button>
+                    <button class="btn" type="button" onclick="copyResult()">コピー</button>
+                    <button class="btn" type="button" onclick="shareResult()">結果を共有</button>
                 </div>
             </div>
 
-            <div class="disclaimer">The tool reformats your text — it does not call any AI provider. Review the output before sending to a paid API.</div>
+            <div class="disclaimer">このツールはテキストを再フォーマットするだけで、AIプロバイダーには接続しません。有料APIに送信する前に結果を必ず確認してください。</div>
 
-            <h2>How to use</h2>
-            <div class="howto-content"><ol><li>(Optional) Paste a system instruction that defines the task or persona.</li><li>Click <strong>+ Add example</strong> to add input/output pairs. 3–5 examples is typical for few-shot.</li><li>Pick the output format:<ul><li><strong>Markdown</strong> — readable, good for chat UIs.</li><li><strong>XML tags</strong> — Anthropic recommends <code>&lt;example&gt;</code> tags around each pair for Claude.</li><li><strong>OpenAI messages JSON</strong> — array of <code>{role, content}</code> objects, ready for the Chat Completions API.</li><li><strong>Plain</strong> — minimal, no markup.</li></ul></li><li>Click <strong>Format</strong> and copy the result.</li></ol><p>For Claude / Anthropic, XML tags consistently improve adherence to the example structure. For ChatGPT, Markdown or messages JSON usually works best. The OpenAI format alternates user/assistant turns for each pair, which the API treats as conversation history.</p></div>
+            <h2>使い方</h2>
+            <div class="howto-content"><ol><li>（任意）タスクやペルソナを定義するシステム指示を入力します。</li><li><strong>+ 例を追加</strong>をクリックして入力/出力ペアを追加します。Few-shotには通常3〜5例が適切です。</li><li>出力形式を選択してください:<ul><li><strong>Markdown</strong> — 読みやすく、チャットUIに向いています。</li><li><strong>XMLタグ</strong> — AnthropicはClaude向けに各ペアを<code>&lt;example&gt;</code>タグで囲むことを推奨しています。</li><li><strong>OpenAI messages JSON</strong> — <code>{role, content}</code>オブジェクトの配列で、Chat Completions APIにそのまま渡せます。</li><li><strong>プレーン</strong> — マークアップなしのシンプルな形式。</li></ul></li><li><strong>フォーマット</strong>をクリックして結果をコピーします。</li></ol><p>Claude/AnthropicにはXMLタグが例の構造遵守を一貫して改善します。ChatGPTにはMarkdownまたはmessages JSONが通常最適です。OpenAI形式は各ペアをuser/assistantターンで交互に配置し、APIが会話履歴として処理します。</p></div>
 
             <div class="related-tools-section">
-                <h3>Related Tools</h3>
+                <h3>関連ツール</h3>
                 <div class="related-buttons">
-                    <a href="/ja/token-counter/" class="related-btn">Token Counter</a><a
-                        href="/ja/prompt-pii-scrubber/" class="related-btn">Prompt PII Scrubber</a><a
-                        href="/ja/chatgpt-to-blog/" class="related-btn">ChatGPT to Blog</a><a
-                        href="/ja/claude-md-generator/" class="related-btn">Claude.md Generator</a>
+                    <a href="/ja/token-counter/" class="related-btn">トークンカウンター</a><a
+                        href="/ja/prompt-pii-scrubber/" class="related-btn">プロンプトPIIスクラバー</a><a
+                        href="/ja/chatgpt-to-blog/" class="related-btn">ChatGPTブログ変換</a><a
+                        href="/ja/claude-md-generator/" class="related-btn">Claude.mdジェネレーター</a>
                 </div>
             </div>
         </div>
@@ -186,9 +186,9 @@
                 <p data-legal-links style="font-size: 0.875rem; margin-top: 8px;"><a href="/ja/about/">About</a> · <a href="/ja/privacy/">Privacy</a> · <a href="/ja/terms/">Terms</a></p></div></div></footer>
     <script src="/assets/js/common.js"></script>
     <script>
-        const PH_INPUT = 'User message';
-        const PH_OUTPUT = 'Expected reply';
-        const REMOVE_LABEL = 'Remove';
+        const PH_INPUT = 'ユーザーメッセージ';
+        const PH_OUTPUT = '期待する返答';
+        const REMOVE_LABEL = '削除';
         const list = document.getElementById('pairList');
 
         function addPair(input, output) {
@@ -228,7 +228,7 @@
             const system = document.getElementById('systemInput').value.trim();
             const pairs = collectPairs();
             if (!pairs.length) {
-                alert('Add at least one input/output example.');
+                alert('最低1組の入力/出力例を追加してください。');
                 return;
             }
             const fmt = document.getElementById('formatSelect').value;
@@ -288,21 +288,21 @@
             if (!text) return;
             try {
                 await navigator.clipboard.writeText(text);
-                alert('Copied.');
+                alert('コピーしました。');
             } catch (e) { /* clipboard blocked */ }
         }
 
         async function shareResult() {
             const pairs = collectPairs();
             if (!pairs.length) return;
-            const text = 'I built a few-shot prompt with {value} examples —'.replace('{value}', pairs.length) + ' ' + location.href;
+            const text = '{value}件の例でFew-shotプロンプトを作成しました —'.replace('{value}', pairs.length) + ' ' + location.href;
             if (navigator.share) {
-                try { await navigator.share({ title: 'Few-Shot Prompt Formatter', text }); return; }
+                try { await navigator.share({ title: 'Few-Shotプロンプトフォーマッター', text }); return; }
                 catch (e) { if (e && e.name === 'AbortError') return; }
             }
             try {
                 await navigator.clipboard.writeText(text);
-                alert('Result copied to clipboard.');
+                alert('結果をクリップボードにコピーしました。');
             } catch (e) { /* clipboard blocked */ }
         }
 
@@ -321,8 +321,8 @@
     </script>
     <script>(adsbygoogle=window.adsbygoogle||[]).push({google_ad_client:"ca-pub-6334819180242631",enable_page_level_ads:true});</script>
     <script data-utilify-sw>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){});});}</script>
-    <script data-utilify-theme-toggle-script>(function(){var b=document.getElementById("themeToggle");if(!b)return;function p(){var t=document.documentElement.getAttribute("data-theme")||"light";b.textContent=t==="dark"?"☀️":"🌙";b.setAttribute("aria-pressed",String(t==="dark"));b.setAttribute("aria-label",t==="dark"?b.dataset.ariaToLight:b.dataset.ariaToDark);}p();b.addEventListener("click",function(){var c=document.documentElement.getAttribute("data-theme")||"light";var n=c==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",n);try{localStorage.setItem("utilify_theme",n);}catch(e){}p();});})();</script>
-    <script data-utilify-fav-toggle-script>(function(){var btn=document.querySelector(".fav-toggle-page");if(!btn)return;var m=location.pathname.match(/^\/[^\/]+\/([^\/]+)\/?$/);if(!m)return;var slug=m[1],K="utilify_favorites";function g(){return (localStorage.getItem(K)||"").split(",").filter(Boolean);}function s(a){localStorage.setItem(K,Array.from(new Set(a)).join(","));}function p(f){btn.textContent=f?"★":"☆";btn.classList.toggle("is-fav",f);btn.setAttribute("aria-label",f?btn.dataset.removeLabel:btn.dataset.addLabel);btn.setAttribute("aria-pressed",String(f));}p(g().indexOf(slug)>-1);btn.addEventListener("click",function(){var a=g(),n=a.indexOf(slug)>-1?a.filter(function(x){return x!==slug;}):a.concat([slug]);s(n);p(n.indexOf(slug)>-1);});})();</script>
+    <script data-utilify-theme-toggle-script>(function(){var b=document.getElementById("themeToggle");if(!b)return;function p(){var t=document.documentElement.getAttribute("data-theme")||"light";b.textContent=t==="dark"?"☀️":"🌙";b.setAttribute("aria-pressed",String(t==="dark"));b.setAttribute("aria-label",t==="dark"?b.dataset.ariaToLight:b.dataset.ariaToDark);}p();b.addEventListener("click",function(){var c=document.documentElement.getAttribute("data-theme")||"light";var n=c==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",n);try{localStorage.setItem("utilify_theme",n);}catch(e){}p();if(typeof gtag==="function"){gtag("event","theme_toggle",{next_theme:n});}});})();</script>
+    <script data-utilify-fav-toggle-script>(function(){var btn=document.querySelector(".fav-toggle-page");if(!btn)return;var m=location.pathname.match(/^\/[^\/]+\/([^\/]+)\/?$/);if(!m)return;var slug=m[1],K="utilify_favorites";function g(){return (localStorage.getItem(K)||"").split(",").filter(Boolean);}function s(a){localStorage.setItem(K,Array.from(new Set(a)).join(","));}function p(f){btn.textContent=f?"★":"☆";btn.classList.toggle("is-fav",f);btn.setAttribute("aria-label",f?btn.dataset.removeLabel:btn.dataset.addLabel);btn.setAttribute("aria-pressed",String(f));}p(g().indexOf(slug)>-1);btn.addEventListener("click",function(){var a=g(),n=a.indexOf(slug)>-1?a.filter(function(x){return x!==slug;}):a.concat([slug]);s(n);var f=n.indexOf(slug)>-1;p(f);if(typeof gtag==="function"){gtag("event","tool_favorite",{tool_slug:slug,action:f?"add":"remove"});}});})();</script>
 </body>
 
 </html>

@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy-Report-Only" content="default-src 'self' https: data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https:; frame-src https:;">
     <meta name="google-adsense-account" content="ca-pub-6334819180242631">
-    <title>Prompt PII Scrubber — Safely Paste into ChatGPT / Claude - Utilify</title>
-    <meta name="description" content="Mask emails, phone numbers, SSNs, credit cards, API keys, and IPs in your text before pasting it into AI chatbots. Runs entirely in your browser.">
+    <title>プロンプトPIIスクラバー — ChatGPT/Claudeに安全に貼り付け - Utilify</title>
+    <meta name="description" content="ChatGPT・Claude・GeminiにテキストをペーストするPIIをマスクします。メール・電話・SSN・クレカ・APIキー・IPアドレスに対応。ブラウザ内で処理。">
     <link rel="canonical" href="https://utilifyapp.net/ja/prompt-pii-scrubber/">
 
-    <meta property="og:title" content="Prompt PII Scrubber — Safely Paste into ChatGPT / Claude - Utilify">
-    <meta property="og:description" content="Mask emails, phone numbers, SSNs, credit cards, API keys, and IPs in your text before pasting it into AI chatbots. Runs entirely in your browser.">
+    <meta property="og:title" content="プロンプトPIIスクラバー — ChatGPT/Claudeに安全に貼り付け - Utilify">
+    <meta property="og:description" content="ChatGPT・Claude・GeminiにテキストをペーストするPIIをマスクします。メール・電話・SSN・クレカ・APIキー・IPアドレスに対応。ブラウザ内で処理。">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://utilifyapp.net/ja/prompt-pii-scrubber/">
 
@@ -38,8 +38,8 @@
     {
         "@context": "https://schema.org",
         "@type": "WebApplication",
-        "name": "Prompt PII Scrubber",
-        "description": "Client-side regex sweep that masks PII in text destined for AI chatbots.",
+        "name": "プロンプトPIIスクラバー",
+        "description": "AIチャットボット向けテキストのPIIを正規表現でマスクするクライアントサイドツール。",
         "url": "https://utilifyapp.net/ja/prompt-pii-scrubber/",
         "inLanguage": "ja",
         "applicationCategory": "UtilitiesApplication",
@@ -90,7 +90,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <script data-utilify-theme-init>(function(){try{var s=localStorage.getItem("utilify_theme");var t=(s==="dark"||s==="light")?s:(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
-    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://utilifyapp.net/ja/"}, {"@type": "ListItem", "position": 2, "name": "Prompt PII Scrubber", "item": "https://utilifyapp.net/ja/prompt-pii-scrubber/"}]}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://utilifyapp.net/ja/"}, {"@type": "ListItem", "position": 2, "name": "プロンプトPIIスクラバー", "item": "https://utilifyapp.net/ja/prompt-pii-scrubber/"}]}</script>
 </head>
 
 <body>
@@ -100,55 +100,55 @@
     </header>
     <main id="main" class="main-content">
         <div class="container-narrow">
-            <nav data-utilify-breadcrumb class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/ja/">Home</a></li><li aria-current="page">Prompt PII Scrubber</li></ol></nav>
-            <h1>🛡️ Prompt PII Scrubber</h1>
+            <nav data-utilify-breadcrumb class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/ja/">Home</a></li><li aria-current="page">プロンプトPIIスクラバー</li></ol></nav>
+            <h1>🛡️ プロンプトPIIスクラバー</h1>
             <div class="security-badge" style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
                 <span title="Processed securely in client-side">🔒 Secure & Client-side</span>
             </div>
 
-            <p>Mask sensitive data (emails, phones, SSNs, credit cards, API keys, IPs, URLs) before pasting prompts into ChatGPT, Claude, or any AI service. Runs entirely in your browser — your text never leaves the page.</p>
+            <p>ChatGPT・Claude・Geminiなどにプロンプトを貼り付ける前に、機密情報（メール・電話番号・SSN・クレジットカード・APIキー・IPアドレス・URL）をマスクします。すべてブラウザ内で処理されます。</p>
 
             <div class="pii-options">
-                <label><input type="checkbox" data-pii="email" checked> Email</label>
-                <label><input type="checkbox" data-pii="phone" checked> Phone</label>
-                <label><input type="checkbox" data-pii="ssn" checked> SSN / RRN</label>
-                <label><input type="checkbox" data-pii="card" checked> Credit card</label>
-                <label><input type="checkbox" data-pii="apikey" checked> API key</label>
-                <label><input type="checkbox" data-pii="ip" checked> IP address</label>
+                <label><input type="checkbox" data-pii="email" checked> メール</label>
+                <label><input type="checkbox" data-pii="phone" checked> 電話番号</label>
+                <label><input type="checkbox" data-pii="ssn" checked> SSN / マイナンバー</label>
+                <label><input type="checkbox" data-pii="card" checked> クレジットカード</label>
+                <label><input type="checkbox" data-pii="apikey" checked> APIキー</label>
+                <label><input type="checkbox" data-pii="ip" checked> IPアドレス</label>
                 <label><input type="checkbox" data-pii="url" checked> URL</label>
             </div>
 
             <div class="pii-grid">
                 <div>
-                    <label class="form-label" for="inputEl">Original text</label>
-                    <textarea id="inputEl" class="form-input" style="min-height:260px;font-family:var(--font-mono);" placeholder="Paste text containing PII (emails, phones, etc.)..."></textarea>
+                    <label class="form-label" for="inputEl">元のテキスト</label>
+                    <textarea id="inputEl" class="form-input" style="min-height:260px;font-family:var(--font-mono);" placeholder="PIIを含むテキストを貼り付けてください（メール・電話番号など）..."></textarea>
                 </div>
                 <div>
-                    <label class="form-label" for="outputEl">Scrubbed text</label>
+                    <label class="form-label" for="outputEl">スクラブ済みテキスト</label>
                     <textarea id="outputEl" class="form-input" style="min-height:260px;font-family:var(--font-mono);" readonly aria-live="polite"></textarea>
                 </div>
             </div>
 
             <div class="btn-group" style="margin-top: var(--spacing-md);">
-                <button class="btn btn-primary" id="scrubBtn">Scrub</button>
-                <button class="btn btn-secondary" id="copyBtn">Copy</button>
-                <button class="btn btn-secondary" id="clearBtn">Clear</button>
+                <button class="btn btn-primary" id="scrubBtn">スクラブ</button>
+                <button class="btn btn-secondary" id="copyBtn">コピー</button>
+                <button class="btn btn-secondary" id="clearBtn">クリア</button>
             </div>
 
             <div id="summaryBox" class="pii-summary" hidden aria-live="polite">
-                <strong>Masked items:</strong>
+                <strong>マスクされた項目:</strong>
                 <ul id="summaryList"></ul>
             </div>
 
-            <h2>How to use</h2>
-            <div class="howto-content"><ol><li>Paste the prompt or document you want to send to an AI service.</li><li>Toggle the categories you want to mask (default: all on).</li><li>Click <strong>Scrub</strong>; the right panel shows the masked version with placeholders like <code>[EMAIL]</code>, <code>[PHONE]</code>, etc.</li><li>Copy the scrubbed text and paste it into ChatGPT, Claude, Gemini, etc.</li></ol><p><strong>What is detected</strong>: standard email addresses; phone numbers in common international formats; US SSN and Korean RRN (주민등록번호); credit-card-like number sequences validated with the Luhn algorithm to avoid false positives; API keys matching well-known prefixes (<code>sk-</code>, <code>pk-</code>, <code>AKIA</code>, <code>AIza</code>, <code>github_pat_</code>, <code>xoxb-</code>); IPv4 addresses; and any HTTP(S) URL.</p><p>Heuristic limits: free-text addresses, names, and proprietary IDs are <em>not</em> detected. Always review the scrubbed output before sending.</p></div>
+            <h2>使い方</h2>
+            <div class="howto-content"><ol><li>AIサービスに送りたいプロンプトまたはドキュメントを貼り付けます。</li><li>マスクするカテゴリーを選択します（デフォルト: すべてオン）。</li><li><strong>スクラブ</strong>をクリックすると、右パネルに<code>[EMAIL]</code>・<code>[PHONE]</code>などのプレースホルダーに置換された結果が表示されます。</li><li>スクラブ済みテキストをコピーしてChatGPT・Claude・Geminiなどに貼り付けます。</li></ol><p><strong>検出される項目</strong>: 標準的なメールアドレス、国際形式の電話番号、米国SSNと韓国住民登録番号、Luhnアルゴリズムで検証されたクレジットカード番号、既知のプレフィックス(<code>sk-</code>、<code>pk-</code>、<code>AKIA</code>、<code>AIza</code>、<code>github_pat_</code>、<code>xoxb-</code>)のAPIキー、IPv4アドレス、HTTP(S)のURL。</p><p>限界: 自由形式の住所・氏名・独自IDは検出<em>されません</em>。送信前に必ず結果を確認してください。</p></div>
 
             <div class="related-tools-section">
-                <h3>Related Tools</h3>
+                <h3>関連ツール</h3>
                 <div class="related-buttons">
-                    <a href="/ja/token-counter/" class="related-btn">Token Counter</a><a
-                        href="/ja/claude-md-generator/" class="related-btn">Claude.md Generator</a><a
-                        href="/ja/mcp-config-generator/" class="related-btn">MCP Config Generator</a>
+                    <a href="/ja/token-counter/" class="related-btn">トークンカウンター</a><a
+                        href="/ja/claude-md-generator/" class="related-btn">Claude.mdジェネレーター</a><a
+                        href="/ja/mcp-config-generator/" class="related-btn">MCP設定ジェネレーター</a>
                 </div>
             </div>
         </div>
@@ -162,8 +162,8 @@
         const summaryBox = document.getElementById('summaryBox');
         const summaryList = document.getElementById('summaryList');
         const labels = {
-            email: 'Email', phone: 'Phone', ssn: 'SSN / RRN',
-            card: 'Credit card', apikey: 'API key', ip: 'IP address', url: 'URL',
+            email: 'メール', phone: '電話番号', ssn: 'SSN / マイナンバー',
+            card: 'クレジットカード', apikey: 'APIキー', ip: 'IPアドレス', url: 'URL',
         };
 
         const PATTERNS = {
@@ -211,7 +211,7 @@
             const total = Object.values(counts).reduce((a, b) => a + b, 0);
             if (total === 0) {
                 summaryBox.hidden = false;
-                summaryList.innerHTML = '<li>No PII detected.</li>';
+                summaryList.innerHTML = '<li>PIIは検出されませんでした。</li>';
                 return;
             }
             for (const [k, n] of Object.entries(counts)) {
@@ -225,7 +225,7 @@
         document.getElementById('scrubBtn').addEventListener('click', scrub);
         document.getElementById('copyBtn').addEventListener('click', () => {
             if (outputEl.value) Utils.copyToClipboard(outputEl.value);
-            else Utils.showToast('Nothing to copy.');
+            else Utils.showToast('コピーする内容がありません。');
         });
         document.getElementById('clearBtn').addEventListener('click', () => {
             inputEl.value = ''; outputEl.value = '';
@@ -235,8 +235,8 @@
     </script>
     <script>(adsbygoogle=window.adsbygoogle||[]).push({google_ad_client:"ca-pub-6334819180242631",enable_page_level_ads:true});</script>
     <script data-utilify-sw>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){});});}</script>
-    <script data-utilify-theme-toggle-script>(function(){var b=document.getElementById("themeToggle");if(!b)return;function p(){var t=document.documentElement.getAttribute("data-theme")||"light";b.textContent=t==="dark"?"☀️":"🌙";b.setAttribute("aria-pressed",String(t==="dark"));b.setAttribute("aria-label",t==="dark"?b.dataset.ariaToLight:b.dataset.ariaToDark);}p();b.addEventListener("click",function(){var c=document.documentElement.getAttribute("data-theme")||"light";var n=c==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",n);try{localStorage.setItem("utilify_theme",n);}catch(e){}p();});})();</script>
-    <script data-utilify-fav-toggle-script>(function(){var btn=document.querySelector(".fav-toggle-page");if(!btn)return;var m=location.pathname.match(/^\/[^\/]+\/([^\/]+)\/?$/);if(!m)return;var slug=m[1],K="utilify_favorites";function g(){return (localStorage.getItem(K)||"").split(",").filter(Boolean);}function s(a){localStorage.setItem(K,Array.from(new Set(a)).join(","));}function p(f){btn.textContent=f?"★":"☆";btn.classList.toggle("is-fav",f);btn.setAttribute("aria-label",f?btn.dataset.removeLabel:btn.dataset.addLabel);btn.setAttribute("aria-pressed",String(f));}p(g().indexOf(slug)>-1);btn.addEventListener("click",function(){var a=g(),n=a.indexOf(slug)>-1?a.filter(function(x){return x!==slug;}):a.concat([slug]);s(n);p(n.indexOf(slug)>-1);});})();</script>
+    <script data-utilify-theme-toggle-script>(function(){var b=document.getElementById("themeToggle");if(!b)return;function p(){var t=document.documentElement.getAttribute("data-theme")||"light";b.textContent=t==="dark"?"☀️":"🌙";b.setAttribute("aria-pressed",String(t==="dark"));b.setAttribute("aria-label",t==="dark"?b.dataset.ariaToLight:b.dataset.ariaToDark);}p();b.addEventListener("click",function(){var c=document.documentElement.getAttribute("data-theme")||"light";var n=c==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",n);try{localStorage.setItem("utilify_theme",n);}catch(e){}p();if(typeof gtag==="function"){gtag("event","theme_toggle",{next_theme:n});}});})();</script>
+    <script data-utilify-fav-toggle-script>(function(){var btn=document.querySelector(".fav-toggle-page");if(!btn)return;var m=location.pathname.match(/^\/[^\/]+\/([^\/]+)\/?$/);if(!m)return;var slug=m[1],K="utilify_favorites";function g(){return (localStorage.getItem(K)||"").split(",").filter(Boolean);}function s(a){localStorage.setItem(K,Array.from(new Set(a)).join(","));}function p(f){btn.textContent=f?"★":"☆";btn.classList.toggle("is-fav",f);btn.setAttribute("aria-label",f?btn.dataset.removeLabel:btn.dataset.addLabel);btn.setAttribute("aria-pressed",String(f));}p(g().indexOf(slug)>-1);btn.addEventListener("click",function(){var a=g(),n=a.indexOf(slug)>-1?a.filter(function(x){return x!==slug;}):a.concat([slug]);s(n);var f=n.indexOf(slug)>-1;p(f);if(typeof gtag==="function"){gtag("event","tool_favorite",{tool_slug:slug,action:f?"add":"remove"});}});})();</script>
 </body>
 
 </html>

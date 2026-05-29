@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy-Report-Only" content="default-src 'self' https: data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https:; frame-src https:;">
     <meta name="google-adsense-account" content="ca-pub-6334819180242631">
-    <title>Unix Timestamp ↔ Date Converter - Utilify</title>
-    <meta name="description" content="Convert Unix timestamps (seconds or milliseconds) to ISO 8601 dates and back. Live current timestamp included.">
+    <title>Unixタイムスタンプ ↔ 日付変換 - Utilify</title>
+    <meta name="description" content="Unixタイムスタンプ（秒またはミリ秒）とISO 8601日付を相互変換します。現在時刻のリアルタイム表示付き。">
     <link rel="canonical" href="https://utilifyapp.net/ja/unix-timestamp/">
 
-    <meta property="og:title" content="Unix Timestamp ↔ Date Converter - Utilify">
-    <meta property="og:description" content="Convert Unix timestamps (seconds or milliseconds) to ISO 8601 dates and back. Live current timestamp included.">
+    <meta property="og:title" content="Unixタイムスタンプ ↔ 日付変換 - Utilify">
+    <meta property="og:description" content="Unixタイムスタンプ（秒またはミリ秒）とISO 8601日付を相互変換します。現在時刻のリアルタイム表示付き。">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://utilifyapp.net/ja/unix-timestamp/">
 
@@ -37,8 +37,8 @@
     {
         "@context": "https://schema.org",
         "@type": "WebApplication",
-        "name": "Unix Timestamp Converter",
-        "description": "Bidirectional conversion between Unix timestamps and human-readable dates.",
+        "name": "Unixタイムスタンプ変換",
+        "description": "Unixタイムスタンプと人が読める日付の双方向変換。",
         "url": "https://utilifyapp.net/ja/unix-timestamp/",
         "inLanguage": "ja",
         "applicationCategory": "UtilitiesApplication",
@@ -90,7 +90,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <script data-utilify-theme-init>(function(){try{var s=localStorage.getItem("utilify_theme");var t=(s==="dark"||s==="light")?s:(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
-    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://utilifyapp.net/ja/"}, {"@type": "ListItem", "position": 2, "name": "Unix Timestamp Converter", "item": "https://utilifyapp.net/ja/unix-timestamp/"}]}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://utilifyapp.net/ja/"}, {"@type": "ListItem", "position": 2, "name": "Unixタイムスタンプ変換", "item": "https://utilifyapp.net/ja/unix-timestamp/"}]}</script>
 </head>
 
 <body>
@@ -102,8 +102,8 @@
     </header>
     <main id="main" class="main-content">
         <div class="container-narrow">
-            <nav data-utilify-breadcrumb class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/ja/">Home</a></li><li aria-current="page">Unix Timestamp Converter</li></ol></nav>
-            <h1>⏲️ Unix Timestamp Converter</h1>
+            <nav data-utilify-breadcrumb class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/ja/">Home</a></li><li aria-current="page">Unixタイムスタンプ変換</li></ol></nav>
+            <h1>⏲️ Unixタイムスタンプ変換</h1>
             <div class="security-badge"
                 style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
                 <span title="Processed securely in client-side">🔒 Secure & Client-side</span>
@@ -111,51 +111,51 @@
                     style="display: none; padding: 4px 12px; font-size: 12px;">📲 Install App</button>
                     <button data-utilify-fav-toggle class="fav-toggle-page" type="button" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
             </div>
-            <p>Convert between Unix timestamps and dates. Auto-detects seconds vs. milliseconds and shows both UTC and your local time zone.</p>
+            <p>Unixタイムスタンプと日付を相互変換します。秒・ミリ秒を自動判別し、UTCとローカルタイムゾーンを両方表示します。</p>
 
             <div class="now-display">
-                <div style="font-size: 0.875rem; color: var(--text-secondary);">Current Unix time (UTC)</div>
+                <div style="font-size: 0.875rem; color: var(--text-secondary);">現在のUnix時刻 (UTC)</div>
                 <div class="now-value" id="nowSec">—</div>
                 <div style="font-size: 0.875rem;" id="nowIso">—</div>
             </div>
 
             <div class="ts-section">
-                <label class="form-label">Unix timestamp → Date</label>
-                <input type="text" id="tsInput" class="form-input" placeholder="e.g. 1700000000 or 1700000000000">
+                <label class="form-label">Unixタイムスタンプ → 日付</label>
+                <input type="text" id="tsInput" class="form-input" placeholder="例: 1700000000 または 1700000000000">
                 <div class="btn-group" style="margin-top: var(--spacing-sm);">
-                    <button class="btn btn-primary" id="convertTsBtn">Convert</button>
-                    <button class="btn btn-secondary" id="useNowBtn">Use Now</button>
+                    <button class="btn btn-primary" id="convertTsBtn">変換</button>
+                    <button class="btn btn-secondary" id="useNowBtn">現在時刻</button>
                 </div>
                 <div class="ts-output" id="tsOutUtc"><strong>UTC</strong><span>—</span></div>
-                <div class="ts-output" id="tsOutLocal"><strong>Local</strong><span>—</span></div>
+                <div class="ts-output" id="tsOutLocal"><strong>ローカル</strong><span>—</span></div>
             </div>
 
             <div class="ts-section">
-                <label class="form-label">Date → Unix timestamp</label>
-                <input type="text" id="dateInput" class="form-input" placeholder="e.g. 2024-01-15T12:00:00Z or 2024-01-15">
+                <label class="form-label">日付 → Unixタイムスタンプ</label>
+                <input type="text" id="dateInput" class="form-input" placeholder="例: 2024-01-15T12:00:00Z または 2024-01-15">
                 <div class="btn-group" style="margin-top: var(--spacing-sm);">
-                    <button class="btn btn-primary" id="convertDateBtn">Convert</button>
+                    <button class="btn btn-primary" id="convertDateBtn">変換</button>
                 </div>
-                <div class="ts-output" id="dateOutSec"><strong>Seconds</strong><span>—</span></div>
-                <div class="ts-output" id="dateOutMs"><strong>Milliseconds</strong><span>—</span></div>
+                <div class="ts-output" id="dateOutSec"><strong>秒</strong><span>—</span></div>
+                <div class="ts-output" id="dateOutMs"><strong>ミリ秒</strong><span>—</span></div>
             </div>
 
             
-            <h2>How to use</h2>
-            <div class="howto-content"><ol><li>The current Unix time updates live at the top — click <strong>Use Now</strong> to copy it into the converter.</li><li>To convert a timestamp to a date: paste the number and press <strong>Convert</strong>. Seconds (10 digits) and milliseconds (13 digits) are auto-detected.</li><li>To convert a date string to a timestamp: paste an ISO 8601 string (<code>2024-01-15T12:00:00Z</code>) or just <code>2024-01-15</code> and press <strong>Convert</strong>.</li><li>Both UTC and your local time-zone are shown so you don't need to do time-zone math.</li></ol><p>Unix time counts seconds since 1970-01-01 UTC, ignoring leap seconds. The 32-bit signed range overflows in 2038 — most modern systems use 64-bit and are unaffected.</p></div>
+            <h2>使い方</h2>
+            <div class="howto-content"><ol><li>現在のUnix時刻が上部にリアルタイム表示されます — <strong>現在時刻</strong>をクリックすると変換欄に入力できます。</li><li>タイムスタンプを日付に変換するには: 数値を貼り付けて<strong>変換</strong>をクリック。秒(10桁)とミリ秒(13桁)は自動判別されます。</li><li>日付をタイムスタンプに変換するには: ISO 8601(<code>2024-01-15T12:00:00Z</code>)または<code>2024-01-15</code>を入力して<strong>変換</strong>をクリック。</li><li>UTCとローカルタイムゾーンが両方表示されるため、時差計算は不要です。</li></ol><p>Unix時刻は1970-01-01 UTC以降の秒数をカウントし、うるう秒は無視します。32ビット符号付きは2038年にオーバーフローしますが、最新のシステムは64ビットのため影響ありません。</p></div>
 
-            <h2>Examples</h2>
-            <div class="examples-content"><p><strong>Timestamp → date:</strong></p><pre><code>1700000000      → 2023-11-14T22:13:20Z (UTC)
+            <h2>例</h2>
+            <div class="examples-content"><p><strong>タイムスタンプ → 日付:</strong></p><pre><code>1700000000      → 2023-11-14T22:13:20Z (UTC)
 1700000000000   → 2023-11-14T22:13:20.000Z
-0               → 1970-01-01T00:00:00Z (Unix epoch)</code></pre><p><strong>Date → timestamp:</strong></p><pre><code>2024-01-15T12:00:00Z → 1705320000  (seconds)
-                     → 1705320000000 (ms)</code></pre></div>
+0               → 1970-01-01T00:00:00Z (Unix epoch)</code></pre><p><strong>日付 → タイムスタンプ:</strong></p><pre><code>2024-01-15T12:00:00Z → 1705320000  (秒)
+                     → 1705320000000 (ミリ秒)</code></pre></div>
 
             <div class="related-tools-section">
-                <h3>Related Tools</h3>
+                <h3>関連ツール</h3>
                 <div class="related-buttons">
-                    <a href="/ja/date-calculator/" class="related-btn">Date Calculator</a><a
-                        href="/ja/timer/" class="related-btn">Timer</a><a
-                        href="/ja/jwt-decoder/" class="related-btn">JWT Decoder</a>
+                    <a href="/ja/date-calculator/" class="related-btn">日付計算機</a><a
+                        href="/ja/timer/" class="related-btn">タイマー</a><a
+                        href="/ja/jwt-decoder/" class="related-btn">JWTデコーダー</a>
                 </div>
             </div>
         </div>
@@ -201,7 +201,7 @@
             }
             let n = Number(raw);
             if (!Number.isFinite(n)) {
-                setSpan('tsOutUtc', 'Invalid timestamp.');
+                setSpan('tsOutUtc', '無効なタイムスタンプです。');
                 setSpan('tsOutLocal', '');
                 return;
             }
@@ -209,7 +209,7 @@
             const ms = Math.abs(n) >= 1e12 ? n : n * 1000;
             const d = new Date(ms);
             if (isNaN(d.getTime())) {
-                setSpan('tsOutUtc', 'Invalid timestamp.');
+                setSpan('tsOutUtc', '無効なタイムスタンプです。');
                 setSpan('tsOutLocal', '');
                 return;
             }
@@ -231,7 +231,7 @@
             }
             const d = new Date(raw);
             if (isNaN(d.getTime())) {
-                setSpan('dateOutSec', 'Invalid date string.');
+                setSpan('dateOutSec', '無効な日付文字列です。');
                 setSpan('dateOutMs', '');
                 return;
             }
@@ -242,8 +242,8 @@
     </script>
     <script>(adsbygoogle=window.adsbygoogle||[]).push({google_ad_client:"ca-pub-6334819180242631",enable_page_level_ads:true});</script>
     <script data-utilify-sw>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){});});}</script>
-    <script data-utilify-theme-toggle-script>(function(){var b=document.getElementById("themeToggle");if(!b)return;function p(){var t=document.documentElement.getAttribute("data-theme")||"light";b.textContent=t==="dark"?"☀️":"🌙";b.setAttribute("aria-pressed",String(t==="dark"));b.setAttribute("aria-label",t==="dark"?b.dataset.ariaToLight:b.dataset.ariaToDark);}p();b.addEventListener("click",function(){var c=document.documentElement.getAttribute("data-theme")||"light";var n=c==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",n);try{localStorage.setItem("utilify_theme",n);}catch(e){}p();});})();</script>
-    <script data-utilify-fav-toggle-script>(function(){var btn=document.querySelector(".fav-toggle-page");if(!btn)return;var m=location.pathname.match(/^\/[^\/]+\/([^\/]+)\/?$/);if(!m)return;var slug=m[1],K="utilify_favorites";function g(){return (localStorage.getItem(K)||"").split(",").filter(Boolean);}function s(a){localStorage.setItem(K,Array.from(new Set(a)).join(","));}function p(f){btn.textContent=f?"★":"☆";btn.classList.toggle("is-fav",f);btn.setAttribute("aria-label",f?btn.dataset.removeLabel:btn.dataset.addLabel);btn.setAttribute("aria-pressed",String(f));}p(g().indexOf(slug)>-1);btn.addEventListener("click",function(){var a=g(),n=a.indexOf(slug)>-1?a.filter(function(x){return x!==slug;}):a.concat([slug]);s(n);p(n.indexOf(slug)>-1);});})();</script>
+    <script data-utilify-theme-toggle-script>(function(){var b=document.getElementById("themeToggle");if(!b)return;function p(){var t=document.documentElement.getAttribute("data-theme")||"light";b.textContent=t==="dark"?"☀️":"🌙";b.setAttribute("aria-pressed",String(t==="dark"));b.setAttribute("aria-label",t==="dark"?b.dataset.ariaToLight:b.dataset.ariaToDark);}p();b.addEventListener("click",function(){var c=document.documentElement.getAttribute("data-theme")||"light";var n=c==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",n);try{localStorage.setItem("utilify_theme",n);}catch(e){}p();if(typeof gtag==="function"){gtag("event","theme_toggle",{next_theme:n});}});})();</script>
+    <script data-utilify-fav-toggle-script>(function(){var btn=document.querySelector(".fav-toggle-page");if(!btn)return;var m=location.pathname.match(/^\/[^\/]+\/([^\/]+)\/?$/);if(!m)return;var slug=m[1],K="utilify_favorites";function g(){return (localStorage.getItem(K)||"").split(",").filter(Boolean);}function s(a){localStorage.setItem(K,Array.from(new Set(a)).join(","));}function p(f){btn.textContent=f?"★":"☆";btn.classList.toggle("is-fav",f);btn.setAttribute("aria-label",f?btn.dataset.removeLabel:btn.dataset.addLabel);btn.setAttribute("aria-pressed",String(f));}p(g().indexOf(slug)>-1);btn.addEventListener("click",function(){var a=g(),n=a.indexOf(slug)>-1?a.filter(function(x){return x!==slug;}):a.concat([slug]);s(n);var f=n.indexOf(slug)>-1;p(f);if(typeof gtag==="function"){gtag("event","tool_favorite",{tool_slug:slug,action:f?"add":"remove"});}});})();</script>
 </body>
 
 </html>

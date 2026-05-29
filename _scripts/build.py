@@ -380,7 +380,8 @@ def inject_monetization(html):
             'var c=document.documentElement.getAttribute("data-theme")||"light";'
             'var n=c==="dark"?"light":"dark";'
             'document.documentElement.setAttribute("data-theme",n);'
-            'try{localStorage.setItem("utilify_theme",n);}catch(e){}p();});'
+            'try{localStorage.setItem("utilify_theme",n);}catch(e){}p();'
+            'if(typeof gtag==="function"){gtag("event","theme_toggle",{next_theme:n});}});'
             '})();</script>\n'
         )
         html = html.replace('</body>', toggle_handler + '</body>', 1)
@@ -421,7 +422,9 @@ def inject_monetization(html):
             'p(g().indexOf(slug)>-1);'
             'btn.addEventListener("click",function(){var a=g(),'
             'n=a.indexOf(slug)>-1?a.filter(function(x){return x!==slug;}):a.concat([slug]);'
-            's(n);p(n.indexOf(slug)>-1);});})();</script>\n'
+            's(n);var f=n.indexOf(slug)>-1;p(f);'
+            'if(typeof gtag==="function"){gtag("event","tool_favorite",{tool_slug:slug,action:f?"add":"remove"});}});'
+            '})();</script>\n'
         )
         html = html.replace('</body>', fav_init + '</body>', 1)
 
@@ -736,8 +739,10 @@ def build_index_page():
                 )
                 if sub in HUB_PAGES:
                     hub_label = data.get(f'hub_link_{sub}', f'{sub.title()} hub')
+                    # ?src=chip lets the hub page attribute the visit source in
+                    # its hub_navigation GA4 event.
                     chips.append(
-                        f'<a href="/{lang}/{sub}/" class="hub-link" '
+                        f'<a href="/{lang}/{sub}/?src=chip" class="hub-link" '
                         f'data-for-subcat="{sub}" hidden>→ {hub_label}</a>'
                     )
             subcat_html.append(
@@ -1174,7 +1179,8 @@ def inject_tool_breadcrumb(html, slug, lang, data):
     # Visible nav.
     items = [f'<li><a href="/{lang}/">{home}</a></li>']
     if sub_label:
-        items.append(f'<li><a href="/{lang}/{sub_slug}/">{sub_label}</a></li>')
+        # ?src=breadcrumb lets the hub page attribute the visit source.
+        items.append(f'<li><a href="/{lang}/{sub_slug}/?src=breadcrumb">{sub_label}</a></li>')
     items.append(f'<li aria-current="page">{title}</li>')
     nav = (
         '<nav data-utilify-breadcrumb class="breadcrumb" aria-label="Breadcrumb">'

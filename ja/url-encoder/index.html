@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy-Report-Only" content="default-src 'self' https: data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https:; frame-src https:;">
     <meta name="google-adsense-account" content="ca-pub-6334819180242631">
-    <title>URL Encoder & Decoder (Percent Encoding) - Utilify</title>
-    <meta name="description" content="Encode and decode URLs and query parameters using percent encoding (RFC 3986). Switch between component and full-URL modes.">
+    <title>URLエンコーダー & デコーダー (パーセントエンコーディング) - Utilify</title>
+    <meta name="description" content="URLおよびクエリパラメーターをRFC 3986パーセントエンコーディングでエンコード・デコードします。コンポーネントと完全URLモードの切り替えに対応。">
     <link rel="canonical" href="https://utilifyapp.net/ja/url-encoder/">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="URL Encoder & Decoder (Percent Encoding) - Utilify">
-    <meta property="og:description" content="Encode and decode URLs and query parameters using percent encoding (RFC 3986). Switch between component and full-URL modes.">
+    <meta property="og:title" content="URLエンコーダー & デコーダー (パーセントエンコーディング) - Utilify">
+    <meta property="og:description" content="URLおよびクエリパラメーターをRFC 3986パーセントエンコーディングでエンコード・デコードします。コンポーネントと完全URLモードの切り替えに対応。">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://utilifyapp.net/ja/url-encoder/">
 
@@ -42,8 +42,8 @@
     {
         "@context": "https://schema.org",
         "@type": "WebApplication",
-        "name": "URL Encoder / Decoder",
-        "description": "Bidirectional URL percent-encoding and decoding with component and full-URL modes.",
+        "name": "URLエンコード / デコード",
+        "description": "URLパーセントエンコーディングの双方向変換。コンポーネントモードと完全URLモードをサポート。",
         "url": "https://utilifyapp.net/ja/url-encoder/",
         "inLanguage": "ja",
         "applicationCategory": "UtilitiesApplication",
@@ -87,7 +87,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <script data-utilify-theme-init>(function(){try{var s=localStorage.getItem("utilify_theme");var t=(s==="dark"||s==="light")?s:(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
-    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://utilifyapp.net/ja/"}, {"@type": "ListItem", "position": 2, "name": "URL Encoder / Decoder", "item": "https://utilifyapp.net/ja/url-encoder/"}]}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://utilifyapp.net/ja/"}, {"@type": "ListItem", "position": 2, "name": "URLエンコード / デコード", "item": "https://utilifyapp.net/ja/url-encoder/"}]}</script>
 </head>
 
 <body>
@@ -99,8 +99,8 @@
     </header>
     <main id="main" class="main-content">
         <div class="container-narrow">
-            <nav data-utilify-breadcrumb class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/ja/">Home</a></li><li aria-current="page">URL Encoder / Decoder</li></ol></nav>
-            <h1>🔗 URL Encoder / Decoder</h1>
+            <nav data-utilify-breadcrumb class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/ja/">Home</a></li><li aria-current="page">URLエンコード / デコード</li></ol></nav>
+            <h1>🔗 URLエンコード / デコード</h1>
             <div class="security-badge"
                 style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-size: 14px; color: var(--text-secondary);">
                 <span title="Processed securely in client-side">🔒 Secure & Client-side</span>
@@ -109,7 +109,7 @@
                     <button data-utilify-fav-toggle class="fav-toggle-page" type="button" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
             </div>
 
-            <p>Encode characters into percent-encoded form (e.g. space → %20) or decode them back. Use 'Component' for query values; use 'Full URL' to preserve reserved characters like : / ?.</p>
+            <p>文字をパーセントエンコード形式（例: スペース → %20）にエンコード、またはデコードします。クエリ値には「Component」、コロン / ？などの予約文字を保持する場合は「Full URL」モードを使用してください。</p>
 
             <div class="mode-row">
                 <label><input type="radio" name="mode" value="component" checked> Component (encodeURIComponent)</label>
@@ -118,43 +118,43 @@
 
             <div class="url-grid">
                 <div>
-                    <label class="form-label">Input</label>
+                    <label class="form-label">入力</label>
                     <textarea id="inputEl" class="form-input" style="min-height:200px;font-family:var(--font-mono);"
                         placeholder="https://example.com/?q=hello world"></textarea>
                 </div>
                 <div>
-                    <label class="form-label">Output</label>
+                    <label class="form-label">出力</label>
                     <textarea id="outputEl" class="form-input" style="min-height:200px;font-family:var(--font-mono);"
                         readonly></textarea>
                 </div>
             </div>
 
             <div class="btn-group" style="margin-top: var(--spacing-md);">
-                <button class="btn btn-primary" id="encodeBtn">Encode</button>
-                <button class="btn btn-primary" id="decodeBtn">Decode</button>
-                <button class="btn btn-secondary" id="swapBtn">Swap</button>
-                <button class="btn btn-secondary" id="copyBtn">Copy</button>
-                <button class="btn btn-secondary" id="clearBtn">Clear</button>
+                <button class="btn btn-primary" id="encodeBtn">エンコード</button>
+                <button class="btn btn-primary" id="decodeBtn">デコード</button>
+                <button class="btn btn-secondary" id="swapBtn">入れ替え</button>
+                <button class="btn btn-secondary" id="copyBtn">コピー</button>
+                <button class="btn btn-secondary" id="clearBtn">クリア</button>
             </div>
 
             <div id="status" style="display:none;margin-top:var(--spacing-md);padding:var(--spacing-md);border-radius:var(--radius-md);" aria-live="polite"></div>
 
             
-            <h2>How to use</h2>
-            <div class="howto-content"><ol><li>Paste your URL or text into the input panel.</li><li>Pick <strong>Component</strong> mode for query values or path segments — this escapes reserved characters like <code>:/?&amp;=</code>.</li><li>Pick <strong>Full URL</strong> mode when encoding a complete URL — this preserves <code>:/?&amp;=</code> so the URL stays valid.</li><li>Click <strong>Encode</strong> or <strong>Decode</strong>; use <strong>Swap</strong> to flip input/output.</li></ol><p><strong>Component vs Full:</strong> use Component (<code>encodeURIComponent</code>) for anything that goes <em>inside</em> a URL piece — query values, path segments, fragment IDs. Use Full (<code>encodeURI</code>) only when escaping characters in an <em>entire</em> URL where you must keep <code>?</code> and <code>&amp;</code> as separators.</p></div>
+            <h2>使い方</h2>
+            <div class="howto-content"><ol><li>URLまたはテキストを入力パネルに貼り付けます。</li><li>クエリ値やパスセグメントのエンコードには<strong>Component</strong>モード — <code>:/?&amp;=</code>などの予約文字をエスケープします。</li><li>URL全体をエンコードする場合は<strong>Full URL</strong>モード — <code>:/?&amp;=</code>を保持してURL形式を維持します。</li><li><strong>エンコード</strong>または<strong>デコード</strong>をクリック、<strong>入れ替え</strong>で入出力を反転できます。</li></ol><p><strong>ComponentとFullの違い:</strong> Component(<code>encodeURIComponent</code>)はURLの一部(クエリ値、パスセグメント、フラグメント)に使います。Full(<code>encodeURI</code>)は<code>?</code>と<code>&amp;</code>を区切り文字として保持する必要がある<em>URL全体</em>のエンコードのみに使用してください。</p></div>
 
-            <h2>Examples</h2>
-            <div class="examples-content"><p><strong>Component encoding (e.g., for a search query):</strong></p><pre><code>"hello world" → hello%20world
+            <h2>例</h2>
+            <div class="examples-content"><p><strong>Componentエンコーディング (検索クエリ等):</strong></p><pre><code>"hello world" → hello%20world
 "a&b=c"       → a%26b%3Dc
-"안녕"         → %EC%95%88%EB%85%95</code></pre><p><strong>Full-URL encoding:</strong></p><pre><code>"https://x.com/?q=hello world"
+"안녕"         → %EC%95%88%EB%85%95</code></pre><p><strong>Full URLエンコーディング:</strong></p><pre><code>"https://x.com/?q=hello world"
 → https://x.com/?q=hello%20world</code></pre></div>
 
             <div class="related-tools-section">
-                <h3>Related Tools</h3>
+                <h3>関連ツール</h3>
                 <div class="related-buttons">
-                    <a href="/ja/base64-converter/" class="related-btn">Base64 Converter</a><a
-                        href="/ja/json-formatter/" class="related-btn">JSON Formatter</a><a
-                        href="/ja/jwt-decoder/" class="related-btn">JWT Decoder</a>
+                    <a href="/ja/base64-converter/" class="related-btn">Base64変換</a><a
+                        href="/ja/json-formatter/" class="related-btn">JSONフォーマッター</a><a
+                        href="/ja/jwt-decoder/" class="related-btn">JWTデコーダー</a>
                 </div>
             </div>
         </div>
@@ -192,7 +192,7 @@
                 const fn = getMode() === 'full' ? encodeURI : encodeURIComponent;
                 outputEl.value = fn(inputEl.value);
             } catch (e) {
-                showError('Encode error: ' + e.message);
+                showError('エンコードエラー: ' + e.message);
             }
         }
 
@@ -202,7 +202,7 @@
                 const fn = getMode() === 'full' ? decodeURI : decodeURIComponent;
                 outputEl.value = fn(inputEl.value);
             } catch (e) {
-                showError('Decode error: ' + e.message);
+                showError('デコードエラー: ' + e.message);
             }
         }
 
@@ -215,7 +215,7 @@
         });
         document.getElementById('copyBtn').addEventListener('click', () => {
             if (outputEl.value) Utils.copyToClipboard(outputEl.value);
-            else Utils.showToast('Nothing to copy.');
+            else Utils.showToast('コピーする内容がありません。');
         });
         document.getElementById('clearBtn').addEventListener('click', () => {
             inputEl.value = '';
@@ -225,8 +225,8 @@
     </script>
     <script>(adsbygoogle=window.adsbygoogle||[]).push({google_ad_client:"ca-pub-6334819180242631",enable_page_level_ads:true});</script>
     <script data-utilify-sw>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){});});}</script>
-    <script data-utilify-theme-toggle-script>(function(){var b=document.getElementById("themeToggle");if(!b)return;function p(){var t=document.documentElement.getAttribute("data-theme")||"light";b.textContent=t==="dark"?"☀️":"🌙";b.setAttribute("aria-pressed",String(t==="dark"));b.setAttribute("aria-label",t==="dark"?b.dataset.ariaToLight:b.dataset.ariaToDark);}p();b.addEventListener("click",function(){var c=document.documentElement.getAttribute("data-theme")||"light";var n=c==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",n);try{localStorage.setItem("utilify_theme",n);}catch(e){}p();});})();</script>
-    <script data-utilify-fav-toggle-script>(function(){var btn=document.querySelector(".fav-toggle-page");if(!btn)return;var m=location.pathname.match(/^\/[^\/]+\/([^\/]+)\/?$/);if(!m)return;var slug=m[1],K="utilify_favorites";function g(){return (localStorage.getItem(K)||"").split(",").filter(Boolean);}function s(a){localStorage.setItem(K,Array.from(new Set(a)).join(","));}function p(f){btn.textContent=f?"★":"☆";btn.classList.toggle("is-fav",f);btn.setAttribute("aria-label",f?btn.dataset.removeLabel:btn.dataset.addLabel);btn.setAttribute("aria-pressed",String(f));}p(g().indexOf(slug)>-1);btn.addEventListener("click",function(){var a=g(),n=a.indexOf(slug)>-1?a.filter(function(x){return x!==slug;}):a.concat([slug]);s(n);p(n.indexOf(slug)>-1);});})();</script>
+    <script data-utilify-theme-toggle-script>(function(){var b=document.getElementById("themeToggle");if(!b)return;function p(){var t=document.documentElement.getAttribute("data-theme")||"light";b.textContent=t==="dark"?"☀️":"🌙";b.setAttribute("aria-pressed",String(t==="dark"));b.setAttribute("aria-label",t==="dark"?b.dataset.ariaToLight:b.dataset.ariaToDark);}p();b.addEventListener("click",function(){var c=document.documentElement.getAttribute("data-theme")||"light";var n=c==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",n);try{localStorage.setItem("utilify_theme",n);}catch(e){}p();if(typeof gtag==="function"){gtag("event","theme_toggle",{next_theme:n});}});})();</script>
+    <script data-utilify-fav-toggle-script>(function(){var btn=document.querySelector(".fav-toggle-page");if(!btn)return;var m=location.pathname.match(/^\/[^\/]+\/([^\/]+)\/?$/);if(!m)return;var slug=m[1],K="utilify_favorites";function g(){return (localStorage.getItem(K)||"").split(",").filter(Boolean);}function s(a){localStorage.setItem(K,Array.from(new Set(a)).join(","));}function p(f){btn.textContent=f?"★":"☆";btn.classList.toggle("is-fav",f);btn.setAttribute("aria-label",f?btn.dataset.removeLabel:btn.dataset.addLabel);btn.setAttribute("aria-pressed",String(f));}p(g().indexOf(slug)>-1);btn.addEventListener("click",function(){var a=g(),n=a.indexOf(slug)>-1?a.filter(function(x){return x!==slug;}):a.concat([slug]);s(n);var f=n.indexOf(slug)>-1;p(f);if(typeof gtag==="function"){gtag("event","tool_favorite",{tool_slug:slug,action:f?"add":"remove"});}});})();</script>
 </body>
 
 </html>
