@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy-Report-Only" content="default-src 'self' https: data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https:; frame-src https:;">
     <meta name="google-adsense-account" content="ca-pub-6334819180242631">
-    <title>File Size Converter — Bytes / KB / MB / GB / TB - Utilify</title>
-    <meta name="description" content="Convert between bytes, kilobytes, megabytes, gigabytes, terabytes, and petabytes. Switch between decimal (KB = 1000) and binary (KiB = 1024) units.">
+    <title>ファイルサイズ変換 — Bytes・KB・MB・GB・TB - Utilify</title>
+    <meta name="description" content="バイト・キロバイト・メガバイト・ギガバイト・テラバイト・ペタバイトを相互変換。10進法(1KB=1000B)と2進法(1KiB=1024B)の両方をサポート。">
     <link rel="canonical" href="https://utilifyapp.net/ja/file-size-converter/">
 
-    <meta property="og:title" content="File Size Converter - Utilify">
-    <meta property="og:description" content="Bytes ↔ KB / MB / GB / TB / PB with decimal or binary units.">
+    <meta property="og:title" content="ファイルサイズ変換 - Utilify">
+    <meta property="og:description" content="B ↔ KB / MB / GB / TB / PB — 10進法・2進法対応。">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://utilifyapp.net/ja/file-size-converter/">
 
@@ -37,8 +37,8 @@
     {
         "@context": "https://schema.org",
         "@type": "WebApplication",
-        "name": "File Size Converter",
-        "description": "Convert between digital storage units in decimal or binary base.",
+        "name": "ファイルサイズ変換",
+        "description": "10進法・2進法のデジタルストレージ単位相互変換ツール。",
         "url": "https://utilifyapp.net/ja/file-size-converter/",
         "inLanguage": "ja",
         "applicationCategory": "UtilitiesApplication",
@@ -82,7 +82,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <script data-utilify-theme-init>(function(){try{var s=localStorage.getItem("utilify_theme");var t=(s==="dark"||s==="light")?s:(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
-    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://utilifyapp.net/ja/"}, {"@type": "ListItem", "position": 2, "name": "File Size Converter", "item": "https://utilifyapp.net/ja/file-size-converter/"}]}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://utilifyapp.net/ja/"}, {"@type": "ListItem", "position": 2, "name": "ファイルサイズ変換", "item": "https://utilifyapp.net/ja/file-size-converter/"}]}</script>
 </head>
 
 <body>
@@ -90,24 +90,24 @@
     <header class="site-header"><div class="container"><div class="header-content"><a href="/ja/" class="site-logo">🛠️ Utilify</a><button data-utilify-theme-toggle id="themeToggle" class="theme-toggle" type="button" aria-label="Switch to dark mode" data-aria-to-dark="Switch to dark mode" data-aria-to-light="Switch to light mode">🌙</button></div></div></header>
     <main id="main" class="main-content">
         <div class="container-narrow">
-            <nav data-utilify-breadcrumb class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/ja/">Home</a></li><li aria-current="page">File Size Converter</li></ol></nav>
-            <h1>💾 File Size Converter</h1>
+            <nav data-utilify-breadcrumb class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/ja/">Home</a></li><li aria-current="page">ファイルサイズ変換</li></ol></nav>
+            <h1>💾 ファイルサイズ変換</h1>
             <div class="security-badge" style="display:flex;align-items:center;justify-content:center;gap:8px;margin:10px 0;font-size:14px;color:var(--text-secondary);">
                 <span>🔒 Secure & Client-side</span>
                 <button id="pwaInstallBtn" class="btn btn-primary" style="display: none; padding: 4px 12px; font-size: 12px;">📲 Install App</button>
                     <button data-utilify-fav-toggle class="fav-toggle-page" type="button" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
             </div>
 
-            <p>Convert between bytes, kilobytes, megabytes, gigabytes, terabytes, and petabytes. Pick decimal (1 KB = 1000 B — what hard drives advertise) or binary (1 KiB = 1024 B — what your OS shows).</p>
+            <p>バイト・KB・MB・GB・TB・PB単位を自由に変換します。ハードドライブ広告で使われる10進法(1KB = 1000B)と、OSが表示する2進法(1KiB = 1024B)を選択できます。</p>
 
             <div class="card">
                 <div class="form-grid">
                     <div class="form-group">
-                        <label class="form-label" for="value">Value</label>
+                        <label class="form-label" for="value">値</label>
                         <input type="number" id="value" class="form-input" inputmode="decimal" min="0" step="any" placeholder="1024" value="1024">
                     </div>
                     <div class="form-group">
-                        <label class="form-label" for="from">From</label>
+                        <label class="form-label" for="from">変換元</label>
                         <select id="from" class="form-input">
                             <option value="0">B</option>
                             <option value="1" selected>KB</option>
@@ -118,7 +118,7 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label class="form-label" for="to">To</label>
+                        <label class="form-label" for="to">変換先</label>
                         <select id="to" class="form-input">
                             <option value="0">B</option>
                             <option value="1">KB</option>
@@ -129,40 +129,40 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label class="form-label" for="system">Unit system</label>
+                        <label class="form-label" for="system">単位体系</label>
                         <select id="system" class="form-input">
-                            <option value="decimal" selected>Decimal (1 KB = 1000 B)</option>
-                            <option value="binary">Binary (1 KiB = 1024 B)</option>
+                            <option value="decimal" selected>10進法 (1KB = 1000B)</option>
+                            <option value="binary">2進法 (1KiB = 1024B)</option>
                         </select>
                     </div>
                 </div>
                 <div class="button-row" style="margin-top: var(--spacing-md);">
-                    <button class="btn btn-primary" type="button" onclick="convert()">Convert</button>
-                    <button class="btn" type="button" onclick="swap()">Swap</button>
-                    <button class="btn" type="button" onclick="resetForm()">Reset</button>
+                    <button class="btn btn-primary" type="button" onclick="convert()">変換</button>
+                    <button class="btn" type="button" onclick="swap()">入れ替え</button>
+                    <button class="btn" type="button" onclick="resetForm()">リセット</button>
                 </div>
             </div>
 
             <div id="result" style="display:none;" aria-live="polite">
                 <div class="result-card">
-                    <div class="label">Result</div>
+                    <div class="label">結果</div>
                     <div class="value" id="resultVal">—</div>
                 </div>
                 <div class="button-row">
-                    <button class="btn" type="button" onclick="shareResult()">Share result</button>
+                    <button class="btn" type="button" onclick="shareResult()">結果を共有</button>
                 </div>
             </div>
 
-            <h2>How to use</h2>
-            <div class="howto-content"><ol><li>Type the number you want to convert.</li><li>Pick the source and target units.</li><li>Pick the unit system. Drive manufacturers and most networking specs use <strong>decimal</strong> (1 KB = 1000 B). Operating systems (Windows, Linux, macOS in older versions) and RAM specs use <strong>binary</strong> (1 KiB = 1024 B).</li></ol><p>The naming convention <em>KiB / MiB / GiB</em> exists specifically to disambiguate binary from decimal. "KB" without the <em>i</em> usually means decimal but is sometimes used loosely. When in doubt, decimal is the formal SI standard.</p></div>
+            <h2>使い方</h2>
+            <div class="howto-content"><ol><li>変換する数値を入力します。</li><li>変換元と変換先の単位を選びます。</li><li>単位体系を選択します。ハードドライブメーカーやネットワーク仕様は<strong>10進法</strong>(1KB = 1000B)、OS(Windows・Linux・旧macOS)やRAM仕様は<strong>2進法</strong>(1KiB = 1024B)を使います。</li></ol><p><em>KiB・MiB・GiB</em>表記は2進法であることを明確に区別するためのIEC標準です。"KB"は通常10進法ですが、緩い意味で2進法にも使われます — 正確な仕様には10進法がSI公式標準です。</p></div>
 
             <div class="related-tools-section">
-                <h3>Related Tools</h3>
+                <h3>関連ツール</h3>
                 <div class="related-buttons">
-                    <a href="/ja/unit-converter/" class="related-btn">Unit Converter</a><a
-                        href="/ja/base64-converter/" class="related-btn">Base64 Converter</a><a
-                        href="/ja/token-counter/" class="related-btn">Token Counter</a><a
-                        href="/ja/percentage-calculator/" class="related-btn">Percentage Calculator</a>
+                    <a href="/ja/unit-converter/" class="related-btn">単位変換</a><a
+                        href="/ja/base64-converter/" class="related-btn">Base64変換</a><a
+                        href="/ja/token-counter/" class="related-btn">トークンカウンター</a><a
+                        href="/ja/percentage-calculator/" class="related-btn">パーセント計算機</a>
                 </div>
             </div>
         </div>
@@ -180,7 +180,7 @@
             const from = parseInt(document.getElementById('from').value, 10);
             const to = parseInt(document.getElementById('to').value, 10);
             const sys = document.getElementById('system').value;
-            if (!(v >= 0)) { alert('Enter a non-negative number.'); return; }
+            if (!(v >= 0)) { alert('0以上の数値を入力してください。'); return; }
             const base = sys === 'binary' ? 1024 : 1000;
             const bytes = v * Math.pow(base, from);
             const result = bytes / Math.pow(base, to);
@@ -216,12 +216,12 @@
             if (v === '—') return;
             const text = '{value} —'.replace('{value}', v) + ' ' + location.href;
             if (navigator.share) {
-                try { await navigator.share({ title: 'File Size Converter', text }); return; }
+                try { await navigator.share({ title: 'ファイルサイズ変換', text }); return; }
                 catch (e) { if (e && e.name === 'AbortError') return; }
             }
             try {
                 await navigator.clipboard.writeText(text);
-                alert('Copied to clipboard.');
+                alert('クリップボードにコピーしました。');
             } catch (e) { /* clipboard blocked */ }
         }
     </script>

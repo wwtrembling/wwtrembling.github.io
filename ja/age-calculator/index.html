@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy-Report-Only" content="default-src 'self' https: data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https:; frame-src https:;">
     <meta name="google-adsense-account" content="ca-pub-6334819180242631">
-    <title>Age Calculator — Years, Months, Days, Next Birthday - Utilify</title>
-    <meta name="description" content="Calculate exact age from a birth date. Returns years, months, days, total days alive, and how many days until the next birthday.">
+    <title>年齢計算機 — 年・月・日・次の誕生日まで - Utilify</title>
+    <meta name="description" content="生年月日から正確な年齢を計算。年・月・日数、生きた総日数、次の誕生日までの日数を表示。">
     <link rel="canonical" href="https://utilifyapp.net/ja/age-calculator/">
 
-    <meta property="og:title" content="Age Calculator - Utilify">
-    <meta property="og:description" content="Exact age in years/months/days plus next-birthday countdown.">
+    <meta property="og:title" content="年齢計算機 - Utilify">
+    <meta property="og:description" content="年・月・日単位の正確な年齢と次の誕生日までのカウントダウン。">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://utilifyapp.net/ja/age-calculator/">
 
@@ -37,8 +37,8 @@
     {
         "@context": "https://schema.org",
         "@type": "WebApplication",
-        "name": "Age Calculator",
-        "description": "Compute age and next-birthday distance from a date of birth.",
+        "name": "年齢計算機",
+        "description": "生年月日から年齢と次の誕生日までの距離を計算。",
         "url": "https://utilifyapp.net/ja/age-calculator/",
         "inLanguage": "ja",
         "applicationCategory": "UtilitiesApplication",
@@ -88,7 +88,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <script data-utilify-theme-init>(function(){try{var s=localStorage.getItem("utilify_theme");var t=(s==="dark"||s==="light")?s:(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
-    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://utilifyapp.net/ja/"}, {"@type": "ListItem", "position": 2, "name": "Age Calculator", "item": "https://utilifyapp.net/ja/age-calculator/"}]}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://utilifyapp.net/ja/"}, {"@type": "ListItem", "position": 2, "name": "年齢計算機", "item": "https://utilifyapp.net/ja/age-calculator/"}]}</script>
 </head>
 
 <body>
@@ -96,63 +96,63 @@
     <header class="site-header"><div class="container"><div class="header-content"><a href="/ja/" class="site-logo">🛠️ Utilify</a><button data-utilify-theme-toggle id="themeToggle" class="theme-toggle" type="button" aria-label="Switch to dark mode" data-aria-to-dark="Switch to dark mode" data-aria-to-light="Switch to light mode">🌙</button></div></div></header>
     <main id="main" class="main-content">
         <div class="container-narrow">
-            <nav data-utilify-breadcrumb class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/ja/">Home</a></li><li aria-current="page">Age Calculator</li></ol></nav>
-            <h1>🎂 Age Calculator</h1>
+            <nav data-utilify-breadcrumb class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/ja/">Home</a></li><li aria-current="page">年齢計算機</li></ol></nav>
+            <h1>🎂 年齢計算機</h1>
             <div class="security-badge" style="display:flex;align-items:center;justify-content:center;gap:8px;margin:10px 0;font-size:14px;color:var(--text-secondary);">
                 <span>🔒 Secure & Client-side</span>
                 <button id="pwaInstallBtn" class="btn btn-primary" style="display: none; padding: 4px 12px; font-size: 12px;">📲 Install App</button>
                     <button data-utilify-fav-toggle class="fav-toggle-page" type="button" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
             </div>
 
-            <p>Pick a birth date and get exact age — years, months, and days — plus total days alive and how many days until the next birthday. Handy for visa forms, school cutoffs, and "how old will I be in 2030" curiosity.</p>
+            <p>生年月日を選ぶと正確な年齢 — 年・月・日 — と、生きた総日数、次の誕生日までの日数を表示します。ビザ申請、入学基準日、"2030年に何歳?"といった疑問に便利。</p>
 
             <div class="card">
                 <div class="form-grid">
                     <div class="form-group">
-                        <label class="form-label" for="dob">Date of birth</label>
+                        <label class="form-label" for="dob">生年月日</label>
                         <input type="date" id="dob" class="form-input">
                     </div>
                     <div class="form-group">
-                        <label class="form-label" for="target">Calculate as of</label>
+                        <label class="form-label" for="target">基準日</label>
                         <input type="date" id="target" class="form-input">
                     </div>
                 </div>
                 <div class="button-row" style="margin-top: var(--spacing-md);">
-                    <button class="btn btn-primary" type="button" onclick="calculate()">Calculate</button>
-                    <button class="btn" type="button" onclick="resetForm()">Reset</button>
+                    <button class="btn btn-primary" type="button" onclick="calculate()">計算</button>
+                    <button class="btn" type="button" onclick="resetForm()">リセット</button>
                 </div>
             </div>
 
             <div id="result" style="display:none;" aria-live="polite">
                 <div class="stat-grid">
                     <div class="stat-card headline">
-                        <div class="label">Age</div>
+                        <div class="label">年齢</div>
                         <div class="value" id="ageVal">—</div>
                     </div>
                     <div class="stat-card">
-                        <div class="label">Days alive</div>
+                        <div class="label">生きた日数</div>
                         <div class="value" id="totalDaysVal">—</div>
                     </div>
                     <div class="stat-card">
-                        <div class="label">Next birthday in</div>
+                        <div class="label">次の誕生日まで</div>
                         <div class="value" id="nextBdayVal">—</div>
                     </div>
                 </div>
                 <div class="button-row">
-                    <button class="btn" type="button" onclick="shareResult()">Share result</button>
+                    <button class="btn" type="button" onclick="shareResult()">結果を共有</button>
                 </div>
             </div>
 
-            <h2>How to use</h2>
-            <div class="howto-content"><ol><li>Pick your date of birth.</li><li>Optional: change the target date (default is today). Useful for "How old will I be on July 4, 2030?" questions.</li><li>Click <strong>Calculate</strong>. Age in years / months / days, total days alive, and days until the next birthday all show up.</li></ol><p>The calculator handles month-end edge cases — a baby born on Jan 31 turns one month old on Feb 28 (or 29 in leap years), not Feb 31. Years are full Gregorian years; leap days are counted toward the day total.</p></div>
+            <h2>使い方</h2>
+            <div class="howto-content"><ol><li>生年月日を選びます。</li><li>任意:基準日を変更できます(デフォルトは今日)。"2030年7月4日に何歳か?"といった質問に便利です。</li><li><strong>計算</strong>を押すと、年齢(年・月・日)、生きた総日数、次の誕生日までの日数が表示されます。</li></ol><p>月末の境界ケースも処理します — 1月31日生まれの赤ちゃんは2月28日(うるう年なら29日)で1ヶ月になり、2月31日にはなりません。年数はグレゴリオ暦基準の完全1年で、うるう日も生きた日数に含まれます。</p></div>
 
             <div class="related-tools-section">
-                <h3>Related Tools</h3>
+                <h3>関連ツール</h3>
                 <div class="related-buttons">
-                    <a href="/ja/date-calculator/" class="related-btn">Date Calculator</a><a
-                        href="/ja/pregnancy-calculator/" class="related-btn">Pregnancy Calculator</a><a
-                        href="/ja/unix-timestamp/" class="related-btn">Unix Timestamp</a><a
-                        href="/ja/bmi-calculator/" class="related-btn">BMI Calculator</a>
+                    <a href="/ja/date-calculator/" class="related-btn">日付計算機</a><a
+                        href="/ja/pregnancy-calculator/" class="related-btn">妊娠計算機</a><a
+                        href="/ja/unix-timestamp/" class="related-btn">Unixタイムスタンプ</a><a
+                        href="/ja/bmi-calculator/" class="related-btn">BMI計算機</a>
                 </div>
             </div>
         </div>
@@ -193,10 +193,10 @@
         function calculate() {
             const dobStr = document.getElementById('dob').value;
             const targetStr = document.getElementById('target').value;
-            if (!dobStr || !targetStr) { alert('Pick a valid birth date that's not in the future of the target date.'); return; }
+            if (!dobStr || !targetStr) { alert('基準日より未来でない有効な生年月日を入力してください。'); return; }
             const dob = new Date(dobStr + 'T00:00:00');
             const target = new Date(targetStr + 'T00:00:00');
-            if (dob > target) { alert('Pick a valid birth date that's not in the future of the target date.'); return; }
+            if (dob > target) { alert('基準日より未来でない有効な生年月日を入力してください。'); return; }
 
             const { years, months, days } = diffYMD(dob, target);
             const totalDays = Math.floor((target - dob) / DAY_MS);
@@ -208,12 +208,12 @@
             }
             const daysToBday = Math.ceil((next - target) / DAY_MS);
 
-            document.getElementById('ageVal').textContent = '{years} y, {months} mo, {days} d'
+            document.getElementById('ageVal').textContent = '{years}年{months}ヶ月{days}日'
                 .replace('{years}', years)
                 .replace('{months}', months)
                 .replace('{days}', days);
             document.getElementById('totalDaysVal').textContent = totalDays.toLocaleString(LOCALE);
-            document.getElementById('nextBdayVal').textContent = '{days} days'
+            document.getElementById('nextBdayVal').textContent = '{days}日'
                 .replace('{days}', daysToBday.toLocaleString(LOCALE));
             document.getElementById('result').style.display = 'block';
         }
@@ -229,14 +229,14 @@
         async function shareResult() {
             const v = document.getElementById('ageVal').textContent;
             if (v === '—') return;
-            const text = 'Age: {value} —'.replace('{value}', v) + ' ' + location.href;
+            const text = '年齢: {value} —'.replace('{value}', v) + ' ' + location.href;
             if (navigator.share) {
-                try { await navigator.share({ title: 'Age Calculator', text }); return; }
+                try { await navigator.share({ title: '年齢計算機', text }); return; }
                 catch (e) { if (e && e.name === 'AbortError') return; }
             }
             try {
                 await navigator.clipboard.writeText(text);
-                alert('Copied to clipboard.');
+                alert('クリップボードにコピーしました。');
             } catch (e) { /* clipboard blocked */ }
         }
     </script>

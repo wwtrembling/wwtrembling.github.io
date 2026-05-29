@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy-Report-Only" content="default-src 'self' https: data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https:; frame-src https:;">
     <meta name="google-adsense-account" content="ca-pub-6334819180242631">
-    <title>Reading Time Calculator — Words to Minutes - Utilify</title>
-    <meta name="description" content="Estimate reading time from a word count or pasted text. Configurable WPM (default 250). Useful for blog posts, podcasts, video scripts, and pacing.">
+    <title>読書時間計算機 — 単語数から分への換算 - Utilify</title>
+    <meta name="description" content="テキストや単語数から読書時間を推定。WPM(分あたり単語数)調整可能(デフォルト250)。ブログ・ポッドキャスト原稿・プレゼンのペース配分に便利。">
     <link rel="canonical" href="https://utilifyapp.net/ja/reading-time/">
 
-    <meta property="og:title" content="Reading Time Estimator - Utilify">
-    <meta property="og:description" content="Words → minutes with adjustable reading speed.">
+    <meta property="og:title" content="読書時間計算機 - Utilify">
+    <meta property="og:description" content="単語を分に — 読む速度を調整可能。">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://utilifyapp.net/ja/reading-time/">
 
@@ -37,8 +37,8 @@
     {
         "@context": "https://schema.org",
         "@type": "WebApplication",
-        "name": "Reading Time Estimator",
-        "description": "Convert word count or pasted text into estimated reading time at a chosen WPM.",
+        "name": "読書時間計算機",
+        "description": "単語数またはテキストをユーザー指定WPMで読書時間に変換。",
         "url": "https://utilifyapp.net/ja/reading-time/",
         "inLanguage": "ja",
         "applicationCategory": "UtilitiesApplication",
@@ -82,7 +82,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <script data-utilify-theme-init>(function(){try{var s=localStorage.getItem("utilify_theme");var t=(s==="dark"||s==="light")?s:(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
-    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://utilifyapp.net/ja/"}, {"@type": "ListItem", "position": 2, "name": "Reading Time Estimator", "item": "https://utilifyapp.net/ja/reading-time/"}]}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://utilifyapp.net/ja/"}, {"@type": "ListItem", "position": 2, "name": "読書時間計算機", "item": "https://utilifyapp.net/ja/reading-time/"}]}</script>
 </head>
 
 <body>
@@ -90,65 +90,65 @@
     <header class="site-header"><div class="container"><div class="header-content"><a href="/ja/" class="site-logo">🛠️ Utilify</a><button data-utilify-theme-toggle id="themeToggle" class="theme-toggle" type="button" aria-label="Switch to dark mode" data-aria-to-dark="Switch to dark mode" data-aria-to-light="Switch to light mode">🌙</button></div></div></header>
     <main id="main" class="main-content">
         <div class="container-narrow">
-            <nav data-utilify-breadcrumb class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/ja/">Home</a></li><li aria-current="page">Reading Time Estimator</li></ol></nav>
-            <h1>📖 Reading Time Estimator</h1>
+            <nav data-utilify-breadcrumb class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/ja/">Home</a></li><li aria-current="page">読書時間計算機</li></ol></nav>
+            <h1>📖 読書時間計算機</h1>
             <div class="security-badge" style="display:flex;align-items:center;justify-content:center;gap:8px;margin:10px 0;font-size:14px;color:var(--text-secondary);">
                 <span>🔒 Secure & Client-side</span>
                 <button id="pwaInstallBtn" class="btn btn-primary" style="display: none; padding: 4px 12px; font-size: 12px;">📲 Install App</button>
                     <button data-utilify-fav-toggle class="fav-toggle-page" type="button" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
             </div>
 
-            <p>Paste text or enter a word count to estimate how long it'll take to read at your chosen speed. Default 250 WPM is a typical adult silent-reading pace; pick 150 for spoken/podcast pacing or 300+ for skimming.</p>
+            <p>テキストを貼り付けるか単語数を入力すると、お好みの速度で読むのにかかる時間を推定します。デフォルト250 WPMは成人の黙読平均、ポッドキャストは150、速読・流し読みは300以上を使ってください。</p>
 
             <div class="card">
                 <div class="form-group">
-                    <label class="form-label" for="textInput">Text or word count</label>
-                    <textarea id="textInput" class="form-input" rows="8" placeholder="Paste your article, blog post, or speech…" style="font-family: var(--font-mono); min-height: 180px;"></textarea>
+                    <label class="form-label" for="textInput">テキストまたは単語数</label>
+                    <textarea id="textInput" class="form-input" rows="8" placeholder="記事・ブログ・スピーチ原稿を貼り付けてください…" style="font-family: var(--font-mono); min-height: 180px;"></textarea>
                 </div>
                 <div class="form-group">
-                    <label class="form-label" for="wpm">Reading speed (WPM)</label>
+                    <label class="form-label" for="wpm">読む速度 (WPM)</label>
                     <input type="number" id="wpm" class="form-input" inputmode="numeric" min="50" max="800" step="10" placeholder="250" value="250">
                 </div>
                 <div class="button-row" style="margin-top: var(--spacing-md);">
-                    <button class="btn btn-primary" type="button" onclick="calculate()">Estimate</button>
-                    <button class="btn" type="button" onclick="resetForm()">Reset</button>
+                    <button class="btn btn-primary" type="button" onclick="calculate()">推定</button>
+                    <button class="btn" type="button" onclick="resetForm()">リセット</button>
                 </div>
             </div>
 
             <div id="result" style="display:none;" aria-live="polite">
                 <div class="stat-grid">
                     <div class="stat-card headline">
-                        <div class="label">Reading time</div>
+                        <div class="label">読書時間</div>
                         <div class="value" id="timeVal">—</div>
                     </div>
                     <div class="stat-card">
-                        <div class="label">Spoken time</div>
+                        <div class="label">朗読時間</div>
                         <div class="value" id="speakVal">—</div>
                     </div>
                     <div class="stat-card">
-                        <div class="label">Words</div>
+                        <div class="label">単語</div>
                         <div class="value" id="wordsVal">—</div>
                     </div>
                     <div class="stat-card">
-                        <div class="label">Characters</div>
+                        <div class="label">文字</div>
                         <div class="value" id="charsVal">—</div>
                     </div>
                 </div>
                 <div class="button-row">
-                    <button class="btn" type="button" onclick="shareResult()">Share result</button>
+                    <button class="btn" type="button" onclick="shareResult()">結果を共有</button>
                 </div>
             </div>
 
-            <h2>How to use</h2>
-            <div class="howto-content"><ol><li>Paste the text you want to estimate. The calculator counts words automatically (whitespace-split, ignoring extra spacing).</li><li>Adjust the words-per-minute (WPM) speed. Common targets:<ul><li><strong>150 WPM</strong> — comfortable spoken / podcast pace</li><li><strong>250 WPM</strong> — average silent reading (default)</li><li><strong>400 WPM</strong> — skimming / fast reading</li></ul></li><li>Click <strong>Estimate</strong>. Both reading time and a separate spoken-time estimate (at 150 WPM) are shown.</li></ol><p>Most blog platforms use 200–250 WPM. For audio scripts (podcasts, voiceovers, talks), use 130–160 WPM — slow enough to be clearly understood out loud.</p></div>
+            <h2>使い方</h2>
+            <div class="howto-content"><ol><li>推定するテキストを貼り付けます。単語は空白基準で自動カウントされます。</li><li>分あたり単語数(WPM)を調整します。よく使う目安:<ul><li><strong>150 WPM</strong> — 楽な朗読・ポッドキャスト速度</li><li><strong>250 WPM</strong> — 黙読平均(デフォルト)</li><li><strong>400 WPM</strong> — 流し読み・速読</li></ul></li><li><strong>推定</strong>を押すと、読書時間と別途朗読時間(150 WPM基準)が表示されます。</li></ol><p>ほとんどのブログプラットフォームは200~250 WPMを想定します。音声原稿(ポッドキャスト・ナレーション・プレゼン)は130~160 WPM — 口でハッキリ伝わる速度を使ってください。</p></div>
 
             <div class="related-tools-section">
-                <h3>Related Tools</h3>
+                <h3>関連ツール</h3>
                 <div class="related-buttons">
-                    <a href="/ja/text-utils/" class="related-btn">Text Utilities</a><a
-                        href="/ja/markdown-previewer/" class="related-btn">Markdown Previewer</a><a
-                        href="/ja/token-counter/" class="related-btn">Token Counter</a><a
-                        href="/ja/timer/" class="related-btn">Timer</a>
+                    <a href="/ja/text-utils/" class="related-btn">テキストユーティリティ</a><a
+                        href="/ja/markdown-previewer/" class="related-btn">Markdownプレビュー</a><a
+                        href="/ja/token-counter/" class="related-btn">トークンカウンター</a><a
+                        href="/ja/timer/" class="related-btn">タイマー</a>
                 </div>
             </div>
         </div>
@@ -172,7 +172,7 @@
             const text = document.getElementById('textInput').value;
             const wpm = parseFloat(document.getElementById('wpm').value);
             if (!text.trim() || !(wpm > 0)) {
-                alert('Enter text or a positive word count, and a positive WPM.');
+                alert('テキストか正の単語数、正のWPMを入力してください。');
                 return;
             }
             const trimmed = text.trim();
@@ -198,14 +198,14 @@
         async function shareResult() {
             const v = document.getElementById('timeVal').textContent;
             if (v === '—') return;
-            const text = 'Reading time: {value} —'.replace('{value}', v) + ' ' + location.href;
+            const text = '読書時間: {value} —'.replace('{value}', v) + ' ' + location.href;
             if (navigator.share) {
-                try { await navigator.share({ title: 'Reading Time Estimator', text }); return; }
+                try { await navigator.share({ title: '読書時間計算機', text }); return; }
                 catch (e) { if (e && e.name === 'AbortError') return; }
             }
             try {
                 await navigator.clipboard.writeText(text);
-                alert('Copied to clipboard.');
+                alert('クリップボードにコピーしました。');
             } catch (e) { /* clipboard blocked */ }
         }
     </script>

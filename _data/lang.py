@@ -7043,6 +7043,62 @@ CALORIE_CALCULATOR = {
         "related_unit": "단위 변환기",
         "related_date": "날짜 계산기",
         "card_blurb": "Mifflin-St Jeor 공식으로 BMR·TDEE·목표별(감량/유지/증량) 칼로리 즉시 계산."
+    },
+    "ja": {
+        "title": "カロリー・BMR計算機",
+        "meta_title": "カロリー計算機 — BMR・TDEE自動計算 (Mifflin-St Jeor) - Utilify",
+        "meta_desc": "基礎代謝量(BMR)と1日の総消費カロリー(TDEE)をMifflin-St Jeor公式で計算。減量・維持・増量の目標カロリーも併せて提供。",
+        "og_title": "カロリー・BMR計算機 - Utilify",
+        "og_desc": "基礎代謝・1日の消費カロリー・目標別推奨摂取量まで一括。",
+        "json_name": "カロリー・BMR計算機",
+        "json_desc": "Mifflin-St Jeor公式に基づくBMR + 活動係数 + 目標別推奨摂取量。",
+        "page_desc": "年齢・性別・身長・体重・活動レベルを入力すると、基礎代謝量、1日の総消費カロリー、減量/維持/筋増量の目標カロリーを計算します。健康な成人に最も正確とされるMifflin-St Jeor公式を使用しています。",
+        "label_age": "年齢 (歳)",
+        "label_sex": "性別",
+        "label_height": "身長 (cm)",
+        "label_weight": "体重 (kg)",
+        "label_activity": "活動レベル",
+        "ph_age": "30",
+        "ph_height": "170",
+        "ph_weight": "70",
+        "opt_male": "男性",
+        "opt_female": "女性",
+        "opt_sedentary": "ほぼ運動なし (デスクワーク中心)",
+        "opt_light": "軽い運動 (週1~3回)",
+        "opt_moderate": "中程度の運動 (週3~5回)",
+        "opt_active": "活発な運動 (週6~7回)",
+        "opt_very_active": "非常に活発 (1日2回・ハードトレーニング)",
+        "btn_calculate": "計算",
+        "btn_reset": "リセット",
+        "btn_share": "結果を共有",
+        "share_text": "1日の推奨カロリー: {value} kcal —",
+        "share_copied": "結果をクリップボードにコピーしました。",
+        "res_bmr_label": "基礎代謝 (kcal/日)",
+        "res_tdee_label": "1日の総消費 (kcal/日)",
+        "res_targets_header": "目標別1日カロリー",
+        "target_loss": "減量 (−500)",
+        "target_maintain": "維持",
+        "target_gain": "筋増量 (+300)",
+        "alert_invalid": "年齢・身長・体重は正の数で入力してください。",
+        "disclaimer": "推定値です — 医療助言ではありません。妊娠・授乳中、疾患管理中の方は食事の変更前に医師や管理栄養士に相談してください。",
+        "howto_header": "使い方",
+        "howto_html": (
+            "<ol>"
+            "<li>年齢を歳単位で入力します。</li>"
+            "<li>生物学的性別を選びます(公式の定数が男女で異なります)。</li>"
+            "<li>身長(cm)と体重(kg)を入力します。</li>"
+            "<li>普段の1週間に近い活動レベルを選びます。週末に運動するデスクワーカーでも、多くは\"ほぼ運動なし\"または\"軽い運動\"に該当します。</li>"
+            "<li><strong>計算</strong>を押すと、BMR、TDEE、目標別カロリー3種が表示されます。</li>"
+            "</ol>"
+            "<p><strong>計算式 (Mifflin-St Jeor)</strong>:男性 BMR = 10·W + 6.25·H − 5·A + 5、女性 BMR = 10·W + 6.25·H − 5·A − 161。TDEE = BMR × 活動係数(ほぼ運動なし1.2、軽い1.375、中程度1.55、活発1.725、非常に活発1.9)。</p>"
+            "<p>BMRは完全休息時に消費するカロリー(心臓・脳・呼吸)、TDEEは活動を含む総消費量です。−500 kcal/日は週約0.45 kg減量を目指す目安、+300は筋トレと組み合わせた筋肉増加に適しています。</p>"
+        ),
+        "related_header": "関連ツール",
+        "related_bmi": "BMI計算機",
+        "related_body_fat": "体脂肪率計算機",
+        "related_unit": "単位変換",
+        "related_date": "日付計算機",
+        "card_blurb": "Mifflin-St Jeor公式でBMR・TDEE・目標別(減量/維持/増量)カロリーを即計算。"
     }
 }
 
@@ -7251,6 +7307,61 @@ BODY_FAT_CALCULATOR = {
         "related_unit": "단위 변환기",
         "related_date": "날짜 계산기",
         "card_blurb": "미 해군 둘레 측정법으로 체지방률을 즉시 추정 (키·목·허리 + 엉덩이)."
+    },
+    "ja": {
+        "title": "体脂肪率計算機",
+        "meta_title": "体脂肪率計算機 — 米海軍式周囲法 - Utilify",
+        "meta_desc": "身長・首・腹回り(女性はヒップも)から体脂肪率を米海軍公式で推定。カテゴリと推奨範囲も表示。",
+        "og_title": "体脂肪率計算機 - Utilify",
+        "og_desc": "米海軍周囲法で体脂肪率・カテゴリ・推奨範囲まで。",
+        "json_name": "体脂肪率計算機",
+        "json_desc": "米海軍の周囲測定公式で体脂肪率を推定しカテゴリを表示。",
+        "page_desc": "身長と体周囲(首・腹、女性はヒップ追加)を入力すると、米海軍公式で体脂肪率を推定します。結果にはフィットネスカテゴリと性別別の推奨範囲も表示されます。",
+        "label_sex": "性別",
+        "label_height": "身長 (cm)",
+        "label_neck": "首回り (cm)",
+        "label_waist": "腹回り (cm)",
+        "label_hip": "ヒップ回り (cm)",
+        "ph_height": "170",
+        "ph_neck": "37",
+        "ph_waist": "85",
+        "ph_hip": "95",
+        "opt_male": "男性",
+        "opt_female": "女性",
+        "btn_calculate": "計算",
+        "btn_reset": "リセット",
+        "btn_share": "結果を共有",
+        "share_text": "体脂肪率: {value}% —",
+        "share_copied": "結果をクリップボードにコピーしました。",
+        "res_bfp_label": "体脂肪率",
+        "res_category_label": "カテゴリ",
+        "res_range_label": "推奨範囲",
+        "cat_essential": "必須脂肪",
+        "cat_athletes": "アスリート",
+        "cat_fitness": "フィットネス",
+        "cat_average": "平均",
+        "cat_obese": "肥満",
+        "alert_invalid": "全ての測定値は正の数である必要があります。女性はヒップ回りが必須です。",
+        "alert_negative_log": "腹と首の測定値が整合しません — もう一度測定してください。",
+        "disclaimer": "推定値です — 医療助言ではありません。キャリパー、DEXAスキャン、水中計量法のほうが正確です。簡易チェック用としてのみご利用ください。",
+        "howto_header": "使い方",
+        "howto_html": (
+            "<ol>"
+            "<li>生物学的性別を選びます。</li>"
+            "<li>首回りは喉仏のすぐ下、最も細い部分で測定します。</li>"
+            "<li>腹回りは男性はへその位置、女性は最もくびれた部分で測定します。息を止めたりお腹を引っ込めたりしないでください。</li>"
+            "<li>女性はヒップの最も広い周囲も測定します。</li>"
+            "<li>身長(cm)を入力し<strong>計算</strong>を押します。</li>"
+            "</ol>"
+            "<p><strong>計算式 (米海軍)</strong>:男性 BFP = 86.010·log<sub>10</sub>(腹回り − 首回り) − 70.041·log<sub>10</sub>(身長) + 36.76。女性 BFP = 163.205·log<sub>10</sub>(腹回り + ヒップ − 首回り) − 97.684·log<sub>10</sub>(身長) − 78.387。</p>"
+            "<p>海軍式は平均的な体型に対して水中計量と比べて±3%の精度 — BMIより体組成評価に優れますが、DEXAよりは不正確です。一貫した結果を得るために朝一の測定を推奨します。</p>"
+        ),
+        "related_header": "関連ツール",
+        "related_bmi": "BMI計算機",
+        "related_calorie": "カロリー計算機",
+        "related_unit": "単位変換",
+        "related_date": "日付計算機",
+        "card_blurb": "米海軍周囲測定法で体脂肪率を即推定 (身長・首・腹 + ヒップ)。"
     }
 }
 
@@ -7858,6 +7969,47 @@ TIP_CALCULATOR = {
         "related_unit": "단위 변환기",
         "related_date": "날짜 계산기",
         "card_blurb": "팁·총액·인당 분담액을 빠른 팁% 버튼으로 즉시 계산."
+    },
+    "ja": {
+        "title": "チップ計算機",
+        "meta_title": "チップ計算機 — 割り勘・チップ自動計算 - Utilify",
+        "meta_desc": "レストランの会計でチップと一人あたりの金額を計算。10/15/18/20/25%のクイック選択または直接入力。人数で自動分割。",
+        "og_title": "チップ計算機 - Utilify",
+        "og_desc": "チップ・合計・一人あたりの金額をクイックチップ%ボタンで。",
+        "json_name": "チップ計算機",
+        "json_desc": "食事代のチップと割り勘金額を計算するツール。",
+        "page_desc": "会計金額とチップ率(クイック選択または直接入力)を入力すると、人数で割った一人あたりの金額まで計算します。アメリカなどチップ文化圏の旅行で便利。すべての処理はブラウザ内で。",
+        "label_bill": "会計金額",
+        "label_tip": "チップ (%)",
+        "label_people": "人数",
+        "ph_bill": "100",
+        "ph_tip": "18",
+        "ph_people": "2",
+        "btn_calculate": "計算",
+        "btn_reset": "リセット",
+        "btn_share": "結果を共有",
+        "share_text": "一人あたり: {value} —",
+        "share_copied": "クリップボードにコピーしました。",
+        "res_tip_label": "チップ",
+        "res_total_label": "合計",
+        "res_per_person_label": "一人あたり",
+        "alert_invalid": "会計金額・チップ・人数はすべて正の数で入力してください。",
+        "howto_header": "使い方",
+        "howto_html": (
+            "<ol>"
+            "<li>チップ適用前の会計金額を入力します。</li>"
+            "<li>チップ率をクイックボタンで選ぶか、直接入力します。</li>"
+            "<li>分担する人数を入力します。</li>"
+            "<li><strong>計算</strong>を押すと、チップ・合計・一人あたりの金額が表示されます。</li>"
+            "</ol>"
+            "<p>米国基準ではテーブルサービスは18~20%、ビュッフェ・デリバリーは15%、カウンターサービスは10%または切り上げが一般的です。日本やアジア諸国はチップ文化がない場合が多く、欧州ではサービス料が会計に含まれており追加チップは必須ではありません。</p>"
+        ),
+        "related_header": "関連ツール",
+        "related_pct": "パーセント計算機",
+        "related_discount": "割引計算機",
+        "related_unit": "単位変換",
+        "related_date": "日付計算機",
+        "card_blurb": "チップ・合計・一人あたりの金額をクイックチップ%ボタンで即計算。"
     }
 }
 
@@ -7952,6 +8104,51 @@ PERCENTAGE_CALCULATOR = {
         "related_unit": "단위 변환기",
         "related_date": "날짜 계산기",
         "card_blurb": "B의 A%·A는 B의 몇 %·변화율 — 3가지 모드 한 곳에서."
+    },
+    "ja": {
+        "title": "パーセント計算機",
+        "meta_title": "パーセント計算機 — BのA%・AはBの何%・変化率 - Utilify",
+        "meta_desc": "パーセント計算3つのモードを一箇所で:BのA%、AはBの何%か、AからBへの変化率。公式を覚える必要なし。",
+        "og_title": "パーセント計算機 - Utilify",
+        "og_desc": "3種類のパーセント計算を一つのツールで。",
+        "json_name": "パーセント計算機",
+        "json_desc": "% of / % is / 変化率 — モード切替式パーセント計算機。",
+        "page_desc": "よく使う3つのパーセント計算を一箇所で:<em>BのA%は?</em>、<em>AはBの何%か?</em>、<em>AからBへの変化率</em>。モードを選ぶと入力ラベルが自動で切り替わる — 公式を覚える必要はありません。",
+        "label_mode": "モード",
+        "label_a": "A",
+        "label_b": "B",
+        "ph_a": "20",
+        "ph_b": "150",
+        "opt_of": "BのA%は?",
+        "opt_is": "AはBの何%か?",
+        "opt_change": "AからBへの変化率",
+        "btn_calculate": "計算",
+        "btn_reset": "リセット",
+        "btn_share": "結果を共有",
+        "share_text": "結果: {value} —",
+        "share_copied": "クリップボードにコピーしました。",
+        "res_label": "結果",
+        "alert_invalid": "2つの数値とも有効な値を入力してください。",
+        "alert_div_zero": "このモードではBは0にできません。",
+        "howto_header": "使い方",
+        "howto_html": (
+            "<ol>"
+            "<li>質問に合うモードを選びます:"
+            "<ul>"
+            "<li><strong>BのA%は?</strong> — 例:\"150の20%\" → 30</li>"
+            "<li><strong>AはBの何%か?</strong> — 例:\"30は150の何%\" → 20%</li>"
+            "<li><strong>AからBへの変化率</strong> — 例:\"100 → 125\" → +25%</li>"
+            "</ul></li>"
+            "<li>2つの数値を入力し<strong>計算</strong>を押します。</li>"
+            "</ol>"
+            "<p>変化率の公式は<code>(B − A) / A × 100</code>です。100から75に下がると−25%、75から100に戻ると+33% — 上昇と下落は対称ではありません。</p>"
+        ),
+        "related_header": "関連ツール",
+        "related_tip": "チップ計算機",
+        "related_discount": "割引計算機",
+        "related_unit": "単位変換",
+        "related_date": "日付計算機",
+        "card_blurb": "BのA%・AはBの何%・変化率 — 3モードを一箇所で。"
     }
 }
 
@@ -8038,6 +8235,47 @@ DISCOUNT_CALCULATOR = {
         "related_loan": "대출 계산기",
         "related_unit": "단위 변환기",
         "card_blurb": "최종 가격·절약 금액·중복 할인 실질 합산율까지 즉시 계산."
+    },
+    "ja": {
+        "title": "割引計算機",
+        "meta_title": "割引計算機 — 割引後の価格と節約額 - Utilify",
+        "meta_desc": "定価に割引率を適用して最終価格と節約額を計算。追加割引(重複割引)も合算可能。",
+        "og_title": "割引計算機 - Utilify",
+        "og_desc": "最終価格・節約額・重複割引の合算効果まで。",
+        "json_name": "割引計算機",
+        "json_desc": "定価に割引を適用した最終価格と重複割引の合算計算機。",
+        "page_desc": "定価と割引率を入力すると最終価格と節約額を計算します。追加割引(\"30%引き + レジで追加20%\"など)もサポートし、単純合算ではない実質割引率を表示します。",
+        "label_price": "定価",
+        "label_discount1": "割引率 (%)",
+        "label_discount2": "追加割引率 (%) — 任意",
+        "ph_price": "10000",
+        "ph_discount1": "30",
+        "ph_discount2": "0",
+        "btn_calculate": "計算",
+        "btn_reset": "リセット",
+        "btn_share": "結果を共有",
+        "share_text": "最終価格: {value} —",
+        "share_copied": "クリップボードにコピーしました。",
+        "res_final_label": "最終価格",
+        "res_saved_label": "節約額",
+        "res_effective_label": "実質割引率",
+        "alert_invalid": "定価は正の数、割引率は0~100の間で入力してください。",
+        "howto_header": "使い方",
+        "howto_html": (
+            "<ol>"
+            "<li>割引適用前の定価を入力します。</li>"
+            "<li>1つ目の割引率を入力します。</li>"
+            "<li>任意:最初の割引後に適用される追加割引率(\"レジで追加X%\"など)を入力します。</li>"
+            "<li><strong>計算</strong>を押すと、最終価格・節約額・実質合算割引率が表示されます。</li>"
+            "</ol>"
+            "<p><strong>重複割引は単純合算ではありません。</strong>30%引き後の20%追加割引は50%ではなく、1 − (0.7 × 0.8) = 44%です。\"実質割引率\"フィールドで合算値を確認してください。</p>"
+        ),
+        "related_header": "関連ツール",
+        "related_tip": "チップ計算機",
+        "related_pct": "パーセント計算機",
+        "related_loan": "ローン計算機",
+        "related_unit": "単位変換",
+        "card_blurb": "最終価格・節約額・重複割引の実質合算率まで即計算。"
     }
 }
 
@@ -8120,6 +8358,45 @@ SLEEP_CALCULATOR = {
         "related_timer": "타이머",
         "related_date": "날짜 계산기",
         "card_blurb": "90분 REM 사이클 기준 잠들 시간·일어날 시간 추천."
+    },
+    "ja": {
+        "title": "睡眠サイクル計算機",
+        "meta_title": "睡眠計算機 — 寝る時間・起きる時間 - Utilify",
+        "meta_desc": "90分のREMサイクル基準で睡眠を計画。起床時刻を入力して寝る時刻を、就寝時刻を入力して最適な起床時刻を確認。入眠時間14分を自動反映。",
+        "og_title": "睡眠サイクル計算機 - Utilify",
+        "og_desc": "90分REMサイクルに合わせて爽やかに起きる時間を計画。",
+        "json_name": "睡眠サイクル計算機",
+        "json_desc": "90分REMサイクルに整列した就寝・起床時刻の推奨ツール。",
+        "page_desc": "90分のREMサイクルに合わせて睡眠を計画しましょう。起床時刻を入力すると4~6サイクルのための入眠時刻、就寝時刻を入力すると良い起床時刻を提案します。入眠にかかる14分が自動で反映されます。",
+        "label_mode": "モード",
+        "label_time": "時刻",
+        "opt_wake": "この時刻に起きたい",
+        "opt_sleep": "この時刻に寝る",
+        "btn_calculate": "時刻を見る",
+        "btn_reset": "リセット",
+        "btn_share": "結果を共有",
+        "share_text": "睡眠プラン: {value} —",
+        "share_copied": "クリップボードにコピーしました。",
+        "res_header_wake": "次のいずれかの時刻に入眠してみてください:",
+        "res_header_sleep": "次のいずれかの時刻に起きるのが良いです:",
+        "cycle_label": "{cycles}サイクル · 睡眠{hours}時間",
+        "alert_invalid": "有効な時刻を入力してください。",
+        "disclaimer": "入眠にかかる14分(睡眠潜時)を加算しています。実際のサイクル長は80~100分と個人差があります — 90分基準でぼんやり目覚める場合は調整してください。",
+        "howto_header": "使い方",
+        "howto_html": (
+            "<ol>"
+            "<li>目標が起床時刻基準か就寝時刻基準かを選びます。</li>"
+            "<li>時刻を24時間表記で入力します。14分の睡眠潜時バッファが加算され、4~6個の完全な90分サイクルを計算します。</li>"
+            "<li>提案された時刻のいずれかを目標にします。サイクルの終わり(浅い眠り)に起きるほうが、サイクルの途中で起きるよりぼんやりしません。</li>"
+            "</ol>"
+            "<p>成人は平均<strong>5~6サイクル</strong>(7.5~9時間)が必要です。4サイクル(6時間)は生存最低限であり、目標ではありません。睡眠潜時は個人差が大きいので、5分で寝つく人や30分以上かかる人は心の中で補正してください。</p>"
+        ),
+        "related_header": "関連ツール",
+        "related_calorie": "カロリー計算機",
+        "related_bmi": "BMI計算機",
+        "related_timer": "タイマー",
+        "related_date": "日付計算機",
+        "card_blurb": "90分REMサイクル基準で寝る時刻・起きる時刻を推奨。"
     }
 }
 
@@ -8212,6 +8489,50 @@ READING_TIME = {
         "related_token": "토큰 카운터",
         "related_timer": "타이머",
         "card_blurb": "단어를 분으로 — WPM 조정 가능한 읽기·낭독 시간 추정."
+    },
+    "ja": {
+        "title": "読書時間計算機",
+        "meta_title": "読書時間計算機 — 単語数から分への換算 - Utilify",
+        "meta_desc": "テキストや単語数から読書時間を推定。WPM(分あたり単語数)調整可能(デフォルト250)。ブログ・ポッドキャスト原稿・プレゼンのペース配分に便利。",
+        "og_title": "読書時間計算機 - Utilify",
+        "og_desc": "単語を分に — 読む速度を調整可能。",
+        "json_name": "読書時間計算機",
+        "json_desc": "単語数またはテキストをユーザー指定WPMで読書時間に変換。",
+        "page_desc": "テキストを貼り付けるか単語数を入力すると、お好みの速度で読むのにかかる時間を推定します。デフォルト250 WPMは成人の黙読平均、ポッドキャストは150、速読・流し読みは300以上を使ってください。",
+        "label_text": "テキストまたは単語数",
+        "label_wpm": "読む速度 (WPM)",
+        "ph_text": "記事・ブログ・スピーチ原稿を貼り付けてください…",
+        "ph_wpm": "250",
+        "btn_calculate": "推定",
+        "btn_reset": "リセット",
+        "btn_share": "結果を共有",
+        "share_text": "読書時間: {value} —",
+        "share_copied": "クリップボードにコピーしました。",
+        "res_words_label": "単語",
+        "res_chars_label": "文字",
+        "res_time_label": "読書時間",
+        "res_speak_label": "朗読時間",
+        "alert_invalid": "テキストか正の単語数、正のWPMを入力してください。",
+        "howto_header": "使い方",
+        "howto_html": (
+            "<ol>"
+            "<li>推定するテキストを貼り付けます。単語は空白基準で自動カウントされます。</li>"
+            "<li>分あたり単語数(WPM)を調整します。よく使う目安:"
+            "<ul>"
+            "<li><strong>150 WPM</strong> — 楽な朗読・ポッドキャスト速度</li>"
+            "<li><strong>250 WPM</strong> — 黙読平均(デフォルト)</li>"
+            "<li><strong>400 WPM</strong> — 流し読み・速読</li>"
+            "</ul></li>"
+            "<li><strong>推定</strong>を押すと、読書時間と別途朗読時間(150 WPM基準)が表示されます。</li>"
+            "</ol>"
+            "<p>ほとんどのブログプラットフォームは200~250 WPMを想定します。音声原稿(ポッドキャスト・ナレーション・プレゼン)は130~160 WPM — 口でハッキリ伝わる速度を使ってください。</p>"
+        ),
+        "related_header": "関連ツール",
+        "related_text_utils": "テキストユーティリティ",
+        "related_md": "Markdownプレビュー",
+        "related_token": "トークンカウンター",
+        "related_timer": "タイマー",
+        "card_blurb": "単語を分に — WPM調整可能な読書・朗読時間推定。"
     }
 }
 
@@ -8306,6 +8627,51 @@ WATER_INTAKE = {
         "related_body_fat": "체지방 계산기",
         "related_unit": "단위 변환기",
         "card_blurb": "체중·활동·기후 기반 1일 물 권장량 자동 계산."
+    },
+    "ja": {
+        "title": "水分摂取量計算機",
+        "meta_title": "水分摂取量計算機 — 1日の水分目標 - Utilify",
+        "meta_desc": "体重・運動量・気候から1日の必要水分量を推定。ml・リットル・250mlコップ単位で表示。",
+        "og_title": "水分摂取量計算機 - Utilify",
+        "og_desc": "運動・気候補正を含む1日の水分目標。",
+        "json_name": "水分摂取量計算機",
+        "json_desc": "体重・運動量・気候に基づく1日の水分目標推定。",
+        "page_desc": "体重を基準に1日の水分摂取量を推定し、運動量と気候に応じて補正します。結果はml・リットル・250mlコップ数で表示されます。基本式は体重(kg)あたり33ml — 普通の活動量の成人に適用される目安です。",
+        "label_weight": "体重 (kg)",
+        "label_activity": "運動量",
+        "label_climate": "気候",
+        "ph_weight": "70",
+        "opt_act_low": "ほぼ運動なし",
+        "opt_act_mid": "普通の運動",
+        "opt_act_high": "高強度の運動",
+        "opt_clim_normal": "温帯",
+        "opt_clim_hot": "高温・多湿",
+        "btn_calculate": "計算",
+        "btn_reset": "リセット",
+        "btn_share": "結果を共有",
+        "share_text": "1日の水分目標: {value} —",
+        "share_copied": "クリップボードにコピーしました。",
+        "res_ml_label": "1日の目標",
+        "res_l_label": "リットル",
+        "res_glasses_label": "コップ (250ml)",
+        "alert_invalid": "体重を正の数(kg)で入力してください。",
+        "disclaimer": "推定値です。実際の必要量は性別・体組成・発汗率・腎機能・標高によって異なります。喉の渇きを基準に飲み、薄い黄色の尿が最も実用的な指標です。",
+        "howto_header": "使い方",
+        "howto_html": (
+            "<ol>"
+            "<li>体重をkg単位で入力します。</li>"
+            "<li>運動量と気候を選びます。高強度の運動は500ml、暑い気候は追加で500mlが加算されます。</li>"
+            "<li><strong>計算</strong>を押すと、1日の目標がml・リットル・250mlコップ単位で表示されます。</li>"
+            "</ol>"
+            "<p><strong>計算式</strong>:33ml × 体重(kg)、普通の運動 +350ml、高強度の運動 +500ml、暑い気候 +500ml。カフェイン飲料も水分摂取に含まれます(水より効率は低い)が、アルコールは脱水を招くため役に立ちません。</p>"
+            "<p>この推定値は<em>総水分</em>基準です — 食事が1日の水分の約20%を提供します(果物・スープ・野菜中心なら多め)。通常、食事以外に1.5~2.5L程度の水分を摂れば十分です。</p>"
+        ),
+        "related_header": "関連ツール",
+        "related_calorie": "カロリー計算機",
+        "related_bmi": "BMI計算機",
+        "related_body_fat": "体脂肪率計算機",
+        "related_unit": "単位変換",
+        "card_blurb": "体重・運動量・気候に基づく1日の水分推奨量を自動計算。"
     }
 }
 
@@ -8390,6 +8756,46 @@ FILE_SIZE_CONVERTER = {
         "related_token": "토큰 카운터",
         "related_pct": "퍼센트 계산기",
         "card_blurb": "B ↔ KB·MB·GB·TB·PB — 십진/이진법 모두 지원."
+    },
+    "ja": {
+        "title": "ファイルサイズ変換",
+        "meta_title": "ファイルサイズ変換 — Bytes・KB・MB・GB・TB - Utilify",
+        "meta_desc": "バイト・キロバイト・メガバイト・ギガバイト・テラバイト・ペタバイトを相互変換。10進法(1KB=1000B)と2進法(1KiB=1024B)の両方をサポート。",
+        "og_title": "ファイルサイズ変換 - Utilify",
+        "og_desc": "B ↔ KB / MB / GB / TB / PB — 10進法・2進法対応。",
+        "json_name": "ファイルサイズ変換",
+        "json_desc": "10進法・2進法のデジタルストレージ単位相互変換ツール。",
+        "page_desc": "バイト・KB・MB・GB・TB・PB単位を自由に変換します。ハードドライブ広告で使われる10進法(1KB = 1000B)と、OSが表示する2進法(1KiB = 1024B)を選択できます。",
+        "label_value": "値",
+        "label_from": "変換元",
+        "label_to": "変換先",
+        "label_system": "単位体系",
+        "ph_value": "1024",
+        "opt_decimal": "10進法 (1KB = 1000B)",
+        "opt_binary": "2進法 (1KiB = 1024B)",
+        "btn_convert": "変換",
+        "btn_swap": "入れ替え",
+        "btn_reset": "リセット",
+        "btn_share": "結果を共有",
+        "share_text": "{value} —",
+        "share_copied": "クリップボードにコピーしました。",
+        "res_label": "結果",
+        "alert_invalid": "0以上の数値を入力してください。",
+        "howto_header": "使い方",
+        "howto_html": (
+            "<ol>"
+            "<li>変換する数値を入力します。</li>"
+            "<li>変換元と変換先の単位を選びます。</li>"
+            "<li>単位体系を選択します。ハードドライブメーカーやネットワーク仕様は<strong>10進法</strong>(1KB = 1000B)、OS(Windows・Linux・旧macOS)やRAM仕様は<strong>2進法</strong>(1KiB = 1024B)を使います。</li>"
+            "</ol>"
+            "<p><em>KiB・MiB・GiB</em>表記は2進法であることを明確に区別するためのIEC標準です。\"KB\"は通常10進法ですが、緩い意味で2進法にも使われます — 正確な仕様には10進法がSI公式標準です。</p>"
+        ),
+        "related_header": "関連ツール",
+        "related_unit": "単位変換",
+        "related_base64": "Base64変換",
+        "related_token": "トークンカウンター",
+        "related_pct": "パーセント計算機",
+        "card_blurb": "B ↔ KB・MB・GB・TB・PB — 10進・2進両対応。"
     }
 }
 
@@ -8470,5 +8876,43 @@ AGE_CALCULATOR = {
         "related_unix": "Unix 타임스탬프",
         "related_bmi": "BMI 계산기",
         "card_blurb": "생년월일에서 만 나이·살아온 일수·다음 생일까지 즉시 계산."
+    },
+    "ja": {
+        "title": "年齢計算機",
+        "meta_title": "年齢計算機 — 年・月・日・次の誕生日まで - Utilify",
+        "meta_desc": "生年月日から正確な年齢を計算。年・月・日数、生きた総日数、次の誕生日までの日数を表示。",
+        "og_title": "年齢計算機 - Utilify",
+        "og_desc": "年・月・日単位の正確な年齢と次の誕生日までのカウントダウン。",
+        "json_name": "年齢計算機",
+        "json_desc": "生年月日から年齢と次の誕生日までの距離を計算。",
+        "page_desc": "生年月日を選ぶと正確な年齢 — 年・月・日 — と、生きた総日数、次の誕生日までの日数を表示します。ビザ申請、入学基準日、\"2030年に何歳?\"といった疑問に便利。",
+        "label_dob": "生年月日",
+        "label_target": "基準日",
+        "btn_calculate": "計算",
+        "btn_reset": "リセット",
+        "btn_share": "結果を共有",
+        "share_text": "年齢: {value} —",
+        "share_copied": "クリップボードにコピーしました。",
+        "res_age_label": "年齢",
+        "res_total_days_label": "生きた日数",
+        "res_next_birthday_label": "次の誕生日まで",
+        "res_age_format": "{years}年{months}ヶ月{days}日",
+        "res_days_format": "{days}日",
+        "alert_invalid": "基準日より未来でない有効な生年月日を入力してください。",
+        "howto_header": "使い方",
+        "howto_html": (
+            "<ol>"
+            "<li>生年月日を選びます。</li>"
+            "<li>任意:基準日を変更できます(デフォルトは今日)。\"2030年7月4日に何歳か?\"といった質問に便利です。</li>"
+            "<li><strong>計算</strong>を押すと、年齢(年・月・日)、生きた総日数、次の誕生日までの日数が表示されます。</li>"
+            "</ol>"
+            "<p>月末の境界ケースも処理します — 1月31日生まれの赤ちゃんは2月28日(うるう年なら29日)で1ヶ月になり、2月31日にはなりません。年数はグレゴリオ暦基準の完全1年で、うるう日も生きた日数に含まれます。</p>"
+        ),
+        "related_header": "関連ツール",
+        "related_date": "日付計算機",
+        "related_pregnancy": "妊娠計算機",
+        "related_unix": "Unixタイムスタンプ",
+        "related_bmi": "BMI計算機",
+        "card_blurb": "生年月日から年齢・生きた日数・次の誕生日まで即計算。"
     }
 }

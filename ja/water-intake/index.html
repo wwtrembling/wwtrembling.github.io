@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy-Report-Only" content="default-src 'self' https: data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https:; frame-src https:;">
     <meta name="google-adsense-account" content="ca-pub-6334819180242631">
-    <title>Water Intake Calculator — Daily Hydration Target - Utilify</title>
-    <meta name="description" content="Estimate daily water needs from body weight, with adjustments for activity and climate. Returns ml, liters, and equivalent 250 ml glasses.">
+    <title>水分摂取量計算機 — 1日の水分目標 - Utilify</title>
+    <meta name="description" content="体重・運動量・気候から1日の必要水分量を推定。ml・リットル・250mlコップ単位で表示。">
     <link rel="canonical" href="https://utilifyapp.net/ja/water-intake/">
 
-    <meta property="og:title" content="Water Intake Calculator - Utilify">
-    <meta property="og:description" content="Daily hydration target with activity & climate adjustments.">
+    <meta property="og:title" content="水分摂取量計算機 - Utilify">
+    <meta property="og:description" content="運動・気候補正を含む1日の水分目標。">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://utilifyapp.net/ja/water-intake/">
 
@@ -37,8 +37,8 @@
     {
         "@context": "https://schema.org",
         "@type": "WebApplication",
-        "name": "Water Intake Calculator",
-        "description": "Estimate daily water target from weight + activity + climate.",
+        "name": "水分摂取量計算機",
+        "description": "体重・運動量・気候に基づく1日の水分目標推定。",
         "url": "https://utilifyapp.net/ja/water-intake/",
         "inLanguage": "ja",
         "applicationCategory": "HealthApplication",
@@ -88,7 +88,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <script data-utilify-theme-init>(function(){try{var s=localStorage.getItem("utilify_theme");var t=(s==="dark"||s==="light")?s:(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
-    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://utilifyapp.net/ja/"}, {"@type": "ListItem", "position": 2, "name": "Water Intake Calculator", "item": "https://utilifyapp.net/ja/water-intake/"}]}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://utilifyapp.net/ja/"}, {"@type": "ListItem", "position": 2, "name": "水分摂取量計算機", "item": "https://utilifyapp.net/ja/water-intake/"}]}</script>
 </head>
 
 <body>
@@ -96,76 +96,76 @@
     <header class="site-header"><div class="container"><div class="header-content"><a href="/ja/" class="site-logo">🛠️ Utilify</a><button data-utilify-theme-toggle id="themeToggle" class="theme-toggle" type="button" aria-label="Switch to dark mode" data-aria-to-dark="Switch to dark mode" data-aria-to-light="Switch to light mode">🌙</button></div></div></header>
     <main id="main" class="main-content">
         <div class="container-narrow">
-            <nav data-utilify-breadcrumb class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/ja/">Home</a></li><li aria-current="page">Water Intake Calculator</li></ol></nav>
-            <h1>💧 Water Intake Calculator</h1>
+            <nav data-utilify-breadcrumb class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/ja/">Home</a></li><li aria-current="page">水分摂取量計算機</li></ol></nav>
+            <h1>💧 水分摂取量計算機</h1>
             <div class="security-badge" style="display:flex;align-items:center;justify-content:center;gap:8px;margin:10px 0;font-size:14px;color:var(--text-secondary);">
                 <span>🔒 Secure & Client-side</span>
                 <button id="pwaInstallBtn" class="btn btn-primary" style="display: none; padding: 4px 12px; font-size: 12px;">📲 Install App</button>
                     <button data-utilify-fav-toggle class="fav-toggle-page" type="button" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
             </div>
 
-            <p>Estimate daily water intake from body weight, with bumps for exercise and hot climates. The result is shown in milliliters, liters, and 250 ml glasses. Baseline is 33 ml per kg of body weight — typical for moderately active adults.</p>
+            <p>体重を基準に1日の水分摂取量を推定し、運動量と気候に応じて補正します。結果はml・リットル・250mlコップ数で表示されます。基本式は体重(kg)あたり33ml — 普通の活動量の成人に適用される目安です。</p>
 
             <div class="card">
                 <div class="form-grid">
                     <div class="form-group">
-                        <label class="form-label" for="weight">Weight (kg)</label>
+                        <label class="form-label" for="weight">体重 (kg)</label>
                         <input type="number" id="weight" class="form-input" inputmode="decimal" min="20" max="350" step="0.5" placeholder="70" value="70">
                     </div>
                     <div class="form-group">
-                        <label class="form-label" for="activity">Activity level</label>
+                        <label class="form-label" for="activity">運動量</label>
                         <select id="activity" class="form-input">
-                            <option value="0">Sedentary</option>
-                            <option value="350" selected>Moderate exercise</option>
-                            <option value="500">Heavy exercise</option>
+                            <option value="0">ほぼ運動なし</option>
+                            <option value="350" selected>普通の運動</option>
+                            <option value="500">高強度の運動</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label class="form-label" for="climate">Climate</label>
+                        <label class="form-label" for="climate">気候</label>
                         <select id="climate" class="form-input">
-                            <option value="0" selected>Temperate</option>
-                            <option value="500">Hot / humid</option>
+                            <option value="0" selected>温帯</option>
+                            <option value="500">高温・多湿</option>
                         </select>
                     </div>
                 </div>
                 <div class="button-row" style="margin-top: var(--spacing-md);">
-                    <button class="btn btn-primary" type="button" onclick="calculate()">Calculate</button>
-                    <button class="btn" type="button" onclick="resetForm()">Reset</button>
+                    <button class="btn btn-primary" type="button" onclick="calculate()">計算</button>
+                    <button class="btn" type="button" onclick="resetForm()">リセット</button>
                 </div>
             </div>
 
             <div id="result" style="display:none;" aria-live="polite">
                 <div class="stat-grid">
                     <div class="stat-card headline">
-                        <div class="label">Daily target</div>
+                        <div class="label">1日の目標</div>
                         <div class="value" id="mlVal">—</div>
                     </div>
                     <div class="stat-card">
-                        <div class="label">In liters</div>
+                        <div class="label">リットル</div>
                         <div class="value" id="lVal">—</div>
                     </div>
                     <div class="stat-card">
-                        <div class="label">Glasses (250 ml)</div>
+                        <div class="label">コップ (250ml)</div>
                         <div class="value" id="glassesVal">—</div>
                     </div>
                 </div>
                 <div class="button-row">
-                    <button class="btn" type="button" onclick="shareResult()">Share result</button>
+                    <button class="btn" type="button" onclick="shareResult()">結果を共有</button>
                 </div>
             </div>
 
-            <div class="disclaimer">Estimate only. Real needs vary by sex, body composition, sweat rate, kidney function, and altitude. Drink to thirst; pale-yellow urine is the best practical indicator.</div>
+            <div class="disclaimer">推定値です。実際の必要量は性別・体組成・発汗率・腎機能・標高によって異なります。喉の渇きを基準に飲み、薄い黄色の尿が最も実用的な指標です。</div>
 
-            <h2>How to use</h2>
-            <div class="howto-content"><ol><li>Enter your body weight in kilograms.</li><li>Pick activity level and climate. Heavy exercise adds 500 ml; hot climates add another 500 ml.</li><li>Click <strong>Calculate</strong> — the daily target appears in ml, liters, and 250 ml glasses.</li></ol><p><strong>Formula</strong>: 33 ml × weight(kg), plus 350 ml for moderate exercise / 500 ml for heavy, plus 500 ml for hot climates. Caffeinated drinks count toward intake (not as much as water but most of the volume); alcohol is a net negative for hydration.</p><p>This estimate covers <em>total fluid</em> — food contributes about 20% of daily water (more if you eat lots of fruit, soup, or vegetables). Drinking ~1.5–2.5 L of water-equivalent fluids on top of food usually covers it.</p></div>
+            <h2>使い方</h2>
+            <div class="howto-content"><ol><li>体重をkg単位で入力します。</li><li>運動量と気候を選びます。高強度の運動は500ml、暑い気候は追加で500mlが加算されます。</li><li><strong>計算</strong>を押すと、1日の目標がml・リットル・250mlコップ単位で表示されます。</li></ol><p><strong>計算式</strong>:33ml × 体重(kg)、普通の運動 +350ml、高強度の運動 +500ml、暑い気候 +500ml。カフェイン飲料も水分摂取に含まれます(水より効率は低い)が、アルコールは脱水を招くため役に立ちません。</p><p>この推定値は<em>総水分</em>基準です — 食事が1日の水分の約20%を提供します(果物・スープ・野菜中心なら多め)。通常、食事以外に1.5~2.5L程度の水分を摂れば十分です。</p></div>
 
             <div class="related-tools-section">
-                <h3>Related Tools</h3>
+                <h3>関連ツール</h3>
                 <div class="related-buttons">
-                    <a href="/ja/calorie-calculator/" class="related-btn">Calorie Calculator</a><a
-                        href="/ja/bmi-calculator/" class="related-btn">BMI Calculator</a><a
-                        href="/ja/body-fat-calculator/" class="related-btn">Body Fat Calculator</a><a
-                        href="/ja/unit-converter/" class="related-btn">Unit Converter</a>
+                    <a href="/ja/calorie-calculator/" class="related-btn">カロリー計算機</a><a
+                        href="/ja/bmi-calculator/" class="related-btn">BMI計算機</a><a
+                        href="/ja/body-fat-calculator/" class="related-btn">体脂肪率計算機</a><a
+                        href="/ja/unit-converter/" class="related-btn">単位変換</a>
                 </div>
             </div>
         </div>
@@ -180,7 +180,7 @@
             const w = parseFloat(document.getElementById('weight').value);
             const act = parseFloat(document.getElementById('activity').value) || 0;
             const clim = parseFloat(document.getElementById('climate').value) || 0;
-            if (!(w > 0)) { alert('Enter a positive weight in kilograms.'); return; }
+            if (!(w > 0)) { alert('体重を正の数(kg)で入力してください。'); return; }
             const ml = Math.round(w * 33 + act + clim);
             const liters = (ml / 1000).toFixed(1);
             const glasses = Math.round(ml / 250);
@@ -200,14 +200,14 @@
         async function shareResult() {
             const v = document.getElementById('mlVal').textContent;
             if (v === '—') return;
-            const text = 'Daily water target: {value} —'.replace('{value}', v) + ' ' + location.href;
+            const text = '1日の水分目標: {value} —'.replace('{value}', v) + ' ' + location.href;
             if (navigator.share) {
-                try { await navigator.share({ title: 'Water Intake Calculator', text }); return; }
+                try { await navigator.share({ title: '水分摂取量計算機', text }); return; }
                 catch (e) { if (e && e.name === 'AbortError') return; }
             }
             try {
                 await navigator.clipboard.writeText(text);
-                alert('Copied to clipboard.');
+                alert('クリップボードにコピーしました。');
             } catch (e) { /* clipboard blocked */ }
         }
     </script>

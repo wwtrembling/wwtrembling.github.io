@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy-Report-Only" content="default-src 'self' https: data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https:; frame-src https:;">
     <meta name="google-adsense-account" content="ca-pub-6334819180242631">
-    <title>Calorie Calculator — BMR + TDEE (Mifflin-St Jeor) - Utilify</title>
-    <meta name="description" content="BMR + TDEE calculator using the Mifflin-St Jeor formula. Returns target calories for weight loss, maintenance, and muscle gain.">
+    <title>カロリー計算機 — BMR・TDEE自動計算 (Mifflin-St Jeor) - Utilify</title>
+    <meta name="description" content="基礎代謝量(BMR)と1日の総消費カロリー(TDEE)をMifflin-St Jeor公式で計算。減量・維持・増量の目標カロリーも併せて提供。">
     <link rel="canonical" href="https://utilifyapp.net/ja/calorie-calculator/">
 
-    <meta property="og:title" content="Calorie & BMR Calculator - Utilify">
-    <meta property="og:description" content="BMR + TDEE + targets for cutting, maintenance, and bulking.">
+    <meta property="og:title" content="カロリー・BMR計算機 - Utilify">
+    <meta property="og:description" content="基礎代謝・1日の消費カロリー・目標別推奨摂取量まで一括。">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://utilifyapp.net/ja/calorie-calculator/">
 
@@ -37,8 +37,8 @@
     {
         "@context": "https://schema.org",
         "@type": "WebApplication",
-        "name": "Calorie & BMR Calculator",
-        "description": "Mifflin-St Jeor BMR plus activity multiplier and goal-adjusted calorie targets.",
+        "name": "カロリー・BMR計算機",
+        "description": "Mifflin-St Jeor公式に基づくBMR + 活動係数 + 目標別推奨摂取量。",
         "url": "https://utilifyapp.net/ja/calorie-calculator/",
         "inLanguage": "ja",
         "applicationCategory": "HealthApplication",
@@ -89,7 +89,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <script data-utilify-theme-init>(function(){try{var s=localStorage.getItem("utilify_theme");var t=(s==="dark"||s==="light")?s:(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
-    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://utilifyapp.net/ja/"}, {"@type": "ListItem", "position": 2, "name": "Health", "item": "https://utilifyapp.net/ja/health/"}, {"@type": "ListItem", "position": 3, "name": "Calorie & BMR Calculator", "item": "https://utilifyapp.net/ja/calorie-calculator/"}]}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://utilifyapp.net/ja/"}, {"@type": "ListItem", "position": 2, "name": "Health", "item": "https://utilifyapp.net/ja/health/"}, {"@type": "ListItem", "position": 3, "name": "カロリー・BMR計算機", "item": "https://utilifyapp.net/ja/calorie-calculator/"}]}</script>
 </head>
 
 <body>
@@ -97,99 +97,99 @@
     <header class="site-header"><div class="container"><div class="header-content"><a href="/ja/" class="site-logo">🛠️ Utilify</a><button data-utilify-theme-toggle id="themeToggle" class="theme-toggle" type="button" aria-label="Switch to dark mode" data-aria-to-dark="Switch to dark mode" data-aria-to-light="Switch to light mode">🌙</button></div></div></header>
     <main id="main" class="main-content">
         <div class="container-narrow">
-            <nav data-utilify-breadcrumb class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/ja/">Home</a></li><li><a href="/ja/health/">Health</a></li><li aria-current="page">Calorie & BMR Calculator</li></ol></nav>
-            <h1>🔥 Calorie & BMR Calculator</h1>
+            <nav data-utilify-breadcrumb class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/ja/">Home</a></li><li><a href="/ja/health/">Health</a></li><li aria-current="page">カロリー・BMR計算機</li></ol></nav>
+            <h1>🔥 カロリー・BMR計算機</h1>
             <div class="security-badge" style="display:flex;align-items:center;justify-content:center;gap:8px;margin:10px 0;font-size:14px;color:var(--text-secondary);">
                 <span>🔒 Secure & Client-side</span>
                 <button id="pwaInstallBtn" class="btn btn-primary" style="display: none; padding: 4px 12px; font-size: 12px;">📲 Install App</button>
                     <button data-utilify-fav-toggle class="fav-toggle-page" type="button" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
             </div>
 
-            <p>Enter your age, sex, height, weight, and activity level to get your basal metabolic rate, total daily calorie burn, and recommended targets for weight loss, maintenance, or muscle gain. Uses the Mifflin-St Jeor equation, the most accurate formula for healthy adults.</p>
+            <p>年齢・性別・身長・体重・活動レベルを入力すると、基礎代謝量、1日の総消費カロリー、減量/維持/筋増量の目標カロリーを計算します。健康な成人に最も正確とされるMifflin-St Jeor公式を使用しています。</p>
 
             <div class="card">
                 <div class="form-grid">
                     <div class="form-group">
-                        <label class="form-label" for="age">Age (years)</label>
+                        <label class="form-label" for="age">年齢 (歳)</label>
                         <input type="number" id="age" class="form-input" inputmode="numeric" min="10" max="120" step="1" placeholder="30" value="30">
                     </div>
                     <div class="form-group">
-                        <label class="form-label" for="sex">Sex</label>
+                        <label class="form-label" for="sex">性別</label>
                         <select id="sex" class="form-input">
-                            <option value="male" selected>Male</option>
-                            <option value="female">Female</option>
+                            <option value="male" selected>男性</option>
+                            <option value="female">女性</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label class="form-label" for="height">Height (cm)</label>
+                        <label class="form-label" for="height">身長 (cm)</label>
                         <input type="number" id="height" class="form-input" inputmode="decimal" min="80" max="250" step="0.1" placeholder="170" value="170">
                     </div>
                     <div class="form-group">
-                        <label class="form-label" for="weight">Weight (kg)</label>
+                        <label class="form-label" for="weight">体重 (kg)</label>
                         <input type="number" id="weight" class="form-input" inputmode="decimal" min="20" max="350" step="0.1" placeholder="70" value="70">
                     </div>
                     <div class="form-group" style="grid-column: 1 / -1;">
-                        <label class="form-label" for="activity">Activity level</label>
+                        <label class="form-label" for="activity">活動レベル</label>
                         <select id="activity" class="form-input">
-                            <option value="1.2">Sedentary (little to no exercise)</option>
-                            <option value="1.375" selected>Light (1–3 days / week)</option>
-                            <option value="1.55">Moderate (3–5 days / week)</option>
-                            <option value="1.725">Active (6–7 days / week)</option>
-                            <option value="1.9">Very active (twice daily / hard training)</option>
+                            <option value="1.2">ほぼ運動なし (デスクワーク中心)</option>
+                            <option value="1.375" selected>軽い運動 (週1~3回)</option>
+                            <option value="1.55">中程度の運動 (週3~5回)</option>
+                            <option value="1.725">活発な運動 (週6~7回)</option>
+                            <option value="1.9">非常に活発 (1日2回・ハードトレーニング)</option>
                         </select>
                     </div>
                 </div>
                 <div class="button-row" style="margin-top: var(--spacing-md);">
-                    <button class="btn btn-primary" type="button" onclick="calculate()">Calculate</button>
-                    <button class="btn" type="button" onclick="resetForm()">Reset</button>
+                    <button class="btn btn-primary" type="button" onclick="calculate()">計算</button>
+                    <button class="btn" type="button" onclick="resetForm()">リセット</button>
                 </div>
             </div>
 
             <div id="result" style="display:none;" aria-live="polite">
                 <div class="result-grid">
                     <div class="result-card headline">
-                        <div class="label">BMR (kcal/day)</div>
+                        <div class="label">基礎代謝 (kcal/日)</div>
                         <div class="value" id="bmrVal">—</div>
                     </div>
                     <div class="result-card">
-                        <div class="label">TDEE (kcal/day)</div>
+                        <div class="label">1日の総消費 (kcal/日)</div>
                         <div class="value" id="tdeeVal">—</div>
                     </div>
                 </div>
 
-                <h3>Daily calorie targets</h3>
+                <h3>目標別1日カロリー</h3>
                 <div class="result-grid">
                     <div class="result-card">
-                        <div class="label">Weight loss (−500)</div>
+                        <div class="label">減量 (−500)</div>
                         <div class="value" id="lossVal">—</div>
                     </div>
                     <div class="result-card">
-                        <div class="label">Maintenance</div>
+                        <div class="label">維持</div>
                         <div class="value" id="maintainVal">—</div>
                     </div>
                     <div class="result-card">
-                        <div class="label">Muscle gain (+300)</div>
+                        <div class="label">筋増量 (+300)</div>
                         <div class="value" id="gainVal">—</div>
                     </div>
                 </div>
 
                 <div class="button-row" style="margin-top: var(--spacing-md);">
-                    <button class="btn" type="button" onclick="shareResult()">Share result</button>
+                    <button class="btn" type="button" onclick="shareResult()">結果を共有</button>
                 </div>
             </div>
 
-            <div class="disclaimer">Estimate only — not medical advice. Talk to a registered dietitian or physician before changing your diet, especially if pregnant, nursing, or managing a condition.</div>
+            <div class="disclaimer">推定値です — 医療助言ではありません。妊娠・授乳中、疾患管理中の方は食事の変更前に医師や管理栄養士に相談してください。</div>
 
-            <h2>How to use</h2>
-            <div class="howto-content"><ol><li>Enter your age in years.</li><li>Pick your biological sex (the formula has different constants for male and female).</li><li>Enter your height in centimeters and weight in kilograms.</li><li>Pick the activity level that best matches a typical week. Most desk workers are sedentary or light even with weekend exercise.</li><li>Click <strong>Calculate</strong> — BMR, TDEE, and three goal-adjusted targets appear.</li></ol><p><strong>Formula (Mifflin-St Jeor)</strong>: Male BMR = 10·W + 6.25·H − 5·A + 5; Female BMR = 10·W + 6.25·H − 5·A − 161. TDEE = BMR × activity factor (sedentary 1.2, light 1.375, moderate 1.55, active 1.725, very active 1.9).</p><p>BMR is what your body burns at complete rest — heart, brain, breathing. TDEE includes movement and exercise. The 500 kcal/day deficit is a classic 1 lb/week weight-loss target; +300 supports lean muscle gain when paired with strength training.</p></div>
+            <h2>使い方</h2>
+            <div class="howto-content"><ol><li>年齢を歳単位で入力します。</li><li>生物学的性別を選びます(公式の定数が男女で異なります)。</li><li>身長(cm)と体重(kg)を入力します。</li><li>普段の1週間に近い活動レベルを選びます。週末に運動するデスクワーカーでも、多くは"ほぼ運動なし"または"軽い運動"に該当します。</li><li><strong>計算</strong>を押すと、BMR、TDEE、目標別カロリー3種が表示されます。</li></ol><p><strong>計算式 (Mifflin-St Jeor)</strong>:男性 BMR = 10·W + 6.25·H − 5·A + 5、女性 BMR = 10·W + 6.25·H − 5·A − 161。TDEE = BMR × 活動係数(ほぼ運動なし1.2、軽い1.375、中程度1.55、活発1.725、非常に活発1.9)。</p><p>BMRは完全休息時に消費するカロリー(心臓・脳・呼吸)、TDEEは活動を含む総消費量です。−500 kcal/日は週約0.45 kg減量を目指す目安、+300は筋トレと組み合わせた筋肉増加に適しています。</p></div>
 
             <div class="related-tools-section">
-                <h3>Related Tools</h3>
+                <h3>関連ツール</h3>
                 <div class="related-buttons">
-                    <a href="/ja/bmi-calculator/" class="related-btn">BMI Calculator</a><a
-                        href="/ja/body-fat-calculator/" class="related-btn">Body Fat Calculator</a><a
-                        href="/ja/unit-converter/" class="related-btn">Unit Converter</a><a
-                        href="/ja/date-calculator/" class="related-btn">Date Calculator</a>
+                    <a href="/ja/bmi-calculator/" class="related-btn">BMI計算機</a><a
+                        href="/ja/body-fat-calculator/" class="related-btn">体脂肪率計算機</a><a
+                        href="/ja/unit-converter/" class="related-btn">単位変換</a><a
+                        href="/ja/date-calculator/" class="related-btn">日付計算機</a>
                 </div>
             </div>
         </div>
@@ -208,7 +208,7 @@
             const w = parseFloat(document.getElementById('weight').value);
             const act = parseFloat(document.getElementById('activity').value);
             if (!(age > 0) || !(h > 0) || !(w > 0)) {
-                alert('Please enter a positive age, height, and weight.');
+                alert('年齢・身長・体重は正の数で入力してください。');
                 return;
             }
             // Mifflin-St Jeor
@@ -236,14 +236,14 @@
         async function shareResult() {
             const tdee = document.getElementById('tdeeVal').textContent;
             if (tdee === '—') return;
-            const text = 'My daily calorie need: {value} kcal —'.replace('{value}', tdee) + ' ' + location.href;
+            const text = '1日の推奨カロリー: {value} kcal —'.replace('{value}', tdee) + ' ' + location.href;
             if (navigator.share) {
-                try { await navigator.share({ title: 'Calorie & BMR Calculator', text }); return; }
+                try { await navigator.share({ title: 'カロリー・BMR計算機', text }); return; }
                 catch (e) { if (e && e.name === 'AbortError') return; }
             }
             try {
                 await navigator.clipboard.writeText(text);
-                alert('Result copied to clipboard.');
+                alert('結果をクリップボードにコピーしました。');
             } catch (e) { /* clipboard blocked — silent */ }
         }
     </script>

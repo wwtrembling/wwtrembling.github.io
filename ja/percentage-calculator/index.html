@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy-Report-Only" content="default-src 'self' https: data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https:; frame-src https:;">
     <meta name="google-adsense-account" content="ca-pub-6334819180242631">
-    <title>Percentage Calculator — % of, % is, % Change - Utilify</title>
-    <meta name="description" content="Three percentage modes in one: what is X% of Y, X is what percent of Y, and percent change from X to Y. No formulas to remember.">
+    <title>パーセント計算機 — BのA%・AはBの何%・変化率 - Utilify</title>
+    <meta name="description" content="パーセント計算3つのモードを一箇所で:BのA%、AはBの何%か、AからBへの変化率。公式を覚える必要なし。">
     <link rel="canonical" href="https://utilifyapp.net/ja/percentage-calculator/">
 
-    <meta property="og:title" content="Percentage Calculator - Utilify">
-    <meta property="og:description" content="All three percentage operations in one tool.">
+    <meta property="og:title" content="パーセント計算機 - Utilify">
+    <meta property="og:description" content="3種類のパーセント計算を一つのツールで。">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://utilifyapp.net/ja/percentage-calculator/">
 
@@ -37,8 +37,8 @@
     {
         "@context": "https://schema.org",
         "@type": "WebApplication",
-        "name": "Percentage Calculator",
-        "description": "Switchable percentage operations: % of, % is, % change.",
+        "name": "パーセント計算機",
+        "description": "% of / % is / 変化率 — モード切替式パーセント計算機。",
         "url": "https://utilifyapp.net/ja/percentage-calculator/",
         "inLanguage": "ja",
         "applicationCategory": "UtilitiesApplication",
@@ -83,7 +83,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <script data-utilify-theme-init>(function(){try{var s=localStorage.getItem("utilify_theme");var t=(s==="dark"||s==="light")?s:(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
-    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://utilifyapp.net/ja/"}, {"@type": "ListItem", "position": 2, "name": "Percentage Calculator", "item": "https://utilifyapp.net/ja/percentage-calculator/"}]}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://utilifyapp.net/ja/"}, {"@type": "ListItem", "position": 2, "name": "パーセント計算機", "item": "https://utilifyapp.net/ja/percentage-calculator/"}]}</script>
 </head>
 
 <body>
@@ -91,23 +91,23 @@
     <header class="site-header"><div class="container"><div class="header-content"><a href="/ja/" class="site-logo">🛠️ Utilify</a><button data-utilify-theme-toggle id="themeToggle" class="theme-toggle" type="button" aria-label="Switch to dark mode" data-aria-to-dark="Switch to dark mode" data-aria-to-light="Switch to light mode">🌙</button></div></div></header>
     <main id="main" class="main-content">
         <div class="container-narrow">
-            <nav data-utilify-breadcrumb class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/ja/">Home</a></li><li aria-current="page">Percentage Calculator</li></ol></nav>
-            <h1>％ Percentage Calculator</h1>
+            <nav data-utilify-breadcrumb class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/ja/">Home</a></li><li aria-current="page">パーセント計算機</li></ol></nav>
+            <h1>％ パーセント計算機</h1>
             <div class="security-badge" style="display:flex;align-items:center;justify-content:center;gap:8px;margin:10px 0;font-size:14px;color:var(--text-secondary);">
                 <span>🔒 Secure & Client-side</span>
                 <button id="pwaInstallBtn" class="btn btn-primary" style="display: none; padding: 4px 12px; font-size: 12px;">📲 Install App</button>
                     <button data-utilify-fav-toggle class="fav-toggle-page" type="button" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
             </div>
 
-            <p>Three common percentage operations in one place: <em>what is X% of Y</em>, <em>X is what percent of Y</em>, and <em>percent change from X to Y</em>. Switch modes from the dropdown — the input labels update so you don't have to remember the formula.</p>
+            <p>よく使う3つのパーセント計算を一箇所で:<em>BのA%は?</em>、<em>AはBの何%か?</em>、<em>AからBへの変化率</em>。モードを選ぶと入力ラベルが自動で切り替わる — 公式を覚える必要はありません。</p>
 
             <div class="card">
                 <div class="form-group">
-                    <label class="form-label" for="mode">Mode</label>
+                    <label class="form-label" for="mode">モード</label>
                     <select id="mode" class="form-input">
-                        <option value="of" selected>What is A% of B?</option>
-                        <option value="is">A is what percent of B?</option>
-                        <option value="change">Percent change from A to B</option>
+                        <option value="of" selected>BのA%は?</option>
+                        <option value="is">AはBの何%か?</option>
+                        <option value="change">AからBへの変化率</option>
                     </select>
                 </div>
                 <div class="form-grid">
@@ -121,31 +121,31 @@
                     </div>
                 </div>
                 <div class="button-row" style="margin-top: var(--spacing-md);">
-                    <button class="btn btn-primary" type="button" onclick="calculate()">Calculate</button>
-                    <button class="btn" type="button" onclick="resetForm()">Reset</button>
+                    <button class="btn btn-primary" type="button" onclick="calculate()">計算</button>
+                    <button class="btn" type="button" onclick="resetForm()">リセット</button>
                 </div>
             </div>
 
             <div id="result" style="display:none;" aria-live="polite">
                 <div class="result-card">
-                    <div class="label">Result</div>
+                    <div class="label">結果</div>
                     <div class="value" id="resultVal">—</div>
                 </div>
                 <div class="button-row">
-                    <button class="btn" type="button" onclick="shareResult()">Share result</button>
+                    <button class="btn" type="button" onclick="shareResult()">結果を共有</button>
                 </div>
             </div>
 
-            <h2>How to use</h2>
-            <div class="howto-content"><ol><li>Pick the mode that matches your question:<ul><li><strong>What is A% of B?</strong> — e.g., "20% of 150" → 30</li><li><strong>A is what percent of B?</strong> — e.g., "30 is what % of 150" → 20%</li><li><strong>Percent change from A to B</strong> — e.g., "100 → 125" → +25%</li></ul></li><li>Enter the two numbers and click <strong>Calculate</strong>.</li></ol><p>Percent change uses the formula <code>(B − A) / A × 100</code>. A drop from 100 to 75 is −25%; rising back from 75 to 100 is +33% — gains and losses are not symmetric.</p></div>
+            <h2>使い方</h2>
+            <div class="howto-content"><ol><li>質問に合うモードを選びます:<ul><li><strong>BのA%は?</strong> — 例:"150の20%" → 30</li><li><strong>AはBの何%か?</strong> — 例:"30は150の何%" → 20%</li><li><strong>AからBへの変化率</strong> — 例:"100 → 125" → +25%</li></ul></li><li>2つの数値を入力し<strong>計算</strong>を押します。</li></ol><p>変化率の公式は<code>(B − A) / A × 100</code>です。100から75に下がると−25%、75から100に戻ると+33% — 上昇と下落は対称ではありません。</p></div>
 
             <div class="related-tools-section">
-                <h3>Related Tools</h3>
+                <h3>関連ツール</h3>
                 <div class="related-buttons">
-                    <a href="/ja/tip-calculator/" class="related-btn">Tip Calculator</a><a
-                        href="/ja/discount-calculator/" class="related-btn">Discount Calculator</a><a
-                        href="/ja/unit-converter/" class="related-btn">Unit Converter</a><a
-                        href="/ja/date-calculator/" class="related-btn">Date Calculator</a>
+                    <a href="/ja/tip-calculator/" class="related-btn">チップ計算機</a><a
+                        href="/ja/discount-calculator/" class="related-btn">割引計算機</a><a
+                        href="/ja/unit-converter/" class="related-btn">単位変換</a><a
+                        href="/ja/date-calculator/" class="related-btn">日付計算機</a>
                 </div>
             </div>
         </div>
@@ -162,7 +162,7 @@
             const b = parseFloat(document.getElementById('b').value);
             const mode = document.getElementById('mode').value;
             if (!Number.isFinite(a) || !Number.isFinite(b)) {
-                alert('Enter valid numbers in both fields.');
+                alert('2つの数値とも有効な値を入力してください。');
                 return;
             }
             let value;
@@ -170,11 +170,11 @@
                 value = (a / 100) * b;
                 document.getElementById('resultVal').textContent = fmt(value);
             } else if (mode === 'is') {
-                if (b === 0) { alert('B cannot be zero in this mode.'); return; }
+                if (b === 0) { alert('このモードではBは0にできません。'); return; }
                 value = (a / b) * 100;
                 document.getElementById('resultVal').textContent = fmt(value) + ' %';
             } else {
-                if (a === 0) { alert('B cannot be zero in this mode.'); return; }
+                if (a === 0) { alert('このモードではBは0にできません。'); return; }
                 value = ((b - a) / a) * 100;
                 const sign = value > 0 ? '+' : '';
                 document.getElementById('resultVal').textContent = sign + fmt(value) + ' %';
@@ -192,14 +192,14 @@
         async function shareResult() {
             const v = document.getElementById('resultVal').textContent;
             if (v === '—') return;
-            const text = 'Result: {value} —'.replace('{value}', v) + ' ' + location.href;
+            const text = '結果: {value} —'.replace('{value}', v) + ' ' + location.href;
             if (navigator.share) {
-                try { await navigator.share({ title: 'Percentage Calculator', text }); return; }
+                try { await navigator.share({ title: 'パーセント計算機', text }); return; }
                 catch (e) { if (e && e.name === 'AbortError') return; }
             }
             try {
                 await navigator.clipboard.writeText(text);
-                alert('Copied to clipboard.');
+                alert('クリップボードにコピーしました。');
             } catch (e) { /* clipboard blocked */ }
         }
     </script>
