@@ -101,6 +101,7 @@ def load_template(template_name):
 # Auto Ads chooses placement automatically — no per-slot divs or slot IDs.
 # Funding Choices CMP for EU/UK consent is added by the user separately.
 ADSENSE_CLIENT = "ca-pub-6334819180242631"
+GA4_ID = "G-4N18KB15VT"
 
 import re as _re_ad
 
@@ -154,6 +155,35 @@ def inject_monetization(html):
         r'(?:\s*<!--\s*<script\s+async\s+src="https://pagead2\.googlesyndication\.com[^>]*>\s*</script>\s*-->\s*\n?)?',
         '\n    ', html,
     )
+
+    # 7c. Consent Mode v2 + Google Analytics 4. Must run BEFORE the AdSense
+    #     loader so consent defaults (denied for ad / analytics storage) are
+    #     in place before adsbygoogle.js / gtag.js make their first requests.
+    #     A CMP (Funding Choices, Cookiebot, etc.) can call
+    #     `gtag('consent','update',{...})` after the user accepts to enable
+    #     full tracking. Without a CMP, GA still receives modeled-data pings
+    #     but no per-user identifiers — GDPR/PIPA-safe default.
+    #     Idempotent via marker `data-utilify-ga4`.
+    if 'data-utilify-ga4' not in html:
+        ga4_block = (
+            '    <script data-utilify-ga4>'
+            'window.dataLayer=window.dataLayer||[];'
+            'function gtag(){dataLayer.push(arguments);}'
+            'gtag("consent","default",{'
+            '"ad_storage":"denied",'
+            '"ad_user_data":"denied",'
+            '"ad_personalization":"denied",'
+            '"analytics_storage":"denied",'
+            '"functionality_storage":"granted",'
+            '"security_storage":"granted",'
+            '"wait_for_update":500'
+            '});'
+            'gtag("js",new Date());'
+            f'gtag("config","{GA4_ID}");'
+            '</script>\n'
+            f'    <script async src="https://www.googletagmanager.com/gtag/js?id={GA4_ID}"></script>\n'
+        )
+        html = html.replace('</head>', ga4_block + '</head>', 1)
 
     # 8. Inject the AdSense loader once in <head>. Use a *unique* marker
     #    string in the inserted comment so the idempotency check is robust
