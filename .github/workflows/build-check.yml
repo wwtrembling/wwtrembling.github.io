@@ -1,0 +1,48 @@
+name: Build verification
+
+# Run the static-site generator on every push and PR against master so
+# template / lang / build-script changes are caught before they ship.
+# Verifies:
+#   1. The build script exits 0.
+#   2. No unrendered `{{ placeholder }}` leaks into rendered HTML.
+#   3. Sitemap has the expected URL count (sanity check against accidental
+#      tool removals).
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+  workflow_dispatch: {}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Run build
+        run: python3 _scripts/build.py
+
+      - name: No unrendered placeholders
+        run: |
+          leaked=$(grep -rln "{{ " en/ ko/ ja/ zh-cn/ zh-tw/ vi/ th/ de/ pt/ id/ hi/ \
+                       --include='*.html' | head -3 || true)
+          if [ -n "$leaked" ]; then
+            echo "Unrendered placeholders found in:"
+            echo "$leaked"
+            exit 1
+          fi
+
+      - name: Sitemap URL count sanity check
+        run: |
+          n=$(grep -c '<loc>' sitemap.xml)
+          echo "Sitemap URL count: $n"
+          if [ "$n" -lt 700 ]; then
+            echo "Sitemap shrank below 700 URLs — investigate"
+            exit 1
+          fi

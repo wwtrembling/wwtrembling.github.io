@@ -1,0 +1,54 @@
+name: Weekly sitemap refresh
+
+# Re-runs the build once a week so sitemap.xml gets a fresh <lastmod> even
+# during quiet content weeks. Google deprioritizes crawl when lastmod
+# stagnates; weekly refresh keeps the signal alive.
+#
+# Build output is deterministic given source — only sitemap.xml (and at
+# year/month rollover, possibly footer years inside HTML) will diff. The
+# commit-back step is guarded so we don't push empty no-op commits.
+#
+# `[skip ci]` in the commit message prevents the build-check workflow
+# from re-triggering on the bot's own push.
+
+on:
+  schedule:
+    # Every Monday at 06:00 UTC.
+    - cron: '0 6 * * 1'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # Need full history so we can push back.
+          persist-credentials: true
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Run build
+        run: python3 _scripts/build.py
+
+      - name: Commit + push if anything changed
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          if git diff --quiet; then
+            echo "No diff after rebuild — nothing to commit."
+            exit 0
+          fi
+
+          # Only sitemap.xml is expected to drift on a quiet week (it embeds
+          # today's date). Stage everything that changed so any incidental
+          # HTML refresh from inject_monetization tweaks gets captured too.
+          git add -A
+          git commit -m "chore: weekly sitemap + build refresh [skip ci]"
+          git push
