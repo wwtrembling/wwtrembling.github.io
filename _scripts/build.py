@@ -175,6 +175,22 @@ def inject_monetization(html):
         )
         html = html.replace('</body>', trigger + '</body>', 1)
 
+    # 9a. Register the service worker after page load. Idempotent via marker
+    #     `data-utilify-sw`. SW lives at /sw.js (its CACHE_VERSION constant
+    #     is rewritten at the end of the build to invalidate stale caches
+    #     across deploys). Registration is feature-detected so it's a no-op
+    #     in browsers without SW support.
+    if 'data-utilify-sw' not in html:
+        sw_register = (
+            '    <script data-utilify-sw>'
+            'if("serviceWorker" in navigator){'
+            'window.addEventListener("load",function(){'
+            'navigator.serviceWorker.register("/sw.js").catch(function(){});'
+            '});}'
+            '</script>\n'
+        )
+        html = html.replace('</body>', sw_register + '</body>', 1)
+
     # 9b. Inject OG image + Twitter card meta once in <head>. Marker
     #     `data-utilify-og` guards idempotency against re-runs.
     if 'data-utilify-og' not in html:
@@ -1615,5 +1631,24 @@ if __name__ == '__main__':
 
     # Build sitemap.xml
     build_sitemap()
+
+    # Stamp sw.js CACHE_VERSION with today's date so a fresh deploy invalidates
+    # every prior cache on next user visit. Without this bump users would keep
+    # serving stale CSS/JS from the SW cache forever.
+    sw_path = os.path.join(BASE_DIR, 'sw.js')
+    if os.path.exists(sw_path):
+        from datetime import date as _date_sw
+        version = _date_sw.today().isoformat()
+        with open(sw_path, 'r', encoding='utf-8') as f:
+            sw_src = f.read()
+        sw_new = _re_ad.sub(
+            r"const CACHE_VERSION = '[^']*';",
+            f"const CACHE_VERSION = '{version}';",
+            sw_src, count=1,
+        )
+        if sw_new != sw_src:
+            with open(sw_path, 'w', encoding='utf-8') as f:
+                f.write(sw_new)
+            print(f"Stamped sw.js CACHE_VERSION = {version}")
 
     print("Build complete!")
