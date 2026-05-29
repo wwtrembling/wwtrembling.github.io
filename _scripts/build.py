@@ -188,6 +188,45 @@ def inject_monetization(html):
         )
         html = html.replace('</head>', og_block + '</head>', 1)
 
+    # 9b2. Fallback og:title / og:description / og:url derived from <title>,
+    #      <meta name="description">, and <link rel="canonical">. Some prebuilt
+    #      tool pages (json-to-ts, pdf-tools, jpa-converter, etc.) ship with
+    #      <title> + <meta description> but no Open Graph variants, so social
+    #      previews collapse to the URL slug. Inject these only when absent.
+    #      Idempotent via marker `data-utilify-og-fallback`.
+    if 'data-utilify-og-fallback' not in html:
+        og_fallback = ''
+        if 'property="og:title"' not in html:
+            m = _re_ad.search(r'<title>([^<]+)</title>', html)
+            if m:
+                og_fallback += (
+                    '    <meta data-utilify-og-fallback property="og:title" '
+                    f'content="{m.group(1)}">\n'
+                )
+        if 'property="og:description"' not in html:
+            m = _re_ad.search(
+                r'<meta\s+name="description"\s+content="([^"]+)"', html,
+            )
+            if m:
+                og_fallback += (
+                    '    <meta property="og:description" '
+                    f'content="{m.group(1)}">\n'
+                )
+        if 'property="og:url"' not in html:
+            m = _re_ad.search(
+                r'<link\s+rel="canonical"\s+href="([^"]+)"', html,
+            )
+            if m:
+                og_fallback += (
+                    f'    <meta property="og:url" content="{m.group(1)}">\n'
+                    '    <meta property="og:type" content="website">\n'
+                )
+        if og_fallback:
+            # Anchor the idempotency marker even if og:title was already present
+            # so subsequent runs skip the search; we still want individual
+            # `if 'property="og:..."' not in html` guards for fresh rebuilds.
+            html = html.replace('</head>', og_fallback + '</head>', 1)
+
     # 9d. Inject favicon links once in <head>. Marker `data-utilify-favicon`
     #     guards idempotency. Browsers auto-request /favicon.ico anyway, but
     #     advertising the multi-size set yields a sharper tab/bookmark icon

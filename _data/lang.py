@@ -6297,7 +6297,7 @@ MCP_CONFIG_GEN = {
     "en": {
         "title": "MCP Server Config Generator",
         "meta_title": "MCP Server Config Generator (Claude Desktop / Cursor / VS Code) - Utilify",
-        "meta_desc": "Generate Model Context Protocol server config JSON for Claude Desktop, Cursor, and VS Code. Pick transport, command, args, env — get the right format for each client.",
+        "meta_desc": "Generate MCP server config JSON for Claude Desktop, Cursor, and VS Code. Pick transport, command, args, env in the right format for each client.",
         "json_name": "MCP Config Generator",
         "json_desc": "Form-based generator for Model Context Protocol server configurations.",
         "page_desc": "Generate Model Context Protocol (MCP) server configuration for Claude Desktop, Cursor, or VS Code. Pick transport, command, args, and env vars — the tool emits the correct JSON shape for each client and shows the config file path.",
@@ -6935,7 +6935,7 @@ CALORIE_CALCULATOR = {
     "en": {
         "title": "Calorie & BMR Calculator",
         "meta_title": "Calorie Calculator — BMR + TDEE (Mifflin-St Jeor) - Utilify",
-        "meta_desc": "Calculate your basal metabolic rate (BMR) and total daily energy expenditure (TDEE) with the Mifflin-St Jeor formula. Get target calories for weight loss, maintenance, or muscle gain.",
+        "meta_desc": "BMR + TDEE calculator using the Mifflin-St Jeor formula. Returns target calories for weight loss, maintenance, and muscle gain.",
         "og_title": "Calorie & BMR Calculator - Utilify",
         "og_desc": "BMR + TDEE + targets for cutting, maintenance, and bulking.",
         "json_name": "Calorie & BMR Calculator",
