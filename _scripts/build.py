@@ -227,6 +227,35 @@ def inject_monetization(html):
             # `if 'property="og:..."' not in html` guards for fresh rebuilds.
             html = html.replace('</head>', og_fallback + '</head>', 1)
 
+    # 9b3. og:locale derived from <html lang="..."> mapping. Multi-lang sites
+    #      should tell crawlers which locale each page targets — improves Google
+    #      regional ranking + Facebook/X locale-aware previews. Idempotent via
+    #      marker check on the meta property.
+    if 'property="og:locale"' not in html:
+        lang_match = _re_ad.search(r'<html[^>]+lang="([^"]+)"', html)
+        if lang_match:
+            OG_LOCALE_MAP = {
+                'en': 'en_US', 'ko': 'ko_KR', 'ja': 'ja_JP', 'de': 'de_DE',
+                'pt': 'pt_BR', 'vi': 'vi_VN', 'th': 'th_TH', 'id': 'id_ID',
+                'hi': 'hi_IN', 'zh-cn': 'zh_CN', 'zh-tw': 'zh_TW',
+            }
+            locale = OG_LOCALE_MAP.get(lang_match.group(1), 'en_US')
+            html = html.replace(
+                '</head>',
+                f'    <meta property="og:locale" content="{locale}">\n</head>',
+                1,
+            )
+
+    # 9b4. Decorative empty-alt fallback for bare <img> tags missing alt.
+    #      Negative-lookahead avoids touching imgs that already declare alt.
+    #      alt="" is WCAG-correct for purely decorative imagery; better than
+    #      stripping a screen reader's ability to skip the element entirely.
+    html = _re_ad.sub(
+        r'<img(?![^>]*\balt=)([^>]*?)>',
+        r'<img\1 alt="">',
+        html,
+    )
+
     # 9d. Inject favicon links once in <head>. Marker `data-utilify-favicon`
     #     guards idempotency. Browsers auto-request /favicon.ico anyway, but
     #     advertising the multi-size set yields a sharper tab/bookmark icon
@@ -1526,6 +1555,63 @@ if __name__ == '__main__':
 
     # Sync hand-authored prebuilt tools (refresh hreflang block, clone to zh-cn/zh-tw).
     sync_prebuilt_tools()
+
+    # Finalize og:locale across every rendered output. inject_monetization
+    # runs at template-load time before {{ lang_code }} is resolved, so its
+    # locale derivation always lands on the en_US fallback. Walk the outputs
+    # after substitution + clone steps are done and rewrite og:locale to
+    # match the page's actual <html lang>. Idempotent — a no-op when the
+    # locale is already correct.
+    OG_LOCALE_MAP = {
+        'en': 'en_US', 'ko': 'ko_KR', 'ja': 'ja_JP', 'de': 'de_DE',
+        'pt': 'pt_BR', 'vi': 'vi_VN', 'th': 'th_TH', 'id': 'id_ID',
+        'hi': 'hi_IN', 'zh-cn': 'zh_CN', 'zh-tw': 'zh_TW',
+    }
+    print("Finalizing og:locale across rendered output...")
+    finalized = 0
+    for root, dirs, files in os.walk(BASE_DIR):
+        # Skip source / tooling dirs.
+        rel = os.path.relpath(root, BASE_DIR)
+        if rel.startswith(('_templates', '_scripts', '_data', 'assets', '.git', '.github')):
+            dirs[:] = []
+            continue
+        for fname in files:
+            if fname not in ('index.html', '404.html'):
+                continue
+            path = os.path.join(root, fname)
+            with open(path, 'r', encoding='utf-8') as f:
+                html = f.read()
+            m = _re_ad.search(r'<html[^>]+lang="([^"]+)"', html)
+            if not m:
+                continue
+            target = OG_LOCALE_MAP.get(m.group(1), 'en_US')
+            new = _re_ad.sub(
+                r'<meta property="og:locale" content="[^"]*">',
+                f'<meta property="og:locale" content="{target}">',
+                html, count=1,
+            )
+            if new != html:
+                with open(path, 'w', encoding='utf-8') as f:
+                    f.write(new)
+                finalized += 1
+    print(f"  rewrote og:locale on {finalized} pages")
+
+    # Hand-authored root /index.html is the literal landing page at
+    # utilifyapp.net/. It predates the build pipeline and still carries
+    # Ezoic remnants + lacks og:image / twitter:card / og:locale. Running
+    # it through inject_monetization() picks up every standard injection
+    # (Ezoic stripping, OG fallback, favicon, theme toggle, etc.) without
+    # rewriting hand-authored body content.
+    root_index = os.path.join(BASE_DIR, 'index.html')
+    if os.path.exists(root_index):
+        print("Refreshing root /index.html through monetization pipeline...")
+        with open(root_index, 'r', encoding='utf-8') as f:
+            old = f.read()
+        new = inject_monetization(old)
+        if new != old:
+            with open(root_index, 'w', encoding='utf-8') as f:
+                f.write(new)
+            print("  refreshed /index.html")
 
     # Build sitemap.xml
     build_sitemap()
