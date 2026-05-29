@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy-Report-Only" content="default-src 'self' https: data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https:; frame-src https:;">
     <meta name="google-adsense-account" content="ca-pub-6334819180242631">
-    <title>Body Fat Calculator — US Navy Method - Utilify</title>
-    <meta name="description" content="Estimate body fat percentage with the US Navy circumference method. Inputs: height, neck, waist (and hip for women). Includes category and recommended range.">
+    <title>体脂肪率計算機 — 米海軍式周囲法 - Utilify</title>
+    <meta name="description" content="身長・首・腹回り(女性はヒップも)から体脂肪率を米海軍公式で推定。カテゴリと推奨範囲も表示。">
     <link rel="canonical" href="https://utilifyapp.net/ja/body-fat-calculator/">
 
-    <meta property="og:title" content="Body Fat Calculator - Utilify">
-    <meta property="og:description" content="US Navy method body fat percentage with category and recommended range.">
+    <meta property="og:title" content="体脂肪率計算機 - Utilify">
+    <meta property="og:description" content="米海軍周囲法で体脂肪率・カテゴリ・推奨範囲まで。">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://utilifyapp.net/ja/body-fat-calculator/">
 
@@ -37,8 +37,8 @@
     {
         "@context": "https://schema.org",
         "@type": "WebApplication",
-        "name": "Body Fat Calculator",
-        "description": "US Navy circumference-based body fat estimate plus fitness category.",
+        "name": "体脂肪率計算機",
+        "description": "米海軍の周囲測定公式で体脂肪率を推定しカテゴリを表示。",
         "url": "https://utilifyapp.net/ja/body-fat-calculator/",
         "inLanguage": "ja",
         "applicationCategory": "HealthApplication",
@@ -90,7 +90,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <script data-utilify-theme-init>(function(){try{var s=localStorage.getItem("utilify_theme");var t=(s==="dark"||s==="light")?s:(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
-    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://utilifyapp.net/ja/"}, {"@type": "ListItem", "position": 2, "name": "Health", "item": "https://utilifyapp.net/ja/health/"}, {"@type": "ListItem", "position": 3, "name": "Body Fat Percentage Calculator", "item": "https://utilifyapp.net/ja/body-fat-calculator/"}]}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://utilifyapp.net/ja/"}, {"@type": "ListItem", "position": 2, "name": "Health", "item": "https://utilifyapp.net/ja/health/"}, {"@type": "ListItem", "position": 3, "name": "体脂肪率計算機", "item": "https://utilifyapp.net/ja/body-fat-calculator/"}]}</script>
 </head>
 
 <body>
@@ -98,81 +98,81 @@
     <header class="site-header"><div class="container"><div class="header-content"><a href="/ja/" class="site-logo">🛠️ Utilify</a><button data-utilify-theme-toggle id="themeToggle" class="theme-toggle" type="button" aria-label="Switch to dark mode" data-aria-to-dark="Switch to dark mode" data-aria-to-light="Switch to light mode">🌙</button></div></div></header>
     <main id="main" class="main-content">
         <div class="container-narrow">
-            <nav data-utilify-breadcrumb class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/ja/">Home</a></li><li><a href="/ja/health/">Health</a></li><li aria-current="page">Body Fat Percentage Calculator</li></ol></nav>
-            <h1>💪 Body Fat Percentage Calculator</h1>
+            <nav data-utilify-breadcrumb class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/ja/">Home</a></li><li><a href="/ja/health/">Health</a></li><li aria-current="page">体脂肪率計算機</li></ol></nav>
+            <h1>💪 体脂肪率計算機</h1>
             <div class="security-badge" style="display:flex;align-items:center;justify-content:center;gap:8px;margin:10px 0;font-size:14px;color:var(--text-secondary);">
                 <span>🔒 Secure & Client-side</span>
                 <button id="pwaInstallBtn" class="btn btn-primary" style="display: none; padding: 4px 12px; font-size: 12px;">📲 Install App</button>
                     <button data-utilify-fav-toggle class="fav-toggle-page" type="button" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
             </div>
 
-            <p>Enter your height and circumference measurements (neck, waist, and hip for women) to estimate body fat percentage with the US Navy method. The result includes a fitness-category label and the typical recommended range for your sex.</p>
+            <p>身長と体周囲(首・腹、女性はヒップ追加)を入力すると、米海軍公式で体脂肪率を推定します。結果にはフィットネスカテゴリと性別別の推奨範囲も表示されます。</p>
 
             <div class="card">
                 <div class="form-grid">
                     <div class="form-group">
-                        <label class="form-label" for="sex">Sex</label>
+                        <label class="form-label" for="sex">性別</label>
                         <select id="sex" class="form-input" onchange="toggleHip()">
-                            <option value="male" selected>Male</option>
-                            <option value="female">Female</option>
+                            <option value="male" selected>男性</option>
+                            <option value="female">女性</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label class="form-label" for="height">Height (cm)</label>
+                        <label class="form-label" for="height">身長 (cm)</label>
                         <input type="number" id="height" class="form-input" inputmode="decimal" min="80" max="250" step="0.1" placeholder="170" value="170">
                     </div>
                     <div class="form-group">
-                        <label class="form-label" for="neck">Neck circumference (cm)</label>
+                        <label class="form-label" for="neck">首回り (cm)</label>
                         <input type="number" id="neck" class="form-input" inputmode="decimal" min="10" max="80" step="0.1" placeholder="37" value="37">
                     </div>
                     <div class="form-group">
-                        <label class="form-label" for="waist">Waist circumference (cm)</label>
+                        <label class="form-label" for="waist">腹回り (cm)</label>
                         <input type="number" id="waist" class="form-input" inputmode="decimal" min="40" max="200" step="0.1" placeholder="85" value="85">
                     </div>
                     <div class="form-group hip-row hidden" id="hipGroup">
-                        <label class="form-label" for="hip">Hip circumference (cm)</label>
+                        <label class="form-label" for="hip">ヒップ回り (cm)</label>
                         <input type="number" id="hip" class="form-input" inputmode="decimal" min="40" max="200" step="0.1" placeholder="95" value="95">
                     </div>
                 </div>
                 <div class="button-row" style="margin-top: var(--spacing-md);">
-                    <button class="btn btn-primary" type="button" onclick="calculate()">Calculate</button>
-                    <button class="btn" type="button" onclick="resetForm()">Reset</button>
+                    <button class="btn btn-primary" type="button" onclick="calculate()">計算</button>
+                    <button class="btn" type="button" onclick="resetForm()">リセット</button>
                 </div>
             </div>
 
             <div id="result" style="display:none;" aria-live="polite">
                 <div class="result-grid">
                     <div class="result-card headline">
-                        <div class="label">Body fat</div>
+                        <div class="label">体脂肪率</div>
                         <div class="value" id="bfpVal">—</div>
                     </div>
                     <div class="result-card">
-                        <div class="label">Category</div>
+                        <div class="label">カテゴリ</div>
                         <div class="value" id="categoryVal" style="font-size:1.2rem;">—</div>
                     </div>
                     <div class="result-card">
-                        <div class="label">Recommended range</div>
+                        <div class="label">推奨範囲</div>
                         <div class="value" id="rangeVal" style="font-size:1.2rem;">—</div>
                     </div>
                 </div>
 
                 <div class="button-row" style="margin-top: var(--spacing-md);">
-                    <button class="btn" type="button" onclick="shareResult()">Share result</button>
+                    <button class="btn" type="button" onclick="shareResult()">結果を共有</button>
                 </div>
             </div>
 
-            <div class="disclaimer">Estimate only — not medical advice. Skinfold calipers, DEXA scans, or hydrostatic weighing are more accurate. Use this as a quick check, not a diagnosis.</div>
+            <div class="disclaimer">推定値です — 医療助言ではありません。キャリパー、DEXAスキャン、水中計量法のほうが正確です。簡易チェック用としてのみご利用ください。</div>
 
-            <h2>How to use</h2>
-            <div class="howto-content"><ol><li>Pick your biological sex.</li><li>Measure neck circumference at the narrowest point, just below the larynx.</li><li>Measure waist circumference at the navel for men, at the narrowest point for women. Relax — don't suck in.</li><li>For women, also measure hip circumference at the widest point.</li><li>Enter your height in centimeters. Click <strong>Calculate</strong>.</li></ol><p><strong>Formula (US Navy)</strong>: Male BFP = 86.010·log<sub>10</sub>(waist − neck) − 70.041·log<sub>10</sub>(height) + 36.76. Female BFP = 163.205·log<sub>10</sub>(waist + hip − neck) − 97.684·log<sub>10</sub>(height) − 78.387.</p><p>The Navy method has ±3% accuracy versus hydrostatic weighing for typical body shapes — better than BMI for body composition but worse than DEXA. Take measurements first thing in the morning for consistency.</p></div>
+            <h2>使い方</h2>
+            <div class="howto-content"><ol><li>生物学的性別を選びます。</li><li>首回りは喉仏のすぐ下、最も細い部分で測定します。</li><li>腹回りは男性はへその位置、女性は最もくびれた部分で測定します。息を止めたりお腹を引っ込めたりしないでください。</li><li>女性はヒップの最も広い周囲も測定します。</li><li>身長(cm)を入力し<strong>計算</strong>を押します。</li></ol><p><strong>計算式 (米海軍)</strong>:男性 BFP = 86.010·log<sub>10</sub>(腹回り − 首回り) − 70.041·log<sub>10</sub>(身長) + 36.76。女性 BFP = 163.205·log<sub>10</sub>(腹回り + ヒップ − 首回り) − 97.684·log<sub>10</sub>(身長) − 78.387。</p><p>海軍式は平均的な体型に対して水中計量と比べて±3%の精度 — BMIより体組成評価に優れますが、DEXAよりは不正確です。一貫した結果を得るために朝一の測定を推奨します。</p></div>
 
             <div class="related-tools-section">
-                <h3>Related Tools</h3>
+                <h3>関連ツール</h3>
                 <div class="related-buttons">
-                    <a href="/ja/bmi-calculator/" class="related-btn">BMI Calculator</a><a
-                        href="/ja/calorie-calculator/" class="related-btn">Calorie Calculator</a><a
-                        href="/ja/unit-converter/" class="related-btn">Unit Converter</a><a
-                        href="/ja/date-calculator/" class="related-btn">Date Calculator</a>
+                    <a href="/ja/bmi-calculator/" class="related-btn">BMI計算機</a><a
+                        href="/ja/calorie-calculator/" class="related-btn">カロリー計算機</a><a
+                        href="/ja/unit-converter/" class="related-btn">単位変換</a><a
+                        href="/ja/date-calculator/" class="related-btn">日付計算機</a>
                 </div>
             </div>
         </div>
@@ -189,18 +189,18 @@
         }
 
         function classifyMale(p) {
-            if (p < 6) return { cat: 'Essential fat', range: '8–19%' };
-            if (p < 14) return { cat: 'Athletes', range: '8–19%' };
-            if (p < 18) return { cat: 'Fitness', range: '8–19%' };
-            if (p < 25) return { cat: 'Average', range: '8–19%' };
-            return { cat: 'Obese', range: '8–19%' };
+            if (p < 6) return { cat: '必須脂肪', range: '8–19%' };
+            if (p < 14) return { cat: 'アスリート', range: '8–19%' };
+            if (p < 18) return { cat: 'フィットネス', range: '8–19%' };
+            if (p < 25) return { cat: '平均', range: '8–19%' };
+            return { cat: '肥満', range: '8–19%' };
         }
         function classifyFemale(p) {
-            if (p < 14) return { cat: 'Essential fat', range: '21–32%' };
-            if (p < 21) return { cat: 'Athletes', range: '21–32%' };
-            if (p < 25) return { cat: 'Fitness', range: '21–32%' };
-            if (p < 32) return { cat: 'Average', range: '21–32%' };
-            return { cat: 'Obese', range: '21–32%' };
+            if (p < 14) return { cat: '必須脂肪', range: '21–32%' };
+            if (p < 21) return { cat: 'アスリート', range: '21–32%' };
+            if (p < 25) return { cat: 'フィットネス', range: '21–32%' };
+            if (p < 32) return { cat: '平均', range: '21–32%' };
+            return { cat: '肥満', range: '21–32%' };
         }
 
         function calculate() {
@@ -210,17 +210,17 @@
             const waist = parseFloat(document.getElementById('waist').value);
             const hip = parseFloat(document.getElementById('hip').value);
             if (!(h > 0) || !(neck > 0) || !(waist > 0) || (sex === 'female' && !(hip > 0))) {
-                alert('All measurements must be positive. For females, hip is required.');
+                alert('全ての測定値は正の数である必要があります。女性はヒップ回りが必須です。');
                 return;
             }
             let bfp;
             if (sex === 'male') {
                 const inner = waist - neck;
-                if (inner <= 0) { alert('Waist and neck values are inconsistent — please re-measure.'); return; }
+                if (inner <= 0) { alert('腹と首の測定値が整合しません — もう一度測定してください。'); return; }
                 bfp = 86.010 * Math.log10(inner) - 70.041 * Math.log10(h) + 36.76;
             } else {
                 const inner = waist + hip - neck;
-                if (inner <= 0) { alert('Waist and neck values are inconsistent — please re-measure.'); return; }
+                if (inner <= 0) { alert('腹と首の測定値が整合しません — もう一度測定してください。'); return; }
                 bfp = 163.205 * Math.log10(inner) - 97.684 * Math.log10(h) - 78.387;
             }
             bfp = Math.max(0, Math.min(70, bfp));
@@ -246,14 +246,14 @@
             const bfp = document.getElementById('bfpVal').textContent;
             if (bfp === '—') return;
             const num = bfp.replace('%', '');
-            const text = 'My body fat: {value}% —'.replace('{value}', num) + ' ' + location.href;
+            const text = '体脂肪率: {value}% —'.replace('{value}', num) + ' ' + location.href;
             if (navigator.share) {
-                try { await navigator.share({ title: 'Body Fat Percentage Calculator', text }); return; }
+                try { await navigator.share({ title: '体脂肪率計算機', text }); return; }
                 catch (e) { if (e && e.name === 'AbortError') return; }
             }
             try {
                 await navigator.clipboard.writeText(text);
-                alert('Result copied to clipboard.');
+                alert('結果をクリップボードにコピーしました。');
             } catch (e) { /* clipboard blocked — silent */ }
         }
 

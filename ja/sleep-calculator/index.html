@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy-Report-Only" content="default-src 'self' https: data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https:; frame-src https:;">
     <meta name="google-adsense-account" content="ca-pub-6334819180242631">
-    <title>Sleep Calculator — When to Sleep / Wake Up - Utilify</title>
-    <meta name="description" content="Plan sleep around 90-minute REM cycles. Pick a wake time to see when to fall asleep, or a bedtime to see optimal wake times. 14 minutes added for falling asleep.">
+    <title>睡眠計算機 — 寝る時間・起きる時間 - Utilify</title>
+    <meta name="description" content="90分のREMサイクル基準で睡眠を計画。起床時刻を入力して寝る時刻を、就寝時刻を入力して最適な起床時刻を確認。入眠時間14分を自動反映。">
     <link rel="canonical" href="https://utilifyapp.net/ja/sleep-calculator/">
 
-    <meta property="og:title" content="Sleep Cycle Calculator - Utilify">
-    <meta property="og:description" content="Plan sleep around 90-minute REM cycles for refreshed wake-ups.">
+    <meta property="og:title" content="睡眠サイクル計算機 - Utilify">
+    <meta property="og:description" content="90分REMサイクルに合わせて爽やかに起きる時間を計画。">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://utilifyapp.net/ja/sleep-calculator/">
 
@@ -37,8 +37,8 @@
     {
         "@context": "https://schema.org",
         "@type": "WebApplication",
-        "name": "Sleep Cycle Calculator",
-        "description": "Suggest bedtimes or wake times aligned with 90-minute REM cycles.",
+        "name": "睡眠サイクル計算機",
+        "description": "90分REMサイクルに整列した就寝・起床時刻の推奨ツール。",
         "url": "https://utilifyapp.net/ja/sleep-calculator/",
         "inLanguage": "ja",
         "applicationCategory": "HealthApplication",
@@ -84,7 +84,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <script data-utilify-theme-init>(function(){try{var s=localStorage.getItem("utilify_theme");var t=(s==="dark"||s==="light")?s:(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
-    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://utilifyapp.net/ja/"}, {"@type": "ListItem", "position": 2, "name": "Sleep Cycle Calculator", "item": "https://utilifyapp.net/ja/sleep-calculator/"}]}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://utilifyapp.net/ja/"}, {"@type": "ListItem", "position": 2, "name": "睡眠サイクル計算機", "item": "https://utilifyapp.net/ja/sleep-calculator/"}]}</script>
 </head>
 
 <body>
@@ -92,33 +92,33 @@
     <header class="site-header"><div class="container"><div class="header-content"><a href="/ja/" class="site-logo">🛠️ Utilify</a><button data-utilify-theme-toggle id="themeToggle" class="theme-toggle" type="button" aria-label="Switch to dark mode" data-aria-to-dark="Switch to dark mode" data-aria-to-light="Switch to light mode">🌙</button></div></div></header>
     <main id="main" class="main-content">
         <div class="container-narrow">
-            <nav data-utilify-breadcrumb class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/ja/">Home</a></li><li aria-current="page">Sleep Cycle Calculator</li></ol></nav>
-            <h1>🌙 Sleep Cycle Calculator</h1>
+            <nav data-utilify-breadcrumb class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/ja/">Home</a></li><li aria-current="page">睡眠サイクル計算機</li></ol></nav>
+            <h1>🌙 睡眠サイクル計算機</h1>
             <div class="security-badge" style="display:flex;align-items:center;justify-content:center;gap:8px;margin:10px 0;font-size:14px;color:var(--text-secondary);">
                 <span>🔒 Secure & Client-side</span>
                 <button id="pwaInstallBtn" class="btn btn-primary" style="display: none; padding: 4px 12px; font-size: 12px;">📲 Install App</button>
                     <button data-utilify-fav-toggle class="fav-toggle-page" type="button" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
             </div>
 
-            <p>Plan your sleep around 90-minute REM cycles. Enter a wake time to see when to fall asleep for 4–6 cycles, or enter a bedtime to see good wake times. The calculator adds 14 minutes for falling asleep so the suggested times match real-world sleep onset.</p>
+            <p>90分のREMサイクルに合わせて睡眠を計画しましょう。起床時刻を入力すると4~6サイクルのための入眠時刻、就寝時刻を入力すると良い起床時刻を提案します。入眠にかかる14分が自動で反映されます。</p>
 
             <div class="card">
                 <div class="form-grid">
                     <div class="form-group">
-                        <label class="form-label" for="mode">Plan</label>
+                        <label class="form-label" for="mode">モード</label>
                         <select id="mode" class="form-input">
-                            <option value="wake" selected>I want to wake up at…</option>
-                            <option value="sleep">I'm going to bed at…</option>
+                            <option value="wake" selected>この時刻に起きたい</option>
+                            <option value="sleep">この時刻に寝る</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label class="form-label" for="time">Time</label>
+                        <label class="form-label" for="time">時刻</label>
                         <input type="time" id="time" class="form-input" value="07:00">
                     </div>
                 </div>
                 <div class="button-row" style="margin-top: var(--spacing-md);">
-                    <button class="btn btn-primary" type="button" onclick="calculate()">Show times</button>
-                    <button class="btn" type="button" onclick="resetForm()">Reset</button>
+                    <button class="btn btn-primary" type="button" onclick="calculate()">時刻を見る</button>
+                    <button class="btn" type="button" onclick="resetForm()">リセット</button>
                 </div>
             </div>
 
@@ -126,22 +126,22 @@
                 <h3 id="resultHeader"></h3>
                 <div class="time-list" id="timeList"></div>
                 <div class="button-row">
-                    <button class="btn" type="button" onclick="shareResult()">Share result</button>
+                    <button class="btn" type="button" onclick="shareResult()">結果を共有</button>
                 </div>
             </div>
 
-            <div class="disclaimer">Adds 14 minutes for sleep latency (the time it typically takes to fall asleep). Your real cycle length may be 80–100 minutes — adjust if you wake up groggy at 90.</div>
+            <div class="disclaimer">入眠にかかる14分(睡眠潜時)を加算しています。実際のサイクル長は80~100分と個人差があります — 90分基準でぼんやり目覚める場合は調整してください。</div>
 
-            <h2>How to use</h2>
-            <div class="howto-content"><ol><li>Pick whether you're starting from a target wake time or a bedtime.</li><li>Enter the time in 24-hour format. The calculator adds a 14-minute fall-asleep buffer and computes 4 to 6 full 90-minute cycles.</li><li>Aim for one of the suggested times. Waking up at the end of a cycle (light sleep) usually feels less groggy than waking mid-cycle.</li></ol><p>Adults need <strong>5–6 cycles</strong> (7.5–9 hours) on average. 4 cycles (6 hours) is a survival minimum, not a target. Sleep latency varies — if you typically fall asleep in 5 minutes or 30+ minutes, mentally adjust the buffer.</p></div>
+            <h2>使い方</h2>
+            <div class="howto-content"><ol><li>目標が起床時刻基準か就寝時刻基準かを選びます。</li><li>時刻を24時間表記で入力します。14分の睡眠潜時バッファが加算され、4~6個の完全な90分サイクルを計算します。</li><li>提案された時刻のいずれかを目標にします。サイクルの終わり(浅い眠り)に起きるほうが、サイクルの途中で起きるよりぼんやりしません。</li></ol><p>成人は平均<strong>5~6サイクル</strong>(7.5~9時間)が必要です。4サイクル(6時間)は生存最低限であり、目標ではありません。睡眠潜時は個人差が大きいので、5分で寝つく人や30分以上かかる人は心の中で補正してください。</p></div>
 
             <div class="related-tools-section">
-                <h3>Related Tools</h3>
+                <h3>関連ツール</h3>
                 <div class="related-buttons">
-                    <a href="/ja/calorie-calculator/" class="related-btn">Calorie Calculator</a><a
-                        href="/ja/bmi-calculator/" class="related-btn">BMI Calculator</a><a
-                        href="/ja/timer/" class="related-btn">Timer</a><a
-                        href="/ja/date-calculator/" class="related-btn">Date Calculator</a>
+                    <a href="/ja/calorie-calculator/" class="related-btn">カロリー計算機</a><a
+                        href="/ja/bmi-calculator/" class="related-btn">BMI計算機</a><a
+                        href="/ja/timer/" class="related-btn">タイマー</a><a
+                        href="/ja/date-calculator/" class="related-btn">日付計算機</a>
                 </div>
             </div>
         </div>
@@ -161,7 +161,7 @@
         function calculate() {
             const mode = document.getElementById('mode').value;
             const t = document.getElementById('time').value;
-            if (!t) { alert('Please pick a valid time.'); return; }
+            if (!t) { alert('有効な時刻を入力してください。'); return; }
             const [h, m] = t.split(':').map(Number);
             const base = new Date();
             base.setHours(h, m, 0, 0);
@@ -180,7 +180,7 @@
                 const left = document.createElement('div');
                 const meta = document.createElement('div');
                 meta.className = 'meta';
-                meta.textContent = '{cycles} cycles · {hours}h sleep'
+                meta.textContent = '{cycles}サイクル · 睡眠{hours}時間'
                     .replace('{cycles}', c)
                     .replace('{hours}', hours);
                 left.appendChild(meta);
@@ -193,7 +193,7 @@
             });
 
             const header = document.getElementById('resultHeader');
-            header.textContent = mode === 'wake' ? 'Try falling asleep at one of these times:' : 'You should aim to wake up at one of these times:';
+            header.textContent = mode === 'wake' ? '次のいずれかの時刻に入眠してみてください:' : '次のいずれかの時刻に起きるのが良いです:';
             document.getElementById('result').style.display = 'block';
         }
 
@@ -209,14 +209,14 @@
             const summary = [...list.children]
                 .map(c => c.querySelector('.time').textContent)
                 .join(', ');
-            const text = 'Sleep planner: {value} —'.replace('{value}', summary) + ' ' + location.href;
+            const text = '睡眠プラン: {value} —'.replace('{value}', summary) + ' ' + location.href;
             if (navigator.share) {
-                try { await navigator.share({ title: 'Sleep Cycle Calculator', text }); return; }
+                try { await navigator.share({ title: '睡眠サイクル計算機', text }); return; }
                 catch (e) { if (e && e.name === 'AbortError') return; }
             }
             try {
                 await navigator.clipboard.writeText(text);
-                alert('Copied to clipboard.');
+                alert('クリップボードにコピーしました。');
             } catch (e) { /* clipboard blocked */ }
         }
     </script>
