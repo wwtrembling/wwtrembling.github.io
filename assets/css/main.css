@@ -982,3 +982,114 @@ mark.search-mark {
   outline: 3px solid white;
   outline-offset: 2px;
 }
+
+/* ============================================
+   Locale-specific typography & atmosphere
+   ============================================
+   Each locale gets system font stacks optimised for its script,
+   line-height tuned for readability, and a subtle hero gradient
+   shift that echoes familiar regional aesthetics.
+   ============================================ */
+
+/* --- Korean: 깔끔한 고딕 계열, 네이버/삼성 느낌 --- */
+[lang="ko"] {
+  --font-sans: 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', sans-serif;
+  --hero-gradient: linear-gradient(135deg, var(--bg-secondary) 0%, #dbeafe 100%);
+  line-height: 1.75;
+  word-break: keep-all;
+}
+[data-theme="dark"][lang="ko"] {
+  --hero-gradient: linear-gradient(135deg, var(--bg-secondary) 0%, #172554 100%);
+}
+
+/* --- Japanese: 繊細なミニマリズム --- */
+[lang="ja"] {
+  --font-sans: 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Noto Sans JP', sans-serif;
+  --hero-gradient: linear-gradient(135deg, var(--bg-secondary) 0%, #ede9fe 100%);
+  line-height: 1.8;
+  letter-spacing: 0.01em;
+}
+[data-theme="dark"][lang="ja"] {
+  --hero-gradient: linear-gradient(135deg, var(--bg-secondary) 0%, #1e1b4b 100%);
+}
+
+/* --- Simplified Chinese: 微软/苹果风格 --- */
+[lang="zh-cn"] {
+  --font-sans: 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', sans-serif;
+  --hero-gradient: linear-gradient(135deg, var(--bg-secondary) 0%, #fce7f3 100%);
+  line-height: 1.8;
+}
+[data-theme="dark"][lang="zh-cn"] {
+  --hero-gradient: linear-gradient(135deg, var(--bg-secondary) 0%, #4a1942 100%);
+}
+
+/* --- Traditional Chinese: 繁體字, 蘋果/華碩 feel --- */
+[lang="zh-tw"] {
+  --font-sans: 'PingFang TC', 'Microsoft JhengHei', 'Noto Sans TC', sans-serif;
+  --hero-gradient: linear-gradient(135deg, var(--bg-secondary) 0%, #ecfdf5 100%);
+  line-height: 1.8;
+}
+[data-theme="dark"][lang="zh-tw"] {
+  --hero-gradient: linear-gradient(135deg, var(--bg-secondary) 0%, #064e3b 100%);
+}
+
+/* --- Hindi: warm Indian aesthetic --- */
+[lang="hi"] {
+  --font-sans: 'Noto Sans Devanagari', 'Mangal', 'Aparajita', sans-serif;
+  --hero-gradient: linear-gradient(135deg, var(--bg-secondary) 0%, #fff7ed 100%);
+  line-height: 1.7;
+}
+[data-theme="dark"][lang="hi"] {
+  --hero-gradient: linear-gradient(135deg, var(--bg-secondary) 0%, #431407 100%);
+}
+
+/* --- Thai: purple-gold tone --- */
+[lang="th"] {
+  --font-sans: 'Leelawadee UI', 'Noto Sans Thai', 'Tahoma', sans-serif;
+  --hero-gradient: linear-gradient(135deg, var(--bg-secondary) 0%, #f3e8ff 100%);
+  line-height: 1.7;
+}
+[data-theme="dark"][lang="th"] {
+  --hero-gradient: linear-gradient(135deg, var(--bg-secondary) 0%, #3b0764 100%);
+}
+
+/* --- Vietnamese: clean with red accent echo --- */
+[lang="vi"] {
+  --font-sans: 'Inter', 'Segoe UI', 'Roboto', sans-serif;
+  --hero-gradient: linear-gradient(135deg, var(--bg-secondary) 0%, #fee2e2 100%);
+}
+[data-theme="dark"][lang="vi"] {
+  --hero-gradient: linear-gradient(135deg, var(--bg-secondary) 0%, #450a0a 100%);
+}
+
+/* --- Indonesian: green-tinted --- */
+[lang="id"] {
+  --font-sans: 'Inter', 'Segoe UI', 'Roboto', sans-serif;
+  --hero-gradient: linear-gradient(135deg, var(--bg-secondary) 0%, #dcfce7 100%);
+}
+[data-theme="dark"][lang="id"] {
+  --hero-gradient: linear-gradient(135deg, var(--bg-secondary) 0%, #052e16 100%);
+}
+
+/* --- German: precise, structured, conservative blue --- */
+[lang="de"] {
+  --font-sans: 'Inter', 'Segoe UI', 'Helvetica Neue', sans-serif;
+  --hero-gradient: linear-gradient(135deg, var(--bg-secondary) 0%, #dbeafe 100%);
+}
+[data-theme="dark"][lang="de"] {
+  --hero-gradient: linear-gradient(135deg, var(--bg-secondary) 0%, #172554 100%);
+}
+
+/* --- Portuguese / Brazil: warm green-gold --- */
+[lang="pt"] {
+  --font-sans: 'Inter', 'Segoe UI', 'Roboto', sans-serif;
+  --hero-gradient: linear-gradient(135deg, var(--bg-secondary) 0%, #fef9c3 100%);
+}
+[data-theme="dark"][lang="pt"] {
+  --hero-gradient: linear-gradient(135deg, var(--bg-secondary) 0%, #422006 100%);
+}
+
+/* Apply locale hero gradient to .hero sections across all pages. */
+.hero {
+  background: var(--hero-gradient, linear-gradient(135deg, var(--bg-secondary) 0%, #e0e7ff 100%));
+}
