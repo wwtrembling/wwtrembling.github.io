@@ -212,14 +212,14 @@ def inject_monetization(html):
         )
         html = html.replace('</head>', loader + '</head>', 1)
 
-    # 9. Inject the Auto Ads enable trigger once before </body>.
-    if 'enable_page_level_ads' not in html:
-        trigger = (
-            '    <script>(adsbygoogle=window.adsbygoogle||[]).push({'
-            f'google_ad_client:"{ADSENSE_CLIENT}",enable_page_level_ads:true'
-            '});</script>\n'
-        )
-        html = html.replace('</body>', trigger + '</body>', 1)
+    # 9. Auto Ads trigger removed — the loader script's ?client= parameter
+    #    already enables Auto Ads. A separate push({enable_page_level_ads})
+    #    causes "Only one enable_page_level_ads" console errors.
+    #    Strip any legacy trigger that was previously injected.
+    html = _re_ad.sub(
+        r'\s*<script>\(adsbygoogle[^<]*enable_page_level_ads[^<]*</script>\s*',
+        '\n', html,
+    )
 
     # 9a. Register the service worker after page load. Idempotent via marker
     #     `data-utilify-sw`. SW lives at /sw.js (its CACHE_VERSION constant
