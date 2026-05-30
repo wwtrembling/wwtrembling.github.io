@@ -409,7 +409,9 @@ window.addEventListener('beforeinstallprompt', (e) => {
   // Show the install button if it exists
   const installBtn = document.getElementById('pwaInstallBtn');
   if (installBtn) {
-    installBtn.style.display = 'inline-flex';
+    installBtn.style.display = 'inline';
+    const sep = installBtn.parentElement?.querySelector('.pwa-install-sep');
+    if (sep) sep.style.display = 'inline';
 
     installBtn.addEventListener('click', (e) => {
       // Hide the app provided install promotion

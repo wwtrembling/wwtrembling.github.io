@@ -118,12 +118,12 @@ def inject_monetization(html):
         '\n    ', html,
     )
 
-    # 0b. Strip duplicate (non-marker) AdSense loader scripts that were
-    #     manually added before inject_monetization existed. The marker
-    #     version (data-utilify-adsense-loader) is the canonical one.
-    if 'data-utilify-adsense-loader' in html:
+    # 0b. Strip duplicate AdSense loader scripts that were manually added
+    #     before inject_monetization existed. Keep only the one injected by
+    #     step 8 (identified by the <!-- utilify-adsense --> comment marker).
+    if '<!-- utilify-adsense -->' in html:
         html = _re_ad.sub(
-            r'\s*<script(?:(?!data-utilify)[^>])*\bsrc="https://pagead2\.googlesyndication\.com/pagead/js/adsbygoogle\.js\?client=[^"]*"[^>]*></script>\s*',
+            r'\s*<script(?:(?!<!-- utilify-adsense -->)[^>])*\bsrc="https://pagead2\.googlesyndication\.com/pagead/js/adsbygoogle\.js\?client=[^"]*"[^>]*></script>\s*',
             '\n    ', html,
         )
 
@@ -204,9 +204,9 @@ def inject_monetization(html):
     # 8. Inject the AdSense loader once in <head>. Use a *unique* marker
     #    string in the inserted comment so the idempotency check is robust
     #    against random substrings in the page.
-    if 'data-utilify-adsense-loader' not in html:
+    if '<!-- utilify-adsense -->' not in html:
         loader = (
-            '    <script data-utilify-adsense-loader async '
+            '    <!-- utilify-adsense --><script async '
             f'src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={ADSENSE_CLIENT}" '
             'crossorigin="anonymous"></script>\n'
         )
