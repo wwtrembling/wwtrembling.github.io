@@ -76,58 +76,71 @@
         .trust-strip a { color: inherit; text-decoration: none; }
         .trust-strip a:hover { color: var(--primary-color); text-decoration: underline; }
 
-        .featured-grid {
+        /* Hero search bar */
+        .hero-search {
+            max-width: 520px;
+            margin: var(--spacing-lg) auto 0;
+        }
+        .hero-search .form-input {
+            font-size: 1.1rem;
+            padding: var(--spacing-md) var(--spacing-lg);
+            padding-right: 40px;
+            border-radius: var(--radius-xl);
+            border: 2px solid var(--border-color);
+            box-shadow: var(--shadow-md);
+        }
+        .hero-search .form-input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
+        }
+
+        /* Category cards */
+        .category-cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: var(--spacing-md);
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: var(--spacing-sm);
             margin-bottom: var(--spacing-xl);
         }
-        .featured-card {
-            background: var(--bg-primary);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-md);
-            padding: var(--spacing-lg);
-            text-decoration: none;
-            color: inherit;
-            transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
+        .cat-card {
             display: flex;
             flex-direction: column;
-            gap: var(--spacing-xs);
+            align-items: center;
+            gap: 4px;
+            background: var(--bg-primary);
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-md) var(--spacing-sm);
+            cursor: pointer;
+            transition: all 0.15s;
+            color: var(--text-primary);
+            text-align: center;
+            font-family: inherit;
+            font-size: inherit;
+            min-height: 44px;
         }
-        .featured-card:hover {
+        .cat-card:hover {
+            border-color: var(--primary-color);
             transform: translateY(-2px);
             box-shadow: var(--shadow-md);
-            border-color: var(--primary-color);
         }
-        .featured-card .card-icon { font-size: 2rem; }
-        .featured-card .card-title { font-size: 1.05rem; margin: 0; }
-        .featured-card .card-description { font-size: 0.85rem; color: var(--text-secondary); margin: 0; }
-
-        .category-filter {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: var(--spacing-sm);
-            margin-bottom: var(--spacing-lg);
-        }
-        .category-filter button {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-md);
-            padding: 6px 14px;
-            font-size: 0.9rem;
-            cursor: pointer;
-            color: var(--text-secondary);
-            transition: all 0.15s;
-        }
-        .category-filter button:hover {
-            border-color: var(--primary-color);
-            color: var(--primary-color);
-        }
-        .category-filter button[aria-pressed="true"] {
+        .cat-card[aria-pressed="true"] {
             background: var(--primary-color);
             border-color: var(--primary-color);
             color: white;
+        }
+        .cat-card[aria-pressed="true"] .cat-card-desc {
+            color: rgba(255,255,255,0.8);
+        }
+        .cat-card-icon { font-size: 1.5rem; line-height: 1; }
+        .cat-card-name { font-weight: 600; font-size: 0.95rem; }
+        .cat-card-desc { font-size: 0.75rem; color: var(--text-tertiary); line-height: 1.3; }
+        @media (max-width: 480px) {
+            .category-cards {
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+                gap: 6px;
+            }
+            .cat-card { padding: var(--spacing-sm); }
+            .cat-card-desc { display: none; }
         }
 
         .popular-conversions {
@@ -199,6 +212,16 @@
                 </div>
 
                 <p>프라이버시 우선 온라인 도구 — 모든 처리는 브라우저에서. JSON · JWT · Base64 · UUID · 110개+ 단위 변환. 가입·업로드 없음.</p>
+
+                <div class="hero-search">
+                    <div class="search-input-wrap">
+                        <input type="search" id="searchInput" class="form-input"
+                               placeholder="예: JSON, BMI, Base64, QR코드..."
+                               aria-label="도구 검색…"
+                               autocomplete="off">
+                        <kbd class="search-shortcut" aria-hidden="true">/</kbd>
+                    </div>
+                </div>
             </div>
 
             <div class="trust-strip" role="list">
@@ -208,41 +231,47 @@
                 <span class="trust-item" role="listitem">📲 PWA 설치 가능</span>
             </div>
 
-            <h2 class="text-center mb-4">주요 도구</h2>
-            <div class="featured-grid">
-          <a href="/ko/json-formatter/" class="featured-card"><div class="card-icon">{ }</div><h3 class="card-title">JSON 포매터</h3><p class="card-description">JSON 데이터를 포맷팅하고 유효성을 검사하세요. 개발자를 위해 광고를 제거했습니다.</p></a>
-          <a href="/ko/jwt-decoder/" class="featured-card"><div class="card-icon">🪪</div><h3 class="card-title">JWT 디코더</h3><p class="card-description">JWT를 붙여넣어 헤더와 페이로드를 디코딩하세요. 토큰은 로컬에서만 처리되며 서버로 전송되지 않습니다.</p></a>
-          <a href="/ko/uuid-generator/" class="featured-card"><div class="card-icon">🆔</div><h3 class="card-title">UUID 생성기</h3><p class="card-description">암호학적으로 안전한 UUID를 로컬에서 생성합니다. v4(랜덤)가 가장 일반적이며, v1은 타임스탬프를 포함합니다. 하이픈/대소문자/중괄호 포맷 옵션을 제공합니다.</p></a>
-          <a href="/ko/base64-converter/" class="featured-card"><div class="card-icon">🔤</div><h3 class="card-title">Base64 인코더/디코더</h3><p class="card-description">텍스트를 Base64로 인코딩하거나 디코딩하세요.</p></a>
-          <a href="/ko/hash-generator/" class="featured-card"><div class="card-icon">🔑</div><h3 class="card-title">해시 생성기</h3><p class="card-description">텍스트를 입력하면 MD5와 SHA-1/256/384/512 다이제스트가 즉시 계산됩니다. 데이터는 외부로 전송되지 않습니다.</p></a>
-          <a href="/ko/unit-converter/" class="featured-card"><div class="card-icon">📏</div><h3 class="card-title">단위 변환기</h3><p class="card-description">길이, 무게, 온도, 부피 등 다양한 단위를 간편하게 변환하세요.</p></a>
-          <a href="/ko/image-converter/" class="featured-card"><div class="card-icon">🖼️</div><h3 class="card-title">이미지 변환기</h3><p class="card-description">이미지 크기를 조정하고 WebP, JPEG, PNG 형식으로 변환하세요.</p></a>
-          <a href="/ko/qr-generator/" class="featured-card"><div class="card-icon">📱</div><h3 class="card-title">QR 코드 생성기</h3><p class="card-description">텍스트나 URL을 QR 코드로 변환하세요.</p></a>
-          <a href="/ko/token-counter/" class="featured-card"><div class="card-icon">🪙</div><h3 class="card-title">AI 토큰 카운터 & 비용 계산기</h3><p class="card-description">텍스트의 토큰 수를 추정하고 GPT-4o·Claude Opus 4.7·Gemini 2.5 등 모델별 API 비용을 표시합니다. 휴리스틱(영문 ≈4자/토큰, CJK ≈1.5자/토큰) 기반 — 정확한 토큰화는 제공자 API가 필요합니다.</p></a>
-          <a href="/ko/date-calculator/" class="featured-card"><div class="card-icon">📅</div><h3 class="card-title">날짜 계산기</h3><p class="card-description">D-Day 및 날짜 차이를 계산하세요.</p></a>
-            </div>
-
             <h2 class="text-center mb-4">전체 도구</h2>
 
-            <div class="category-filter" role="group" aria-label="Filter tools by category">
-                <button type="button" data-cat="all" aria-pressed="true">전체</button>
-                <button type="button" class="fav-filter-chip" data-cat="favorites" aria-pressed="false">★ 즐겨찾기</button>
-                <button type="button" data-cat="ai" aria-pressed="false">AI</button>
-                <button type="button" data-cat="dev" aria-pressed="false">개발자</button>
-                <button type="button" data-cat="text" aria-pressed="false">텍스트</button>
-                <button type="button" data-cat="image" aria-pressed="false">이미지</button>
-                <button type="button" data-cat="convert" aria-pressed="false">변환기</button>
-                <button type="button" data-cat="calc" aria-pressed="false">계산기</button>
-            </div>
-
-            <div class="search-bar">
-                <div class="search-input-wrap">
-                    <input type="search" id="searchInput" class="form-input"
-                           placeholder="도구 검색…"
-                           aria-label="도구 검색…"
-                           autocomplete="off">
-                    <kbd class="search-shortcut" aria-hidden="true">/</kbd>
-                </div>
+            <div class="category-cards" role="group" aria-label="Filter tools by category">
+                <button type="button" class="cat-card" data-cat="all" aria-pressed="true">
+                    <span class="cat-card-icon">🛠️</span>
+                    <span class="cat-card-name">전체</span>
+                </button>
+                <button type="button" class="cat-card fav-filter-chip" data-cat="favorites" aria-pressed="false">
+                    <span class="cat-card-icon">⭐</span>
+                    <span class="cat-card-name">★ 즐겨찾기</span>
+                </button>
+                <button type="button" class="cat-card" data-cat="ai" aria-pressed="false">
+                    <span class="cat-card-icon">🤖</span>
+                    <span class="cat-card-name">AI</span>
+                    <span class="cat-card-desc">토큰 카운터, 프롬프트 도구, MCP 설정</span>
+                </button>
+                <button type="button" class="cat-card" data-cat="dev" aria-pressed="false">
+                    <span class="cat-card-icon">💻</span>
+                    <span class="cat-card-name">개발자</span>
+                    <span class="cat-card-desc">JSON, JWT, 해시, UUID, SQL, 정규식</span>
+                </button>
+                <button type="button" class="cat-card" data-cat="text" aria-pressed="false">
+                    <span class="cat-card-icon">📝</span>
+                    <span class="cat-card-name">텍스트</span>
+                    <span class="cat-card-desc">비교, 마크다운, 로렘입숨</span>
+                </button>
+                <button type="button" class="cat-card" data-cat="image" aria-pressed="false">
+                    <span class="cat-card-icon">🖼️</span>
+                    <span class="cat-card-name">이미지</span>
+                    <span class="cat-card-desc">변환, 워터마크, QR, 파비콘</span>
+                </button>
+                <button type="button" class="cat-card" data-cat="convert" aria-pressed="false">
+                    <span class="cat-card-icon">🔄</span>
+                    <span class="cat-card-name">변환기</span>
+                    <span class="cat-card-desc">단위, 색상, 타임스탬프, PDF</span>
+                </button>
+                <button type="button" class="cat-card" data-cat="calc" aria-pressed="false">
+                    <span class="cat-card-icon">🧮</span>
+                    <span class="cat-card-name">계산기</span>
+                    <span class="cat-card-desc">BMI, 날짜, 대출, 팁, 수면</span>
+                </button>
             </div>
 
             <div class="subcat-chips" data-parent-cat="calc" role="group" aria-label="하위 카테고리 필터" hidden><button type="button" class="subcat-chip" data-subcat="" aria-pressed="true">전체</button><button type="button" class="subcat-chip" data-subcat="finance" aria-pressed="false">금융</button><a href="/ko/finance/?src=chip" class="hub-link" data-for-subcat="finance" hidden>→ 금융 허브</a><button type="button" class="subcat-chip" data-subcat="health" aria-pressed="false">건강</button><a href="/ko/health/?src=chip" class="hub-link" data-for-subcat="health" hidden>→ 건강 허브</a></div>
@@ -691,7 +720,7 @@
             const setFavs = ids => localStorage.setItem(FAV_KEY, [...new Set(ids)].join(','));
             const isFav = id => getFavs().includes(id);
 
-            const catButtons = document.querySelectorAll('.category-filter button');
+            const catButtons = document.querySelectorAll('.category-cards .cat-card');
             const cards = document.querySelectorAll('#toolGrid .card');
             const subcatGroups = document.querySelectorAll('.subcat-chips');
             const emptyState = document.getElementById('emptyState');

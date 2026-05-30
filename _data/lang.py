@@ -219,7 +219,20 @@ INDEX_PAGE = {
         "favorites_import": "⬆ Import favorites",
         "favorites_export_empty": "No favorites to export yet.",
         "favorites_import_success": "Favorites imported",
-        "favorites_import_error": "Couldn't read that file."
+        "favorites_import_error": "Couldn't read that file.",
+        "cat_ai_desc": "Token counter, prompt tools, MCP config",
+        "cat_dev_desc": "JSON, JWT, Hash, UUID, SQL, Regex",
+        "cat_text_desc": "Diff, Markdown, Lorem Ipsum",
+        "cat_image_desc": "Convert, Watermark, QR, Favicon",
+        "cat_convert_desc": "Units, Color, Timestamp, PDF",
+        "cat_calc_desc": "BMI, Date, Loan, Tip, Sleep",
+        "cat_ai_icon": "🤖",
+        "cat_dev_icon": "💻",
+        "cat_text_icon": "📝",
+        "cat_image_icon": "🖼️",
+        "cat_convert_icon": "🔄",
+        "cat_calc_icon": "🧮",
+        "hero_search_hint": "Try: JSON, BMI, Base64, QR code..."
     },
     "ko": {
         "title": "무료 온라인 유틸리티 모음 - Utilify",
@@ -258,7 +271,14 @@ INDEX_PAGE = {
         "favorites_import": "⬆ 즐겨찾기 가져오기",
         "favorites_export_empty": "내보낼 즐겨찾기가 없습니다.",
         "favorites_import_success": "즐겨찾기를 가져왔습니다",
-        "favorites_import_error": "파일을 읽을 수 없습니다."
+        "favorites_import_error": "파일을 읽을 수 없습니다.",
+        "cat_ai_desc": "토큰 카운터, 프롬프트 도구, MCP 설정",
+        "cat_dev_desc": "JSON, JWT, 해시, UUID, SQL, 정규식",
+        "cat_text_desc": "비교, 마크다운, 로렘입숨",
+        "cat_image_desc": "변환, 워터마크, QR, 파비콘",
+        "cat_convert_desc": "단위, 색상, 타임스탬프, PDF",
+        "cat_calc_desc": "BMI, 날짜, 대출, 팁, 수면",
+        "hero_search_hint": "예: JSON, BMI, Base64, QR코드..."
     },
     "vi": {
         "title": "Bộ tiện ích trực tuyến miễn phí - Utilify",
@@ -319,7 +339,14 @@ INDEX_PAGE = {
         "favorites_import": "⬆ お気に入りをインポート",
         "favorites_export_empty": "エクスポートするお気に入りがありません。",
         "favorites_import_success": "お気に入りをインポートしました",
-        "favorites_import_error": "ファイルを読み込めませんでした。"
+        "favorites_import_error": "ファイルを読み込めませんでした。",
+        "cat_ai_desc": "トークン数、プロンプト、MCP設定",
+        "cat_dev_desc": "JSON, JWT, ハッシュ, UUID, SQL",
+        "cat_text_desc": "差分比較、Markdown、ダミー文",
+        "cat_image_desc": "変換、透かし、QR、ファビコン",
+        "cat_convert_desc": "単位、カラー、タイムスタンプ、PDF",
+        "cat_calc_desc": "BMI、日付、ローン、チップ、睡眠",
+        "hero_search_hint": "例: JSON, BMI, Base64, QRコード..."
     },
     "zh-cn": {
         "title": "免费在线工具箱 - Utilify",
