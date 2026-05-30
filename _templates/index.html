@@ -194,13 +194,8 @@
                 <h1>{{ brand }}</h1>
                 <p>{{ hero_desc }}</p>
 
-                <div class="security-badge"
-                    style="display: flex; align-items: center; justify-content: center; gap: 10px; margin: 0 0 var(--spacing-md); font-size: 0.85rem; color: var(--text-tertiary);">
-                    <span>{{ secure_badge }}</span>
-                    <span class="pwa-install-sep" style="display:none;">·</span>
-                    <button id="pwaInstallBtn" class="pwa-install-link"
-                        style="display: none;">📲 {{ install_app }}</button>
-                </div>
+                <button id="pwaInstallBtn" class="pwa-install-link"
+                    style="display: none;">{{ install_app }}</button>
 
                 <div class="hero-search">
                     <div class="search-input-wrap">
