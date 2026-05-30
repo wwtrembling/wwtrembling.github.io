@@ -465,6 +465,62 @@ def inject_monetization(html):
             html, count=1,
         )
 
+    # 9g2. Explicit robots meta tag. While `index, follow` is the default,
+    #      declaring it explicitly signals crawl intent to search engines and
+    #      removes ambiguity for SEO auditing tools. Idempotent via marker.
+    if 'name="robots"' not in html:
+        html = html.replace(
+            '</head>',
+            '    <meta name="robots" content="index, follow">\n</head>',
+            1,
+        )
+
+    # 9h. WebApplication JSON-LD for tool pages that lack structured data.
+    #     Prebuilt tools ship without JSON-LD; templates already include it.
+    #     Detects tool pages by canonical URL pattern (/xx/tool-slug/) and skips
+    #     index, static, hub, and conversion pages. Idempotent via marker.
+    if 'data-utilify-jsonld' not in html and '"WebApplication"' not in html:
+        canon_m = _re_ad.search(
+            r'<link\s+rel="canonical"\s+href="https://utilifyapp\.net/([^/]+)/([^/]+)/"',
+            html,
+        )
+        if canon_m:
+            ld_lang = canon_m.group(1)
+            ld_slug = canon_m.group(2)
+            # Skip non-tool pages (static pages, conversion pairs, hubs).
+            _SKIP = {'about', 'privacy', 'terms', 'convert', 'finance', 'health'}
+            if ld_slug not in _SKIP and '/' not in ld_slug:
+                title_m = _re_ad.search(r'<title>([^<]+)</title>', html)
+                desc_m = _re_ad.search(
+                    r'<meta\s+name="description"\s+content="([^"]+)"', html,
+                )
+                ld_name = title_m.group(1) if title_m else ld_slug
+                ld_desc = desc_m.group(1) if desc_m else ''
+                ld_url = f'https://utilifyapp.net/{ld_lang}/{ld_slug}/'
+                # Escape double-quotes in extracted text for JSON safety.
+                ld_name = ld_name.replace('"', '\\"')
+                ld_desc = ld_desc.replace('"', '\\"')
+                jsonld_block = (
+                    f'    <script data-utilify-jsonld type="application/ld+json">\n'
+                    f'  {{\n'
+                    f'    "@context": "https://schema.org",\n'
+                    f'    "@type": "WebApplication",\n'
+                    f'    "name": "{ld_name}",\n'
+                    f'    "description": "{ld_desc}",\n'
+                    f'    "url": "{ld_url}",\n'
+                    f'    "inLanguage": "{ld_lang}",\n'
+                    f'    "applicationCategory": "UtilitiesApplication",\n'
+                    f'    "operatingSystem": "Any",\n'
+                    f'    "offers": {{\n'
+                    f'      "@type": "Offer",\n'
+                    f'      "price": "0",\n'
+                    f'      "priceCurrency": "USD"\n'
+                    f'    }}\n'
+                    f'  }}\n'
+                    f'  </script>\n'
+                )
+                html = html.replace('</head>', jsonld_block + '</head>', 1)
+
     return html
 
 

@@ -53,6 +53,11 @@
       "@type": "Organization",
       "name": "Utilify",
       "url": "https://utilifyapp.net/"
+    },
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://utilifyapp.net/ja/?q={search_term_string}",
+      "query-input": "required name=search_term_string"
     }
   }
   </script>
@@ -167,6 +172,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <script data-utilify-theme-init>(function(){try{var s=localStorage.getItem("utilify_theme");var t=(s==="dark"||s==="light")?s:(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
+    <meta name="robots" content="index, follow">
 </head>
 
 <body>
@@ -698,9 +704,24 @@
                 star.setAttribute('aria-pressed', String(fav));
             });
 
-            let activeCat = 'all';
-            let activeSubcat = '';   // '' = no subcategory filter
-            let activeSearch = '';
+            // Read initial state from URL query parameters (?category=dev&q=json&sub=finance).
+            const urlParams = new URLSearchParams(window.location.search);
+            let activeCat = urlParams.get('category') || 'all';
+            let activeSubcat = urlParams.get('sub') || '';
+            let activeSearch = urlParams.get('q') || '';
+
+            // Sync URL query string with current filter state (replaceState to avoid history spam).
+            function syncUrl() {
+                const params = new URLSearchParams();
+                if (activeCat && activeCat !== 'all') params.set('category', activeCat);
+                if (activeSubcat) params.set('sub', activeSubcat);
+                if (activeSearch.trim()) params.set('q', activeSearch.trim());
+                const qs = params.toString();
+                const newUrl = window.location.pathname + (qs ? '?' + qs : '');
+                if (newUrl !== window.location.pathname + window.location.search) {
+                    history.replaceState(null, '', newUrl);
+                }
+            }
 
             function escapeHtml(s) {
                 return s.replace(/[&<>"']/g, c => ({
@@ -799,6 +820,7 @@
                         emptyState.hidden = true;
                     }
                 }
+                syncUrl();
             }
 
             if (searchInput) {
@@ -897,6 +919,25 @@
                     if (activeCat === 'favorites') applyFilters();
                 });
             });
+
+            // Apply initial state from URL parameters.
+            if (activeCat !== 'all') {
+                catButtons.forEach(b =>
+                    b.setAttribute('aria-pressed', b.dataset.cat === activeCat ? 'true' : 'false'));
+            }
+            if (activeSubcat) {
+                subcatGroups.forEach(group => {
+                    group.querySelectorAll('.subcat-chip').forEach(chip => {
+                        chip.setAttribute('aria-pressed',
+                            chip.dataset.subcat === activeSubcat ? 'true' : 'false');
+                    });
+                });
+            }
+            if (activeSearch && searchInput) {
+                searchInput.value = activeSearch;
+                const shortcut = document.querySelector('.search-shortcut');
+                if (shortcut) shortcut.style.display = 'none';
+            }
 
             applyFilters();
         })();
