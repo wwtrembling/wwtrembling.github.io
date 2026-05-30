@@ -111,6 +111,22 @@ def inject_monetization(html):
     bootstrap, ad placeholder divs, showAds trigger) and inject the AdSense
     loader + Auto Ads trigger. Also injects legal footer links.
     """
+    # 0a. Strip CSP Report-Only meta tag — browsers ignore it via <meta>,
+    #     it only works as an HTTP header. Keeping it causes console warnings.
+    html = _re_ad.sub(
+        r'\s*<meta\s+http-equiv="Content-Security-Policy-Report-Only"[^>]*>\s*',
+        '\n    ', html,
+    )
+
+    # 0b. Strip duplicate (non-marker) AdSense loader scripts that were
+    #     manually added before inject_monetization existed. The marker
+    #     version (data-utilify-adsense-loader) is the canonical one.
+    if 'data-utilify-adsense-loader' in html:
+        html = _re_ad.sub(
+            r'\s*<script(?:(?!data-utilify)[^>])*\bsrc="https://pagead2\.googlesyndication\.com/pagead/js/adsbygoogle\.js\?client=[^"]*"[^>]*></script>\s*',
+            '\n    ', html,
+        )
+
     # 1. Strip Ezoic CMP scripts (both gatekeeperconsent endpoints).
     html = _re_ad.sub(
         r'\s*<script[^>]*\bsrc="https://(?:cmp|the)\.gatekeeperconsent\.com/[^"]*"[^>]*></script>\s*',
