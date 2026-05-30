@@ -99,7 +99,8 @@ const Utils = {
     toast.style.cssText = `
       position: fixed;
       bottom: 20px;
-      right: 20px;
+      left: 50%;
+      transform: translateX(-50%);
       background: #0f172a;
       color: white;
       padding: 1rem 1.5rem;
@@ -107,6 +108,8 @@ const Utils = {
       box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
       z-index: 1000;
       animation: slideIn 0.3s ease;
+      max-width: calc(100vw - 32px);
+      text-align: center;
     `;
 
     document.body.appendChild(toast);

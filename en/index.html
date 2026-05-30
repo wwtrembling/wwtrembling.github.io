@@ -248,6 +248,7 @@
             <div class="subcat-chips" data-parent-cat="calc" role="group" aria-label="Subcategory filter" hidden><button type="button" class="subcat-chip" data-subcat="" aria-pressed="true">All</button><button type="button" class="subcat-chip" data-subcat="finance" aria-pressed="false">Finance</button><a href="/en/finance/?src=chip" class="hub-link" data-for-subcat="finance" hidden>→ Finance hub</a><button type="button" class="subcat-chip" data-subcat="health" aria-pressed="false">Health</button><a href="/en/health/?src=chip" class="hub-link" data-for-subcat="health" hidden>→ Health hub</a></div>
 
             <p id="emptyState" class="empty-state" hidden
+               aria-live="polite" aria-atomic="true"
                data-msg-favorites="No favorites yet. Click ☆ on any tool card to save it."
                data-msg-search="No tools match your search.">No favorites yet. Click ☆ on any tool card to save it.</p>
 
@@ -837,6 +838,11 @@
                     searchDebounce = setTimeout(() => {
                         activeSearch = e.target.value;
                         applyFilters();
+                        // Scroll to results when searching so users see filtered cards.
+                        const grid = document.getElementById('toolGrid');
+                        if (activeSearch.trim().length >= 2 && grid) {
+                            grid.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                        }
                         // GA4: log that search was used (query text is NOT sent,
                         // only its length). Fire only for queries of 2+ chars to
                         // skip incidental single keystrokes.

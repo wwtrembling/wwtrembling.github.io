@@ -248,6 +248,7 @@
             <div class="subcat-chips" data-parent-cat="calc" role="group" aria-label="하위 카테고리 필터" hidden><button type="button" class="subcat-chip" data-subcat="" aria-pressed="true">전체</button><button type="button" class="subcat-chip" data-subcat="finance" aria-pressed="false">금융</button><a href="/ko/finance/?src=chip" class="hub-link" data-for-subcat="finance" hidden>→ 금융 허브</a><button type="button" class="subcat-chip" data-subcat="health" aria-pressed="false">건강</button><a href="/ko/health/?src=chip" class="hub-link" data-for-subcat="health" hidden>→ 건강 허브</a></div>
 
             <p id="emptyState" class="empty-state" hidden
+               aria-live="polite" aria-atomic="true"
                data-msg-favorites="즐겨찾기가 없습니다. 도구 카드의 ☆를 눌러 추가하세요."
                data-msg-search="검색 결과가 없습니다.">즐겨찾기가 없습니다. 도구 카드의 ☆를 눌러 추가하세요.</p>
 
@@ -837,6 +838,11 @@
                     searchDebounce = setTimeout(() => {
                         activeSearch = e.target.value;
                         applyFilters();
+                        // Scroll to results when searching so users see filtered cards.
+                        const grid = document.getElementById('toolGrid');
+                        if (activeSearch.trim().length >= 2 && grid) {
+                            grid.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                        }
                         // GA4: log that search was used (query text is NOT sent,
                         // only its length). Fire only for queries of 2+ chars to
                         // skip incidental single keystrokes.

@@ -211,6 +211,7 @@
             {{ subcategory_chips }}
 
             <p id="emptyState" class="empty-state" hidden
+               aria-live="polite" aria-atomic="true"
                data-msg-favorites="{{ favorites_empty }}"
                data-msg-search="{{ search_no_results }}">{{ favorites_empty }}</p>
 
@@ -399,6 +400,11 @@
                     searchDebounce = setTimeout(() => {
                         activeSearch = e.target.value;
                         applyFilters();
+                        // Scroll to results when searching so users see filtered cards.
+                        const grid = document.getElementById('toolGrid');
+                        if (activeSearch.trim().length >= 2 && grid) {
+                            grid.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                        }
                         // GA4: log that search was used (query text is NOT sent,
                         // only its length). Fire only for queries of 2+ chars to
                         // skip incidental single keystrokes.
