@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+    <title>Developer Tools — JSON, JWT, Hash, UUID, Base64, SQL & More - Utilify</title>
+    <meta name="description" content="Free browser-based developer tools: JSON formatter, JWT decoder, hash generator, UUID, Base64, URL encoder, SQL formatter, regex tester, and more. No signup, no server uploads.">
+    <link rel="canonical" href="https://utilifyapp.net/th/dev-tools/">
+
+    <meta property="og:title" content="Developer Tools - Utilify">
+    <meta property="og:description" content="JSON, JWT, hash, UUID, Base64, SQL, regex — all client-side dev tools in one place.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://utilifyapp.net/th/dev-tools/">
+
+    <link rel="alternate" hreflang="en" href="https://utilifyapp.net/en/dev-tools/">
+    <link rel="alternate" hreflang="ko" href="https://utilifyapp.net/ko/dev-tools/">
+    <link rel="alternate" hreflang="vi" href="https://utilifyapp.net/vi/dev-tools/">
+    <link rel="alternate" hreflang="th" href="https://utilifyapp.net/th/dev-tools/">
+    <link rel="alternate" hreflang="de" href="https://utilifyapp.net/de/dev-tools/">
+    <link rel="alternate" hreflang="pt" href="https://utilifyapp.net/pt/dev-tools/">
+    <link rel="alternate" hreflang="id" href="https://utilifyapp.net/id/dev-tools/">
+    <link rel="alternate" hreflang="hi" href="https://utilifyapp.net/hi/dev-tools/">
+    <link rel="alternate" hreflang="ja" href="https://utilifyapp.net/ja/dev-tools/">
+    <link rel="alternate" hreflang="zh-Hans" href="https://utilifyapp.net/zh-cn/dev-tools/">
+    <link rel="alternate" hreflang="zh-Hant" href="https://utilifyapp.net/zh-tw/dev-tools/">
+    <link rel="alternate" hreflang="x-default" href="https://utilifyapp.net/en/dev-tools/">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "Developer Tools",
+        "description": "Curated collection of browser-based developer utilities for encoding, formatting, and validation.",
+        "url": "https://utilifyapp.net/th/dev-tools/",
+        "inLanguage": "th"
+    }
+    </script>
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://utilifyapp.net/th/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Developer Tools",
+      "item": "https://utilifyapp.net/th/dev-tools/"
+    }
+  ]
+}</script>
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is my data safe? Do you store anything I paste?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Every tool runs entirely in your browser using client-side JavaScript. Your input is never sent to a server, never logged, and never stored. You can verify this by opening your browser's Network tab — no outbound requests are made when you use the tools."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use these tools offline?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. If you install Utilify as a PWA (Progressive Web App), all developer tools are cached locally and work without an internet connection. Look for the install prompt in your browser's address bar."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does the JSON formatter reject my input?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The formatter uses the browser's native JSON.parse(), which follows the strict JSON specification. Common causes of rejection: trailing commas, single quotes instead of double quotes, unquoted keys, or comments. If you're pasting from JavaScript code, you may need to convert it to valid JSON first."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which hash algorithms should I use for password storage?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "None of the fast hash algorithms (MD5, SHA-1, SHA-256) are suitable for password storage — they're too fast, making brute-force attacks feasible. Use bcrypt, scrypt, or Argon2 instead. The hash generator here is useful for checksums, integrity verification, and non-security hashing tasks."
+      }
+    }
+  ]
+}</script>
+    <link rel="manifest" href="/manifest.json">
+    <script data-utilify-ga4>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("consent","default",{"ad_storage":"denied","ad_user_data":"denied","ad_personalization":"denied","analytics_storage":"denied","functionality_storage":"granted","security_storage":"granted","wait_for_update":500});gtag("js",new Date());gtag("config","G-4N18KB15VT");</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4N18KB15VT"></script>
+    <!-- utilify-adsense --><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631" crossorigin="anonymous"></script>
+    <meta data-utilify-og property="og:image" content="https://utilifyapp.net/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Utilify">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://utilifyapp.net/assets/og-image.png">
+    <meta property="og:locale" content="th_TH">
+    <link data-utilify-favicon rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <script data-utilify-theme-init>(function(){try{var s=localStorage.getItem("utilify_theme");var t=(s==="dark"||s==="light")?s:(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
+    <meta name="robots" content="index, follow">
+    <script data-utilify-jsonld type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Developer Tools — JSON, JWT, Hash, UUID, Base64, SQL & More - Utilify",
+    "description": "Free browser-based developer tools: JSON formatter, JWT decoder, hash generator, UUID, Base64, URL encoder, SQL formatter, regex tester, and more. No signup, no server uploads.",
+    "url": "https://utilifyapp.net/th/dev-tools/",
+    "inLanguage": "th",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+</head>
+
+<body>
+    <a data-utilify-skip class="skip-link" href="#main">Skip to content</a>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header"><div class="container"><div class="header-content"><a href="/th/" class="site-logo">🛠️ Utilify</a><button data-utilify-theme-toggle id="themeToggle" class="theme-toggle" type="button" aria-label="Switch to dark mode" data-aria-to-dark="Switch to dark mode" data-aria-to-light="Switch to light mode">🌙</button></div></div></header>
+    <main class="main-content" id="main">
+        <div class="container-narrow">
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+                <ol>
+                    <li><a href="/th/">Home</a></li>
+                    <li aria-current="page">Developer Tools</li>
+                </ol>
+            </nav>
+            <h1>💻 Developer Tools</h1>
+
+            <div class="page-intro"><p>Developers spend a surprising amount of time on small, repetitive tasks: pretty-printing a JSON blob from an API response, decoding a JWT to inspect its claims, generating a UUID for a database seed, or escaping a URL parameter. Each task is trivial in isolation, but they add up — and reaching for a random online tool means trusting a third-party server with potentially sensitive data.</p><p>The tools below handle the encoding, formatting, hashing, and validation tasks that come up every day in backend and frontend work. Every tool runs <strong>entirely in your browser</strong> — your payloads, tokens, and queries never leave the page. There is no account to create, no data uploaded to a server, and no analytics on your inputs. Bookmark the ones you use most and they'll load instantly, even offline if you've installed the PWA.</p><p>Whether you're debugging a malformed JSON response, validating a schema before shipping an API, or building structured data for SEO, these tools give you a fast, private answer without context-switching out of your workflow.</p></div>
+
+            <h2>Tools in this category</h2>
+            <div class="hub-tool-grid">
+                <a href="/th/json-formatter/" class="card hub-card" data-slug="json-formatter"><div class="card-icon">{ }</div><h3 class="card-title">ตัวจัดรูปแบบ JSON</h3><p class="card-description">จัดรูปแบบ, ตรวจสอบ และย่อขนาดข้อมูล JSON ปลอดโฆษณาสำหรับนักพัฒนา</p></a>
+                <a href="/th/base64-converter/" class="card hub-card" data-slug="base64-converter"><div class="card-icon">🔤</div><h3 class="card-title">ตัวแปลง Base64</h3><p class="card-description">เข้ารหัสหรือถอดรหัสข้อความไปยัง Base64</p></a>
+                <a href="/th/regex-tester/" class="card hub-card" data-slug="regex-tester"><div class="card-icon">🔍</div><h3 class="card-title">เครื่องมือทดสอบ Regex</h3><p class="card-description">ทดสอบนิพจน์ทั่วไป (Regular Expressions) แบบเรียลไทม์</p></a>
+                <a href="/th/sql-formatter/" class="card hub-card" data-slug="sql-formatter"><div class="card-icon">🗄️</div><h3 class="card-title">ตัวจัดรูปแบบ SQL</h3><p class="card-description">จัดรูปแบบ ตกแต่ง และย่อขนาดคำสั่ง SQL</p></a>
+                <a href="/th/jwt-decoder/" class="card hub-card" data-slug="jwt-decoder"><div class="card-icon">🪪</div><h3 class="card-title">JWT Decoder</h3><p class="card-description">Paste a JWT to decode its header and payload. Tokens are processed locally and never sent to a server.</p></a>
+                <a href="/th/hash-generator/" class="card hub-card" data-slug="hash-generator"><div class="card-icon">🔑</div><h3 class="card-title">Hash Generator</h3><p class="card-description">Type any text to instantly compute MD5 and SHA-1/256/384/512 digests. Nothing is uploaded — all hashing runs locally.</p></a>
+                <a href="/th/uuid-generator/" class="card hub-card" data-slug="uuid-generator"><div class="card-icon">🆔</div><h3 class="card-title">UUID Generator</h3><p class="card-description">Generate cryptographically random UUIDs locally. v4 (random) is the most common choice; v1 embeds a timestamp. Format options for hyphens, casing, and braces.</p></a>
+                <a href="/th/url-encoder/" class="card hub-card" data-slug="url-encoder"><div class="card-icon">🔗</div><h3 class="card-title">URL Encoder / Decoder</h3><p class="card-description">Encode characters into percent-encoded form (e.g. space → %20) or decode them back. Use 'Component' for query values; use 'Full URL' to preserve reserved characters like : / ?.</p></a>
+                <a href="/th/json-schema-validator/" class="card hub-card" data-slug="json-schema-validator"><div class="card-icon">🛡️</div><h3 class="card-title">JSON Schema Validator</h3><p class="card-description">Validate JSON against a schema — type, required, items, enum, format, pattern.</p></a>
+                <a href="/th/jpa-converter/" class="card hub-card" data-slug="jpa-converter"><div class="card-icon">🗃️</div><h3 class="card-title">แปลง DB เป็น JPA</h3><p class="card-description">แปลงสคีมา SQL เป็นคลาส JPA Entity และ DTO</p></a>
+                <a href="/th/json-to-ts/" class="card hub-card" data-slug="json-to-ts"><div class="card-icon">🔁</div><h3 class="card-title">JSON เป็น TS/DTO</h3><p class="card-description">แปลง JSON เป็น TypeScript Interface และ NestJS DTO</p></a>
+                <a href="/th/json-ld-generator/" class="card hub-card" data-slug="json-ld-generator"><div class="card-icon">🏷️</div><h3 class="card-title">ตัวสร้าง SEO JSON-LD</h3><p class="card-description">สร้างข้อมูลโครงสร้าง (schema) สำหรับการแสดงผลบน Google/Naver</p></a>
+            </div>
+
+            <h2>Frequently asked questions</h2>
+            <div class="hub-faq"><details><summary>Is my data safe? Do you store anything I paste?</summary><p>No. Every tool runs entirely in your browser using client-side JavaScript. Your input is never sent to a server, never logged, and never stored. You can verify this by opening your browser's Network tab — no outbound requests are made when you use the tools.</p></details><details><summary>Can I use these tools offline?</summary><p>Yes. If you install Utilify as a PWA (Progressive Web App), all developer tools are cached locally and work without an internet connection. Look for the install prompt in your browser's address bar.</p></details><details><summary>Why does the JSON formatter reject my input?</summary><p>The formatter uses the browser's native <code>JSON.parse()</code>, which follows the strict JSON specification. Common causes of rejection: trailing commas, single quotes instead of double quotes, unquoted keys, or comments. If you're pasting from JavaScript code, you may need to convert it to valid JSON first.</p></details><details><summary>Which hash algorithms should I use for password storage?</summary><p>None of the fast hash algorithms (MD5, SHA-1, SHA-256) are suitable for password storage — they're too fast, making brute-force attacks feasible. Use bcrypt, scrypt, or Argon2 instead. The hash generator here is useful for checksums, integrity verification, and non-security hashing tasks.</p></details></div>
+
+            <div class="related-tools-section">
+                <h3>Other tools</h3>
+                <div class="related-buttons">
+                    <a href="/th/image-tools/" class="related-btn">Image Tools</a><a
+                        href="/th/json-formatter/" class="related-btn">JSON Formatter</a><a
+                        href="/th/token-counter/" class="related-btn">Token Counter</a><a
+                        href="/th/unit-converter/" class="related-btn">Unit Converter</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="site-footer"><div class="container"><div class="footer-content"><p>&copy; 2025 Utilify. All rights reserved.</p>
+                <p data-legal-links style="font-size: 0.875rem; margin-top: 8px;"><a href="/th/about/">About</a> · <a href="/th/privacy/">Privacy</a> · <a href="/th/terms/">Terms</a></p></div></div></footer>
+    <script src="/assets/js/common.js"></script>
+    <script>
+        // GA4: log hub-page entry. `source` distinguishes how the visitor
+        // arrived (chip = index subcategory link, breadcrumb = tool-page
+        // breadcrumb, direct = anything else). See ?src= set by build.py.
+        (function () {
+            var src = new URLSearchParams(location.search).get('src');
+            if (src !== 'chip' && src !== 'breadcrumb') src = 'direct';
+            if (typeof gtag === 'function') {
+                gtag('event', 'hub_navigation', { hub_slug: 'dev-tools', source: src });
+            }
+        })();
+    </script>
+    <script data-utilify-sw>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){});});}</script>
+    <script data-utilify-theme-toggle-script>(function(){var b=document.getElementById("themeToggle");if(!b)return;function p(){var t=document.documentElement.getAttribute("data-theme")||"light";b.textContent=t==="dark"?"☀️":"🌙";b.setAttribute("aria-pressed",String(t==="dark"));b.setAttribute("aria-label",t==="dark"?b.dataset.ariaToLight:b.dataset.ariaToDark);}p();b.addEventListener("click",function(){var c=document.documentElement.getAttribute("data-theme")||"light";var n=c==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",n);try{localStorage.setItem("utilify_theme",n);}catch(e){}p();if(typeof gtag==="function"){gtag("event","theme_toggle",{next_theme:n});}});})();</script>
+    <script data-utilify-fav-toggle-script>(function(){var btn=document.querySelector(".fav-toggle-page");if(!btn)return;var m=location.pathname.match(/^\/[^\/]+\/([^\/]+)\/?$/);if(!m)return;var slug=m[1],K="utilify_favorites";function g(){return (localStorage.getItem(K)||"").split(",").filter(Boolean);}function s(a){localStorage.setItem(K,Array.from(new Set(a)).join(","));}function p(f){btn.textContent=f?"★":"☆";btn.classList.toggle("is-fav",f);btn.setAttribute("aria-label",f?btn.dataset.removeLabel:btn.dataset.addLabel);btn.setAttribute("aria-pressed",String(f));}p(g().indexOf(slug)>-1);btn.addEventListener("click",function(){var a=g(),n=a.indexOf(slug)>-1?a.filter(function(x){return x!==slug;}):a.concat([slug]);s(n);var f=n.indexOf(slug)>-1;p(f);if(typeof gtag==="function"){gtag("event","tool_favorite",{tool_slug:slug,action:f?"add":"remove"});}});})();</script>
+</body>
+
+</html>

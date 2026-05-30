@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+    <title>テキストツール — 差分比較・Lorem Ipsum・Markdownプレビュー・読了時間 - Utilify</title>
+    <meta name="description" content="ブラウザで完全動作する無料テキストユーティリティ。テキスト差分比較、ダミーテキスト生成、Markdownプレビュー、読了時間推定。登録不要、サーバー送信なし。">
+    <link rel="canonical" href="https://utilifyapp.net/ja/text-tools/">
+
+    <meta property="og:title" content="テキストツール - Utilify">
+    <meta property="og:description" content="テキスト差分・Lorem Ipsum・Markdownプレビュー・読了時間 — すべてクライアントサイド。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://utilifyapp.net/ja/text-tools/">
+
+    <link rel="alternate" hreflang="en" href="https://utilifyapp.net/en/text-tools/">
+    <link rel="alternate" hreflang="ko" href="https://utilifyapp.net/ko/text-tools/">
+    <link rel="alternate" hreflang="vi" href="https://utilifyapp.net/vi/text-tools/">
+    <link rel="alternate" hreflang="th" href="https://utilifyapp.net/th/text-tools/">
+    <link rel="alternate" hreflang="de" href="https://utilifyapp.net/de/text-tools/">
+    <link rel="alternate" hreflang="pt" href="https://utilifyapp.net/pt/text-tools/">
+    <link rel="alternate" hreflang="id" href="https://utilifyapp.net/id/text-tools/">
+    <link rel="alternate" hreflang="hi" href="https://utilifyapp.net/hi/text-tools/">
+    <link rel="alternate" hreflang="ja" href="https://utilifyapp.net/ja/text-tools/">
+    <link rel="alternate" hreflang="zh-Hans" href="https://utilifyapp.net/zh-cn/text-tools/">
+    <link rel="alternate" hreflang="zh-Hant" href="https://utilifyapp.net/zh-tw/text-tools/">
+    <link rel="alternate" hreflang="x-default" href="https://utilifyapp.net/en/text-tools/">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "テキストツール",
+        "description": "テキストの比較・生成・プレビュー・分析のためのユーティリティコレクション。",
+        "url": "https://utilifyapp.net/ja/text-tools/",
+        "inLanguage": "ja"
+    }
+    </script>
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://utilifyapp.net/ja/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "テキストツール",
+      "item": "https://utilifyapp.net/ja/text-tools/"
+    }
+  ]
+}</script>
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "差分比較（diff）にはどのアルゴリズムを使用していますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Unixのdiffと同様の最長共通部分列（LCS）アルゴリズムを使用しています。行単位で比較して追加・削除をハイライトし、オプションで文字レベルのインライン変更も表示できます。すべてJavaScriptで実行され — テキストがサーバーに送信されることはありません。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "テキストのプライバシーは本当に守られますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "はい。このページのすべてのツールは100%クライアントサイドです。ブラウザのDevToolsでNetworkタブを開いてご確認ください — テキストの貼り付け、入力、生成時にページ外へのリクエストは一切発生しません。サーバー、データベース、サードパーティAPIにコンテンツが送信されることはありません。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "読了時間はどのように計算されますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "単語数をカウントし、成人の平均読書速度（約200〜250 WPM、調整可能）で割ります。研究によると読書速度はコンテンツの複雑さによって異なり、技術文書はカジュアルな文章より遅くなります。精密な測定ではなく、実用的な目安としてご活用ください。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "MarkdownプレビューはGitHub Flavored Markdownに対応していますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "はい。標準的なCommonMark仕様に加えて、GFM拡張 — テーブル、タスクリスト、フェンスドコードブロック、取り消し線、自動リンク — に対応しています。レンダリングはJavaScriptパーサーを使用してローカルで行われます。"
+      }
+    }
+  ]
+}</script>
+    <link rel="manifest" href="/manifest.json">
+    <script data-utilify-ga4>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("consent","default",{"ad_storage":"denied","ad_user_data":"denied","ad_personalization":"denied","analytics_storage":"denied","functionality_storage":"granted","security_storage":"granted","wait_for_update":500});gtag("js",new Date());gtag("config","G-4N18KB15VT");</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4N18KB15VT"></script>
+    <!-- utilify-adsense --><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631" crossorigin="anonymous"></script>
+    <meta data-utilify-og property="og:image" content="https://utilifyapp.net/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Utilify">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://utilifyapp.net/assets/og-image.png">
+    <meta property="og:locale" content="ja_JP">
+    <link data-utilify-favicon rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <script data-utilify-theme-init>(function(){try{var s=localStorage.getItem("utilify_theme");var t=(s==="dark"||s==="light")?s:(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
+    <meta name="robots" content="index, follow">
+    <script data-utilify-jsonld type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "テキストツール — 差分比較・Lorem Ipsum・Markdownプレビュー・読了時間 - Utilify",
+    "description": "ブラウザで完全動作する無料テキストユーティリティ。テキスト差分比較、ダミーテキスト生成、Markdownプレビュー、読了時間推定。登録不要、サーバー送信なし。",
+    "url": "https://utilifyapp.net/ja/text-tools/",
+    "inLanguage": "ja",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+</head>
+
+<body>
+    <a data-utilify-skip class="skip-link" href="#main">Skip to content</a>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header"><div class="container"><div class="header-content"><a href="/ja/" class="site-logo">🛠️ Utilify</a><button data-utilify-theme-toggle id="themeToggle" class="theme-toggle" type="button" aria-label="Switch to dark mode" data-aria-to-dark="Switch to dark mode" data-aria-to-light="Switch to light mode">🌙</button></div></div></header>
+    <main class="main-content" id="main">
+        <div class="container-narrow">
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+                <ol>
+                    <li><a href="/ja/">Home</a></li>
+                    <li aria-current="page">テキストツール</li>
+                </ol>
+            </nav>
+            <h1>📝 テキストツール</h1>
+
+            <div class="page-intro"><p>テキストはほぼすべてのワークフローの原材料です — コード、ドキュメント、メールの下書き、ブログ記事。しかし頻繁に発生する細かな作業 — ファイルの2つのバージョンを比較する、プレースホルダーテキストを生成する、コミット前にMarkdownをプレビューする、記事が5分で読めるのか15分かかるのか確認する — のために重いデスクトップアプリを開いたり、見知らぬサイトに機密テキストを貼り付けたりするのは気が引けます。</p><p>以下のツールはそうした日常的なテキスト作業をブラウザ内で直接処理します。<strong>データが端末の外に出ることはありません。</strong>すべての差分比較はローカルで計算され、Lorem Ipsumはクライアント側で生成され、Markdownのレンダリングはサンドボックス化されたプレビュー領域で行われます。サーバーとの往復通信なし、アカウント作成不要、インストール不要。ページを開いて貼り付けるか入力すれば、結果が即座に表示されます。</p><p>プルリクエストの差分を確認する開発者も、原稿を推敲するライターも、ワイヤーフレームにダミーテキストを流し込むデザイナーも — これらのユーティリティはコンテキストスイッチを減らし、コンテンツのプライバシーを守ります。</p></div>
+
+            <h2>このカテゴリーのツール</h2>
+            <div class="hub-tool-grid">
+                <a href="/ja/text-utils/" class="card hub-card" data-slug="text-utils"><div class="card-icon">📝</div><h3 class="card-title">テキストユーティリティ</h3><p class="card-description">単語数、文字数のカウント、重複削除、大文字小文字変換など。</p></a>
+                <a href="/ja/lorem-ipsum/" class="card hub-card" data-slug="lorem-ipsum"><div class="card-icon">📋</div><h3 class="card-title">Lorem Ipsum生成</h3><p class="card-description">Lorem Ipsumダミーテキストを生成します。</p></a>
+                <a href="/ja/diff-checker/" class="card hub-card" data-slug="diff-checker"><div class="card-icon">🔀</div><h3 class="card-title">テキスト差分チェッカー</h3><p class="card-description">2つのテキストの差分を簡単に比較します。追加および削除された部分をハイライト表示します。</p></a>
+                <a href="/ja/markdown-previewer/" class="card hub-card" data-slug="markdown-previewer"><div class="card-icon">📝</div><h3 class="card-title">マークダウンエディタ＆プレビュー</h3><p class="card-description">リアルタイムマークダウンプレビューツール。マークダウンを簡単に作成し、変換されたHTMLを即座に確認できます。</p></a>
+                <a href="/ja/reading-time/" class="card hub-card" data-slug="reading-time"><div class="card-icon">📖</div><h3 class="card-title">読書時間計算機</h3><p class="card-description">単語を分に — WPM調整可能な読書・朗読時間推定。</p></a>
+            </div>
+
+            <h2>よくある質問</h2>
+            <div class="hub-faq"><details><summary>差分比較（diff）にはどのアルゴリズムを使用していますか？</summary><p>Unixの<code>diff</code>と同様の最長共通部分列（LCS）アルゴリズムを使用しています。行単位で比較して追加・削除をハイライトし、オプションで文字レベルのインライン変更も表示できます。すべてJavaScriptで実行され — テキストがサーバーに送信されることはありません。</p></details><details><summary>テキストのプライバシーは本当に守られますか？</summary><p>はい。このページのすべてのツールは100%クライアントサイドです。ブラウザのDevToolsでNetworkタブを開いてご確認ください — テキストの貼り付け、入力、生成時にページ外へのリクエストは一切発生しません。サーバー、データベース、サードパーティAPIにコンテンツが送信されることはありません。</p></details><details><summary>読了時間はどのように計算されますか？</summary><p>単語数をカウントし、成人の平均読書速度（約200〜250 WPM、調整可能）で割ります。研究によると読書速度はコンテンツの複雑さによって異なり、技術文書はカジュアルな文章より遅くなります。精密な測定ではなく、実用的な目安としてご活用ください。</p></details><details><summary>MarkdownプレビューはGitHub Flavored Markdownに対応していますか？</summary><p>はい。標準的なCommonMark仕様に加えて、GFM拡張 — テーブル、タスクリスト、フェンスドコードブロック、取り消し線、自動リンク — に対応しています。レンダリングはJavaScriptパーサーを使用してローカルで行われます。</p></details></div>
+
+            <div class="related-tools-section">
+                <h3>他のツール</h3>
+                <div class="related-buttons">
+                    <a href="/ja/dev-tools/" class="related-btn">開発者ツール</a><a
+                        href="/ja/json-formatter/" class="related-btn">JSONフォーマッター</a><a
+                        href="/ja/date-calculator/" class="related-btn">日付計算機</a><a
+                        href="/ja/unit-converter/" class="related-btn">単位変換</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="site-footer"><div class="container"><div class="footer-content"><p>&copy; 2025 Utilify. All rights reserved.</p>
+                <p data-legal-links style="font-size: 0.875rem; margin-top: 8px;"><a href="/ja/about/">About</a> · <a href="/ja/privacy/">Privacy</a> · <a href="/ja/terms/">Terms</a></p></div></div></footer>
+    <script src="/assets/js/common.js"></script>
+    <script>
+        // GA4: log hub-page entry. `source` distinguishes how the visitor
+        // arrived (chip = index subcategory link, breadcrumb = tool-page
+        // breadcrumb, direct = anything else). See ?src= set by build.py.
+        (function () {
+            var src = new URLSearchParams(location.search).get('src');
+            if (src !== 'chip' && src !== 'breadcrumb') src = 'direct';
+            if (typeof gtag === 'function') {
+                gtag('event', 'hub_navigation', { hub_slug: 'text-tools', source: src });
+            }
+        })();
+    </script>
+    <script data-utilify-sw>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){});});}</script>
+    <script data-utilify-theme-toggle-script>(function(){var b=document.getElementById("themeToggle");if(!b)return;function p(){var t=document.documentElement.getAttribute("data-theme")||"light";b.textContent=t==="dark"?"☀️":"🌙";b.setAttribute("aria-pressed",String(t==="dark"));b.setAttribute("aria-label",t==="dark"?b.dataset.ariaToLight:b.dataset.ariaToDark);}p();b.addEventListener("click",function(){var c=document.documentElement.getAttribute("data-theme")||"light";var n=c==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",n);try{localStorage.setItem("utilify_theme",n);}catch(e){}p();if(typeof gtag==="function"){gtag("event","theme_toggle",{next_theme:n});}});})();</script>
+    <script data-utilify-fav-toggle-script>(function(){var btn=document.querySelector(".fav-toggle-page");if(!btn)return;var m=location.pathname.match(/^\/[^\/]+\/([^\/]+)\/?$/);if(!m)return;var slug=m[1],K="utilify_favorites";function g(){return (localStorage.getItem(K)||"").split(",").filter(Boolean);}function s(a){localStorage.setItem(K,Array.from(new Set(a)).join(","));}function p(f){btn.textContent=f?"★":"☆";btn.classList.toggle("is-fav",f);btn.setAttribute("aria-label",f?btn.dataset.removeLabel:btn.dataset.addLabel);btn.setAttribute("aria-pressed",String(f));}p(g().indexOf(slug)>-1);btn.addEventListener("click",function(){var a=g(),n=a.indexOf(slug)>-1?a.filter(function(x){return x!==slug;}):a.concat([slug]);s(n);var f=n.indexOf(slug)>-1;p(f);if(typeof gtag==="function"){gtag("event","tool_favorite",{tool_slug:slug,action:f?"add":"remove"});}});})();</script>
+</body>
+
+</html>

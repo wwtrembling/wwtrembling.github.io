@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+    <title>画像ツール — 変換・透かし・編集・ファビコン・QR生成 - Utilify</title>
+    <meta name="description" content="ブラウザで100%動作する無料の画像ツール。フォーマット変換、ウォーターマーク、写真編集、ファビコン・QRコード生成、サムネイルダウンロード。サーバーへのアップロード不要。">
+    <link rel="canonical" href="https://utilifyapp.net/ja/image-tools/">
+
+    <meta property="og:title" content="画像ツール - Utilify">
+    <meta property="og:description" content="変換・透かし・編集・生成 — すべての画像処理がブラウザ内で完結。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://utilifyapp.net/ja/image-tools/">
+
+    <link rel="alternate" hreflang="en" href="https://utilifyapp.net/en/image-tools/">
+    <link rel="alternate" hreflang="ko" href="https://utilifyapp.net/ko/image-tools/">
+    <link rel="alternate" hreflang="vi" href="https://utilifyapp.net/vi/image-tools/">
+    <link rel="alternate" hreflang="th" href="https://utilifyapp.net/th/image-tools/">
+    <link rel="alternate" hreflang="de" href="https://utilifyapp.net/de/image-tools/">
+    <link rel="alternate" hreflang="pt" href="https://utilifyapp.net/pt/image-tools/">
+    <link rel="alternate" hreflang="id" href="https://utilifyapp.net/id/image-tools/">
+    <link rel="alternate" hreflang="hi" href="https://utilifyapp.net/hi/image-tools/">
+    <link rel="alternate" hreflang="ja" href="https://utilifyapp.net/ja/image-tools/">
+    <link rel="alternate" hreflang="zh-Hans" href="https://utilifyapp.net/zh-cn/image-tools/">
+    <link rel="alternate" hreflang="zh-Hant" href="https://utilifyapp.net/zh-tw/image-tools/">
+    <link rel="alternate" hreflang="x-default" href="https://utilifyapp.net/en/image-tools/">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "画像ツール",
+        "description": "画像の変換、ウォーターマーク、編集、生成のためのツールコレクション。",
+        "url": "https://utilifyapp.net/ja/image-tools/",
+        "inLanguage": "ja"
+    }
+    </script>
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://utilifyapp.net/ja/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "画像ツール",
+      "item": "https://utilifyapp.net/ja/image-tools/"
+    }
+  ]
+}</script>
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "画像は本当にどこにもアップロードされませんか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "その通りです。すべての処理はブラウザのCanvas APIとJavaScriptで行われます。ブラウザのネットワークタブを開いて確認できます — 画像データがサーバーに送信されることは ありません。ファイルは完全にお使いのデバイス上に残ります。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Web用にはどの画像フォーマットを選ぶべきですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "WebPがほとんどの用途で画質とファイルサイズのバランスが最も優れています。ロゴのような可逆透過が必要な場合はPNG、ファイルサイズが重要な写真にはJPEG、拡大縮小が必要なアイコンやイラストにはSVGを選んでください。AVIFはWebPよりさらに小さいですが、ブラウザのサポートはまだ追いついていません。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "フォーマット変換で画質は劣化しますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "非可逆形式（JPEG）から別の非可逆形式への変換は、エンコードのたびにデータが破棄され画質劣化が蓄積します。可逆（PNG）から非可逆（JPEG/WebP）への変換では劣化は1回のみです。可逆形式間（PNG ↔ BMP）の変換では画質は完全に保持されます。コンバーターの品質スライダーで画質とファイルサイズのバランスを調整できます。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "ファイルサイズの制限はありますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "アップロードがないため、アップロード制限もありません。実質的な制限はデバイスのRAMとブラウザに依存します。最近のデバイスであれば20〜50 MBの画像は問題なく処理できます。100 MB以上の非常に大きな画像はブラウザのタブが遅くなったりメモリ不足になる可能性があります。"
+      }
+    }
+  ]
+}</script>
+    <link rel="manifest" href="/manifest.json">
+    <script data-utilify-ga4>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("consent","default",{"ad_storage":"denied","ad_user_data":"denied","ad_personalization":"denied","analytics_storage":"denied","functionality_storage":"granted","security_storage":"granted","wait_for_update":500});gtag("js",new Date());gtag("config","G-4N18KB15VT");</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4N18KB15VT"></script>
+    <!-- utilify-adsense --><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631" crossorigin="anonymous"></script>
+    <meta data-utilify-og property="og:image" content="https://utilifyapp.net/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Utilify">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://utilifyapp.net/assets/og-image.png">
+    <meta property="og:locale" content="ja_JP">
+    <link data-utilify-favicon rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <script data-utilify-theme-init>(function(){try{var s=localStorage.getItem("utilify_theme");var t=(s==="dark"||s==="light")?s:(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
+    <meta name="robots" content="index, follow">
+    <script data-utilify-jsonld type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "画像ツール — 変換・透かし・編集・ファビコン・QR生成 - Utilify",
+    "description": "ブラウザで100%動作する無料の画像ツール。フォーマット変換、ウォーターマーク、写真編集、ファビコン・QRコード生成、サムネイルダウンロード。サーバーへのアップロード不要。",
+    "url": "https://utilifyapp.net/ja/image-tools/",
+    "inLanguage": "ja",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+</head>
+
+<body>
+    <a data-utilify-skip class="skip-link" href="#main">Skip to content</a>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header"><div class="container"><div class="header-content"><a href="/ja/" class="site-logo">🛠️ Utilify</a><button data-utilify-theme-toggle id="themeToggle" class="theme-toggle" type="button" aria-label="Switch to dark mode" data-aria-to-dark="Switch to dark mode" data-aria-to-light="Switch to light mode">🌙</button></div></div></header>
+    <main class="main-content" id="main">
+        <div class="container-narrow">
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+                <ol>
+                    <li><a href="/ja/">Home</a></li>
+                    <li aria-current="page">画像ツール</li>
+                </ol>
+            </nav>
+            <h1>🖼️ 画像ツール</h1>
+
+            <div class="page-intro"><p>プロフィール写真、マーケティングバナー、アプリアイコン、パッケージのQRコード — 画像はあらゆる場面で使われています。問題は、ほとんどのオンライン画像ツールがファイルを 他者のサーバーにアップロードすることを要求する点です。つまり、あなたの写真やブランド素材、場合によっては機密性の高いスクリーンショットが、管理の及ばないインフラを通過してしまいます。</p><p>このページのツールはすべて異なるアプローチを取っています。<strong>すべての処理は ブラウザ内で行われます。</strong>画像がサーバーにアップロードされることは一切なく、最初から最後までお使いのデバイス上に留まります。PNGをWebPに変換する場合も、写真に ウォーターマークを入れる場合も、サイト用のファビコンを生成する場合も — ピクセルが あなたのデバイスから離れることはありません。アカウント登録不要、バックエンド側の ファイルサイズ制限もなく、ファイルが誰にアクセスされるかを心配する必要もありません。</p><p>トレードオフとして、非常に大きなファイルはデバイスの処理能力とメモリに依存します。Web素材、SNS用画像、アイコン、QRコードといった日常的な画像作業であれば、ブラウザベースの処理は十分高速で、プライバシーの利点には十分な価値があります。</p></div>
+
+            <h2>このカテゴリーのツール</h2>
+            <div class="hub-tool-grid">
+                <a href="/ja/image-watermark/" class="card hub-card" data-slug="image-watermark"><div class="card-icon">🛡️</div><h3 class="card-title">画像透かし</h3><p class="card-description">画像に透かしを追加して著作権を保護します。</p></a>
+                <a href="/ja/image-converter/" class="card hub-card" data-slug="image-converter"><div class="card-icon">🖼️</div><h3 class="card-title">画像変換ツール</h3><p class="card-description">画像のサイズを変更し、WebP、JPEG、PNG形式に変換します。</p></a>
+                <a href="/ja/qr-generator/" class="card hub-card" data-slug="qr-generator"><div class="card-icon">📱</div><h3 class="card-title">QRコード生成</h3><p class="card-description">テキストまたはURLをQRコードに変換します。</p></a>
+                <a href="/ja/favicon-generator/" class="card hub-card" data-slug="favicon-generator"><div class="card-icon">🎯</div><h3 class="card-title">ファビコン生成</h3><p class="card-description">画像をさまざまなサイズのファビコンに変換します。</p></a>
+                <a href="/ja/thumbnail-downloader/" class="card hub-card" data-slug="thumbnail-downloader"><div class="card-icon">📺</div><h3 class="card-title">YouTubeサムネイルダウンローダー</h3><p class="card-description">YouTube動画のサムネイルを高画質（4K, HD）で抽出してダウンロード。無料で簡単なツール。</p></a>
+                <a href="/ja/image-editor/" class="card hub-card" data-slug="image-editor"><div class="card-icon">🎨</div><h3 class="card-title">画像エディタ</h3><p class="card-description">画像のトリミング、回転、フィルター適用ができます。</p></a>
+            </div>
+
+            <h2>よくある質問</h2>
+            <div class="hub-faq"><details><summary>画像は本当にどこにもアップロードされませんか？</summary><p>その通りです。すべての処理はブラウザのCanvas APIとJavaScriptで行われます。ブラウザのネットワークタブを開いて確認できます — 画像データがサーバーに送信されることは ありません。ファイルは完全にお使いのデバイス上に残ります。</p></details><details><summary>Web用にはどの画像フォーマットを選ぶべきですか？</summary><p>WebPがほとんどの用途で画質とファイルサイズのバランスが最も優れています。ロゴのような可逆透過が必要な場合はPNG、ファイルサイズが重要な写真にはJPEG、拡大縮小が必要なアイコンやイラストにはSVGを選んでください。AVIFはWebPよりさらに小さいですが、ブラウザのサポートはまだ追いついていません。</p></details><details><summary>フォーマット変換で画質は劣化しますか？</summary><p>非可逆形式（JPEG）から別の非可逆形式への変換は、エンコードのたびにデータが破棄され画質劣化が蓄積します。可逆（PNG）から非可逆（JPEG/WebP）への変換では劣化は1回のみです。可逆形式間（PNG ↔ BMP）の変換では画質は完全に保持されます。コンバーターの品質スライダーで画質とファイルサイズのバランスを調整できます。</p></details><details><summary>ファイルサイズの制限はありますか？</summary><p>アップロードがないため、アップロード制限もありません。実質的な制限はデバイスのRAMとブラウザに依存します。最近のデバイスであれば20〜50 MBの画像は問題なく処理できます。100 MB以上の非常に大きな画像はブラウザのタブが遅くなったりメモリ不足になる可能性があります。</p></details></div>
+
+            <div class="related-tools-section">
+                <h3>他のツール</h3>
+                <div class="related-buttons">
+                    <a href="/ja/dev-tools/" class="related-btn">開発者ツール</a><a
+                        href="/ja/color-converter/" class="related-btn">カラーコンバーター</a><a
+                        href="/ja/pdf-tools/" class="related-btn">PDFツール</a><a
+                        href="/ja/unit-converter/" class="related-btn">単位変換</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="site-footer"><div class="container"><div class="footer-content"><p>&copy; 2025 Utilify. All rights reserved.</p>
+                <p data-legal-links style="font-size: 0.875rem; margin-top: 8px;"><a href="/ja/about/">About</a> · <a href="/ja/privacy/">Privacy</a> · <a href="/ja/terms/">Terms</a></p></div></div></footer>
+    <script src="/assets/js/common.js"></script>
+    <script>
+        // GA4: log hub-page entry. `source` distinguishes how the visitor
+        // arrived (chip = index subcategory link, breadcrumb = tool-page
+        // breadcrumb, direct = anything else). See ?src= set by build.py.
+        (function () {
+            var src = new URLSearchParams(location.search).get('src');
+            if (src !== 'chip' && src !== 'breadcrumb') src = 'direct';
+            if (typeof gtag === 'function') {
+                gtag('event', 'hub_navigation', { hub_slug: 'image-tools', source: src });
+            }
+        })();
+    </script>
+    <script data-utilify-sw>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){});});}</script>
+    <script data-utilify-theme-toggle-script>(function(){var b=document.getElementById("themeToggle");if(!b)return;function p(){var t=document.documentElement.getAttribute("data-theme")||"light";b.textContent=t==="dark"?"☀️":"🌙";b.setAttribute("aria-pressed",String(t==="dark"));b.setAttribute("aria-label",t==="dark"?b.dataset.ariaToLight:b.dataset.ariaToDark);}p();b.addEventListener("click",function(){var c=document.documentElement.getAttribute("data-theme")||"light";var n=c==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",n);try{localStorage.setItem("utilify_theme",n);}catch(e){}p();if(typeof gtag==="function"){gtag("event","theme_toggle",{next_theme:n});}});})();</script>
+    <script data-utilify-fav-toggle-script>(function(){var btn=document.querySelector(".fav-toggle-page");if(!btn)return;var m=location.pathname.match(/^\/[^\/]+\/([^\/]+)\/?$/);if(!m)return;var slug=m[1],K="utilify_favorites";function g(){return (localStorage.getItem(K)||"").split(",").filter(Boolean);}function s(a){localStorage.setItem(K,Array.from(new Set(a)).join(","));}function p(f){btn.textContent=f?"★":"☆";btn.classList.toggle("is-fav",f);btn.setAttribute("aria-label",f?btn.dataset.removeLabel:btn.dataset.addLabel);btn.setAttribute("aria-pressed",String(f));}p(g().indexOf(slug)>-1);btn.addEventListener("click",function(){var a=g(),n=a.indexOf(slug)>-1?a.filter(function(x){return x!==slug;}):a.concat([slug]);s(n);var f=n.indexOf(slug)>-1;p(f);if(typeof gtag==="function"){gtag("event","tool_favorite",{tool_slug:slug,action:f?"add":"remove"});}});})();</script>
+</body>
+
+</html>

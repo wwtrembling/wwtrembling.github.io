@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+    <title>이미지 도구 — 변환·워터마크·편집·파비콘·QR 생성 - Utilify</title>
+    <meta name="description" content="브라우저에서 100% 동작하는 무료 이미지 도구. 포맷 변환, 워터마크, 사진 편집, 파비콘·QR 생성, 썸네일 다운로드. 서버 업로드 없이 완전한 개인정보 보호.">
+    <link rel="canonical" href="https://utilifyapp.net/ko/image-tools/">
+
+    <meta property="og:title" content="이미지 도구 - Utilify">
+    <meta property="og:description" content="변환·워터마크·편집·생성 — 모든 이미지 처리가 브라우저에서.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://utilifyapp.net/ko/image-tools/">
+
+    <link rel="alternate" hreflang="en" href="https://utilifyapp.net/en/image-tools/">
+    <link rel="alternate" hreflang="ko" href="https://utilifyapp.net/ko/image-tools/">
+    <link rel="alternate" hreflang="vi" href="https://utilifyapp.net/vi/image-tools/">
+    <link rel="alternate" hreflang="th" href="https://utilifyapp.net/th/image-tools/">
+    <link rel="alternate" hreflang="de" href="https://utilifyapp.net/de/image-tools/">
+    <link rel="alternate" hreflang="pt" href="https://utilifyapp.net/pt/image-tools/">
+    <link rel="alternate" hreflang="id" href="https://utilifyapp.net/id/image-tools/">
+    <link rel="alternate" hreflang="hi" href="https://utilifyapp.net/hi/image-tools/">
+    <link rel="alternate" hreflang="ja" href="https://utilifyapp.net/ja/image-tools/">
+    <link rel="alternate" hreflang="zh-Hans" href="https://utilifyapp.net/zh-cn/image-tools/">
+    <link rel="alternate" hreflang="zh-Hant" href="https://utilifyapp.net/zh-tw/image-tools/">
+    <link rel="alternate" hreflang="x-default" href="https://utilifyapp.net/en/image-tools/">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "이미지 도구 모음",
+        "description": "이미지 변환, 워터마크, 편집, 생성을 위한 도구 큐레이션.",
+        "url": "https://utilifyapp.net/ko/image-tools/",
+        "inLanguage": "ko"
+    }
+    </script>
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "홈",
+      "item": "https://utilifyapp.net/ko/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "이미지 도구",
+      "item": "https://utilifyapp.net/ko/image-tools/"
+    }
+  ]
+}</script>
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "이미지가 정말 어디에도 업로드되지 않나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "맞습니다. 모든 처리는 브라우저의 Canvas API와 JavaScript로 수행됩니다. 브라우저의 네트워크 탭을 열어 확인해 보세요 — 이미지 데이터가 어떤 서버로도 전송되지 않습니다. 파일은 전적으로 여러분의 기기에 남아 있습니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "웹용으로 어떤 이미지 포맷을 선택해야 하나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "WebP가 대부분의 용도에서 화질과 파일 크기의 균형이 가장 좋습니다. 로고처럼 무손실 투명도가 필요하면 PNG, 파일 크기가 중요한 사진에는 JPEG, 확대/축소가 자유로워야 하는 아이콘·일러스트에는 SVG를 사용하세요. AVIF는 WebP보다 더 작지만 브라우저 지원이 아직 완전하지 않습니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "포맷을 변환하면 화질이 떨어지나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "손실 포맷(JPEG)에서 다른 손실 포맷으로 변환하면 인코딩마다 데이터가 버려져 화질이 누적 저하됩니다. 무손실(PNG)에서 손실(JPEG/WebP)로 가면 한 번만 저하됩니다. 무손실 포맷 간(PNG ↔ BMP) 변환은 화질이 완벽하게 보존됩니다. 변환기의 품질 슬라이더로 화질과 파일 크기의 균형을 조절할 수 있습니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "파일 크기 제한이 있나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "업로드가 없으므로 업로드 제한도 없습니다. 실질적인 제한은 기기의 RAM과 브라우저에 달려 있습니다. 최신 기기 대부분은 20~50 MB 이미지를 무리 없이 처리합니다. 100 MB 이상의 매우 큰 이미지는 브라우저 탭이 느려지거나 메모리 부족이 발생할 수 있습니다."
+      }
+    }
+  ]
+}</script>
+    <link rel="manifest" href="/manifest.json">
+    <script data-utilify-ga4>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("consent","default",{"ad_storage":"denied","ad_user_data":"denied","ad_personalization":"denied","analytics_storage":"denied","functionality_storage":"granted","security_storage":"granted","wait_for_update":500});gtag("js",new Date());gtag("config","G-4N18KB15VT");</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4N18KB15VT"></script>
+    <!-- utilify-adsense --><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631" crossorigin="anonymous"></script>
+    <meta data-utilify-og property="og:image" content="https://utilifyapp.net/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Utilify">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://utilifyapp.net/assets/og-image.png">
+    <meta property="og:locale" content="ko_KR">
+    <link data-utilify-favicon rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <script data-utilify-theme-init>(function(){try{var s=localStorage.getItem("utilify_theme");var t=(s==="dark"||s==="light")?s:(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
+    <meta name="robots" content="index, follow">
+    <script data-utilify-jsonld type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "이미지 도구 — 변환·워터마크·편집·파비콘·QR 생성 - Utilify",
+    "description": "브라우저에서 100% 동작하는 무료 이미지 도구. 포맷 변환, 워터마크, 사진 편집, 파비콘·QR 생성, 썸네일 다운로드. 서버 업로드 없이 완전한 개인정보 보호.",
+    "url": "https://utilifyapp.net/ko/image-tools/",
+    "inLanguage": "ko",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+</head>
+
+<body>
+    <a data-utilify-skip class="skip-link" href="#main">본문으로 건너뛰기</a>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header"><div class="container"><div class="header-content"><a href="/ko/" class="site-logo">🛠️ Utilify</a><button data-utilify-theme-toggle id="themeToggle" class="theme-toggle" type="button" aria-label="다크 모드로 전환" data-aria-to-dark="다크 모드로 전환" data-aria-to-light="라이트 모드로 전환">🌙</button></div></div></header>
+    <main class="main-content" id="main">
+        <div class="container-narrow">
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+                <ol>
+                    <li><a href="/ko/">홈</a></li>
+                    <li aria-current="page">이미지 도구</li>
+                </ol>
+            </nav>
+            <h1>🖼️ 이미지 도구</h1>
+
+            <div class="page-intro"><p>프로필 사진, 마케팅 배너, 앱 아이콘, 포장지의 QR 코드 — 이미지는 어디에나 있습니다. 문제는 대부분의 온라인 이미지 도구가 파일을 다른 누군가의 서버에 업로드하도록 요구한다는 것입니다. 여러분의 사진, 브랜드 자산, 때로는 민감한 스크린샷까지 통제할 수 없는 인프라를 거치게 됩니다.</p><p>이 페이지의 모든 도구는 다릅니다. <strong>모든 처리가 브라우저 안에서 이루어집니다.</strong> 이미지가 어떤 서버에도 업로드되지 않으며, 처음부터 끝까지 여러분의 기기에 머무릅니다. PNG를 WebP로 변환하든, 사진 묶음에 워터마크를 찍든, 사이트용 파비콘을 만들든 — 픽셀이 여러분의 기기를 벗어나지 않습니다. 계정 가입도, 백엔드가 정하는 파일 크기 제한도, 누가 내 파일에 접근할지 걱정할 필요도 없습니다.</p><p>대신 매우 큰 파일은 기기의 처리 성능과 메모리에 의존합니다. 웹 에셋, 소셜 미디어 그래픽, 아이콘, QR 코드 같은 일반적인 이미지 작업에는 브라우저 기반 처리가 충분히 빠르고, 프라이버시 이점은 그만한 가치가 있습니다.</p></div>
+
+            <h2>이 카테고리의 도구</h2>
+            <div class="hub-tool-grid">
+                <a href="/ko/image-watermark/" class="card hub-card" data-slug="image-watermark"><div class="card-icon">🛡️</div><h3 class="card-title">이미지 워터마크</h3><p class="card-description">이미지에 워터마크를 추가하여 저작권을 보호하세요.</p></a>
+                <a href="/ko/image-converter/" class="card hub-card" data-slug="image-converter"><div class="card-icon">🖼️</div><h3 class="card-title">이미지 변환기</h3><p class="card-description">이미지 크기를 조정하고 WebP, JPEG, PNG 형식으로 변환하세요.</p></a>
+                <a href="/ko/qr-generator/" class="card hub-card" data-slug="qr-generator"><div class="card-icon">📱</div><h3 class="card-title">QR 코드 생성기</h3><p class="card-description">텍스트나 URL을 QR 코드로 변환하세요.</p></a>
+                <a href="/ko/favicon-generator/" class="card hub-card" data-slug="favicon-generator"><div class="card-icon">🎯</div><h3 class="card-title">파비콘 생성기</h3><p class="card-description">이미지를 다양한 크기의 파비콘으로 변환하세요.</p></a>
+                <a href="/ko/thumbnail-downloader/" class="card hub-card" data-slug="thumbnail-downloader"><div class="card-icon">📺</div><h3 class="card-title">유튜브 썸네일 다운로더</h3><p class="card-description">유튜브 영상의 썸네일 이미지를 고화질(4K, HD)로 추출하고 다운로드하세요. 무료, 간편한 도구.</p></a>
+                <a href="/ko/image-editor/" class="card hub-card" data-slug="image-editor"><div class="card-icon">🎨</div><h3 class="card-title">이미지 편집기</h3><p class="card-description">이미지를 자르고, 회전하고, 필터를 적용하세요.</p></a>
+            </div>
+
+            <h2>자주 묻는 질문</h2>
+            <div class="hub-faq"><details><summary>이미지가 정말 어디에도 업로드되지 않나요?</summary><p>맞습니다. 모든 처리는 브라우저의 Canvas API와 JavaScript로 수행됩니다. 브라우저의 네트워크 탭을 열어 확인해 보세요 — 이미지 데이터가 어떤 서버로도 전송되지 않습니다. 파일은 전적으로 여러분의 기기에 남아 있습니다.</p></details><details><summary>웹용으로 어떤 이미지 포맷을 선택해야 하나요?</summary><p>WebP가 대부분의 용도에서 화질과 파일 크기의 균형이 가장 좋습니다. 로고처럼 무손실 투명도가 필요하면 PNG, 파일 크기가 중요한 사진에는 JPEG, 확대/축소가 자유로워야 하는 아이콘·일러스트에는 SVG를 사용하세요. AVIF는 WebP보다 더 작지만 브라우저 지원이 아직 완전하지 않습니다.</p></details><details><summary>포맷을 변환하면 화질이 떨어지나요?</summary><p>손실 포맷(JPEG)에서 다른 손실 포맷으로 변환하면 인코딩마다 데이터가 버려져 화질이 누적 저하됩니다. 무손실(PNG)에서 손실(JPEG/WebP)로 가면 한 번만 저하됩니다. 무손실 포맷 간(PNG ↔ BMP) 변환은 화질이 완벽하게 보존됩니다. 변환기의 품질 슬라이더로 화질과 파일 크기의 균형을 조절할 수 있습니다.</p></details><details><summary>파일 크기 제한이 있나요?</summary><p>업로드가 없으므로 업로드 제한도 없습니다. 실질적인 제한은 기기의 RAM과 브라우저에 달려 있습니다. 최신 기기 대부분은 20~50 MB 이미지를 무리 없이 처리합니다. 100 MB 이상의 매우 큰 이미지는 브라우저 탭이 느려지거나 메모리 부족이 발생할 수 있습니다.</p></details></div>
+
+            <div class="related-tools-section">
+                <h3>다른 도구</h3>
+                <div class="related-buttons">
+                    <a href="/ko/dev-tools/" class="related-btn">개발자 도구</a><a
+                        href="/ko/color-converter/" class="related-btn">색상 변환기</a><a
+                        href="/ko/pdf-tools/" class="related-btn">PDF 도구</a><a
+                        href="/ko/unit-converter/" class="related-btn">단위 변환기</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="site-footer"><div class="container"><div class="footer-content"><p>&copy; 2025 Utilify. All rights reserved.</p>
+                <p data-legal-links style="font-size: 0.875rem; margin-top: 8px;"><a href="/ko/about/">소개</a> · <a href="/ko/privacy/">개인정보</a> · <a href="/ko/terms/">이용약관</a></p></div></div></footer>
+    <script src="/assets/js/common.js"></script>
+    <script>
+        // GA4: log hub-page entry. `source` distinguishes how the visitor
+        // arrived (chip = index subcategory link, breadcrumb = tool-page
+        // breadcrumb, direct = anything else). See ?src= set by build.py.
+        (function () {
+            var src = new URLSearchParams(location.search).get('src');
+            if (src !== 'chip' && src !== 'breadcrumb') src = 'direct';
+            if (typeof gtag === 'function') {
+                gtag('event', 'hub_navigation', { hub_slug: 'image-tools', source: src });
+            }
+        })();
+    </script>
+    <script data-utilify-sw>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){});});}</script>
+    <script data-utilify-theme-toggle-script>(function(){var b=document.getElementById("themeToggle");if(!b)return;function p(){var t=document.documentElement.getAttribute("data-theme")||"light";b.textContent=t==="dark"?"☀️":"🌙";b.setAttribute("aria-pressed",String(t==="dark"));b.setAttribute("aria-label",t==="dark"?b.dataset.ariaToLight:b.dataset.ariaToDark);}p();b.addEventListener("click",function(){var c=document.documentElement.getAttribute("data-theme")||"light";var n=c==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",n);try{localStorage.setItem("utilify_theme",n);}catch(e){}p();if(typeof gtag==="function"){gtag("event","theme_toggle",{next_theme:n});}});})();</script>
+    <script data-utilify-fav-toggle-script>(function(){var btn=document.querySelector(".fav-toggle-page");if(!btn)return;var m=location.pathname.match(/^\/[^\/]+\/([^\/]+)\/?$/);if(!m)return;var slug=m[1],K="utilify_favorites";function g(){return (localStorage.getItem(K)||"").split(",").filter(Boolean);}function s(a){localStorage.setItem(K,Array.from(new Set(a)).join(","));}function p(f){btn.textContent=f?"★":"☆";btn.classList.toggle("is-fav",f);btn.setAttribute("aria-label",f?btn.dataset.removeLabel:btn.dataset.addLabel);btn.setAttribute("aria-pressed",String(f));}p(g().indexOf(slug)>-1);btn.addEventListener("click",function(){var a=g(),n=a.indexOf(slug)>-1?a.filter(function(x){return x!==slug;}):a.concat([slug]);s(n);var f=n.indexOf(slug)>-1;p(f);if(typeof gtag==="function"){gtag("event","tool_favorite",{tool_slug:slug,action:f?"add":"remove"});}});})();</script>
+</body>
+
+</html>

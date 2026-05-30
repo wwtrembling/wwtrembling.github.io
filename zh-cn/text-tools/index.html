@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-6334819180242631">
+    <title>Text Tools — Diff, Lorem Ipsum, Markdown Preview, Reading Time - Utilify</title>
+    <meta name="description" content="Free text utilities that run entirely in your browser. Diff checker, lorem ipsum generator, markdown previewer, reading time estimator. No signup, no data sent to servers.">
+    <link rel="canonical" href="https://utilifyapp.net/zh-cn/text-tools/">
+
+    <meta property="og:title" content="Text Tools - Utilify">
+    <meta property="og:description" content="Text diff, lorem ipsum, markdown preview, and reading time — all client-side.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://utilifyapp.net/zh-cn/text-tools/">
+
+    <link rel="alternate" hreflang="en" href="https://utilifyapp.net/en/text-tools/">
+    <link rel="alternate" hreflang="ko" href="https://utilifyapp.net/ko/text-tools/">
+    <link rel="alternate" hreflang="vi" href="https://utilifyapp.net/vi/text-tools/">
+    <link rel="alternate" hreflang="th" href="https://utilifyapp.net/th/text-tools/">
+    <link rel="alternate" hreflang="de" href="https://utilifyapp.net/de/text-tools/">
+    <link rel="alternate" hreflang="pt" href="https://utilifyapp.net/pt/text-tools/">
+    <link rel="alternate" hreflang="id" href="https://utilifyapp.net/id/text-tools/">
+    <link rel="alternate" hreflang="hi" href="https://utilifyapp.net/hi/text-tools/">
+    <link rel="alternate" hreflang="ja" href="https://utilifyapp.net/ja/text-tools/">
+    <link rel="alternate" hreflang="zh-Hans" href="https://utilifyapp.net/zh-cn/text-tools/">
+    <link rel="alternate" hreflang="zh-Hant" href="https://utilifyapp.net/zh-tw/text-tools/">
+    <link rel="alternate" hreflang="x-default" href="https://utilifyapp.net/en/text-tools/">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "Text Tools",
+        "description": "Curated text utilities for comparing, generating, previewing, and analyzing text.",
+        "url": "https://utilifyapp.net/zh-cn/text-tools/",
+        "inLanguage": "zh-cn"
+    }
+    </script>
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://utilifyapp.net/zh-cn/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Text Tools",
+      "item": "https://utilifyapp.net/zh-cn/text-tools/"
+    }
+  ]
+}</script>
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What algorithm does the diff checker use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The diff checker uses a longest-common-subsequence (LCS) algorithm similar to the one behind Unix diff. It compares text line by line, highlights additions and deletions, and optionally shows inline character-level changes. It runs entirely in JavaScript — no text is sent to any server."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I trust that my text stays private?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Every tool on this page is 100% client-side. Open your browser's DevTools Network tab and verify: no requests leave the page when you paste, type, or generate text. Your content never touches a server, a database, or a third-party API."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is reading time calculated?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The estimator counts words and divides by an average adult reading speed of roughly 200–250 words per minute (adjustable). Research shows that reading speed varies with content complexity; technical material is slower than casual prose. Treat the number as a practical estimate, not a precise measurement."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does the Markdown previewer support GitHub-Flavored Markdown?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The previewer handles GFM extensions — tables, task lists, fenced code blocks, strikethrough, and autolinks — in addition to the standard CommonMark spec. Rendering happens locally using a JavaScript parser."
+      }
+    }
+  ]
+}</script>
+    <link rel="manifest" href="/manifest.json">
+    <script data-utilify-ga4>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("consent","default",{"ad_storage":"denied","ad_user_data":"denied","ad_personalization":"denied","analytics_storage":"denied","functionality_storage":"granted","security_storage":"granted","wait_for_update":500});gtag("js",new Date());gtag("config","G-4N18KB15VT");</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4N18KB15VT"></script>
+    <!-- utilify-adsense --><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334819180242631" crossorigin="anonymous"></script>
+    <meta data-utilify-og property="og:image" content="https://utilifyapp.net/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Utilify">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://utilifyapp.net/assets/og-image.png">
+    <meta property="og:locale" content="zh_CN">
+    <link data-utilify-favicon rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <script data-utilify-theme-init>(function(){try{var s=localStorage.getItem("utilify_theme");var t=(s==="dark"||s==="light")?s:(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
+    <meta name="robots" content="index, follow">
+    <script data-utilify-jsonld type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Text Tools — Diff, Lorem Ipsum, Markdown Preview, Reading Time - Utilify",
+    "description": "Free text utilities that run entirely in your browser. Diff checker, lorem ipsum generator, markdown previewer, reading time estimator. No signup, no data sent to servers.",
+    "url": "https://utilifyapp.net/zh-cn/text-tools/",
+    "inLanguage": "zh-cn",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+</head>
+
+<body>
+    <a data-utilify-skip class="skip-link" href="#main">Skip to content</a>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header"><div class="container"><div class="header-content"><a href="/zh-cn/" class="site-logo">🛠️ Utilify</a><button data-utilify-theme-toggle id="themeToggle" class="theme-toggle" type="button" aria-label="Switch to dark mode" data-aria-to-dark="Switch to dark mode" data-aria-to-light="Switch to light mode">🌙</button></div></div></header>
+    <main class="main-content" id="main">
+        <div class="container-narrow">
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+                <ol>
+                    <li><a href="/zh-cn/">Home</a></li>
+                    <li aria-current="page">Text Tools</li>
+                </ol>
+            </nav>
+            <h1>📝 Text Tools</h1>
+
+            <div class="page-intro"><p>Text is the raw material of almost every workflow — code, documentation, email drafts, blog posts. Yet the small tasks that come up constantly — comparing two versions of a file, generating placeholder copy, previewing Markdown before committing, or checking whether an article is a five-minute or fifteen-minute read — rarely justify opening a heavyweight desktop app or pasting sensitive content into an unknown website.</p><p>The tools below handle those everyday text tasks directly in your browser. <strong>No data ever leaves your machine.</strong> Every diff is computed locally, every lorem ipsum paragraph is generated on the client, every Markdown render happens in a sandboxed preview pane. There is no server round-trip, no account, and nothing to install. Just open the page, paste or type, and get the result instantly.</p><p>Whether you are a developer reviewing pull-request changes, a writer polishing a draft, or a designer filling wireframes with realistic dummy text, these utilities save you a context switch and keep your content private.</p></div>
+
+            <h2>Tools in this category</h2>
+            <div class="hub-tool-grid">
+                <a href="/zh-cn/text-utils/" class="card hub-card" data-slug="text-utils"><div class="card-icon">📝</div><h3 class="card-title">文本工具箱</h3><p class="card-description">统计单词，字符，删除重复项，转换大小写等。</p></a>
+                <a href="/zh-cn/lorem-ipsum/" class="card hub-card" data-slug="lorem-ipsum"><div class="card-icon">📋</div><h3 class="card-title">Lorem Ipsum 生成器</h3><p class="card-description">生成 Lorem Ipsum 占位符文本。</p></a>
+                <a href="/zh-cn/diff-checker/" class="card hub-card" data-slug="diff-checker"><div class="card-icon">🔀</div><h3 class="card-title">文本差异对比</h3><p class="card-description">在线比较两个文本文件的差异。高亮显示变化。</p></a>
+                <a href="/zh-cn/markdown-previewer/" class="card hub-card" data-slug="markdown-previewer"><div class="card-icon">📝</div><h3 class="card-title">Markdown 编辑器 & 预览</h3><p class="card-description">实时 Markdown 预览工具。轻松编写 Markdown 并立即查看转换后的 HTML。</p></a>
+                <a href="/zh-cn/reading-time/" class="card hub-card" data-slug="reading-time"><div class="card-icon">📖</div><h3 class="card-title">Reading Time Estimator</h3><p class="card-description">Words → reading & spoken-time estimates with adjustable WPM.</p></a>
+            </div>
+
+            <h2>Frequently asked questions</h2>
+            <div class="hub-faq"><details><summary>What algorithm does the diff checker use?</summary><p>The diff checker uses a longest-common-subsequence (LCS) algorithm similar to the one behind Unix <code>diff</code>. It compares text line by line, highlights additions and deletions, and optionally shows inline character-level changes. It runs entirely in JavaScript — no text is sent to any server.</p></details><details><summary>Can I trust that my text stays private?</summary><p>Yes. Every tool on this page is 100% client-side. Open your browser's DevTools Network tab and verify: no requests leave the page when you paste, type, or generate text. Your content never touches a server, a database, or a third-party API.</p></details><details><summary>How is reading time calculated?</summary><p>The estimator counts words and divides by an average adult reading speed of roughly 200–250 words per minute (adjustable). Research shows that reading speed varies with content complexity; technical material is slower than casual prose. Treat the number as a practical estimate, not a precise measurement.</p></details><details><summary>Does the Markdown previewer support GitHub-Flavored Markdown?</summary><p>Yes. The previewer handles GFM extensions — tables, task lists, fenced code blocks, strikethrough, and autolinks — in addition to the standard CommonMark spec. Rendering happens locally using a JavaScript parser.</p></details></div>
+
+            <div class="related-tools-section">
+                <h3>Other tools</h3>
+                <div class="related-buttons">
+                    <a href="/zh-cn/dev-tools/" class="related-btn">Developer Tools</a><a
+                        href="/zh-cn/json-formatter/" class="related-btn">JSON Formatter</a><a
+                        href="/zh-cn/date-calculator/" class="related-btn">Date Calculator</a><a
+                        href="/zh-cn/unit-converter/" class="related-btn">Unit Converter</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="site-footer"><div class="container"><div class="footer-content"><p>&copy; 2025 Utilify. 保留所有权利。</p>
+                <p data-legal-links style="font-size: 0.875rem; margin-top: 8px;"><a href="/zh-cn/about/">About</a> · <a href="/zh-cn/privacy/">Privacy</a> · <a href="/zh-cn/terms/">Terms</a></p></div></div></footer>
+    <script src="/assets/js/common.js"></script>
+    <script>
+        // GA4: log hub-page entry. `source` distinguishes how the visitor
+        // arrived (chip = index subcategory link, breadcrumb = tool-page
+        // breadcrumb, direct = anything else). See ?src= set by build.py.
+        (function () {
+            var src = new URLSearchParams(location.search).get('src');
+            if (src !== 'chip' && src !== 'breadcrumb') src = 'direct';
+            if (typeof gtag === 'function') {
+                gtag('event', 'hub_navigation', { hub_slug: 'text-tools', source: src });
+            }
+        })();
+    </script>
+    <script data-utilify-sw>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){});});}</script>
+    <script data-utilify-theme-toggle-script>(function(){var b=document.getElementById("themeToggle");if(!b)return;function p(){var t=document.documentElement.getAttribute("data-theme")||"light";b.textContent=t==="dark"?"☀️":"🌙";b.setAttribute("aria-pressed",String(t==="dark"));b.setAttribute("aria-label",t==="dark"?b.dataset.ariaToLight:b.dataset.ariaToDark);}p();b.addEventListener("click",function(){var c=document.documentElement.getAttribute("data-theme")||"light";var n=c==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",n);try{localStorage.setItem("utilify_theme",n);}catch(e){}p();if(typeof gtag==="function"){gtag("event","theme_toggle",{next_theme:n});}});})();</script>
+    <script data-utilify-fav-toggle-script>(function(){var btn=document.querySelector(".fav-toggle-page");if(!btn)return;var m=location.pathname.match(/^\/[^\/]+\/([^\/]+)\/?$/);if(!m)return;var slug=m[1],K="utilify_favorites";function g(){return (localStorage.getItem(K)||"").split(",").filter(Boolean);}function s(a){localStorage.setItem(K,Array.from(new Set(a)).join(","));}function p(f){btn.textContent=f?"★":"☆";btn.classList.toggle("is-fav",f);btn.setAttribute("aria-label",f?btn.dataset.removeLabel:btn.dataset.addLabel);btn.setAttribute("aria-pressed",String(f));}p(g().indexOf(slug)>-1);btn.addEventListener("click",function(){var a=g(),n=a.indexOf(slug)>-1?a.filter(function(x){return x!==slug;}):a.concat([slug]);s(n);var f=n.indexOf(slug)>-1;p(f);if(typeof gtag==="function"){gtag("event","tool_favorite",{tool_slug:slug,action:f?"add":"remove"});}});})();</script>
+</body>
+
+</html>
