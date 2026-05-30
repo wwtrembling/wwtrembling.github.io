@@ -5,7 +5,7 @@ import sys
 # Add parent directory to path to import _data
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from _data.lang import LANGUAGES, COMMON, INDEX_PAGE, SQL_FORMATTER, JSON_FORMATTER, BASE64_CONVERTER, PASSWORD_GENERATOR, UNIT_CONVERTER, DIFF_CHECKER, IMAGE_CONVERTER, QR_GENERATOR, COLOR_CONVERTER, LOREM_IPSUM, MARKDOWN_PREVIEWER, REGEX_TESTER, TEXT_UTILS, BMI_CALCULATOR, DATE_CALCULATOR, TIMER, IMAGE_WATERMARK, FAVICON_GENERATOR, THUMBNAIL_DOWNLOADER, REACTION_TEST, JWT_DECODER, HASH_GENERATOR, UNIX_TIMESTAMP, UUID_GENERATOR, URL_ENCODER, IMAGE_EDITOR, JPA_CONVERTER, JSON_TO_TS, EXCEL_TO_SQL, JSON_TO_EXCEL, JSON_LD_GENERATOR, PDF_TOOLS, TEXT_TO_DIAGRAM, ABOUT, PRIVACY, TERMS, NOT_FOUND, PROMPT_PII_SCRUBBER, CLAUDE_MD_GEN, MCP_CONFIG_GEN, TOKEN_COUNTER, AI_IMAGE_INSPECTOR, CHATGPT_TO_BLOG, LOAN_CALCULATOR, COMPOUND_INTEREST, RETIREMENT_CALCULATOR, CALORIE_CALCULATOR, PREGNANCY_CALCULATOR, BODY_FAT_CALCULATOR, FINANCE_HUB, HEALTH_HUB, RAG_CHUNKER, FEW_SHOT_FORMATTER, JSON_SCHEMA_VALIDATOR, TIP_CALCULATOR, PERCENTAGE_CALCULATOR, DISCOUNT_CALCULATOR, SLEEP_CALCULATOR, READING_TIME, WATER_INTAKE, FILE_SIZE_CONVERTER, AGE_CALCULATOR
+from _data.lang import LANGUAGES, COMMON, INDEX_PAGE, SQL_FORMATTER, JSON_FORMATTER, BASE64_CONVERTER, PASSWORD_GENERATOR, UNIT_CONVERTER, DIFF_CHECKER, IMAGE_CONVERTER, QR_GENERATOR, COLOR_CONVERTER, LOREM_IPSUM, MARKDOWN_PREVIEWER, REGEX_TESTER, TEXT_UTILS, BMI_CALCULATOR, DATE_CALCULATOR, TIMER, IMAGE_WATERMARK, FAVICON_GENERATOR, THUMBNAIL_DOWNLOADER, REACTION_TEST, JWT_DECODER, HASH_GENERATOR, UNIX_TIMESTAMP, UUID_GENERATOR, URL_ENCODER, IMAGE_EDITOR, JPA_CONVERTER, JSON_TO_TS, EXCEL_TO_SQL, JSON_TO_EXCEL, JSON_LD_GENERATOR, PDF_TOOLS, TEXT_TO_DIAGRAM, ABOUT, PRIVACY, TERMS, NOT_FOUND, PROMPT_PII_SCRUBBER, CLAUDE_MD_GEN, MCP_CONFIG_GEN, TOKEN_COUNTER, AI_IMAGE_INSPECTOR, CHATGPT_TO_BLOG, LOAN_CALCULATOR, COMPOUND_INTEREST, RETIREMENT_CALCULATOR, CALORIE_CALCULATOR, PREGNANCY_CALCULATOR, BODY_FAT_CALCULATOR, FINANCE_HUB, HEALTH_HUB, DEV_HUB, IMAGE_HUB, TEXT_HUB, RAG_CHUNKER, FEW_SHOT_FORMATTER, JSON_SCHEMA_VALIDATOR, TIP_CALCULATOR, PERCENTAGE_CALCULATOR, DISCOUNT_CALCULATOR, SLEEP_CALCULATOR, READING_TIME, WATER_INTAKE, FILE_SIZE_CONVERTER, AGE_CALCULATOR
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE_DIR = os.path.join(BASE_DIR, '_templates')
@@ -602,6 +602,17 @@ TOOL_SUBCATEGORIES = {
     'calorie-calculator': 'health',
     'pregnancy-calculator': 'health',
     'body-fat-calculator': 'health',
+    # Developer sub-categories (hub: dev-tools)
+    'json-formatter': 'dev-tools', 'jwt-decoder': 'dev-tools', 'hash-generator': 'dev-tools',
+    'uuid-generator': 'dev-tools', 'base64-converter': 'dev-tools', 'url-encoder': 'dev-tools',
+    'sql-formatter': 'dev-tools', 'regex-tester': 'dev-tools', 'json-to-ts': 'dev-tools',
+    'jpa-converter': 'dev-tools', 'json-ld-generator': 'dev-tools', 'json-schema-validator': 'dev-tools',
+    # Image sub-categories (hub: image-tools)
+    'image-converter': 'image-tools', 'image-watermark': 'image-tools', 'image-editor': 'image-tools',
+    'favicon-generator': 'image-tools', 'qr-generator': 'image-tools', 'thumbnail-downloader': 'image-tools',
+    # Text sub-categories (hub: text-tools)
+    'text-utils': 'text-tools', 'diff-checker': 'text-tools', 'lorem-ipsum': 'text-tools',
+    'markdown-previewer': 'text-tools', 'reading-time': 'text-tools',
 }
 
 # Map each main category to the list of sub-categories that should appear when
@@ -618,6 +629,12 @@ CATEGORY_SUBCATS = {
 HUB_PAGES = {
     'finance': {'data': FINANCE_HUB, 'icon': '💰', 'other_hub': 'health'},
     'health':  {'data': HEALTH_HUB,  'icon': '🩺', 'other_hub': 'finance'},
+    'dev-tools':   {'data': DEV_HUB,   'icon': '💻', 'other_hub': 'image-tools',
+                    'related_slug_1': 'json-formatter', 'related_slug_2': 'token-counter', 'related_slug_3': 'unit-converter'},
+    'image-tools': {'data': IMAGE_HUB, 'icon': '🖼️', 'other_hub': 'dev-tools',
+                    'related_slug_1': 'color-converter', 'related_slug_2': 'pdf-tools', 'related_slug_3': 'unit-converter'},
+    'text-tools':  {'data': TEXT_HUB,  'icon': '📝', 'other_hub': 'dev-tools',
+                    'related_slug_1': 'json-formatter', 'related_slug_2': 'date-calculator', 'related_slug_3': 'unit-converter'},
 }
 
 # Search-keyword aliases per tool. Powers the index page's live search bar
@@ -685,7 +702,9 @@ TOOL_KEYWORDS = {
 
 # Slugs of the 5 tools surfaced in the "Featured" hero strip.
 FEATURED_SLUGS = ['json-formatter', 'jwt-decoder', 'uuid-generator',
-                  'base64-converter', 'hash-generator']
+                  'base64-converter', 'hash-generator', 'unit-converter',
+                  'image-converter', 'qr-generator', 'token-counter',
+                  'date-calculator']
 
 # Conversion-pair slugs surfaced in the "Popular Conversions" section,
 # linking the index to /convert/* SEO pages for crawl + discovery.
@@ -1118,6 +1137,11 @@ def build_hub_pages():
             data['hub_icon'] = hub_icon
             data['other_hub_slug'] = other_hub
             data['alternate_links'] = alt_links_html
+            # Configurable related-tool slugs per hub. Defaults match the
+            # original hardcoded bmi-calculator / date-calculator / unit-converter.
+            data.setdefault('related_slug_1', hub_meta.get('related_slug_1', 'bmi-calculator'))
+            data.setdefault('related_slug_2', hub_meta.get('related_slug_2', 'date-calculator'))
+            data.setdefault('related_slug_3', hub_meta.get('related_slug_3', 'unit-converter'))
 
             cards = []
             for t_path, icon, t_dict in tools_in_hub:

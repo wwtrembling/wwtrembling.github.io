@@ -8304,6 +8304,519 @@ HEALTH_HUB = {
 }
 
 
+DEV_HUB = {
+    "en": {
+        "title": "Developer Tools",
+        "meta_title": "Developer Tools — JSON, JWT, Hash, UUID, Base64, SQL & More - Utilify",
+        "meta_desc": (
+            "Free browser-based developer tools: JSON formatter, JWT decoder, hash generator, UUID, Base64, "
+            "URL encoder, SQL formatter, regex tester, and more. No signup, no server uploads."
+        ),
+        "og_title": "Developer Tools - Utilify",
+        "og_desc": "JSON, JWT, hash, UUID, Base64, SQL, regex — all client-side dev tools in one place.",
+        "json_name": "Developer Tools",
+        "json_desc": "Curated collection of browser-based developer utilities for encoding, formatting, and validation.",
+        "h1": "Developer Tools",
+        "intro_html": (
+            "<p>Developers spend a surprising amount of time on small, repetitive tasks: "
+            "pretty-printing a JSON blob from an API response, decoding a JWT to inspect its claims, "
+            "generating a UUID for a database seed, or escaping a URL parameter. Each task is trivial "
+            "in isolation, but they add up — and reaching for a random online tool means trusting a "
+            "third-party server with potentially sensitive data.</p>"
+            "<p>The tools below handle the encoding, formatting, hashing, and validation tasks that "
+            "come up every day in backend and frontend work. Every tool runs <strong>entirely in your "
+            "browser</strong> — your payloads, tokens, and queries never leave the page. There is no "
+            "account to create, no data uploaded to a server, and no analytics on your inputs. "
+            "Bookmark the ones you use most and they'll load instantly, even offline if you've "
+            "installed the PWA.</p>"
+            "<p>Whether you're debugging a malformed JSON response, validating a schema before "
+            "shipping an API, or building structured data for SEO, these tools give you a fast, "
+            "private answer without context-switching out of your workflow.</p>"
+        ),
+        "tools_header": "Tools in this category",
+        "faq_header": "Frequently asked questions",
+        "faq_html": (
+            "<details><summary>Is my data safe? Do you store anything I paste?</summary>"
+            "<p>No. Every tool runs entirely in your browser using client-side JavaScript. Your input "
+            "is never sent to a server, never logged, and never stored. You can verify this by opening "
+            "your browser's Network tab — no outbound requests are made when you use the tools.</p></details>"
+            "<details><summary>Can I use these tools offline?</summary>"
+            "<p>Yes. If you install Utilify as a PWA (Progressive Web App), all developer tools are "
+            "cached locally and work without an internet connection. Look for the install prompt in "
+            "your browser's address bar.</p></details>"
+            "<details><summary>Why does the JSON formatter reject my input?</summary>"
+            "<p>The formatter uses the browser's native <code>JSON.parse()</code>, which follows the "
+            "strict JSON specification. Common causes of rejection: trailing commas, single quotes "
+            "instead of double quotes, unquoted keys, or comments. If you're pasting from JavaScript "
+            "code, you may need to convert it to valid JSON first.</p></details>"
+            "<details><summary>Which hash algorithms should I use for password storage?</summary>"
+            "<p>None of the fast hash algorithms (MD5, SHA-1, SHA-256) are suitable for password "
+            "storage — they're too fast, making brute-force attacks feasible. Use bcrypt, scrypt, or "
+            "Argon2 instead. The hash generator here is useful for checksums, integrity verification, "
+            "and non-security hashing tasks.</p></details>"
+        ),
+        "related_header": "Other tools",
+        "related_other_hub": "Image Tools",
+        "related_bmi": "JSON Formatter",
+        "related_date": "Token Counter",
+        "related_unit": "Unit Converter",
+        "card_blurb": "JSON, JWT, hash, UUID, Base64, SQL, regex — all client-side dev tools."
+    },
+    "ko": {
+        "title": "개발자 도구 모음",
+        "meta_title": "개발자 도구 — JSON·JWT·해시·UUID·Base64·SQL 포매터 외 - Utilify",
+        "meta_desc": (
+            "브라우저에서 실행되는 무료 개발자 도구. JSON 포매터, JWT 디코더, 해시 생성, UUID, Base64, "
+            "URL 인코더, SQL 포매터, 정규식 테스터 등. 가입·서버 업로드 없음."
+        ),
+        "og_title": "개발자 도구 - Utilify",
+        "og_desc": "JSON·JWT·해시·UUID·Base64·SQL·정규식 — 클라이언트 사이드 개발 도구 모음.",
+        "json_name": "개발자 도구 모음",
+        "json_desc": "인코딩·포매팅·검증을 위한 브라우저 기반 개발자 유틸리티 큐레이션.",
+        "h1": "개발자 도구",
+        "intro_html": (
+            "<p>개발자는 생각보다 많은 시간을 사소하고 반복적인 작업에 씁니다. API 응답으로 받은 "
+            "JSON을 보기 좋게 정리하거나, JWT를 디코딩해서 클레임을 확인하거나, DB 시드용 UUID를 "
+            "만들거나, URL 파라미터를 이스케이프하거나. 하나하나는 간단하지만 쌓이면 무시할 수 없고, "
+            "임의의 온라인 도구를 사용하면 민감한 데이터를 제3자 서버에 맡기게 됩니다.</p>"
+            "<p>아래 도구들은 백엔드·프론트엔드 작업에서 매일 발생하는 인코딩, 포매팅, 해싱, "
+            "검증 작업을 처리합니다. 모든 도구가 <strong>브라우저에서만 동작</strong>합니다 — "
+            "페이로드, 토큰, 쿼리가 페이지 밖으로 전송되지 않습니다. 가입할 계정도, 서버에 "
+            "업로드되는 데이터도, 입력값에 대한 분석도 없습니다. 자주 쓰는 도구를 북마크하면 "
+            "PWA 설치 시 오프라인에서도 즉시 로딩됩니다.</p>"
+            "<p>잘못된 JSON 응답을 디버깅하든, API 배포 전 스키마를 검증하든, SEO용 구조화 데이터를 "
+            "만들든 — 워크플로를 벗어나지 않고 빠르고 안전하게 해결할 수 있습니다.</p>"
+        ),
+        "tools_header": "이 카테고리의 도구",
+        "faq_header": "자주 묻는 질문",
+        "faq_html": (
+            "<details><summary>내 데이터는 안전한가요? 붙여넣은 내용이 저장되나요?</summary>"
+            "<p>아닙니다. 모든 도구는 클라이언트 사이드 JavaScript로 브라우저 안에서만 실행됩니다. "
+            "입력 데이터가 서버로 전송되거나 로깅·저장되는 일은 없습니다. 브라우저 개발자 도구의 "
+            "Network 탭을 열면 도구 사용 시 외부 요청이 발생하지 않는 것을 직접 확인할 수 있습니다.</p></details>"
+            "<details><summary>오프라인에서도 사용할 수 있나요?</summary>"
+            "<p>네. Utilify를 PWA(Progressive Web App)로 설치하면 모든 개발자 도구가 로컬에 캐시되어 "
+            "인터넷 연결 없이도 동작합니다. 브라우저 주소창의 설치 프롬프트를 확인하세요.</p></details>"
+            "<details><summary>JSON 포매터가 입력을 거부하는 이유는?</summary>"
+            "<p>포매터는 브라우저의 네이티브 <code>JSON.parse()</code>를 사용하며, 이는 엄격한 JSON "
+            "사양을 따릅니다. 흔한 원인: 후행 쉼표, 큰따옴표 대신 작은따옴표 사용, 따옴표 없는 키, "
+            "주석 포함. JavaScript 코드에서 복사한 경우 먼저 유효한 JSON으로 변환해야 할 수 "
+            "있습니다.</p></details>"
+            "<details><summary>비밀번호 저장에 어떤 해시 알고리즘을 써야 하나요?</summary>"
+            "<p>빠른 해시 알고리즘(MD5, SHA-1, SHA-256)은 비밀번호 저장에 적합하지 않습니다 — "
+            "너무 빨라서 무차별 대입 공격이 현실적입니다. 대신 bcrypt, scrypt, Argon2를 사용하세요. "
+            "여기 해시 생성기는 체크섬, 무결성 확인, 비보안 해싱 용도에 유용합니다.</p></details>"
+        ),
+        "related_header": "다른 도구",
+        "related_other_hub": "이미지 도구",
+        "related_bmi": "JSON 포매터",
+        "related_date": "토큰 카운터",
+        "related_unit": "단위 변환기",
+        "card_blurb": "JSON·JWT·해시·UUID·Base64·SQL·정규식 — 모두 브라우저에서."
+    },
+    "ja": {
+        "title": "開発者ツール",
+        "meta_title": "開発者ツール — JSON・JWT・ハッシュ・UUID・Base64・SQLほか - Utilify",
+        "meta_desc": (
+            "ブラウザで完全動作する無料の開発者ツール。JSONフォーマッター、JWTデコーダー、ハッシュ生成、"
+            "UUID、Base64、URLエンコーダー、SQLフォーマッター、正規表現テスターなど。登録不要。"
+        ),
+        "og_title": "開発者ツール - Utilify",
+        "og_desc": "JSON・JWT・ハッシュ・UUID・Base64・SQL・正規表現 — クライアントサイドの開発ツール集。",
+        "json_name": "開発者ツール",
+        "json_desc": "エンコード・フォーマット・検証のためのブラウザベース開発者ユーティリティコレクション。",
+        "h1": "開発者ツール",
+        "intro_html": (
+            "<p>開発者は意外と多くの時間を小さな繰り返し作業に費やしています。APIレスポンスのJSONを"
+            "整形したり、JWTをデコードしてクレームを確認したり、データベースシード用のUUIDを"
+            "生成したり、URLパラメータをエスケープしたり。一つひとつは些細ですが積もれば無視できず、"
+            "見知らぬオンラインツールを使えば機密データをサードパーティのサーバーに預けることに"
+            "なります。</p>"
+            "<p>以下のツールはバックエンド・フロントエンド作業で日常的に発生するエンコード、"
+            "フォーマット、ハッシュ、バリデーション作業を処理します。すべてのツールが"
+            "<strong>ブラウザ内で完結</strong>します — ペイロード、トークン、クエリがページ外に"
+            "送信されることはありません。アカウント作成不要、サーバーへのデータアップロードなし、"
+            "入力値の分析もありません。よく使うツールをブックマークすれば、PWAインストール時には"
+            "オフラインでも即座に読み込まれます。</p>"
+            "<p>不正なJSONレスポンスのデバッグでも、API公開前のスキーマ検証でも、SEO用の"
+            "構造化データ作成でも — ワークフローを離れることなく、高速かつ安全に解決できます。</p>"
+        ),
+        "tools_header": "このカテゴリーのツール",
+        "faq_header": "よくある質問",
+        "faq_html": (
+            "<details><summary>データは安全ですか？貼り付けた内容は保存されますか？</summary>"
+            "<p>いいえ。すべてのツールはクライアントサイドのJavaScriptでブラウザ内のみで動作します。"
+            "入力データがサーバーに送信・ログ記録・保存されることはありません。ブラウザの開発者ツールで"
+            "Networkタブを開けば、ツール使用時に外部リクエストが発生しないことを直接確認できます。</p></details>"
+            "<details><summary>オフラインでも使えますか？</summary>"
+            "<p>はい。UtilifyをPWA（Progressive Web App）としてインストールすれば、すべての開発者"
+            "ツールがローカルにキャッシュされ、インターネット接続なしで動作します。ブラウザのアドレスバーに"
+            "表示されるインストールプロンプトをご確認ください。</p></details>"
+            "<details><summary>JSONフォーマッターが入力を拒否する理由は？</summary>"
+            "<p>フォーマッターはブラウザのネイティブ<code>JSON.parse()</code>を使用しており、"
+            "厳格なJSON仕様に準拠しています。よくある原因: 末尾カンマ、ダブルクォートの代わりに"
+            "シングルクォート、クォートなしのキー、コメントの混入。JavaScriptコードからコピーした"
+            "場合は、まず有効なJSONに変換する必要があるかもしれません。</p></details>"
+            "<details><summary>パスワード保存にはどのハッシュアルゴリズムを使うべきですか？</summary>"
+            "<p>高速なハッシュアルゴリズム（MD5、SHA-1、SHA-256）はパスワード保存には適していません — "
+            "高速すぎるため総当たり攻撃が現実的になります。代わりにbcrypt、scrypt、Argon2を使用して"
+            "ください。ここのハッシュ生成ツールはチェックサム、整合性検証、非セキュリティ用途のハッシュ"
+            "作業に便利です。</p></details>"
+        ),
+        "related_header": "その他のツール",
+        "related_other_hub": "画像ツール",
+        "related_bmi": "JSONフォーマッター",
+        "related_date": "トークンカウンター",
+        "related_unit": "単位変換",
+        "card_blurb": "JSON・JWT・ハッシュ・UUID・Base64・SQL・正規表現 — すべてクライアントサイド。"
+    }
+}
+
+
+IMAGE_HUB = {
+    "en": {
+        "title": "Image Tools",
+        "meta_title": "Image Tools — Converter, Watermark, Editor, QR & More - Utilify",
+        "meta_desc": (
+            "Free browser-based image tools. Convert formats, add watermarks, edit photos, generate favicons & QR codes, "
+            "download thumbnails. No upload to servers — 100% private."
+        ),
+        "og_title": "Image Tools - Utilify",
+        "og_desc": "Convert, watermark, edit, and generate — all image processing happens in your browser.",
+        "json_name": "Image Tools",
+        "json_desc": "Curated image tools for conversion, watermarking, editing, and generation.",
+        "h1": "Image Tools",
+        "intro_html": (
+            "<p>Images are everywhere — profile pictures, marketing banners, app icons, QR codes on "
+            "packaging. The problem is that most online image tools require you to upload your files "
+            "to someone else's server. That means your photos, your brand assets, and sometimes your "
+            "private screenshots pass through infrastructure you don't control.</p>"
+            "<p>Every tool on this page works differently. <strong>All processing happens inside "
+            "your browser.</strong> Your images are never uploaded to any server — they stay on your "
+            "device from start to finish. Whether you're converting a PNG to WebP, stamping a "
+            "watermark on a batch of photos, or generating a favicon for your site, the pixels never "
+            "leave your machine. No account required, no file-size upload limits imposed by a "
+            "backend, and no wondering who else might access your files.</p>"
+            "<p>The trade-off is that very large files depend on your device's processing power and "
+            "available memory. For most everyday image tasks — web assets, social media graphics, "
+            "icons, QR codes — browser-based processing is more than fast enough, and the privacy "
+            "benefit is worth it.</p>"
+        ),
+        "tools_header": "Tools in this category",
+        "faq_header": "Frequently asked questions",
+        "faq_html": (
+            "<details><summary>Are my images really not uploaded anywhere?</summary>"
+            "<p>Correct. All processing uses the Canvas API and JavaScript running in your browser. "
+            "You can verify this by opening your browser's Network tab — no image data is sent to "
+            "any server. Your files stay entirely on your device.</p></details>"
+            "<details><summary>Which image format should I choose for the web?</summary>"
+            "<p>WebP offers the best balance of quality and file size for most use cases. Use PNG "
+            "when you need lossless transparency (e.g., logos), JPEG for photographs where small "
+            "file size matters, and SVG for icons and illustrations that need to scale. AVIF is "
+            "newer and even smaller than WebP, but browser support is still catching up.</p></details>"
+            "<details><summary>Does converting between formats reduce image quality?</summary>"
+            "<p>Converting from a lossy format (JPEG) to another lossy format compounds quality "
+            "loss — each re-encoding discards data. Going from lossless (PNG) to lossy (JPEG/WebP) "
+            "loses some detail once. Converting between lossless formats (PNG ↔ BMP) preserves "
+            "quality perfectly. The quality slider in the converter lets you control the trade-off.</p></details>"
+            "<details><summary>Is there a file-size limit?</summary>"
+            "<p>There's no upload limit since nothing is uploaded. The practical limit depends on "
+            "your device's RAM and browser. Most modern devices handle images up to 20–50 MB without "
+            "issues. Very large images (100 MB+) may cause the browser tab to slow down or run out "
+            "of memory.</p></details>"
+        ),
+        "related_header": "Other tools",
+        "related_other_hub": "Developer Tools",
+        "related_bmi": "Color Converter",
+        "related_date": "PDF Tools",
+        "related_unit": "Unit Converter",
+        "card_blurb": "Convert, watermark, edit, and generate — all processing in your browser."
+    },
+    "ko": {
+        "title": "이미지 도구 모음",
+        "meta_title": "이미지 도구 — 변환·워터마크·편집·파비콘·QR 생성 - Utilify",
+        "meta_desc": (
+            "브라우저에서 100% 동작하는 무료 이미지 도구. 포맷 변환, 워터마크, 사진 편집, 파비콘·QR 생성, "
+            "썸네일 다운로드. 서버 업로드 없이 완전한 개인정보 보호."
+        ),
+        "og_title": "이미지 도구 - Utilify",
+        "og_desc": "변환·워터마크·편집·생성 — 모든 이미지 처리가 브라우저에서.",
+        "json_name": "이미지 도구 모음",
+        "json_desc": "이미지 변환, 워터마크, 편집, 생성을 위한 도구 큐레이션.",
+        "h1": "이미지 도구",
+        "intro_html": (
+            "<p>프로필 사진, 마케팅 배너, 앱 아이콘, 포장지의 QR 코드 — 이미지는 어디에나 있습니다. "
+            "문제는 대부분의 온라인 이미지 도구가 파일을 다른 누군가의 서버에 업로드하도록 요구한다는 "
+            "것입니다. 여러분의 사진, 브랜드 자산, 때로는 민감한 스크린샷까지 통제할 수 없는 인프라를 "
+            "거치게 됩니다.</p>"
+            "<p>이 페이지의 모든 도구는 다릅니다. <strong>모든 처리가 브라우저 안에서 이루어집니다."
+            "</strong> 이미지가 어떤 서버에도 업로드되지 않으며, 처음부터 끝까지 여러분의 기기에 "
+            "머무릅니다. PNG를 WebP로 변환하든, 사진 묶음에 워터마크를 찍든, 사이트용 파비콘을 만들든 "
+            "— 픽셀이 여러분의 기기를 벗어나지 않습니다. 계정 가입도, 백엔드가 정하는 파일 크기 "
+            "제한도, 누가 내 파일에 접근할지 걱정할 필요도 없습니다.</p>"
+            "<p>대신 매우 큰 파일은 기기의 처리 성능과 메모리에 의존합니다. 웹 에셋, 소셜 미디어 "
+            "그래픽, 아이콘, QR 코드 같은 일반적인 이미지 작업에는 브라우저 기반 처리가 충분히 빠르고, "
+            "프라이버시 이점은 그만한 가치가 있습니다.</p>"
+        ),
+        "tools_header": "이 카테고리의 도구",
+        "faq_header": "자주 묻는 질문",
+        "faq_html": (
+            "<details><summary>이미지가 정말 어디에도 업로드되지 않나요?</summary>"
+            "<p>맞습니다. 모든 처리는 브라우저의 Canvas API와 JavaScript로 수행됩니다. 브라우저의 "
+            "네트워크 탭을 열어 확인해 보세요 — 이미지 데이터가 어떤 서버로도 전송되지 않습니다. "
+            "파일은 전적으로 여러분의 기기에 남아 있습니다.</p></details>"
+            "<details><summary>웹용으로 어떤 이미지 포맷을 선택해야 하나요?</summary>"
+            "<p>WebP가 대부분의 용도에서 화질과 파일 크기의 균형이 가장 좋습니다. 로고처럼 무손실 "
+            "투명도가 필요하면 PNG, 파일 크기가 중요한 사진에는 JPEG, 확대/축소가 자유로워야 하는 "
+            "아이콘·일러스트에는 SVG를 사용하세요. AVIF는 WebP보다 더 작지만 브라우저 지원이 "
+            "아직 완전하지 않습니다.</p></details>"
+            "<details><summary>포맷을 변환하면 화질이 떨어지나요?</summary>"
+            "<p>손실 포맷(JPEG)에서 다른 손실 포맷으로 변환하면 인코딩마다 데이터가 버려져 화질이 "
+            "누적 저하됩니다. 무손실(PNG)에서 손실(JPEG/WebP)로 가면 한 번만 저하됩니다. 무손실 "
+            "포맷 간(PNG ↔ BMP) 변환은 화질이 완벽하게 보존됩니다. 변환기의 품질 슬라이더로 "
+            "화질과 파일 크기의 균형을 조절할 수 있습니다.</p></details>"
+            "<details><summary>파일 크기 제한이 있나요?</summary>"
+            "<p>업로드가 없으므로 업로드 제한도 없습니다. 실질적인 제한은 기기의 RAM과 브라우저에 "
+            "달려 있습니다. 최신 기기 대부분은 20~50 MB 이미지를 무리 없이 처리합니다. 100 MB "
+            "이상의 매우 큰 이미지는 브라우저 탭이 느려지거나 메모리 부족이 발생할 수 있습니다."
+            "</p></details>"
+        ),
+        "related_header": "다른 도구",
+        "related_other_hub": "개발자 도구",
+        "related_bmi": "색상 변환기",
+        "related_date": "PDF 도구",
+        "related_unit": "단위 변환기",
+        "card_blurb": "변환·워터마크·편집·생성 — 모든 처리가 브라우저에서."
+    },
+    "ja": {
+        "title": "画像ツール",
+        "meta_title": "画像ツール — 変換・透かし・編集・ファビコン・QR生成 - Utilify",
+        "meta_desc": (
+            "ブラウザで100%動作する無料の画像ツール。フォーマット変換、ウォーターマーク、写真編集、ファビコン・QRコード生成、"
+            "サムネイルダウンロード。サーバーへのアップロード不要。"
+        ),
+        "og_title": "画像ツール - Utilify",
+        "og_desc": "変換・透かし・編集・生成 — すべての画像処理がブラウザ内で完結。",
+        "json_name": "画像ツール",
+        "json_desc": "画像の変換、ウォーターマーク、編集、生成のためのツールコレクション。",
+        "h1": "画像ツール",
+        "intro_html": (
+            "<p>プロフィール写真、マーケティングバナー、アプリアイコン、パッケージのQRコード — "
+            "画像はあらゆる場面で使われています。問題は、ほとんどのオンライン画像ツールがファイルを "
+            "他者のサーバーにアップロードすることを要求する点です。つまり、あなたの写真やブランド素材、"
+            "場合によっては機密性の高いスクリーンショットが、管理の及ばないインフラを通過してしまいます。</p>"
+            "<p>このページのツールはすべて異なるアプローチを取っています。<strong>すべての処理は "
+            "ブラウザ内で行われます。</strong>画像がサーバーにアップロードされることは一切なく、"
+            "最初から最後までお使いのデバイス上に留まります。PNGをWebPに変換する場合も、写真に "
+            "ウォーターマークを入れる場合も、サイト用のファビコンを生成する場合も — ピクセルが "
+            "あなたのデバイスから離れることはありません。アカウント登録不要、バックエンド側の "
+            "ファイルサイズ制限もなく、ファイルが誰にアクセスされるかを心配する必要もありません。</p>"
+            "<p>トレードオフとして、非常に大きなファイルはデバイスの処理能力とメモリに依存します。"
+            "Web素材、SNS用画像、アイコン、QRコードといった日常的な画像作業であれば、ブラウザベースの"
+            "処理は十分高速で、プライバシーの利点には十分な価値があります。</p>"
+        ),
+        "tools_header": "このカテゴリーのツール",
+        "faq_header": "よくある質問",
+        "faq_html": (
+            "<details><summary>画像は本当にどこにもアップロードされませんか？</summary>"
+            "<p>その通りです。すべての処理はブラウザのCanvas APIとJavaScriptで行われます。"
+            "ブラウザのネットワークタブを開いて確認できます — 画像データがサーバーに送信されることは "
+            "ありません。ファイルは完全にお使いのデバイス上に残ります。</p></details>"
+            "<details><summary>Web用にはどの画像フォーマットを選ぶべきですか？</summary>"
+            "<p>WebPがほとんどの用途で画質とファイルサイズのバランスが最も優れています。ロゴのような"
+            "可逆透過が必要な場合はPNG、ファイルサイズが重要な写真にはJPEG、拡大縮小が必要な"
+            "アイコンやイラストにはSVGを選んでください。AVIFはWebPよりさらに小さいですが、"
+            "ブラウザのサポートはまだ追いついていません。</p></details>"
+            "<details><summary>フォーマット変換で画質は劣化しますか？</summary>"
+            "<p>非可逆形式（JPEG）から別の非可逆形式への変換は、エンコードのたびにデータが破棄され"
+            "画質劣化が蓄積します。可逆（PNG）から非可逆（JPEG/WebP）への変換では劣化は1回のみです。"
+            "可逆形式間（PNG ↔ BMP）の変換では画質は完全に保持されます。コンバーターの品質スライダーで"
+            "画質とファイルサイズのバランスを調整できます。</p></details>"
+            "<details><summary>ファイルサイズの制限はありますか？</summary>"
+            "<p>アップロードがないため、アップロード制限もありません。実質的な制限はデバイスのRAMと"
+            "ブラウザに依存します。最近のデバイスであれば20〜50 MBの画像は問題なく処理できます。"
+            "100 MB以上の非常に大きな画像はブラウザのタブが遅くなったりメモリ不足になる可能性が"
+            "あります。</p></details>"
+        ),
+        "related_header": "他のツール",
+        "related_other_hub": "開発者ツール",
+        "related_bmi": "カラーコンバーター",
+        "related_date": "PDFツール",
+        "related_unit": "単位変換",
+        "card_blurb": "変換・透かし・編集・生成 — すべてブラウザ内で完結。"
+    }
+}
+
+
+TEXT_HUB = {
+    "en": {
+        "title": "Text Tools",
+        "meta_title": "Text Tools — Diff, Lorem Ipsum, Markdown Preview, Reading Time - Utilify",
+        "meta_desc": (
+            "Free text utilities that run entirely in your browser. Diff checker, lorem ipsum generator, "
+            "markdown previewer, reading time estimator. No signup, no data sent to servers."
+        ),
+        "og_title": "Text Tools - Utilify",
+        "og_desc": "Text diff, lorem ipsum, markdown preview, and reading time — all client-side.",
+        "json_name": "Text Tools",
+        "json_desc": "Curated text utilities for comparing, generating, previewing, and analyzing text.",
+        "h1": "Text Tools",
+        "intro_html": (
+            "<p>Text is the raw material of almost every workflow — code, documentation, email drafts, "
+            "blog posts. Yet the small tasks that come up constantly — comparing two versions of a file, "
+            "generating placeholder copy, previewing Markdown before committing, or checking whether an "
+            "article is a five-minute or fifteen-minute read — rarely justify opening a heavyweight "
+            "desktop app or pasting sensitive content into an unknown website.</p>"
+            "<p>The tools below handle those everyday text tasks directly in your browser. "
+            "<strong>No data ever leaves your machine.</strong> Every diff is computed locally, every "
+            "lorem ipsum paragraph is generated on the client, every Markdown render happens in a "
+            "sandboxed preview pane. There is no server round-trip, no account, and nothing to install. "
+            "Just open the page, paste or type, and get the result instantly.</p>"
+            "<p>Whether you are a developer reviewing pull-request changes, a writer polishing a draft, "
+            "or a designer filling wireframes with realistic dummy text, these utilities save you a "
+            "context switch and keep your content private.</p>"
+        ),
+        "tools_header": "Tools in this category",
+        "faq_header": "Frequently asked questions",
+        "faq_html": (
+            "<details><summary>What algorithm does the diff checker use?</summary>"
+            "<p>The diff checker uses a longest-common-subsequence (LCS) algorithm similar to the one "
+            "behind Unix <code>diff</code>. It compares text line by line, highlights additions and "
+            "deletions, and optionally shows inline character-level changes. It runs entirely in "
+            "JavaScript — no text is sent to any server.</p></details>"
+            "<details><summary>Can I trust that my text stays private?</summary>"
+            "<p>Yes. Every tool on this page is 100% client-side. Open your browser's DevTools Network "
+            "tab and verify: no requests leave the page when you paste, type, or generate text. Your "
+            "content never touches a server, a database, or a third-party API.</p></details>"
+            "<details><summary>How is reading time calculated?</summary>"
+            "<p>The estimator counts words and divides by an average adult reading speed of roughly "
+            "200–250 words per minute (adjustable). Research shows that reading speed varies with "
+            "content complexity; technical material is slower than casual prose. Treat the number as "
+            "a practical estimate, not a precise measurement.</p></details>"
+            "<details><summary>Does the Markdown previewer support GitHub-Flavored Markdown?</summary>"
+            "<p>Yes. The previewer handles GFM extensions — tables, task lists, fenced code blocks, "
+            "strikethrough, and autolinks — in addition to the standard CommonMark spec. Rendering "
+            "happens locally using a JavaScript parser.</p></details>"
+        ),
+        "related_header": "Other tools",
+        "related_other_hub": "Developer Tools",
+        "related_bmi": "JSON Formatter",
+        "related_date": "Date Calculator",
+        "related_unit": "Unit Converter",
+        "card_blurb": "Diff checker, lorem ipsum, markdown preview, and reading time — all client-side."
+    },
+    "ko": {
+        "title": "텍스트 도구 모음",
+        "meta_title": "텍스트 도구 — 비교·로렘입숨·마크다운 미리보기·읽기 시간 - Utilify",
+        "meta_desc": (
+            "브라우저에서 모두 실행되는 무료 텍스트 유틸리티. 텍스트 비교, 로렘입숨 생성, 마크다운 미리보기, "
+            "읽기 시간 추정. 가입 없음, 서버 전송 없음."
+        ),
+        "og_title": "텍스트 도구 - Utilify",
+        "og_desc": "텍스트 비교·로렘입숨·마크다운 미리보기·읽기 시간 — 모두 클라이언트 사이드.",
+        "json_name": "텍스트 도구 모음",
+        "json_desc": "텍스트 비교·생성·미리보기·분석을 위한 유틸리티 큐레이션.",
+        "h1": "텍스트 도구",
+        "intro_html": (
+            "<p>텍스트는 거의 모든 워크플로의 기본 재료입니다 — 코드, 문서, 이메일 초안, 블로그 글. "
+            "그런데 수시로 반복되는 작업들 — 두 버전의 파일 비교, 자리채움 텍스트 생성, 커밋 전 "
+            "마크다운 미리보기, 글이 5분짜리인지 15분짜리인지 확인 — 에 무거운 데스크톱 앱을 열거나 "
+            "민감한 내용을 낯선 사이트에 붙여넣기는 부담스럽습니다.</p>"
+            "<p>아래 도구들은 이런 일상적인 텍스트 작업을 브라우저 안에서 바로 처리합니다. "
+            "<strong>데이터가 사용자 컴퓨터 밖으로 나가지 않습니다.</strong> 모든 비교(diff)는 로컬에서 "
+            "계산되고, 로렘입숨은 클라이언트에서 생성되며, 마크다운 렌더링은 샌드박스 미리보기 영역에서 "
+            "이루어집니다. 서버 왕복이 없고, 계정 생성이 필요 없으며, 설치할 것도 없습니다. 페이지를 "
+            "열고, 붙여넣거나 입력하면 결과가 즉시 나타납니다.</p>"
+            "<p>풀 리퀘스트 변경사항을 검토하는 개발자든, 초안을 다듬는 작가든, 와이어프레임에 "
+            "더미 텍스트를 채우는 디자이너든 — 이 도구들은 컨텍스트 전환 없이 작업을 완료하게 해 주고, "
+            "콘텐츠의 프라이버시도 지켜 줍니다.</p>"
+        ),
+        "tools_header": "이 카테고리의 도구",
+        "faq_header": "자주 묻는 질문",
+        "faq_html": (
+            "<details><summary>텍스트 비교(diff)에 어떤 알고리즘을 사용하나요?</summary>"
+            "<p>최장 공통 부분 수열(LCS) 알고리즘을 사용하며, Unix <code>diff</code>의 원리와 유사합니다. "
+            "줄 단위로 비교하여 추가·삭제를 강조 표시하고, 선택적으로 문자 수준의 인라인 변경도 보여 줍니다. "
+            "전부 JavaScript로 실행되며 — 텍스트가 서버로 전송되지 않습니다.</p></details>"
+            "<details><summary>텍스트가 외부로 유출되지 않는다고 믿어도 되나요?</summary>"
+            "<p>네. 이 페이지의 모든 도구는 100% 클라이언트 사이드입니다. 브라우저 DevTools의 Network "
+            "탭을 열어 직접 확인해 보세요 — 텍스트를 붙여넣거나, 입력하거나, 생성할 때 페이지 바깥으로 "
+            "나가는 요청이 없습니다. 서버, 데이터베이스, 제3자 API에 콘텐츠가 닿지 않습니다.</p></details>"
+            "<details><summary>읽기 시간은 어떻게 계산하나요?</summary>"
+            "<p>단어 수를 센 뒤 성인 평균 읽기 속도(약 200~250 WPM, 조절 가능)로 나눕니다. 연구에 "
+            "따르면 읽기 속도는 콘텐츠 난이도에 따라 달라집니다 — 기술 문서는 일반 산문보다 느립니다. "
+            "정밀한 측정이 아닌 실용적 추정치로 활용하세요.</p></details>"
+            "<details><summary>마크다운 미리보기가 GitHub Flavored Markdown을 지원하나요?</summary>"
+            "<p>네. 표준 CommonMark 사양에 더해 GFM 확장 — 테이블, 작업 목록, 펜스드 코드 블록, "
+            "취소선, 자동 링크 — 을 지원합니다. 렌더링은 JavaScript 파서를 사용하여 로컬에서 "
+            "이루어집니다.</p></details>"
+        ),
+        "related_header": "다른 도구",
+        "related_other_hub": "개발자 도구",
+        "related_bmi": "JSON 포매터",
+        "related_date": "날짜 계산기",
+        "related_unit": "단위 변환기",
+        "card_blurb": "텍스트 비교·로렘입숨·마크다운 미리보기·읽기 시간 — 모두 브라우저에서."
+    },
+    "ja": {
+        "title": "テキストツール",
+        "meta_title": "テキストツール — 差分比較・Lorem Ipsum・Markdownプレビュー・読了時間 - Utilify",
+        "meta_desc": (
+            "ブラウザで完全動作する無料テキストユーティリティ。テキスト差分比較、ダミーテキスト生成、"
+            "Markdownプレビュー、読了時間推定。登録不要、サーバー送信なし。"
+        ),
+        "og_title": "テキストツール - Utilify",
+        "og_desc": "テキスト差分・Lorem Ipsum・Markdownプレビュー・読了時間 — すべてクライアントサイド。",
+        "json_name": "テキストツール",
+        "json_desc": "テキストの比較・生成・プレビュー・分析のためのユーティリティコレクション。",
+        "h1": "テキストツール",
+        "intro_html": (
+            "<p>テキストはほぼすべてのワークフローの原材料です — コード、ドキュメント、メールの下書き、"
+            "ブログ記事。しかし頻繁に発生する細かな作業 — ファイルの2つのバージョンを比較する、"
+            "プレースホルダーテキストを生成する、コミット前にMarkdownをプレビューする、記事が5分で"
+            "読めるのか15分かかるのか確認する — のために重いデスクトップアプリを開いたり、見知らぬ"
+            "サイトに機密テキストを貼り付けたりするのは気が引けます。</p>"
+            "<p>以下のツールはそうした日常的なテキスト作業をブラウザ内で直接処理します。"
+            "<strong>データが端末の外に出ることはありません。</strong>すべての差分比較はローカルで"
+            "計算され、Lorem Ipsumはクライアント側で生成され、Markdownのレンダリングはサンドボックス化"
+            "されたプレビュー領域で行われます。サーバーとの往復通信なし、アカウント作成不要、"
+            "インストール不要。ページを開いて貼り付けるか入力すれば、結果が即座に表示されます。</p>"
+            "<p>プルリクエストの差分を確認する開発者も、原稿を推敲するライターも、ワイヤーフレームに"
+            "ダミーテキストを流し込むデザイナーも — これらのユーティリティはコンテキストスイッチを"
+            "減らし、コンテンツのプライバシーを守ります。</p>"
+        ),
+        "tools_header": "このカテゴリーのツール",
+        "faq_header": "よくある質問",
+        "faq_html": (
+            "<details><summary>差分比較（diff）にはどのアルゴリズムを使用していますか？</summary>"
+            "<p>Unixの<code>diff</code>と同様の最長共通部分列（LCS）アルゴリズムを使用しています。"
+            "行単位で比較して追加・削除をハイライトし、オプションで文字レベルのインライン変更も"
+            "表示できます。すべてJavaScriptで実行され — テキストがサーバーに送信されることは"
+            "ありません。</p></details>"
+            "<details><summary>テキストのプライバシーは本当に守られますか？</summary>"
+            "<p>はい。このページのすべてのツールは100%クライアントサイドです。ブラウザのDevToolsで"
+            "Networkタブを開いてご確認ください — テキストの貼り付け、入力、生成時にページ外への"
+            "リクエストは一切発生しません。サーバー、データベース、サードパーティAPIにコンテンツが"
+            "送信されることはありません。</p></details>"
+            "<details><summary>読了時間はどのように計算されますか？</summary>"
+            "<p>単語数をカウントし、成人の平均読書速度（約200〜250 WPM、調整可能）で割ります。"
+            "研究によると読書速度はコンテンツの複雑さによって異なり、技術文書はカジュアルな文章より"
+            "遅くなります。精密な測定ではなく、実用的な目安としてご活用ください。</p></details>"
+            "<details><summary>MarkdownプレビューはGitHub Flavored Markdownに対応していますか？</summary>"
+            "<p>はい。標準的なCommonMark仕様に加えて、GFM拡張 — テーブル、タスクリスト、"
+            "フェンスドコードブロック、取り消し線、自動リンク — に対応しています。レンダリングは"
+            "JavaScriptパーサーを使用してローカルで行われます。</p></details>"
+        ),
+        "related_header": "他のツール",
+        "related_other_hub": "開発者ツール",
+        "related_bmi": "JSONフォーマッター",
+        "related_date": "日付計算機",
+        "related_unit": "単位変換",
+        "card_blurb": "テキスト差分・Lorem Ipsum・Markdownプレビュー・読了時間 — すべてクライアントサイド。"
+    }
+}
+
+
 RAG_CHUNKER = {
     "en": {
         "title": "RAG Text Chunker",

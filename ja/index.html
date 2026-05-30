@@ -215,6 +215,11 @@
           <a href="/ja/uuid-generator/" class="featured-card"><div class="card-icon">🆔</div><h3 class="card-title">UUID生成</h3><p class="card-description">暗号学的に安全なUUIDをローカルで生成します。v4（ランダム）が最も一般的です。v1はタイムスタンプを埋め込みます。ハイフン・大文字・波括弧のフォーマットオプションあり。</p></a>
           <a href="/ja/base64-converter/" class="featured-card"><div class="card-icon">🔤</div><h3 class="card-title">Base64エンコーダー/デコーダー</h3><p class="card-description">テキストをBase64にエンコードまたはデコードします。</p></a>
           <a href="/ja/hash-generator/" class="featured-card"><div class="card-icon">🔑</div><h3 class="card-title">ハッシュ生成</h3><p class="card-description">テキストを入力するとMD5・SHA-1/256/384/512ダイジェストを即座に計算します。データはアップロードされません — すべてローカルで処理されます。</p></a>
+          <a href="/ja/unit-converter/" class="featured-card"><div class="card-icon">📏</div><h3 class="card-title">単位変換ツール</h3><p class="card-description">長さ, 重量, 温度, 体積などを変換できます。</p></a>
+          <a href="/ja/image-converter/" class="featured-card"><div class="card-icon">🖼️</div><h3 class="card-title">画像変換ツール</h3><p class="card-description">画像のサイズを変更し、WebP、JPEG、PNG形式に変換します。</p></a>
+          <a href="/ja/qr-generator/" class="featured-card"><div class="card-icon">📱</div><h3 class="card-title">QRコード生成</h3><p class="card-description">テキストまたはURLをQRコードに変換します。</p></a>
+          <a href="/ja/token-counter/" class="featured-card"><div class="card-icon">🪙</div><h3 class="card-title">AIトークンカウンター & コスト計算機</h3><p class="card-description">テキストのトークン数とGPT-4o・Claude Opus 4.7・Gemini 2.5などのモデル別APIコストを推定します。ヒューリスティック計算（英語≈4文字/トークン、CJK≈1.5文字/トークン）— 正確なトークン化にはプロバイダーAPIが必要です。</p></a>
+          <a href="/ja/date-calculator/" class="featured-card"><div class="card-icon">📅</div><h3 class="card-title">日付計算</h3><p class="card-description">D-Dayと日付の差を計算します。</p></a>
             </div>
 
             <h2 class="text-center mb-4">利用可能なツール</h2>
@@ -248,7 +253,7 @@
 
             <div class="card-grid" id="toolGrid">
                 
-        <a href="/ja/image-watermark/" class="card" data-category="image" data-subcategory="" data-slug="image-watermark" data-keywords="watermark image overlay logo">
+        <a href="/ja/image-watermark/" class="card" data-category="image" data-subcategory="image-tools" data-slug="image-watermark" data-keywords="watermark image overlay logo">
           <button type="button" class="fav-toggle" data-fav="image-watermark" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">🛡️</div>
           <h3 class="card-title">画像透かし</h3>
@@ -262,7 +267,7 @@
           <p class="card-description">長さ, 重量, 温度, 体積などを変換できます。</p>
         </a>
 
-        <a href="/ja/image-converter/" class="card" data-category="image" data-subcategory="" data-slug="image-converter" data-keywords="image png jpg webp avif convert">
+        <a href="/ja/image-converter/" class="card" data-category="image" data-subcategory="image-tools" data-slug="image-converter" data-keywords="image png jpg webp avif convert">
           <button type="button" class="fav-toggle" data-fav="image-converter" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">🖼️</div>
           <h3 class="card-title">画像変換ツール</h3>
@@ -283,14 +288,14 @@
           <p class="card-description">D-Dayと日付の差を計算します。</p>
         </a>
 
-        <a href="/ja/text-utils/" class="card" data-category="text" data-subcategory="" data-slug="text-utils" data-keywords="text case uppercase lowercase count">
+        <a href="/ja/text-utils/" class="card" data-category="text" data-subcategory="text-tools" data-slug="text-utils" data-keywords="text case uppercase lowercase count">
           <button type="button" class="fav-toggle" data-fav="text-utils" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">📝</div>
           <h3 class="card-title">テキストユーティリティ</h3>
           <p class="card-description">単語数、文字数のカウント、重複削除、大文字小文字変換など。</p>
         </a>
 
-        <a href="/ja/json-formatter/" class="card" data-category="dev" data-subcategory="" data-slug="json-formatter" data-keywords="json format pretty minify validate">
+        <a href="/ja/json-formatter/" class="card" data-category="dev" data-subcategory="dev-tools" data-slug="json-formatter" data-keywords="json format pretty minify validate">
           <button type="button" class="fav-toggle" data-fav="json-formatter" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">{ }</div>
           <h3 class="card-title">JSONフォーマッター</h3>
@@ -311,49 +316,49 @@
           <p class="card-description">オンラインタイマーとポモドーロテクニック。</p>
         </a>
 
-        <a href="/ja/base64-converter/" class="card" data-category="dev" data-subcategory="" data-slug="base64-converter" data-keywords="base64 encode decode b64">
+        <a href="/ja/base64-converter/" class="card" data-category="dev" data-subcategory="dev-tools" data-slug="base64-converter" data-keywords="base64 encode decode b64">
           <button type="button" class="fav-toggle" data-fav="base64-converter" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">🔤</div>
           <h3 class="card-title">Base64エンコーダー/デコーダー</h3>
           <p class="card-description">テキストをBase64にエンコードまたはデコードします。</p>
         </a>
 
-        <a href="/ja/qr-generator/" class="card" data-category="image" data-subcategory="" data-slug="qr-generator" data-keywords="qr qrcode barcode">
+        <a href="/ja/qr-generator/" class="card" data-category="image" data-subcategory="image-tools" data-slug="qr-generator" data-keywords="qr qrcode barcode">
           <button type="button" class="fav-toggle" data-fav="qr-generator" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">📱</div>
           <h3 class="card-title">QRコード生成</h3>
           <p class="card-description">テキストまたはURLをQRコードに変換します。</p>
         </a>
 
-        <a href="/ja/regex-tester/" class="card" data-category="dev" data-subcategory="" data-slug="regex-tester" data-keywords="regex regular expression pattern match">
+        <a href="/ja/regex-tester/" class="card" data-category="dev" data-subcategory="dev-tools" data-slug="regex-tester" data-keywords="regex regular expression pattern match">
           <button type="button" class="fav-toggle" data-fav="regex-tester" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">🔍</div>
           <h3 class="card-title">正規表現テスター</h3>
           <p class="card-description">リアルタイムで正規表現パターンをテストします。</p>
         </a>
 
-        <a href="/ja/sql-formatter/" class="card" data-category="dev" data-subcategory="" data-slug="sql-formatter" data-keywords="sql format query database">
+        <a href="/ja/sql-formatter/" class="card" data-category="dev" data-subcategory="dev-tools" data-slug="sql-formatter" data-keywords="sql format query database">
           <button type="button" class="fav-toggle" data-fav="sql-formatter" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">🗄️</div>
           <h3 class="card-title">SQLフォーマッター</h3>
           <p class="card-description">SQLクエリを自動的に整形・圧縮。</p>
         </a>
 
-        <a href="/ja/lorem-ipsum/" class="card" data-category="text" data-subcategory="" data-slug="lorem-ipsum" data-keywords="lorem ipsum placeholder dummy">
+        <a href="/ja/lorem-ipsum/" class="card" data-category="text" data-subcategory="text-tools" data-slug="lorem-ipsum" data-keywords="lorem ipsum placeholder dummy">
           <button type="button" class="fav-toggle" data-fav="lorem-ipsum" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">📋</div>
           <h3 class="card-title">Lorem Ipsum生成</h3>
           <p class="card-description">Lorem Ipsumダミーテキストを生成します。</p>
         </a>
 
-        <a href="/ja/favicon-generator/" class="card" data-category="image" data-subcategory="" data-slug="favicon-generator" data-keywords="favicon icon apple-touch">
+        <a href="/ja/favicon-generator/" class="card" data-category="image" data-subcategory="image-tools" data-slug="favicon-generator" data-keywords="favicon icon apple-touch">
           <button type="button" class="fav-toggle" data-fav="favicon-generator" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">🎯</div>
           <h3 class="card-title">ファビコン生成</h3>
           <p class="card-description">画像をさまざまなサイズのファビコンに変換します。</p>
         </a>
 
-        <a href="/ja/diff-checker/" class="card" data-category="text" data-subcategory="" data-slug="diff-checker" data-keywords="diff compare text difference">
+        <a href="/ja/diff-checker/" class="card" data-category="text" data-subcategory="text-tools" data-slug="diff-checker" data-keywords="diff compare text difference">
           <button type="button" class="fav-toggle" data-fav="diff-checker" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">🔀</div>
           <h3 class="card-title">テキスト差分チェッカー</h3>
@@ -367,14 +372,14 @@
           <p class="card-description">強力で安全なパスワードを生成します。パスワードはローカルで生成され、サーバーに送信されることはありません。</p>
         </a>
 
-        <a href="/ja/thumbnail-downloader/" class="card" data-category="image" data-subcategory="" data-slug="thumbnail-downloader" data-keywords="thumbnail youtube download image">
+        <a href="/ja/thumbnail-downloader/" class="card" data-category="image" data-subcategory="image-tools" data-slug="thumbnail-downloader" data-keywords="thumbnail youtube download image">
           <button type="button" class="fav-toggle" data-fav="thumbnail-downloader" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">📺</div>
           <h3 class="card-title">YouTubeサムネイルダウンローダー</h3>
           <p class="card-description">YouTube動画のサムネイルを高画質（4K, HD）で抽出してダウンロード。無料で簡単なツール。</p>
         </a>
 
-        <a href="/ja/markdown-previewer/" class="card" data-category="text" data-subcategory="" data-slug="markdown-previewer" data-keywords="markdown md preview render">
+        <a href="/ja/markdown-previewer/" class="card" data-category="text" data-subcategory="text-tools" data-slug="markdown-previewer" data-keywords="markdown md preview render">
           <button type="button" class="fav-toggle" data-fav="markdown-previewer" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">📝</div>
           <h3 class="card-title">マークダウンエディタ＆プレビュー</h3>
@@ -388,14 +393,14 @@
           <p class="card-description">あなたの反応速度をテストします。画面が緑色になったらできるだけ早くクリックしてください！</p>
         </a>
 
-        <a href="/ja/jwt-decoder/" class="card" data-category="dev" data-subcategory="" data-slug="jwt-decoder" data-keywords="jwt token auth jose decode">
+        <a href="/ja/jwt-decoder/" class="card" data-category="dev" data-subcategory="dev-tools" data-slug="jwt-decoder" data-keywords="jwt token auth jose decode">
           <button type="button" class="fav-toggle" data-fav="jwt-decoder" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">🪪</div>
           <h3 class="card-title">JWTデコーダー</h3>
           <p class="card-description">JWTを貼り付けてヘッダーとペイロードをデコードします。トークンはローカルでのみ処理され、サーバーには送信されません。</p>
         </a>
 
-        <a href="/ja/hash-generator/" class="card" data-category="dev" data-subcategory="" data-slug="hash-generator" data-keywords="hash md5 sha sha256 digest">
+        <a href="/ja/hash-generator/" class="card" data-category="dev" data-subcategory="dev-tools" data-slug="hash-generator" data-keywords="hash md5 sha sha256 digest">
           <button type="button" class="fav-toggle" data-fav="hash-generator" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">🔑</div>
           <h3 class="card-title">ハッシュ生成</h3>
@@ -409,14 +414,14 @@
           <p class="card-description">Unixタイムスタンプと日付を相互変換します。秒・ミリ秒を自動判別し、UTCとローカルタイムゾーンを両方表示します。</p>
         </a>
 
-        <a href="/ja/uuid-generator/" class="card" data-category="dev" data-subcategory="" data-slug="uuid-generator" data-keywords="uuid guid random identifier">
+        <a href="/ja/uuid-generator/" class="card" data-category="dev" data-subcategory="dev-tools" data-slug="uuid-generator" data-keywords="uuid guid random identifier">
           <button type="button" class="fav-toggle" data-fav="uuid-generator" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">🆔</div>
           <h3 class="card-title">UUID生成</h3>
           <p class="card-description">暗号学的に安全なUUIDをローカルで生成します。v4（ランダム）が最も一般的です。v1はタイムスタンプを埋め込みます。ハイフン・大文字・波括弧のフォーマットオプションあり。</p>
         </a>
 
-        <a href="/ja/url-encoder/" class="card" data-category="dev" data-subcategory="" data-slug="url-encoder" data-keywords="url encode decode percent escape">
+        <a href="/ja/url-encoder/" class="card" data-category="dev" data-subcategory="dev-tools" data-slug="url-encoder" data-keywords="url encode decode percent escape">
           <button type="button" class="fav-toggle" data-fav="url-encoder" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">🔗</div>
           <h3 class="card-title">URLエンコード / デコード</h3>
@@ -521,7 +526,7 @@
           <p class="card-description">システム指示と入力→出力の例リストを追加すると、Markdown・Anthropicスタイルのタグ・OpenAI messages JSON・プレーンテキスト形式のFew-shotプロンプトを生成します — ChatGPT・Claude・スクリプトにそのまま貼り付けられます。</p>
         </a>
 
-        <a href="/ja/json-schema-validator/" class="card" data-category="dev" data-subcategory="" data-slug="json-schema-validator" data-keywords="json schema validate ajv schema jsonpath">
+        <a href="/ja/json-schema-validator/" class="card" data-category="dev" data-subcategory="dev-tools" data-slug="json-schema-validator" data-keywords="json schema validate ajv schema jsonpath">
           <button type="button" class="fav-toggle" data-fav="json-schema-validator" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">🛡️</div>
           <h3 class="card-title">JSONスキーマバリデーター</h3>
@@ -556,7 +561,7 @@
           <p class="card-description">90分のREMサイクルに合わせて睡眠を計画しましょう。起床時刻を入力すると4~6サイクルのための入眠時刻、就寝時刻を入力すると良い起床時刻を提案します。入眠にかかる14分が自動で反映されます。</p>
         </a>
 
-        <a href="/ja/reading-time/" class="card" data-category="text" data-subcategory="" data-slug="reading-time" data-keywords="reading wpm words minutes speech">
+        <a href="/ja/reading-time/" class="card" data-category="text" data-subcategory="text-tools" data-slug="reading-time" data-keywords="reading wpm words minutes speech">
           <button type="button" class="fav-toggle" data-fav="reading-time" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">📖</div>
           <h3 class="card-title">読書時間計算機</h3>
@@ -584,21 +589,21 @@
           <p class="card-description">生年月日を選ぶと正確な年齢 — 年・月・日 — と、生きた総日数、次の誕生日までの日数を表示します。ビザ申請、入学基準日、"2030年に何歳?"といった疑問に便利。</p>
         </a>
 
-        <a href="/ja/image-editor/" class="card" data-category="image" data-subcategory="" data-slug="image-editor" data-keywords="image crop rotate filter">
+        <a href="/ja/image-editor/" class="card" data-category="image" data-subcategory="image-tools" data-slug="image-editor" data-keywords="image crop rotate filter">
           <button type="button" class="fav-toggle" data-fav="image-editor" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">🎨</div>
           <h3 class="card-title">画像エディタ</h3>
           <p class="card-description">画像のトリミング、回転、フィルター適用ができます。</p>
         </a>
 
-        <a href="/ja/jpa-converter/" class="card" data-category="dev" data-subcategory="" data-slug="jpa-converter" data-keywords="jpa entity sql hibernate">
+        <a href="/ja/jpa-converter/" class="card" data-category="dev" data-subcategory="dev-tools" data-slug="jpa-converter" data-keywords="jpa entity sql hibernate">
           <button type="button" class="fav-toggle" data-fav="jpa-converter" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">🗃️</div>
           <h3 class="card-title">DB JPA 変換</h3>
           <p class="card-description">SQLスキーマをJPAエンティティとDTOクラスに変換します。</p>
         </a>
 
-        <a href="/ja/json-to-ts/" class="card" data-category="dev" data-subcategory="" data-slug="json-to-ts" data-keywords="json typescript interface dto">
+        <a href="/ja/json-to-ts/" class="card" data-category="dev" data-subcategory="dev-tools" data-slug="json-to-ts" data-keywords="json typescript interface dto">
           <button type="button" class="fav-toggle" data-fav="json-to-ts" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">🔁</div>
           <h3 class="card-title">JSON TS/DTO 変換</h3>
@@ -619,7 +624,7 @@
           <p class="card-description">JSONデータをExcelに変換してダウンロードします。（安全）</p>
         </a>
 
-        <a href="/ja/json-ld-generator/" class="card" data-category="dev" data-subcategory="" data-slug="json-ld-generator" data-keywords="json-ld schema seo structured">
+        <a href="/ja/json-ld-generator/" class="card" data-category="dev" data-subcategory="dev-tools" data-slug="json-ld-generator" data-keywords="json-ld schema seo structured">
           <button type="button" class="fav-toggle" data-fav="json-ld-generator" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">🏷️</div>
           <h3 class="card-title">SEO JSON-LD ジェネレーター</h3>
