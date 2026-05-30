@@ -1,5 +1,9 @@
 # Project Development Rules
 
+## 작업 규칙
+- 분담해서 작업이 가능하다면 서브에이전트를 활용하여 병렬로 작업을 수행
+- 번역이 필요한 케이스는 claude 가 알아서 수행
+
 ## 1. File & Directory Structure
 - **Repo**: GitHub Pages site (`wwtrembling/wwtrembling.github.io`).
 - **Language Folders**: `ko`, `en`, `ja`, `zh-cn`, `zh-tw`, `hi`, `id`, `vi`, `th`, `de`, `pt`
