@@ -232,7 +232,10 @@ INDEX_PAGE = {
         "cat_image_icon": "🖼️",
         "cat_convert_icon": "🔄",
         "cat_calc_icon": "🧮",
-        "hero_search_hint": "Try: JSON, BMI, Base64, QR code..."
+        "hero_search_hint": "Try: JSON, BMI, Base64, QR code...",
+        "search_hint_nav": "navigate",
+        "search_hint_go": "go",
+        "search_hint_close": "close"
     },
     "ko": {
         "title": "무료 온라인 유틸리티 모음 - Utilify",
@@ -278,7 +281,10 @@ INDEX_PAGE = {
         "cat_image_desc": "변환, 워터마크, QR, 파비콘",
         "cat_convert_desc": "단위, 색상, 타임스탬프, PDF",
         "cat_calc_desc": "BMI, 날짜, 대출, 팁, 수면",
-        "hero_search_hint": "예: JSON, BMI, Base64, QR코드..."
+        "hero_search_hint": "예: JSON, BMI, Base64, QR코드...",
+        "search_hint_nav": "이동",
+        "search_hint_go": "선택",
+        "search_hint_close": "닫기"
     },
     "vi": {
         "title": "Bộ tiện ích trực tuyến miễn phí - Utilify",
@@ -346,7 +352,10 @@ INDEX_PAGE = {
         "cat_image_desc": "変換、透かし、QR、ファビコン",
         "cat_convert_desc": "単位、カラー、タイムスタンプ、PDF",
         "cat_calc_desc": "BMI、日付、ローン、チップ、睡眠",
-        "hero_search_hint": "例: JSON, BMI, Base64, QRコード..."
+        "hero_search_hint": "例: JSON, BMI, Base64, QRコード...",
+        "search_hint_nav": "移動",
+        "search_hint_go": "決定",
+        "search_hint_close": "閉じる"
     },
     "zh-cn": {
         "title": "免费在线工具箱 - Utilify",

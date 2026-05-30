@@ -96,6 +96,7 @@
         .hero-search {
             max-width: 520px;
             margin: var(--spacing-lg) auto 0;
+            position: relative;
         }
         .hero-search .form-input {
             font-size: 1.1rem;
@@ -108,6 +109,109 @@
         .hero-search .form-input:focus {
             border-color: var(--primary-color);
             box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
+        }
+
+        /* Search autocomplete dropdown */
+        .search-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            margin-top: 4px;
+            background: var(--bg-primary);
+            border: 2px solid var(--primary-color);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg, 0 8px 24px rgba(0,0,0,0.12));
+            max-height: 360px;
+            overflow-y: auto;
+            z-index: 1000;
+            list-style: none;
+            padding: 6px 0;
+        }
+        .search-dropdown-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 16px;
+            cursor: pointer;
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: background 0.1s;
+        }
+        .search-dropdown-item:hover,
+        .search-dropdown-item.active {
+            background: var(--primary-color);
+            color: #fff;
+        }
+        .search-dropdown-item:hover .sdi-desc,
+        .search-dropdown-item.active .sdi-desc {
+            color: rgba(255,255,255,0.8);
+        }
+        .search-dropdown-item:hover .sdi-cat,
+        .search-dropdown-item.active .sdi-cat {
+            background: rgba(255,255,255,0.2);
+            color: #fff;
+        }
+        .sdi-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+            width: 32px;
+            text-align: center;
+        }
+        .sdi-info {
+            flex: 1;
+            min-width: 0;
+        }
+        .sdi-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .sdi-desc {
+            font-size: 0.8rem;
+            color: var(--text-tertiary);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-top: 1px;
+        }
+        .sdi-cat {
+            flex-shrink: 0;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            padding: 2px 8px;
+            border-radius: var(--radius-full);
+            background: var(--bg-secondary);
+            color: var(--text-tertiary);
+        }
+        .search-dropdown-empty {
+            padding: 16px;
+            text-align: center;
+            color: var(--text-tertiary);
+            font-size: 0.9rem;
+        }
+        .search-dropdown-hint {
+            padding: 6px 16px 4px;
+            font-size: 0.75rem;
+            color: var(--text-tertiary);
+            display: flex;
+            justify-content: flex-end;
+            gap: 6px;
+        }
+        .search-dropdown-hint kbd {
+            font-size: 0.7rem;
+            padding: 1px 5px;
+            border-radius: 3px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-secondary);
+        }
+        @media (max-width: 640px) {
+            .search-dropdown { max-height: 240px; }
+            .search-dropdown-hint { display: none; }
         }
 
         /* Category cards */
@@ -230,9 +334,12 @@
                         <input type="search" id="searchInput" class="form-input"
                                placeholder="예: JSON, BMI, Base64, QR코드..."
                                aria-label="도구 검색…"
-                               autocomplete="off">
+                               autocomplete="off"
+                               role="combobox" aria-expanded="false"
+                               aria-controls="searchDropdown" aria-autocomplete="list">
                         <kbd class="search-shortcut" aria-hidden="true">/</kbd>
                     </div>
+                    <ul id="searchDropdown" class="search-dropdown" role="listbox" hidden></ul>
                 </div>
             </div>
 
@@ -297,7 +404,7 @@
                 
         <a href="/ko/image-watermark/" class="card" data-category="image" data-subcategory="image-tools" data-slug="image-watermark" data-keywords="watermark image overlay logo">
           <button type="button" class="fav-toggle" data-fav="image-watermark" aria-label="즐겨찾기에 추가" data-add-label="즐겨찾기에 추가" data-remove-label="즐겨찾기에서 제거">☆</button>
-          <div class="card-icon">🛡️</div>
+          <div class="card-icon">💦</div>
           <h3 class="card-title">이미지 워터마크</h3>
           <p class="card-description">이미지에 워터마크를 추가하여 저작권을 보호하세요.</p>
         </a>
@@ -344,7 +451,7 @@
           <p class="card-description">JSON 데이터를 포맷팅하고 유효성을 검사하세요. 개발자를 위해 광고를 제거했습니다.</p>
         </a>
 
-        <a href="/ko/color-converter/" class="card" data-category="convert" data-subcategory="" data-slug="color-converter" data-keywords="color colour hex rgb hsl">
+        <a href="/ko/color-converter/" class="card" data-category="convert" data-subcategory="" data-slug="color-converter" data-keywords="color colour hex rgb hsl convert">
           <button type="button" class="fav-toggle" data-fav="color-converter" aria-label="즐겨찾기에 추가" data-add-label="즐겨찾기에 추가" data-remove-label="즐겨찾기에서 제거">☆</button>
           <div class="card-icon">🎨</div>
           <h3 class="card-title">색상 변환기</h3>
@@ -358,7 +465,7 @@
           <p class="card-description">온라인 타이머와 포모도로 기법</p>
         </a>
 
-        <a href="/ko/base64-converter/" class="card" data-category="dev" data-subcategory="dev-tools" data-slug="base64-converter" data-keywords="base64 encode decode b64">
+        <a href="/ko/base64-converter/" class="card" data-category="dev" data-subcategory="dev-tools" data-slug="base64-converter" data-keywords="base64 encode decode b64 convert">
           <button type="button" class="fav-toggle" data-fav="base64-converter" aria-label="즐겨찾기에 추가" data-add-label="즐겨찾기에 추가" data-remove-label="즐겨찾기에서 제거">☆</button>
           <div class="card-icon">🔤</div>
           <h3 class="card-title">Base64 인코더/디코더</h3>
@@ -395,7 +502,7 @@
 
         <a href="/ko/favicon-generator/" class="card" data-category="image" data-subcategory="image-tools" data-slug="favicon-generator" data-keywords="favicon icon apple-touch">
           <button type="button" class="fav-toggle" data-fav="favicon-generator" aria-label="즐겨찾기에 추가" data-add-label="즐겨찾기에 추가" data-remove-label="즐겨찾기에서 제거">☆</button>
-          <div class="card-icon">🎯</div>
+          <div class="card-icon">🔲</div>
           <h3 class="card-title">파비콘 생성기</h3>
           <p class="card-description">이미지를 다양한 크기의 파비콘으로 변환하세요.</p>
         </a>
@@ -563,14 +670,14 @@
 
         <a href="/ko/few-shot-formatter/" class="card" data-category="ai" data-subcategory="" data-slug="few-shot-formatter" data-keywords="few-shot prompt examples template formatter">
           <button type="button" class="fav-toggle" data-fav="few-shot-formatter" aria-label="즐겨찾기에 추가" data-add-label="즐겨찾기에 추가" data-remove-label="즐겨찾기에서 제거">☆</button>
-          <div class="card-icon">🎯</div>
+          <div class="card-icon">🧪</div>
           <h3 class="card-title">Few-Shot 프롬프트 포매터</h3>
           <p class="card-description">시스템 지시와 입력→출력 예시 목록을 입력하면, Markdown, Anthropic XML 태그, OpenAI messages JSON, 또는 일반 텍스트 형식의 깔끔한 Few-shot 프롬프트로 변환합니다 — ChatGPT·Claude·스크립트에 바로 붙여넣을 수 있습니다.</p>
         </a>
 
         <a href="/ko/json-schema-validator/" class="card" data-category="dev" data-subcategory="dev-tools" data-slug="json-schema-validator" data-keywords="json schema validate ajv schema jsonpath">
           <button type="button" class="fav-toggle" data-fav="json-schema-validator" aria-label="즐겨찾기에 추가" data-add-label="즐겨찾기에 추가" data-remove-label="즐겨찾기에서 제거">☆</button>
-          <div class="card-icon">🛡️</div>
+          <div class="card-icon">✅</div>
           <h3 class="card-title">JSON Schema 검증기</h3>
           <p class="card-description">JSON 데이터와 JSON Schema를 붙여넣으면 type·required·properties·items·enum·format·pattern·min/max 제약을 모두 검사하고, 실패 위치를 JSONPath로 표시합니다. 모든 처리는 브라우저에서 이루어집니다.</p>
         </a>
@@ -617,7 +724,7 @@
           <p class="card-description">체중을 기준으로 1일 물 섭취량을 추정하고 운동량과 기후에 따라 보정합니다. 결과는 ml·리터·250ml 컵 수로 표시됩니다. 기본 공식은 체중(kg)당 33ml — 보통 활동량의 성인에게 적용되는 기준입니다.</p>
         </a>
 
-        <a href="/ko/file-size-converter/" class="card" data-category="convert" data-subcategory="" data-slug="file-size-converter" data-keywords="file size bytes kb mb gb tb kib mib">
+        <a href="/ko/file-size-converter/" class="card" data-category="convert" data-subcategory="" data-slug="file-size-converter" data-keywords="file size bytes kb mb gb tb kib mib convert">
           <button type="button" class="fav-toggle" data-fav="file-size-converter" aria-label="즐겨찾기에 추가" data-add-label="즐겨찾기에 추가" data-remove-label="즐겨찾기에서 제거">☆</button>
           <div class="card-icon">💾</div>
           <h3 class="card-title">파일 크기 변환기</h3>
@@ -638,49 +745,49 @@
           <p class="card-description">이미지를 자르고, 회전하고, 필터를 적용하세요.</p>
         </a>
 
-        <a href="/ko/jpa-converter/" class="card" data-category="dev" data-subcategory="dev-tools" data-slug="jpa-converter" data-keywords="jpa entity sql hibernate">
+        <a href="/ko/jpa-converter/" class="card" data-category="dev" data-subcategory="dev-tools" data-slug="jpa-converter" data-keywords="jpa entity sql hibernate convert">
           <button type="button" class="fav-toggle" data-fav="jpa-converter" aria-label="즐겨찾기에 추가" data-add-label="즐겨찾기에 추가" data-remove-label="즐겨찾기에서 제거">☆</button>
           <div class="card-icon">🗃️</div>
           <h3 class="card-title">DB to JPA 변환기</h3>
           <p class="card-description">SQL 스키마를 JPA Entity, DTO 클래스로 자동 변환합니다.</p>
         </a>
 
-        <a href="/ko/json-to-ts/" class="card" data-category="dev" data-subcategory="dev-tools" data-slug="json-to-ts" data-keywords="json typescript interface dto">
+        <a href="/ko/json-to-ts/" class="card" data-category="dev" data-subcategory="dev-tools" data-slug="json-to-ts" data-keywords="json typescript interface dto convert">
           <button type="button" class="fav-toggle" data-fav="json-to-ts" aria-label="즐겨찾기에 추가" data-add-label="즐겨찾기에 추가" data-remove-label="즐겨찾기에서 제거">☆</button>
           <div class="card-icon">🔁</div>
           <h3 class="card-title">JSON to TS/DTO</h3>
           <p class="card-description">JSON을 TypeScript Interface 및 NestJS DTO로 변환합니다.</p>
         </a>
 
-        <a href="/ko/excel-to-sql/" class="card" data-category="convert" data-subcategory="" data-slug="excel-to-sql" data-keywords="excel sql insert csv">
+        <a href="/ko/excel-to-sql/" class="card" data-category="convert" data-subcategory="" data-slug="excel-to-sql" data-keywords="excel sql insert csv convert">
           <button type="button" class="fav-toggle" data-fav="excel-to-sql" aria-label="즐겨찾기에 추가" data-add-label="즐겨찾기에 추가" data-remove-label="즐겨찾기에서 제거">☆</button>
           <div class="card-icon">📊</div>
           <h3 class="card-title">Excel to SQL</h3>
           <p class="card-description">엑셀 데이터를 SQL INSERT 쿼리로 변환하는 도구.</p>
         </a>
 
-        <a href="/ko/json-to-excel/" class="card" data-category="convert" data-subcategory="" data-slug="json-to-excel" data-keywords="json excel xlsx spreadsheet">
+        <a href="/ko/json-to-excel/" class="card" data-category="convert" data-subcategory="" data-slug="json-to-excel" data-keywords="json excel xlsx spreadsheet convert">
           <button type="button" class="fav-toggle" data-fav="json-to-excel" aria-label="즐겨찾기에 추가" data-add-label="즐겨찾기에 추가" data-remove-label="즐겨찾기에서 제거">☆</button>
-          <div class="card-icon">📈</div>
+          <div class="card-icon">📑</div>
           <h3 class="card-title">JSON to Excel 변환기</h3>
           <p class="card-description">JSON 데이터를 엑셀로 변환하고 다운로드하세요. (보안)</p>
         </a>
 
-        <a href="/ko/json-ld-generator/" class="card" data-category="dev" data-subcategory="dev-tools" data-slug="json-ld-generator" data-keywords="json-ld schema seo structured">
+        <a href="/ko/json-ld-generator/" class="card" data-category="dev" data-subcategory="dev-tools" data-slug="json-ld-generator" data-keywords="json json-ld schema seo structured">
           <button type="button" class="fav-toggle" data-fav="json-ld-generator" aria-label="즐겨찾기에 추가" data-add-label="즐겨찾기에 추가" data-remove-label="즐겨찾기에서 제거">☆</button>
           <div class="card-icon">🏷️</div>
           <h3 class="card-title">SEO JSON-LD 생성기</h3>
           <p class="card-description">구글/네이버 노출을 위한 구조화된 데이터(스키마)를 만드세요.</p>
         </a>
 
-        <a href="/ko/pdf-tools/" class="card" data-category="convert" data-subcategory="" data-slug="pdf-tools" data-keywords="pdf merge split">
+        <a href="/ko/pdf-tools/" class="card" data-category="convert" data-subcategory="" data-slug="pdf-tools" data-keywords="pdf merge split convert">
           <button type="button" class="fav-toggle" data-fav="pdf-tools" aria-label="즐겨찾기에 추가" data-add-label="즐겨찾기에 추가" data-remove-label="즐겨찾기에서 제거">☆</button>
           <div class="card-icon">📄</div>
           <h3 class="card-title">PDF 병합/분리</h3>
           <p class="card-description">서버 전송 없이 브라우저에서 안전하게 PDF를 합치고 나누세요.</p>
         </a>
 
-        <a href="/ko/text-to-diagram/" class="card" data-category="convert" data-subcategory="" data-slug="text-to-diagram" data-keywords="diagram flowchart sequence mermaid">
+        <a href="/ko/text-to-diagram/" class="card" data-category="convert" data-subcategory="" data-slug="text-to-diagram" data-keywords="diagram flowchart sequence mermaid convert">
           <button type="button" class="fav-toggle" data-fav="text-to-diagram" aria-label="즐겨찾기에 추가" data-add-label="즐겨찾기에 추가" data-remove-label="즐겨찾기에서 제거">☆</button>
           <div class="card-icon">🧩</div>
           <h3 class="card-title">텍스트로 다이어그램 그리기</h3>
@@ -870,31 +977,142 @@
                 syncUrl();
             }
 
+            // --- Search autocomplete dropdown ---
+            const SEARCH_DATA = [{"s": "image-watermark", "i": "💦", "t": "이미지 워터마크", "k": "watermark image overlay logo", "c": "image"}, {"s": "unit-converter", "i": "📏", "t": "단위 변환기", "k": "unit convert length weight volume temperature", "c": "convert"}, {"s": "image-converter", "i": "🖼️", "t": "이미지 변환기", "k": "image png jpg webp avif convert", "c": "image"}, {"s": "bmi-calculator", "i": "⚖️", "t": "BMI 계산기", "k": "bmi body mass weight health", "c": "calc"}, {"s": "date-calculator", "i": "📅", "t": "날짜 계산기", "k": "date duration between days", "c": "calc"}, {"s": "text-utils", "i": "📝", "t": "텍스트 유틸리티", "k": "text case uppercase lowercase count", "c": "text"}, {"s": "json-formatter", "i": "{ }", "t": "JSON 포매터", "k": "json format pretty minify validate", "c": "dev"}, {"s": "color-converter", "i": "🎨", "t": "색상 변환기", "k": "color colour hex rgb hsl convert", "c": "convert"}, {"s": "timer", "i": "⏱️", "t": "타이머", "k": "timer stopwatch countdown", "c": "calc"}, {"s": "base64-converter", "i": "🔤", "t": "Base64 인코더/디코더", "k": "base64 encode decode b64 convert", "c": "dev"}, {"s": "qr-generator", "i": "📱", "t": "QR 코드 생성기", "k": "qr qrcode barcode", "c": "image"}, {"s": "regex-tester", "i": "🔍", "t": "정규식 테스터", "k": "regex regular expression pattern match", "c": "dev"}, {"s": "sql-formatter", "i": "🗄️", "t": "SQL 포매터", "k": "sql format query database", "c": "dev"}, {"s": "lorem-ipsum", "i": "📋", "t": "Lorem Ipsum 생성기", "k": "lorem ipsum placeholder dummy", "c": "text"}, {"s": "favicon-generator", "i": "🔲", "t": "파비콘 생성기", "k": "favicon icon apple-touch", "c": "image"}, {"s": "diff-checker", "i": "🔀", "t": "텍스트 비교기 (Diff Checker)", "k": "diff compare text difference", "c": "text"}, {"s": "password-generator", "i": "🔐", "t": "안전한 비밀번호 생성기", "k": "password random secure strong", "c": "calc"}, {"s": "thumbnail-downloader", "i": "📺", "t": "유튜브 썸네일 다운로더", "k": "thumbnail youtube download image", "c": "image"}, {"s": "markdown-previewer", "i": "📝", "t": "마크다운 에디터 & 미리보기", "k": "markdown md preview render", "c": "text"}, {"s": "reaction-test", "i": "⚡", "t": "반응 속도 테스트", "k": "reaction reflex speed", "c": "calc"}, {"s": "jwt-decoder", "i": "🪪", "t": "JWT 디코더", "k": "jwt token auth jose decode", "c": "dev"}, {"s": "hash-generator", "i": "🔑", "t": "해시 생성기", "k": "hash md5 sha sha256 digest", "c": "dev"}, {"s": "unix-timestamp", "i": "⏲️", "t": "Unix 타임스탬프 변환기", "k": "unix timestamp epoch time", "c": "convert"}, {"s": "uuid-generator", "i": "🆔", "t": "UUID 생성기", "k": "uuid guid random identifier", "c": "dev"}, {"s": "url-encoder", "i": "🔗", "t": "URL 인코더 / 디코더", "k": "url encode decode percent escape", "c": "dev"}, {"s": "token-counter", "i": "🪙", "t": "AI 토큰 카운터 & 비용 계산기", "k": "token gpt claude cost tiktoken", "c": "ai"}, {"s": "mcp-config-generator", "i": "🔌", "t": "MCP 서버 설정 생성기", "k": "mcp claude desktop cursor config", "c": "ai"}, {"s": "ai-image-inspector", "i": "🔬", "t": "AI 이미지 메타데이터 검사기", "k": "ai image metadata midjourney stable diffusion", "c": "ai"}, {"s": "chatgpt-to-blog", "i": "📝", "t": "ChatGPT → 블로그 변환기", "k": "chatgpt blog markdown export", "c": "ai"}, {"s": "prompt-pii-scrubber", "i": "🛡️", "t": "프롬프트 PII 마스킹", "k": "pii prompt mask redact privacy", "c": "ai"}, {"s": "claude-md-generator", "i": "📜", "t": "Claude.md 생성기", "k": "claude claude.md system prompt", "c": "ai"}, {"s": "loan-calculator", "i": "💰", "t": "대출 계산기", "k": "loan mortgage amortization payment interest", "c": "calc"}, {"s": "compound-interest", "i": "📈", "t": "복리 계산기", "k": "compound interest investment savings", "c": "calc"}, {"s": "retirement-calculator", "i": "🏖️", "t": "은퇴 계산기", "k": "retirement 401k pension nest egg", "c": "calc"}, {"s": "calorie-calculator", "i": "🔥", "t": "칼로리·BMR 계산기", "k": "calorie bmr tdee macro diet", "c": "calc"}, {"s": "pregnancy-calculator", "i": "🤰", "t": "임신 출산예정일 계산기", "k": "pregnancy due date lmp gestation trimester", "c": "calc"}, {"s": "body-fat-calculator", "i": "💪", "t": "체지방률 계산기", "k": "body fat bfp navy composition", "c": "calc"}, {"s": "rag-chunker", "i": "✂️", "t": "RAG 텍스트 청크 분할기", "k": "rag chunk split embedding vector overlap", "c": "ai"}, {"s": "few-shot-formatter", "i": "🧪", "t": "Few-Shot 프롬프트 포매터", "k": "few-shot prompt examples template formatter", "c": "ai"}, {"s": "json-schema-validator", "i": "✅", "t": "JSON Schema 검증기", "k": "json schema validate ajv schema jsonpath", "c": "dev"}, {"s": "tip-calculator", "i": "💵", "t": "팁 계산기", "k": "tip gratuity split bill restaurant", "c": "calc"}, {"s": "percentage-calculator", "i": "％", "t": "퍼센트 계산기", "k": "percent percentage change increase decrease", "c": "calc"}, {"s": "discount-calculator", "i": "🏷️", "t": "할인 계산기", "k": "discount sale price markdown savings", "c": "calc"}, {"s": "sleep-calculator", "i": "🌙", "t": "수면 사이클 계산기", "k": "sleep bedtime wake rem cycle", "c": "calc"}, {"s": "reading-time", "i": "📖", "t": "읽기 시간 계산기", "k": "reading wpm words minutes speech", "c": "text"}, {"s": "water-intake", "i": "💧", "t": "물 섭취량 계산기", "k": "water hydration drink intake daily", "c": "calc"}, {"s": "file-size-converter", "i": "💾", "t": "파일 크기 변환기", "k": "file size bytes kb mb gb tb kib mib convert", "c": "convert"}, {"s": "age-calculator", "i": "🎂", "t": "만 나이 계산기", "k": "age dob birthday years old birthdate", "c": "calc"}, {"s": "image-editor", "i": "🎨", "t": "이미지 편집기", "k": "image crop rotate filter", "c": "image"}, {"s": "jpa-converter", "i": "🗃️", "t": "DB to JPA 변환기", "k": "jpa entity sql hibernate convert", "c": "dev"}, {"s": "json-to-ts", "i": "🔁", "t": "JSON to TS/DTO", "k": "json typescript interface dto convert", "c": "dev"}, {"s": "excel-to-sql", "i": "📊", "t": "Excel to SQL", "k": "excel sql insert csv convert", "c": "convert"}, {"s": "json-to-excel", "i": "📑", "t": "JSON to Excel 변환기", "k": "json excel xlsx spreadsheet convert", "c": "convert"}, {"s": "json-ld-generator", "i": "🏷️", "t": "SEO JSON-LD 생성기", "k": "json json-ld schema seo structured", "c": "dev"}, {"s": "pdf-tools", "i": "📄", "t": "PDF 병합/분리", "k": "pdf merge split convert", "c": "convert"}, {"s": "text-to-diagram", "i": "🧩", "t": "텍스트로 다이어그램 그리기", "k": "diagram flowchart sequence mermaid convert", "c": "convert"}];
+            const LANG = 'ko';
+            const CAT_LABELS = {
+                dev: '개발자', text: '텍스트',
+                image: '이미지', convert: '변환기',
+                calc: '계산기', ai: 'AI'
+            };
+            const dropdown = document.getElementById('searchDropdown');
+            let ddIndex = -1; // active item index in dropdown
+
+            function matchTool(item, q) {
+                return item.t.toLowerCase().includes(q)
+                    || item.k.toLowerCase().includes(q)
+                    || item.s.replace(/-/g, ' ').toLowerCase().includes(q);
+            }
+
+            function renderDropdown(q) {
+                if (!q || q.length < 1) {
+                    dropdown.hidden = true;
+                    searchInput.setAttribute('aria-expanded', 'false');
+                    ddIndex = -1;
+                    return;
+                }
+                const matches = SEARCH_DATA.filter(item => matchTool(item, q)).slice(0, 8);
+                if (matches.length === 0) {
+                    dropdown.innerHTML =
+                        '<li class="search-dropdown-empty">검색 결과가 없습니다.</li>';
+                    dropdown.hidden = false;
+                    searchInput.setAttribute('aria-expanded', 'true');
+                    ddIndex = -1;
+                    return;
+                }
+                dropdown.innerHTML = matches.map((item, i) =>
+                    '<li role="option" id="sdi-' + i + '" class="search-dropdown-item"'
+                    + ' data-href="/' + LANG + '/' + escapeHtml(item.s) + '/">'
+                    + '<span class="sdi-icon">' + escapeHtml(item.i) + '</span>'
+                    + '<span class="sdi-info">'
+                    + '<span class="sdi-title">' + escapeHtml(item.t) + '</span>'
+                    + '</span>'
+                    + '<span class="sdi-cat">' + escapeHtml(CAT_LABELS[item.c] || item.c) + '</span>'
+                    + '</li>'
+                ).join('')
+                + '<li role="presentation" class="search-dropdown-hint"><kbd>↑↓</kbd> 이동 <kbd>Enter</kbd> 선택 <kbd>Esc</kbd> 닫기</li>';
+                dropdown.hidden = false;
+                searchInput.setAttribute('aria-expanded', 'true');
+                ddIndex = -1;
+            }
+
+            function setActiveItem(idx) {
+                const items = dropdown.querySelectorAll('.search-dropdown-item');
+                items.forEach((el, i) => {
+                    el.classList.toggle('active', i === idx);
+                    if (i === idx) {
+                        searchInput.setAttribute('aria-activedescendant', el.id);
+                        el.scrollIntoView({ block: 'nearest' });
+                    }
+                });
+                ddIndex = idx;
+            }
+
+            function navigateToItem(idx) {
+                const items = dropdown.querySelectorAll('.search-dropdown-item');
+                if (idx >= 0 && idx < items.length && items[idx].dataset.href) {
+                    window.location.href = items[idx].dataset.href;
+                }
+            }
+
             if (searchInput) {
-                // Debounce input to avoid filtering on every keystroke for fast typers.
                 let searchDebounce;
                 const shortcut = document.querySelector('.search-shortcut');
                 searchInput.addEventListener('input', e => {
                     clearTimeout(searchDebounce);
                     searchDebounce = setTimeout(() => {
                         activeSearch = e.target.value;
+                        const q = activeSearch.toLowerCase().trim();
+                        renderDropdown(q);
                         applyFilters();
-                        // Scroll to results when searching so users see filtered cards.
-                        const grid = document.getElementById('toolGrid');
-                        if (activeSearch.trim().length >= 2 && grid) {
-                            grid.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                        }
-                        // GA4: log that search was used (query text is NOT sent,
-                        // only its length). Fire only for queries of 2+ chars to
-                        // skip incidental single keystrokes.
                         const len = activeSearch.trim().length;
                         if (len >= 2 && typeof gtag === 'function') {
                             gtag('event', 'search_used', { query_length: len });
                         }
-                    }, 120);
+                    }, 80);
                     if (shortcut) shortcut.style.display = e.target.value ? 'none' : '';
                 });
-                // `/` keyboard shortcut focuses the search input (same as Slack/GitHub).
+
+                searchInput.addEventListener('keydown', e => {
+                    const items = dropdown.querySelectorAll('.search-dropdown-item');
+                    const count = items.length;
+                    if (e.key === 'ArrowDown' && !dropdown.hidden && count) {
+                        e.preventDefault();
+                        setActiveItem(ddIndex < count - 1 ? ddIndex + 1 : 0);
+                    } else if (e.key === 'ArrowUp' && !dropdown.hidden && count) {
+                        e.preventDefault();
+                        setActiveItem(ddIndex > 0 ? ddIndex - 1 : count - 1);
+                    } else if (e.key === 'Enter' && ddIndex >= 0) {
+                        e.preventDefault();
+                        navigateToItem(ddIndex);
+                    } else if (e.key === 'Escape') {
+                        if (!dropdown.hidden) {
+                            dropdown.hidden = true;
+                            searchInput.setAttribute('aria-expanded', 'false');
+                            ddIndex = -1;
+                        } else if (searchInput.value) {
+                            searchInput.value = '';
+                            activeSearch = '';
+                            applyFilters();
+                            if (shortcut) shortcut.style.display = '';
+                        }
+                    }
+                });
+
+                // Click on dropdown item navigates.
+                dropdown.addEventListener('click', e => {
+                    const item = e.target.closest('.search-dropdown-item');
+                    if (item && item.dataset.href) {
+                        window.location.href = item.dataset.href;
+                    }
+                });
+
+                // Close dropdown when clicking outside.
+                document.addEventListener('click', e => {
+                    if (!e.target.closest('.hero-search')) {
+                        dropdown.hidden = true;
+                        searchInput.setAttribute('aria-expanded', 'false');
+                        ddIndex = -1;
+                    }
+                });
+
+                // Re-open dropdown when focusing back into search with existing query.
+                searchInput.addEventListener('focus', () => {
+                    const q = searchInput.value.toLowerCase().trim();
+                    if (q.length >= 1) renderDropdown(q);
+                });
+
+                // `/` keyboard shortcut focuses the search input.
                 document.addEventListener('keydown', e => {
                     if (e.key !== '/' || e.metaKey || e.ctrlKey || e.altKey) return;
                     const t = e.target;
@@ -902,15 +1120,6 @@
                     e.preventDefault();
                     searchInput.focus();
                     searchInput.select();
-                });
-                // ESC clears + blurs.
-                searchInput.addEventListener('keydown', e => {
-                    if (e.key === 'Escape' && searchInput.value) {
-                        searchInput.value = '';
-                        activeSearch = '';
-                        applyFilters();
-                        if (shortcut) shortcut.style.display = '';
-                    }
                 });
             }
 

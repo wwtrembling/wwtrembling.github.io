@@ -85,6 +85,7 @@
         .hero-search {
             max-width: 520px;
             margin: var(--spacing-lg) auto 0;
+            position: relative;
         }
         .hero-search .form-input {
             font-size: 1.1rem;
@@ -97,6 +98,109 @@
         .hero-search .form-input:focus {
             border-color: var(--primary-color);
             box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
+        }
+
+        /* Search autocomplete dropdown */
+        .search-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            margin-top: 4px;
+            background: var(--bg-primary);
+            border: 2px solid var(--primary-color);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg, 0 8px 24px rgba(0,0,0,0.12));
+            max-height: 360px;
+            overflow-y: auto;
+            z-index: 1000;
+            list-style: none;
+            padding: 6px 0;
+        }
+        .search-dropdown-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 16px;
+            cursor: pointer;
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: background 0.1s;
+        }
+        .search-dropdown-item:hover,
+        .search-dropdown-item.active {
+            background: var(--primary-color);
+            color: #fff;
+        }
+        .search-dropdown-item:hover .sdi-desc,
+        .search-dropdown-item.active .sdi-desc {
+            color: rgba(255,255,255,0.8);
+        }
+        .search-dropdown-item:hover .sdi-cat,
+        .search-dropdown-item.active .sdi-cat {
+            background: rgba(255,255,255,0.2);
+            color: #fff;
+        }
+        .sdi-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+            width: 32px;
+            text-align: center;
+        }
+        .sdi-info {
+            flex: 1;
+            min-width: 0;
+        }
+        .sdi-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .sdi-desc {
+            font-size: 0.8rem;
+            color: var(--text-tertiary);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-top: 1px;
+        }
+        .sdi-cat {
+            flex-shrink: 0;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            padding: 2px 8px;
+            border-radius: var(--radius-full);
+            background: var(--bg-secondary);
+            color: var(--text-tertiary);
+        }
+        .search-dropdown-empty {
+            padding: 16px;
+            text-align: center;
+            color: var(--text-tertiary);
+            font-size: 0.9rem;
+        }
+        .search-dropdown-hint {
+            padding: 6px 16px 4px;
+            font-size: 0.75rem;
+            color: var(--text-tertiary);
+            display: flex;
+            justify-content: flex-end;
+            gap: 6px;
+        }
+        .search-dropdown-hint kbd {
+            font-size: 0.7rem;
+            padding: 1px 5px;
+            border-radius: 3px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-secondary);
+        }
+        @media (max-width: 640px) {
+            .search-dropdown { max-height: 240px; }
+            .search-dropdown-hint { display: none; }
         }
 
         /* Category cards */
@@ -202,9 +306,12 @@
                         <input type="search" id="searchInput" class="form-input"
                                placeholder="{{ hero_search_hint }}"
                                aria-label="{{ search_placeholder }}"
-                               autocomplete="off">
+                               autocomplete="off"
+                               role="combobox" aria-expanded="false"
+                               aria-controls="searchDropdown" aria-autocomplete="list">
                         <kbd class="search-shortcut" aria-hidden="true">/</kbd>
                     </div>
+                    <ul id="searchDropdown" class="search-dropdown" role="listbox" hidden></ul>
                 </div>
             </div>
 
@@ -441,31 +548,142 @@
                 syncUrl();
             }
 
+            // --- Search autocomplete dropdown ---
+            const SEARCH_DATA = {{ search_data_json }};
+            const LANG = '{{ lang_code }}';
+            const CAT_LABELS = {
+                dev: '{{ cat_dev }}', text: '{{ cat_text }}',
+                image: '{{ cat_image }}', convert: '{{ cat_convert }}',
+                calc: '{{ cat_calc }}', ai: '{{ cat_ai }}'
+            };
+            const dropdown = document.getElementById('searchDropdown');
+            let ddIndex = -1; // active item index in dropdown
+
+            function matchTool(item, q) {
+                return item.t.toLowerCase().includes(q)
+                    || item.k.toLowerCase().includes(q)
+                    || item.s.replace(/-/g, ' ').toLowerCase().includes(q);
+            }
+
+            function renderDropdown(q) {
+                if (!q || q.length < 1) {
+                    dropdown.hidden = true;
+                    searchInput.setAttribute('aria-expanded', 'false');
+                    ddIndex = -1;
+                    return;
+                }
+                const matches = SEARCH_DATA.filter(item => matchTool(item, q)).slice(0, 8);
+                if (matches.length === 0) {
+                    dropdown.innerHTML =
+                        '<li class="search-dropdown-empty">{{ search_no_results }}</li>';
+                    dropdown.hidden = false;
+                    searchInput.setAttribute('aria-expanded', 'true');
+                    ddIndex = -1;
+                    return;
+                }
+                dropdown.innerHTML = matches.map((item, i) =>
+                    '<li role="option" id="sdi-' + i + '" class="search-dropdown-item"'
+                    + ' data-href="/' + LANG + '/' + escapeHtml(item.s) + '/">'
+                    + '<span class="sdi-icon">' + escapeHtml(item.i) + '</span>'
+                    + '<span class="sdi-info">'
+                    + '<span class="sdi-title">' + escapeHtml(item.t) + '</span>'
+                    + '</span>'
+                    + '<span class="sdi-cat">' + escapeHtml(CAT_LABELS[item.c] || item.c) + '</span>'
+                    + '</li>'
+                ).join('')
+                + '<li role="presentation" class="search-dropdown-hint"><kbd>↑↓</kbd> {{ search_hint_nav }} <kbd>Enter</kbd> {{ search_hint_go }} <kbd>Esc</kbd> {{ search_hint_close }}</li>';
+                dropdown.hidden = false;
+                searchInput.setAttribute('aria-expanded', 'true');
+                ddIndex = -1;
+            }
+
+            function setActiveItem(idx) {
+                const items = dropdown.querySelectorAll('.search-dropdown-item');
+                items.forEach((el, i) => {
+                    el.classList.toggle('active', i === idx);
+                    if (i === idx) {
+                        searchInput.setAttribute('aria-activedescendant', el.id);
+                        el.scrollIntoView({ block: 'nearest' });
+                    }
+                });
+                ddIndex = idx;
+            }
+
+            function navigateToItem(idx) {
+                const items = dropdown.querySelectorAll('.search-dropdown-item');
+                if (idx >= 0 && idx < items.length && items[idx].dataset.href) {
+                    window.location.href = items[idx].dataset.href;
+                }
+            }
+
             if (searchInput) {
-                // Debounce input to avoid filtering on every keystroke for fast typers.
                 let searchDebounce;
                 const shortcut = document.querySelector('.search-shortcut');
                 searchInput.addEventListener('input', e => {
                     clearTimeout(searchDebounce);
                     searchDebounce = setTimeout(() => {
                         activeSearch = e.target.value;
+                        const q = activeSearch.toLowerCase().trim();
+                        renderDropdown(q);
                         applyFilters();
-                        // Scroll to results when searching so users see filtered cards.
-                        const grid = document.getElementById('toolGrid');
-                        if (activeSearch.trim().length >= 2 && grid) {
-                            grid.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                        }
-                        // GA4: log that search was used (query text is NOT sent,
-                        // only its length). Fire only for queries of 2+ chars to
-                        // skip incidental single keystrokes.
                         const len = activeSearch.trim().length;
                         if (len >= 2 && typeof gtag === 'function') {
                             gtag('event', 'search_used', { query_length: len });
                         }
-                    }, 120);
+                    }, 80);
                     if (shortcut) shortcut.style.display = e.target.value ? 'none' : '';
                 });
-                // `/` keyboard shortcut focuses the search input (same as Slack/GitHub).
+
+                searchInput.addEventListener('keydown', e => {
+                    const items = dropdown.querySelectorAll('.search-dropdown-item');
+                    const count = items.length;
+                    if (e.key === 'ArrowDown' && !dropdown.hidden && count) {
+                        e.preventDefault();
+                        setActiveItem(ddIndex < count - 1 ? ddIndex + 1 : 0);
+                    } else if (e.key === 'ArrowUp' && !dropdown.hidden && count) {
+                        e.preventDefault();
+                        setActiveItem(ddIndex > 0 ? ddIndex - 1 : count - 1);
+                    } else if (e.key === 'Enter' && ddIndex >= 0) {
+                        e.preventDefault();
+                        navigateToItem(ddIndex);
+                    } else if (e.key === 'Escape') {
+                        if (!dropdown.hidden) {
+                            dropdown.hidden = true;
+                            searchInput.setAttribute('aria-expanded', 'false');
+                            ddIndex = -1;
+                        } else if (searchInput.value) {
+                            searchInput.value = '';
+                            activeSearch = '';
+                            applyFilters();
+                            if (shortcut) shortcut.style.display = '';
+                        }
+                    }
+                });
+
+                // Click on dropdown item navigates.
+                dropdown.addEventListener('click', e => {
+                    const item = e.target.closest('.search-dropdown-item');
+                    if (item && item.dataset.href) {
+                        window.location.href = item.dataset.href;
+                    }
+                });
+
+                // Close dropdown when clicking outside.
+                document.addEventListener('click', e => {
+                    if (!e.target.closest('.hero-search')) {
+                        dropdown.hidden = true;
+                        searchInput.setAttribute('aria-expanded', 'false');
+                        ddIndex = -1;
+                    }
+                });
+
+                // Re-open dropdown when focusing back into search with existing query.
+                searchInput.addEventListener('focus', () => {
+                    const q = searchInput.value.toLowerCase().trim();
+                    if (q.length >= 1) renderDropdown(q);
+                });
+
+                // `/` keyboard shortcut focuses the search input.
                 document.addEventListener('keydown', e => {
                     if (e.key !== '/' || e.metaKey || e.ctrlKey || e.altKey) return;
                     const t = e.target;
@@ -473,15 +691,6 @@
                     e.preventDefault();
                     searchInput.focus();
                     searchInput.select();
-                });
-                // ESC clears + blurs.
-                searchInput.addEventListener('keydown', e => {
-                    if (e.key === 'Escape' && searchInput.value) {
-                        searchInput.value = '';
-                        activeSearch = '';
-                        applyFilters();
-                        if (shortcut) shortcut.style.display = '';
-                    }
                 });
             }
 

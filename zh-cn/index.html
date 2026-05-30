@@ -96,6 +96,7 @@
         .hero-search {
             max-width: 520px;
             margin: var(--spacing-lg) auto 0;
+            position: relative;
         }
         .hero-search .form-input {
             font-size: 1.1rem;
@@ -108,6 +109,109 @@
         .hero-search .form-input:focus {
             border-color: var(--primary-color);
             box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
+        }
+
+        /* Search autocomplete dropdown */
+        .search-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            margin-top: 4px;
+            background: var(--bg-primary);
+            border: 2px solid var(--primary-color);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg, 0 8px 24px rgba(0,0,0,0.12));
+            max-height: 360px;
+            overflow-y: auto;
+            z-index: 1000;
+            list-style: none;
+            padding: 6px 0;
+        }
+        .search-dropdown-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 16px;
+            cursor: pointer;
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: background 0.1s;
+        }
+        .search-dropdown-item:hover,
+        .search-dropdown-item.active {
+            background: var(--primary-color);
+            color: #fff;
+        }
+        .search-dropdown-item:hover .sdi-desc,
+        .search-dropdown-item.active .sdi-desc {
+            color: rgba(255,255,255,0.8);
+        }
+        .search-dropdown-item:hover .sdi-cat,
+        .search-dropdown-item.active .sdi-cat {
+            background: rgba(255,255,255,0.2);
+            color: #fff;
+        }
+        .sdi-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+            width: 32px;
+            text-align: center;
+        }
+        .sdi-info {
+            flex: 1;
+            min-width: 0;
+        }
+        .sdi-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .sdi-desc {
+            font-size: 0.8rem;
+            color: var(--text-tertiary);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-top: 1px;
+        }
+        .sdi-cat {
+            flex-shrink: 0;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            padding: 2px 8px;
+            border-radius: var(--radius-full);
+            background: var(--bg-secondary);
+            color: var(--text-tertiary);
+        }
+        .search-dropdown-empty {
+            padding: 16px;
+            text-align: center;
+            color: var(--text-tertiary);
+            font-size: 0.9rem;
+        }
+        .search-dropdown-hint {
+            padding: 6px 16px 4px;
+            font-size: 0.75rem;
+            color: var(--text-tertiary);
+            display: flex;
+            justify-content: flex-end;
+            gap: 6px;
+        }
+        .search-dropdown-hint kbd {
+            font-size: 0.7rem;
+            padding: 1px 5px;
+            border-radius: 3px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-secondary);
+        }
+        @media (max-width: 640px) {
+            .search-dropdown { max-height: 240px; }
+            .search-dropdown-hint { display: none; }
         }
 
         /* Category cards */
@@ -230,9 +334,12 @@
                         <input type="search" id="searchInput" class="form-input"
                                placeholder="Try: JSON, BMI, Base64, QR code..."
                                aria-label="Search tools…"
-                               autocomplete="off">
+                               autocomplete="off"
+                               role="combobox" aria-expanded="false"
+                               aria-controls="searchDropdown" aria-autocomplete="list">
                         <kbd class="search-shortcut" aria-hidden="true">/</kbd>
                     </div>
+                    <ul id="searchDropdown" class="search-dropdown" role="listbox" hidden></ul>
                 </div>
             </div>
 
@@ -297,7 +404,7 @@
                 
         <a href="/zh-cn/image-watermark/" class="card" data-category="image" data-subcategory="image-tools" data-slug="image-watermark" data-keywords="watermark image overlay logo">
           <button type="button" class="fav-toggle" data-fav="image-watermark" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
-          <div class="card-icon">🛡️</div>
+          <div class="card-icon">💦</div>
           <h3 class="card-title">图片水印</h3>
           <p class="card-description">给图片添加自定义水印。</p>
         </a>
@@ -344,7 +451,7 @@
           <p class="card-description">格式化，校验，和压缩 JSON 数据。开发者零广告。</p>
         </a>
 
-        <a href="/zh-cn/color-converter/" class="card" data-category="convert" data-subcategory="" data-slug="color-converter" data-keywords="color colour hex rgb hsl">
+        <a href="/zh-cn/color-converter/" class="card" data-category="convert" data-subcategory="" data-slug="color-converter" data-keywords="color colour hex rgb hsl convert">
           <button type="button" class="fav-toggle" data-fav="color-converter" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">🎨</div>
           <h3 class="card-title">颜色格式转换</h3>
@@ -358,7 +465,7 @@
           <p class="card-description">在线计时器和番茄工作法。</p>
         </a>
 
-        <a href="/zh-cn/base64-converter/" class="card" data-category="dev" data-subcategory="dev-tools" data-slug="base64-converter" data-keywords="base64 encode decode b64">
+        <a href="/zh-cn/base64-converter/" class="card" data-category="dev" data-subcategory="dev-tools" data-slug="base64-converter" data-keywords="base64 encode decode b64 convert">
           <button type="button" class="fav-toggle" data-fav="base64-converter" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">🔤</div>
           <h3 class="card-title">Base64 编码/解码</h3>
@@ -395,7 +502,7 @@
 
         <a href="/zh-cn/favicon-generator/" class="card" data-category="image" data-subcategory="image-tools" data-slug="favicon-generator" data-keywords="favicon icon apple-touch">
           <button type="button" class="fav-toggle" data-fav="favicon-generator" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
-          <div class="card-icon">🎯</div>
+          <div class="card-icon">🔲</div>
           <h3 class="card-title">Favicon 生成器</h3>
           <p class="card-description">将图片转换为 Favicon 图标。</p>
         </a>
@@ -563,14 +670,14 @@
 
         <a href="/zh-cn/few-shot-formatter/" class="card" data-category="ai" data-subcategory="" data-slug="few-shot-formatter" data-keywords="few-shot prompt examples template formatter">
           <button type="button" class="fav-toggle" data-fav="few-shot-formatter" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
-          <div class="card-icon">🎯</div>
+          <div class="card-icon">🧪</div>
           <h3 class="card-title">Few-Shot Prompt Formatter</h3>
           <p class="card-description">Add a system instruction and a list of input → output examples. The tool emits a clean few-shot prompt in Markdown, Anthropic-style XML tags, OpenAI messages JSON, or plain text — ready to paste into ChatGPT, Claude, or a script.</p>
         </a>
 
         <a href="/zh-cn/json-schema-validator/" class="card" data-category="dev" data-subcategory="dev-tools" data-slug="json-schema-validator" data-keywords="json schema validate ajv schema jsonpath">
           <button type="button" class="fav-toggle" data-fav="json-schema-validator" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
-          <div class="card-icon">🛡️</div>
+          <div class="card-icon">✅</div>
           <h3 class="card-title">JSON Schema Validator</h3>
           <p class="card-description">Paste your JSON data and a JSON Schema. The validator checks type, required, properties, items, enum, format, pattern, and min/max constraints, and reports each failure with the JSONPath where it occurred. All processing in your browser.</p>
         </a>
@@ -617,7 +724,7 @@
           <p class="card-description">Estimate daily water intake from body weight, with bumps for exercise and hot climates. The result is shown in milliliters, liters, and 250 ml glasses. Baseline is 33 ml per kg of body weight — typical for moderately active adults.</p>
         </a>
 
-        <a href="/zh-cn/file-size-converter/" class="card" data-category="convert" data-subcategory="" data-slug="file-size-converter" data-keywords="file size bytes kb mb gb tb kib mib">
+        <a href="/zh-cn/file-size-converter/" class="card" data-category="convert" data-subcategory="" data-slug="file-size-converter" data-keywords="file size bytes kb mb gb tb kib mib convert">
           <button type="button" class="fav-toggle" data-fav="file-size-converter" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">💾</div>
           <h3 class="card-title">File Size Converter</h3>
@@ -638,49 +745,49 @@
           <p class="card-description">裁剪、旋转图片并应用滤镜。</p>
         </a>
 
-        <a href="/zh-cn/jpa-converter/" class="card" data-category="dev" data-subcategory="dev-tools" data-slug="jpa-converter" data-keywords="jpa entity sql hibernate">
+        <a href="/zh-cn/jpa-converter/" class="card" data-category="dev" data-subcategory="dev-tools" data-slug="jpa-converter" data-keywords="jpa entity sql hibernate convert">
           <button type="button" class="fav-toggle" data-fav="jpa-converter" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">🗃️</div>
           <h3 class="card-title">DB 转 JPA 转换器</h3>
           <p class="card-description">将 SQL 模式转换为 JPA 实体和 DTO 类。</p>
         </a>
 
-        <a href="/zh-cn/json-to-ts/" class="card" data-category="dev" data-subcategory="dev-tools" data-slug="json-to-ts" data-keywords="json typescript interface dto">
+        <a href="/zh-cn/json-to-ts/" class="card" data-category="dev" data-subcategory="dev-tools" data-slug="json-to-ts" data-keywords="json typescript interface dto convert">
           <button type="button" class="fav-toggle" data-fav="json-to-ts" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">🔁</div>
           <h3 class="card-title">JSON 转 TS/DTO</h3>
           <p class="card-description">将 JSON 转换为 TypeScript 接口和 NestJS DTO。</p>
         </a>
 
-        <a href="/zh-cn/excel-to-sql/" class="card" data-category="convert" data-subcategory="" data-slug="excel-to-sql" data-keywords="excel sql insert csv">
+        <a href="/zh-cn/excel-to-sql/" class="card" data-category="convert" data-subcategory="" data-slug="excel-to-sql" data-keywords="excel sql insert csv convert">
           <button type="button" class="fav-toggle" data-fav="excel-to-sql" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">📊</div>
           <h3 class="card-title">Excel 转 SQL</h3>
           <p class="card-description">将 Excel 数据转换为 SQL INSERT 查询。</p>
         </a>
 
-        <a href="/zh-cn/json-to-excel/" class="card" data-category="convert" data-subcategory="" data-slug="json-to-excel" data-keywords="json excel xlsx spreadsheet">
+        <a href="/zh-cn/json-to-excel/" class="card" data-category="convert" data-subcategory="" data-slug="json-to-excel" data-keywords="json excel xlsx spreadsheet convert">
           <button type="button" class="fav-toggle" data-fav="json-to-excel" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
-          <div class="card-icon">📈</div>
+          <div class="card-icon">📑</div>
           <h3 class="card-title">JSON 转 Excel</h3>
           <p class="card-description">将 JSON 数据转换为 Excel 并下载。（安全）</p>
         </a>
 
-        <a href="/zh-cn/json-ld-generator/" class="card" data-category="dev" data-subcategory="dev-tools" data-slug="json-ld-generator" data-keywords="json-ld schema seo structured">
+        <a href="/zh-cn/json-ld-generator/" class="card" data-category="dev" data-subcategory="dev-tools" data-slug="json-ld-generator" data-keywords="json json-ld schema seo structured">
           <button type="button" class="fav-toggle" data-fav="json-ld-generator" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">🏷️</div>
           <h3 class="card-title">SEO JSON-LD 生成器</h3>
           <p class="card-description">生成用于 Google/Naver 曝光的结构化数据（Schema）。</p>
         </a>
 
-        <a href="/zh-cn/pdf-tools/" class="card" data-category="convert" data-subcategory="" data-slug="pdf-tools" data-keywords="pdf merge split">
+        <a href="/zh-cn/pdf-tools/" class="card" data-category="convert" data-subcategory="" data-slug="pdf-tools" data-keywords="pdf merge split convert">
           <button type="button" class="fav-toggle" data-fav="pdf-tools" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">📄</div>
           <h3 class="card-title">PDF 合并/拆分</h3>
           <p class="card-description">在浏览器中安全地合并和拆分 PDF，无需上传到服务器。</p>
         </a>
 
-        <a href="/zh-cn/text-to-diagram/" class="card" data-category="convert" data-subcategory="" data-slug="text-to-diagram" data-keywords="diagram flowchart sequence mermaid">
+        <a href="/zh-cn/text-to-diagram/" class="card" data-category="convert" data-subcategory="" data-slug="text-to-diagram" data-keywords="diagram flowchart sequence mermaid convert">
           <button type="button" class="fav-toggle" data-fav="text-to-diagram" aria-label="Add to favorites" data-add-label="Add to favorites" data-remove-label="Remove from favorites">☆</button>
           <div class="card-icon">🧩</div>
           <h3 class="card-title">文本转图表</h3>
@@ -870,31 +977,142 @@
                 syncUrl();
             }
 
+            // --- Search autocomplete dropdown ---
+            const SEARCH_DATA = [{"s": "image-watermark", "i": "💦", "t": "图片水印", "k": "watermark image overlay logo", "c": "image"}, {"s": "unit-converter", "i": "📏", "t": "单位转换器", "k": "unit convert length weight volume temperature", "c": "convert"}, {"s": "image-converter", "i": "🖼️", "t": "图片格式转换器", "k": "image png jpg webp avif convert", "c": "image"}, {"s": "bmi-calculator", "i": "⚖️", "t": "BMI 计算器", "k": "bmi body mass weight health", "c": "calc"}, {"s": "date-calculator", "i": "📅", "t": "日期计算器", "k": "date duration between days", "c": "calc"}, {"s": "text-utils", "i": "📝", "t": "文本工具箱", "k": "text case uppercase lowercase count", "c": "text"}, {"s": "json-formatter", "i": "{ }", "t": "JSON 格式化", "k": "json format pretty minify validate", "c": "dev"}, {"s": "color-converter", "i": "🎨", "t": "颜色格式转换", "k": "color colour hex rgb hsl convert", "c": "convert"}, {"s": "timer", "i": "⏱️", "t": "计时器 / 番茄钟", "k": "timer stopwatch countdown", "c": "calc"}, {"s": "base64-converter", "i": "🔤", "t": "Base64 编码/解码", "k": "base64 encode decode b64 convert", "c": "dev"}, {"s": "qr-generator", "i": "📱", "t": "QR 码生成器", "k": "qr qrcode barcode", "c": "image"}, {"s": "regex-tester", "i": "🔍", "t": "正则表达式测试", "k": "regex regular expression pattern match", "c": "dev"}, {"s": "sql-formatter", "i": "🗄️", "t": "SQL 格式化", "k": "sql format query database", "c": "dev"}, {"s": "lorem-ipsum", "i": "📋", "t": "Lorem Ipsum 生成器", "k": "lorem ipsum placeholder dummy", "c": "text"}, {"s": "favicon-generator", "i": "🔲", "t": "Favicon 生成器", "k": "favicon icon apple-touch", "c": "image"}, {"s": "diff-checker", "i": "🔀", "t": "文本差异对比", "k": "diff compare text difference", "c": "text"}, {"s": "password-generator", "i": "🔐", "t": "强密码生成器", "k": "password random secure strong", "c": "calc"}, {"s": "thumbnail-downloader", "i": "📺", "t": "YouTube 缩略图下载", "k": "thumbnail youtube download image", "c": "image"}, {"s": "markdown-previewer", "i": "📝", "t": "Markdown 编辑器 & 预览", "k": "markdown md preview render", "c": "text"}, {"s": "reaction-test", "i": "⚡", "t": "反应速度测试", "k": "reaction reflex speed", "c": "calc"}, {"s": "jwt-decoder", "i": "🪪", "t": "JWT Decoder", "k": "jwt token auth jose decode", "c": "dev"}, {"s": "hash-generator", "i": "🔑", "t": "Hash Generator", "k": "hash md5 sha sha256 digest", "c": "dev"}, {"s": "unix-timestamp", "i": "⏲️", "t": "Unix Timestamp Converter", "k": "unix timestamp epoch time", "c": "convert"}, {"s": "uuid-generator", "i": "🆔", "t": "UUID Generator", "k": "uuid guid random identifier", "c": "dev"}, {"s": "url-encoder", "i": "🔗", "t": "URL Encoder / Decoder", "k": "url encode decode percent escape", "c": "dev"}, {"s": "token-counter", "i": "🪙", "t": "AI Token Counter & Cost Calculator", "k": "token gpt claude cost tiktoken", "c": "ai"}, {"s": "mcp-config-generator", "i": "🔌", "t": "MCP Server Config Generator", "k": "mcp claude desktop cursor config", "c": "ai"}, {"s": "ai-image-inspector", "i": "🔬", "t": "AI Image Metadata Inspector", "k": "ai image metadata midjourney stable diffusion", "c": "ai"}, {"s": "chatgpt-to-blog", "i": "📝", "t": "ChatGPT → Blog Post Converter", "k": "chatgpt blog markdown export", "c": "ai"}, {"s": "prompt-pii-scrubber", "i": "🛡️", "t": "Prompt PII Scrubber", "k": "pii prompt mask redact privacy", "c": "ai"}, {"s": "claude-md-generator", "i": "📜", "t": "Claude.md Generator", "k": "claude claude.md system prompt", "c": "ai"}, {"s": "loan-calculator", "i": "💰", "t": "Loan Calculator", "k": "loan mortgage amortization payment interest", "c": "calc"}, {"s": "compound-interest", "i": "📈", "t": "Compound Interest Calculator", "k": "compound interest investment savings", "c": "calc"}, {"s": "retirement-calculator", "i": "🏖️", "t": "Retirement Calculator", "k": "retirement 401k pension nest egg", "c": "calc"}, {"s": "calorie-calculator", "i": "🔥", "t": "Calorie & BMR Calculator", "k": "calorie bmr tdee macro diet", "c": "calc"}, {"s": "pregnancy-calculator", "i": "🤰", "t": "Pregnancy Due Date Calculator", "k": "pregnancy due date lmp gestation trimester", "c": "calc"}, {"s": "body-fat-calculator", "i": "💪", "t": "Body Fat Percentage Calculator", "k": "body fat bfp navy composition", "c": "calc"}, {"s": "rag-chunker", "i": "✂️", "t": "RAG Text Chunker", "k": "rag chunk split embedding vector overlap", "c": "ai"}, {"s": "few-shot-formatter", "i": "🧪", "t": "Few-Shot Prompt Formatter", "k": "few-shot prompt examples template formatter", "c": "ai"}, {"s": "json-schema-validator", "i": "✅", "t": "JSON Schema Validator", "k": "json schema validate ajv schema jsonpath", "c": "dev"}, {"s": "tip-calculator", "i": "💵", "t": "Tip Calculator", "k": "tip gratuity split bill restaurant", "c": "calc"}, {"s": "percentage-calculator", "i": "％", "t": "Percentage Calculator", "k": "percent percentage change increase decrease", "c": "calc"}, {"s": "discount-calculator", "i": "🏷️", "t": "Discount Calculator", "k": "discount sale price markdown savings", "c": "calc"}, {"s": "sleep-calculator", "i": "🌙", "t": "Sleep Cycle Calculator", "k": "sleep bedtime wake rem cycle", "c": "calc"}, {"s": "reading-time", "i": "📖", "t": "Reading Time Estimator", "k": "reading wpm words minutes speech", "c": "text"}, {"s": "water-intake", "i": "💧", "t": "Water Intake Calculator", "k": "water hydration drink intake daily", "c": "calc"}, {"s": "file-size-converter", "i": "💾", "t": "File Size Converter", "k": "file size bytes kb mb gb tb kib mib convert", "c": "convert"}, {"s": "age-calculator", "i": "🎂", "t": "Age Calculator", "k": "age dob birthday years old birthdate", "c": "calc"}, {"s": "image-editor", "i": "🎨", "t": "图片编辑器", "k": "image crop rotate filter", "c": "image"}, {"s": "jpa-converter", "i": "🗃️", "t": "DB 转 JPA 转换器", "k": "jpa entity sql hibernate convert", "c": "dev"}, {"s": "json-to-ts", "i": "🔁", "t": "JSON 转 TS/DTO", "k": "json typescript interface dto convert", "c": "dev"}, {"s": "excel-to-sql", "i": "📊", "t": "Excel 转 SQL", "k": "excel sql insert csv convert", "c": "convert"}, {"s": "json-to-excel", "i": "📑", "t": "JSON 转 Excel", "k": "json excel xlsx spreadsheet convert", "c": "convert"}, {"s": "json-ld-generator", "i": "🏷️", "t": "SEO JSON-LD 生成器", "k": "json json-ld schema seo structured", "c": "dev"}, {"s": "pdf-tools", "i": "📄", "t": "PDF 合并/拆分", "k": "pdf merge split convert", "c": "convert"}, {"s": "text-to-diagram", "i": "🧩", "t": "文本转图表", "k": "diagram flowchart sequence mermaid convert", "c": "convert"}];
+            const LANG = 'zh-cn';
+            const CAT_LABELS = {
+                dev: 'Developer', text: 'Text',
+                image: 'Image', convert: 'Converters',
+                calc: 'Calculators', ai: 'AI'
+            };
+            const dropdown = document.getElementById('searchDropdown');
+            let ddIndex = -1; // active item index in dropdown
+
+            function matchTool(item, q) {
+                return item.t.toLowerCase().includes(q)
+                    || item.k.toLowerCase().includes(q)
+                    || item.s.replace(/-/g, ' ').toLowerCase().includes(q);
+            }
+
+            function renderDropdown(q) {
+                if (!q || q.length < 1) {
+                    dropdown.hidden = true;
+                    searchInput.setAttribute('aria-expanded', 'false');
+                    ddIndex = -1;
+                    return;
+                }
+                const matches = SEARCH_DATA.filter(item => matchTool(item, q)).slice(0, 8);
+                if (matches.length === 0) {
+                    dropdown.innerHTML =
+                        '<li class="search-dropdown-empty">No tools match your search.</li>';
+                    dropdown.hidden = false;
+                    searchInput.setAttribute('aria-expanded', 'true');
+                    ddIndex = -1;
+                    return;
+                }
+                dropdown.innerHTML = matches.map((item, i) =>
+                    '<li role="option" id="sdi-' + i + '" class="search-dropdown-item"'
+                    + ' data-href="/' + LANG + '/' + escapeHtml(item.s) + '/">'
+                    + '<span class="sdi-icon">' + escapeHtml(item.i) + '</span>'
+                    + '<span class="sdi-info">'
+                    + '<span class="sdi-title">' + escapeHtml(item.t) + '</span>'
+                    + '</span>'
+                    + '<span class="sdi-cat">' + escapeHtml(CAT_LABELS[item.c] || item.c) + '</span>'
+                    + '</li>'
+                ).join('')
+                + '<li role="presentation" class="search-dropdown-hint"><kbd>↑↓</kbd> navigate <kbd>Enter</kbd> go <kbd>Esc</kbd> close</li>';
+                dropdown.hidden = false;
+                searchInput.setAttribute('aria-expanded', 'true');
+                ddIndex = -1;
+            }
+
+            function setActiveItem(idx) {
+                const items = dropdown.querySelectorAll('.search-dropdown-item');
+                items.forEach((el, i) => {
+                    el.classList.toggle('active', i === idx);
+                    if (i === idx) {
+                        searchInput.setAttribute('aria-activedescendant', el.id);
+                        el.scrollIntoView({ block: 'nearest' });
+                    }
+                });
+                ddIndex = idx;
+            }
+
+            function navigateToItem(idx) {
+                const items = dropdown.querySelectorAll('.search-dropdown-item');
+                if (idx >= 0 && idx < items.length && items[idx].dataset.href) {
+                    window.location.href = items[idx].dataset.href;
+                }
+            }
+
             if (searchInput) {
-                // Debounce input to avoid filtering on every keystroke for fast typers.
                 let searchDebounce;
                 const shortcut = document.querySelector('.search-shortcut');
                 searchInput.addEventListener('input', e => {
                     clearTimeout(searchDebounce);
                     searchDebounce = setTimeout(() => {
                         activeSearch = e.target.value;
+                        const q = activeSearch.toLowerCase().trim();
+                        renderDropdown(q);
                         applyFilters();
-                        // Scroll to results when searching so users see filtered cards.
-                        const grid = document.getElementById('toolGrid');
-                        if (activeSearch.trim().length >= 2 && grid) {
-                            grid.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                        }
-                        // GA4: log that search was used (query text is NOT sent,
-                        // only its length). Fire only for queries of 2+ chars to
-                        // skip incidental single keystrokes.
                         const len = activeSearch.trim().length;
                         if (len >= 2 && typeof gtag === 'function') {
                             gtag('event', 'search_used', { query_length: len });
                         }
-                    }, 120);
+                    }, 80);
                     if (shortcut) shortcut.style.display = e.target.value ? 'none' : '';
                 });
-                // `/` keyboard shortcut focuses the search input (same as Slack/GitHub).
+
+                searchInput.addEventListener('keydown', e => {
+                    const items = dropdown.querySelectorAll('.search-dropdown-item');
+                    const count = items.length;
+                    if (e.key === 'ArrowDown' && !dropdown.hidden && count) {
+                        e.preventDefault();
+                        setActiveItem(ddIndex < count - 1 ? ddIndex + 1 : 0);
+                    } else if (e.key === 'ArrowUp' && !dropdown.hidden && count) {
+                        e.preventDefault();
+                        setActiveItem(ddIndex > 0 ? ddIndex - 1 : count - 1);
+                    } else if (e.key === 'Enter' && ddIndex >= 0) {
+                        e.preventDefault();
+                        navigateToItem(ddIndex);
+                    } else if (e.key === 'Escape') {
+                        if (!dropdown.hidden) {
+                            dropdown.hidden = true;
+                            searchInput.setAttribute('aria-expanded', 'false');
+                            ddIndex = -1;
+                        } else if (searchInput.value) {
+                            searchInput.value = '';
+                            activeSearch = '';
+                            applyFilters();
+                            if (shortcut) shortcut.style.display = '';
+                        }
+                    }
+                });
+
+                // Click on dropdown item navigates.
+                dropdown.addEventListener('click', e => {
+                    const item = e.target.closest('.search-dropdown-item');
+                    if (item && item.dataset.href) {
+                        window.location.href = item.dataset.href;
+                    }
+                });
+
+                // Close dropdown when clicking outside.
+                document.addEventListener('click', e => {
+                    if (!e.target.closest('.hero-search')) {
+                        dropdown.hidden = true;
+                        searchInput.setAttribute('aria-expanded', 'false');
+                        ddIndex = -1;
+                    }
+                });
+
+                // Re-open dropdown when focusing back into search with existing query.
+                searchInput.addEventListener('focus', () => {
+                    const q = searchInput.value.toLowerCase().trim();
+                    if (q.length >= 1) renderDropdown(q);
+                });
+
+                // `/` keyboard shortcut focuses the search input.
                 document.addEventListener('keydown', e => {
                     if (e.key !== '/' || e.metaKey || e.ctrlKey || e.altKey) return;
                     const t = e.target;
@@ -902,15 +1120,6 @@
                     e.preventDefault();
                     searchInput.focus();
                     searchInput.select();
-                });
-                // ESC clears + blurs.
-                searchInput.addEventListener('keydown', e => {
-                    if (e.key === 'Escape' && searchInput.value) {
-                        searchInput.value = '';
-                        activeSearch = '';
-                        applyFilters();
-                        if (shortcut) shortcut.style.display = '';
-                    }
                 });
             }
 

@@ -1,4 +1,5 @@
 
+import json
 import os
 import sys
 
@@ -11,7 +12,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE_DIR = os.path.join(BASE_DIR, '_templates')
 
 TOOLS_CONFIG = [
-    ('image-watermark', '🛡️', IMAGE_WATERMARK),
+    ('image-watermark', '💦', IMAGE_WATERMARK),
     ('unit-converter', '📏', UNIT_CONVERTER),
     ('image-converter', '🖼️', IMAGE_CONVERTER),
     ('bmi-calculator', '⚖️', BMI_CALCULATOR),
@@ -25,7 +26,7 @@ TOOLS_CONFIG = [
     ('regex-tester', '🔍', REGEX_TESTER),
     ('sql-formatter', '🗄️', SQL_FORMATTER),
     ('lorem-ipsum', '📋', LOREM_IPSUM),
-    ('favicon-generator', '🎯', FAVICON_GENERATOR),
+    ('favicon-generator', '🔲', FAVICON_GENERATOR),
     ('diff-checker', '🔀', DIFF_CHECKER),
     ('password-generator', '🔐', PASSWORD_GENERATOR),
     ('thumbnail-downloader', '📺', THUMBNAIL_DOWNLOADER),
@@ -53,8 +54,8 @@ TOOLS_CONFIG = [
     ('body-fat-calculator', '💪', BODY_FAT_CALCULATOR),
     # AI / prompt-engineering tools (Tier 3)
     ('rag-chunker', '✂️', RAG_CHUNKER),
-    ('few-shot-formatter', '🎯', FEW_SHOT_FORMATTER),
-    ('json-schema-validator', '🛡️', JSON_SCHEMA_VALIDATOR),
+    ('few-shot-formatter', '🧪', FEW_SHOT_FORMATTER),
+    ('json-schema-validator', '✅', JSON_SCHEMA_VALIDATOR),
     # General-purpose calculators (high search volume)
     ('tip-calculator', '💵', TIP_CALCULATOR),
     ('percentage-calculator', '％', PERCENTAGE_CALCULATOR),
@@ -76,7 +77,7 @@ PREBUILT_TOOLS = [
     ('jpa-converter', '🗃️', JPA_CONVERTER),
     ('json-to-ts', '🔁', JSON_TO_TS),
     ('excel-to-sql', '📊', EXCEL_TO_SQL),
-    ('json-to-excel', '📈', JSON_TO_EXCEL),
+    ('json-to-excel', '📑', JSON_TO_EXCEL),
     ('json-ld-generator', '🏷️', JSON_LD_GENERATOR),
     ('pdf-tools', '📄', PDF_TOOLS),
     ('text-to-diagram', '🧩', TEXT_TO_DIAGRAM),
@@ -660,12 +661,12 @@ HUB_PAGES = {
 TOOL_KEYWORDS = {
     'json-formatter': ['json', 'format', 'pretty', 'minify', 'validate'],
     'jwt-decoder': ['jwt', 'token', 'auth', 'jose', 'decode'],
-    'base64-converter': ['base64', 'encode', 'decode', 'b64'],
+    'base64-converter': ['base64', 'encode', 'decode', 'b64', 'convert'],
     'hash-generator': ['hash', 'md5', 'sha', 'sha256', 'digest'],
     'uuid-generator': ['uuid', 'guid', 'random', 'identifier'],
     'url-encoder': ['url', 'encode', 'decode', 'percent', 'escape'],
     'unit-converter': ['unit', 'convert', 'length', 'weight', 'volume', 'temperature'],
-    'color-converter': ['color', 'colour', 'hex', 'rgb', 'hsl'],
+    'color-converter': ['color', 'colour', 'hex', 'rgb', 'hsl', 'convert'],
     'qr-generator': ['qr', 'qrcode', 'barcode'],
     'image-converter': ['image', 'png', 'jpg', 'webp', 'avif', 'convert'],
     'image-watermark': ['watermark', 'image', 'overlay', 'logo'],
@@ -704,16 +705,16 @@ TOOL_KEYWORDS = {
     'sleep-calculator': ['sleep', 'bedtime', 'wake', 'rem', 'cycle'],
     'reading-time': ['reading', 'wpm', 'words', 'minutes', 'speech'],
     'water-intake': ['water', 'hydration', 'drink', 'intake', 'daily'],
-    'file-size-converter': ['file size', 'bytes', 'kb', 'mb', 'gb', 'tb', 'kib', 'mib'],
+    'file-size-converter': ['file size', 'bytes', 'kb', 'mb', 'gb', 'tb', 'kib', 'mib', 'convert'],
     'age-calculator': ['age', 'dob', 'birthday', 'years old', 'birthdate'],
-    'json-to-ts': ['json', 'typescript', 'interface', 'dto'],
-    'jpa-converter': ['jpa', 'entity', 'sql', 'hibernate'],
-    'excel-to-sql': ['excel', 'sql', 'insert', 'csv'],
-    'json-to-excel': ['json', 'excel', 'xlsx', 'spreadsheet'],
-    'json-ld-generator': ['json-ld', 'schema', 'seo', 'structured'],
+    'json-to-ts': ['json', 'typescript', 'interface', 'dto', 'convert'],
+    'jpa-converter': ['jpa', 'entity', 'sql', 'hibernate', 'convert'],
+    'excel-to-sql': ['excel', 'sql', 'insert', 'csv', 'convert'],
+    'json-to-excel': ['json', 'excel', 'xlsx', 'spreadsheet', 'convert'],
+    'json-ld-generator': ['json', 'json-ld', 'schema', 'seo', 'structured'],
     'image-editor': ['image', 'crop', 'rotate', 'filter'],
-    'pdf-tools': ['pdf', 'merge', 'split'],
-    'text-to-diagram': ['diagram', 'flowchart', 'sequence', 'mermaid'],
+    'pdf-tools': ['pdf', 'merge', 'split', 'convert'],
+    'text-to-diagram': ['diagram', 'flowchart', 'sequence', 'mermaid', 'convert'],
 }
 
 # Slugs of the 5 tools surfaced in the "Featured" hero strip.
@@ -814,6 +815,24 @@ def build_index_page():
         </a>'''
             cards_html.append(card)
         data['tool_cards'] = '\n'.join(cards_html)
+
+        # Build search-autocomplete JSON for the instant-navigate dropdown.
+        search_items = []
+        for tool_path, icon, tool_dict in ALL_TOOLS:
+            t_data = tool_dict.get(lang, tool_dict.get('en', {}))
+            title = t_data.get('title', tool_dict.get('en', {}).get('title', ''))
+            if not title:
+                title = tool_dict['en']['title']
+            kw = ' '.join(TOOL_KEYWORDS.get(tool_path, []))
+            cat = TOOL_CATEGORIES.get(tool_path, 'convert')
+            search_items.append({
+                's': tool_path,
+                'i': icon,
+                't': title,
+                'k': kw,
+                'c': cat,
+            })
+        data['search_data_json'] = json.dumps(search_items, ensure_ascii=False)
 
         # Build subcategory chip groups for any main category that has sub-categories.
         # Sub-categories that also have a hub page (`HUB_PAGES`) get a "→ <hub>"
