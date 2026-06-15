@@ -13,7 +13,7 @@
 // visit onward, pages render from cache instantly (offline + flaky-network
 // friendly) while a fresh copy fetches in the background for next time.
 
-const CACHE_VERSION = '2026-06-08';
+const CACHE_VERSION = '2026-06-15';
 const STATIC_CACHE = 'utilify-static-' + CACHE_VERSION;
 const PAGES_CACHE  = 'utilify-pages-'  + CACHE_VERSION;
 
