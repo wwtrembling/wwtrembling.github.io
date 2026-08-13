@@ -7,8 +7,16 @@ let bibleReadings = [];
 let monthNames = [];
 let weekdayNames = [];
 
-// 각 월의 일수 (윤년 고려)
-const daysInMonth = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+// 각 월의 일수 (올해 기준, 윤년 반영)
+const currentYear = new Date().getFullYear();
+const isLeapYear = (currentYear % 4 === 0 && currentYear % 100 !== 0) || currentYear % 400 === 0;
+const daysInMonth = [31, isLeapYear ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+// 날짜 인덱스를 읽기 플랜 인덱스(0~364)로 변환
+function toReadingIndex(dayIndex) {
+    const lastIndex = Math.max(bibleReadings.length - 1, 0);
+    return Math.min(dayIndex, lastIndex);
+}
 
 // 책 약어 → 전체 이름 매핑
 const bookAbbrevMap = {
@@ -136,7 +144,7 @@ function detectBookStartDates() {
 
 // 클립보드에 말씀 복사하는 함수
 async function copyVerse(dayIndex) {
-    const reading = bibleReadings[dayIndex];
+    const reading = bibleReadings[toReadingIndex(dayIndex)];
     const messageTemplate = getUIText('copyMessage');
     const message = messageTemplate.replace('{reading}', reading);
     
@@ -232,7 +240,7 @@ function getTodayDayIndex() {
     }
     
     dayIndex += date - 1;
-    return Math.min(dayIndex, 364);
+    return dayIndex;
 }
 
 // 오늘 날짜로 스크롤하는 함수
@@ -347,7 +355,14 @@ function rebuildPage() {
             daySection.className = 'day-section';
             daySection.setAttribute('data-day-index', dayIndex);
 
-            const bookNames = bookStartDates[dayIndex];
+            // 모바일에서 요일 헤더가 숨겨지므로 각 칸에 요일을 표시
+            const weekdayTag = document.createElement('span');
+            weekdayTag.className = 'day-weekday';
+            weekdayTag.textContent = getDayOfWeek(dayIndex);
+            daySection.appendChild(weekdayTag);
+
+            const readingIndex = toReadingIndex(dayIndex);
+            const bookNames = bookStartDates[readingIndex];
             if (bookNames && Array.isArray(bookNames)) {
                 for (const bookName of bookNames) {
                     if (bookIntroductions[bookName]) {
@@ -378,22 +393,27 @@ function rebuildPage() {
             const verseButton = document.createElement('button');
             verseButton.className = 'verse-button';
             const dayText = getUIText('day');
-            verseButton.textContent = `${day}${dayText}`;
-            
+
+            const dayLabel = document.createElement('span');
+            dayLabel.className = 'verse-day';
+            dayLabel.textContent = `${day}${dayText}`;
+            verseButton.appendChild(dayLabel);
+
+            const readingLabel = document.createElement('span');
+            readingLabel.className = 'verse-reading';
+            readingLabel.textContent = bibleReadings[readingIndex] || '';
+            verseButton.appendChild(readingLabel);
+
             const currentIndex = dayIndex;
             verseButton.onclick = () => copyVerse(currentIndex);
-            
+
             daySection.appendChild(verseButton);
             daysGrid.appendChild(daySection);
             dayIndex++;
-            
-            if (dayIndex >= 365) break;
         }
 
         monthSection.appendChild(daysGrid);
         content.appendChild(monthSection);
-
-        if (dayIndex >= 365) break;
     }
 }
 
