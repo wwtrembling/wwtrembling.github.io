@@ -35,8 +35,8 @@ header.top{margin-inline:-16px;padding:28px 20px 22px;background:linear-gradient
 .kicker{font-weight:700;opacity:.92;font-size:1.05em}
 h1{font-family:var(--display);font-weight:900;font-size:2.4em;line-height:1.12;margin:.15em 0 .25em;letter-spacing:-.01em;text-wrap:balance}
 .sub{font-size:1.2em;font-weight:500}
-.tools{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
-.tbtn{font:inherit;font-size:.92em;font-weight:700;border:2px solid rgba(255,255,255,.55);background:rgba(255,255,255,.14);color:#fff;border-radius:999px;padding:6px 16px;cursor:pointer;min-height:44px}
+.tools{display:flex;gap:8px;flex-wrap:nowrap;margin-top:18px}
+.tbtn{flex:1 1 0;min-width:0;white-space:nowrap;font:inherit;font-size:.88em;font-weight:700;border:2px solid rgba(255,255,255,.55);background:rgba(255,255,255,.14);color:#fff;border-radius:999px;padding:6px 8px;cursor:pointer;min-height:44px}
 .tbtn[aria-pressed="true"]{background:#fff;color:var(--hero-b);border-color:#fff}
 
 .banner{margin-top:16px;border-radius:18px;padding:14px 18px;background:#fff;color:var(--ink);font-weight:700;font-size:1.05em}
@@ -60,6 +60,12 @@ nav.days{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:v
 .dayhead .lbl{font-weight:700;opacity:.92}
 .dayhead h2{font-family:var(--display);font-weight:900;font-size:1.85em;line-height:1.15;margin:.1em 0 .15em;text-wrap:balance}
 .dayhead .when{font-size:1.15em;font-weight:500}
+.say{font:inherit;font-weight:700;font-size:.95em;min-height:44px;padding:4px 16px;border-radius:999px;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+.dayhead .say{margin-top:12px;background:rgba(255,255,255,.18);color:#fff;border:2px solid rgba(255,255,255,.6)}
+.dayhead .say[aria-pressed="true"]{background:#fff;color:var(--c);border-color:#fff}
+.sh .say{margin-top:12px;background:var(--surface);color:var(--sea);border:2px solid var(--sea)}
+.sh .say[aria-pressed="true"]{background:var(--sea);color:#fff}
+.say:focus-visible{outline:3px solid var(--sea);outline-offset:2px}
 
 ol.tl{list-style:none;margin:14px 0 0;padding:0;display:flex;flex-direction:column;gap:8px}
 .it{display:grid;grid-template-columns:auto 1fr auto;column-gap:14px;align-items:start;width:100%;text-align:left;font:inherit;color:inherit;background:var(--surface);border-radius:18px;padding:14px 16px;border:2px solid transparent;scroll-margin-top:110px;transition:opacity .3s}
@@ -141,6 +147,7 @@ dialog#sheet::backdrop{background:var(--shade)}
 .mapnote{text-align:center;color:var(--muted);font-size:.85em;margin-top:6px}
 
 @media (max-width:420px){
+  .tbtn{font-size:.8em;padding:6px 4px;letter-spacing:-.02em}
   .it{grid-template-columns:1fr auto;row-gap:4px}
   .it .tm{grid-column:1/-1;font-size:1.2em}
   .dbtn .dt{font-size:.66em;white-space:nowrap;letter-spacing:-.03em}
@@ -154,7 +161,7 @@ dialog#sheet::backdrop{background:var(--shade)}
     <h1>오키나와 가족여행</h1>
     <div class="sub">10월 5일(월) ~ 10월 10일(토)</div>
     <div class="tools">
-      <button class="tbtn" id="bigBtn" aria-pressed="false" type="button">글씨 더 크게</button>
+      <button class="tbtn" id="bigBtn" aria-pressed="false" type="button">글씨 크게</button>
       <button class="tbtn" id="nowBtn" type="button">지금 일정으로</button>
       <button class="tbtn" id="infoBtn" type="button">꼭 기억할 것</button>
     </div>
@@ -386,6 +393,65 @@ function tripState(){
   return {now, idx, nowItem, before, left};
 }
 
+/* ---------- 소리로 읽어주기 (TTS) ---------- */
+// 브라우저 음성 합성 사용. 지원하지 않는 화면(일부 앱 내장 브라우저)에서는 버튼을 숨김
+const TTS = { ok: typeof window.speechSynthesis !== 'undefined' && typeof window.SpeechSynthesisUtterance !== 'undefined', who:null, voice:null, run:0 };
+function pickVoice(){
+  try{
+    const vs = speechSynthesis.getVoices() || [];
+    TTS.voice = vs.find(v=>/^ko(-|_|$)/i.test(v.lang) && /google/i.test(v.name)) || vs.find(v=>/^ko(-|_|$)/i.test(v.lang)) || null;
+  }catch(e){}
+}
+if(TTS.ok){ pickVoice(); try{ speechSynthesis.addEventListener('voiceschanged', pickVoice); }catch(e){} }
+const sayBtn = (who,label) => `<button type="button" class="say" data-say="${who}" aria-pressed="${TTS.who===who}">${TTS.who===who?'⏹ 멈추기':'🔊 '+label}</button>`;
+function sayRefresh(){
+  document.querySelectorAll('[data-say]').forEach(b=>{
+    const on = TTS.who===b.dataset.say;
+    b.setAttribute('aria-pressed', String(on));
+    b.textContent = on ? '⏹ 멈추기' : (b.dataset.say==='day' ? '🔊 이날 일정 듣기' : '🔊 읽어주기');
+  });
+}
+const clean = t => String(t).replace(/[\u{1F000}-\u{1FFFF}\u{2600}-\u{27BF}\u{FE0F}]/gu,'').replace(/\s*·\s*/g,', ').replace(/→/g,', 그다음 ').replace(/~/g,' 부터 ').replace(/\s+/g,' ').trim();
+function ttsStop(){ TTS.run++; TTS.who = null; try{ speechSynthesis.cancel(); }catch(e){} sayRefresh(); }
+function ttsSay(who, parts){
+  if(TTS.who===who){ ttsStop(); return; }
+  try{ speechSynthesis.cancel(); }catch(e){}
+  const run = ++TTS.run; TTS.who = who; sayRefresh();
+  // 긴 글은 문장 단위로 나눠서 차례로 읽음 (긴 문장이 중간에 끊기는 문제 방지)
+  const chunks = parts.map(clean).filter(Boolean).flatMap(t => t.split(/(?<=[.!?。])\s+/)).filter(Boolean);
+  chunks.forEach((t,i)=>{
+    const u = new SpeechSynthesisUtterance(t);
+    u.lang = 'ko-KR'; u.rate = 0.92; u.pitch = 1;
+    if(TTS.voice) u.voice = TTS.voice;
+    if(i===chunks.length-1) u.onend = ()=>{ if(TTS.run===run){ TTS.who = null; sayRefresh(); } };
+    u.onerror = ()=>{ if(TTS.run===run){ TTS.who = null; sayRefresh(); } };
+    speechSynthesis.speak(u);
+  });
+}
+function dayScript(i){
+  const d = DAYS[i], out = [`${d.n}일째, ${d.m}월 ${d.d}일 ${d.w}요일. ${d.title}.`];
+  d.items.forEach(([t,ic,pl,ds,nt,k])=>{
+    out.push(`${tLabel(t)}. ${k==='meet'?'모이는 시간입니다. ':''}${pl}.${ds?' '+ds+'.':''}${nt?' '+nt+'.':''}`);
+  });
+  if(d.stay) out.push(`오늘 밤 숙소는 ${d.stay}입니다.`);
+  return out;
+}
+function sheetScript(j){
+  const it = DAYS[cur].items[j], p = P[it[6]];
+  const out = [`${p.n}.`, `${DAYS[cur].m}월 ${DAYS[cur].d}일 ${tLabel(it[0])}.`, p.intro];
+  (p.f||[]).forEach(([a,b])=>{ out.push(`${a}, ${String(b).replace(/<[^>]+>/g,' ').replace('복사','')}.`); });
+  (p.t||[]).forEach(t=>out.push(`주의, ${t}.`));
+  return out;
+}
+let sheetJ = -1;
+document.addEventListener('click', e=>{
+  const b = e.target.closest('[data-say]'); if(!b) return;
+  e.stopPropagation();
+  if(b.dataset.say==='day') ttsSay('day', dayScript(cur));
+  else if(sheetJ>=0) ttsSay('sheet', sheetScript(sheetJ));
+}, true);
+addEventListener('pagehide', ()=>{ try{ speechSynthesis.cancel(); }catch(e){} });
+
 /* ---------- 그리기 ---------- */
 let cur = 0, S = tripState();
 
@@ -435,6 +501,7 @@ function renderDay(){
       <div class="lbl">${d.n}일째${cur===S.idx?' · 오늘':''}</div>
       <h2>${esc(d.title)}</h2>
       <div class="when">${d.m}월 ${d.d}일 (${d.w})</div>
+      ${TTS.ok?sayBtn('day','이날 일정 듣기'):''}
     </div>
     <ol class="tl">${rows}</ol>
     ${stay}
@@ -468,6 +535,7 @@ function scrollToNow(smooth){
 }
 
 function show(i){
+  if(TTS.who==='day' && i!==cur) ttsStop();
   cur = Math.max(0, Math.min(DAYS.length-1, i));
   renderTabs(); renderDay();
 }
@@ -525,6 +593,8 @@ function scrollTop(){
 const sheet = $('#sheet');
 function openSheet(j){
   const it = DAYS[cur].items[j], p = P[it[6]]; if(!p) return;
+  if(TTS.who==='sheet') ttsStop();
+  sheetJ = j;
   const facts = (p.f||[]).map(([a,b])=>`<dt>${esc(a)}</dt><dd>${b.includes('<button')?b:esc(b)}</dd>`).join('');
   const tips = (p.t||[]).map(x=>`<li>${esc(x)}</li>`).join('');
   const map = p.q ? `<a class="mapbtn" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(p.q)}" target="_blank" rel="noopener">📍 구글 지도에서 보기</a>
@@ -537,6 +607,7 @@ function openSheet(j){
       <button class="x" type="button" id="shClose" aria-label="닫기">✕</button>
     </div>
     <div class="shtime">${DAYS[cur].m}월 ${DAYS[cur].d}일 · ${tLabel(it[0])}</div>
+    ${TTS.ok?sayBtn('sheet','읽어주기'):''}
     <p class="intro">${esc(p.intro)}</p>
     ${facts?`<dl class="facts">${facts}</dl>`:''}
     ${tips?`<ul class="tips">${tips}</ul>`:''}
@@ -548,7 +619,7 @@ function openSheet(j){
   try{ sheet.showModal(); }catch(e){ sheet.setAttribute('open',''); }
   $('#shBody').scrollTop = 0;
 }
-function closeSheet(){ zoom.hidden = true; try{ sheet.close(); }catch(e){ sheet.removeAttribute('open'); } }
+function closeSheet(){ if(TTS.who==="sheet") ttsStop(); zoom.hidden = true; try{ sheet.close(); }catch(e){ sheet.removeAttribute('open'); } }
 sheet.addEventListener('click', e=>{
   const mt = e.target.closest('.mapthumb'); if(mt){ openZoom(mt.dataset.map); return; }
   if(e.target.closest('#zoom')) return;
@@ -602,6 +673,7 @@ $('#zIn').addEventListener('click', ()=>{ const [x,y] = zCenter(); zoomAt(Z.s*1.
 $('#zOut').addEventListener('click', ()=>{ const [x,y] = zCenter(); zoomAt(Z.s/1.6, x, y, true); });
 $('#zClose').addEventListener('click', ()=>{ zoom.hidden = true; });
 sheet.addEventListener('cancel', e=>{ if(!zoom.hidden){ e.preventDefault(); zoom.hidden = true; } });
+sheet.addEventListener('close', ()=>{ if(TTS.who==='sheet') ttsStop(); });
 addEventListener('resize', ()=>{ if(!zoom.hidden){ zLayout(); zDraw(false); } });
 
 /* 손가락·마우스 조작: 한 손가락(마우스) 끌기 = 이동, 두 손가락 = 확대·축소, 두 번 톡 = 확대/원래대로, 휠 = 확대·축소 */
@@ -675,7 +747,7 @@ $('#nowBtn').addEventListener('click', ()=>{
 function setBig(on){
   document.documentElement.style.setProperty('--fs', on ? '1.2' : '1');
   $('#bigBtn').setAttribute('aria-pressed', String(on));
-  $('#bigBtn').textContent = on ? '글씨 보통으로' : '글씨 더 크게';
+  $('#bigBtn').textContent = on ? '글씨 보통' : '글씨 크게';
   store.set('okinawa-big', on ? '1' : '0');
 }
 $('#bigBtn').addEventListener('click', ()=> setBig($('#bigBtn').getAttribute('aria-pressed')!=='true'));
