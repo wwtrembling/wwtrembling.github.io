@@ -52,7 +52,6 @@ nav.days{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:v
 .dbtn .today{position:absolute;top:-8px;left:50%;transform:translateX(-50%);background:var(--now);color:#fff;font-size:.62em;font-weight:900;border-radius:999px;padding:1px 8px;white-space:nowrap}
 .dbtn:focus-visible,.tbtn:focus-visible,.navb:focus-visible,.it:focus-visible,.x:focus-visible,.mapbtn:focus-visible{outline:3px solid var(--sea);outline-offset:2px}
 
-.swipehint{text-align:center;color:var(--muted);font-size:.9em;font-weight:500;margin-top:10px}
 
 #stage{touch-action:pan-y;will-change:transform}
 #stage.anim{transition:transform .22s ease, opacity .22s ease}
@@ -133,8 +132,11 @@ dialog#sheet::backdrop{background:var(--shade)}
 #zoom .zbar{display:flex;align-items:center;gap:10px;padding:calc(10px + env(safe-area-inset-top,0px)) 14px 10px;color:#fff;font-weight:700}
 #zoom .zbar span{flex:1;min-width:0}
 #zoom .zbar button{font:inherit;font-weight:700;min-height:48px;padding:0 16px;border-radius:12px;border:2px solid #555;background:#222;color:#fff;cursor:pointer}
-#zoom .zarea{flex:1;overflow:auto;-webkit-overflow-scrolling:touch;touch-action:pan-x pan-y pinch-zoom}
-#zoom img{display:block;max-width:none;margin:0 auto}
+#zoom .zarea{flex:1;position:relative;overflow:hidden;touch-action:none;cursor:grab;user-select:none;-webkit-user-select:none}
+#zoom .zarea.drag{cursor:grabbing}
+#zoom img{position:absolute;left:0;top:0;max-width:none;transform-origin:0 0;will-change:transform;-webkit-user-drag:none;pointer-events:none}
+#zoom img.ease{transition:transform .25s ease}
+#zoom .zhint{position:absolute;left:50%;bottom:calc(16px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:rgba(0,0,0,.72);color:#fff;font-weight:700;font-size:.9em;padding:8px 16px;border-radius:999px;white-space:nowrap;pointer-events:none;transition:opacity .4s}
 .mapbtn{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:18px;min-height:60px;border-radius:16px;background:var(--sea);color:#fff;font-weight:900;font-size:1.15em;text-decoration:none}
 .mapnote{text-align:center;color:var(--muted);font-size:.85em;margin-top:6px}
 
@@ -162,7 +164,6 @@ dialog#sheet::backdrop{background:var(--shade)}
   <nav class="days" aria-label="날짜 고르기">
     <div class="dgrid" role="tablist" id="tabs"></div>
   </nav>
-  <div class="swipehint">화면을 옆으로 밀면 다른 날, 항목을 누르면 자세한 설명</div>
 
   <main id="stage" aria-live="polite"></main>
 
@@ -202,7 +203,7 @@ dialog#sheet::backdrop{background:var(--shade)}
   <div id="zoom" hidden>
     <div class="zbar"><span id="zTitle">동선 지도</span>
       <button type="button" id="zIn">크게</button><button type="button" id="zOut">작게</button><button type="button" id="zClose">닫기 ✕</button></div>
-    <div class="zarea" id="zArea"><img id="zImg" alt=""></div>
+    <div class="zarea" id="zArea"><img id="zImg" alt="" draggable="false"><div class="zhint" id="zHint">두 손가락으로 벌리거나 두 번 톡 누르면 커져요</div></div>
   </div>
 </dialog>
 
@@ -562,22 +563,96 @@ sheet.addEventListener('click', e=>{
 function selectPrev(btn){ const s = btn.previousElementSibling; const r = document.createRange(); r.selectNodeContents(s); const sel = getSelection(); sel.removeAllRanges(); sel.addRange(r); }
 
 /* 지도 크게 보기 */
-const zoom = $('#zoom'); let zScale = 1, zMap = null;
-function zApply(){
-  const m = MAPS[zMap], area = $('#zArea');
-  const fit = Math.min(area.clientWidth / m.w, 1.6);
-  $('#zImg').style.width = Math.round(m.w * fit * zScale) + 'px';
+const zoom = $('#zoom'), zArea = $('#zArea'), zImg = $('#zImg');
+const Z = {map:null, bw:0, bh:0, s:1, tx:0, ty:0, max:5};
+function zBox(){ const r = zArea.getBoundingClientRect(); return {w:r.width, h:r.height, l:r.left, t:r.top}; }
+function zClamp(){
+  const {w,h} = zBox(), iw = Z.bw*Z.s, ih = Z.bh*Z.s;
+  Z.tx = iw <= w ? (w-iw)/2 : Math.min(0, Math.max(w-iw, Z.tx));
+  Z.ty = ih <= h ? (h-ih)/2 : Math.min(0, Math.max(h-ih, Z.ty));
+}
+function zDraw(ease){
+  zClamp();
+  zImg.classList.toggle('ease', !!ease);
+  zImg.style.transform = `translate(${Z.tx}px,${Z.ty}px) scale(${Z.s})`;
+}
+function zLayout(){
+  const m = MAPS[Z.map], {w,h} = zBox();
+  const fit = Math.min(w/m.w, h/m.h);
+  Z.bw = m.w*fit; Z.bh = m.h*fit;
+  zImg.style.width = Z.bw+'px'; zImg.style.height = Z.bh+'px';
+  Z.max = Math.max(4, (m.w/Z.bw)*2);
+}
+function zoomAt(ns, cx, cy, ease){
+  ns = Math.min(Z.max, Math.max(1, ns));
+  Z.tx = cx - (cx - Z.tx)*(ns/Z.s);
+  Z.ty = cy - (cy - Z.ty)*(ns/Z.s);
+  Z.s = ns; zDraw(ease);
 }
 function openZoom(k){
-  zMap = k; zScale = 1;
-  $('#zImg').src = MAPS[k].src; $('#zImg').alt = MAPS[k].alt; $('#zTitle').textContent = MAPS[k].t;
-  zoom.hidden = false; zApply();
+  Z.map = k; Z.s = 1;
+  zImg.src = MAPS[k].src; zImg.alt = MAPS[k].alt; $('#zTitle').textContent = MAPS[k].t;
+  zoom.hidden = false;
+  zLayout(); zDraw(false);
+  const hint = $('#zHint'); hint.style.opacity = '1';
+  clearTimeout(openZoom.t); openZoom.t = setTimeout(()=>{ hint.style.opacity = '0'; }, 3500);
 }
-$('#zIn').addEventListener('click', ()=>{ zScale = Math.min(zScale*1.5, 4); zApply(); });
-$('#zOut').addEventListener('click', ()=>{ zScale = Math.max(zScale/1.5, 1); zApply(); });
+function zCenter(){ const {w,h} = zBox(); return [w/2, h/2]; }
+$('#zIn').addEventListener('click', ()=>{ const [x,y] = zCenter(); zoomAt(Z.s*1.6, x, y, true); });
+$('#zOut').addEventListener('click', ()=>{ const [x,y] = zCenter(); zoomAt(Z.s/1.6, x, y, true); });
 $('#zClose').addEventListener('click', ()=>{ zoom.hidden = true; });
 sheet.addEventListener('cancel', e=>{ if(!zoom.hidden){ e.preventDefault(); zoom.hidden = true; } });
-addEventListener('resize', ()=>{ if(!zoom.hidden) zApply(); });
+addEventListener('resize', ()=>{ if(!zoom.hidden){ zLayout(); zDraw(false); } });
+
+/* 손가락·마우스 조작: 한 손가락(마우스) 끌기 = 이동, 두 손가락 = 확대·축소, 두 번 톡 = 확대/원래대로, 휠 = 확대·축소 */
+(function(){
+  const pts = new Map(); let pinch = null, last = null, moved = 0, lastTap = {t:0,x:0,y:0};
+  const local = e => { const b = zBox(); return [e.clientX-b.l, e.clientY-b.t]; };
+  const two = () => { const [a,b] = [...pts.values()]; return {mx:(a[0]+b[0])/2, my:(a[1]+b[1])/2, d:Math.hypot(a[0]-b[0], a[1]-b[1])||1}; };
+  zArea.addEventListener('pointerdown', e=>{
+    if(e.button && e.button!==0) return;
+    try{ zArea.setPointerCapture(e.pointerId); }catch(_){}
+    pts.set(e.pointerId, local(e)); moved = 0;
+    if(pts.size===2){
+      const t = two(); pinch = {d:t.d, s:Z.s, ix:(t.mx-Z.tx)/Z.s, iy:(t.my-Z.ty)/Z.s};
+    }else if(pts.size===1){ last = local(e); zArea.classList.add('drag'); }
+  });
+  zArea.addEventListener('pointermove', e=>{
+    if(!pts.has(e.pointerId)) return;
+    const p = local(e); pts.set(e.pointerId, p);
+    if(pts.size>=2 && pinch){
+      const t = two();
+      Z.s = Math.min(Z.max, Math.max(1, pinch.s*t.d/pinch.d));
+      Z.tx = t.mx - pinch.ix*Z.s; Z.ty = t.my - pinch.iy*Z.s;
+      moved += 10; zDraw(false);
+    }else if(pts.size===1 && last){
+      const dx = p[0]-last[0], dy = p[1]-last[1];
+      moved += Math.abs(dx)+Math.abs(dy);
+      Z.tx += dx; Z.ty += dy; last = p; zDraw(false);
+    }
+  });
+  const end = e=>{
+    if(!pts.has(e.pointerId)) return;
+    const p = pts.get(e.pointerId); pts.delete(e.pointerId);
+    if(pts.size<2) pinch = null;
+    if(pts.size===1){ last = [...pts.values()][0]; return; }
+    zArea.classList.remove('drag'); last = null;
+    if(e.type==='pointerup' && moved < 10){
+      const now = Date.now();
+      if(now-lastTap.t < 320 && Math.hypot(p[0]-lastTap.x, p[1]-lastTap.y) < 40){
+        if(Z.s > 1.2) zoomAt(1, p[0], p[1], true); else zoomAt(2.5, p[0], p[1], true);
+        lastTap.t = 0;
+      }else lastTap = {t:now, x:p[0], y:p[1]};
+    }
+  };
+  zArea.addEventListener('pointerup', end);
+  zArea.addEventListener('pointercancel', end);
+  zArea.addEventListener('wheel', e=>{
+    e.preventDefault();
+    const [x,y] = local(e);
+    zoomAt(Z.s*Math.exp(-e.deltaY*0.0018), x, y, false);
+  }, {passive:false});
+})();
 
 /* ---------- 이벤트 ---------- */
 $('#tabs').addEventListener('click', e=>{ const b = e.target.closest('.dbtn'); if(b) slideTo(+b.dataset.i); });
