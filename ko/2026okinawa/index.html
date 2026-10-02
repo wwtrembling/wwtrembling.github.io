@@ -5,55 +5,46 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <meta name="description" content="2026년 10월 오키나와 가족여행 일정">
-<meta name="theme-color" content="#0B7F8C">
+<meta name="theme-color" content="#13A0A6">
 <title>오키나와 가족여행</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
 <style>
-/* Layout: 한 열 모바일 우선. 고정 날짜 버튼 → 좌우로 넘기는 하루 시간표(위아래 스크롤) → 공통 안내. 항목을 누르면 아래에서 상세 시트가 올라옴 */
+/* Layout: 한 열 모바일 우선. 청록 그라데이션 머리말 → 고정 날짜 버튼 → 좌우로 넘기는 하루 시간표 → 공통 안내. 항목을 누르면 상세 시트(동선 지도 포함)
+   의도적으로 밝은 단일 테마 (인쇄물 같은 크림 바탕 + 흰 카드) */
 :root{
-  --bg:#F3F7F8; --surface:#FFFFFF; --ink:#14262E; --muted:#51656E; --line:#DCE6E9;
-  --sea:#0B7F8C; --now:#0A7A86; --now-bg:#E3F5F6; --meet:#C2410C; --meet-bg:#FFF2E8; --chip:#E8EFF1;
-  --shade:rgba(10,30,36,.45);
-  --d1:#D9572E; --d2:#B83C66; --d3:#1C72B0; --d4:#258A5E; --d5:#0B8F9C; --d6:#5E4FAD;
-  --display:'Jua','Noto Sans KR',system-ui,sans-serif;
+  color-scheme:light;
+  --bg:#FBF6EE; --surface:#FFFFFF; --ink:#1E1E1E; --muted:#5B5650; --line:#ECE4D8;
+  --sea:#1785A8; --hero-a:#13A0A6; --hero-b:#1F7FB8;
+  --now:#1785A8; --now-bg:#E6F4F8; --meet:#D2532B; --meet-bg:#FFF1E6; --chip:#F3EEE5;
+  --shade:rgba(30,25,20,.5);
+  --d1:#E0623A; --d2:#C2456B; --d3:#1F7FB8; --d4:#2E9A6A; --d5:#0E9AA7; --d6:#6B5BB0;
+  --display:'Noto Sans KR',system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;
   --body:'Noto Sans KR',system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;
   --fs:1;
 }
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#0E1A1F; --surface:#16262D; --ink:#EAF2F4; --muted:#A3B6BD; --line:#263A42;
-  --sea:#4FC3CF; --now:#4FD1DC; --now-bg:#12343A; --meet:#FF9A5C; --meet-bg:#3A2418; --chip:#203540;
-  --shade:rgba(0,0,0,.6);
-  --d1:#F07A52; --d2:#E0688F; --d3:#5BA6E0; --d4:#4DBB88; --d5:#3EC2CE; --d6:#9A8AE6;
-  color-scheme:dark}}
-:root[data-theme="dark"]{
-  --bg:#0E1A1F; --surface:#16262D; --ink:#EAF2F4; --muted:#A3B6BD; --line:#263A42;
-  --sea:#4FC3CF; --now:#4FD1DC; --now-bg:#12343A; --meet:#FF9A5C; --meet-bg:#3A2418; --chip:#203540;
-  --shade:rgba(0,0,0,.6);
-  --d1:#F07A52; --d2:#E0688F; --d3:#5BA6E0; --d4:#4DBB88; --d5:#3EC2CE; --d6:#9A8AE6;
-  color-scheme:dark}
 
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:calc(19px * var(--fs));line-height:1.5;word-break:keep-all;margin:0;overflow-x:hidden}
 .wrap{max-width:720px;margin:0 auto;padding-inline:16px;padding-block:0 48px}
 
-header.top{padding-block:28px 14px}
-.kicker{font-weight:700;color:var(--sea);letter-spacing:.02em}
-h1{font-family:var(--display);font-weight:400;font-size:2.6em;line-height:1.1;margin:.15em 0 .2em;text-wrap:balance}
-.sub{font-size:1.15em;font-weight:500;color:var(--muted)}
-.tools{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
-.tbtn{font:inherit;font-size:.95em;font-weight:700;border:2px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:8px 18px;cursor:pointer;min-height:48px}
-.tbtn[aria-pressed="true"]{border-color:var(--sea);color:var(--sea)}
+header.top{margin-inline:-16px;padding:36px 22px 26px;background:linear-gradient(160deg,var(--hero-a),var(--hero-b));color:#fff}
+.kicker{font-weight:700;opacity:.92;font-size:1.05em}
+h1{font-family:var(--display);font-weight:900;font-size:2.7em;line-height:1.12;margin:.15em 0 .25em;letter-spacing:-.01em;text-wrap:balance}
+.sub{font-size:1.2em;font-weight:500}
+.tools{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.tbtn{font:inherit;font-size:.95em;font-weight:700;border:2px solid rgba(255,255,255,.55);background:rgba(255,255,255,.14);color:#fff;border-radius:999px;padding:8px 18px;cursor:pointer;min-height:48px}
+.tbtn[aria-pressed="true"]{background:#fff;color:var(--hero-b);border-color:#fff}
 
-.banner{margin-top:14px;border-radius:18px;padding:14px 18px;background:var(--now-bg);color:var(--ink);font-weight:700;font-size:1.05em;border:2px solid var(--now)}
-.banner b{color:var(--now);font-size:1.25em}
+.banner{margin-top:16px;border-radius:18px;padding:14px 18px;background:#fff;color:var(--ink);font-weight:700;font-size:1.05em}
+.banner b{color:var(--meet);font-size:1.25em}
 
 nav.days{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding-block:10px;margin-inline:-16px;padding-inline:16px;border-bottom:1px solid var(--line)}
 .dgrid{display:grid;grid-template-columns:repeat(6,1fr);gap:6px}
 .dbtn{font:inherit;cursor:pointer;border:2px solid transparent;background:var(--surface);color:var(--ink);border-radius:14px;padding:8px 2px;min-height:64px;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative}
-.dbtn .n{font-family:var(--display);font-size:1.35em;line-height:1.1}
+.dbtn .n{font-family:var(--display);font-weight:900;font-size:1.25em;line-height:1.15}
 .dbtn .dt{font-size:.78em;font-weight:700;color:var(--muted);font-variant-numeric:tabular-nums}
 .dbtn[aria-selected="true"]{background:var(--c);color:#fff;border-color:var(--c)}
 .dbtn[aria-selected="true"] .dt{color:#fff;opacity:.9}
@@ -67,7 +58,7 @@ nav.days{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:v
 
 .dayhead{margin-top:14px;padding:22px 22px 20px;border-radius:22px;background:var(--c);color:#fff}
 .dayhead .lbl{font-weight:700;opacity:.92}
-.dayhead h2{font-family:var(--display);font-weight:400;font-size:2.1em;line-height:1.15;margin:.1em 0 .15em;text-wrap:balance}
+.dayhead h2{font-family:var(--display);font-weight:900;font-size:2.1em;line-height:1.15;margin:.1em 0 .15em;text-wrap:balance}
 .dayhead .when{font-size:1.15em;font-weight:500}
 
 ol.tl{list-style:none;margin:16px 0 0;padding:0;display:flex;flex-direction:column;gap:10px}
@@ -102,7 +93,7 @@ button.it{cursor:pointer}
 .navb[disabled]{opacity:.35;cursor:default}
 
 section.info{margin-top:36px;display:flex;flex-direction:column;gap:14px}
-section.info h3{font-family:var(--display);font-weight:400;font-size:1.6em;margin:0 0 4px}
+section.info h3{font-family:var(--display);font-weight:900;font-size:1.6em;margin:0 0 4px}
 .box{background:var(--surface);border-radius:18px;padding:18px 20px}
 .box h4{margin:0 0 8px;font-size:1.1em;color:var(--sea)}
 .box p{margin:4px 0}
@@ -119,7 +110,7 @@ dialog#sheet::backdrop{background:var(--shade)}
 .grab{width:56px;height:6px;border-radius:3px;background:var(--line);margin:0 auto 10px}
 .shtop{display:flex;align-items:flex-start;gap:12px}
 .shtop .bigic{font-size:2.4em;line-height:1}
-.shtop h3{font-family:var(--display);font-weight:400;font-size:1.8em;line-height:1.15;margin:0;flex:1;min-width:0;text-wrap:balance}
+.shtop h3{font-family:var(--display);font-weight:900;font-size:1.8em;line-height:1.15;margin:0;flex:1;min-width:0;text-wrap:balance}
 .shtop .jp{display:block;font-family:var(--body);font-size:.5em;color:var(--muted);font-weight:500;margin-top:4px}
 .x{font:inherit;font-weight:900;font-size:1.1em;width:52px;height:52px;flex:none;border-radius:50%;border:2px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
 .shtime{margin-top:10px;font-weight:700;color:var(--sea);font-size:1.05em;font-variant-numeric:tabular-nums}
@@ -130,6 +121,19 @@ dialog#sheet::backdrop{background:var(--shade)}
 .tips{margin:16px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px}
 .tips li{background:var(--meet-bg);border-left:6px solid var(--meet);border-radius:10px;padding:10px 14px;font-weight:700}
 .copy{font:inherit;font-size:.85em;font-weight:700;margin-left:8px;border:2px solid var(--line);background:var(--surface);color:var(--ink);border-radius:10px;padding:2px 10px;cursor:pointer}
+.mapfig{margin:18px 0 0}
+.mapfig h4{margin:0 0 8px;font-size:1.05em;font-weight:900}
+.mapthumb{display:block;width:100%;padding:0;border:2px solid var(--line);border-radius:16px;overflow:hidden;background:var(--chip);cursor:zoom-in;position:relative}
+.mapthumb img{display:block;width:100%;height:auto;max-width:100%}
+.mapthumb span{position:absolute;right:10px;bottom:10px;background:rgba(30,30,30,.78);color:#fff;font-weight:700;font-size:.85em;padding:4px 12px;border-radius:999px}
+.it .mtag{display:inline-block;margin-top:8px;margin-left:6px;font-weight:700;font-size:.9em;color:var(--sea);border:2px solid var(--sea);padding:1px 10px;border-radius:10px}
+[hidden]{display:none!important}
+#zoom{position:fixed;inset:0;z-index:50;background:#111;display:flex;flex-direction:column}
+#zoom .zbar{display:flex;align-items:center;gap:10px;padding:calc(10px + env(safe-area-inset-top,0px)) 14px 10px;color:#fff;font-weight:700}
+#zoom .zbar span{flex:1;min-width:0}
+#zoom .zbar button{font:inherit;font-weight:700;min-height:48px;padding:0 16px;border-radius:12px;border:2px solid #555;background:#222;color:#fff;cursor:pointer}
+#zoom .zarea{flex:1;overflow:auto;-webkit-overflow-scrolling:touch;touch-action:pan-x pan-y pinch-zoom}
+#zoom img{display:block;max-width:none;margin:0 auto}
 .mapbtn{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:18px;min-height:60px;border-radius:16px;background:var(--sea);color:#fff;font-weight:900;font-size:1.15em;text-decoration:none}
 .mapnote{text-align:center;color:var(--muted);font-size:.85em;margin-top:6px}
 
@@ -194,9 +198,22 @@ dialog#sheet::backdrop{background:var(--shade)}
 
 <dialog id="sheet" aria-labelledby="shTitle">
   <div class="sh" id="shBody"></div>
+  <div id="zoom" hidden>
+    <div class="zbar"><span id="zTitle">동선 지도</span>
+      <button type="button" id="zIn">크게</button><button type="button" id="zOut">작게</button><button type="button" id="zClose">닫기 ✕</button></div>
+    <div class="zarea" id="zArea"><img id="zImg" alt=""></div>
+  </div>
 </dialog>
 
 <script>
+/* ---------- 시트의 동선 지도 (day2-슈리성, day2-오키나와월드, day3-추라우미 수족관, day4 아메리칸 빌리지) ---------- */
+const MAPS = {
+  shuri:   {src:"maps/shuri.webp",    w:754,  h:778,  t:"슈리성 동선 지도",           alt:"슈리성 공원 안내도 위에 1번 슈리모리칸에서 6번 세이덴까지 걷는 순서를 표시한 지도"},
+  okworld: {src:"maps/okworld.webp",  w:1232, h:566,  t:"오키나와 월드 동선 지도",     alt:"오키나와 월드 안내도 위에 입구, 옥천동굴, 열대과일원, 공예체험, 에이사 공연, 출구 순서를 표시한 지도"},
+  churaumi:{src:"maps/churaumi.webp", w:690,  h:859,  t:"츄라우미 수족관 동선 지도",   alt:"수족관 층별 안내도 위에 4층 입장부터 카페 오션블루, 기념품, 돌고래쇼까지 순서를 표시한 지도"},
+  american:{src:"maps/american.webp", w:1000, h:1380, t:"아메리칸 빌리지 동선 지도",   alt:"택시 하차 후 데포 아일랜드, 해안 산책로, 선셋비치, 마시소요, 야경 산책 순서와 시간표를 그린 지도"}
+};
+
 /* ---------- 장소 상세 (시트의 '가볼만한곳'·'숙소'·메모 내용 바탕) ---------- */
 const P = {
  icn:{n:"인천공항 1터미널", q:"인천국제공항 제1여객터미널", intro:"3층 출국장에서 모두 모여 체크인하고 짐을 부칩니다. 11명 여권을 한 번에 확인해요.",
@@ -209,21 +226,21 @@ const P = {
    f:[["해 지는 시간","오후 6시 14분"],["걷기","계단·경사 조금"],["구글 평점","4.0"]], t:["오후 6시 10분에 버스 타기 (해는 버스 안에서 봐요)"]},
  yuinchi:{n:"더 유인치 호텔 난조", jp:"ユインチホテル南城", q:"ユインチホテル南城", intro:"남부 언덕 위 호텔로, 천연 온천 대욕장이 있어 피로 풀기에 좋아요. 수영장과 산책길도 있습니다.",
    f:[["묵는 날","10/5 ~ 10/7 아침 (2박)"],["온천 준비물","없음 (모두 빌려줌)"],["구글 평점","4.1"]]},
- shuri:{n:"슈리성", jp:"首里城公園", q:"首里城公園", intro:"약 450년 동안 이어진 류큐 왕국의 왕궁이 있던 곳이에요. 2019년 화재로 정전이 불타 다시 짓고 있어, 복원하는 모습도 볼 수 있습니다. 성문과 돌담은 그대로 남아 있어요.",
+ shuri:{map:"shuri", n:"슈리성", jp:"首里城公園", q:"首里城公園", intro:"약 450년 동안 이어진 류큐 왕국의 왕궁이 있던 곳이에요. 2019년 화재로 정전이 불타 다시 짓고 있어, 복원하는 모습도 볼 수 있습니다. 성문과 돌담은 그대로 남아 있어요.",
    f:[["머무는 시간","약 50분"],["걷기","보통 (완만한 경사)"],["구글 평점","4.2"]]},
- shurilunch:{n:"슈리성 앞 야외 벤치", q:"首里杜館", intro:"슈리성 입구 건물(슈리모리칸) 앞 벤치에서 아침에 산 샌드위치 등으로 간단히 점심을 먹어요.", f:[["시간","15분"]]},
- okworld:{n:"오키나와 월드", jp:"おきなわワールド", q:"おきなわワールド", intro:"땅속 종유석 동굴을 걸어서 구경하고, 옛 마을에서 전통 공예와 열대 과일을 볼 수 있는 곳이에요. 큰북을 치며 춤추는 '에이사' 공연은 모든 나이대가 좋아합니다.",
+ shurilunch:{map:"shuri", n:"슈리성 앞 야외 벤치", q:"首里杜館", intro:"슈리성 입구 건물(슈리모리칸) 앞 벤치에서 아침에 산 샌드위치 등으로 간단히 점심을 먹어요.", f:[["시간","15분"]]},
+ okworld:{map:"okworld", n:"오키나와 월드", jp:"おきなわワールド", q:"おきなわワールド", intro:"땅속 종유석 동굴을 걸어서 구경하고, 옛 마을에서 전통 공예와 열대 과일을 볼 수 있는 곳이에요. 큰북을 치며 춤추는 '에이사' 공연은 모든 나이대가 좋아합니다.",
    f:[["동굴","약 40분 (안은 시원함)"],["에이사 공연","오후 4시"],["걷기","보통 (동굴 안이 습함)"],["구글 평점","4.2"]], t:["동굴 바닥이 젖어 있을 수 있으니 미끄럼 주의"]},
  donki:{n:"메가 돈키호테 토미구스쿠", jp:"MEGAドン・キホーテ豊見城店", q:"MEGAドン・キホーテ豊見城店", intro:"없는 게 없는 일본 할인 잡화점이에요. 도시락, 과자, 기념품, 상비약을 한 번에 살 수 있습니다.",
    f:[["머무는 시간","45분"]], t:["에코백 챙기기","오후 6시 15분 버스 타기"]},
  famima:{n:"패밀리마트 모토부 야마가와점", jp:"ファミリーマート本部山川店", q:"ファミリーマート本部山川店", intro:"수족관 바로 앞 편의점이에요. 매장 안 자리에서 점심을 먹어요. 오는 길에 이게이 휴게소에서 화장실에 들러요.", f:[["시간","30분"]]},
- churaumi:{n:"츄라우미 수족관", jp:"沖縄美ら海水族館", q:"沖縄美ら海水族館", intro:"오키나와에서 가장 유명한 수족관이에요. 고래상어와 쥐가오리가 헤엄치는 아주 큰 수조 '쿠로시오의 바다'가 가장 볼만합니다. 엘리베이터가 있고 바닥이 평평해 걷기 편해요.",
+ churaumi:{map:"churaumi", n:"츄라우미 수족관", jp:"沖縄美ら海水族館", q:"沖縄美ら海水族館", intro:"오키나와에서 가장 유명한 수족관이에요. 고래상어와 쥐가오리가 헤엄치는 아주 큰 수조 '쿠로시오의 바다'가 가장 볼만합니다. 엘리베이터가 있고 바닥이 평평해 걷기 편해요.",
    f:[["보는 순서","4층 입구 → 산호의 바다 → 쿠로시오의 바다"],["걷기","쉬움 (평지·엘리베이터)"],["구글 평점","4.5"]], t:["기념품 가게는 출구 쪽에 있어요"]},
- oceanblue:{n:"카페 오션블루", q:"沖縄美ら海水族館 カフェ オーシャンブルー", intro:"큰 수조 바로 옆 카페라, 앉아서 음료를 마시며 고래상어를 가까이 볼 수 있어요.",
+ oceanblue:{map:"churaumi", n:"카페 오션블루", q:"沖縄美ら海水族館 カフェ オーシャンブルー", intro:"큰 수조 바로 옆 카페라, 앉아서 음료를 마시며 고래상어를 가까이 볼 수 있어요.",
    f:[["수조 옆 자리","40분 500엔 (현장 접수)"]]},
- okichan:{n:"오키짱 극장 (돌고래 쇼)", jp:"オキちゃん劇場", q:"オキちゃん劇場", intro:"수족관 밖 바닷가에 있는 돌고래 쇼장이에요. 돌고래들이 점프하고 재주를 부리는 무료 공연입니다.",
+ okichan:{map:"churaumi", n:"오키짱 극장 (돌고래 쇼)", jp:"オキちゃん劇場", q:"オキちゃん劇場", intro:"수족관 밖 바닷가에 있는 돌고래 쇼장이에요. 돌고래들이 점프하고 재주를 부리는 무료 공연입니다.",
    f:[["공연 시간","약 20분"],["요금","무료"]], t:["앞자리는 물이 튈 수 있어요"]},
- emerald:{n:"에메랄드 비치", q:"エメラルドビーチ 海洋博公園", intro:"해양박공원 안 하얀 모래 해변이에요. 바닥이 평평해 걷기 쉽고 바다색이 아주 예뻐요. 오늘은 물놀이 없이 산책과 사진만 해요.",
+ emerald:{map:"churaumi", n:"에메랄드 비치", q:"エメラルドビーチ 海洋博公園", intro:"해양박공원 안 하얀 모래 해변이에요. 바닥이 평평해 걷기 쉽고 바다색이 아주 예뻐요. 오늘은 물놀이 없이 산책과 사진만 해요.",
    f:[["머무는 시간","45분"],["걷기","쉬움"],["구글 평점","4.5"]]},
  northgate:{n:"해양박공원 북쪽 게이트", q:"海洋博公園 北ゲート", intro:"해양박공원 북쪽 출입구에서 버스를 탑니다. 기사님과 미리 정한 장소예요.", t:["4시 15분까지 모이기"]},
  zanpa:{n:"그랜드 머큐어 잔파", jp:"グランドメルキュール沖縄残波岬リゾート", q:"グランドメルキュール沖縄残波岬リゾート", intro:"잔파곶 근처 바닷가 리조트예요. 2024년에 새로 단장해 깨끗하고, 수영장·워터슬라이드·아이 수영장·전망 목욕탕이 있습니다.",
@@ -233,10 +250,10 @@ const P = {
    f:[["거리","숙소에서 걸어서 약 300m"],["영업","오후 5시 ~ 9시"]]},
  uber:{n:"점심 배달 음식", intro:"11시 30분쯤 우버이츠로 주문해서 방에서 편하게 먹어요. 30~60분 걸려요.", t:["받는 장소는 프런트에 확인"]},
  aeon:{n:"이온몰 라이카무", jp:"イオンモール沖縄ライカム", q:"イオンモール沖縄ライカム", intro:"오키나와에서 가장 큰 쇼핑몰이에요. 마트에서 식료품과 기념품을 사기 좋습니다.", f:[["머무는 시간","약 55분"]]},
- american:{n:"아메리칸 빌리지", jp:"美浜アメリカンビレッジ", q:"美浜アメリカンビレッジ", intro:"미국 바닷가 마을처럼 꾸민 쇼핑 거리예요. 길이 평평해 유모차와 어르신 모두 걷기 편하고, 노을과 야경이 유명합니다.",
+ american:{map:"american", n:"아메리칸 빌리지", jp:"美浜アメリカンビレッジ", q:"美浜アメリカンビレッジ", intro:"미국 바닷가 마을처럼 꾸민 쇼핑 거리예요. 길이 평평해 유모차와 어르신 모두 걷기 편하고, 노을과 야경이 유명합니다.",
    f:[["걷기","쉬움 (평탄한 보도)"],["구글 평점","4.2"]]},
- sunset:{n:"선셋 비치", q:"サンセットビーチ 北谷", intro:"아메리칸 빌리지 옆 해변이에요. 바다로 지는 해를 보며 아이들 간식을 먹어요.", f:[["해 지는 시간","오후 6시 10분"]]},
- masisoyo:{n:"마시소요 (한식)", q:"Masisoyo 北谷 シーサイドスクエア", intro:"아메리칸 빌리지 안 한식당이에요. 음료가 무료로 나와요.",
+ sunset:{map:"american", n:"선셋 비치", q:"サンセットビーチ 北谷", intro:"아메리칸 빌리지 옆 해변이에요. 바다로 지는 해를 보며 아이들 간식을 먹어요.", f:[["해 지는 시간","오후 6시 10분"]]},
+ masisoyo:{map:"american", n:"마시소요 (한식)", q:"Masisoyo 北谷 シーサイドスクエア", intro:"아메리칸 빌리지 안 한식당이에요. 음료가 무료로 나와요.",
    f:[["위치","시사이드 스퀘어 1층"],["예약 전화",'<span class="mono">+81-70-2682-6355</span><button class="copy" data-copy="+81-70-2682-6355" type="button">복사</button>']]},
  taxiback:{n:"숙소로 출발", intro:"관광택시 2대로 리조트에 돌아가요.", t:["택시는 9시에 끝나요 (연장 안 됨)","모이는 장소는 기사님과 미리 약속"]},
  bisezaki:{n:"비세자키 해변", jp:"備瀬崎", q:"備瀬崎", intro:"썰물에 물이 빠지면 산호 사이 얕은 웅덩이에서 열대 물고기를 볼 수 있는 곳이에요. 물이 얕아 아이와 어르신도 안전하게 구경할 수 있어요.",
@@ -399,7 +416,7 @@ function renderDay(){
         ${tag?`<div>${tag}</div>`:''}
         <div class="pl"><span class="ic" aria-hidden="true">${ic}</span><span>${esc(pl)}</span></div>
         ${ds?`<div class="ds">${esc(ds)}</div>`:''}
-        ${nt?`<div class="nt">${esc(nt)}</div>`:''}
+        ${nt?`<div class="nt">${esc(nt)}</div>`:''}${key && P[key] && P[key].map?'<span class="mtag">🗺️ 동선 지도</span>':''}
       </div>
       ${key?'<span class="more" aria-hidden="true">자세히 ›</span>':'<span></span>'}`;
     return `<li>${key
@@ -521,12 +538,18 @@ function openSheet(j){
     <p class="intro">${esc(p.intro)}</p>
     ${facts?`<dl class="facts">${facts}</dl>`:''}
     ${tips?`<ul class="tips">${tips}</ul>`:''}
+    ${p.map?`<figure class="mapfig"><h4>${esc(MAPS[p.map].t)}</h4>
+      <button type="button" class="mapthumb" data-map="${p.map}" aria-label="${esc(MAPS[p.map].t)} 크게 보기">
+        <img src="${MAPS[p.map].src}" width="${MAPS[p.map].w}" height="${MAPS[p.map].h}" alt="${esc(MAPS[p.map].alt)}" loading="lazy"><span>눌러서 크게 보기</span>
+      </button></figure>`:''}
     ${map}`;
   try{ sheet.showModal(); }catch(e){ sheet.setAttribute('open',''); }
   $('#shBody').scrollTop = 0;
 }
-function closeSheet(){ try{ sheet.close(); }catch(e){ sheet.removeAttribute('open'); } }
+function closeSheet(){ zoom.hidden = true; try{ sheet.close(); }catch(e){ sheet.removeAttribute('open'); } }
 sheet.addEventListener('click', e=>{
+  const mt = e.target.closest('.mapthumb'); if(mt){ openZoom(mt.dataset.map); return; }
+  if(e.target.closest('#zoom')) return;
   if(e.target === sheet || e.target.closest('#shClose')) closeSheet();
   const c = e.target.closest('.copy');
   if(c){
@@ -536,6 +559,24 @@ sheet.addEventListener('click', e=>{
   }
 });
 function selectPrev(btn){ const s = btn.previousElementSibling; const r = document.createRange(); r.selectNodeContents(s); const sel = getSelection(); sel.removeAllRanges(); sel.addRange(r); }
+
+/* 지도 크게 보기 */
+const zoom = $('#zoom'); let zScale = 1, zMap = null;
+function zApply(){
+  const m = MAPS[zMap], area = $('#zArea');
+  const fit = Math.min(area.clientWidth / m.w, 1.6);
+  $('#zImg').style.width = Math.round(m.w * fit * zScale) + 'px';
+}
+function openZoom(k){
+  zMap = k; zScale = 1;
+  $('#zImg').src = MAPS[k].src; $('#zImg').alt = MAPS[k].alt; $('#zTitle').textContent = MAPS[k].t;
+  zoom.hidden = false; zApply();
+}
+$('#zIn').addEventListener('click', ()=>{ zScale = Math.min(zScale*1.5, 4); zApply(); });
+$('#zOut').addEventListener('click', ()=>{ zScale = Math.max(zScale/1.5, 1); zApply(); });
+$('#zClose').addEventListener('click', ()=>{ zoom.hidden = true; });
+sheet.addEventListener('cancel', e=>{ if(!zoom.hidden){ e.preventDefault(); zoom.hidden = true; } });
+addEventListener('resize', ()=>{ if(!zoom.hidden) zApply(); });
 
 /* ---------- 이벤트 ---------- */
 $('#tabs').addEventListener('click', e=>{ const b = e.target.closest('.dbtn'); if(b) slideTo(+b.dataset.i); });
